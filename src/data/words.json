@@ -1,0 +1,1555 @@
+[
+  {
+    "topic_id": "numbers_1_20",
+    "topic_name": {
+      "ru": "Числа 1-20",
+      "lv": "Skaitļi 1-20",
+      "en": "Numbers 1-20"
+    },
+    "icon": "Hash",
+    "color": "indigo",
+    "emoji": "🔢",
+    "words": [
+      {
+        "id": "1",
+        "en": "one",
+        "lv": "viens",
+        "ru": "один"
+      },
+      {
+        "id": "2",
+        "en": "two",
+        "lv": "divi",
+        "ru": "два"
+      },
+      {
+        "id": "3",
+        "en": "three",
+        "lv": "trīs",
+        "ru": "три"
+      },
+      {
+        "id": "4",
+        "en": "four",
+        "lv": "četri",
+        "ru": "четыре"
+      },
+      {
+        "id": "5",
+        "en": "five",
+        "lv": "pieci",
+        "ru": "пять"
+      },
+      {
+        "id": "6",
+        "en": "six",
+        "lv": "seši",
+        "ru": "шесть"
+      },
+      {
+        "id": "7",
+        "en": "seven",
+        "lv": "septiņi",
+        "ru": "семь"
+      },
+      {
+        "id": "8",
+        "en": "eight",
+        "lv": "astoņi",
+        "ru": "восемь"
+      },
+      {
+        "id": "9",
+        "en": "nine",
+        "lv": "deviņi",
+        "ru": "девять"
+      },
+      {
+        "id": "10",
+        "en": "ten",
+        "lv": "desmit",
+        "ru": "десять"
+      },
+      {
+        "id": "11",
+        "en": "eleven",
+        "lv": "vienpadsmit",
+        "ru": "одиннадцать"
+      },
+      {
+        "id": "12",
+        "en": "twelve",
+        "lv": "divpadsmit",
+        "ru": "двенадцать"
+      },
+      {
+        "id": "13",
+        "en": "thirteen",
+        "lv": "trīspadsmit",
+        "ru": "тринадцать"
+      },
+      {
+        "id": "14",
+        "en": "fourteen",
+        "lv": "četrpadsmit",
+        "ru": "четырнадцать"
+      },
+      {
+        "id": "15",
+        "en": "fifteen",
+        "lv": "piecpadsmit",
+        "ru": "пятнадцать"
+      },
+      {
+        "id": "16",
+        "en": "sixteen",
+        "lv": "sešpadsmit",
+        "ru": "шестнадцать"
+      },
+      {
+        "id": "17",
+        "en": "seventeen",
+        "lv": "septiņpadsmit",
+        "ru": "семнадцать"
+      },
+      {
+        "id": "18",
+        "en": "eighteen",
+        "lv": "astoņpadsmit",
+        "ru": "восемнадцать"
+      },
+      {
+        "id": "19",
+        "en": "nineteen",
+        "lv": "deviņpadsmit",
+        "ru": "девятнадцать"
+      },
+      {
+        "id": "20",
+        "en": "twenty",
+        "lv": "divdesmit",
+        "ru": "двадцать"
+      }
+    ]
+  },
+  {
+    "topic_id": "colours",
+    "topic_name": {
+      "ru": "Цвета",
+      "lv": "Krāsas",
+      "en": "Colours"
+    },
+    "icon": "Palette",
+    "color": "purple",
+    "emoji": "🎨",
+    "words": [
+      {
+        "id": "21",
+        "en": "grey",
+        "lv": "pelēks",
+        "ru": "Серый"
+      },
+      {
+        "id": "22",
+        "en": "red",
+        "lv": "sarkans",
+        "ru": "Красный"
+      },
+      {
+        "id": "23",
+        "en": "blue",
+        "lv": "zils",
+        "ru": "Синий"
+      },
+      {
+        "id": "24",
+        "en": "green",
+        "lv": "zaļš",
+        "ru": "Зеленый"
+      },
+      {
+        "id": "25",
+        "en": "pink",
+        "lv": "rozā",
+        "ru": "Розовый"
+      },
+      {
+        "id": "26",
+        "en": "white",
+        "lv": "balts",
+        "ru": "Белый"
+      },
+      {
+        "id": "27",
+        "en": "black",
+        "lv": "melns",
+        "ru": "Черный"
+      },
+      {
+        "id": "28",
+        "en": "purple",
+        "lv": "violets",
+        "ru": "Фиолетовый"
+      },
+      {
+        "id": "29",
+        "en": "orange",
+        "lv": "oranžš",
+        "ru": "Оранжевый"
+      },
+      {
+        "id": "30",
+        "en": "yellow",
+        "lv": "dzeltens",
+        "ru": "Желтый"
+      },
+      {
+        "id": "31",
+        "en": "brown",
+        "lv": "brūns",
+        "ru": "Коричневый"
+      }
+    ]
+  },
+  {
+    "topic_id": "days_of_the_week",
+    "topic_name": {
+      "ru": "Дни недели",
+      "lv": "Nedēļas dienas",
+      "en": "Days of the week"
+    },
+    "icon": "Calendar",
+    "color": "sky",
+    "emoji": "📅",
+    "words": [
+      {
+        "id": "32",
+        "en": "monday",
+        "lv": "pirmdiena",
+        "ru": "Понедельник"
+      },
+      {
+        "id": "33",
+        "en": "tuesday",
+        "lv": "otrdiena",
+        "ru": "Вторник"
+      },
+      {
+        "id": "34",
+        "en": "wednesday",
+        "lv": "trešdiena",
+        "ru": "Среда"
+      },
+      {
+        "id": "35",
+        "en": "thursday",
+        "lv": "ceturtdiena",
+        "ru": "Четверг"
+      },
+      {
+        "id": "36",
+        "en": "friday",
+        "lv": "piektdiena",
+        "ru": "Пятница"
+      },
+      {
+        "id": "37",
+        "en": "saturday",
+        "lv": "sestdiena",
+        "ru": "Суббота"
+      },
+      {
+        "id": "38",
+        "en": "sunday",
+        "lv": "svētdiena",
+        "ru": "Воскресенье"
+      }
+    ]
+  },
+  {
+    "topic_id": "classroom_objects",
+    "topic_name": {
+      "ru": "Оборудование класса",
+      "lv": "Klases aprīkojums",
+      "en": "Classroom objects"
+    },
+    "icon": "School",
+    "color": "amber",
+    "emoji": "🎒",
+    "words": [
+      {
+        "id": "39",
+        "en": "window",
+        "lv": "logs",
+        "ru": "окно"
+      },
+      {
+        "id": "40",
+        "en": "poster",
+        "lv": "plakāts",
+        "ru": "плакат"
+      },
+      {
+        "id": "41",
+        "en": "bag",
+        "lv": "soma",
+        "ru": "портфель"
+      },
+      {
+        "id": "42",
+        "en": "bin",
+        "lv": "miskaste",
+        "ru": "мусорное ведро"
+      },
+      {
+        "id": "43",
+        "en": "chair",
+        "lv": "krēsls",
+        "ru": "стул"
+      },
+      {
+        "id": "44",
+        "en": "door",
+        "lv": "durvis",
+        "ru": "дверь"
+      },
+      {
+        "id": "45",
+        "en": "cupboard",
+        "lv": "skapītis",
+        "ru": "шкафчик"
+      },
+      {
+        "id": "46",
+        "en": "desk",
+        "lv": "rakstāmgalds",
+        "ru": "парта"
+      },
+      {
+        "id": "47",
+        "en": "book",
+        "lv": "grāmata",
+        "ru": "книга"
+      },
+      {
+        "id": "48",
+        "en": "board",
+        "lv": "tāfele",
+        "ru": "доска"
+      },
+      {
+        "id": "49",
+        "en": "pencil sharpener",
+        "lv": "asināmais",
+        "ru": "точилка"
+      },
+      {
+        "id": "50",
+        "en": "pencil case",
+        "lv": "penālis",
+        "ru": "пенал"
+      },
+      {
+        "id": "51",
+        "en": "ruler",
+        "lv": "lineāls",
+        "ru": "линейка"
+      },
+      {
+        "id": "52",
+        "en": "rubber",
+        "lv": "dzēšgumija",
+        "ru": "ластик"
+      },
+      {
+        "id": "53",
+        "en": "pen",
+        "lv": "pildspalva",
+        "ru": "ручка"
+      },
+      {
+        "id": "54",
+        "en": "pencil",
+        "lv": "zīmulis",
+        "ru": "карандаш"
+      },
+      {
+        "id": "55",
+        "en": "box",
+        "lv": "kaste",
+        "ru": "коробка"
+      },
+      {
+        "id": "56",
+        "en": "glue",
+        "lv": "līme",
+        "ru": "клей"
+      },
+      {
+        "id": "57",
+        "en": "counters",
+        "lv": "žetoni",
+        "ru": "фишки"
+      },
+      {
+        "id": "58",
+        "en": "paper",
+        "lv": "papīrs",
+        "ru": "бумага"
+      },
+      {
+        "id": "59",
+        "en": "circle",
+        "lv": "aplis",
+        "ru": "круг"
+      },
+      {
+        "id": "60",
+        "en": "square",
+        "lv": "kvadrāts",
+        "ru": "квадрат"
+      },
+      {
+        "id": "61",
+        "en": "triangle",
+        "lv": "trīsstūris",
+        "ru": "треугольник"
+      },
+      {
+        "id": "62",
+        "en": "rectangle",
+        "lv": "taisnstūris",
+        "ru": "прямоугольник"
+      },
+      {
+        "id": "63",
+        "en": "oval",
+        "lv": "ovāls",
+        "ru": "овал"
+      }
+    ]
+  },
+  {
+    "topic_id": "family",
+    "topic_name": {
+      "ru": "Семья",
+      "lv": "Ģimene",
+      "en": "Family"
+    },
+    "icon": "Users",
+    "color": "pink",
+    "emoji": "👨‍👩‍👧‍👦",
+    "words": [
+      {
+        "id": "64",
+        "en": "mum",
+        "lv": "mamma",
+        "ru": "мама"
+      },
+      {
+        "id": "65",
+        "en": "dad",
+        "lv": "tētis",
+        "ru": "папа"
+      },
+      {
+        "id": "66",
+        "en": "grandma",
+        "lv": "vecmāmiņa",
+        "ru": "бабушка"
+      },
+      {
+        "id": "67",
+        "en": "grandpa",
+        "lv": "vectētiņš",
+        "ru": "дедушка"
+      },
+      {
+        "id": "68",
+        "en": "brother",
+        "lv": "brālis",
+        "ru": "брат"
+      },
+      {
+        "id": "69",
+        "en": "sister",
+        "lv": "māsa",
+        "ru": "сестра"
+      },
+      {
+        "id": "70",
+        "en": "twin",
+        "lv": "dvīnis",
+        "ru": "близнец"
+      },
+      {
+        "id": "71",
+        "en": "uncle",
+        "lv": "tēvocis",
+        "ru": "дядя"
+      },
+      {
+        "id": "72",
+        "en": "auntie",
+        "lv": "tante",
+        "ru": "тётя"
+      },
+      {
+        "id": "73",
+        "en": "cousin",
+        "lv": "brālēns/māsīca",
+        "ru": "двоюродный брат/сестра"
+      },
+      {
+        "id": "74",
+        "en": "baby",
+        "lv": "mazulis",
+        "ru": "малыш"
+      },
+      {
+        "id": "75",
+        "en": "toddler",
+        "lv": "bērns, kurš tikko sācis staigāt",
+        "ru": "малыш, начинающий ходить"
+      },
+      {
+        "id": "76",
+        "en": "child",
+        "lv": "bērns",
+        "ru": "ребёнок"
+      },
+      {
+        "id": "77",
+        "en": "teenager",
+        "lv": "pusaudzis",
+        "ru": "подросток"
+      },
+      {
+        "id": "78",
+        "en": "adult",
+        "lv": "pieaugušais",
+        "ru": "взрослый"
+      },
+      {
+        "id": "79",
+        "en": "eldery person",
+        "lv": "vecs cilvēks",
+        "ru": "пожилой человек"
+      },
+      {
+        "id": "80",
+        "en": "he",
+        "lv": "viņš",
+        "ru": "он"
+      },
+      {
+        "id": "81",
+        "en": "she",
+        "lv": "viņa",
+        "ru": "она"
+      }
+    ]
+  },
+  {
+    "topic_id": "adjectives",
+    "topic_name": {
+      "ru": "Прилагательные",
+      "lv": "Īpašības vārdi",
+      "en": "Adjectives"
+    },
+    "icon": "Sparkles",
+    "color": "emerald",
+    "emoji": "✨",
+    "words": [
+      {
+        "id": "82",
+        "en": "tall",
+        "lv": "garš",
+        "ru": "высокий"
+      },
+      {
+        "id": "83",
+        "en": "short",
+        "lv": "īss",
+        "ru": "короткий"
+      },
+      {
+        "id": "84",
+        "en": "old",
+        "lv": "vecs",
+        "ru": "старый"
+      },
+      {
+        "id": "85",
+        "en": "young",
+        "lv": "jauns",
+        "ru": "молодой"
+      },
+      {
+        "id": "86",
+        "en": "pretty",
+        "lv": "skaista",
+        "ru": "красивая"
+      },
+      {
+        "id": "87",
+        "en": "handsome",
+        "lv": "skaists",
+        "ru": "красивый"
+      },
+      {
+        "id": "88",
+        "en": "big",
+        "lv": "liels",
+        "ru": "большой"
+      },
+      {
+        "id": "89",
+        "en": "small",
+        "lv": "mazs",
+        "ru": "маленький"
+      }
+    ]
+  },
+  {
+    "topic_id": "toys",
+    "topic_name": {
+      "ru": "Игрушки",
+      "lv": "Rotaļlietas",
+      "en": "Toys"
+    },
+    "icon": "Gamepad2",
+    "color": "orange",
+    "emoji": "🧸",
+    "words": [
+      {
+        "id": "90",
+        "en": "kite",
+        "lv": "pūķis",
+        "ru": "воздушный змей"
+      },
+      {
+        "id": "91",
+        "en": "scooter",
+        "lv": "skrejritenis",
+        "ru": "самокат"
+      },
+      {
+        "id": "92",
+        "en": "teddy",
+        "lv": "lācītis",
+        "ru": "плюшевый мишка"
+      },
+      {
+        "id": "93",
+        "en": "doll",
+        "lv": "lelle",
+        "ru": "кукла"
+      },
+      {
+        "id": "94",
+        "en": "skipping rope",
+        "lv": "lecamaukla",
+        "ru": "скакалка"
+      },
+      {
+        "id": "95",
+        "en": "skateboard",
+        "lv": "skrituļdēlis",
+        "ru": "скейтборд"
+      },
+      {
+        "id": "96",
+        "en": "ball",
+        "lv": "bumba",
+        "ru": "мяч"
+      },
+      {
+        "id": "97",
+        "en": "yoyo",
+        "lv": "jojo",
+        "ru": "йо-йо"
+      },
+      {
+        "id": "98",
+        "en": "robot",
+        "lv": "robots",
+        "ru": "робот"
+      },
+      {
+        "id": "99",
+        "en": "boat",
+        "lv": "laiva",
+        "ru": "лодка"
+      }
+    ]
+  },
+  {
+    "topic_id": "activities",
+    "topic_name": {
+      "ru": "Занятия",
+      "lv": "Nodarbes",
+      "en": "Activities"
+    },
+    "icon": "Bike",
+    "color": "blue",
+    "emoji": "⚽",
+    "words": [
+      {
+        "id": "100",
+        "en": "play football",
+        "lv": "spēlēt futbolu",
+        "ru": "играть в футбол"
+      },
+      {
+        "id": "101",
+        "en": "play tennis",
+        "lv": "spēlēt tenisu",
+        "ru": "играть в теннис"
+      },
+      {
+        "id": "102",
+        "en": "ride a horse",
+        "lv": "jāt ar zirgu",
+        "ru": "кататься на лошади"
+      },
+      {
+        "id": "103",
+        "en": "run",
+        "lv": "skriet",
+        "ru": "бегать"
+      },
+      {
+        "id": "104",
+        "en": "ride a bike",
+        "lv": "braukt ar velosipēdu",
+        "ru": "кататься на велосипеде"
+      },
+      {
+        "id": "105",
+        "en": "rollerblade",
+        "lv": "skrituļot",
+        "ru": "кататься на роликах"
+      }
+    ]
+  },
+  {
+    "topic_id": "pets",
+    "topic_name": {
+      "ru": "Домашние питомцы",
+      "lv": "Mājdzīvnieki",
+      "en": "Pets"
+    },
+    "icon": "Cat",
+    "color": "teal",
+    "emoji": "🐶",
+    "words": [
+      {
+        "id": "106",
+        "en": "fish",
+        "lv": "zivs",
+        "ru": "рыбка"
+      },
+      {
+        "id": "107",
+        "en": "snake",
+        "lv": "čūska",
+        "ru": "змея"
+      },
+      {
+        "id": "108",
+        "en": "tortoise",
+        "lv": "bruņurupucis",
+        "ru": "черепаха"
+      },
+      {
+        "id": "109",
+        "en": "rabbit",
+        "lv": "trusis",
+        "ru": "кролик"
+      },
+      {
+        "id": "110",
+        "en": "cat",
+        "lv": "kaķis",
+        "ru": "кот"
+      },
+      {
+        "id": "111",
+        "en": "dog",
+        "lv": "suns",
+        "ru": "собака"
+      },
+      {
+        "id": "112",
+        "en": "spider",
+        "lv": "zirneklis",
+        "ru": "паук"
+      },
+      {
+        "id": "113",
+        "en": "mouse",
+        "lv": "pele",
+        "ru": "мышь"
+      },
+      {
+        "id": "114",
+        "en": "hamster",
+        "lv": "kāmis",
+        "ru": "хомяк"
+      },
+      {
+        "id": "115",
+        "en": "bird",
+        "lv": "putns",
+        "ru": "птица"
+      }
+    ]
+  },
+  {
+    "topic_id": "farm_animals",
+    "topic_name": {
+      "ru": "Фермерские животные",
+      "lv": "Mājdzīvnieki",
+      "en": "Farm animals"
+    },
+    "icon": "Egg",
+    "color": "lime",
+    "emoji": "🐮",
+    "words": [
+      {
+        "id": "116",
+        "en": "cow",
+        "lv": "govs",
+        "ru": "корова"
+      },
+      {
+        "id": "117",
+        "en": "chicken",
+        "lv": "vista",
+        "ru": "курица"
+      },
+      {
+        "id": "118",
+        "en": "donkey",
+        "lv": "ēzelis",
+        "ru": "осёл"
+      },
+      {
+        "id": "119",
+        "en": "duck",
+        "lv": "pīle",
+        "ru": "утка"
+      },
+      {
+        "id": "120",
+        "en": "goat",
+        "lv": "kaza",
+        "ru": "коза"
+      },
+      {
+        "id": "121",
+        "en": "sheep",
+        "lv": "aita",
+        "ru": "овца"
+      }
+    ]
+  },
+  {
+    "topic_id": "wild_animals",
+    "topic_name": {
+      "ru": "Дикие животные",
+      "lv": "Savvaļas dzīvnieki",
+      "en": "Wild animals"
+    },
+    "icon": "Compass",
+    "color": "yellow",
+    "emoji": "🦁",
+    "words": [
+      {
+        "id": "122",
+        "en": "lion",
+        "lv": "lauva",
+        "ru": "лев"
+      },
+      {
+        "id": "123",
+        "en": "deer",
+        "lv": "briedis",
+        "ru": "олень"
+      }
+    ]
+  },
+  {
+    "topic_id": "food_and_drink",
+    "topic_name": {
+      "ru": "Еда и напитки",
+      "lv": "Ēdiens un dzērieni",
+      "en": "Food and drink"
+    },
+    "icon": "Utensils",
+    "color": "rose",
+    "emoji": "🍎",
+    "words": [
+      {
+        "id": "124",
+        "en": "breakfast",
+        "lv": "brokastis",
+        "ru": "завтрак"
+      },
+      {
+        "id": "125",
+        "en": "lunch",
+        "lv": "pusdienas",
+        "ru": "обед"
+      },
+      {
+        "id": "126",
+        "en": "dinner",
+        "lv": "vakariņas",
+        "ru": "ужин"
+      },
+      {
+        "id": "127",
+        "en": "juice",
+        "lv": "sula",
+        "ru": "сок"
+      },
+      {
+        "id": "128",
+        "en": "cheese",
+        "lv": "siers",
+        "ru": "сыр"
+      },
+      {
+        "id": "129",
+        "en": "meat",
+        "lv": "gaļa",
+        "ru": "мясо"
+      },
+      {
+        "id": "130",
+        "en": "pasta",
+        "lv": "makaroni",
+        "ru": "макароны"
+      },
+      {
+        "id": "131",
+        "en": "eggs",
+        "lv": "olas",
+        "ru": "яйца"
+      },
+      {
+        "id": "132",
+        "en": "bread",
+        "lv": "maize",
+        "ru": "хлеб"
+      },
+      {
+        "id": "133",
+        "en": "fish",
+        "lv": "zivs",
+        "ru": "рыба"
+      },
+      {
+        "id": "134",
+        "en": "sandwiches",
+        "lv": "sviestmaizes",
+        "ru": "бутерброды"
+      },
+      {
+        "id": "135",
+        "en": "milk",
+        "lv": "piens",
+        "ru": "молоко"
+      },
+      {
+        "id": "136",
+        "en": "rice",
+        "lv": "rīsi",
+        "ru": "рис"
+      }
+    ]
+  },
+  {
+    "topic_id": "fruit_and_vegetables",
+    "topic_name": {
+      "ru": "Фрукты и овощи",
+      "lv": "Augļi un dārzeņi",
+      "en": "Fruit and vegetables"
+    },
+    "icon": "Apple",
+    "color": "green",
+    "emoji": "🥕",
+    "words": [
+      {
+        "id": "137",
+        "en": "apples",
+        "lv": "āboli",
+        "ru": "яблоки"
+      },
+      {
+        "id": "138",
+        "en": "carrots",
+        "lv": "burkāni",
+        "ru": "морковь"
+      },
+      {
+        "id": "139",
+        "en": "tomatoes",
+        "lv": "tomāti",
+        "ru": "помидоры"
+      },
+      {
+        "id": "140",
+        "en": "banana",
+        "lv": "banāns",
+        "ru": "банан"
+      },
+      {
+        "id": "141",
+        "en": "lettuce",
+        "lv": "salāti",
+        "ru": "салат"
+      },
+      {
+        "id": "142",
+        "en": "strawberries",
+        "lv": "zemenes",
+        "ru": "клубника"
+      }
+    ]
+  },
+  {
+    "topic_id": "body",
+    "topic_name": {
+      "ru": "Тело",
+      "lv": "Ķermenis",
+      "en": "Body"
+    },
+    "icon": "User",
+    "color": "violet",
+    "emoji": "🧍",
+    "words": [
+      {
+        "id": "143",
+        "en": "head",
+        "lv": "galva",
+        "ru": "голова"
+      },
+      {
+        "id": "144",
+        "en": "legs",
+        "lv": "kājas",
+        "ru": "ноги"
+      },
+      {
+        "id": "145",
+        "en": "tail",
+        "lv": "aste",
+        "ru": "хвост"
+      },
+      {
+        "id": "146",
+        "en": "wings",
+        "lv": "spārni",
+        "ru": "крылья"
+      },
+      {
+        "id": "147",
+        "en": "beak",
+        "lv": "knābis",
+        "ru": "клюв"
+      },
+      {
+        "id": "148",
+        "en": "arms",
+        "lv": "rokas",
+        "ru": "руки"
+      }
+    ]
+  },
+  {
+    "topic_id": "face",
+    "topic_name": {
+      "ru": "Лицо",
+      "lv": "Seja",
+      "en": "Face"
+    },
+    "icon": "Smile",
+    "color": "amber",
+    "emoji": "👀",
+    "words": [
+      {
+        "id": "149",
+        "en": "eyes",
+        "lv": "acis",
+        "ru": "глаза"
+      },
+      {
+        "id": "150",
+        "en": "ears",
+        "lv": "ausis",
+        "ru": "уши"
+      },
+      {
+        "id": "151",
+        "en": "mouth",
+        "lv": "mute",
+        "ru": "рот"
+      },
+      {
+        "id": "152",
+        "en": "nose",
+        "lv": "deguns",
+        "ru": "нос"
+      },
+      {
+        "id": "153",
+        "en": "glasses",
+        "lv": "brilles",
+        "ru": "очки"
+      }
+    ]
+  },
+  {
+    "topic_id": "abilities",
+    "topic_name": {
+      "ru": "Умения",
+      "lv": "Prasmes",
+      "en": "Abilities"
+    },
+    "icon": "Zap",
+    "color": "cyan",
+    "emoji": "🚀",
+    "words": [
+      {
+        "id": "154",
+        "en": "fly",
+        "lv": "lidot",
+        "ru": "летать"
+      },
+      {
+        "id": "155",
+        "en": "swim",
+        "lv": "peldēt",
+        "ru": "плавать"
+      },
+      {
+        "id": "156",
+        "en": "climb",
+        "lv": "kāpt",
+        "ru": "лазить"
+      },
+      {
+        "id": "157",
+        "en": "jump",
+        "lv": "lēkt",
+        "ru": "прыгать"
+      },
+      {
+        "id": "158",
+        "en": "talk",
+        "lv": "runāt",
+        "ru": "разговаривать"
+      },
+      {
+        "id": "159",
+        "en": "walk",
+        "lv": "staigāt",
+        "ru": "ходить"
+      }
+    ]
+  },
+  {
+    "topic_id": "clothes",
+    "topic_name": {
+      "ru": "Одежда",
+      "lv": "Apģērbs",
+      "en": "Clothes"
+    },
+    "icon": "Shirt",
+    "color": "fuchsia",
+    "emoji": "👕",
+    "words": [
+      {
+        "id": "160",
+        "en": "hat",
+        "lv": "cepure",
+        "ru": "шапка"
+      },
+      {
+        "id": "161",
+        "en": "shorts",
+        "lv": "šorti",
+        "ru": "шорты"
+      },
+      {
+        "id": "162",
+        "en": "sweater",
+        "lv": "džemperis",
+        "ru": "свитер"
+      },
+      {
+        "id": "163",
+        "en": "shirt",
+        "lv": "krekls",
+        "ru": "рубашка"
+      },
+      {
+        "id": "164",
+        "en": "jacket",
+        "lv": "jaka",
+        "ru": "куртка"
+      },
+      {
+        "id": "165",
+        "en": "skirt",
+        "lv": "svārki",
+        "ru": "юбка"
+      },
+      {
+        "id": "166",
+        "en": "trousers",
+        "lv": "bikses",
+        "ru": "брюки"
+      },
+      {
+        "id": "167",
+        "en": "t-shirt",
+        "lv": "T-krekls",
+        "ru": "футболка"
+      },
+      {
+        "id": "168",
+        "en": "shoes",
+        "lv": "kurpes",
+        "ru": "туфли"
+      },
+      {
+        "id": "169",
+        "en": "socks",
+        "lv": "zeķes",
+        "ru": "носки"
+      }
+    ]
+  },
+  {
+    "topic_id": "hair",
+    "topic_name": {
+      "ru": "Волосы",
+      "lv": "Mati",
+      "en": "Hair"
+    },
+    "icon": "Scissors",
+    "color": "yellow",
+    "emoji": "💇",
+    "words": [
+      {
+        "id": "170",
+        "en": "blond hair",
+        "lv": "gaiši mati",
+        "ru": "светлые волосы"
+      },
+      {
+        "id": "171",
+        "en": "curly hair",
+        "lv": "cirtaini mati",
+        "ru": "кудрявые волосы"
+      },
+      {
+        "id": "172",
+        "en": "dark hair",
+        "lv": "tumši mati",
+        "ru": "тёмные волосы"
+      },
+      {
+        "id": "173",
+        "en": "long hair",
+        "lv": "gari mati",
+        "ru": "длинные волосы"
+      },
+      {
+        "id": "174",
+        "en": "straight hair",
+        "lv": "taisni mati",
+        "ru": "прямые волосы"
+      }
+    ]
+  },
+  {
+    "topic_id": "at_home",
+    "topic_name": {
+      "ru": "Дома",
+      "lv": "Mājās",
+      "en": "At home"
+    },
+    "icon": "Home",
+    "color": "blue",
+    "emoji": "🏠",
+    "words": [
+      {
+        "id": "175",
+        "en": "picture",
+        "lv": "attēls",
+        "ru": "картина"
+      },
+      {
+        "id": "176",
+        "en": "wardrobe",
+        "lv": "drēbju skapis",
+        "ru": "шкаф для одежды"
+      },
+      {
+        "id": "177",
+        "en": "bed",
+        "lv": "gulta",
+        "ru": "кровать"
+      },
+      {
+        "id": "178",
+        "en": "clock",
+        "lv": "pulkstenis",
+        "ru": "часы"
+      },
+      {
+        "id": "179",
+        "en": "bookcase",
+        "lv": "grāmatplaukts",
+        "ru": "книжный шкаф"
+      },
+      {
+        "id": "180",
+        "en": "plant",
+        "lv": "augs",
+        "ru": "растение"
+      },
+      {
+        "id": "181",
+        "en": "television",
+        "lv": "televizors",
+        "ru": "телевизор"
+      },
+      {
+        "id": "182",
+        "en": "table",
+        "lv": "galds",
+        "ru": "стол"
+      },
+      {
+        "id": "183",
+        "en": "sofa",
+        "lv": "dīvāns",
+        "ru": "диван"
+      },
+      {
+        "id": "184",
+        "en": "cushion",
+        "lv": "spilvens",
+        "ru": "диванная подушка"
+      }
+    ]
+  },
+  {
+    "topic_id": "rooms",
+    "topic_name": {
+      "ru": "Комнаты",
+      "lv": "Istabas",
+      "en": "Rooms"
+    },
+    "icon": "DoorOpen",
+    "color": "indigo",
+    "emoji": "🚪",
+    "words": [
+      {
+        "id": "185",
+        "en": "kitchen",
+        "lv": "virtuve",
+        "ru": "кухня"
+      },
+      {
+        "id": "186",
+        "en": "bathroom",
+        "lv": "vannasistaba",
+        "ru": "ванная"
+      },
+      {
+        "id": "187",
+        "en": "bedroom",
+        "lv": "guļamistaba",
+        "ru": "спальня"
+      },
+      {
+        "id": "188",
+        "en": "dining room",
+        "lv": "ēdamistaba",
+        "ru": "столовая"
+      },
+      {
+        "id": "189",
+        "en": "garden",
+        "lv": "dārzs",
+        "ru": "сад"
+      },
+      {
+        "id": "190",
+        "en": "living room",
+        "lv": "viesistaba",
+        "ru": "гостиная"
+      }
+    ]
+  },
+  {
+    "topic_id": "garden",
+    "topic_name": {
+      "ru": "Сад",
+      "lv": "Dārzs",
+      "en": "Garden"
+    },
+    "icon": "Flower2",
+    "color": "emerald",
+    "emoji": "🌻",
+    "words": [
+      {
+        "id": "191",
+        "en": "root",
+        "lv": "sakne",
+        "ru": "корень"
+      },
+      {
+        "id": "192",
+        "en": "flower",
+        "lv": "zieds/puķe",
+        "ru": "цветок"
+      },
+      {
+        "id": "193",
+        "en": "leaves",
+        "lv": "lapas",
+        "ru": "листья"
+      },
+      {
+        "id": "194",
+        "en": "fruit",
+        "lv": "auglis",
+        "ru": "фрукт"
+      },
+      {
+        "id": "195",
+        "en": "honey",
+        "lv": "medus",
+        "ru": "мёд"
+      },
+      {
+        "id": "196",
+        "en": "plums",
+        "lv": "plūmes",
+        "ru": "сливы"
+      },
+      {
+        "id": "197",
+        "en": "insects",
+        "lv": "kukaiņi",
+        "ru": "насекомые"
+      }
+    ]
+  },
+  {
+    "topic_id": "building_materials",
+    "topic_name": {
+      "ru": "Строительные материалы",
+      "lv": "Būvmateriāli",
+      "en": "Building materials"
+    },
+    "icon": "Hammer",
+    "color": "stone",
+    "emoji": "🧱",
+    "words": [
+      {
+        "id": "198",
+        "en": "bricks",
+        "lv": "ķieģeļi",
+        "ru": "кирпичи"
+      },
+      {
+        "id": "199",
+        "en": "wood",
+        "lv": "koks",
+        "ru": "дерево"
+      },
+      {
+        "id": "200",
+        "en": "rock",
+        "lv": "akmens",
+        "ru": "камень"
+      },
+      {
+        "id": "201",
+        "en": "mud",
+        "lv": "dubļi",
+        "ru": "грязь"
+      },
+      {
+        "id": "202",
+        "en": "clay",
+        "lv": "māls",
+        "ru": "глина"
+      }
+    ]
+  },
+  {
+    "topic_id": "actions",
+    "topic_name": {
+      "ru": "Действия",
+      "lv": "Darbības",
+      "en": "Actions"
+    },
+    "icon": "Flame",
+    "color": "red",
+    "emoji": "⚡",
+    "words": [
+      {
+        "id": "203",
+        "en": "i can",
+        "lv": "es varu",
+        "ru": "я умею"
+      },
+      {
+        "id": "204",
+        "en": "i can't",
+        "lv": "es nevaru",
+        "ru": "я не умею"
+      },
+      {
+        "id": "205",
+        "en": "i've got",
+        "lv": "es dabūju",
+        "ru": "я имею"
+      },
+      {
+        "id": "206",
+        "en": "i haven't got",
+        "lv": "еs nedabūju",
+        "ru": "я не имею"
+      },
+      {
+        "id": "207",
+        "en": "they're",
+        "lv": "viņi ir",
+        "ru": "они"
+      },
+      {
+        "id": "208",
+        "en": "i have",
+        "lv": "man ir",
+        "ru": "у меня есть"
+      },
+      {
+        "id": "209",
+        "en": "i have't",
+        "lv": "man nav",
+        "ru": "у меня нет"
+      }
+    ]
+  }
+]

@@ -1,0 +1,254 @@
+Numbers 1-20,Skaitļi 1-20,Числа 1-20
+one,viens,один
+two,divi,два
+three,trīs,три
+four,četri,четыре
+five,pieci,пять
+six,seši,шесть
+seven,septiņi,семь
+eight,astoņi,восемь
+nine,deviņi,девять
+ten,desmit,десять
+eleven,vienpadsmit,одиннадцать
+twelve,divpadsmit,двенадцать
+thirteen,trīspadsmit,тринадцать
+fourteen,četrpadsmit,четырнадцать
+fifteen,piecpadsmit,пятнадцать
+sixteen,sešpadsmit,шестнадцать
+seventeen,septiņpadsmit,семнадцать
+eighteen,astoņpadsmit,восемнадцать
+nineteen,deviņpadsmit,девятнадцать
+twenty,divdesmit,двадцать
+,,
+Colours,Krāsas,Цвета
+grey,pelēks,Серый
+red,sarkans,Красный
+blue,zils,Синий
+green,zaļš,Зеленый
+pink,rozā,Розовый
+white,balts,Белый
+black,melns,Черный
+purple,violets,Фиолетовый
+orange,oranžš,Оранжевый
+yellow,dzeltens,Желтый
+brown,brūns,Коричневый
+,,
+Days of the week,Nedēļas dienas,Дни недели
+monday,pirmdiena,Понедельник
+tuesday,otrdiena,Вторник
+wednesday,trešdiena,Среда
+thursday,ceturtdiena,Четверг
+friday,piektdiena,Пятница
+saturday,sestdiena,Суббота
+sunday,svētdiena,Воскресенье
+,,
+Classroom objects,Klases aprīkojums,Оборудование класса
+window,logs,окно
+poster,plakāts,плакат
+bag,soma,портфель
+bin,miskaste,мусорное ведро
+chair,krēsls,стул
+door,durvis,дверь
+cupboard,skapītis,шкафчик
+desk,rakstāmgalds,парта
+book,grāmata,книга
+board,tāfele,доска
+pencil sharpener,asināmais,точилка
+pencil case,penālis,пенал
+ruler,lineāls,линейка
+rubber,dzēšgumija,ластик
+pen,pildspalva,ручка
+pencil,zīmulis,карандаш
+box,kaste,коробка
+glue,līme,клей
+counters,žetoni,фишки
+paper,papīrs,бумага
+circle,aplis,круг
+square,kvadrāts,квадрат
+triangle,trīsstūris,треугольник
+rectangle,taisnstūris,прямоугольник
+oval,ovāls,овал
+,,
+Family,Ģimene,Семья
+mum,mamma,мама
+dad,tētis,папа
+grandma,vecmāmiņa,бабушка
+grandpa,vectētiņš,дедушка
+brother,brālis,брат
+sister,māsa,сестра
+twin,dvīnis,близнец
+uncle,tēvocis,дядя
+auntie,tante,тётя
+cousin,brālēns/māsīca,двоюродный брат/сестра
+baby,mazulis,малыш
+toddler,"bērns, kurš tikko sācis staigāt","малыш, начинающий ходить"
+child,bērns,ребёнок
+teenager,pusaudzis,подросток
+adult,pieaugušais,взрослый
+eldery person,vecs cilvēks,пожилой человек
+he,viņš,он
+she,viņa,она
+,,
+Adjectives,Īpašības vārdi,Прилагательные
+tall,garš,высокий
+short,īss,короткий
+old,vecs,старый
+young,jauns,молодой
+pretty,skaista,красивая
+handsome,skaists,красивый
+big,liels,большой
+small,mazs,маленький
+,,
+Toys,Rotaļlietas,Игрушки
+kite,pūķis,воздушный змей
+scooter,skrejritenis,самокат
+teddy,lācītis,плюшевый мишка
+doll,lelle,кукла
+skipping rope,lecamaukla,скакалка
+skateboard,skrituļdēlis,скейтборд
+ball,bumba,мяч
+yoyo,jojo,йо-йо
+robot,robots,робот
+boat,laiva,лодка
+,,
+Activities,Nodarbes,Занятия
+play football,spēlēt futbolu,играть в футбол
+play tennis,spēlēt tenisu,играть в теннис
+ride a horse,jāt ar zirgu,кататься на лошади
+run,skriet,бегать
+ride a bike,braukt ar velosipēdu,кататься на велосипеде
+rollerblade,skrituļot,кататься на роликах
+,,
+Pets,Mājdzīvnieki,Домашние питомцы
+fish,zivs,рыбка
+snake,čūska,змея
+tortoise,bruņurupucis,черепаха
+rabbit,trusis,кролик
+cat,kaķis,кот
+dog,suns,собака
+spider,zirneklis,паук
+mouse,pele,мышь
+hamster,kāmis,хомяк
+bird,putns,птица
+,,
+Farm animals,Mājdzīvnieki,Фермерские животные
+cow,govs,корова
+chicken,vista,курица
+donkey,ēzelis,осёл
+duck,pīle,утка
+goat,kaza,коза
+sheep,aita,овца
+,,
+Wild animals,Savvaļas dzīvnieki,Дикие животные
+lion,lauva,лев
+deer,briedis,олень
+,,
+Food and drink,Ēdiens un dzērieni,Еда и напитки
+breakfast,brokastis,завтрак
+lunch,pusdienas,обед
+dinner,vakariņas,ужин
+juice,sula,сок
+cheese,siers,сыр
+meat,gaļa,мясо
+pasta,makaroni,макароны
+eggs,olas,яйца
+bread,maize,хлеб
+fish,zivs,рыба
+sandwiches,sviestmaizes,бутерброды
+milk,piens,молоко
+rice,rīsi,рис
+,,
+Fruit and vegetables,Augļi un dārzeņi,Фрукты и овощи
+apples,āboli,яблоки
+carrots,burkāni,морковь
+tomatoes,tomāti,помидоры
+banana,banāns,банан
+lettuce,salāti,салат
+strawberries,zemenes,клубника
+,,
+Body,Ķermenis,Тело
+head,galva,голова
+legs,kājas,ноги
+tail,aste,хвост
+wings,spārni,крылья
+beak,knābis,клюв
+arms,rokas,руки
+,,
+Face,Seja,Лицо
+eyes,acis,глаза
+ears,ausis,уши
+mouth,mute,рот
+nose,deguns,нос
+glasses,brilles,очки
+,,
+Abilities,Prasmes,Умения
+fly,lidot,летать
+swim,peldēt,плавать
+climb,kāpt,лазить
+jump,lēkt,прыгать
+talk,runāt,разговаривать
+walk,staigāt,ходить
+,,
+Clothes,Apģērbs,Одежда
+hat,cepure,шапка
+shorts,šorti,шорты
+sweater,džemperis,свитер
+shirt,krekls,рубашка
+jacket,jaka,куртка
+skirt,svārki,юбка
+trousers,bikses,брюки
+t-shirt,T-krekls,футболка
+shoes,kurpes,туфли
+socks,zeķes,носки
+,,
+Hair,Mati,Волосы
+blond hair,gaiši mati,светлые волосы
+curly hair,cirtaini mati,кудрявые волосы
+dark hair,tumši mati,тёмные волосы
+long hair,gari mati,длинные волосы
+straight hair,taisni mati,прямые волосы
+,,
+At home,Mājās,Дома
+picture,attēls,картина
+wardrobe,drēbju skapis,шкаф для одежды
+bed,gulta,кровать
+clock,pulkstenis,часы
+bookcase,grāmatplaukts,книжный шкаф
+plant,augs,растение
+television,televizors,телевизор
+table,galds,стол
+sofa,dīvāns,диван
+cushion,spilvens,диванная подушка
+,,
+Rooms,Istabas,Комнаты
+kitchen,virtuve,кухня
+bathroom,vannasistaba,ванная
+bedroom,guļamistaba,спальня
+dining room,ēdamistaba,столовая
+garden,dārzs,сад
+living room,viesistaba,гостиная
+,,
+Garden,Dārzs,Сад
+root,sakne,корень
+flower,zieds/puķe,цветок
+leaves,lapas,листья
+fruit,auglis,фрукт
+honey,medus,мёд
+plums,plūmes,сливы
+insects,kukaiņi,насекомые
+,,
+Building materials,Būvmateriāli,Строительные материалы
+bricks,ķieģeļi,кирпичи
+wood,koks,дерево
+rock,akmens,камень
+mud,dubļi,грязь
+clay,māls,глина
+,,
+Actions,Darbības,Действия
+i can,es varu,я умею
+i can't,es nevaru,я не умею
+i've got,es dabūju,я имею
+i haven't got,еs nedabūju,я не имею
+they're,viņi ir,они
+i have,man ir,у меня есть
+i have't,man nav,у меня нет

@@ -48,19 +48,30 @@ export interface Translations {
   sync: {
     title: string;
     description: string;
-    emailLabel: string;
+    loginLabel: string;
     passwordLabel: string;
+    loginPlaceholder: string;
+    passwordPlaceholder: string;
     loginBtn: string;
     signupBtn: string;
-    guestMode: string;
+    logout: string;
     synced: string;
     notSynced: string;
     syncNow: string;
-    supabaseConfig: string;
-    supabaseUrl: string;
-    supabaseAnonKey: string;
-    saveConfig: string;
-    logout: string;
+    myProfile: string;
+    accountLogin: string;
+    accountCreate: string;
+    loggedInAs: string;
+    syncSuccess: string;
+    syncError: string;
+    loginSuccess: string;
+    signupSuccess: string;
+    emptyFieldsError: string;
+    shortPasswordError: string;
+    alreadyHaveAccount: string;
+    needNewAccount: string;
+    switchModeToSignup: string;
+    switchModeToLogin: string;
   };
   installApp: string;
   installedNotice: string;
@@ -116,19 +127,30 @@ export const translations: Record<Language, Translations> = {
     sync: {
       title: 'Синхронизация прогресса',
       description: 'Сохраняй звёздочки и прогресс между компьютером и телефоном!',
-      emailLabel: 'Почта (или логин):',
-      passwordLabel: 'Пароль (PIN-код):',
+      loginLabel: 'Имя (логин):',
+      passwordLabel: 'Пароль (или PIN-код):',
+      loginPlaceholder: 'Например: ivan или danik',
+      passwordPlaceholder: 'Не менее 6 символов',
       loginBtn: 'Войти',
       signupBtn: 'Создать профиль',
-      guestMode: 'Играть без аккаунта (локально)',
+      logout: 'Выйти из профиля',
       synced: 'Синхронизировано с облаком',
       notSynced: 'Сохраняется только на этом устройстве',
       syncNow: 'Синхронизировать сейчас',
-      supabaseConfig: 'Настройки Supabase (для родителей)',
-      supabaseUrl: 'Project URL (https://xyz.supabase.co)',
-      supabaseAnonKey: 'Anon Public Key',
-      saveConfig: 'Сохранить ключи',
-      logout: 'Выйти из профиля',
+      myProfile: 'Мой профиль',
+      accountLogin: 'Вход в профиль',
+      accountCreate: 'Новый игрок',
+      loggedInAs: 'Вы вошли как:',
+      syncSuccess: 'Данные успешно синхронизированы!',
+      syncError: 'Не удалось синхронизировать данные',
+      loginSuccess: 'Успешный вход! Синхронизируем...',
+      signupSuccess: 'Профиль создан! Синхронизируем...',
+      emptyFieldsError: 'Пожалуйста, введите логин и пароль',
+      shortPasswordError: 'Пароль должен содержать от 6 символов',
+      alreadyHaveAccount: 'Уже есть профиль?',
+      needNewAccount: 'Ещё нет профиля?',
+      switchModeToSignup: 'Создать новый профиль',
+      switchModeToLogin: 'Уже есть профиль? Войти',
     },
     installApp: 'Установить на экран',
     installedNotice: 'Приложение установлено',
@@ -181,20 +203,31 @@ export const translations: Record<Language, Translations> = {
     },
     sync: {
       title: 'Progresa sinhronizācija',
-      description: 'Saglabā zvaigznītes starp datoru un tālruni!',
-      emailLabel: 'E-pasts (vai lietotājvārds):',
-      passwordLabel: 'Parole (PIN kods):',
+      description: 'Saglabā zvaigznītes un progresu starp datoru un telefonu!',
+      loginLabel: 'Lietotājvārds (vārds):',
+      passwordLabel: 'Parole (vai PIN kods):',
+      loginPlaceholder: 'Piemēram: janis vai anna',
+      passwordPlaceholder: 'Vismaz 6 simboli',
       loginBtn: 'Ienākt',
       signupBtn: 'Izveidot profilu',
-      guestMode: 'Spēlēt bez konta (lokāli)',
+      logout: 'Iziet no profila',
       synced: 'Sinhronizēts ar mākoni',
       notSynced: 'Saglabāts tikai šajā ierīcē',
       syncNow: 'Sinhronizēt tagad',
-      supabaseConfig: 'Supabase iestatījumi (vecākiem)',
-      supabaseUrl: 'Project URL (https://xyz.supabase.co)',
-      supabaseAnonKey: 'Anon Public Key',
-      saveConfig: 'Saglabāt atslēgas',
-      logout: 'Iziet',
+      myProfile: 'Mans profils',
+      accountLogin: 'Ienākšana profilā',
+      accountCreate: 'Jauns spēlētājs',
+      loggedInAs: 'Tu esi ienācis kā:',
+      syncSuccess: 'Dati veiksmīgi sinhronizēti!',
+      syncError: 'Neizdevās sinhronizēt datus',
+      loginSuccess: 'Veiksmīga pieteikšanās! Sinhronizējam...',
+      signupSuccess: 'Profils izveidots! Sinhronizējam...',
+      emptyFieldsError: 'Lūdzu, ievadi lietotājvārdu un paroli',
+      shortPasswordError: 'Parolei jābūt vismaz 6 simbolu garai',
+      alreadyHaveAccount: 'Jau ir profils?',
+      needNewAccount: 'Vēl nav profila?',
+      switchModeToSignup: 'Izveidot jaunu profilu',
+      switchModeToLogin: 'Jau ir profils? Ienākt',
     },
     installApp: 'Instalēt sākuma ekrānā',
     installedNotice: 'Lietotne instalēta',

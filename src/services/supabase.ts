@@ -1,32 +1,24 @@
 import { createClient, SupabaseClient, User } from '@supabase/supabase-js';
 import { TopicProgress, WordProgress, UserStats } from '../types';
 
-const STORAGE_KEY_URL = 'wordykids_supabase_url';
-const STORAGE_KEY_KEY = 'wordykids_supabase_key';
+// Pre-configured Supabase Project settings
+const DEFAULT_SUPABASE_URL = 'https://pxexrgtoaeudqeceqeoq.supabase.co';
+const DEFAULT_SUPABASE_KEY = 'sb_publishable_sKx7Fs12mMWZlC-KXhdk-g_wuRrwMc9';
 
-export function getStoredSupabaseConfig(): { url: string; key: string } {
-  const envUrl = (import.meta as unknown as { env: Record<string, string> }).env?.VITE_SUPABASE_URL || '';
-  const envKey = (import.meta as unknown as { env: Record<string, string> }).env?.VITE_SUPABASE_ANON_KEY || '';
-
-  const localUrl = localStorage.getItem(STORAGE_KEY_URL) || '';
-  const localKey = localStorage.getItem(STORAGE_KEY_KEY) || '';
+export function getSupabaseConfig(): { url: string; key: string } {
+  const envUrl = (import.meta as unknown as { env: Record<string, string> }).env?.VITE_SUPABASE_URL;
+  const envKey = (import.meta as unknown as { env: Record<string, string> }).env?.VITE_SUPABASE_ANON_KEY;
 
   return {
-    url: localUrl || envUrl,
-    key: localKey || envKey,
+    url: envUrl || DEFAULT_SUPABASE_URL,
+    key: envKey || DEFAULT_SUPABASE_KEY,
   };
-}
-
-export function saveStoredSupabaseConfig(url: string, key: string) {
-  localStorage.setItem(STORAGE_KEY_URL, url.trim());
-  localStorage.setItem(STORAGE_KEY_KEY, key.trim());
-  initClient();
 }
 
 let supabaseClient: SupabaseClient | null = null;
 
 export function initClient(): SupabaseClient | null {
-  const { url, key } = getStoredSupabaseConfig();
+  const { url, key } = getSupabaseConfig();
   if (url && key && url.startsWith('http')) {
     try {
       supabaseClient = createClient(url, key);
@@ -51,6 +43,39 @@ export function getSupabase(): SupabaseClient | null {
   return supabaseClient;
 }
 
+/**
+ * Converts a child-friendly username (e.g. 'ivan', 'jānis', 'alise')
+ * to a valid synthetic email for Supabase Auth without exposing email to the user.
+ */
+export function loginToEmail(username: string): string {
+  const clean = username.trim().toLowerCase();
+  if (clean.includes('@')) return clean;
+  // Safely encode non-ascii or special chars into valid email alphanumeric tokens
+  const safePart = encodeURIComponent(clean).replace(/%/g, '_x_').toLowerCase();
+  return `${safePart}@wordykids.app`;
+}
+
+/**
+ * Recovers clean display username from synthetic email.
+ */
+export function emailToLogin(email: string): string {
+  if (!email) return '';
+  const userPart = email.split('@')[0];
+  try {
+    return decodeURIComponent(userPart.replace(/_x_/gi, '%'));
+  } catch {
+    return userPart;
+  }
+}
+
+export function getCurrentUserLogin(user: User | null): string {
+  if (!user) return '';
+  if (user.user_metadata?.login) return user.user_metadata.login;
+  if (user.user_metadata?.player_name) return user.user_metadata.player_name;
+  if (user.email) return emailToLogin(user.email);
+  return 'Player';
+}
+
 export async function getCurrentUser(): Promise<User | null> {
   const client = getSupabase();
   if (!client) return null;
@@ -62,16 +87,25 @@ export async function getCurrentUser(): Promise<User | null> {
   }
 }
 
-export async function signUpUser(email: string, password: string):Promise<{ user: User | null; error: string | null }> {
+export async function signUpUser(
+  username: string,
+  password: string
+): Promise<{ user: User | null; error: string | null }> {
   const client = getSupabase();
-  if (!client) return { user: null, error: 'Supabase is not configured' };
-  
-  // Format simple emails if kid just entered username
-  const formattedEmail = email.includes('@') ? email : `${email.trim().toLowerCase()}@wordykids.local`;
-  
+  if (!client) return { user: null, error: 'Supabase client is not available' };
+
+  const cleanLogin = username.trim();
+  const email = loginToEmail(cleanLogin);
+
   const { data, error } = await client.auth.signUp({
-    email: formattedEmail,
-    password: password,
+    email,
+    password,
+    options: {
+      data: {
+        player_name: cleanLogin,
+        login: cleanLogin,
+      },
+    },
   });
 
   if (error) {
@@ -80,15 +114,19 @@ export async function signUpUser(email: string, password: string):Promise<{ user
   return { user: data.user, error: null };
 }
 
-export async function signInUser(email: string, password: string): Promise<{ user: User | null; error: string | null }> {
+export async function signInUser(
+  username: string,
+  password: string
+): Promise<{ user: User | null; error: string | null }> {
   const client = getSupabase();
-  if (!client) return { user: null, error: 'Supabase is not configured' };
+  if (!client) return { user: null, error: 'Supabase client is not available' };
 
-  const formattedEmail = email.includes('@') ? email : `${email.trim().toLowerCase()}@wordykids.local`;
+  const cleanLogin = username.trim();
+  const email = loginToEmail(cleanLogin);
 
   const { data, error } = await client.auth.signInWithPassword({
-    email: formattedEmail,
-    password: password,
+    email,
+    password,
   });
 
   if (error) {

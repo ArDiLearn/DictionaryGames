@@ -180,6 +180,7 @@ export const TRANSCRIPTIONS = {
   "carrots": "[ ˈkærəts ]",
   "tomatoes": "[ təˈmɑːtəʊz ]",
   "banana": "[ bəˈnɑːnə ]",
+  "bananas": "[ bəˈnɑːnəz ]",
   "lettuce": "[ ˈletɪs ]",
   "strawberries": "[ ˈstrɔːbəriz ]",
 

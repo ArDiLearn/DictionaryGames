@@ -321,7 +321,7 @@
         "lv": "pirmdiena",
         "ru": "Понедельник",
         "grade": 2,
-        "image": "📅",
+        "image": "1️⃣ 🗓️",
         "transcription": "[ ˈmʌndeɪ ]"
       },
       {
@@ -330,7 +330,7 @@
         "lv": "otrdiena",
         "ru": "Вторник",
         "grade": 2,
-        "image": "🗓️",
+        "image": "2️⃣ 🗓️",
         "transcription": "[ ˈtjuːzdeɪ ]"
       },
       {
@@ -339,7 +339,7 @@
         "lv": "trešdiena",
         "ru": "Среда",
         "grade": 2,
-        "image": "📆",
+        "image": "3️⃣ 🗓️",
         "transcription": "[ ˈwenzdeɪ ]"
       },
       {
@@ -348,7 +348,7 @@
         "lv": "ceturtdiena",
         "ru": "Четверг",
         "grade": 2,
-        "image": "📋",
+        "image": "4️⃣ 🗓️",
         "transcription": "[ ˈθɜːzdeɪ ]"
       },
       {
@@ -357,7 +357,7 @@
         "lv": "piektdiena",
         "ru": "Пятница",
         "grade": 2,
-        "image": "🎉",
+        "image": "5️⃣ 🗓️",
         "transcription": "[ ˈfraɪdeɪ ]"
       },
       {
@@ -366,7 +366,7 @@
         "lv": "sestdiena",
         "ru": "Суббота",
         "grade": 2,
-        "image": "🏖️",
+        "image": "6️⃣ 🗓️",
         "transcription": "[ ˈsætədeɪ ]"
       },
       {
@@ -375,7 +375,7 @@
         "lv": "svētdiena",
         "ru": "Воскресенье",
         "grade": 2,
-        "image": "☀️",
+        "image": "7️⃣ 🗓️",
         "transcription": "[ ˈsʌndeɪ ]"
       }
     ]
@@ -527,7 +527,7 @@
         "lv": "plakāts",
         "ru": "плакат",
         "grade": 1,
-        "image": "🖼️",
+        "image": "🪧",
         "transcription": "[ ˈpəʊstə ]"
       },
       {
@@ -581,7 +581,7 @@
         "lv": "rakstāmgalds",
         "ru": "парта",
         "grade": 1,
-        "image": "🪑",
+        "image": "🪑✏️",
         "transcription": "[ desk ]"
       },
       {
@@ -599,7 +599,7 @@
         "lv": "tāfele",
         "ru": "доска",
         "grade": 1,
-        "image": "📋",
+        "image": "👩‍🏫",
         "transcription": "[ bɔːd ]"
       },
       {
@@ -608,7 +608,7 @@
         "lv": "asināmais",
         "ru": "точилка",
         "grade": 1,
-        "image": "✏️",
+        "image": "⚙️✏️",
         "transcription": "[ ˈpensl ˈʃɑːpnə ]"
       },
       {
@@ -617,7 +617,7 @@
         "lv": "penālis",
         "ru": "пенал",
         "grade": 1,
-        "image": "👝",
+        "image": "👝✏️",
         "transcription": "[ ˈpensl keɪs ]"
       },
       {
@@ -635,7 +635,7 @@
         "lv": "dzēšgumija",
         "ru": "ластик",
         "grade": 1,
-        "image": "🧼",
+        "image": "🧽✏️",
         "transcription": "[ ˈrʌbə ]"
       },
       {
@@ -671,7 +671,7 @@
         "lv": "līme",
         "ru": "клей",
         "grade": 1,
-        "image": "🧴",
+        "image": "🩹",
         "transcription": "[ ɡluː ]"
       },
       {
@@ -680,7 +680,7 @@
         "lv": "žetoni",
         "ru": "фишки",
         "grade": 1,
-        "image": "🔘",
+        "image": "🔴🔵",
         "transcription": "[ ˈkaʊntəz ]"
       },
       {
@@ -1025,7 +1025,7 @@
         "lv": "lelle",
         "ru": "кукла",
         "grade": 1,
-        "image": "🪆",
+        "image": "👧🎀",
         "transcription": "[ dɒl ]"
       },
       {
@@ -1034,7 +1034,7 @@
         "lv": "lecamaukla",
         "ru": "скакалка",
         "grade": 1,
-        "image": "🪢",
+        "image": "🏃‍♀️🪢",
         "transcription": "[ ˈskɪpɪŋ rəʊp ]"
       },
       {
@@ -1499,7 +1499,7 @@
         "lv": "āboli",
         "ru": "яблоки",
         "grade": 2,
-        "image": "🍎",
+        "image": "🍎🍏",
         "transcription": "[ ˈæplz ]"
       },
       {
@@ -1508,7 +1508,7 @@
         "lv": "burkāni",
         "ru": "морковь",
         "grade": 2,
-        "image": "🥕",
+        "image": "🥕🥕",
         "transcription": "[ ˈkærəts ]"
       },
       {
@@ -1517,17 +1517,17 @@
         "lv": "tomāti",
         "ru": "помидоры",
         "grade": 2,
-        "image": "🍅",
+        "image": "🍅🍅",
         "transcription": "[ təˈmɑːtəʊz ]"
       },
       {
         "id": "150",
-        "en": "banana",
-        "lv": "banāns",
-        "ru": "банан",
+        "en": "bananas",
+        "lv": "banāni",
+        "ru": "бананы",
         "grade": 2,
-        "image": "🍌",
-        "transcription": "[ bəˈnɑːnə ]"
+        "image": "🍌🍌",
+        "transcription": "[ bəˈnɑːnəz ]"
       },
       {
         "id": "151",
@@ -1544,7 +1544,7 @@
         "lv": "zemenes",
         "ru": "клубника",
         "grade": 2,
-        "image": "🍓",
+        "image": "🍓🍓",
         "transcription": "[ ˈstrɔːbəriz ]"
       }
     ]
@@ -1776,7 +1776,7 @@
         "lv": "džemperis",
         "ru": "свитер",
         "grade": 2,
-        "image": "🧶",
+        "image": "🧶👕",
         "transcription": "[ ˈswetə ]"
       },
       {
@@ -1785,7 +1785,7 @@
         "lv": "krekls",
         "ru": "рубашка",
         "grade": 2,
-        "image": "👔",
+        "image": "👔👕",
         "transcription": "[ ʃɜːt ]"
       },
       {
@@ -1794,7 +1794,7 @@
         "lv": "jaka",
         "ru": "куртка",
         "grade": 2,
-        "image": "🧥",
+        "image": "🧥💨",
         "transcription": "[ ˈdʒækɪt ]"
       },
       {
@@ -1803,7 +1803,7 @@
         "lv": "svārki",
         "ru": "юбка",
         "grade": 2,
-        "image": "👗",
+        "image": "💃",
         "transcription": "[ skɜːt ]"
       },
       {
@@ -1879,7 +1879,7 @@
         "lv": "tumši mati",
         "ru": "тёмные волосы",
         "grade": 2,
-        "image": "🧑‍🦱",
+        "image": "👦",
         "transcription": "[ dɑːk heə ]"
       },
       {
@@ -1888,7 +1888,7 @@
         "lv": "gari mati",
         "ru": "длинные волосы",
         "grade": 2,
-        "image": "💇‍♀️",
+        "image": "👱‍♀️",
         "transcription": "[ lɒŋ heə ]"
       },
       {
@@ -1897,7 +1897,7 @@
         "lv": "taisni mati",
         "ru": "прямые волосы",
         "grade": 2,
-        "image": "👩‍🦰",
+        "image": "👩",
         "transcription": "[ streɪt heə ]"
       }
     ]
@@ -1928,7 +1928,7 @@
         "lv": "drēbju skapis",
         "ru": "шкаф для одежды",
         "grade": 2,
-        "image": "🚪",
+        "image": "🚪👗",
         "transcription": "[ ˈwɔːdrəʊb ]"
       },
       {
@@ -1955,7 +1955,7 @@
         "lv": "grāmatplaukts",
         "ru": "книжный шкаф",
         "grade": 2,
-        "image": "📚",
+        "image": "🗄️📚",
         "transcription": "[ ˈbʊkkeɪs ]"
       },
       {
@@ -1982,7 +1982,7 @@
         "lv": "galds",
         "ru": "стол",
         "grade": 2,
-        "image": "🪑",
+        "image": "🪑🍽️",
         "transcription": "[ ˈteɪbl ]"
       },
       {
@@ -2000,7 +2000,7 @@
         "lv": "spilvens",
         "ru": "диванная подушка",
         "grade": 2,
-        "image": "🛋️",
+        "image": "🛋️🟦",
         "transcription": "[ ˈkʊʃn ]"
       }
     ]
@@ -2022,7 +2022,7 @@
         "lv": "virtuve",
         "ru": "кухня",
         "grade": 2,
-        "image": "🍳",
+        "image": "🍳🥘",
         "transcription": "[ ˈkɪtʃɪn ]"
       },
       {
@@ -2049,7 +2049,7 @@
         "lv": "ēdamistaba",
         "ru": "столовая",
         "grade": 2,
-        "image": "🍽️",
+        "image": "🍽️🪑",
         "transcription": "[ ˈdaɪnɪŋ ruːm ]"
       },
       {
@@ -2058,7 +2058,7 @@
         "lv": "dārzs",
         "ru": "сад",
         "grade": 2,
-        "image": "🏡",
+        "image": "🌳🌷",
         "transcription": "[ ˈɡɑːdn ]"
       },
       {
@@ -2089,7 +2089,7 @@
         "lv": "sakne",
         "ru": "корень",
         "grade": 2,
-        "image": "🌱",
+        "image": "🥕🌱",
         "transcription": "[ ruːt ]"
       },
       {
@@ -2134,7 +2134,7 @@
         "lv": "plūmes",
         "ru": "сливы",
         "grade": 2,
-        "image": "🫐",
+        "image": "🟣🟣",
         "transcription": "[ plʌmz ]"
       },
       {

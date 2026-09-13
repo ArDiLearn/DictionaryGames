@@ -1,5 +1,6 @@
 export type Language = 'ru' | 'lv';
 export type Grade = 1 | 2;
+export type GradeFilter = '1' | '2' | 'all';
 
 export interface Word {
   id: string;

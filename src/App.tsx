@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import rawWordsData from './data/words.json';
-import { Topic, Language, GameMode, TopicProgress, UserStats, Grade } from './types';
+import { Topic, Language, GameMode, TopicProgress, UserStats, GradeFilter } from './types';
 import { Header } from './components/Header';
 import { TopicList } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
@@ -16,8 +16,8 @@ import { PwaInstallPrompt } from './components/PwaInstallPrompt';
 import {
   getStoredLanguage,
   saveStoredLanguage,
-  getStoredGrade,
-  saveStoredGrade,
+  getStoredGradeFilter,
+  saveStoredGradeFilter,
   loadLocalStats,
   saveLocalStats,
   loadTopicProgress,
@@ -31,7 +31,7 @@ export const App: React.FC = () => {
 
   // App State
   const [language, setLanguage] = useState<Language>(getStoredLanguage());
-  const [selectedGrade, setSelectedGrade] = useState<Grade>(getStoredGrade());
+  const [selectedGrade, setSelectedGrade] = useState<GradeFilter>(getStoredGradeFilter());
   const [stats, setStats] = useState<UserStats>(loadLocalStats());
   const [topicProgress, setTopicProgress] = useState<Record<string, TopicProgress>>(
     loadTopicProgress()
@@ -41,14 +41,16 @@ export const App: React.FC = () => {
   const [isCloudSynced, setIsCloudSynced] = useState<boolean>(false);
   const [isSyncModalOpen, setIsSyncModalOpen] = useState<boolean>(false);
 
-  // Grade filtered topics: Grade 2 includes words from Grade 1 and Grade 2
+  // Grade filtered topics: supports 1st only, 2nd only, or all together
   const filteredTopics = useMemo(() => {
     return topics
       .map((topic) => ({
         ...topic,
         words: topic.words.filter((w) => {
           const g = w.grade || 1;
-          return selectedGrade === 1 ? g === 1 : (g === 1 || g === 2);
+          if (selectedGrade === '1') return g === 1;
+          if (selectedGrade === '2') return g === 2;
+          return true; // 'all': includes both 1 and 2
         }),
       }))
       .filter((topic) => topic.words.length > 0);
@@ -80,9 +82,9 @@ export const App: React.FC = () => {
     saveStoredLanguage(newLang);
   };
 
-  const handleGradeChange = (newGrade: Grade) => {
+  const handleGradeChange = (newGrade: GradeFilter) => {
     setSelectedGrade(newGrade);
-    saveStoredGrade(newGrade);
+    saveStoredGradeFilter(newGrade);
     if (selectedTopic) {
       handleHomeClick();
     }

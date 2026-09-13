@@ -1,4 +1,4 @@
-import { TopicProgress, WordProgress, UserStats, Grade } from '../types';
+import { TopicProgress, WordProgress, UserStats, Grade, GradeFilter } from '../types';
 import { getCurrentUser, syncProgressToCloud, fetchProgressFromCloud } from './supabase';
 
 const STATS_KEY = 'wordykids_user_stats';
@@ -19,6 +19,16 @@ export function getStoredLanguage(): 'ru' | 'lv' {
 
 export function saveStoredLanguage(lang: 'ru' | 'lv') {
   localStorage.setItem(LANG_KEY, lang);
+}
+
+export function getStoredGradeFilter(): GradeFilter {
+  const g = localStorage.getItem(GRADE_KEY);
+  if (g === '1' || g === '2' || g === 'all') return g;
+  return 'all';
+}
+
+export function saveStoredGradeFilter(filter: GradeFilter) {
+  localStorage.setItem(GRADE_KEY, filter);
 }
 
 export function getStoredGrade(): Grade {

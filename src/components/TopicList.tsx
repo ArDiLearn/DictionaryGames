@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Topic, Language, TopicProgress, Grade } from '../types';
+import { Topic, Language, TopicProgress, GradeFilter } from '../types';
 import { TopicCard } from './TopicCard';
 import { translations } from '../utils/i18n';
 import { Search, Sparkles } from 'lucide-react';
@@ -8,8 +8,8 @@ interface TopicListProps {
   topics: Topic[];
   language: Language;
   topicProgress: Record<string, TopicProgress>;
-  selectedGrade: Grade;
-  onGradeChange: (grade: Grade) => void;
+  selectedGrade: GradeFilter;
+  onGradeChange: (grade: GradeFilter) => void;
   onSelectTopic: (topic: Topic) => void;
   playerName: string;
   avatar: string;
@@ -104,25 +104,35 @@ export const TopicList: React.FC<TopicListProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="font-black text-amber-950 text-sm sm:text-base">
-                {selectedGrade === 1 ? t.gradeFilterNotice1 : t.gradeFilterNotice2}
+                {selectedGrade === '1'
+                  ? t.gradeFilterNotice1
+                  : selectedGrade === '2'
+                  ? t.gradeFilterNotice2
+                  : t.gradeFilterNoticeAll}
               </span>
               <span className="text-[11px] sm:text-xs bg-amber-200 text-amber-900 font-extrabold px-2 py-0.5 rounded-full">
-                {selectedGrade === 1 ? t.gradeTitle1 : t.gradeTitle2}
+                {selectedGrade === '1'
+                  ? t.gradeTitle1
+                  : selectedGrade === '2'
+                  ? t.gradeTitle2
+                  : t.gradeTitleAll}
               </span>
             </div>
             <p className="text-xs text-amber-700/80 font-medium hidden sm:block">
-              {selectedGrade === 1
+              {selectedGrade === '1'
                 ? (language === 'ru' ? 'Слова только для 1 класса' : 'Vārdi tikai 1. klasei')
-                : (language === 'ru' ? 'Включает слова 1-го и 2-го класса' : 'Ietver 1. un 2. klases vārdus')}
+                : selectedGrade === '2'
+                ? (language === 'ru' ? 'Слова только для 2 класса' : 'Vārdi tikai 2. klasei')
+                : (language === 'ru' ? 'Включает слова 1-го и 2-го классов' : 'Ietver 1. un 2. klases vārdus')}
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-1.5 bg-white/90 p-1 rounded-2xl border-2 border-amber-200 shadow-inner">
           <button
-            onClick={() => onGradeChange(1)}
-            className={`px-3 sm:px-4 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-              selectedGrade === 1
+            onClick={() => onGradeChange('1')}
+            className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+              selectedGrade === '1'
                 ? 'bg-amber-500 text-white shadow-sm scale-105'
                 : 'text-amber-800 hover:text-amber-950 hover:bg-amber-50'
             }`}
@@ -130,14 +140,24 @@ export const TopicList: React.FC<TopicListProps> = ({
             {t.grade1}
           </button>
           <button
-            onClick={() => onGradeChange(2)}
-            className={`px-3 sm:px-4 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-              selectedGrade === 2
+            onClick={() => onGradeChange('2')}
+            className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+              selectedGrade === '2'
                 ? 'bg-amber-500 text-white shadow-sm scale-105'
                 : 'text-amber-800 hover:text-amber-950 hover:bg-amber-50'
             }`}
           >
             {t.grade2}
+          </button>
+          <button
+            onClick={() => onGradeChange('all')}
+            className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+              selectedGrade === 'all'
+                ? 'bg-amber-500 text-white shadow-sm scale-105'
+                : 'text-amber-800 hover:text-amber-950 hover:bg-amber-50'
+            }`}
+          >
+            {t.gradeAll}
           </button>
         </div>
       </div>

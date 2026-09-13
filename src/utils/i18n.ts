@@ -29,6 +29,8 @@ export interface Translations {
   tapToFlip: string;
   spellTheWord: string;
   clearLetters: string;
+  wrongVariantsTitle: string;
+  tryAnotherOrder: string;
   matchPrompt: string;
   audioPrompt: string;
   score: string;
@@ -139,6 +141,8 @@ export const translations: Record<Language, Translations> = {
     tapToFlip: 'Нажми на карточку, чтобы узнать перевод',
     spellTheWord: 'Нажимай на буквы и собери слово',
     clearLetters: 'Сбросить буквы',
+    wrongVariantsTitle: 'Неправильные варианты:',
+    tryAnotherOrder: 'Попробуй составить иначе',
     matchPrompt: 'Найди пары: английское слово и перевод',
     audioPrompt: 'Слушай внимательно и выбери правильный ответ',
     score: 'Счёт',
@@ -247,6 +251,8 @@ export const translations: Record<Language, Translations> = {
     tapToFlip: 'Pieskaries kartītei, lai redzētu tulkojumu',
     spellTheWord: 'Spied uz burtiem un saliec vārdu',
     clearLetters: 'Notīrīt burtus',
+    wrongVariantsTitle: 'Nepareizi varianti:',
+    tryAnotherOrder: 'Mēģini salikt citādi',
     matchPrompt: 'Atrodi pārus: angļu vārds un tulkojums',
     audioPrompt: 'Klausies uzmanīgi un izvēlies pareizo atbildi',
     score: 'Rezultāts',

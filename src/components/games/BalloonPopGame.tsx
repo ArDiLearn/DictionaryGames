@@ -32,34 +32,34 @@ interface BalloonOption {
 
 const BALLOON_THEMES = [
   {
-    gradient: 'from-pink-400 to-rose-500',
-    shadow: 'shadow-pink-300',
-    border: 'border-pink-300',
-    stringColor: '#f43f5e',
+    gradient: 'from-pink-500 to-rose-600',
+    shadow: 'shadow-rose-400/50',
+    border: 'border-rose-300',
+    stringColor: '#e11d48',
   },
   {
-    gradient: 'from-amber-400 to-orange-500',
-    shadow: 'shadow-amber-300',
+    gradient: 'from-amber-500 to-orange-600',
+    shadow: 'shadow-orange-400/50',
     border: 'border-amber-300',
-    stringColor: '#f59e0b',
+    stringColor: '#d97706',
   },
   {
-    gradient: 'from-emerald-400 to-teal-500',
-    shadow: 'shadow-emerald-300',
+    gradient: 'from-emerald-500 to-teal-600',
+    shadow: 'shadow-emerald-400/50',
     border: 'border-emerald-300',
-    stringColor: '#10b981',
+    stringColor: '#059669',
   },
   {
-    gradient: 'from-sky-400 to-blue-500',
-    shadow: 'shadow-sky-300',
+    gradient: 'from-sky-500 to-blue-600',
+    shadow: 'shadow-blue-400/50',
     border: 'border-sky-300',
-    stringColor: '#0ea5e9',
+    stringColor: '#2563eb',
   },
   {
-    gradient: 'from-purple-400 to-indigo-500',
-    shadow: 'shadow-purple-300',
+    gradient: 'from-purple-500 to-indigo-600',
+    shadow: 'shadow-purple-400/50',
     border: 'border-purple-300',
-    stringColor: '#8b5cf6',
+    stringColor: '#7c3aed',
   },
 ];
 
@@ -314,7 +314,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
       </div>
 
       {/* Playground Area: Sky with clouds and falling balloons */}
-      <div className="relative h-[390px] sm:h-[430px] rounded-3xl overflow-hidden bg-gradient-to-b from-sky-300 via-sky-100 to-indigo-50 border-4 border-sky-300 shadow-xl">
+      <div className="relative h-[420px] sm:h-[460px] rounded-3xl overflow-hidden bg-gradient-to-b from-sky-300 via-sky-100 to-indigo-50 border-4 border-sky-300 shadow-xl">
         {/* Background Clouds */}
         <div className="absolute top-4 left-6 text-white/70 animate-pulse pointer-events-none">
           <Cloud className="w-16 h-16 fill-white" />
@@ -386,19 +386,27 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
             >
               {/* Balloon Body */}
               <div
-                className={`relative w-24 sm:w-28 h-28 sm:h-32 rounded-[50%_50%_50%_50%/40%_40%_60%_60%] bg-gradient-to-br ${balloon.color.gradient} shadow-lg ${balloon.color.shadow} border-2 ${balloon.color.border} flex items-center justify-center p-2 group-hover:scale-105 transition-transform`}
+                className={`relative w-28 sm:w-32 md:w-36 h-32 sm:h-36 md:h-40 rounded-[50%_50%_50%_50%/40%_40%_60%_60%] bg-gradient-to-br ${balloon.color.gradient} shadow-xl ${balloon.color.shadow} border-2 ${balloon.color.border} flex items-center justify-center p-2.5 group-hover:scale-105 transition-transform`}
               >
                 {/* Glossy highlight reflection */}
-                <div className="absolute top-2.5 left-3.5 w-4 sm:w-5 h-6 sm:h-7 rounded-full bg-white/45 -rotate-35 pointer-events-none blur-[0.5px]" />
+                <div className="absolute top-2.5 left-3.5 w-4 sm:w-5 h-6 sm:h-7 rounded-full bg-white/40 -rotate-35 pointer-events-none blur-[0.5px]" />
 
-                {/* English Word */}
-                <span className="text-white font-black text-sm sm:text-base font-comic tracking-tight text-center leading-tight drop-shadow-md px-1 break-words">
+                {/* English Word: Large, straight (non-italic), bold font */}
+                <span
+                  className={`text-white font-sans font-black not-italic tracking-normal text-center leading-snug drop-shadow-[0_2px_4px_rgba(0,0,0,0.75)] px-1.5 ${
+                    balloon.en.length > 13
+                      ? 'text-xs sm:text-sm font-extrabold'
+                      : balloon.en.length > 8
+                      ? 'text-sm sm:text-base'
+                      : 'text-base sm:text-lg md:text-xl'
+                  }`}
+                >
                   {balloon.en}
                 </span>
 
                 {/* Balloon Knot */}
                 <div
-                  className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3.5 h-2.5 rounded-b-md bg-inherit filter brightness-90 shadow-sm`}
+                  className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-4 h-2.5 rounded-b-md bg-inherit filter brightness-90 shadow-sm`}
                 />
               </div>
 

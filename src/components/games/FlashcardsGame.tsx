@@ -3,7 +3,7 @@ import { Word, Topic, Language } from '../../types';
 import { speakEnglish } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
-import { getWordImage } from '../../utils/wordImages';
+import { WordIllustration } from '../WordIllustration';
 import { Volume2, RotateCw, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface FlashcardsGameProps {
@@ -101,7 +101,6 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
   if (!currentWord) return null;
 
   const translation = currentWord[language] || currentWord.ru || currentWord.lv;
-  const wordImage = getWordImage(currentWord, topic.emoji);
 
   return (
     <div className="max-w-xl mx-auto px-4 py-4 flex flex-col items-center">
@@ -148,8 +147,8 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
           {!isFlipped ? (
             <div className="flex flex-col items-center">
               {/* Word Picture */}
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-indigo-50 border-3 border-indigo-200 flex items-center justify-center text-5xl sm:text-6xl shadow-inner mb-4 group-hover:scale-110 transition-transform select-none">
-                {wordImage}
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-indigo-50 border-3 border-indigo-200 flex items-center justify-center p-2 shadow-inner mb-4 group-hover:scale-110 transition-transform select-none">
+                <WordIllustration word={currentWord} fallbackEmoji={topic.emoji} />
               </div>
               <h2 className="text-4xl sm:text-5xl font-black text-indigo-600 tracking-tight font-comic">
                 {currentWord.en}
@@ -166,8 +165,8 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
           ) : (
             <div className="flex flex-col items-center">
               {/* Word Picture */}
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-pink-50 border-3 border-pink-200 flex items-center justify-center text-5xl sm:text-6xl shadow-inner mb-4 select-none">
-                {wordImage}
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-pink-50 border-3 border-pink-200 flex items-center justify-center p-2 shadow-inner mb-4 select-none">
+                <WordIllustration word={currentWord} fallbackEmoji={topic.emoji} />
               </div>
               <h2 className="text-3xl sm:text-4xl font-black text-pink-600 tracking-tight leading-snug">
                 {translation}

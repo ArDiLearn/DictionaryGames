@@ -71,7 +71,7 @@ export const WORD_IMAGES = {
   "paper": "📄",
   "circle": "⭕",
   "square": "⬛",
-  "triangle": "🔺",
+  "triangle": "▲",
   "rectangle": "▭",
   "oval": "⬭",
   "mum": "👩",

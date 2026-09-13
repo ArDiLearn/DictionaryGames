@@ -1,0 +1,816 @@
+import React from 'react';
+import { Word } from '../types';
+import { getWordImage } from '../utils/wordImages';
+
+interface WordIllustrationProps {
+  word?: Word | null;
+  fallbackEmoji?: string;
+  className?: string;
+}
+
+/**
+ * High-quality, kid-friendly vector SVG illustrations for words where standard emojis
+ * fail to represent the actual object (desk, sharpener, glue, doll, root, cushion, plums, etc.)
+ */
+const WORD_SVGS: Record<string, React.ReactNode> = {
+  // 1. парта (desk - school desk with tilted wood top, pencil slot, notebook and chair)
+  'desk': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Chair Back and Legs */}
+      <rect x="22" y="32" width="6" height="38" rx="3" fill="#64748b" />
+      <rect x="18" y="34" width="14" height="16" rx="4" fill="#b45309" />
+      <rect x="18" y="56" width="18" height="6" rx="3" fill="#d97706" />
+      <rect x="32" y="58" width="5" height="28" rx="2.5" fill="#475569" />
+      <rect x="20" y="60" width="5" height="26" rx="2.5" fill="#64748b" />
+      {/* Desk Frame & Legs */}
+      <path d="M48 86 L56 46 L76 46 L82 86" stroke="#475569" strokeWidth="5" strokeLinecap="round" />
+      <line x1="53" y1="64" x2="79" y2="64" stroke="#64748b" strokeWidth="4" strokeLinecap="round" />
+      {/* Book Basket Under Desk */}
+      <rect x="52" y="50" width="26" height="10" rx="2" fill="#94a3b8" opacity="0.6" />
+      {/* Slanted Wooden Desktop */}
+      <polygon points="42,46 88,40 92,48 44,54" fill="#d97706" />
+      <polygon points="42,43 88,37 92,41 44,47" fill="#f59e0b" />
+      {/* Notebook on desk */}
+      <polygon points="56,42 74,40 76,46 58,48" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1" />
+      {/* Pencil in groove */}
+      <line x1="78" y1="39" x2="88" y2="38" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" />
+    </svg>
+  ),
+
+  // 2. точилка (pencil sharpener - plastic wedge with metal blade, hole and shavings)
+  'pencil sharpener': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Main plastic body - wedge block */}
+      <path d="M22 30 C22 24 28 20 36 20 L76 28 C82 29 86 34 86 40 L86 68 C86 76 80 82 72 82 L34 82 C26 82 22 76 22 68 Z" fill="#0284c7" />
+      <path d="M22 34 C22 28 28 24 36 24 L76 32 C82 33 86 38 86 44 L86 68 C86 76 80 80 72 80 L34 80 C26 80 22 74 22 68 Z" fill="#38bdf8" />
+      {/* Finger grip ridges */}
+      <line x1="28" y1="42" x2="28" y2="66" stroke="#0369a1" strokeWidth="3" strokeLinecap="round" />
+      <line x1="34" y1="40" x2="34" y2="68" stroke="#0369a1" strokeWidth="3" strokeLinecap="round" />
+      {/* Sharpener pencil hole on side */}
+      <ellipse cx="78" cy="54" rx="5" ry="9" fill="#0f172a" />
+      <ellipse cx="77" cy="54" rx="3.5" ry="7" fill="#334155" />
+      {/* Metal Blade */}
+      <polygon points="42,34 72,40 68,66 38,60" fill="#cbd5e1" stroke="#94a3b8" strokeWidth="1.5" />
+      {/* Sharp Blade Edge */}
+      <line x1="44" y1="35" x2="40" y2="59" stroke="#f8fafc" strokeWidth="2" />
+      {/* Blade Screw */}
+      <circle cx="55" cy="50" r="3.5" fill="#64748b" />
+      <line x1="53" y1="50" x2="57" y2="50" stroke="#f8fafc" strokeWidth="1.2" />
+      {/* Curled pencil shaving */}
+      <path d="M68 64 C76 66 82 74 76 80 C70 86 62 82 66 76" stroke="#f59e0b" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+    </svg>
+  ),
+
+  // 3. пенал (pencil case - zippered school case with colored pencils)
+  'pencil case': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Pencils sticking out from open pouch */}
+      <rect x="36" y="16" width="6" height="28" rx="2" fill="#ef4444" transform="rotate(-15 36 16)" />
+      <polygon points="31,16 34,8 37,15" fill="#fcd34d" />
+      <polygon points="33,11 34,8 35,11" fill="#ef4444" />
+
+      <rect x="48" y="14" width="6" height="30" rx="2" fill="#22c55e" />
+      <polygon points="48,14 51,6 54,14" fill="#fcd34d" />
+      <polygon points="50,9 51,6 52,9" fill="#15803d" />
+
+      <rect x="60" y="16" width="6" height="28" rx="2" fill="#f59e0b" transform="rotate(12 60 16)" />
+      <polygon points="63,17 68,9 70,16" fill="#fcd34d" />
+      <polygon points="67,12 68,9 69,12" fill="#b45309" />
+
+      {/* Main Pencil Case Body */}
+      <rect x="16" y="38" width="68" height="42" rx="14" fill="#7c3aed" />
+      <rect x="18" y="40" width="64" height="38" rx="12" fill="#8b5cf6" />
+      {/* Front pattern / stripes */}
+      <path d="M22 62 C34 56 46 68 58 62 C70 56 78 62 80 62" stroke="#a78bfa" strokeWidth="3" strokeLinecap="round" fill="none" />
+      <circle cx="34" cy="50" r="2.5" fill="#fde047" />
+      <circle cx="66" cy="50" r="2.5" fill="#fde047" />
+      {/* Zipper strip at top */}
+      <rect x="22" y="36" width="56" height="5" rx="2" fill="#e2e8f0" />
+      <line x1="24" y1="38.5" x2="76" y2="38.5" stroke="#94a3b8" strokeWidth="2" strokeDasharray="3 2" />
+      {/* Zipper Pull Tag */}
+      <circle cx="74" cy="38.5" r="3" fill="#f59e0b" />
+      <rect x="73" y="39" width="4" height="8" rx="2" fill="#f59e0b" />
+    </svg>
+  ),
+
+  // 4. ластик (rubber - classic two-tone eraser with paper sleeve)
+  'rubber': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Shadow */}
+      <ellipse cx="50" cy="80" rx="36" ry="7" fill="#cbd5e1" opacity="0.6" />
+      {/* Angled Eraser Block */}
+      <g transform="rotate(-20 50 50)">
+        {/* Pink / Red soft side */}
+        <path d="M20 40 L46 40 L46 64 L20 64 L14 52 Z" fill="#f43f5e" />
+        <path d="M20 38 L46 38 L46 42 L16 42 Z" fill="#fb7185" />
+        {/* Blue / Firm side */}
+        <path d="M46 40 L78 40 L84 52 L78 64 L46 64 Z" fill="#2563eb" />
+        <path d="M46 38 L78 38 L84 48 L80 40 Z" fill="#60a5fa" />
+        {/* White Cardboard Sleeve in Center */}
+        <rect x="36" y="38" width="28" height="28" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1" />
+        {/* Sleeve Brand Stripe */}
+        <rect x="36" y="48" width="28" height="7" fill="#0284c7" />
+        {/* Little eraser shavings / crumbs */}
+        <circle cx="16" cy="70" r="1.5" fill="#f43f5e" />
+        <circle cx="22" cy="74" r="2" fill="#f43f5e" />
+        <circle cx="28" cy="71" r="1" fill="#f43f5e" />
+      </g>
+    </svg>
+  ),
+
+  // 5. клей (glue - bottle of school PVA glue with dispenser tip & label)
+  'glue': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Glue Drop from tip */}
+      <path d="M50 14 C50 14 47 19 47 21 C47 22.5 48.3 24 50 24 C51.7 24 53 22.5 53 21 C53 19 50 14 50 14 Z" fill="#38bdf8" />
+      {/* Orange Nozzle Tip */}
+      <polygon points="46,26 54,26 52,22 48,22" fill="#ea580c" />
+      <rect x="45" y="26" width="10" height="6" rx="1.5" fill="#f97316" />
+      {/* Cap Ring */}
+      <rect x="42" y="32" width="16" height="5" rx="1.5" fill="#ea580c" />
+      {/* Bottle Shoulder and Body */}
+      <path d="M44 37 L56 37 C64 37 72 44 72 52 L72 78 C72 83 67 87 62 87 L38 87 C33 87 28 83 28 78 L28 52 C28 44 36 37 44 37 Z" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2" />
+      {/* Body 3D shading */}
+      <path d="M64 48 L64 78 C64 81 61 84 58 84 L42 84 C39 84 36 81 36 78 L36 48 Z" fill="#f1f5f9" opacity="0.7" />
+      {/* Label on Bottle */}
+      <rect x="34" y="52" width="32" height="24" rx="4" fill="#2563eb" />
+      <rect x="36" y="54" width="28" height="20" rx="3" fill="#3b82f6" />
+      {/* Label Text "КЛЕЙ / GLUE" */}
+      <text x="50" y="67" textAnchor="middle" fill="#ffffff" fontWeight="900" fontSize="8" fontFamily="sans-serif" letterSpacing="0.5">КЛЕЙ</text>
+      <line x1="38" y1="70" x2="62" y2="70" stroke="#93c5fd" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  ),
+
+  // 6. фишки (counters - colorful 3D circular tokens for counting / board games)
+  'counters': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Bottom Left Red Chip */}
+      <ellipse cx="36" cy="62" rx="20" ry="11" fill="#b91c1c" />
+      <path d="M16 62 C16 70 56 70 56 62 L56 68 C56 76 16 76 16 68 Z" fill="#991b1b" />
+      <ellipse cx="36" cy="61" rx="18" ry="9" fill="#ef4444" />
+      <ellipse cx="36" cy="61" rx="12" ry="5.5" fill="#f87171" stroke="#ffffff" strokeWidth="1.2" strokeDasharray="3 2" />
+
+      {/* Right Blue Chip */}
+      <ellipse cx="64" cy="58" rx="20" ry="11" fill="#1d4ed8" />
+      <path d="M44 58 C44 66 84 66 84 58 L84 64 C84 72 44 72 44 64 Z" fill="#1e40af" />
+      <ellipse cx="64" cy="57" rx="18" ry="9" fill="#3b82f6" />
+      <ellipse cx="64" cy="57" rx="12" ry="5.5" fill="#60a5fa" stroke="#ffffff" strokeWidth="1.2" strokeDasharray="3 2" />
+
+      {/* Top Yellow / Gold Chip */}
+      <ellipse cx="50" cy="40" rx="22" ry="12" fill="#d97706" />
+      <path d="M28 40 C28 49 72 49 72 40 L72 46 C72 55 28 55 28 46 Z" fill="#b45309" />
+      <ellipse cx="50" cy="39" rx="20" ry="10" fill="#f59e0b" />
+      <ellipse cx="50" cy="39" rx="14" ry="6.5" fill="#fbbf24" stroke="#ffffff" strokeWidth="1.5" strokeDasharray="3 2" />
+      <circle cx="50" cy="39" r="3" fill="#d97706" />
+    </svg>
+  ),
+
+  // 7. кукла (doll - cute classic toy ragdoll with dress, yarn pigtails & smile)
+  'doll': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Pigtails / Hair behind */}
+      <circle cx="30" cy="34" r="9" fill="#d97706" />
+      <circle cx="70" cy="34" r="9" fill="#d97706" />
+      <path d="M24 38 C20 46 22 54 28 56" stroke="#b45309" strokeWidth="5" strokeLinecap="round" fill="none" />
+      <path d="M76 38 C80 46 78 54 72 56" stroke="#b45309" strokeWidth="5" strokeLinecap="round" fill="none" />
+      {/* Bows on hair */}
+      <circle cx="26" cy="37" r="4" fill="#ec4899" />
+      <circle cx="74" cy="37" r="4" fill="#ec4899" />
+      {/* Doll Body / Dress */}
+      <path d="M40 50 L30 82 L70 82 L60 50 Z" fill="#ec4899" />
+      <path d="M30 82 C40 85 60 85 70 82 L70 85 C60 88 40 88 30 85 Z" fill="#db2777" />
+      {/* Polka dots on dress */}
+      <circle cx="44" cy="62" r="2.5" fill="#ffffff" opacity="0.8" />
+      <circle cx="56" cy="62" r="2.5" fill="#ffffff" opacity="0.8" />
+      <circle cx="50" cy="72" r="2.5" fill="#ffffff" opacity="0.8" />
+      {/* Little legs & shoes */}
+      <rect x="42" y="82" width="5" height="10" rx="2" fill="#fed7aa" />
+      <rect x="53" y="82" width="5" height="10" rx="2" fill="#fed7aa" />
+      <ellipse cx="43.5" cy="92" rx="4" ry="2.5" fill="#be185d" />
+      <ellipse cx="56.5" cy="92" rx="4" ry="2.5" fill="#be185d" />
+      {/* Little Doll Arms */}
+      <path d="M40 54 L26 66" stroke="#fed7aa" strokeWidth="4.5" strokeLinecap="round" />
+      <path d="M60 54 L74 66" stroke="#fed7aa" strokeWidth="4.5" strokeLinecap="round" />
+      {/* Dress White Collar */}
+      <path d="M42 50 C46 54 54 54 58 50 Z" fill="#f8fafc" />
+      {/* Doll Head */}
+      <circle cx="50" cy="32" r="16" fill="#fed7aa" />
+      {/* Bangs */}
+      <path d="M35 28 C42 22 58 22 65 28 C61 24 55 22 50 22 C45 22 39 24 35 28 Z" fill="#b45309" />
+      {/* Face: button eyes, rosy cheeks, smile */}
+      <circle cx="44" cy="31" r="2" fill="#1e293b" />
+      <circle cx="56" cy="31" r="2" fill="#1e293b" />
+      <circle cx="41" cy="36" r="3" fill="#fb7185" opacity="0.6" />
+      <circle cx="59" cy="36" r="3" fill="#fb7185" opacity="0.6" />
+      <path d="M47 37 C49 40 51 40 53 37" stroke="#e11d48" strokeWidth="2" strokeLinecap="round" fill="none" />
+    </svg>
+  ),
+
+  // 8. скакалка (skipping rope - realistic jump rope with wooden handles & curved rope)
+  'skipping rope': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Shadow */}
+      <ellipse cx="50" cy="86" rx="34" ry="5" fill="#cbd5e1" opacity="0.5" />
+      {/* Left Handle */}
+      <g transform="rotate(-30 24 30)">
+        <rect x="20" y="16" width="9" height="24" rx="4" fill="#0284c7" />
+        <rect x="22" y="18" width="5" height="20" rx="2" fill="#38bdf8" />
+        <circle cx="24.5" cy="40" r="4" fill="#f59e0b" />
+        <circle cx="24.5" cy="16" r="3" fill="#0369a1" />
+      </g>
+      {/* Right Handle */}
+      <g transform="rotate(30 76 30)">
+        <rect x="71" y="16" width="9" height="24" rx="4" fill="#0284c7" />
+        <rect x="73" y="18" width="5" height="20" rx="2" fill="#38bdf8" />
+        <circle cx="75.5" cy="40" r="4" fill="#f59e0b" />
+        <circle cx="75.5" cy="16" r="3" fill="#0369a1" />
+      </g>
+      {/* Skipping Rope Cord Loop */}
+      <path d="M26 36 C20 65 30 84 50 84 C70 84 80 65 74 36" stroke="#ef4444" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+      <path d="M26 36 C20 65 30 84 50 84 C70 84 80 65 74 36" stroke="#fca5a5" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="4 3" fill="none" />
+    </svg>
+  ),
+
+  // 9. свитер (sweater - cozy knitted woolen sweater with high collar & winter pattern)
+  'sweater': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Sweater Body & Sleeves */}
+      <path d="M34 22 L20 40 L10 58 L20 64 L30 52 L30 84 L70 84 L70 52 L80 64 L90 58 L80 40 L66 22 Z" fill="#0284c7" />
+      {/* Ribbed High Collar */}
+      <path d="M36 22 C36 17 64 17 64 22 L62 29 C62 33 38 33 38 29 Z" fill="#0369a1" />
+      <line x1="43" y1="20" x2="43" y2="30" stroke="#38bdf8" strokeWidth="1.5" />
+      <line x1="50" y1="20" x2="50" y2="30" stroke="#38bdf8" strokeWidth="1.5" />
+      <line x1="57" y1="20" x2="57" y2="30" stroke="#38bdf8" strokeWidth="1.5" />
+      {/* Winter Zig-Zag & Snowflake Knitted Band */}
+      <rect x="30" y="44" width="40" height="14" fill="#075985" />
+      <polyline points="32,51 36,46 40,51 44,46 48,51 52,46 56,51 60,46 64,51 68,46" stroke="#f8fafc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <polyline points="32,56 36,51 40,56 44,51 48,56 52,51 56,56 60,51 64,56 68,51" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      {/* Sleeve Cuffs */}
+      <polygon points="10,58 20,64 17,68 7,62" fill="#0369a1" />
+      <polygon points="90,58 80,64 83,68 93,62" fill="#0369a1" />
+      {/* Bottom Hem Ribbing */}
+      <rect x="30" y="80" width="40" height="6" rx="1" fill="#0369a1" />
+      <line x1="38" y1="80" x2="38" y2="86" stroke="#38bdf8" strokeWidth="1.2" />
+      <line x1="50" y1="80" x2="50" y2="86" stroke="#38bdf8" strokeWidth="1.2" />
+      <line x1="62" y1="80" x2="62" y2="86" stroke="#38bdf8" strokeWidth="1.2" />
+    </svg>
+  ),
+
+  // 10. рубашка (shirt - crisp button-down collared dress shirt with pocket)
+  'shirt': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Shirt Body & Sleeves */}
+      <path d="M34 24 L18 36 L12 50 L22 55 L28 46 L28 84 L72 84 L72 46 L78 55 L88 50 L82 36 L66 24 Z" fill="#e0f2fe" stroke="#0284c7" strokeWidth="2" />
+      {/* Placket Down Center */}
+      <line x1="50" y1="28" x2="50" y2="84" stroke="#0284c7" strokeWidth="3" />
+      {/* Buttons */}
+      <circle cx="50" cy="40" r="2" fill="#0369a1" />
+      <circle cx="50" cy="52" r="2" fill="#0369a1" />
+      <circle cx="50" cy="64" r="2" fill="#0369a1" />
+      <circle cx="50" cy="76" r="2" fill="#0369a1" />
+      {/* Chest Pocket on Left */}
+      <path d="M57 44 L67 44 L67 56 L62 60 L57 56 Z" fill="#bae6fd" stroke="#0284c7" strokeWidth="1.5" />
+      {/* Crisp Left Collar */}
+      <polygon points="50,28 32,24 40,36" fill="#ffffff" stroke="#0284c7" strokeWidth="2" />
+      {/* Crisp Right Collar */}
+      <polygon points="50,28 68,24 60,36" fill="#ffffff" stroke="#0284c7" strokeWidth="2" />
+      {/* Tie Knot / Accent */}
+      <circle cx="50" cy="30" r="2.5" fill="#0284c7" />
+    </svg>
+  ),
+
+  // 11. куртка (jacket - warm hooded puffer winter jacket with zipper)
+  'jacket': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Hood Behind Neck */}
+      <path d="M34 26 C34 14 66 14 66 26 Z" fill="#c2410c" stroke="#9a3412" strokeWidth="2" />
+      <path d="M40 26 C40 18 60 18 60 26 Z" fill="#7c2d12" />
+      {/* Jacket Body & Sleeves (Puffer sections) */}
+      <path d="M32 26 L16 38 L10 58 L22 62 L26 50 L26 84 L74 84 L74 50 L78 62 L90 58 L84 38 L68 26 Z" fill="#ea580c" />
+      {/* Puffer Quilted Horizontal Lines */}
+      <line x1="26" y1="42" x2="74" y2="42" stroke="#c2410c" strokeWidth="3" />
+      <line x1="26" y1="56" x2="74" y2="56" stroke="#c2410c" strokeWidth="3" />
+      <line x1="26" y1="70" x2="74" y2="70" stroke="#c2410c" strokeWidth="3" />
+      {/* Sleeve Quilted Baffles */}
+      <line x1="18" y1="42" x2="28" y2="46" stroke="#c2410c" strokeWidth="2.5" />
+      <line x1="82" y1="42" x2="72" y2="46" stroke="#c2410c" strokeWidth="2.5" />
+      {/* Central Metal Zipper */}
+      <line x1="50" y1="26" x2="50" y2="84" stroke="#e2e8f0" strokeWidth="3" strokeDasharray="3 1" />
+      <circle cx="50" cy="34" r="2.5" fill="#f8fafc" />
+      <rect x="49" y="34" width="2" height="6" fill="#f8fafc" />
+      {/* Pockets with Zippers */}
+      <line x1="32" y1="68" x2="42" y2="72" stroke="#7c2d12" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="68" y1="68" x2="58" y2="72" stroke="#7c2d12" strokeWidth="2.5" strokeLinecap="round" />
+    </svg>
+  ),
+
+  // 12. юбка (skirt - classic flared pleated school skirt with waistband)
+  'skirt': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Waistband */}
+      <rect x="32" y="24" width="36" height="8" rx="2" fill="#1e3a8a" />
+      {/* Belt Button / Buckle */}
+      <circle cx="50" cy="28" r="2" fill="#f59e0b" />
+      {/* Flared Pleated Skirt Body */}
+      <path d="M34 32 L16 80 C36 86 64 86 84 80 L66 32 Z" fill="#2563eb" />
+      {/* Pleat Crease Lines & Shadows */}
+      <path d="M40 32 L28 82" stroke="#1d4ed8" strokeWidth="3" />
+      <path d="M46 32 L40 83" stroke="#1e40af" strokeWidth="2.5" />
+      <path d="M52 32 L52 84" stroke="#1d4ed8" strokeWidth="3" />
+      <path d="M58 32 L64 83" stroke="#1e40af" strokeWidth="2.5" />
+      <path d="M62 32 L74 82" stroke="#1d4ed8" strokeWidth="3" />
+      {/* Scalloped hem effect */}
+      <path d="M16 80 C26 83 34 83 44 84 C54 84 64 84 84 80" stroke="#1e3a8a" strokeWidth="3" strokeLinecap="round" fill="none" />
+    </svg>
+  ),
+
+  // 13. кудрявые волосы (curly hair - head showcasing springy spiral curls)
+  'curly hair': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Neck & Shoulders */}
+      <path d="M44 68 L44 80 L30 88 L70 88 L56 80 L56 68 Z" fill="#fed7aa" />
+      <path d="M30 88 C40 82 60 82 70 88 Z" fill="#f43f5e" />
+      {/* Child Face Base */}
+      <circle cx="50" cy="50" r="18" fill="#fed7aa" />
+      {/* Cute Ears */}
+      <circle cx="32" cy="52" r="4" fill="#fed7aa" />
+      <circle cx="68" cy="52" r="4" fill="#fed7aa" />
+      {/* Face features */}
+      <circle cx="44" cy="50" r="2" fill="#1e293b" />
+      <circle cx="56" cy="50" r="2" fill="#1e293b" />
+      <circle cx="40" cy="54" r="2.5" fill="#fb7185" opacity="0.6" />
+      <circle cx="60" cy="54" r="2.5" fill="#fb7185" opacity="0.6" />
+      <path d="M47 56 C49 59 51 59 53 56" stroke="#e11d48" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      {/* Voluminous Curly Hair Puffs (Bouncy Ringlets) */}
+      <g fill="#78350f" stroke="#451a03" strokeWidth="1.2">
+        <circle cx="34" cy="38" r="8" />
+        <circle cx="42" cy="28" r="9" />
+        <circle cx="50" cy="24" r="9" />
+        <circle cx="58" cy="28" r="9" />
+        <circle cx="66" cy="38" r="8" />
+        <circle cx="28" cy="48" r="7" />
+        <circle cx="72" cy="48" r="7" />
+        <circle cx="30" cy="58" r="6" />
+        <circle cx="70" cy="58" r="6" />
+      </g>
+      {/* Spiral curl highlight lines */}
+      <path d="M39 26 C43 23 45 28 43 31" stroke="#b45309" strokeWidth="2" strokeLinecap="round" fill="none" />
+      <path d="M48 22 C52 19 54 24 51 27" stroke="#b45309" strokeWidth="2" strokeLinecap="round" fill="none" />
+      <path d="M57 26 C61 23 63 28 60 31" stroke="#b45309" strokeWidth="2" strokeLinecap="round" fill="none" />
+    </svg>
+  ),
+
+  // 14. темные волосы (dark hair - head with glossy black/dark brunette hair)
+  'dark hair': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Neck & Shirt */}
+      <path d="M44 68 L44 80 L30 88 L70 88 L56 80 L56 68 Z" fill="#fed7aa" />
+      <path d="M30 88 C40 82 60 82 70 88 Z" fill="#0284c7" />
+      {/* Face Base */}
+      <circle cx="50" cy="52" r="18" fill="#fed7aa" />
+      {/* Ears */}
+      <circle cx="32" cy="54" r="4" fill="#fed7aa" />
+      <circle cx="68" cy="54" r="4" fill="#fed7aa" />
+      {/* Face details */}
+      <circle cx="44" cy="52" r="2" fill="#1e293b" />
+      <circle cx="56" cy="52" r="2" fill="#1e293b" />
+      <path d="M47 58 C49 61 51 61 53 58" stroke="#e11d48" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      {/* Rich Jet-Black Hair Mass */}
+      <path d="M28 50 C26 34 36 20 50 20 C64 20 74 34 72 50 C68 44 64 40 58 38 C48 36 40 44 28 50 Z" fill="#0f172a" />
+      <path d="M28 48 C36 42 46 36 60 38 C68 40 70 46 72 50 L74 54 C74 42 70 26 50 24 C34 26 28 38 28 50 Z" fill="#1e293b" />
+      {/* Glossy blue-gray hair shine highlight */}
+      <path d="M38 26 C44 24 56 24 62 27" stroke="#64748b" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+    </svg>
+  ),
+
+  // 15. длинные волосы (long hair - girl with very long hair flowing well past shoulders)
+  'long hair': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Very Long Hair Flowing in the Back (down to bottom) */}
+      <path d="M30 40 C22 56 20 76 22 92 C28 92 36 92 36 80 L36 60" fill="#d97706" />
+      <path d="M70 40 C78 56 80 76 78 92 C72 92 64 92 64 80 L64 60" fill="#d97706" />
+      {/* Neck & Dress */}
+      <path d="M44 66 L44 78 L32 88 L68 88 L56 78 L56 66 Z" fill="#fed7aa" />
+      <path d="M32 88 C42 82 58 82 68 88 Z" fill="#ec4899" />
+      {/* Face */}
+      <circle cx="50" cy="46" r="17" fill="#fed7aa" />
+      {/* Face features */}
+      <circle cx="44" cy="46" r="2" fill="#1e293b" />
+      <circle cx="56" cy="46" r="2" fill="#1e293b" />
+      <circle cx="40" cy="50" r="2.5" fill="#fb7185" opacity="0.6" />
+      <circle cx="60" cy="50" r="2.5" fill="#fb7185" opacity="0.6" />
+      <path d="M47 52 C49 55 51 55 53 52" stroke="#e11d48" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      {/* Front Long Hair strands framing face */}
+      <path d="M32 38 C32 20 68 20 68 38 C62 30 54 28 50 28 C46 28 38 30 32 38 Z" fill="#f59e0b" />
+      <path d="M34 38 C30 52 30 72 32 86 C34 86 38 84 38 72 L38 46" fill="#f59e0b" />
+      <path d="M66 38 C70 52 70 72 68 86 C66 86 62 84 62 72 L62 46" fill="#f59e0b" />
+      {/* Hair Shine Lines */}
+      <path d="M42 24 C48 22 52 22 58 24" stroke="#fef08a" strokeWidth="2" strokeLinecap="round" fill="none" />
+      <line x1="34" y1="56" x2="34" y2="76" stroke="#fef08a" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="66" y1="56" x2="66" y2="76" stroke="#fef08a" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  ),
+
+  // 16. прямые волосы (straight hair - smooth, sleek, perfectly straight parted hair)
+  'straight hair': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Neck & Shirt */}
+      <path d="M44 68 L44 80 L30 88 L70 88 L56 80 L56 68 Z" fill="#fed7aa" />
+      <path d="M30 88 C40 82 60 82 70 88 Z" fill="#10b981" />
+      {/* Face */}
+      <circle cx="50" cy="52" r="18" fill="#fed7aa" />
+      {/* Face Details */}
+      <circle cx="44" cy="52" r="2" fill="#1e293b" />
+      <circle cx="56" cy="52" r="2" fill="#1e293b" />
+      <path d="M47 58 C49 61 51 61 53 58" stroke="#e11d48" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      {/* Perfectly Straight Sleek Hair Falling on Both Sides */}
+      <path d="M32 44 L30 76 C33 77 36 77 38 76 L40 48" fill="#78350f" />
+      <path d="M68 44 L70 76 C67 77 64 77 62 76 L60 48" fill="#78350f" />
+      {/* Crown Hair with straight middle parting */}
+      <path d="M32 44 C30 30 38 20 50 20 C62 20 70 30 68 44 C64 36 58 32 50 32 C42 32 36 36 32 44 Z" fill="#92400e" />
+      <line x1="50" y1="20" x2="50" y2="34" stroke="#451a03" strokeWidth="1.5" />
+      {/* Glossy vertical shine lines emphasizing straightness */}
+      <line x1="34" y1="46" x2="34" y2="70" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="66" y1="46" x2="66" y2="70" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  ),
+
+  // 17. шкаф для одежды (wardrobe - tall wooden closet with clothes hanging inside)
+  'wardrobe': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Cabinet Base & Legs */}
+      <rect x="22" y="80" width="56" height="8" rx="2" fill="#78350f" />
+      <rect x="26" y="84" width="6" height="6" fill="#451a03" />
+      <rect x="68" y="84" width="6" height="6" fill="#451a03" />
+      {/* Main Wardrobe Box */}
+      <rect x="22" y="16" width="56" height="66" rx="3" fill="#92400e" />
+      {/* Crown Top Molding */}
+      <polygon points="18,16 82,16 78,20 22,20" fill="#b45309" />
+      {/* Inside Left Open Compartment */}
+      <rect x="25" y="22" width="24" height="46" fill="#451a03" />
+      {/* Hanging Rail */}
+      <line x1="26" y1="26" x2="48" y2="26" stroke="#cbd5e1" strokeWidth="2" />
+      {/* Hanging Clothes on Hangers */}
+      <path d="M30 28 L34 26 L38 28 L40 46 L28 46 Z" fill="#ec4899" />
+      <path d="M38 28 L42 26 L46 28 L48 52 L36 52 Z" fill="#38bdf8" />
+      {/* Open Left Door (swung outward at perspective) */}
+      <polygon points="25,22 14,26 14,70 25,68" fill="#b45309" stroke="#78350f" strokeWidth="1.5" />
+      {/* Closed Right Door */}
+      <rect x="49" y="22" width="26" height="46" fill="#b45309" stroke="#78350f" strokeWidth="1.5" />
+      <rect x="53" y="26" width="18" height="38" rx="2" fill="#92400e" stroke="#78350f" strokeWidth="1" />
+      {/* Brass Door Handles */}
+      <circle cx="52" cy="46" r="2.5" fill="#f59e0b" />
+      {/* Bottom Drawer */}
+      <rect x="25" y="70" width="50" height="9" fill="#b45309" stroke="#78350f" strokeWidth="1" />
+      <rect x="44" y="73" width="12" height="3" rx="1.5" fill="#f59e0b" />
+    </svg>
+  ),
+
+  // 18. книжный шкаф (bookcase - wooden bookshelf filled with colorful standing books)
+  'bookcase': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Outer Wooden Bookcase Frame */}
+      <rect x="22" y="14" width="56" height="74" rx="3" fill="#78350f" />
+      <rect x="26" y="18" width="48" height="66" fill="#451a03" />
+      {/* Top Molding */}
+      <rect x="20" y="12" width="60" height="5" rx="1" fill="#92400e" />
+      {/* Middle Shelf 1 */}
+      <rect x="26" y="38" width="48" height="4" fill="#92400e" />
+      {/* Middle Shelf 2 */}
+      <rect x="26" y="62" width="48" height="4" fill="#92400e" />
+      {/* Books on Top Shelf */}
+      <rect x="29" y="22" width="5" height="16" fill="#ef4444" />
+      <rect x="35" y="20" width="6" height="18" fill="#3b82f6" />
+      <rect x="42" y="23" width="5" height="15" fill="#22c55e" />
+      <rect x="48" y="21" width="7" height="17" fill="#f59e0b" />
+      <rect x="56" y="24" width="6" height="14" fill="#8b5cf6" />
+      <g transform="rotate(15 65 30)">
+        <rect x="63" y="22" width="5" height="16" fill="#ec4899" />
+      </g>
+      {/* Books on Middle Shelf */}
+      <rect x="29" y="44" width="6" height="18" fill="#06b6d4" />
+      <rect x="36" y="46" width="5" height="16" fill="#f97316" />
+      <rect x="42" y="43" width="7" height="19" fill="#eab308" />
+      <rect x="50" y="45" width="6" height="17" fill="#ef4444" />
+      <rect x="57" y="44" width="5" height="18" fill="#3b82f6" />
+      <rect x="63" y="46" width="6" height="16" fill="#10b981" />
+      {/* Books on Bottom Shelf */}
+      <rect x="29" y="68" width="7" height="16" fill="#a855f7" />
+      <rect x="37" y="67" width="6" height="17" fill="#3b82f6" />
+      <rect x="44" y="69" width="6" height="15" fill="#f43f5e" />
+      <rect x="51" y="67" width="5" height="17" fill="#22c55e" />
+      <rect x="57" y="70" width="7" height="14" fill="#f59e0b" />
+    </svg>
+  ),
+
+  // 19. стол (table - clean 4-legged wooden table in 3/4 perspective)
+  'table': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Shadow */}
+      <ellipse cx="50" cy="80" rx="36" ry="6" fill="#cbd5e1" opacity="0.6" />
+      {/* 4 Wooden Legs */}
+      {/* Back Left Leg */}
+      <rect x="26" y="48" width="5" height="28" rx="2" fill="#92400e" />
+      {/* Back Right Leg */}
+      <rect x="70" y="48" width="5" height="28" rx="2" fill="#92400e" />
+      {/* Table Apron/Frame */}
+      <polygon points="24,46 76,46 74,53 26,53" fill="#b45309" />
+      {/* Front Left Leg */}
+      <rect x="20" y="50" width="6" height="32" rx="2" fill="#d97706" />
+      {/* Front Right Leg */}
+      <rect x="74" y="50" width="6" height="32" rx="2" fill="#d97706" />
+      {/* Solid Wooden Tabletop */}
+      <polygon points="20,48 80,48 84,42 16,42" fill="#b45309" />
+      <polygon points="16,42 84,42 78,34 22,34" fill="#f59e0b" />
+      {/* Wood grain highlights */}
+      <line x1="28" y1="38" x2="72" y2="38" stroke="#fbbf24" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  ),
+
+  // 20. диванная подушка (cushion - soft plush square throw pillow with button tufting)
+  'cushion': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Pillow Shadow */}
+      <ellipse cx="50" cy="82" rx="30" ry="6" fill="#cbd5e1" opacity="0.6" />
+      {/* Main Pillow Cushion Body */}
+      <path d="M50 20 C68 22 78 32 80 50 C78 68 68 78 50 80 C32 78 22 68 20 50 C22 32 32 22 50 20 Z" fill="#8b5cf6" />
+      <path d="M50 22 C66 24 76 34 78 50 C76 66 66 76 50 78 C34 76 24 66 22 50 C24 34 34 24 50 22 Z" fill="#a78bfa" />
+      {/* Corner tassels/piping */}
+      <circle cx="21" cy="21" r="3" fill="#f59e0b" />
+      <circle cx="79" cy="21" r="3" fill="#f59e0b" />
+      <circle cx="21" cy="79" r="3" fill="#f59e0b" />
+      <circle cx="79" cy="79" r="3" fill="#f59e0b" />
+      {/* Tufted Crease Lines Radiating from center button */}
+      <path d="M50 50 L32 32" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" />
+      <path d="M50 50 L68 32" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" />
+      <path d="M50 50 L32 68" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" />
+      <path d="M50 50 L68 68" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" />
+      {/* Center Tufting Button */}
+      <circle cx="50" cy="50" r="5" fill="#6d28d9" />
+      <circle cx="49" cy="49" r="3.5" fill="#f59e0b" />
+    </svg>
+  ),
+
+  // 21. кухня (kitchen - kitchen range, range hood, pots on burner & countertop)
+  'kitchen': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Tiled Wall */}
+      <rect x="18" y="16" width="64" height="72" fill="#f1f5f9" />
+      <line x1="18" y1="36" x2="82" y2="36" stroke="#cbd5e1" strokeWidth="1" />
+      <line x1="18" y1="52" x2="82" y2="52" stroke="#cbd5e1" strokeWidth="1" />
+      {/* Range Hood at Top */}
+      <polygon points="34,16 66,16 72,28 28,28" fill="#64748b" />
+      <rect x="28" y="28" width="44" height="4" fill="#475569" />
+      {/* Upper Cabinet on Left */}
+      <rect x="18" y="16" width="14" height="24" fill="#0284c7" stroke="#0369a1" strokeWidth="1.5" />
+      <rect x="70" y="16" width="12" height="24" fill="#0284c7" stroke="#0369a1" strokeWidth="1.5" />
+      {/* Cooking Stove Unit */}
+      <rect x="32" y="48" width="36" height="40" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1.5" />
+      {/* Stove Controls Bar */}
+      <rect x="32" y="48" width="36" height="6" fill="#cbd5e1" />
+      <circle cx="40" cy="51" r="1.5" fill="#334155" />
+      <circle cx="46" cy="51" r="1.5" fill="#334155" />
+      <circle cx="54" cy="51" r="1.5" fill="#334155" />
+      <circle cx="60" cy="51" r="1.5" fill="#334155" />
+      {/* Oven Window */}
+      <rect x="36" y="58" width="28" height="24" rx="2" fill="#1e293b" />
+      <rect x="39" y="61" width="22" height="18" rx="1" fill="#334155" />
+      <line x1="42" y1="56" x2="58" y2="56" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" />
+      {/* Pot on Stove with Steam */}
+      <rect x="42" y="42" width="16" height="7" rx="1.5" fill="#ea580c" />
+      <rect x="40" y="40" width="20" height="2" rx="1" fill="#c2410c" />
+      <circle cx="50" cy="38" r="1.5" fill="#f59e0b" />
+      <path d="M48 36 C48 34 52 34 52 32" stroke="#94a3b8" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+    </svg>
+  ),
+
+  // 22. столовая (dining room - dining table with chairs and pendant light)
+  'dining room': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Pendant Lamp Hanging from Ceiling */}
+      <line x1="50" y1="12" x2="50" y2="28" stroke="#475569" strokeWidth="2" />
+      <polygon points="40,34 60,34 54,28 46,28" fill="#f59e0b" />
+      {/* Warm Lamp Light Cone */}
+      <polygon points="40,34 60,34 76,64 24,64" fill="#fef08a" opacity="0.3" />
+      {/* Left Chair */}
+      <rect x="22" y="44" width="5" height="24" rx="2" fill="#b45309" />
+      <rect x="18" y="44" width="12" height="12" rx="3" fill="#d97706" />
+      <rect x="18" y="58" width="14" height="4" fill="#b45309" />
+      <rect x="20" y="62" width="3" height="18" fill="#78350f" />
+      {/* Right Chair */}
+      <rect x="73" y="44" width="5" height="24" rx="2" fill="#b45309" />
+      <rect x="70" y="44" width="12" height="12" rx="3" fill="#d97706" />
+      <rect x="68" y="58" width="14" height="4" fill="#b45309" />
+      <rect x="77" y="62" width="3" height="18" fill="#78350f" />
+      {/* Dining Table with Tablecloth */}
+      <ellipse cx="50" cy="58" rx="28" ry="8" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1.5" />
+      <path d="M22 58 C22 68 78 68 78 58 L78 64 C78 72 22 72 22 64 Z" fill="#e2e8f0" />
+      {/* Table Legs */}
+      <rect x="32" y="68" width="4" height="16" fill="#78350f" />
+      <rect x="64" y="68" width="4" height="16" fill="#78350f" />
+      {/* Fruit Bowl on Table Center */}
+      <ellipse cx="50" cy="57" rx="8" ry="3.5" fill="#f59e0b" />
+      <circle cx="48" cy="55" r="2.5" fill="#ef4444" />
+      <circle cx="52" cy="54" r="2.5" fill="#22c55e" />
+    </svg>
+  ),
+
+  // 23. сад (garden - blooming apple tree, tulips, lush grass & wooden fence)
+  'garden': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Sky */}
+      <rect x="16" y="16" width="68" height="68" rx="12" fill="#e0f2fe" />
+      {/* Sun */}
+      <circle cx="72" cy="28" r="8" fill="#facc15" />
+      {/* Green Garden Hill Lawn */}
+      <path d="M16 64 C36 56 64 56 84 64 L84 84 L16 84 Z" fill="#22c55e" />
+      {/* Tree Trunk */}
+      <path d="M38 52 L36 74 L44 74 L42 52 Z" fill="#78350f" />
+      {/* Lush Tree Foliage */}
+      <circle cx="34" cy="40" r="12" fill="#15803d" />
+      <circle cx="46" cy="38" r="13" fill="#16a34a" />
+      <circle cx="40" cy="30" r="12" fill="#22c55e" />
+      {/* Red Apples on Tree */}
+      <circle cx="34" cy="36" r="2.5" fill="#ef4444" />
+      <circle cx="44" cy="33" r="2.5" fill="#ef4444" />
+      <circle cx="46" cy="42" r="2.5" fill="#ef4444" />
+      {/* Wooden Fence in Garden */}
+      <g fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1">
+        <rect x="52" y="62" width="5" height="16" rx="1" />
+        <polygon points="52,62 54.5,58 57,62" />
+        <rect x="62" y="62" width="5" height="16" rx="1" />
+        <polygon points="62,62 64.5,58 67,62" />
+        <rect x="72" y="62" width="5" height="16" rx="1" />
+        <polygon points="72,62 74.5,58 77,62" />
+        <rect x="50" y="67" width="28" height="3" />
+      </g>
+      {/* Flowers in Grass */}
+      <circle cx="26" cy="74" r="3" fill="#ec4899" />
+      <circle cx="26" cy="74" r="1.5" fill="#facc15" />
+      <circle cx="34" cy="76" r="3" fill="#f43f5e" />
+      <circle cx="34" cy="76" r="1.5" fill="#facc15" />
+    </svg>
+  ),
+
+  // 24. корень (root - plant with ground cutaway showing extensive underground roots)
+  'root': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Sky Above Ground */}
+      <rect x="16" y="16" width="68" height="30" fill="#e0f2fe" />
+      {/* Green Plant Stem & Leaves Above Ground */}
+      <path d="M50 46 L50 24" stroke="#16a34a" strokeWidth="4" strokeLinecap="round" />
+      <path d="M50 34 C40 30 38 22 46 22 C48 26 50 30 50 34 Z" fill="#22c55e" />
+      <path d="M50 28 C60 24 62 16 54 16 C52 20 50 24 50 28 Z" fill="#22c55e" />
+      {/* Ground Surface Line with Grass Sprigs */}
+      <rect x="16" y="44" width="68" height="4" fill="#15803d" />
+      {/* Underground Earth / Soil Cutaway */}
+      <rect x="16" y="48" width="68" height="40" fill="#451a03" />
+      {/* Soil Texture / Pebbles */}
+      <circle cx="26" cy="60" r="2" fill="#78350f" />
+      <circle cx="74" cy="56" r="2.5" fill="#78350f" />
+      <circle cx="70" cy="76" r="2" fill="#78350f" />
+      <circle cx="30" cy="78" r="1.5" fill="#78350f" />
+      {/* Big Main Taproot */}
+      <path d="M50 46 C50 56 48 68 50 82" stroke="#f59e0b" strokeWidth="6" strokeLinecap="round" fill="none" />
+      {/* Branching Fibrous Lateral Roots */}
+      <path d="M49 52 C38 56 30 64 26 72" stroke="#fbbf24" strokeWidth="3" strokeLinecap="round" fill="none" />
+      <path d="M36 58 C30 64 28 72 32 76" stroke="#fde68a" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+      <path d="M50 54 C62 58 68 64 74 74" stroke="#fbbf24" strokeWidth="3" strokeLinecap="round" fill="none" />
+      <path d="M62 60 C68 66 72 72 68 78" stroke="#fde68a" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+      <path d="M49 66 C42 72 38 78 40 84" stroke="#fbbf24" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+      <path d="M50 68 C58 74 62 78 60 84" stroke="#fbbf24" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+    </svg>
+  ),
+
+  // 25. сливы (plums - two plump deep-purple plums with twig and green leaf)
+  'plums': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Shadow */}
+      <ellipse cx="50" cy="82" rx="32" ry="6" fill="#cbd5e1" opacity="0.6" />
+      {/* Left Plum */}
+      <ellipse cx="40" cy="56" rx="18" ry="22" fill="#581c87" />
+      <ellipse cx="40" cy="56" rx="16" ry="20" fill="#7e22ce" />
+      {/* Plum cleft groove */}
+      <path d="M40 36 C36 46 36 64 40 76" stroke="#3b0764" strokeWidth="2" strokeLinecap="round" fill="none" />
+      {/* Glossy shine */}
+      <path d="M30 46 C28 52 28 60 32 66" stroke="#d8b4fe" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+
+      {/* Right Plum (overlapping slightly) */}
+      <ellipse cx="60" cy="60" rx="17" ry="20" fill="#581c87" />
+      <ellipse cx="60" cy="60" rx="15" ry="18" fill="#9333ea" />
+      {/* Plum cleft groove */}
+      <path d="M60 42 C57 50 57 66 60 76" stroke="#3b0764" strokeWidth="2" strokeLinecap="round" fill="none" />
+      {/* Glossy shine */}
+      <path d="M68 50 C70 56 70 64 68 70" stroke="#e9d5ff" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+
+      {/* Brown Twig Stem Joining Plums */}
+      <path d="M40 38 C44 32 48 28 50 20" stroke="#78350f" strokeWidth="3" strokeLinecap="round" fill="none" />
+      <path d="M60 44 C56 36 52 28 50 20" stroke="#78350f" strokeWidth="3" strokeLinecap="round" fill="none" />
+
+      {/* Big Green Plum Leaf */}
+      <path d="M50 22 C64 16 78 22 80 34 C68 38 56 32 50 22 Z" fill="#15803d" />
+      <path d="M50 22 C64 18 74 24 78 32" stroke="#86efac" strokeWidth="1.5" fill="none" />
+    </svg>
+  ),
+
+  // 26. треугольник (triangle - LARGE, bold, vibrant geometric figure filling the card)
+  'triangle': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-md" fill="none">
+      {/* Large Triangle with rounded corners and rich gradient-style layers */}
+      <polygon
+        points="50,10 92,86 8,86"
+        fill="#0284c7"
+        stroke="#0369a1"
+        strokeWidth="6"
+        strokeLinejoin="round"
+      />
+      <polygon
+        points="50,14 88,82 12,82"
+        fill="#38bdf8"
+        stroke="#0284c7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      {/* Inner highlight for vibrant 3D look */}
+      <polygon
+        points="50,22 82,78 18,78"
+        fill="#0ea5e9"
+        opacity="0.4"
+      />
+      <polygon
+        points="50,20 40,76 22,76"
+        fill="#ffffff"
+        opacity="0.3"
+      />
+    </svg>
+  ),
+};
+
+const RU_ALIASES: Record<string, string> = {
+  'парта': 'desk',
+  'точилка': 'pencil sharpener',
+  'пенал': 'pencil case',
+  'ластик': 'rubber',
+  'клей': 'glue',
+  'фишки': 'counters',
+  'кукла': 'doll',
+  'скакалка': 'skipping rope',
+  'свитер': 'sweater',
+  'рубашка': 'shirt',
+  'куртка': 'jacket',
+  'юбка': 'skirt',
+  'кудрявые волосы': 'curly hair',
+  'темные волосы': 'dark hair',
+  'тёмные волосы': 'dark hair',
+  'длинные волосы': 'long hair',
+  'прямые волосы': 'straight hair',
+  'шкаф для одежды': 'wardrobe',
+  'книжный шкаф': 'bookcase',
+  'стол': 'table',
+  'диванная подушка': 'cushion',
+  'кухня': 'kitchen',
+  'столовая': 'dining room',
+  'сад': 'garden',
+  'корень': 'root',
+  'сливы': 'plums',
+  'треугольник': 'triangle',
+};
+
+export const WordIllustration: React.FC<WordIllustrationProps> = ({
+  word,
+  fallbackEmoji,
+  className = '',
+}) => {
+  if (!word) {
+    return <span className={`select-none ${className}`}>{fallbackEmoji || '✨'}</span>;
+  }
+
+  const enKey = (word.en || '').toLowerCase().trim();
+  const ruKey = (word.ru || '').toLowerCase().trim();
+  const ruKeyNormalized = ruKey.replace(/ё/g, 'е');
+
+  const targetKey =
+    (WORD_SVGS[enKey] && enKey) ||
+    RU_ALIASES[ruKey] ||
+    RU_ALIASES[ruKeyNormalized] ||
+    enKey;
+
+  const customSvg = WORD_SVGS[targetKey];
+
+  if (customSvg) {
+    return (
+      <div className={`w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center select-none ${className}`}>
+        {customSvg}
+      </div>
+    );
+  }
+
+  // Fallback to emoji
+  const emoji = getWordImage(word, fallbackEmoji);
+  return (
+    <span className={`select-none text-5xl sm:text-6xl ${className}`}>
+      {emoji}
+    </span>
+  );
+};
+

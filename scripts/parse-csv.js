@@ -35,6 +35,10 @@ const TOPIC_METADATA = {
   'Garden': { icon: 'Flower2', color: 'emerald', emoji: '🌻' },
   'Building materials': { icon: 'Hammer', color: 'stone', emoji: '🧱' },
   'Actions': { icon: 'Flame', color: 'red', emoji: '⚡' },
+  'Introductions': { icon: 'MessageCircle', color: 'purple', emoji: '👋' },
+  'Pronouns': { icon: 'UserCheck', color: 'blue', emoji: '🗣️' },
+  'Знакомство': { icon: 'MessageCircle', color: 'purple', emoji: '👋' },
+  'Местоимения': { icon: 'UserCheck', color: 'blue', emoji: '🗣️' },
 };
 
 /**
@@ -94,12 +98,24 @@ export function parseDictionaryCsv(csvString) {
       continue;
     }
 
-    const [en, lv, ru, transcription] = columns.map((c) => (c ? c.trim() : ''));
+    let [en, lv, ru, col4, col5] = columns.map((c) => (c ? c.trim() : ''));
 
     // If there's no current topic, this non-empty row is a Topic Header
     if (!currentTopic) {
-      const topicId = slugify(en);
-      const meta = TOPIC_METADATA[en] || {
+      if (!en && ru) {
+        if (ru === 'Знакомство') {
+          en = 'Introductions';
+          lv = lv || 'Iepazīšanās';
+        } else if (ru === 'Местоимения') {
+          en = 'Pronouns';
+          lv = lv || 'Vietniekvārdi';
+        } else {
+          en = ru;
+        }
+      }
+
+      const topicId = slugify(en || 'topic');
+      const meta = TOPIC_METADATA[en] || TOPIC_METADATA[ru] || {
         icon: 'BookOpen',
         color: 'sky',
         emoji: '📚',
@@ -121,12 +137,34 @@ export function parseDictionaryCsv(csvString) {
     } else {
       // This is a word in the current topic
       if (en) {
-        const phTrans = transcription || TRANSCRIPTIONS[en.toLowerCase().trim()] || '';
+        let grade = 1;
+        let phTrans = '';
+
+        if (col4 === '1' || col4 === '2') {
+          grade = parseInt(col4, 10);
+          if (col5) phTrans = col5;
+        } else if (col4 && col4.startsWith('[')) {
+          phTrans = col4;
+          if (col5 === '1' || col5 === '2') {
+            grade = parseInt(col5, 10);
+          }
+        } else if (col4) {
+          const parsed = parseInt(col4, 10);
+          if (!isNaN(parsed) && (parsed === 1 || parsed === 2)) {
+            grade = parsed;
+          }
+        }
+
+        if (!phTrans) {
+          phTrans = TRANSCRIPTIONS[en.toLowerCase().trim()] || '';
+        }
+
         currentTopic.words.push({
           id: String(wordCounter++),
           en,
           lv: lv || '',
           ru: ru || '',
+          grade,
           ...(phTrans ? { transcription: phTrans } : {}),
         });
       }

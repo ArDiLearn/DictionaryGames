@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Volume2, VolumeX, Cloud, Check, Sparkles } from 'lucide-react';
-import { Language, UserStats } from '../types';
+import { Language, UserStats, Grade } from '../types';
 import { translations } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 
 interface HeaderProps {
   language: Language;
   onLanguageChange: (lang: Language) => void;
+  selectedGrade: Grade;
+  onGradeChange: (grade: Grade) => void;
   stats: UserStats;
   totalStars: number;
   isCloudSynced: boolean;
@@ -20,6 +22,8 @@ const AVATARS = ['🦁', '🐱', '🐶', '🐼', '🦊', '🦄', '🚀', '⭐', 
 export const Header: React.FC<HeaderProps> = ({
   language,
   onLanguageChange,
+  selectedGrade,
+  onGradeChange,
   stats,
   totalStars,
   isCloudSynced,
@@ -69,6 +73,41 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Right side controls */}
         <div className="flex items-center gap-1.5 sm:gap-3">
+          {/* Grade Switcher (1st / 2nd Grade) */}
+          <div
+            className="flex bg-amber-100/90 p-1 rounded-2xl border-2 border-amber-300 shadow-sm"
+            title={`${t.gradeSelectorLabel}: ${selectedGrade === 1 ? t.grade1 : t.grade2}`}
+          >
+            <button
+              onClick={() => {
+                onGradeChange(1);
+                sounds.playClick();
+              }}
+              className={`px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+                selectedGrade === 1
+                  ? 'bg-amber-500 text-white shadow-sm scale-105'
+                  : 'text-amber-800 hover:text-amber-950'
+              }`}
+              title={t.grade1}
+            >
+              {t.grade1Short}
+            </button>
+            <button
+              onClick={() => {
+                onGradeChange(2);
+                sounds.playClick();
+              }}
+              className={`px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+                selectedGrade === 2
+                  ? 'bg-amber-500 text-white shadow-sm scale-105'
+                  : 'text-amber-800 hover:text-amber-950'
+              }`}
+              title={t.grade2}
+            >
+              {t.grade2Short}
+            </button>
+          </div>
+
           {/* Total Stars Counter */}
           <div className="flex items-center gap-1 bg-amber-50 border-2 border-amber-300 px-2.5 py-1 rounded-full text-amber-600 font-bold text-sm sm:text-base shadow-sm">
             <span className="text-lg">⭐</span>

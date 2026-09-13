@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import rawWordsData from './data/words.json';
-import { Topic, Language, GameMode, TopicProgress, UserStats } from './types';
+import { Topic, Language, GameMode, TopicProgress, UserStats, Grade } from './types';
 import { Header } from './components/Header';
 import { TopicList } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
@@ -15,6 +15,8 @@ import { PwaInstallPrompt } from './components/PwaInstallPrompt';
 import {
   getStoredLanguage,
   saveStoredLanguage,
+  getStoredGrade,
+  saveStoredGrade,
   loadLocalStats,
   saveLocalStats,
   loadTopicProgress,
@@ -28,6 +30,7 @@ export const App: React.FC = () => {
 
   // App State
   const [language, setLanguage] = useState<Language>(getStoredLanguage());
+  const [selectedGrade, setSelectedGrade] = useState<Grade>(getStoredGrade());
   const [stats, setStats] = useState<UserStats>(loadLocalStats());
   const [topicProgress, setTopicProgress] = useState<Record<string, TopicProgress>>(
     loadTopicProgress()
@@ -36,6 +39,19 @@ export const App: React.FC = () => {
   const [gameMode, setGameMode] = useState<GameMode | null>(null);
   const [isCloudSynced, setIsCloudSynced] = useState<boolean>(false);
   const [isSyncModalOpen, setIsSyncModalOpen] = useState<boolean>(false);
+
+  // Grade filtered topics: Grade 2 includes words from Grade 1 and Grade 2
+  const filteredTopics = useMemo(() => {
+    return topics
+      .map((topic) => ({
+        ...topic,
+        words: topic.words.filter((w) => {
+          const g = w.grade || 1;
+          return selectedGrade === 1 ? g === 1 : (g === 1 || g === 2);
+        }),
+      }))
+      .filter((topic) => topic.words.length > 0);
+  }, [topics, selectedGrade]);
 
   // Celebration state
   const [celebration, setCelebration] = useState<{
@@ -61,6 +77,14 @@ export const App: React.FC = () => {
   const handleLanguageChange = (newLang: Language) => {
     setLanguage(newLang);
     saveStoredLanguage(newLang);
+  };
+
+  const handleGradeChange = (newGrade: Grade) => {
+    setSelectedGrade(newGrade);
+    saveStoredGrade(newGrade);
+    if (selectedTopic) {
+      handleHomeClick();
+    }
   };
 
   const handleUpdateStats = (newStats: UserStats) => {
@@ -120,6 +144,8 @@ export const App: React.FC = () => {
       <Header
         language={language}
         onLanguageChange={handleLanguageChange}
+        selectedGrade={selectedGrade}
+        onGradeChange={handleGradeChange}
         stats={stats}
         totalStars={totalStars}
         isCloudSynced={isCloudSynced}
@@ -133,9 +159,11 @@ export const App: React.FC = () => {
         {/* Screen 1: Topic Catalog */}
         {!selectedTopic && (
           <TopicList
-            topics={topics}
+            topics={filteredTopics}
             language={language}
             topicProgress={topicProgress}
+            selectedGrade={selectedGrade}
+            onGradeChange={handleGradeChange}
             onSelectTopic={(topic) => setSelectedTopic(topic)}
             playerName={stats.playerName}
             avatar={stats.avatar}
@@ -171,7 +199,7 @@ export const App: React.FC = () => {
               <QuizGame
                 key={`${selectedTopic.topic_id}-quiz`}
                 topic={selectedTopic}
-                allTopics={topics}
+                allTopics={filteredTopics}
                 language={language}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}
@@ -205,7 +233,7 @@ export const App: React.FC = () => {
               <AudioQuizGame
                 key={`${selectedTopic.topic_id}-audio`}
                 topic={selectedTopic}
-                allTopics={topics}
+                allTopics={filteredTopics}
                 language={language}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}

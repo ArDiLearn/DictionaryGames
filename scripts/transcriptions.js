@@ -266,7 +266,22 @@ export const TRANSCRIPTIONS = {
   "i can't": "[ aɪ kɑːnt ]",
   "i've got": "[ aɪv ɡɒt ]",
   "i haven't got": "[ aɪ ˈhævnt ɡɒt ]",
-  "they're": "[ ðeə ]",
   "i have": "[ aɪ hæv ]",
-  "i have't": "[ aɪ ˈhævnt ]"
+  "i have't": "[ aɪ ˈhævnt ]",
+  "i like": "[ aɪ laɪk ]",
+  "i don't like": "[ aɪ dəʊnt laɪk ]",
+
+  // Introductions
+  "what's your name?": "[ wɒts jɔː neɪm ]",
+  "how are you?": "[ haʊ ɑː juː ]",
+  "how old you?": "[ haʊ əʊld juː ]",
+  "how old are you?": "[ haʊ əʊld ɑː juː ]",
+  "what colour?": "[ wɒt ˈkʌlə ]",
+  "what's this?": "[ wɒts ðɪs ]",
+
+  // Pronouns
+  "i'm": "[ aɪm ]",
+  "he's": "[ hiːz ]",
+  "she's": "[ ʃiːz ]",
+  "they're": "[ ðeə ]"
 };

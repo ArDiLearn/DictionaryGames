@@ -73,7 +73,7 @@ export const WORD_IMAGES: Record<string, string> = {
   "paper": "📄",
   "circle": "⭕",
   "square": "⬛",
-  "triangle": "🔺",
+  "triangle": "▲",
   "rectangle": "▭",
   "oval": "⬭",
   "mum": "👩",

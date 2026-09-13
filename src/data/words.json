@@ -2,9 +2,9 @@
   {
     "topic_id": "numbers_1_20",
     "topic_name": {
-      "ru": "Числа 1-20",
-      "lv": "Skaitļi 1-20",
-      "en": "Numbers 1-20"
+      "ru": "Числа",
+      "lv": "Skaitļi",
+      "en": "Numbers"
     },
     "icon": "Hash",
     "color": "indigo",

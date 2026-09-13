@@ -64,6 +64,7 @@ export const App: React.FC = () => {
     correct: number;
     total: number;
     stars: number;
+    isRewardDisabled?: boolean;
   } | null>(null);
 
   // Initialize and check cloud sync
@@ -141,6 +142,9 @@ export const App: React.FC = () => {
 
   const handleRecordWordResult = (wordId: string, isCorrect: boolean) => {
     if (!selectedTopic) return;
+    // In flashcards mode, no stars or mastery rewards are recorded
+    if (gameMode === 'flashcards') return;
+
     const { stars: newStars } = recordWordAttempt(
       wordId,
       selectedTopic.topic_id,
@@ -154,6 +158,18 @@ export const App: React.FC = () => {
 
   const handleGameComplete = (correctCount: number, totalCount: number) => {
     if (!selectedTopic) return;
+
+    if (gameMode === 'flashcards') {
+      // Flashcards is a study mode: no reward is granted (no stars added to avatar bank)
+      setCelebration({
+        correct: correctCount,
+        total: totalCount,
+        stars: 0,
+        isRewardDisabled: true,
+      });
+      return;
+    }
+
     const gameStars = correctCount === totalCount ? 3 : correctCount >= Math.ceil(totalCount / 2) ? 2 : 1;
 
     // Add stars to user's piggy bank
@@ -164,6 +180,7 @@ export const App: React.FC = () => {
       correct: correctCount,
       total: totalCount,
       stars: gameStars,
+      isRewardDisabled: false,
     });
   };
 
@@ -313,6 +330,7 @@ export const App: React.FC = () => {
           correctCount={celebration.correct}
           totalCount={celebration.total}
           stars={celebration.stars}
+          isRewardDisabled={celebration.isRewardDisabled}
           onRestart={handleRestartGame}
           onHome={handleHomeClick}
         />

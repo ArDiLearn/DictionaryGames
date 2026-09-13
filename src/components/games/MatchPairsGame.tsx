@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Topic, Language } from '../../types';
 import { speakEnglish } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
-import { translations } from '../../utils/i18n';
+import { translations, getWordsPlural } from '../../utils/i18n';
 import { ArrowLeft } from 'lucide-react';
 
 interface MatchPairsGameProps {
@@ -148,7 +148,7 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
 
         <div className="flex items-center gap-2">
           <div className="px-3 py-1 rounded-2xl bg-emerald-50 border-2 border-emerald-200 text-emerald-700 font-black text-sm">
-            {totalMatched} / {topic.words.length} {t.wordsCount}
+            {totalMatched} / {topic.words.length} {getWordsPlural(topic.words.length, language)}
           </div>
         </div>
       </div>

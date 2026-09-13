@@ -1,6 +1,6 @@
 import React from 'react';
 import { Topic, Language, TopicProgress } from '../types';
-import { translations } from '../utils/i18n';
+import { translations, getWordsPlural } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { CheckCircle2 } from 'lucide-react';
 
@@ -101,7 +101,7 @@ export const TopicCard: React.FC<TopicCardProps> = ({
       <div className="w-full pt-2 border-t-2 border-slate-100">
         <div className="flex items-center justify-between text-xs font-bold text-slate-500 mb-1.5">
           <span>
-            {totalCount} {t.wordsCount}
+            {totalCount} {getWordsPlural(totalCount, language)}
           </span>
           {isAllMastered ? (
             <span className="flex items-center gap-1 text-emerald-600 font-extrabold">

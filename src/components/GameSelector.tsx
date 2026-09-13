@@ -1,6 +1,6 @@
 import React from 'react';
 import { Topic, Language, GameMode, TopicProgress } from '../types';
-import { translations } from '../utils/i18n';
+import { translations, getWordsPlural } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { ArrowLeft, Play, Layers, SpellCheck, Grid, Headphones, CheckCircle2, Sparkles } from 'lucide-react';
 
@@ -105,7 +105,7 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
               {localizedTitle}
             </h1>
             <p className="text-sm sm:text-base font-bold text-slate-400">
-              {topic.topic_name.en} • {topic.words.length} {t.wordsCount}
+              {topic.topic_name.en} • {topic.words.length} {getWordsPlural(topic.words.length, language)}
             </p>
           </div>
         </div>

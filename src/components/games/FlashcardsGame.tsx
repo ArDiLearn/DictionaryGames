@@ -3,6 +3,7 @@ import { Word, Topic, Language } from '../../types';
 import { speakEnglish } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
+import { getWordImage } from '../../utils/wordImages';
 import { Volume2, RotateCw, ArrowLeft } from 'lucide-react';
 
 interface FlashcardsGameProps {
@@ -74,6 +75,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
   if (!currentWord) return null;
 
   const translation = currentWord[language] || currentWord.ru || currentWord.lv;
+  const wordImage = getWordImage(currentWord, topic.emoji);
 
   return (
     <div className="max-w-xl mx-auto px-4 py-4 flex flex-col items-center">
@@ -106,7 +108,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
       {/* Flip Card */}
       <div
         onClick={handleFlip}
-        className="w-full min-h-[300px] sm:min-h-[340px] bg-white rounded-3xl border-4 border-indigo-300 shadow-2xl p-6 flex flex-col items-center justify-between cursor-pointer transform transition-all duration-300 hover:scale-[1.02] active:scale-[0.99] relative overflow-hidden group"
+        className="w-full min-h-[320px] sm:min-h-[360px] bg-white rounded-3xl border-4 border-indigo-300 shadow-2xl p-6 flex flex-col items-center justify-between cursor-pointer transform transition-all duration-300 hover:scale-[1.02] active:scale-[0.99] relative overflow-hidden group"
       >
         <div className="w-full flex justify-between items-center text-slate-400">
           <span className="text-xs font-bold uppercase tracking-wider">
@@ -116,9 +118,13 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
         </div>
 
         {/* Word Display */}
-        <div className="text-center my-auto py-6">
+        <div className="text-center my-auto py-4">
           {!isFlipped ? (
             <div className="flex flex-col items-center">
+              {/* Word Picture */}
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-indigo-50 border-3 border-indigo-200 flex items-center justify-center text-5xl sm:text-6xl shadow-inner mb-4 group-hover:scale-110 transition-transform select-none">
+                {wordImage}
+              </div>
               <h2 className="text-4xl sm:text-5xl font-black text-indigo-600 tracking-tight font-comic">
                 {currentWord.en}
               </h2>
@@ -133,6 +139,10 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
             </div>
           ) : (
             <div className="flex flex-col items-center">
+              {/* Word Picture */}
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-pink-50 border-3 border-pink-200 flex items-center justify-center text-5xl sm:text-6xl shadow-inner mb-4 select-none">
+                {wordImage}
+              </div>
               <h2 className="text-3xl sm:text-4xl font-black text-pink-600 tracking-tight leading-snug">
                 {translation}
               </h2>

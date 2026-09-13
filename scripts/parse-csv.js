@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { TRANSCRIPTIONS } from './transcriptions.js';
+import { WORD_IMAGES } from './word-images.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -165,12 +166,15 @@ export function parseDictionaryCsv(csvString) {
           phTrans = TRANSCRIPTIONS[en.toLowerCase().trim()] || '';
         }
 
+        const image = WORD_IMAGES[en.toLowerCase().trim()] || meta.emoji || '✨';
+
         currentTopic.words.push({
           id: String(wordCounter++),
           en,
           lv: lv || '',
           ru: ru || '',
           grade,
+          image,
           ...(phTrans ? { transcription: phTrans } : {}),
         });
       }

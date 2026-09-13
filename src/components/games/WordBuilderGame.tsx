@@ -31,6 +31,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
   const [selectedTiles, setSelectedTiles] = useState<LetterTile[]>([]);
   const [isChecking, setIsChecking] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [wrongVariants, setWrongVariants] = useState<string[]>([]);
   const [score, setScore] = useState(0);
 
   const currentWord: Word | undefined = topic.words[currentIndex];
@@ -41,6 +42,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
     setSelectedTiles([]);
     setIsChecking(false);
     setIsError(false);
+    setWrongVariants([]);
 
     // Speak word
     speakEnglish(currentWord.en);
@@ -87,6 +89,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
       } else {
         setIsError(true);
         sounds.playWrong();
+        setWrongVariants((prev) => (prev.includes(spelled) ? prev : [...prev, spelled]));
         onRecordResult(currentWord.id, false);
 
         setTimeout(() => {
@@ -99,7 +102,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
           }));
           setAvailableTiles(resetTiles.sort(() => 0.5 - Math.random()));
           setSelectedTiles([]);
-        }, 900);
+        }, 1000);
       }
     }
   };
@@ -210,6 +213,34 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
           )
         )}
       </div>
+
+      {/* Incorrect Variants History (displayed until correct word is spelled) */}
+      {wrongVariants.length > 0 && (
+        <div className="w-full bg-rose-50/90 border-2 border-rose-200 rounded-3xl p-3.5 mb-6 animate-fadeIn shadow-sm">
+          <div className="flex items-center justify-between gap-2 mb-2 px-1">
+            <span className="text-xs font-black text-rose-700 uppercase tracking-wider flex items-center gap-1.5">
+              <span>❌</span>
+              <span>{t.wrongVariantsTitle}</span>
+            </span>
+            <span className="text-xs font-bold text-rose-500 hidden sm:inline">
+              {t.tryAnotherOrder}
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {wrongVariants.map((variant, idx) => (
+              <span
+                key={idx}
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-2xl bg-white border-2 border-rose-300 text-rose-700 font-black text-base sm:text-lg shadow-sm"
+              >
+                <span className="text-xs text-rose-400 font-bold">#{idx + 1}</span>
+                <span className="line-through decoration-rose-500 decoration-2 tracking-wider">
+                  {variant.toUpperCase()}
+                </span>
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Available Letters Pool */}
       <div className="w-full flex flex-wrap items-center justify-center gap-2.5 mb-6">

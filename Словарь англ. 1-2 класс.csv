@@ -1,268 +1,280 @@
-Numbers 1-20,Skaitļi 1-20,Числа 1-20
-one,viens,один
-two,divi,два
-three,trīs,три
-four,četri,четыре
-five,pieci,пять
-six,seši,шесть
-seven,septiņi,семь
-eight,astoņi,восемь
-nine,deviņi,девять
-ten,desmit,десять
-eleven,vienpadsmit,одиннадцать
-twelve,divpadsmit,двенадцать
-thirteen,trīspadsmit,тринадцать
-fourteen,četrpadsmit,четырнадцать
-fifteen,piecpadsmit,пятнадцать
-sixteen,sešpadsmit,шестнадцать
-seventeen,septiņpadsmit,семнадцать
-eighteen,astoņpadsmit,восемнадцать
-nineteen,deviņpadsmit,девятнадцать
-twenty,divdesmit,двадцать
-,,
-Colours,Krāsas,Цвета
-grey,pelēks,Серый
-red,sarkans,Красный
-blue,zils,Синий
-green,zaļš,Зеленый
-pink,rozā,Розовый
-white,balts,Белый
-black,melns,Черный
-purple,violets,Фиолетовый
-orange,oranžš,Оранжевый
-yellow,dzeltens,Желтый
-brown,brūns,Коричневый
-,,
-Days of the week,Nedēļas dienas,Дни недели
-monday,pirmdiena,Понедельник
-tuesday,otrdiena,Вторник
-wednesday,trešdiena,Среда
-thursday,ceturtdiena,Четверг
-friday,piektdiena,Пятница
-saturday,sestdiena,Суббота
-sunday,svētdiena,Воскресенье
-,,
-Months,Mēneši,Месяцы
-january,janvāris,январь
-february,februāris,февраль
-march,marts,март
-april,aprīlis,апрель
-may,maijs,май
-june,jūnijs,июнь
-july,jūlijs,июль
-august,augusts,август
-september,septembris,сентябрь
-october,oktobris,октябрь
-november,novembris,ноябрь
-december,decembris,декабрь
-,,
-Classroom objects,Klases aprīkojums,Оборудование класса
-window,logs,окно
-poster,plakāts,плакат
-bag,soma,портфель
-bin,miskaste,мусорное ведро
-chair,krēsls,стул
-door,durvis,дверь
-cupboard,skapītis,шкафчик
-desk,rakstāmgalds,парта
-book,grāmata,книга
-board,tāfele,доска
-pencil sharpener,asināmais,точилка
-pencil case,penālis,пенал
-ruler,lineāls,линейка
-rubber,dzēšgumija,ластик
-pen,pildspalva,ручка
-pencil,zīmulis,карандаш
-box,kaste,коробка
-glue,līme,клей
-counters,žetoni,фишки
-paper,papīrs,бумага
-circle,aplis,круг
-square,kvadrāts,квадрат
-triangle,trīsstūris,треугольник
-rectangle,taisnstūris,прямоугольник
-oval,ovāls,овал
-,,
-Family,Ģimene,Семья
-mum,mamma,мама
-dad,tētis,папа
-grandma,vecmāmiņa,бабушка
-grandpa,vectētiņš,дедушка
-brother,brālis,брат
-sister,māsa,сестра
-twin,dvīnis,близнец
-uncle,tēvocis,дядя
-auntie,tante,тётя
-cousin,brālēns/māsīca,двоюродный брат/сестра
-baby,mazulis,малыш
-toddler,"bērns, kurš tikko sācis staigāt","малыш, начинающий ходить"
-child,bērns,ребёнок
-teenager,pusaudzis,подросток
-adult,pieaugušais,взрослый
-eldery person,vecs cilvēks,пожилой человек
-he,viņš,он
-she,viņa,она
-,,
-Adjectives,Īpašības vārdi,Прилагательные
-tall,garš,высокий
-short,īss,короткий
-old,vecs,старый
-young,jauns,молодой
-pretty,skaista,красивая
-handsome,skaists,красивый
-big,liels,большой
-small,mazs,маленький
-,,
-Toys,Rotaļlietas,Игрушки
-kite,pūķis,воздушный змей
-scooter,skrejritenis,самокат
-teddy,lācītis,плюшевый мишка
-doll,lelle,кукла
-skipping rope,lecamaukla,скакалка
-skateboard,skrituļdēlis,скейтборд
-ball,bumba,мяч
-yoyo,jojo,йо-йо
-robot,robots,робот
-boat,laiva,лодка
-,,
-Activities,Nodarbes,Занятия
-play football,spēlēt futbolu,играть в футбол
-play tennis,spēlēt tenisu,играть в теннис
-ride a horse,jāt ar zirgu,кататься на лошади
-run,skriet,бегать
-ride a bike,braukt ar velosipēdu,кататься на велосипеде
-rollerblade,skrituļot,кататься на роликах
-,,
-Pets,Mājdzīvnieki,Домашние питомцы
-fish,zivs,рыбка
-snake,čūska,змея
-tortoise,bruņurupucis,черепаха
-rabbit,trusis,кролик
-cat,kaķis,кот
-dog,suns,собака
-spider,zirneklis,паук
-mouse,pele,мышь
-hamster,kāmis,хомяк
-bird,putns,птица
-,,
-Farm animals,Mājdzīvnieki,Фермерские животные
-cow,govs,корова
-chicken,vista,курица
-donkey,ēzelis,осёл
-duck,pīle,утка
-goat,kaza,коза
-sheep,aita,овца
-,,
-Wild animals,Savvaļas dzīvnieki,Дикие животные
-lion,lauva,лев
-deer,briedis,олень
-,,
-Food and drink,Ēdiens un dzērieni,Еда и напитки
-breakfast,brokastis,завтрак
-lunch,pusdienas,обед
-dinner,vakariņas,ужин
-juice,sula,сок,[ ʤuːs ]
-cheese,siers,сыр,[ ʧiːz ]
-meat,gaļa,мясо,[ miːt ]
-pasta,makaroni,макароны,[ ˈpæstə ]
-eggs,olas,яйца,[ eɡz ]
-bread,maize,хлеб,[ bred ]
-fish,zivs,рыба,[ fɪʃ ]
-sandwiches,sviestmaizes,бутерброды,[ sænwɪʤɪz ]
-milk,piens,молоко,[ mɪlk ]
-rice,rīsi,рис,[ raɪs ]
-,,
-Fruit and vegetables,Augļi un dārzeņi,Фрукты и овощи
-apples,āboli,яблоки
-carrots,burkāni,морковь
-tomatoes,tomāti,помидоры
-banana,banāns,банан
-lettuce,salāti,салат
-strawberries,zemenes,клубника
-,,
-Body,Ķermenis,Тело
-head,galva,голова
-legs,kājas,ноги
-tail,aste,хвост
-wings,spārni,крылья
-beak,knābis,клюв
-arms,rokas,руки
-,,
-Face,Seja,Лицо
-eyes,acis,глаза
-ears,ausis,уши
-mouth,mute,рот
-nose,deguns,нос
-glasses,brilles,очки
-,,
-Abilities,Prasmes,Умения
-fly,lidot,летать
-swim,peldēt,плавать
-climb,kāpt,лазить
-jump,lēkt,прыгать
-talk,runāt,разговаривать
-walk,staigāt,ходить
-,,
-Clothes,Apģērbs,Одежда
-hat,cepure,шапка
-shorts,šorti,шорты
-sweater,džemperis,свитер
-shirt,krekls,рубашка
-jacket,jaka,куртка
-skirt,svārki,юбка
-trousers,bikses,брюки
-t-shirt,T-krekls,футболка
-shoes,kurpes,туфли
-socks,zeķes,носки
-,,
-Hair,Mati,Волосы
-blond hair,gaiši mati,светлые волосы
-curly hair,cirtaini mati,кудрявые волосы
-dark hair,tumši mati,тёмные волосы
-long hair,gari mati,длинные волосы
-straight hair,taisni mati,прямые волосы
-,,
-At home,Mājās,Дома
-picture,attēls,картина
-wardrobe,drēbju skapis,шкаф для одежды
-bed,gulta,кровать
-clock,pulkstenis,часы
-bookcase,grāmatplaukts,книжный шкаф
-plant,augs,растение
-television,televizors,телевизор
-table,galds,стол
-sofa,dīvāns,диван
-cushion,spilvens,диванная подушка
-,,
-Rooms,Istabas,Комнаты
-kitchen,virtuve,кухня
-bathroom,vannasistaba,ванная
-bedroom,guļamistaba,спальня
-dining room,ēdamistaba,столовая
-garden,dārzs,сад
-living room,viesistaba,гостиная
-,,
-Garden,Dārzs,Сад
-root,sakne,корень
-flower,zieds/puķe,цветок
-leaves,lapas,листья
-fruit,auglis,фрукт
-honey,medus,мёд
-plums,plūmes,сливы
-insects,kukaiņi,насекомые
-,,
-Building materials,Būvmateriāli,Строительные материалы
-bricks,ķieģeļi,кирпичи
-wood,koks,дерево
-rock,akmens,камень
-mud,dubļi,грязь
-clay,māls,глина
-,,
-Actions,Darbības,Действия
-i can,es varu,я умею
-i can't,es nevaru,я не умею
-i've got,es dabūju,я имею
-i haven't got,еs nedabūju,я не имею
-they're,viņi ir,они
-i have,man ir,у меня есть
-i have't,man nav,у меня нет
+Numbers 1-20,Skaitļi 1-20,Числа 1-20,Класс
+one,viens,один,1
+two,divi,два,1
+three,trīs,три,1
+four,četri,четыре,1
+five,pieci,пять,1
+six,seši,шесть,1
+seven,septiņi,семь,1
+eight,astoņi,восемь,1
+nine,deviņi,девять,1
+ten,desmit,десять,1
+eleven,vienpadsmit,одиннадцать,2
+twelve,divpadsmit,двенадцать,2
+thirteen,trīspadsmit,тринадцать,2
+fourteen,četrpadsmit,четырнадцать,2
+fifteen,piecpadsmit,пятнадцать,2
+sixteen,sešpadsmit,шестнадцать,2
+seventeen,septiņpadsmit,семнадцать,2
+eighteen,astoņpadsmit,восемнадцать,2
+nineteen,deviņpadsmit,девятнадцать,2
+twenty,divdesmit,двадцать,2
+,,,
+Colours,Krāsas,Цвета,
+grey,pelēks,Серый,1
+red,sarkans,Красный,1
+blue,zils,Синий,1
+green,zaļš,Зеленый,1
+pink,rozā,Розовый,1
+white,balts,Белый,1
+black,melns,Черный,1
+purple,violets,Фиолетовый,1
+orange,oranžš,Оранжевый,1
+yellow,dzeltens,Желтый,1
+brown,brūns,Коричневый,1
+,,,
+Days of the week,Nedēļas dienas,Дни недели,
+monday,pirmdiena,Понедельник,2
+tuesday,otrdiena,Вторник,2
+wednesday,trešdiena,Среда,2
+thursday,ceturtdiena,Четверг,2
+friday,piektdiena,Пятница,2
+saturday,sestdiena,Суббота,2
+sunday,svētdiena,Воскресенье,2
+,,,
+Months,Mēneši,Месяцы,
+january,janvāris,январь,2
+february,februāris,февраль,2
+march,marts,март,2
+april,aprīlis,апрель,2
+may,maijs,май,2
+june,jūnijs,июнь,2
+july,jūlijs,июль,2
+august,augusts,август,2
+september,septembris,сентябрь,2
+october,oktobris,октябрь,2
+november,novembris,ноябрь,2
+december,decembris,декабрь,2
+,,,
+Classroom objects,Klases aprīkojums,Оборудование класса,
+window,logs,окно,1
+poster,plakāts,плакат,1
+bag,soma,портфель,1
+bin,miskaste,мусорное ведро,1
+chair,krēsls,стул,1
+door,durvis,дверь,1
+cupboard,skapītis,шкафчик,1
+desk,rakstāmgalds,парта,1
+book,grāmata,книга,1
+board,tāfele,доска,1
+pencil sharpener,asināmais,точилка,1
+pencil case,penālis,пенал,1
+ruler,lineāls,линейка,1
+rubber,dzēšgumija,ластик,1
+pen,pildspalva,ручка,1
+pencil,zīmulis,карандаш,1
+box,kaste,коробка,1
+glue,līme,клей,1
+counters,žetoni,фишки,1
+paper,papīrs,бумага,1
+circle,aplis,круг,1
+square,kvadrāts,квадрат,1
+triangle,trīsstūris,треугольник,1
+rectangle,taisnstūris,прямоугольник,1
+oval,ovāls,овал,1
+,,,
+Family,Ģimene,Семья,
+mum,mamma,мама,1
+dad,tētis,папа,1
+grandma,vecmāmiņa,бабушка,1
+grandpa,vectētiņš,дедушка,1
+brother,brālis,брат,1
+sister,māsa,сестра,1
+twin,dvīnis,близнец,1
+uncle,tēvocis,дядя,1
+auntie,tante,тётя,1
+cousin,brālēns/māsīca,двоюродный брат/сестра,1
+baby,mazulis,малыш,2
+toddler,"bērns, kurš tikko sācis staigāt","малыш, начинающий ходить",2
+child,bērns,ребёнок,2
+teenager,pusaudzis,подросток,2
+adult,pieaugušais,взрослый,2
+eldery person,vecs cilvēks,пожилой человек,2
+,,,
+Adjectives,Īpašības vārdi,Прилагательные,
+tall,garš,высокий,1
+short,īss,короткий,1
+old,vecs,старый,1
+young,jauns,молодой,1
+pretty,skaista,красивая,1
+handsome,skaists,красивый,1
+big,liels,большой,1
+small,mazs,маленький,1
+,,,
+Toys,Rotaļlietas,Игрушки,
+kite,pūķis,воздушный змей,1
+scooter,skrejritenis,самокат,1
+teddy,lācītis,плюшевый мишка,1
+doll,lelle,кукла,1
+skipping rope,lecamaukla,скакалка,1
+skateboard,skrituļdēlis,скейтборд,1
+ball,bumba,мяч,1
+yoyo,jojo,йо-йо,1
+robot,robots,робот,1
+boat,laiva,лодка,1
+,,,
+Activities,Nodarbes,Занятия,
+play football,spēlēt futbolu,играть в футбол,1
+play tennis,spēlēt tenisu,играть в теннис,1
+ride a horse,jāt ar zirgu,кататься на лошади,1
+run,skriet,бегать,1
+ride a bike,braukt ar velosipēdu,кататься на велосипеде,1
+rollerblade,skrituļot,кататься на роликах,1
+,,,
+Pets,Mājdzīvnieki,Домашние питомцы,
+fish,zivs,рыбка,1
+snake,čūska,змея,1
+tortoise,bruņurupucis,черепаха,1
+rabbit,trusis,кролик,1
+cat,kaķis,кот,1
+dog,suns,собака,1
+spider,zirneklis,паук,1
+mouse,pele,мышь,1
+hamster,kāmis,хомяк,1
+bird,putns,птица,1
+,,,
+Farm animals,Mājdzīvnieki,Фермерские животные,
+cow,govs,корова,1
+chicken,vista,курица,1
+donkey,ēzelis,осёл,1
+duck,pīle,утка,1
+goat,kaza,коза,1
+sheep,aita,овца,1
+,,,
+Wild animals,Savvaļas dzīvnieki,Дикие животные,
+lion,lauva,лев,1
+deer,briedis,олень,1
+,,,
+Food and drink,Ēdiens un dzērieni,Еда и напитки,
+breakfast,brokastis,завтрак,2
+lunch,pusdienas,обед,2
+dinner,vakariņas,ужин,2
+juice,sula,сок,2
+cheese,siers,сыр,2
+meat,gaļa,мясо,2
+pasta,makaroni,макароны,2
+eggs,olas,яйца,2
+bread,maize,хлеб,2
+fish,zivs,рыба,2
+sandwiches,sviestmaizes,бутерброды,2
+milk,piens,молоко,2
+rice,rīsi,рис,2
+,,,
+Fruit and vegetables,Augļi un dārzeņi,Фрукты и овощи,
+apples,āboli,яблоки,2
+carrots,burkāni,морковь,2
+tomatoes,tomāti,помидоры,2
+banana,banāns,банан,2
+lettuce,salāti,салат,2
+strawberries,zemenes,клубника,2
+,,,
+Body,Ķermenis,Тело,
+head,galva,голова,2
+legs,kājas,ноги,2
+tail,aste,хвост,2
+wings,spārni,крылья,2
+beak,knābis,клюв,2
+arms,rokas,руки,2
+,,,
+Face,Seja,Лицо,
+eyes,acis,глаза,2
+ears,ausis,уши,2
+mouth,mute,рот,2
+nose,deguns,нос,2
+glasses,brilles,очки,2
+,,,
+Abilities,Prasmes,Умения,
+fly,lidot,летать,2
+swim,peldēt,плавать,2
+climb,kāpt,лазить,2
+jump,lēkt,прыгать,2
+talk,runāt,разговаривать,2
+walk,staigāt,ходить,2
+,,,
+Clothes,Apģērbs,Одежда,
+hat,cepure,шапка,2
+shorts,šorti,шорты,2
+sweater,džemperis,свитер,2
+shirt,krekls,рубашка,2
+jacket,jaka,куртка,2
+skirt,svārki,юбка,2
+trousers,bikses,брюки,2
+t-shirt,T-krekls,футболка,2
+shoes,kurpes,туфли,2
+socks,zeķes,носки,2
+,,,
+Hair,Mati,Волосы,
+blond hair,gaiši mati,светлые волосы,2
+curly hair,cirtaini mati,кудрявые волосы,2
+dark hair,tumši mati,тёмные волосы,2
+long hair,gari mati,длинные волосы,2
+straight hair,taisni mati,прямые волосы,2
+,,,
+At home,Mājās,Дома,
+picture,attēls,картина,2
+wardrobe,drēbju skapis,шкаф для одежды,2
+bed,gulta,кровать,2
+clock,pulkstenis,часы,2
+bookcase,grāmatplaukts,книжный шкаф,2
+plant,augs,растение,2
+television,televizors,телевизор,2
+table,galds,стол,2
+sofa,dīvāns,диван,2
+cushion,spilvens,диванная подушка,2
+,,,
+Rooms,Istabas,Комнаты,
+kitchen,virtuve,кухня,2
+bathroom,vannasistaba,ванная,2
+bedroom,guļamistaba,спальня,2
+dining room,ēdamistaba,столовая,2
+garden,dārzs,сад,2
+living room,viesistaba,гостиная,2
+,,,
+Garden,Dārzs,Сад,
+root,sakne,корень,2
+flower,zieds/puķe,цветок,2
+leaves,lapas,листья,2
+fruit,auglis,фрукт,2
+honey,medus,мёд,2
+plums,plūmes,сливы,2
+insects,kukaiņi,насекомые,2
+,,,
+Building materials,Būvmateriāli,Строительные материалы,
+bricks,ķieģeļi,кирпичи,2
+wood,koks,дерево,2
+rock,akmens,камень,2
+mud,dubļi,грязь,2
+clay,māls,глина,2
+,,,
+Actions,Darbības,Действия,
+i can,es varu,я умею,1
+i can't,es nevaru,я не умею,1
+i've got,es dabūju,я имею,2
+i haven't got,еs nedabūju,я не имею,2
+i have,man ir,у меня есть,1
+i have't,man nav,у меня нет,1
+i like,man patīk,мне нравится,1
+i don't like,man nepatīk,мне не нравится,1
+,,,
+Introductions,Iepazīšanās,Знакомство,
+What's your name?,Kā tevi sauc?,Как тебя зовут?,1
+How are you?,Kā tev klājas?,Как дела?,1
+How old you?,Cik tev gadu?,Сколько тебе лет?,1
+What colour?,Kādā krāsā?,Какого цвета?,1
+What's this?,Kas tas ir?,Что это?,1
+,,,
+Pronouns,Vietniekvārdi,Местоимения,
+i'm,es esmu,я,1
+he's,viņš,он,1
+she's,viņa,она,1
+they're,viņi ir,они,1

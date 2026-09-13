@@ -1,4 +1,5 @@
 export type Language = 'ru' | 'lv';
+export type Grade = 1 | 2;
 
 export interface Word {
   id: string;
@@ -6,6 +7,7 @@ export interface Word {
   lv: string;
   ru: string;
   transcription?: string;
+  grade?: number;
 }
 
 export interface TopicName {

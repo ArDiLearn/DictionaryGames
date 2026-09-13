@@ -42,8 +42,11 @@ export const TopicCard: React.FC<TopicCardProps> = ({
   const colorScheme = COLOR_MAP[topic.color || 'sky'] || COLOR_MAP.sky;
 
   const stars = progress?.stars || 0;
-  const masteredCount = progress?.masteredWordIds?.length || 0;
   const totalCount = topic.words.length;
+  const topicWordIds = new Set(topic.words.map((w) => w.id));
+  const masteredCount = (progress?.masteredWordIds || []).filter((id) =>
+    topicWordIds.has(id)
+  ).length;
   const isAllMastered = totalCount > 0 && masteredCount >= totalCount;
 
   const localizedTitle = topic.topic_name[language] || topic.topic_name.en || topic.topic_id;

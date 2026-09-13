@@ -1,10 +1,11 @@
-import { TopicProgress, WordProgress, UserStats } from '../types';
+import { TopicProgress, WordProgress, UserStats, Grade } from '../types';
 import { getCurrentUser, syncProgressToCloud, fetchProgressFromCloud } from './supabase';
 
 const STATS_KEY = 'wordykids_user_stats';
 const TOPIC_PROGRESS_KEY = 'wordykids_topic_progress';
 const WORD_PROGRESS_KEY = 'wordykids_word_progress';
 const LANG_KEY = 'wordykids_lang';
+const GRADE_KEY = 'wordykids_grade';
 
 export function getStoredLanguage(): 'ru' | 'lv' {
   const lang = localStorage.getItem(LANG_KEY);
@@ -18,6 +19,16 @@ export function getStoredLanguage(): 'ru' | 'lv' {
 
 export function saveStoredLanguage(lang: 'ru' | 'lv') {
   localStorage.setItem(LANG_KEY, lang);
+}
+
+export function getStoredGrade(): Grade {
+  const g = localStorage.getItem(GRADE_KEY);
+  if (g === '2') return 2;
+  return 1;
+}
+
+export function saveStoredGrade(grade: Grade) {
+  localStorage.setItem(GRADE_KEY, String(grade));
 }
 
 export function getDefaultStats(): UserStats {

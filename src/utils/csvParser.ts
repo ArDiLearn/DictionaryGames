@@ -58,11 +58,23 @@ export function parseDictionaryCsv(csvString: string): Topic[] {
       continue;
     }
 
-    const [en, lv, ru, transcription] = columns.map((c) => (c ? c.trim() : ''));
+    let [en, lv, ru, col4, col5] = columns.map((c) => (c ? c.trim() : ''));
 
     // Topic Header
     if (!currentTopic) {
-      const topicId = slugify(en);
+      if (!en && ru) {
+        if (ru === 'Знакомство') {
+          en = 'Introductions';
+          lv = lv || 'Iepazīšanās';
+        } else if (ru === 'Местоимения') {
+          en = 'Pronouns';
+          lv = lv || 'Vietniekvārdi';
+        } else {
+          en = ru;
+        }
+      }
+
+      const topicId = slugify(en || 'topic');
       currentTopic = {
         topic_id: topicId,
         topic_name: {
@@ -79,12 +91,34 @@ export function parseDictionaryCsv(csvString: string): Topic[] {
     } else {
       // Word row
       if (en) {
-        const phTrans = transcription || TRANSCRIPTIONS[en.toLowerCase().trim()] || '';
+        let grade = 1;
+        let phTrans = '';
+
+        if (col4 === '1' || col4 === '2') {
+          grade = parseInt(col4, 10);
+          if (col5) phTrans = col5;
+        } else if (col4 && col4.startsWith('[')) {
+          phTrans = col4;
+          if (col5 === '1' || col5 === '2') {
+            grade = parseInt(col5, 10);
+          }
+        } else if (col4) {
+          const parsed = parseInt(col4, 10);
+          if (!isNaN(parsed) && (parsed === 1 || parsed === 2)) {
+            grade = parsed;
+          }
+        }
+
+        if (!phTrans) {
+          phTrans = TRANSCRIPTIONS[en.toLowerCase().trim()] || '';
+        }
+
         currentTopic.words.push({
           id: String(wordCounter++),
           en,
           lv: lv || '',
           ru: ru || '',
+          grade,
           ...(phTrans ? { transcription: phTrans } : {}),
         });
       }

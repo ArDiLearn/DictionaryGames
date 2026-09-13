@@ -83,6 +83,15 @@ export interface Translations {
   installApp: string;
   installedNotice: string;
   changeAvatar: string;
+  gradeSelectorLabel: string;
+  grade1: string;
+  grade2: string;
+  grade1Short: string;
+  grade2Short: string;
+  gradeTitle1: string;
+  gradeTitle2: string;
+  gradeFilterNotice1: string;
+  gradeFilterNotice2: string;
 }
 
 export const translations: Record<Language, Translations> = {
@@ -169,6 +178,15 @@ export const translations: Record<Language, Translations> = {
     installApp: 'Установить на экран',
     installedNotice: 'Приложение установлено',
     changeAvatar: 'Выбери своего героя',
+    gradeSelectorLabel: 'Класс',
+    grade1: '1 класс',
+    grade2: '2 класс',
+    grade1Short: '1 кл.',
+    grade2Short: '2 кл.',
+    gradeTitle1: '1 класс',
+    gradeTitle2: '1 и 2 класс',
+    gradeFilterNotice1: 'Показаны темы для 1 класса',
+    gradeFilterNotice2: 'Показаны темы для 1 и 2 класса',
   },
   lv: {
     appTitle: 'WordyKids',
@@ -253,5 +271,14 @@ export const translations: Record<Language, Translations> = {
     installApp: 'Instalēt sākuma ekrānā',
     installedNotice: 'Lietotne instalēta',
     changeAvatar: 'Izvēlies savu varoni',
+    gradeSelectorLabel: 'Klase',
+    grade1: '1. klase',
+    grade2: '2. klase',
+    grade1Short: '1. kl.',
+    grade2Short: '2. kl.',
+    gradeTitle1: '1. klase',
+    gradeTitle2: '1. un 2. klase',
+    gradeFilterNotice1: 'Rādītās tēmas 1. klasei',
+    gradeFilterNotice2: 'Rādītās tēmas 1. un 2. klasei',
   },
 };

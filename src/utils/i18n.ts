@@ -93,12 +93,16 @@ export interface Translations {
   gradeSelectorLabel: string;
   grade1: string;
   grade2: string;
+  gradeAll: string;
   grade1Short: string;
   grade2Short: string;
+  gradeAllShort: string;
   gradeTitle1: string;
   gradeTitle2: string;
+  gradeTitleAll: string;
   gradeFilterNotice1: string;
   gradeFilterNotice2: string;
+  gradeFilterNoticeAll: string;
 }
 
 export const translations: Record<Language, Translations> = {
@@ -195,12 +199,16 @@ export const translations: Record<Language, Translations> = {
     gradeSelectorLabel: 'Класс',
     grade1: '1 класс',
     grade2: '2 класс',
+    gradeAll: 'Все классы',
     grade1Short: '1 кл.',
     grade2Short: '2 кл.',
-    gradeTitle1: '1 класс',
-    gradeTitle2: '1 и 2 класс',
-    gradeFilterNotice1: 'Показаны темы для 1 класса',
-    gradeFilterNotice2: 'Показаны темы для 1 и 2 класса',
+    gradeAllShort: 'Все',
+    gradeTitle1: 'Только 1 класс',
+    gradeTitle2: 'Только 2 класс',
+    gradeTitleAll: '1 и 2 классы (Все)',
+    gradeFilterNotice1: 'Показаны темы только для 1 класса',
+    gradeFilterNotice2: 'Показаны темы только для 2 класса',
+    gradeFilterNoticeAll: 'Показаны темы для 1 и 2 классов (Все)',
   },
   lv: {
     appTitle: 'WordyKids',
@@ -295,11 +303,15 @@ export const translations: Record<Language, Translations> = {
     gradeSelectorLabel: 'Klase',
     grade1: '1. klase',
     grade2: '2. klase',
+    gradeAll: 'Visas klases',
     grade1Short: '1. kl.',
     grade2Short: '2. kl.',
-    gradeTitle1: '1. klase',
-    gradeTitle2: '1. un 2. klase',
-    gradeFilterNotice1: 'Rādītās tēmas 1. klasei',
-    gradeFilterNotice2: 'Rādītās tēmas 1. un 2. klasei',
+    gradeAllShort: 'Visi',
+    gradeTitle1: 'Tikai 1. klase',
+    gradeTitle2: 'Tikai 2. klase',
+    gradeTitleAll: '1. un 2. klase (Visi)',
+    gradeFilterNotice1: 'Rādītās tēmas tikai 1. klasei',
+    gradeFilterNotice2: 'Rādītās tēmas tikai 2. klasei',
+    gradeFilterNoticeAll: 'Rādītās tēmas 1. un 2. klasei (Visi)',
   },
 };

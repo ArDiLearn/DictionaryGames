@@ -10,6 +10,7 @@ interface CelebrationModalProps {
   correctCount: number;
   totalCount: number;
   stars: number;
+  isRewardDisabled?: boolean;
   onRestart: () => void;
   onHome: () => void;
 }
@@ -19,13 +20,18 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
   correctCount,
   totalCount,
   stars,
+  isRewardDisabled,
   onRestart,
   onHome,
 }) => {
   const t = translations[language];
 
   useEffect(() => {
-    sounds.playFanfare();
+    if (isRewardDisabled) {
+      sounds.playCorrect();
+    } else {
+      sounds.playFanfare();
+    }
 
     // Fire Confetti Cannon
     const duration = 2.5 * 1000;
@@ -50,7 +56,7 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
     }, 300);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isRewardDisabled]);
 
   const percentage = Math.round((correctCount / Math.max(1, totalCount)) * 100);
   const headline =
@@ -64,48 +70,59 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
         <div className="absolute -bottom-16 -right-16 w-32 h-32 bg-pink-200 rounded-full blur-2xl opacity-60 pointer-events-none" />
 
         {/* Mascot / Trophy */}
-        <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-3xl bg-gradient-to-tr from-amber-300 to-yellow-400 border-4 border-amber-200 flex items-center justify-center text-5xl sm:text-6xl shadow-lg mb-4 animate-bounce">
-          🏆
+        <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-3xl bg-gradient-to-tr from-indigo-200 to-purple-300 border-4 border-indigo-200 flex items-center justify-center text-5xl sm:text-6xl shadow-lg mb-4 animate-bounce">
+          {isRewardDisabled ? '🎴' : '🏆'}
         </div>
 
-        <div className="flex items-center justify-center gap-1 text-amber-500 mb-1">
+        <div className="flex items-center justify-center gap-1 text-indigo-500 mb-1">
           <Sparkles className="w-5 h-5" />
           <span className="text-xs font-black uppercase tracking-wider">
-            {t.roundComplete}
+            {isRewardDisabled ? t.flashcardsComplete : t.roundComplete}
           </span>
           <Sparkles className="w-5 h-5" />
         </div>
 
         <h2 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight mb-3 font-comic">
-          {headline}
+          {isRewardDisabled ? t.flashcardsFinishedHeadline : headline}
         </h2>
 
-        {/* Stars */}
-        <div className="flex items-center justify-center gap-2 mb-4">
-          {[1, 2, 3].map((starIndex) => (
-            <span
-              key={starIndex}
-              className={`text-4xl sm:text-5xl transition-all duration-300 ${
-                starIndex <= stars
-                  ? 'text-amber-400 scale-110 drop-shadow-md'
-                  : 'text-slate-200 scale-90'
-              }`}
-            >
-              ★
-            </span>
-          ))}
-        </div>
-
-        {/* Stars Earned pill for Avatar Bank */}
-        <div className="flex flex-col items-center gap-1.5 mb-6">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl px-4 py-2 border-2 border-amber-300 shadow-xs">
-            <span className="text-xl animate-bounce">⭐</span>
-            <span className="text-sm sm:text-base font-black text-amber-900">
-              +{stars} {t.starsAddedToBank}
-            </span>
+        {/* Stars - only shown when reward is enabled */}
+        {!isRewardDisabled && (
+          <div className="flex items-center justify-center gap-2 mb-4">
+            {[1, 2, 3].map((starIndex) => (
+              <span
+                key={starIndex}
+                className={`text-4xl sm:text-5xl transition-all duration-300 ${
+                  starIndex <= stars
+                    ? 'text-amber-400 scale-110 drop-shadow-md'
+                    : 'text-slate-200 scale-90'
+                }`}
+              >
+                ★
+              </span>
+            ))}
           </div>
-          <div className="text-xs font-bold text-slate-500">
-            {t.score}: {correctCount} / {totalCount} ({percentage}%)
+        )}
+
+        {/* Reward pill or Flashcards note */}
+        <div className="flex flex-col items-center gap-1.5 mb-6">
+          {!isRewardDisabled ? (
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl px-4 py-2 border-2 border-amber-300 shadow-xs">
+              <span className="text-xl animate-bounce">⭐</span>
+              <span className="text-sm sm:text-base font-black text-amber-900">
+                +{stars} {t.starsAddedToBank}
+              </span>
+            </div>
+          ) : (
+            <div className="inline-flex items-center gap-2 bg-indigo-50 rounded-2xl px-4 py-2.5 border-2 border-indigo-200 text-indigo-800 text-xs sm:text-sm font-bold shadow-xs max-w-xs">
+              <span className="text-base">💡</span>
+              <span>{t.flashcardsNoRewardHint}</span>
+            </div>
+          )}
+          <div className="text-xs font-bold text-slate-500 mt-1">
+            {isRewardDisabled
+              ? `${t.cardsViewed}: ${totalCount} / ${totalCount}`
+              : `${t.score}: ${correctCount} / ${totalCount} (${percentage}%)`}
           </div>
         </div>
 

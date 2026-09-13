@@ -130,6 +130,10 @@ export interface Translations {
   starsAddedToBank: string;
   shopNotice: string;
   congratsAvatarPurchased: string;
+  flashcardsComplete: string;
+  flashcardsFinishedHeadline: string;
+  flashcardsNoRewardHint: string;
+  cardsViewed: string;
 }
 
 export const translations: Record<Language, Translations> = {
@@ -263,6 +267,10 @@ export const translations: Record<Language, Translations> = {
     starsAddedToBank: 'в копилку аватаров!',
     shopNotice: 'Играй в игры и учи слова, чтобы пополнять копилку звёздочек и открывать новых героев!',
     congratsAvatarPurchased: 'Ура! Новый аватар разблокирован!',
+    flashcardsComplete: 'Карточки пройдены!',
+    flashcardsFinishedHeadline: 'Отличная тренировка!',
+    flashcardsNoRewardHint: 'В режиме карточек звёзды не начисляются. Играй в игры, чтобы заработать звёзды!',
+    cardsViewed: 'Карточек повторено',
   },
   lv: {
     appTitle: 'WordyKids',
@@ -394,6 +402,10 @@ export const translations: Record<Language, Translations> = {
     starsAddedToBank: 'avataru krājkasītē!',
     shopNotice: 'Spēlē spēles un mācies vārdus, lai pelnītu zvaigznītes un atbloķētu jaunus varoņus!',
     congratsAvatarPurchased: 'Urā! Jauns avatars atbloķēts!',
+    flashcardsComplete: 'Kartītes pabeigtas!',
+    flashcardsFinishedHeadline: 'Lielisks treniņš!',
+    flashcardsNoRewardHint: 'Kartīšu režīmā zvaigznes netiek piešķirtas. Spēlē spēles, lai nopelnītu zvaigznes!',
+    cardsViewed: 'Atkārtotās kartītes',
   },
 };
 

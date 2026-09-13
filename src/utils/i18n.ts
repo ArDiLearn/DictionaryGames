@@ -109,6 +109,23 @@ export interface Translations {
   gradeFilterNotice2: string;
   gradeFilterNotice3: string;
   gradeFilterNoticeAll: string;
+  // Avatar Shop
+  avatarShopTitle: string;
+  avatarShopSubtitle: string;
+  myStarBalance: string;
+  totalEarnedStarsLabel: string;
+  buyFor: string;
+  equipped: string;
+  equip: string;
+  freeStarter: string;
+  notEnoughStars: string;
+  categoryAll: string;
+  categoryStarter: string;
+  categoryAnimals: string;
+  categoryMagic: string;
+  categoryHeroes: string;
+  shopNotice: string;
+  congratsAvatarPurchased: string;
 }
 
 export const translations: Record<Language, Translations> = {
@@ -221,6 +238,23 @@ export const translations: Record<Language, Translations> = {
     gradeFilterNotice2: 'Показаны темы только для 2 класса',
     gradeFilterNotice3: 'Показаны темы только для 3 класса',
     gradeFilterNoticeAll: 'Показаны темы для всех классов (1, 2 и 3)',
+    // Avatar Shop
+    avatarShopTitle: 'Магазин аватаров',
+    avatarShopSubtitle: 'Выбирай и покупай новых героев за звёздочки!',
+    myStarBalance: 'Твой баланс',
+    totalEarnedStarsLabel: 'Всего звёзд заработано',
+    buyFor: 'Купить за',
+    equipped: 'Надет',
+    equip: 'Выбрать',
+    freeStarter: 'Бесплатно',
+    notEnoughStars: 'Не хватает звёзд',
+    categoryAll: 'Все',
+    categoryStarter: 'Стартовые',
+    categoryAnimals: 'Зверята',
+    categoryMagic: 'Волшебные',
+    categoryHeroes: 'Герои',
+    shopNotice: 'Учи слова и проходи темы на 3 звезды, чтобы открывать новых персонажей!',
+    congratsAvatarPurchased: 'Ура! Новый аватар разблокирован!',
   },
   lv: {
     appTitle: 'WordyKids',
@@ -331,6 +365,23 @@ export const translations: Record<Language, Translations> = {
     gradeFilterNotice2: 'Rādītās tēmas tikai 2. klasei',
     gradeFilterNotice3: 'Rādītās tēmas tikai 3. klasei',
     gradeFilterNoticeAll: 'Rādītās tēmas visām klasēm (1., 2. un 3.)',
+    // Avatar Shop
+    avatarShopTitle: 'Avataru veikals',
+    avatarShopSubtitle: 'Izvēlies un pērc jaunus varoņus par zvaigznītēm!',
+    myStarBalance: 'Tavs atlikums',
+    totalEarnedStarsLabel: 'Kopā nopelnītas zvaigznes',
+    buyFor: 'Pirkt par',
+    equipped: 'Izvēlēts',
+    equip: 'Izvēlēties',
+    freeStarter: 'Bezmaksas',
+    notEnoughStars: 'Trūkst zvaigžņu',
+    categoryAll: 'Visi',
+    categoryStarter: 'Sākuma',
+    categoryAnimals: 'Dzīvnieciņi',
+    categoryMagic: 'Burvju',
+    categoryHeroes: 'Varoņi',
+    shopNotice: 'Mācies vārdus un pabeidz tēmas ar 3 zvaigznēm, lai atbloķētu jaunus varoņus!',
+    congratsAvatarPurchased: 'Urā! Jauns avatars atbloķēts!',
   },
 };
 

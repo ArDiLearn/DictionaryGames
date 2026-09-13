@@ -1,5 +1,6 @@
 import { TopicProgress, WordProgress, UserStats, Grade, GradeFilter } from '../types';
 import { getCurrentUser, syncProgressToCloud, fetchProgressFromCloud } from './supabase';
+import { DEFAULT_UNLOCKED_AVATARS } from '../data/avatars';
 
 const STATS_KEY = 'wordykids_user_stats';
 const TOPIC_PROGRESS_KEY = 'wordykids_topic_progress';
@@ -76,6 +77,8 @@ export function getDefaultStats(): UserStats {
     speechRate: 0.85,
     streak: 1,
     lastActiveDate: today,
+    unlockedAvatars: DEFAULT_UNLOCKED_AVATARS,
+    spentStars: 0,
   };
 }
 
@@ -85,6 +88,14 @@ export function loadLocalStats(): UserStats {
     if (!raw) return getDefaultStats();
     const stats: UserStats = JSON.parse(raw);
     
+    // Ensure unlockedAvatars and spentStars exist
+    if (!stats.unlockedAvatars || stats.unlockedAvatars.length === 0) {
+      stats.unlockedAvatars = DEFAULT_UNLOCKED_AVATARS;
+    }
+    if (stats.spentStars === undefined || typeof stats.spentStars !== 'number') {
+      stats.spentStars = 0;
+    }
+
     // Check streak
     const today = new Date().toISOString().split('T')[0];
     if (stats.lastActiveDate !== today) {
@@ -101,6 +112,33 @@ export function loadLocalStats(): UserStats {
   } catch {
     return getDefaultStats();
   }
+}
+
+export function purchaseAvatar(
+  avatarEmoji: string,
+  price: number,
+  totalStarsEarned: number
+): { success: boolean; newStats: UserStats } {
+  const currentStats = loadLocalStats();
+  const spentStars = currentStats.spentStars || 0;
+  const availableStars = Math.max(0, totalStarsEarned - spentStars);
+
+  if (availableStars < price) {
+    return { success: false, newStats: currentStats };
+  }
+
+  const unlocked = new Set(currentStats.unlockedAvatars || DEFAULT_UNLOCKED_AVATARS);
+  unlocked.add(avatarEmoji);
+
+  const newStats: UserStats = {
+    ...currentStats,
+    spentStars: spentStars + price,
+    unlockedAvatars: Array.from(unlocked),
+    avatar: avatarEmoji, // auto-equip newly purchased avatar
+  };
+
+  saveLocalStats(newStats);
+  return { success: true, newStats };
 }
 
 export function saveLocalStats(stats: UserStats) {

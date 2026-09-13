@@ -16,7 +16,7 @@ interface AvatarShopModalProps {
   onSelectAvatar: (avatarEmoji: string) => void;
 }
 
-type CategoryFilter = 'all' | 'starter' | 'animals' | 'magic' | 'heroes';
+type CategoryFilter = 'all' | 'starter' | 'simple' | 'medium' | 'unique';
 
 export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
   isOpen,
@@ -40,9 +40,9 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
   const categories: { id: CategoryFilter; label: string }[] = [
     { id: 'all', label: t.categoryAll },
     { id: 'starter', label: t.categoryStarter },
-    { id: 'animals', label: t.categoryAnimals },
-    { id: 'magic', label: t.categoryMagic },
-    { id: 'heroes', label: t.categoryHeroes },
+    { id: 'simple', label: t.categorySimple },
+    { id: 'medium', label: t.categoryMedium },
+    { id: 'unique', label: t.categoryUnique },
   ];
 
   const filteredItems = AVATAR_SHOP_ITEMS.filter((item) => {
@@ -176,65 +176,97 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
             const canAfford = starBalance >= item.price;
             const name = item.name[language] || item.name.ru;
 
-            return (
-              <div
-                key={item.id}
-                className={`relative rounded-3xl p-3 sm:p-4 flex flex-col items-center justify-between text-center transition-all ${
-                  isEquipped
-                    ? 'bg-amber-50 border-3 border-amber-400 shadow-md scale-[1.02]'
-                    : isUnlocked
-                    ? 'bg-white border-2 border-slate-200 hover:border-amber-300 shadow-sm'
-                    : 'bg-slate-50/80 border-2 border-slate-200/80'
-                }`}
-              >
-                {/* Active checkmark */}
-                {isEquipped && (
-                  <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-sm">
-                    <Check className="w-4 h-4 stroke-[3]" />
+              const isUnique = item.category === 'unique';
+
+              return (
+                <div
+                  key={item.id}
+                  className={`relative rounded-3xl p-3 sm:p-4 flex flex-col items-center justify-between text-center transition-all ${
+                    isEquipped
+                      ? 'bg-amber-50 border-3 border-amber-400 shadow-md scale-[1.02]'
+                      : isUnique
+                      ? 'bg-gradient-to-b from-amber-50/70 via-white to-yellow-50/40 border-2 border-amber-300 shadow-sm hover:border-amber-400'
+                      : isUnlocked
+                      ? 'bg-white border-2 border-slate-200 hover:border-amber-300 shadow-sm'
+                      : 'bg-slate-50/80 border-2 border-slate-200/80'
+                  }`}
+                >
+                  {/* Active checkmark */}
+                  {isEquipped && (
+                    <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-sm">
+                      <Check className="w-4 h-4 stroke-[3]" />
+                    </div>
+                  )}
+
+                  {/* Tier Badge */}
+                  <div className="mb-1">
+                    {item.category === 'unique' && (
+                      <span className="text-[10px] font-black text-amber-900 bg-amber-100 border border-amber-300 px-2 py-0.5 rounded-full shadow-xs">
+                        {t.tierBadgeUnique}
+                      </span>
+                    )}
+                    {item.category === 'medium' && (
+                      <span className="text-[10px] font-black text-indigo-900 bg-indigo-100 border border-indigo-200 px-2 py-0.5 rounded-full">
+                        {t.tierBadgeMedium}
+                      </span>
+                    )}
+                    {item.category === 'simple' && (
+                      <span className="text-[10px] font-black text-emerald-900 bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded-full">
+                        {t.tierBadgeSimple}
+                      </span>
+                    )}
+                    {item.category === 'starter' && (
+                      <span className="text-[10px] font-black text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-full">
+                        {t.freeStarter}
+                      </span>
+                    )}
                   </div>
-                )}
 
-                {/* Avatar Emoji */}
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white shadow-inner border border-slate-100 flex items-center justify-center text-4xl sm:text-5xl mb-2 hover:scale-110 transition-transform select-none">
-                  {item.emoji}
+                  {/* Avatar Emoji */}
+                  <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white shadow-inner border flex items-center justify-center text-4xl sm:text-5xl mb-2 hover:scale-110 transition-transform select-none ${
+                    isUnique ? 'border-amber-200' : 'border-slate-100'
+                  }`}>
+                    {item.emoji}
+                  </div>
+
+                  {/* Avatar Name */}
+                  <h3 className="text-xs sm:text-sm font-black text-slate-800 mb-2 truncate w-full">
+                    {name}
+                  </h3>
+
+                  {/* Action button */}
+                  {isEquipped ? (
+                    <span className="w-full py-1.5 rounded-xl bg-emerald-100 text-emerald-800 font-extrabold text-xs">
+                      {t.equipped}
+                    </span>
+                  ) : isUnlocked ? (
+                    <button
+                      onClick={() => handleEquip(item)}
+                      className="w-full py-1.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-black text-xs shadow-sm hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                    >
+                      {t.equip}
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleBuy(item)}
+                      disabled={!canAfford}
+                      className={`w-full py-1.5 rounded-xl font-black text-xs flex items-center justify-center gap-1 transition-all ${
+                        canAfford
+                          ? isUnique
+                            ? 'btn-3d bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 border-b-2 border-amber-600 text-amber-950 shadow-md cursor-pointer hover:scale-105 active:scale-95'
+                            : 'btn-3d bg-amber-400 hover:bg-amber-300 border-b-2 border-amber-600 text-amber-950 shadow-md cursor-pointer hover:scale-105 active:scale-95'
+                          : 'bg-slate-200 text-slate-400 border border-slate-300 cursor-not-allowed'
+                      }`}
+                      title={canAfford ? '' : `${t.notEnoughStars} (ещё ${item.price - starBalance} ⭐)`}
+                    >
+                      {!canAfford && <Lock className="w-3.5 h-3.5" />}
+                      <span>⭐ {item.price}</span>
+                    </button>
+                  )}
                 </div>
-
-                {/* Avatar Name */}
-                <h3 className="text-xs sm:text-sm font-black text-slate-800 mb-2 truncate w-full">
-                  {name}
-                </h3>
-
-                {/* Action button */}
-                {isEquipped ? (
-                  <span className="w-full py-1.5 rounded-xl bg-emerald-100 text-emerald-800 font-extrabold text-xs">
-                    {t.equipped}
-                  </span>
-                ) : isUnlocked ? (
-                  <button
-                    onClick={() => handleEquip(item)}
-                    className="w-full py-1.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-black text-xs shadow-sm hover:scale-105 active:scale-95 transition-all cursor-pointer"
-                  >
-                    {t.equip}
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => handleBuy(item)}
-                    disabled={!canAfford}
-                    className={`w-full py-1.5 rounded-xl font-black text-xs flex items-center justify-center gap-1 transition-all ${
-                      canAfford
-                        ? 'btn-3d bg-amber-400 hover:bg-amber-300 border-b-2 border-amber-600 text-amber-950 shadow-md cursor-pointer hover:scale-105 active:scale-95'
-                        : 'bg-slate-200 text-slate-400 border border-slate-300 cursor-not-allowed'
-                    }`}
-                    title={canAfford ? '' : `${t.notEnoughStars} (ещё ${item.price - starBalance} ⭐)`}
-                  >
-                    {!canAfford && <Lock className="w-3.5 h-3.5" />}
-                    <span>⭐ {item.price}</span>
-                  </button>
-                )}
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
         {/* Footer info note */}
         <div className="px-5 py-2.5 bg-slate-100 border-t border-slate-200 text-center text-xs text-slate-500 font-medium">

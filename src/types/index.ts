@@ -53,6 +53,7 @@ export interface UserStats {
   lastActiveDate: string;
   unlockedAvatars?: string[];
   spentStars?: number;
+  totalStarsEarned?: number;
 }
 
 export interface AvatarShopItem {
@@ -63,5 +64,5 @@ export interface AvatarShopItem {
     lv: string;
   };
   price: number;
-  category: 'starter' | 'animals' | 'magic' | 'heroes';
+  category: 'starter' | 'simple' | 'medium' | 'unique';
 }

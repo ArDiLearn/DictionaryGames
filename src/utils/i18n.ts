@@ -121,9 +121,13 @@ export interface Translations {
   notEnoughStars: string;
   categoryAll: string;
   categoryStarter: string;
-  categoryAnimals: string;
-  categoryMagic: string;
-  categoryHeroes: string;
+  categorySimple: string;
+  categoryMedium: string;
+  categoryUnique: string;
+  tierBadgeSimple: string;
+  tierBadgeMedium: string;
+  tierBadgeUnique: string;
+  starsAddedToBank: string;
   shopNotice: string;
   congratsAvatarPurchased: string;
 }
@@ -250,10 +254,14 @@ export const translations: Record<Language, Translations> = {
     notEnoughStars: 'Не хватает звёзд',
     categoryAll: 'Все',
     categoryStarter: 'Стартовые',
-    categoryAnimals: 'Зверята',
-    categoryMagic: 'Волшебные',
-    categoryHeroes: 'Герои',
-    shopNotice: 'Учи слова и проходи темы на 3 звезды, чтобы открывать новых персонажей!',
+    categorySimple: 'Простые (10 ⭐)',
+    categoryMedium: 'Средние (50 ⭐)',
+    categoryUnique: 'Уникальные (100 ⭐)',
+    tierBadgeSimple: 'Простой',
+    tierBadgeMedium: 'Средний',
+    tierBadgeUnique: '✨ Уникальный',
+    starsAddedToBank: 'в копилку аватаров!',
+    shopNotice: 'Играй в игры и учи слова, чтобы пополнять копилку звёздочек и открывать новых героев!',
     congratsAvatarPurchased: 'Ура! Новый аватар разблокирован!',
   },
   lv: {
@@ -377,10 +385,14 @@ export const translations: Record<Language, Translations> = {
     notEnoughStars: 'Trūkst zvaigžņu',
     categoryAll: 'Visi',
     categoryStarter: 'Sākuma',
-    categoryAnimals: 'Dzīvnieciņi',
-    categoryMagic: 'Burvju',
-    categoryHeroes: 'Varoņi',
-    shopNotice: 'Mācies vārdus un pabeidz tēmas ar 3 zvaigznēm, lai atbloķētu jaunus varoņus!',
+    categorySimple: 'Vienkāršie (10 ⭐)',
+    categoryMedium: 'Vidējie (50 ⭐)',
+    categoryUnique: 'Unikālie (100 ⭐)',
+    tierBadgeSimple: 'Vienkāršs',
+    tierBadgeMedium: 'Vidējs',
+    tierBadgeUnique: '✨ Unikāls',
+    starsAddedToBank: 'avataru krājkasītē!',
+    shopNotice: 'Spēlē spēles un mācies vārdus, lai pelnītu zvaigznītes un atbloķētu jaunus varoņus!',
     congratsAvatarPurchased: 'Urā! Jauns avatars atbloķēts!',
   },
 };

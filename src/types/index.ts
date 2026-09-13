@@ -51,4 +51,17 @@ export interface UserStats {
   speechRate: number; // 0.8 to 1.0
   streak: number;
   lastActiveDate: string;
+  unlockedAvatars?: string[];
+  spentStars?: number;
+}
+
+export interface AvatarShopItem {
+  id: string;
+  emoji: string;
+  name: {
+    ru: string;
+    lv: string;
+  };
+  price: number;
+  category: 'starter' | 'animals' | 'magic' | 'heroes';
 }

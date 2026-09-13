@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Topic, Language, TopicProgress, Grade } from '../types';
 import { TopicCard } from './TopicCard';
 import { translations, getGradeFilterInfo } from '../utils/i18n';
+import { sounds } from '../utils/soundEffects';
 import { Search, Sparkles } from 'lucide-react';
 
 interface TopicListProps {
@@ -14,6 +15,7 @@ interface TopicListProps {
   onSelectTopic: (topic: Topic) => void;
   playerName: string;
   avatar: string;
+  onOpenShop?: () => void;
 }
 
 export const TopicList: React.FC<TopicListProps> = ({
@@ -26,6 +28,7 @@ export const TopicList: React.FC<TopicListProps> = ({
   onSelectTopic,
   playerName,
   avatar,
+  onOpenShop,
 }) => {
   const t = translations[language];
   const [searchQuery, setSearchQuery] = useState('');
@@ -62,9 +65,22 @@ export const TopicList: React.FC<TopicListProps> = ({
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-5 sm:p-7 text-white shadow-xl mb-6">
         <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-white/20 backdrop-blur-md border-2 border-white/40 flex items-center justify-center text-4xl sm:text-5xl shadow-inner">
-              {avatar}
-            </div>
+            <button
+              onClick={() => {
+                if (onOpenShop) {
+                  sounds.playClick();
+                  onOpenShop();
+                }
+              }}
+              className="relative group w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-white/20 hover:bg-white/30 backdrop-blur-md border-2 border-white/40 flex items-center justify-center text-4xl sm:text-5xl shadow-inner transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+              title={t.avatarShopTitle}
+            >
+              <span>{avatar}</span>
+              <span className="absolute -bottom-1.5 -right-1.5 bg-amber-400 text-amber-950 font-black text-[10px] px-1.5 py-0.5 rounded-full shadow-md border border-white flex items-center gap-0.5">
+                <span>🛍️</span>
+                <span className="hidden sm:inline">{t.avatarShopTitle}</span>
+              </span>
+            </button>
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-2xl sm:text-3xl font-black font-comic tracking-tight">

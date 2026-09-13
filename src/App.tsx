@@ -13,6 +13,7 @@ import { AudioQuizGame } from './components/games/AudioQuizGame';
 import { CelebrationModal } from './components/CelebrationModal';
 import { AuthModal } from './components/AuthModal';
 import { PwaInstallPrompt } from './components/PwaInstallPrompt';
+import { AvatarShopModal } from './components/AvatarShopModal';
 import {
   getStoredLanguage,
   saveStoredLanguage,
@@ -23,6 +24,7 @@ import {
   loadTopicProgress,
   recordWordAttempt,
   mergeWithCloud,
+  purchaseAvatar,
 } from './services/storage';
 import { getCurrentUser } from './services/supabase';
 
@@ -40,6 +42,7 @@ export const App: React.FC = () => {
   const [gameMode, setGameMode] = useState<GameMode | null>(null);
   const [isCloudSynced, setIsCloudSynced] = useState<boolean>(false);
   const [isSyncModalOpen, setIsSyncModalOpen] = useState<boolean>(false);
+  const [isAvatarShopOpen, setIsAvatarShopOpen] = useState<boolean>(false);
 
   // Grade filtered topics: supports multi-selection of grades (e.g. [1, 2], [2, 3], [1], [2], [3], [1, 2, 3])
   const filteredTopics = useMemo(() => {
@@ -107,7 +110,29 @@ export const App: React.FC = () => {
     }
   };
 
+  const totalStars = useMemo(() => {
+    return Object.values(topicProgress).reduce(
+      (sum, tp) => sum + (tp.stars || 0),
+      0
+    );
+  }, [topicProgress]);
+
+  const availableStars = Math.max(0, totalStars - (stats.spentStars || 0));
+
   const handleUpdateStats = (newStats: UserStats) => {
+    setStats(newStats);
+    saveLocalStats(newStats);
+  };
+
+  const handlePurchaseAvatar = (avatarEmoji: string, price: number) => {
+    const { success, newStats } = purchaseAvatar(avatarEmoji, price, totalStars);
+    if (success) {
+      setStats(newStats);
+    }
+  };
+
+  const handleSelectAvatar = (avatarEmoji: string) => {
+    const newStats = { ...stats, avatar: avatarEmoji };
     setStats(newStats);
     saveLocalStats(newStats);
   };
@@ -153,11 +178,6 @@ export const App: React.FC = () => {
     setSelectedTopic(null);
   };
 
-  const totalStars = Object.values(topicProgress).reduce(
-    (sum, tp) => sum + (tp.stars || 0),
-    0
-  );
-
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans pb-12">
       {/* Top Navigation Bar */}
@@ -169,8 +189,10 @@ export const App: React.FC = () => {
         onSelectAllGrades={handleSelectAllGrades}
         stats={stats}
         totalStars={totalStars}
+        availableStars={availableStars}
         isCloudSynced={isCloudSynced}
         onOpenSync={() => setIsSyncModalOpen(true)}
+        onOpenShop={() => setIsAvatarShopOpen(true)}
         onUpdateStats={handleUpdateStats}
         onHomeClick={handleHomeClick}
       />
@@ -189,6 +211,7 @@ export const App: React.FC = () => {
             onSelectTopic={(topic) => setSelectedTopic(topic)}
             playerName={stats.playerName}
             avatar={stats.avatar}
+            onOpenShop={() => setIsAvatarShopOpen(true)}
           />
         )}
 
@@ -301,6 +324,17 @@ export const App: React.FC = () => {
           setTopicProgress(loadTopicProgress());
           setStats(loadLocalStats());
         }}
+      />
+
+      {/* Avatar Shop Modal */}
+      <AvatarShopModal
+        isOpen={isAvatarShopOpen}
+        onClose={() => setIsAvatarShopOpen(false)}
+        language={language}
+        stats={stats}
+        totalStarsEarned={totalStars}
+        onPurchase={handlePurchaseAvatar}
+        onSelectAvatar={handleSelectAvatar}
       />
 
       {/* PWA "Add to Home Screen" prompt */}

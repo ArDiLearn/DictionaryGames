@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Volume2, VolumeX, Cloud, Check, Sparkles } from 'lucide-react';
 import { Language, UserStats, Grade } from '../types';
 import { translations, getGradeFilterInfo } from '../utils/i18n';
@@ -12,13 +12,13 @@ interface HeaderProps {
   onSelectAllGrades: () => void;
   stats: UserStats;
   totalStars: number;
+  availableStars: number;
   isCloudSynced: boolean;
   onOpenSync: () => void;
+  onOpenShop: () => void;
   onUpdateStats: (newStats: UserStats) => void;
   onHomeClick: () => void;
 }
-
-const AVATARS = ['🦁', '🐱', '🐶', '🐼', '🦊', '🦄', '🚀', '⭐', '🦖', '🐬'];
 
 export const Header: React.FC<HeaderProps> = ({
   language,
@@ -28,25 +28,20 @@ export const Header: React.FC<HeaderProps> = ({
   onSelectAllGrades,
   stats,
   totalStars,
+  availableStars,
   isCloudSynced,
   onOpenSync,
+  onOpenShop,
   onUpdateStats,
   onHomeClick,
 }) => {
   const t = translations[language];
-  const [showAvatarPicker, setShowAvatarPicker] = useState(false);
 
   const toggleSound = () => {
     const updated = !stats.soundEnabled;
     sounds.enabled = updated;
     onUpdateStats({ ...stats, soundEnabled: updated });
     if (updated) sounds.playClick();
-  };
-
-  const handleSelectAvatar = (avatar: string) => {
-    onUpdateStats({ ...stats, avatar });
-    setShowAvatarPicker(false);
-    sounds.playCorrect();
   };
 
   return (
@@ -138,11 +133,19 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </div>
 
-          {/* Total Stars Counter */}
-          <div className="flex items-center gap-1 bg-amber-50 border-2 border-amber-300 px-2.5 py-1 rounded-full text-amber-600 font-bold text-sm sm:text-base shadow-sm">
-            <span className="text-lg">⭐</span>
-            <span>{totalStars}</span>
-          </div>
+          {/* Star Balance & Shop Shortcut */}
+          <button
+            onClick={() => {
+              sounds.playClick();
+              onOpenShop();
+            }}
+            className="flex items-center gap-1.5 bg-amber-50 hover:bg-amber-100 border-2 border-amber-300 px-2 sm:px-2.5 py-1 rounded-2xl text-amber-700 font-black text-xs sm:text-sm shadow-sm transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+            title={`${t.avatarShopTitle} — ${t.myStarBalance}: ${availableStars} ⭐ (${t.totalEarnedStarsLabel}: ${totalStars} ⭐)`}
+          >
+            <span className="text-base sm:text-lg">⭐</span>
+            <span>{availableStars}</span>
+            <span className="hidden sm:inline text-xs text-amber-500 font-bold">🛍️</span>
+          </button>
 
           {/* Language Switcher (RU / LV) */}
           <div className="flex bg-slate-100 p-1 rounded-2xl border-2 border-slate-200">
@@ -215,37 +218,20 @@ export const Header: React.FC<HeaderProps> = ({
             </span>
           </button>
 
-          {/* Kid Avatar */}
-          <div className="relative">
-            <button
-              onClick={() => {
-                sounds.playClick();
-                setShowAvatarPicker(!showAvatarPicker);
-              }}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-amber-100 border-2 border-amber-300 flex items-center justify-center text-xl sm:text-2xl shadow-sm hover:scale-105 active:scale-95 transition-transform"
-              title={t.changeAvatar}
-            >
-              {stats.avatar || '🦁'}
-            </button>
-
-            {/* Avatar Dropdown Picker */}
-            {showAvatarPicker && (
-              <div className="absolute right-0 mt-2 p-2 bg-white rounded-3xl shadow-xl border-2 border-slate-200 z-50 flex gap-2 flex-wrap w-56 animate-pop">
-                <div className="w-full text-center text-xs font-bold text-slate-500 mb-1">
-                  {t.changeAvatar}
-                </div>
-                {AVATARS.map((emoji) => (
-                  <button
-                    key={emoji}
-                    onClick={() => handleSelectAvatar(emoji)}
-                    className="w-10 h-10 rounded-2xl bg-slate-50 hover:bg-amber-100 flex items-center justify-center text-2xl transition-transform hover:scale-110 active:scale-95"
-                  >
-                    {emoji}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          {/* Kid Avatar - opens Avatar Shop */}
+          <button
+            onClick={() => {
+              sounds.playClick();
+              onOpenShop();
+            }}
+            className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-amber-100 hover:bg-amber-200 border-2 border-amber-300 flex items-center justify-center text-xl sm:text-2xl shadow-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer"
+            title={`${t.avatarShopTitle} (${stats.playerName || t.defaultPlayerName})`}
+          >
+            <span>{stats.avatar || '🦁'}</span>
+            <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-amber-400 border border-white rounded-full flex items-center justify-center text-[9px] shadow-sm">
+              🛍️
+            </span>
+          </button>
         </div>
       </div>
     </header>

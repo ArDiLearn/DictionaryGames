@@ -57,7 +57,7 @@ export function parseDictionaryCsv(csvString: string): Topic[] {
       continue;
     }
 
-    const [en, lv, ru] = columns.map((c) => (c ? c.trim() : ''));
+    const [en, lv, ru, transcription] = columns.map((c) => (c ? c.trim() : ''));
 
     // Topic Header
     if (!currentTopic) {
@@ -83,6 +83,7 @@ export function parseDictionaryCsv(csvString: string): Topic[] {
           en,
           lv: lv || '',
           ru: ru || '',
+          ...(transcription ? { transcription } : {}),
         });
       }
     }

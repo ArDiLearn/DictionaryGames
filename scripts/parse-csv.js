@@ -93,7 +93,7 @@ export function parseDictionaryCsv(csvString) {
       continue;
     }
 
-    const [en, lv, ru] = columns.map((c) => (c ? c.trim() : ''));
+    const [en, lv, ru, transcription] = columns.map((c) => (c ? c.trim() : ''));
 
     // If there's no current topic, this non-empty row is a Topic Header
     if (!currentTopic) {
@@ -125,6 +125,7 @@ export function parseDictionaryCsv(csvString) {
           en,
           lv: lv || '',
           ru: ru || '',
+          ...(transcription ? { transcription } : {}),
         });
       }
     }

@@ -5,6 +5,7 @@ export interface Word {
   en: string;
   lv: string;
   ru: string;
+  transcription?: string;
 }
 
 export interface TopicName {

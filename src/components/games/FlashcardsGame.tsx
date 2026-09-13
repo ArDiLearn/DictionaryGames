@@ -118,27 +118,32 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
         {/* Word Display */}
         <div className="text-center my-auto py-6">
           {!isFlipped ? (
-            <div>
+            <div className="flex flex-col items-center">
               <h2 className="text-4xl sm:text-5xl font-black text-indigo-600 tracking-tight font-comic">
                 {currentWord.en}
               </h2>
               {currentWord.transcription && (
-                <div className="inline-block mt-2 px-3 py-1 bg-indigo-50 border border-indigo-200 rounded-full text-indigo-500 font-mono text-sm sm:text-base font-semibold">
+                <div className="mt-3 px-4 py-1.5 bg-indigo-50 border-2 border-indigo-200 rounded-2xl text-indigo-700 font-mono text-xl sm:text-2xl font-bold tracking-wider shadow-sm">
                   {currentWord.transcription}
                 </div>
               )}
-              <p className="text-xs sm:text-sm font-semibold text-slate-400 mt-2">
+              <p className="text-xs sm:text-sm font-semibold text-slate-400 mt-3">
                 {t.tapToFlip}
               </p>
             </div>
           ) : (
-            <div>
+            <div className="flex flex-col items-center">
               <h2 className="text-3xl sm:text-4xl font-black text-pink-600 tracking-tight leading-snug">
                 {translation}
               </h2>
-              <p className="text-sm font-bold text-slate-400 mt-2">
-                {currentWord.en} {currentWord.transcription ? ` ${currentWord.transcription}` : ''}
-              </p>
+              <div className="mt-3 flex items-center justify-center gap-2 flex-wrap">
+                <span className="text-base font-bold text-slate-600">{currentWord.en}</span>
+                {currentWord.transcription && (
+                  <span className="px-2.5 py-0.5 bg-slate-100 border border-slate-200 rounded-xl text-indigo-600 font-mono text-sm sm:text-base font-bold">
+                    {currentWord.transcription}
+                  </span>
+                )}
+              </div>
             </div>
           )}
         </div>

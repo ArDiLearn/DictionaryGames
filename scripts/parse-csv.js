@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { TRANSCRIPTIONS } from './transcriptions.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -120,12 +121,13 @@ export function parseDictionaryCsv(csvString) {
     } else {
       // This is a word in the current topic
       if (en) {
+        const phTrans = transcription || TRANSCRIPTIONS[en.toLowerCase().trim()] || '';
         currentTopic.words.push({
           id: String(wordCounter++),
           en,
           lv: lv || '',
           ru: ru || '',
-          ...(transcription ? { transcription } : {}),
+          ...(phTrans ? { transcription: phTrans } : {}),
         });
       }
     }

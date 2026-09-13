@@ -50,7 +50,8 @@ export const App: React.FC = () => {
           const g = w.grade || 1;
           if (selectedGrade === '1') return g === 1;
           if (selectedGrade === '2') return g === 2;
-          return true; // 'all': includes both 1 and 2
+          if (selectedGrade === '3') return g === 3;
+          return true; // 'all': includes all grades (1, 2, 3)
         }),
       }))
       .filter((topic) => topic.words.length > 0);

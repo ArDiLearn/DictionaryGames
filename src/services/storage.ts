@@ -23,7 +23,7 @@ export function saveStoredLanguage(lang: 'ru' | 'lv') {
 
 export function getStoredGradeFilter(): GradeFilter {
   const g = localStorage.getItem(GRADE_KEY);
-  if (g === '1' || g === '2' || g === 'all') return g;
+  if (g === '1' || g === '2' || g === '3' || g === 'all') return g;
   return 'all';
 }
 
@@ -34,6 +34,7 @@ export function saveStoredGradeFilter(filter: GradeFilter) {
 export function getStoredGrade(): Grade {
   const g = localStorage.getItem(GRADE_KEY);
   if (g === '2') return 2;
+  if (g === '3') return 3;
   return 1;
 }
 

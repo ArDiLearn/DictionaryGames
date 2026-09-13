@@ -358,7 +358,7 @@
         "en": "january",
         "lv": "janvāris",
         "ru": "январь",
-        "grade": 2,
+        "grade": 3,
         "transcription": "[ ˈdʒænjuəri ]"
       },
       {
@@ -366,7 +366,7 @@
         "en": "february",
         "lv": "februāris",
         "ru": "февраль",
-        "grade": 2,
+        "grade": 3,
         "transcription": "[ ˈfebruəri ]"
       },
       {
@@ -374,7 +374,7 @@
         "en": "march",
         "lv": "marts",
         "ru": "март",
-        "grade": 2,
+        "grade": 3,
         "transcription": "[ mɑːtʃ ]"
       },
       {
@@ -382,7 +382,7 @@
         "en": "april",
         "lv": "aprīlis",
         "ru": "апрель",
-        "grade": 2,
+        "grade": 3,
         "transcription": "[ ˈeɪprəl ]"
       },
       {
@@ -390,7 +390,7 @@
         "en": "may",
         "lv": "maijs",
         "ru": "май",
-        "grade": 2,
+        "grade": 3,
         "transcription": "[ meɪ ]"
       },
       {
@@ -398,7 +398,7 @@
         "en": "june",
         "lv": "jūnijs",
         "ru": "июнь",
-        "grade": 2,
+        "grade": 3,
         "transcription": "[ dʒuːn ]"
       },
       {
@@ -406,7 +406,7 @@
         "en": "july",
         "lv": "jūlijs",
         "ru": "июль",
-        "grade": 2,
+        "grade": 3,
         "transcription": "[ dʒuˈlaɪ ]"
       },
       {
@@ -414,7 +414,7 @@
         "en": "august",
         "lv": "augusts",
         "ru": "август",
-        "grade": 2,
+        "grade": 3,
         "transcription": "[ ˈɔːɡəst ]"
       },
       {
@@ -422,7 +422,7 @@
         "en": "september",
         "lv": "septembris",
         "ru": "сентябрь",
-        "grade": 2,
+        "grade": 3,
         "transcription": "[ sepˈtembə ]"
       },
       {
@@ -430,7 +430,7 @@
         "en": "october",
         "lv": "oktobris",
         "ru": "октябрь",
-        "grade": 2,
+        "grade": 3,
         "transcription": "[ ɒkˈtəʊbə ]"
       },
       {
@@ -438,7 +438,7 @@
         "en": "november",
         "lv": "novembris",
         "ru": "ноябрь",
-        "grade": 2,
+        "grade": 3,
         "transcription": "[ nəʊˈvembə ]"
       },
       {
@@ -446,7 +446,7 @@
         "en": "december",
         "lv": "decembris",
         "ru": "декабрь",
-        "grade": 2,
+        "grade": 3,
         "transcription": "[ dɪˈsembə ]"
       }
     ]

@@ -1,4 +1,5 @@
 import { Topic } from '../types';
+import { TRANSCRIPTIONS } from '../data/transcriptions';
 
 function parseCsvLine(line: string): string[] {
   const result: string[] = [];
@@ -78,12 +79,13 @@ export function parseDictionaryCsv(csvString: string): Topic[] {
     } else {
       // Word row
       if (en) {
+        const phTrans = transcription || TRANSCRIPTIONS[en.toLowerCase().trim()] || '';
         currentTopic.words.push({
           id: String(wordCounter++),
           en,
           lv: lv || '',
           ru: ru || '',
-          ...(transcription ? { transcription } : {}),
+          ...(phTrans ? { transcription: phTrans } : {}),
         });
       }
     }

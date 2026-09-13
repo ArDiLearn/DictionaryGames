@@ -146,17 +146,17 @@ export function parseDictionaryCsv(csvString) {
         let grade = 1;
         let phTrans = '';
 
-        if (col4 === '1' || col4 === '2') {
+        if (col4 === '1' || col4 === '2' || col4 === '3') {
           grade = parseInt(col4, 10);
           if (col5) phTrans = col5;
         } else if (col4 && col4.startsWith('[')) {
           phTrans = col4;
-          if (col5 === '1' || col5 === '2') {
+          if (col5 === '1' || col5 === '2' || col5 === '3') {
             grade = parseInt(col5, 10);
           }
         } else if (col4) {
           const parsed = parseInt(col4, 10);
-          if (!isNaN(parsed) && (parsed === 1 || parsed === 2)) {
+          if (!isNaN(parsed) && (parsed >= 1 && parsed <= 3)) {
             grade = parsed;
           }
         }

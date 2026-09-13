@@ -108,6 +108,8 @@ export const TopicList: React.FC<TopicListProps> = ({
                   ? t.gradeFilterNotice1
                   : selectedGrade === '2'
                   ? t.gradeFilterNotice2
+                  : selectedGrade === '3'
+                  ? t.gradeFilterNotice3
                   : t.gradeFilterNoticeAll}
               </span>
               <span className="text-[11px] sm:text-xs bg-amber-200 text-amber-900 font-extrabold px-2 py-0.5 rounded-full">
@@ -115,6 +117,8 @@ export const TopicList: React.FC<TopicListProps> = ({
                   ? t.gradeTitle1
                   : selectedGrade === '2'
                   ? t.gradeTitle2
+                  : selectedGrade === '3'
+                  ? t.gradeTitle3
                   : t.gradeTitleAll}
               </span>
             </div>
@@ -123,15 +127,17 @@ export const TopicList: React.FC<TopicListProps> = ({
                 ? (language === 'ru' ? 'Слова только для 1 класса' : 'Vārdi tikai 1. klasei')
                 : selectedGrade === '2'
                 ? (language === 'ru' ? 'Слова только для 2 класса' : 'Vārdi tikai 2. klasei')
-                : (language === 'ru' ? 'Включает слова 1-го и 2-го классов' : 'Ietver 1. un 2. klases vārdus')}
+                : selectedGrade === '3'
+                ? (language === 'ru' ? 'Слова только для 3 класса' : 'Vārdi tikai 3. klasei')
+                : (language === 'ru' ? 'Включает слова всех классов' : 'Ietver visu klašu vārdus')}
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5 bg-white/90 p-1 rounded-2xl border-2 border-amber-200 shadow-inner">
+        <div className="flex items-center gap-1 sm:gap-1.5 bg-white/90 p-1 rounded-2xl border-2 border-amber-200 shadow-inner flex-wrap">
           <button
             onClick={() => onGradeChange('1')}
-            className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
               selectedGrade === '1'
                 ? 'bg-amber-500 text-white shadow-sm scale-105'
                 : 'text-amber-800 hover:text-amber-950 hover:bg-amber-50'
@@ -141,7 +147,7 @@ export const TopicList: React.FC<TopicListProps> = ({
           </button>
           <button
             onClick={() => onGradeChange('2')}
-            className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
               selectedGrade === '2'
                 ? 'bg-amber-500 text-white shadow-sm scale-105'
                 : 'text-amber-800 hover:text-amber-950 hover:bg-amber-50'
@@ -150,8 +156,18 @@ export const TopicList: React.FC<TopicListProps> = ({
             {t.grade2}
           </button>
           <button
+            onClick={() => onGradeChange('3')}
+            className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+              selectedGrade === '3'
+                ? 'bg-amber-500 text-white shadow-sm scale-105'
+                : 'text-amber-800 hover:text-amber-950 hover:bg-amber-50'
+            }`}
+          >
+            {t.grade3}
+          </button>
+          <button
             onClick={() => onGradeChange('all')}
-            className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
               selectedGrade === 'all'
                 ? 'bg-amber-500 text-white shadow-sm scale-105'
                 : 'text-amber-800 hover:text-amber-950 hover:bg-amber-50'

@@ -73,17 +73,25 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Right side controls */}
         <div className="flex items-center gap-1.5 sm:gap-3">
-          {/* Grade Switcher (1st / 2nd / All Grades) */}
+          {/* Grade Switcher (1st / 2nd / 3rd / All Grades) */}
           <div
             className="flex bg-amber-100/90 p-0.5 sm:p-1 rounded-2xl border-2 border-amber-300 shadow-sm"
-            title={`${t.gradeSelectorLabel}: ${selectedGrade === '1' ? t.grade1 : selectedGrade === '2' ? t.grade2 : t.gradeAll}`}
+            title={`${t.gradeSelectorLabel}: ${
+              selectedGrade === '1'
+                ? t.grade1
+                : selectedGrade === '2'
+                ? t.grade2
+                : selectedGrade === '3'
+                ? t.grade3
+                : t.gradeAll
+            }`}
           >
             <button
               onClick={() => {
                 onGradeChange('1');
                 sounds.playClick();
               }}
-              className={`px-1.5 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+              className={`px-1.5 sm:px-2 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
                 selectedGrade === '1'
                   ? 'bg-amber-500 text-white shadow-sm scale-105'
                   : 'text-amber-800 hover:text-amber-950'
@@ -97,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onGradeChange('2');
                 sounds.playClick();
               }}
-              className={`px-1.5 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+              className={`px-1.5 sm:px-2 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
                 selectedGrade === '2'
                   ? 'bg-amber-500 text-white shadow-sm scale-105'
                   : 'text-amber-800 hover:text-amber-950'
@@ -108,10 +116,24 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
             <button
               onClick={() => {
+                onGradeChange('3');
+                sounds.playClick();
+              }}
+              className={`px-1.5 sm:px-2 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+                selectedGrade === '3'
+                  ? 'bg-amber-500 text-white shadow-sm scale-105'
+                  : 'text-amber-800 hover:text-amber-950'
+              }`}
+              title={t.gradeTitle3}
+            >
+              {t.grade3Short}
+            </button>
+            <button
+              onClick={() => {
                 onGradeChange('all');
                 sounds.playClick();
               }}
-              className={`px-1.5 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+              className={`px-1.5 sm:px-2 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
                 selectedGrade === 'all'
                   ? 'bg-amber-500 text-white shadow-sm scale-105'
                   : 'text-amber-800 hover:text-amber-950'

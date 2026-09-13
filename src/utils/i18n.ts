@@ -93,22 +93,26 @@ export interface Translations {
   gradeSelectorLabel: string;
   grade1: string;
   grade2: string;
+  grade3: string;
   gradeAll: string;
   grade1Short: string;
   grade2Short: string;
+  grade3Short: string;
   gradeAllShort: string;
   gradeTitle1: string;
   gradeTitle2: string;
+  gradeTitle3: string;
   gradeTitleAll: string;
   gradeFilterNotice1: string;
   gradeFilterNotice2: string;
+  gradeFilterNotice3: string;
   gradeFilterNoticeAll: string;
 }
 
 export const translations: Record<Language, Translations> = {
   ru: {
     appTitle: 'WordyKids',
-    appSubtitle: 'Английский для 1–2 класса',
+    appSubtitle: 'Английский для 1–3 классов',
     welcomeGreeting: 'Привет',
     defaultPlayerName: 'Знайка',
     chooseTopic: 'Выбери тему для игры',
@@ -199,20 +203,24 @@ export const translations: Record<Language, Translations> = {
     gradeSelectorLabel: 'Класс',
     grade1: '1 класс',
     grade2: '2 класс',
+    grade3: '3 класс',
     gradeAll: 'Все классы',
     grade1Short: '1 кл.',
     grade2Short: '2 кл.',
+    grade3Short: '3 кл.',
     gradeAllShort: 'Все',
     gradeTitle1: 'Только 1 класс',
     gradeTitle2: 'Только 2 класс',
-    gradeTitleAll: '1 и 2 классы (Все)',
+    gradeTitle3: 'Только 3 класс',
+    gradeTitleAll: 'Все классы (1, 2 и 3)',
     gradeFilterNotice1: 'Показаны темы только для 1 класса',
     gradeFilterNotice2: 'Показаны темы только для 2 класса',
-    gradeFilterNoticeAll: 'Показаны темы для 1 и 2 классов (Все)',
+    gradeFilterNotice3: 'Показаны темы только для 3 класса',
+    gradeFilterNoticeAll: 'Показаны темы для всех классов (1, 2 и 3)',
   },
   lv: {
     appTitle: 'WordyKids',
-    appSubtitle: 'Angļu valoda 1.–2. klasei',
+    appSubtitle: 'Angļu valoda 1.–3. klasei',
     welcomeGreeting: 'Sveiks',
     defaultPlayerName: 'Zinītis',
     chooseTopic: 'Izvēlies tēmu spēlei',
@@ -303,15 +311,19 @@ export const translations: Record<Language, Translations> = {
     gradeSelectorLabel: 'Klase',
     grade1: '1. klase',
     grade2: '2. klase',
+    grade3: '3. klase',
     gradeAll: 'Visas klases',
     grade1Short: '1. kl.',
     grade2Short: '2. kl.',
+    grade3Short: '3. kl.',
     gradeAllShort: 'Visi',
     gradeTitle1: 'Tikai 1. klase',
     gradeTitle2: 'Tikai 2. klase',
-    gradeTitleAll: '1. un 2. klase (Visi)',
+    gradeTitle3: 'Tikai 3. klase',
+    gradeTitleAll: 'Visas klases (1., 2. un 3.)',
     gradeFilterNotice1: 'Rādītās tēmas tikai 1. klasei',
     gradeFilterNotice2: 'Rādītās tēmas tikai 2. klasei',
-    gradeFilterNoticeAll: 'Rādītās tēmas 1. un 2. klasei (Visi)',
+    gradeFilterNotice3: 'Rādītās tēmas tikai 3. klasei',
+    gradeFilterNoticeAll: 'Rādītās tēmas visām klasēm (1., 2. un 3.)',
   },
 };

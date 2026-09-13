@@ -11,7 +11,10 @@ const OUTPUT_PATH = path.resolve(__dirname, '../src/data/words.json');
 
 // Map topic names to friendly Lucide icons and kid-friendly theme colors
 const TOPIC_METADATA = {
+  'Numbers': { icon: 'Hash', color: 'indigo', emoji: '🔢' },
   'Numbers 1-20': { icon: 'Hash', color: 'indigo', emoji: '🔢' },
+  'Числа': { icon: 'Hash', color: 'indigo', emoji: '🔢' },
+  'Skaitļi': { icon: 'Hash', color: 'indigo', emoji: '🔢' },
   'Colours': { icon: 'Palette', color: 'purple', emoji: '🎨' },
   'Days of the week': { icon: 'Calendar', color: 'sky', emoji: '📅' },
   'Months': { icon: 'CalendarDays', color: 'teal', emoji: '🗓️' },
@@ -114,7 +117,10 @@ export function parseDictionaryCsv(csvString) {
         }
       }
 
-      const topicId = slugify(en || 'topic');
+      let topicId = slugify(en || 'topic');
+      if (topicId === 'numbers') {
+        topicId = 'numbers_1_20';
+      }
       const meta = TOPIC_METADATA[en] || TOPIC_METADATA[ru] || {
         icon: 'BookOpen',
         color: 'sky',

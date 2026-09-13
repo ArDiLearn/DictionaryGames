@@ -25,6 +25,7 @@ import {
   recordWordAttempt,
   mergeWithCloud,
   purchaseAvatar,
+  addEarnedStars,
 } from './services/storage';
 import { getCurrentUser } from './services/supabase';
 
@@ -110,14 +111,15 @@ export const App: React.FC = () => {
     }
   };
 
-  const totalStars = useMemo(() => {
+  const topicStarsSum = useMemo(() => {
     return Object.values(topicProgress).reduce(
       (sum, tp) => sum + (tp.stars || 0),
       0
     );
   }, [topicProgress]);
 
-  const availableStars = Math.max(0, totalStars - (stats.spentStars || 0));
+  const totalEarnedStars = Math.max(stats.totalStarsEarned || 0, topicStarsSum);
+  const availableStars = Math.max(0, totalEarnedStars - (stats.spentStars || 0));
 
   const handleUpdateStats = (newStats: UserStats) => {
     setStats(newStats);
@@ -125,7 +127,7 @@ export const App: React.FC = () => {
   };
 
   const handlePurchaseAvatar = (avatarEmoji: string, price: number) => {
-    const { success, newStats } = purchaseAvatar(avatarEmoji, price, totalStars);
+    const { success, newStats } = purchaseAvatar(avatarEmoji, price, totalEarnedStars);
     if (success) {
       setStats(newStats);
     }
@@ -152,13 +154,16 @@ export const App: React.FC = () => {
 
   const handleGameComplete = (correctCount: number, totalCount: number) => {
     if (!selectedTopic) return;
-    const currentProg = topicProgress[selectedTopic.topic_id];
-    const stars = currentProg?.stars || (correctCount === totalCount ? 3 : correctCount >= totalCount / 2 ? 2 : 1);
+    const gameStars = correctCount === totalCount ? 3 : correctCount >= Math.ceil(totalCount / 2) ? 2 : 1;
+
+    // Add stars to user's piggy bank
+    const updatedStats = addEarnedStars(gameStars);
+    setStats(updatedStats);
 
     setCelebration({
       correct: correctCount,
       total: totalCount,
-      stars,
+      stars: gameStars,
     });
   };
 
@@ -188,7 +193,7 @@ export const App: React.FC = () => {
         onToggleGrade={handleToggleGrade}
         onSelectAllGrades={handleSelectAllGrades}
         stats={stats}
-        totalStars={totalStars}
+        totalStars={totalEarnedStars}
         availableStars={availableStars}
         isCloudSynced={isCloudSynced}
         onOpenSync={() => setIsSyncModalOpen(true)}
@@ -332,7 +337,7 @@ export const App: React.FC = () => {
         onClose={() => setIsAvatarShopOpen(false)}
         language={language}
         stats={stats}
-        totalStarsEarned={totalStars}
+        totalStarsEarned={totalEarnedStars}
         onPurchase={handlePurchaseAvatar}
         onSelectAvatar={handleSelectAvatar}
       />

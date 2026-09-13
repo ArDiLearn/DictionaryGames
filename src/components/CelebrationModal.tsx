@@ -96,14 +96,17 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
           ))}
         </div>
 
-        {/* Score pill */}
-        <div className="inline-block bg-slate-100 rounded-2xl px-4 py-2 mb-6 border-2 border-slate-200">
-          <span className="text-sm font-bold text-slate-500 mr-2">
-            {t.score}:
-          </span>
-          <span className="text-lg font-black text-indigo-600">
-            {correctCount} / {totalCount} ({percentage}%)
-          </span>
+        {/* Stars Earned pill for Avatar Bank */}
+        <div className="flex flex-col items-center gap-1.5 mb-6">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl px-4 py-2 border-2 border-amber-300 shadow-xs">
+            <span className="text-xl animate-bounce">⭐</span>
+            <span className="text-sm sm:text-base font-black text-amber-900">
+              +{stars} {t.starsAddedToBank}
+            </span>
+          </div>
+          <div className="text-xs font-bold text-slate-500">
+            {t.score}: {correctCount} / {totalCount} ({percentage}%)
+          </div>
         </div>
 
         {/* Buttons */}

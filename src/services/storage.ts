@@ -79,6 +79,7 @@ export function getDefaultStats(): UserStats {
     lastActiveDate: today,
     unlockedAvatars: DEFAULT_UNLOCKED_AVATARS,
     spentStars: 0,
+    totalStarsEarned: 0,
   };
 }
 
@@ -88,12 +89,17 @@ export function loadLocalStats(): UserStats {
     if (!raw) return getDefaultStats();
     const stats: UserStats = JSON.parse(raw);
     
-    // Ensure unlockedAvatars and spentStars exist
+    // Ensure unlockedAvatars, spentStars and totalStarsEarned exist
     if (!stats.unlockedAvatars || stats.unlockedAvatars.length === 0) {
       stats.unlockedAvatars = DEFAULT_UNLOCKED_AVATARS;
     }
     if (stats.spentStars === undefined || typeof stats.spentStars !== 'number') {
       stats.spentStars = 0;
+    }
+    if (stats.totalStarsEarned === undefined || typeof stats.totalStarsEarned !== 'number') {
+      const topics = loadTopicProgress();
+      const topicStarsSum = Object.values(topics).reduce((sum, tp) => sum + (tp.stars || 0), 0);
+      stats.totalStarsEarned = topicStarsSum;
     }
 
     // Check streak
@@ -114,6 +120,17 @@ export function loadLocalStats(): UserStats {
   }
 }
 
+export function addEarnedStars(starsCount: number): UserStats {
+  const currentStats = loadLocalStats();
+  const currentTotal = currentStats.totalStarsEarned || 0;
+  const newStats: UserStats = {
+    ...currentStats,
+    totalStarsEarned: currentTotal + starsCount,
+  };
+  saveLocalStats(newStats);
+  return newStats;
+}
+
 export function purchaseAvatar(
   avatarEmoji: string,
   price: number,
@@ -121,7 +138,8 @@ export function purchaseAvatar(
 ): { success: boolean; newStats: UserStats } {
   const currentStats = loadLocalStats();
   const spentStars = currentStats.spentStars || 0;
-  const availableStars = Math.max(0, totalStarsEarned - spentStars);
+  const total = Math.max(currentStats.totalStarsEarned || 0, totalStarsEarned);
+  const availableStars = Math.max(0, total - spentStars);
 
   if (availableStars < price) {
     return { success: false, newStats: currentStats };
@@ -133,6 +151,7 @@ export function purchaseAvatar(
   const newStats: UserStats = {
     ...currentStats,
     spentStars: spentStars + price,
+    totalStarsEarned: total,
     unlockedAvatars: Array.from(unlocked),
     avatar: avatarEmoji, // auto-equip newly purchased avatar
   };

@@ -42,6 +42,20 @@ friday,piektdiena,Пятница
 saturday,sestdiena,Суббота
 sunday,svētdiena,Воскресенье
 ,,
+Months,Mēneši,Месяцы
+january,janvāris,январь
+february,februāris,февраль
+march,marts,март
+april,aprīlis,апрель
+may,maijs,май
+june,jūnijs,июнь
+july,jūlijs,июль
+august,augusts,август
+september,septembris,сентябрь
+october,oktobris,октябрь
+november,novembris,ноябрь
+december,decembris,декабрь
+,,
 Classroom objects,Klases aprīkojums,Оборудование класса
 window,logs,окно
 poster,plakāts,плакат

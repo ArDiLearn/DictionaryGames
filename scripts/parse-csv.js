@@ -13,6 +13,7 @@ const TOPIC_METADATA = {
   'Numbers 1-20': { icon: 'Hash', color: 'indigo', emoji: '🔢' },
   'Colours': { icon: 'Palette', color: 'purple', emoji: '🎨' },
   'Days of the week': { icon: 'Calendar', color: 'sky', emoji: '📅' },
+  'Months': { icon: 'CalendarDays', color: 'teal', emoji: '🗓️' },
   'Classroom objects': { icon: 'School', color: 'amber', emoji: '🎒' },
   'Family': { icon: 'Users', color: 'pink', emoji: '👨‍👩‍👧‍👦' },
   'Adjectives': { icon: 'Sparkles', color: 'emerald', emoji: '✨' },

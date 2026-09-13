@@ -1,4 +1,4 @@
-import { Language } from '../types';
+import { Language, Grade } from '../types';
 
 export interface Translations {
   appTitle: string;
@@ -327,3 +327,104 @@ export const translations: Record<Language, Translations> = {
     gradeFilterNoticeAll: 'Rādītās tēmas visām klasēm (1., 2. un 3.)',
   },
 };
+
+export function getGradeFilterInfo(
+  grades: Grade[],
+  language: Language
+): { notice: string; badge: string; subtitle: string } {
+  const sorted = Array.from(new Set(grades)).sort((a, b) => a - b);
+  const key = sorted.join(',');
+
+  if (language === 'ru') {
+    switch (key) {
+      case '1,2':
+        return {
+          notice: '1 и 2 классы (без 3)',
+          badge: '1 и 2 кл.',
+          subtitle: 'Показаны слова для 1 и 2 классов, без 3 класса',
+        };
+      case '2,3':
+        return {
+          notice: '2 и 3 классы (без 1)',
+          badge: '2 и 3 кл.',
+          subtitle: 'Показаны слова для 2 и 3 классов, без 1 класса',
+        };
+      case '1,3':
+        return {
+          notice: '1 и 3 классы (без 2)',
+          badge: '1 и 3 кл.',
+          subtitle: 'Показаны слова для 1 и 3 классов, без 2 класса',
+        };
+      case '1':
+        return {
+          notice: 'Только 1 класс',
+          badge: '1 класс',
+          subtitle: 'Показаны темы только для 1 класса',
+        };
+      case '2':
+        return {
+          notice: 'Только 2 класс',
+          badge: '2 класс',
+          subtitle: 'Показаны темы только для 2 класса',
+        };
+      case '3':
+        return {
+          notice: 'Только 3 класс',
+          badge: '3 класс',
+          subtitle: 'Показаны темы только для 3 класса',
+        };
+      default:
+        return {
+          notice: 'Все классы (1, 2 и 3)',
+          badge: 'Все классы',
+          subtitle: 'Показаны слова всех классов (1, 2 и 3)',
+        };
+    }
+  } else {
+    // Latvian
+    switch (key) {
+      case '1,2':
+        return {
+          notice: '1. un 2. klase (bez 3.)',
+          badge: '1. un 2. kl.',
+          subtitle: 'Rādīti 1. un 2. klases vārdi, bez 3. klases',
+        };
+      case '2,3':
+        return {
+          notice: '2. un 3. klase (bez 1.)',
+          badge: '2. un 3. kl.',
+          subtitle: 'Rādīti 2. un 3. klases vārdi, bez 1. klases',
+        };
+      case '1,3':
+        return {
+          notice: '1. un 3. klase (bez 2.)',
+          badge: '1. un 3. kl.',
+          subtitle: 'Rādīti 1. un 3. klases vārdi, bez 2. klases',
+        };
+      case '1':
+        return {
+          notice: 'Tikai 1. klase',
+          badge: '1. klase',
+          subtitle: 'Rādītās tēmas tikai 1. klasei',
+        };
+      case '2':
+        return {
+          notice: 'Tikai 2. klase',
+          badge: '2. klase',
+          subtitle: 'Rādītās tēmas tikai 2. klasei',
+        };
+      case '3':
+        return {
+          notice: 'Tikai 3. klase',
+          badge: '3. klase',
+          subtitle: 'Rādītās tēmas tikai 3. klasei',
+        };
+      default:
+        return {
+          notice: 'Visas klases (1., 2. un 3.)',
+          badge: 'Visas klases',
+          subtitle: 'Rādīti visu klašu vārdi (1., 2. un 3.)',
+        };
+    }
+  }
+}

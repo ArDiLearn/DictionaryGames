@@ -21,6 +21,33 @@ export function saveStoredLanguage(lang: 'ru' | 'lv') {
   localStorage.setItem(LANG_KEY, lang);
 }
 
+export function getStoredGrades(): Grade[] {
+  const g = localStorage.getItem(GRADE_KEY);
+  if (!g || g === 'all') return [1, 2, 3];
+  if (g === '1') return [1];
+  if (g === '2') return [2];
+  if (g === '3') return [3];
+  try {
+    const parsed = g
+      .split(',')
+      .map(Number)
+      .filter((n): n is Grade => n === 1 || n === 2 || n === 3);
+    if (parsed.length > 0) {
+      return Array.from(new Set(parsed)).sort() as Grade[];
+    }
+  } catch {}
+  return [1, 2, 3];
+}
+
+export function saveStoredGrades(grades: Grade[]) {
+  const sorted = Array.from(new Set(grades)).sort() as Grade[];
+  if (sorted.length >= 3) {
+    localStorage.setItem(GRADE_KEY, 'all');
+  } else {
+    localStorage.setItem(GRADE_KEY, sorted.join(','));
+  }
+}
+
 export function getStoredGradeFilter(): GradeFilter {
   const g = localStorage.getItem(GRADE_KEY);
   if (g === '1' || g === '2' || g === '3' || g === 'all') return g;
@@ -32,14 +59,12 @@ export function saveStoredGradeFilter(filter: GradeFilter) {
 }
 
 export function getStoredGrade(): Grade {
-  const g = localStorage.getItem(GRADE_KEY);
-  if (g === '2') return 2;
-  if (g === '3') return 3;
-  return 1;
+  const grades = getStoredGrades();
+  return grades[0] || 1;
 }
 
 export function saveStoredGrade(grade: Grade) {
-  localStorage.setItem(GRADE_KEY, String(grade));
+  saveStoredGrades([grade]);
 }
 
 export function getDefaultStats(): UserStats {

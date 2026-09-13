@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Topic, Language, TopicProgress, GradeFilter } from '../types';
+import { Topic, Language, TopicProgress, Grade } from '../types';
 import { TopicCard } from './TopicCard';
-import { translations } from '../utils/i18n';
+import { translations, getGradeFilterInfo } from '../utils/i18n';
 import { Search, Sparkles } from 'lucide-react';
 
 interface TopicListProps {
   topics: Topic[];
   language: Language;
   topicProgress: Record<string, TopicProgress>;
-  selectedGrade: GradeFilter;
-  onGradeChange: (grade: GradeFilter) => void;
+  selectedGrades: Grade[];
+  onToggleGrade: (grade: Grade) => void;
+  onSelectAllGrades: () => void;
   onSelectTopic: (topic: Topic) => void;
   playerName: string;
   avatar: string;
@@ -19,8 +20,9 @@ export const TopicList: React.FC<TopicListProps> = ({
   topics,
   language,
   topicProgress,
-  selectedGrade,
-  onGradeChange,
+  selectedGrades,
+  onToggleGrade,
+  onSelectAllGrades,
   onSelectTopic,
   playerName,
   avatar,
@@ -97,86 +99,80 @@ export const TopicList: React.FC<TopicListProps> = ({
         </div>
       </div>
 
-      {/* Grade Selector & Info Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-6 bg-amber-50/90 border-2 border-amber-200/90 rounded-2xl p-3 sm:px-5 sm:py-3 shadow-sm">
-        <div className="flex items-center gap-2 sm:gap-2.5">
-          <span className="text-2xl">🎒</span>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-black text-amber-950 text-sm sm:text-base">
-                {selectedGrade === '1'
-                  ? t.gradeFilterNotice1
-                  : selectedGrade === '2'
-                  ? t.gradeFilterNotice2
-                  : selectedGrade === '3'
-                  ? t.gradeFilterNotice3
-                  : t.gradeFilterNoticeAll}
-              </span>
-              <span className="text-[11px] sm:text-xs bg-amber-200 text-amber-900 font-extrabold px-2 py-0.5 rounded-full">
-                {selectedGrade === '1'
-                  ? t.gradeTitle1
-                  : selectedGrade === '2'
-                  ? t.gradeTitle2
-                  : selectedGrade === '3'
-                  ? t.gradeTitle3
-                  : t.gradeTitleAll}
-              </span>
+      {/* Multi-select Grade Switcher & Info Bar */}
+      {(() => {
+        const gradeInfo = getGradeFilterInfo(selectedGrades, language);
+        return (
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-6 bg-amber-50/90 border-2 border-amber-200/90 rounded-2xl p-3 sm:px-5 sm:py-3 shadow-sm">
+            <div className="flex items-center gap-2 sm:gap-2.5">
+              <span className="text-2xl">🎒</span>
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="font-black text-amber-950 text-sm sm:text-base">
+                    {gradeInfo.notice}
+                  </span>
+                  <span className="text-[11px] sm:text-xs bg-amber-200 text-amber-900 font-extrabold px-2 py-0.5 rounded-full">
+                    {gradeInfo.badge}
+                  </span>
+                </div>
+                <p className="text-xs text-amber-700/80 font-medium hidden sm:block">
+                  {gradeInfo.subtitle}
+                </p>
+              </div>
             </div>
-            <p className="text-xs text-amber-700/80 font-medium hidden sm:block">
-              {selectedGrade === '1'
-                ? (language === 'ru' ? 'Слова только для 1 класса' : 'Vārdi tikai 1. klasei')
-                : selectedGrade === '2'
-                ? (language === 'ru' ? 'Слова только для 2 класса' : 'Vārdi tikai 2. klasei')
-                : selectedGrade === '3'
-                ? (language === 'ru' ? 'Слова только для 3 класса' : 'Vārdi tikai 3. klasei')
-                : (language === 'ru' ? 'Включает слова всех классов' : 'Ietver visu klašu vārdus')}
-            </p>
-          </div>
-        </div>
 
-        <div className="flex items-center gap-1 sm:gap-1.5 bg-white/90 p-1 rounded-2xl border-2 border-amber-200 shadow-inner flex-wrap">
-          <button
-            onClick={() => onGradeChange('1')}
-            className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-              selectedGrade === '1'
-                ? 'bg-amber-500 text-white shadow-sm scale-105'
-                : 'text-amber-800 hover:text-amber-950 hover:bg-amber-50'
-            }`}
-          >
-            {t.grade1}
-          </button>
-          <button
-            onClick={() => onGradeChange('2')}
-            className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-              selectedGrade === '2'
-                ? 'bg-amber-500 text-white shadow-sm scale-105'
-                : 'text-amber-800 hover:text-amber-950 hover:bg-amber-50'
-            }`}
-          >
-            {t.grade2}
-          </button>
-          <button
-            onClick={() => onGradeChange('3')}
-            className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-              selectedGrade === '3'
-                ? 'bg-amber-500 text-white shadow-sm scale-105'
-                : 'text-amber-800 hover:text-amber-950 hover:bg-amber-50'
-            }`}
-          >
-            {t.grade3}
-          </button>
-          <button
-            onClick={() => onGradeChange('all')}
-            className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-              selectedGrade === 'all'
-                ? 'bg-amber-500 text-white shadow-sm scale-105'
-                : 'text-amber-800 hover:text-amber-950 hover:bg-amber-50'
-            }`}
-          >
-            {t.gradeAll}
-          </button>
-        </div>
-      </div>
+            <div className="flex items-center gap-1 sm:gap-1.5 bg-white/90 p-1 rounded-2xl border-2 border-amber-200 shadow-inner flex-wrap">
+              <button
+                onClick={() => onToggleGrade(1)}
+                className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                  selectedGrades.includes(1)
+                    ? 'bg-amber-500 text-white shadow-sm scale-105'
+                    : 'text-amber-800/70 hover:text-amber-950 hover:bg-amber-50'
+                }`}
+                title={selectedGrades.includes(1) ? t.grade1 : t.grade1}
+              >
+                <span>{selectedGrades.includes(1) ? '✓' : '○'}</span>
+                <span>{t.grade1}</span>
+              </button>
+              <button
+                onClick={() => onToggleGrade(2)}
+                className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                  selectedGrades.includes(2)
+                    ? 'bg-amber-500 text-white shadow-sm scale-105'
+                    : 'text-amber-800/70 hover:text-amber-950 hover:bg-amber-50'
+                }`}
+                title={selectedGrades.includes(2) ? t.grade2 : t.grade2}
+              >
+                <span>{selectedGrades.includes(2) ? '✓' : '○'}</span>
+                <span>{t.grade2}</span>
+              </button>
+              <button
+                onClick={() => onToggleGrade(3)}
+                className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                  selectedGrades.includes(3)
+                    ? 'bg-amber-500 text-white shadow-sm scale-105'
+                    : 'text-amber-800/70 hover:text-amber-950 hover:bg-amber-50'
+                }`}
+                title={selectedGrades.includes(3) ? t.grade3 : t.grade3}
+              >
+                <span>{selectedGrades.includes(3) ? '✓' : '○'}</span>
+                <span>{t.grade3}</span>
+              </button>
+              <button
+                onClick={onSelectAllGrades}
+                className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+                  selectedGrades.length === 3
+                    ? 'bg-amber-500 text-white shadow-sm scale-105'
+                    : 'text-amber-800/70 hover:text-amber-950 hover:bg-amber-50'
+                }`}
+                title={t.gradeAll}
+              >
+                {t.gradeAll}
+              </button>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Search Input */}
       <div className="relative mb-6">

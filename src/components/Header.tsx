@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Volume2, VolumeX, Cloud, Check, Sparkles } from 'lucide-react';
-import { Language, UserStats, GradeFilter } from '../types';
-import { translations } from '../utils/i18n';
+import { Language, UserStats, Grade } from '../types';
+import { translations, getGradeFilterInfo } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 
 interface HeaderProps {
   language: Language;
   onLanguageChange: (lang: Language) => void;
-  selectedGrade: GradeFilter;
-  onGradeChange: (grade: GradeFilter) => void;
+  selectedGrades: Grade[];
+  onToggleGrade: (grade: Grade) => void;
+  onSelectAllGrades: () => void;
   stats: UserStats;
   totalStars: number;
   isCloudSynced: boolean;
@@ -22,8 +23,9 @@ const AVATARS = ['🦁', '🐱', '🐶', '🐼', '🦊', '🦄', '🚀', '⭐', 
 export const Header: React.FC<HeaderProps> = ({
   language,
   onLanguageChange,
-  selectedGrade,
-  onGradeChange,
+  selectedGrades,
+  onToggleGrade,
+  onSelectAllGrades,
   stats,
   totalStars,
   isCloudSynced,
@@ -73,72 +75,64 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Right side controls */}
         <div className="flex items-center gap-1.5 sm:gap-3">
-          {/* Grade Switcher (1st / 2nd / 3rd / All Grades) */}
+          {/* Multi-select Grade Switcher (1st / 2nd / 3rd / All) */}
           <div
             className="flex bg-amber-100/90 p-0.5 sm:p-1 rounded-2xl border-2 border-amber-300 shadow-sm"
-            title={`${t.gradeSelectorLabel}: ${
-              selectedGrade === '1'
-                ? t.grade1
-                : selectedGrade === '2'
-                ? t.grade2
-                : selectedGrade === '3'
-                ? t.grade3
-                : t.gradeAll
-            }`}
+            title={`${t.gradeSelectorLabel}: ${getGradeFilterInfo(selectedGrades, language).notice}`}
           >
             <button
               onClick={() => {
-                onGradeChange('1');
+                onToggleGrade(1);
                 sounds.playClick();
               }}
               className={`px-1.5 sm:px-2 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-                selectedGrade === '1'
+                selectedGrades.includes(1)
                   ? 'bg-amber-500 text-white shadow-sm scale-105'
-                  : 'text-amber-800 hover:text-amber-950'
+                  : 'text-amber-800/60 hover:text-amber-950 hover:bg-amber-200/40'
               }`}
-              title={t.gradeTitle1}
+              title={selectedGrades.includes(1) ? t.grade1 : t.grade1}
             >
-              {t.grade1Short}
+              {selectedGrades.includes(1) && selectedGrades.length < 3 ? '✓ ' : ''}{t.grade1Short}
             </button>
             <button
               onClick={() => {
-                onGradeChange('2');
+                onToggleGrade(2);
                 sounds.playClick();
               }}
               className={`px-1.5 sm:px-2 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-                selectedGrade === '2'
+                selectedGrades.includes(2)
                   ? 'bg-amber-500 text-white shadow-sm scale-105'
-                  : 'text-amber-800 hover:text-amber-950'
+                  : 'text-amber-800/60 hover:text-amber-950 hover:bg-amber-200/40'
               }`}
-              title={t.gradeTitle2}
+              title={selectedGrades.includes(2) ? t.grade2 : t.grade2}
             >
-              {t.grade2Short}
+              {selectedGrades.includes(2) && selectedGrades.length < 3 ? '✓ ' : ''}{t.grade2Short}
             </button>
             <button
               onClick={() => {
-                onGradeChange('3');
+                onToggleGrade(3);
                 sounds.playClick();
               }}
               className={`px-1.5 sm:px-2 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-                selectedGrade === '3'
+                selectedGrades.includes(3)
                   ? 'bg-amber-500 text-white shadow-sm scale-105'
-                  : 'text-amber-800 hover:text-amber-950'
+                  : 'text-amber-800/60 hover:text-amber-950 hover:bg-amber-200/40'
               }`}
-              title={t.gradeTitle3}
+              title={selectedGrades.includes(3) ? t.grade3 : t.grade3}
             >
-              {t.grade3Short}
+              {selectedGrades.includes(3) && selectedGrades.length < 3 ? '✓ ' : ''}{t.grade3Short}
             </button>
             <button
               onClick={() => {
-                onGradeChange('all');
+                onSelectAllGrades();
                 sounds.playClick();
               }}
               className={`px-1.5 sm:px-2 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-                selectedGrade === 'all'
+                selectedGrades.length === 3
                   ? 'bg-amber-500 text-white shadow-sm scale-105'
-                  : 'text-amber-800 hover:text-amber-950'
+                  : 'text-amber-800/60 hover:text-amber-950 hover:bg-amber-200/40'
               }`}
-              title={t.gradeTitleAll}
+              title={t.gradeAll}
             >
               {t.gradeAllShort}
             </button>

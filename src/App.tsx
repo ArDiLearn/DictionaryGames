@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import rawWordsData from './data/words.json';
-import { Topic, Language, GameMode, TopicProgress, UserStats, GradeFilter } from './types';
+import { Topic, Language, GameMode, TopicProgress, UserStats, Grade } from './types';
 import { Header } from './components/Header';
 import { TopicList } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
@@ -16,8 +16,8 @@ import { PwaInstallPrompt } from './components/PwaInstallPrompt';
 import {
   getStoredLanguage,
   saveStoredLanguage,
-  getStoredGradeFilter,
-  saveStoredGradeFilter,
+  getStoredGrades,
+  saveStoredGrades,
   loadLocalStats,
   saveLocalStats,
   loadTopicProgress,
@@ -31,7 +31,7 @@ export const App: React.FC = () => {
 
   // App State
   const [language, setLanguage] = useState<Language>(getStoredLanguage());
-  const [selectedGrade, setSelectedGrade] = useState<GradeFilter>(getStoredGradeFilter());
+  const [selectedGrades, setSelectedGrades] = useState<Grade[]>(getStoredGrades());
   const [stats, setStats] = useState<UserStats>(loadLocalStats());
   const [topicProgress, setTopicProgress] = useState<Record<string, TopicProgress>>(
     loadTopicProgress()
@@ -41,21 +41,19 @@ export const App: React.FC = () => {
   const [isCloudSynced, setIsCloudSynced] = useState<boolean>(false);
   const [isSyncModalOpen, setIsSyncModalOpen] = useState<boolean>(false);
 
-  // Grade filtered topics: supports 1st only, 2nd only, or all together
+  // Grade filtered topics: supports multi-selection of grades (e.g. [1, 2], [2, 3], [1], [2], [3], [1, 2, 3])
   const filteredTopics = useMemo(() => {
+    const gradesSet = new Set(selectedGrades);
     return topics
       .map((topic) => ({
         ...topic,
         words: topic.words.filter((w) => {
-          const g = w.grade || 1;
-          if (selectedGrade === '1') return g === 1;
-          if (selectedGrade === '2') return g === 2;
-          if (selectedGrade === '3') return g === 3;
-          return true; // 'all': includes all grades (1, 2, 3)
+          const g = (w.grade || 1) as Grade;
+          return gradesSet.has(g);
         }),
       }))
       .filter((topic) => topic.words.length > 0);
-  }, [topics, selectedGrade]);
+  }, [topics, selectedGrades]);
 
   // Celebration state
   const [celebration, setCelebration] = useState<{
@@ -83,9 +81,27 @@ export const App: React.FC = () => {
     saveStoredLanguage(newLang);
   };
 
-  const handleGradeChange = (newGrade: GradeFilter) => {
-    setSelectedGrade(newGrade);
-    saveStoredGradeFilter(newGrade);
+  const handleToggleGrade = (grade: Grade) => {
+    let next: Grade[];
+    if (selectedGrades.includes(grade)) {
+      if (selectedGrades.length === 1) {
+        return; // Always keep at least 1 grade active
+      }
+      next = selectedGrades.filter((g) => g !== grade);
+    } else {
+      next = [...selectedGrades, grade].sort((a, b) => a - b) as Grade[];
+    }
+    setSelectedGrades(next);
+    saveStoredGrades(next);
+    if (selectedTopic) {
+      handleHomeClick();
+    }
+  };
+
+  const handleSelectAllGrades = () => {
+    const next: Grade[] = [1, 2, 3];
+    setSelectedGrades(next);
+    saveStoredGrades(next);
     if (selectedTopic) {
       handleHomeClick();
     }
@@ -148,8 +164,9 @@ export const App: React.FC = () => {
       <Header
         language={language}
         onLanguageChange={handleLanguageChange}
-        selectedGrade={selectedGrade}
-        onGradeChange={handleGradeChange}
+        selectedGrades={selectedGrades}
+        onToggleGrade={handleToggleGrade}
+        onSelectAllGrades={handleSelectAllGrades}
         stats={stats}
         totalStars={totalStars}
         isCloudSynced={isCloudSynced}
@@ -166,8 +183,9 @@ export const App: React.FC = () => {
             topics={filteredTopics}
             language={language}
             topicProgress={topicProgress}
-            selectedGrade={selectedGrade}
-            onGradeChange={handleGradeChange}
+            selectedGrades={selectedGrades}
+            onToggleGrade={handleToggleGrade}
+            onSelectAllGrades={handleSelectAllGrades}
             onSelectTopic={(topic) => setSelectedTopic(topic)}
             playerName={stats.playerName}
             avatar={stats.avatar}

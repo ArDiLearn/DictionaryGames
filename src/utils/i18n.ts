@@ -38,18 +38,25 @@ export interface Translations {
   soundOff: string;
   modes: {
     flashcards: string;
-    quiz: string;
     builder: string;
     match: string;
+    truefalse: string;
+    balloons: string;
     audio: string;
   };
   modeDescriptions: {
     flashcards: string;
-    quiz: string;
     builder: string;
     match: string;
+    truefalse: string;
+    balloons: string;
     audio: string;
   };
+  trueBtn: string;
+  falseBtn: string;
+  trafficPrompt: string;
+  balloonPrompt: string;
+  balloonMissed: string;
   sync: {
     title: string;
     description: string;
@@ -133,18 +140,25 @@ export const translations: Record<Language, Translations> = {
     soundOff: 'Звук выключен',
     modes: {
       flashcards: 'Карточки',
-      quiz: 'Викторина',
       builder: 'Собери слово',
       match: 'Найди пару',
+      truefalse: 'Правда или ложь?',
+      balloons: 'Поймай перевод',
       audio: 'На слух',
     },
     modeDescriptions: {
       flashcards: 'Учи новые слова с озвучкой и переводом',
-      quiz: 'Выбирай правильный перевод из 4 вариантов',
       builder: 'Составляй английские слова из букв-кубиков',
       match: 'Соединяй английские слова с переводом',
+      truefalse: 'Светофор: нажимай зелёный (Верно) или красный (Неверно)',
+      balloons: 'Лопай шарик с правильным английским словом',
       audio: 'Тренируй ушки: слушай произношение и угадывай',
     },
+    trueBtn: 'Верно',
+    falseBtn: 'Неверно',
+    trafficPrompt: 'Подходит ли перевод к слову?',
+    balloonPrompt: 'Поймай шарик с правильным английским словом!',
+    balloonMissed: 'Время вышло! Правильный перевод:',
     sync: {
       title: 'Синхронизация прогресса',
       description: 'Сохраняй звёздочки и прогресс между компьютером и телефоном!',
@@ -226,18 +240,25 @@ export const translations: Record<Language, Translations> = {
     soundOff: 'Skaņa izslēgta',
     modes: {
       flashcards: 'Kartītes',
-      quiz: 'Viktorīna',
       builder: 'Saliec vārdu',
       match: 'Atrodi pāri',
+      truefalse: 'Patiesība vai meli?',
+      balloons: 'Noķer tulkojumu',
       audio: 'Pēc dzirdes',
     },
     modeDescriptions: {
       flashcards: 'Mācies vārdus ar izrunu un tulkojumu',
-      quiz: 'Izvēlies pareizo tulkojumu no 4 variantiem',
       builder: 'Saliec angļu vārdus no burtu klucīšiem',
       match: 'Savieno angļu vārdus ar tulkojumu',
+      truefalse: 'Luksofors: spied zaļo (Pareizi) vai sarkano (Nepareizi)',
+      balloons: 'Pārspried balonu ar pareizo angļu vārdu',
       audio: 'Trenē dzirdi: klausies un uzmini vārdu',
     },
+    trueBtn: 'Pareizi',
+    falseBtn: 'Nepareizi',
+    trafficPrompt: 'Vai tulkojums atbilst vārdam?',
+    balloonPrompt: 'Noķer balonu ar pareizo angļu vārdu!',
+    balloonMissed: 'Laiks beidzās! Pareizais tulkojums:',
     sync: {
       title: 'Progresa sinhronizācija',
       description: 'Saglabā zvaigznītes un progresu starp datoru un telefonu!',

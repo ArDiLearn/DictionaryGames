@@ -2,7 +2,7 @@ import React from 'react';
 import { Topic, Language, GameMode, TopicProgress } from '../types';
 import { translations } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
-import { ArrowLeft, Play, Layers, HelpCircle, SpellCheck, Grid, Headphones } from 'lucide-react';
+import { ArrowLeft, Play, Layers, SpellCheck, Grid, Headphones, CheckCircle2, Sparkles } from 'lucide-react';
 
 interface GameSelectorProps {
   topic: Topic;
@@ -34,15 +34,6 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
       bg: 'bg-indigo-50/50 hover:bg-indigo-50',
     },
     {
-      id: 'quiz',
-      title: t.modes.quiz,
-      desc: t.modeDescriptions.quiz,
-      icon: <HelpCircle className="w-8 h-8 text-pink-600" />,
-      color: 'text-pink-600',
-      border: 'border-pink-300 hover:border-pink-500',
-      bg: 'bg-pink-50/50 hover:bg-pink-50',
-    },
-    {
       id: 'builder',
       title: t.modes.builder,
       desc: t.modeDescriptions.builder,
@@ -55,19 +46,37 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
       id: 'match',
       title: t.modes.match,
       desc: t.modeDescriptions.match,
-      icon: <Grid className="w-8 h-8 text-emerald-600" />,
+      icon: <Grid className="w-8 h-8 text-sky-600" />,
+      color: 'text-sky-600',
+      border: 'border-sky-300 hover:border-sky-500',
+      bg: 'bg-sky-50/50 hover:bg-sky-50',
+    },
+    {
+      id: 'truefalse',
+      title: `🚦 ${t.modes.truefalse}`,
+      desc: t.modeDescriptions.truefalse,
+      icon: <CheckCircle2 className="w-8 h-8 text-emerald-600" />,
       color: 'text-emerald-600',
       border: 'border-emerald-300 hover:border-emerald-500',
       bg: 'bg-emerald-50/50 hover:bg-emerald-50',
     },
     {
+      id: 'balloons',
+      title: `🎈 ${t.modes.balloons}`,
+      desc: t.modeDescriptions.balloons,
+      icon: <Sparkles className="w-8 h-8 text-rose-500" />,
+      color: 'text-rose-600',
+      border: 'border-rose-300 hover:border-rose-500',
+      bg: 'bg-rose-50/50 hover:bg-rose-50',
+    },
+    {
       id: 'audio',
       title: t.modes.audio,
       desc: t.modeDescriptions.audio,
-      icon: <Headphones className="w-8 h-8 text-sky-600" />,
-      color: 'text-sky-600',
-      border: 'border-sky-300 hover:border-sky-500',
-      bg: 'bg-sky-50/50 hover:bg-sky-50',
+      icon: <Headphones className="w-8 h-8 text-purple-600" />,
+      color: 'text-purple-600',
+      border: 'border-purple-300 hover:border-purple-500',
+      bg: 'bg-purple-50/50 hover:bg-purple-50',
     },
   ];
 

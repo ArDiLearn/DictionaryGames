@@ -25,7 +25,7 @@ export interface Topic {
   words: Word[];
 }
 
-export type GameMode = 'flashcards' | 'quiz' | 'builder' | 'match' | 'audio';
+export type GameMode = 'flashcards' | 'builder' | 'match' | 'truefalse' | 'balloons' | 'audio';
 
 export interface TopicProgress {
   topic_id: string;

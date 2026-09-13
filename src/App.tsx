@@ -5,7 +5,8 @@ import { Header } from './components/Header';
 import { TopicList } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
 import { FlashcardsGame } from './components/games/FlashcardsGame';
-import { QuizGame } from './components/games/QuizGame';
+import { TrueFalseGame } from './components/games/TrueFalseGame';
+import { BalloonPopGame } from './components/games/BalloonPopGame';
 import { WordBuilderGame } from './components/games/WordBuilderGame';
 import { MatchPairsGame } from './components/games/MatchPairsGame';
 import { AudioQuizGame } from './components/games/AudioQuizGame';
@@ -195,9 +196,21 @@ export const App: React.FC = () => {
               />
             )}
 
-            {gameMode === 'quiz' && (
-              <QuizGame
-                key={`${selectedTopic.topic_id}-quiz`}
+            {gameMode === 'truefalse' && (
+              <TrueFalseGame
+                key={`${selectedTopic.topic_id}-truefalse`}
+                topic={selectedTopic}
+                allTopics={filteredTopics}
+                language={language}
+                onRecordResult={handleRecordWordResult}
+                onComplete={handleGameComplete}
+                onBack={() => setGameMode(null)}
+              />
+            )}
+
+            {gameMode === 'balloons' && (
+              <BalloonPopGame
+                key={`${selectedTopic.topic_id}-balloons`}
                 topic={selectedTopic}
                 allTopics={filteredTopics}
                 language={language}

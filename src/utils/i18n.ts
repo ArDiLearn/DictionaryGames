@@ -509,3 +509,43 @@ export function getGradeFilterInfo(
     }
   }
 }
+
+/**
+ * Возвращает грамматически корректную форму слова "слово" в зависимости от количества:
+ * - 1 слово, 21 слово, 31 слово, 101 слово...
+ * - 2 слова, 3 слова, 4 слова, 22 слова, 23 слова, 24 слова...
+ * - 0 слов, 5 слов, 6 слов, 11 слов, 12 слов, 14 слов, 20 слов, 25 слов...
+ * 
+ * В латышском:
+ * - 1 vārds (21 vārds, 31 vārds...)
+ * - 2, 3, 4 ... vārdi
+ */
+export function getWordsPlural(count: number, language: Language = 'ru'): string {
+  if (language === 'ru') {
+    const abs = Math.abs(count);
+    const mod10 = abs % 10;
+    const mod100 = abs % 100;
+
+    if (mod10 === 1 && mod100 !== 11) {
+      return 'слово';
+    }
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) {
+      return 'слова';
+    }
+    return 'слов';
+  }
+
+  // Latvian (lv)
+  const abs = Math.abs(count);
+  const mod10 = abs % 10;
+  const mod100 = abs % 100;
+  if (mod10 === 1 && mod100 !== 11) {
+    return 'vārds';
+  }
+  return 'vārdi';
+}
+
+export function formatWordsCount(count: number, language: Language = 'ru'): string {
+  return `${count} ${getWordsPlural(count, language)}`;
+}
+

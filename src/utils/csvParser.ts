@@ -1,5 +1,6 @@
 import { Topic } from '../types';
 import { TRANSCRIPTIONS } from '../data/transcriptions';
+import { WORD_IMAGES } from './wordImages';
 
 function parseCsvLine(line: string): string[] {
   const result: string[] = [];
@@ -116,12 +117,15 @@ export function parseDictionaryCsv(csvString: string): Topic[] {
           phTrans = TRANSCRIPTIONS[en.toLowerCase().trim()] || '';
         }
 
+        const image = WORD_IMAGES[en.toLowerCase().trim()] || currentTopic.emoji || '✨';
+
         currentTopic.words.push({
           id: String(wordCounter++),
           en,
           lv: lv || '',
           ru: ru || '',
           grade,
+          image,
           ...(phTrans ? { transcription: phTrans } : {}),
         });
       }

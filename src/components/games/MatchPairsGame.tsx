@@ -3,6 +3,7 @@ import { Topic, Language } from '../../types';
 import { speakEnglish } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
+import { getWordImage } from '../../utils/wordImages';
 import { ArrowLeft } from 'lucide-react';
 
 interface MatchPairsGameProps {
@@ -17,6 +18,7 @@ interface MatchCard {
   id: string; // unique card id
   wordId: string;
   text: string;
+  image: string;
   type: 'en' | 'trans';
   matched: boolean;
 }
@@ -45,6 +47,7 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
       id: `en-${w.id}`,
       wordId: w.id,
       text: w.en,
+      image: getWordImage(w, topic.emoji),
       type: 'en',
       matched: false,
     }));
@@ -53,6 +56,7 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
       id: `trans-${w.id}`,
       wordId: w.id,
       text: w[language] || w.ru || w.lv,
+      image: getWordImage(w, topic.emoji),
       type: 'trans',
       matched: false,
     }));
@@ -183,12 +187,15 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
               key={card.id}
               onClick={() => handleCardClick(card)}
               disabled={card.matched}
-              className={`btn-3d min-h-[96px] p-3 rounded-3xl border-4 text-center font-bold text-base sm:text-lg shadow-md transition-all flex flex-col items-center justify-center ${style}`}
+              className={`btn-3d min-h-[110px] sm:min-h-[124px] p-2.5 sm:p-3 rounded-3xl border-4 text-center font-bold shadow-md transition-all flex flex-col items-center justify-between group ${style}`}
             >
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
                 {card.type === 'en' ? '🇬🇧 EN' : language === 'ru' ? '🇷🇺 RU' : '🇱🇻 LV'}
               </span>
-              <span className="leading-snug">{card.text}</span>
+              <span className="text-3xl sm:text-4xl my-1 select-none transform group-hover:scale-110 transition-transform">
+                {card.image}
+              </span>
+              <span className="leading-tight font-black text-sm sm:text-base">{card.text}</span>
             </button>
           );
         })}

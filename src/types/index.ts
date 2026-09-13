@@ -9,6 +9,7 @@ export interface Word {
   ru: string;
   transcription?: string;
   grade?: number;
+  image?: string;
 }
 
 export interface TopicName {

@@ -3,6 +3,7 @@ import { Word, Topic, Language } from '../../types';
 import { speakEnglish } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
+import { getWordImage } from '../../utils/wordImages';
 import { Volume2, ArrowLeft, RotateCcw } from 'lucide-react';
 
 interface WordBuilderGameProps {
@@ -129,6 +130,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
   if (!currentWord) return null;
 
   const translation = currentWord[language] || currentWord.ru || currentWord.lv;
+  const wordImage = getWordImage(currentWord, topic.emoji);
 
   return (
     <div className="max-w-xl mx-auto px-4 py-4 flex flex-col items-center">
@@ -163,11 +165,17 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
         />
       </div>
 
-      {/* Target Word Translation Display */}
-      <div className="w-full bg-white rounded-3xl border-4 border-amber-300 shadow-xl p-6 text-center mb-6">
+      {/* Target Word Translation Display with Picture */}
+      <div className="w-full bg-white rounded-3xl border-4 border-amber-300 shadow-xl p-5 sm:p-6 text-center mb-6">
         <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
           {t.spellTheWord}
         </div>
+
+        {/* Word Picture Illustration */}
+        <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-3xl bg-amber-50 border-3 border-amber-300 flex items-center justify-center text-5xl sm:text-6xl shadow-inner mb-3 select-none hover:scale-105 transition-transform">
+          {wordImage}
+        </div>
+
         <h2 className="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight leading-snug mb-3">
           {translation}
         </h2>

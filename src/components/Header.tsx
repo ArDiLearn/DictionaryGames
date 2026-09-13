@@ -111,7 +111,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={toggleSound}
             className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-slate-100 hover:bg-slate-200 border-2 border-slate-200 flex items-center justify-center text-slate-700 transition-colors"
-            title={stats.soundEnabled ? 'Звук включен' : 'Звук выключен'}
+            title={stats.soundEnabled ? t.soundOn : t.soundOff}
           >
             {stats.soundEnabled ? (
               <Volume2 className="w-5 h-5 text-indigo-600" />
@@ -142,7 +142,7 @@ export const Header: React.FC<HeaderProps> = ({
               <Cloud className="w-5 h-5 text-indigo-500" />
             )}
             <span className="hidden md:inline">
-              {isCloudSynced ? 'Облако' : 'Синхр.'}
+              {isCloudSynced ? t.sync.cloudShortBtn : t.sync.syncShortBtn}
             </span>
           </button>
 

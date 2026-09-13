@@ -3,9 +3,12 @@ import { Language } from '../types';
 export interface Translations {
   appTitle: string;
   appSubtitle: string;
+  welcomeGreeting: string;
+  defaultPlayerName: string;
   chooseTopic: string;
   searchPlaceholder: string;
   allTopics: string;
+  noResultsFound: string;
   wordsCount: string;
   learnedCount: string;
   play: string;
@@ -31,6 +34,8 @@ export interface Translations {
   score: string;
   starsEarned: string;
   roundComplete: string;
+  soundOn: string;
+  soundOff: string;
   modes: {
     flashcards: string;
     quiz: string;
@@ -58,6 +63,8 @@ export interface Translations {
     synced: string;
     notSynced: string;
     syncNow: string;
+    syncShortBtn: string;
+    cloudShortBtn: string;
     myProfile: string;
     accountLogin: string;
     accountCreate: string;
@@ -82,9 +89,12 @@ export const translations: Record<Language, Translations> = {
   ru: {
     appTitle: 'WordyKids',
     appSubtitle: 'Английский для 1–2 класса',
+    welcomeGreeting: 'Привет',
+    defaultPlayerName: 'Знайка',
     chooseTopic: 'Выбери тему для игры',
     searchPlaceholder: 'Поиск темы...',
     allTopics: 'Все темы',
+    noResultsFound: 'Ничего не нашлось',
     wordsCount: 'слов',
     learnedCount: 'выучено',
     play: 'Играть',
@@ -110,6 +120,8 @@ export const translations: Record<Language, Translations> = {
     score: 'Счёт',
     starsEarned: 'Получено звёзд',
     roundComplete: 'Тема пройдена!',
+    soundOn: 'Звук включен',
+    soundOff: 'Звук выключен',
     modes: {
       flashcards: 'Карточки',
       quiz: 'Викторина',
@@ -137,6 +149,8 @@ export const translations: Record<Language, Translations> = {
       synced: 'Синхронизировано с облаком',
       notSynced: 'Сохраняется только на этом устройстве',
       syncNow: 'Синхронизировать сейчас',
+      syncShortBtn: 'Синхр.',
+      cloudShortBtn: 'Облако',
       myProfile: 'Мой профиль',
       accountLogin: 'Вход в профиль',
       accountCreate: 'Новый игрок',
@@ -159,9 +173,12 @@ export const translations: Record<Language, Translations> = {
   lv: {
     appTitle: 'WordyKids',
     appSubtitle: 'Angļu valoda 1.–2. klasei',
+    welcomeGreeting: 'Sveiks',
+    defaultPlayerName: 'Zinītis',
     chooseTopic: 'Izvēlies tēmu spēlei',
     searchPlaceholder: 'Meklēt tēmu...',
     allTopics: 'Visas tēmas',
+    noResultsFound: 'Nekas netika atrasts',
     wordsCount: 'vārdi',
     learnedCount: 'apgūti',
     play: 'Spēlēt',
@@ -187,6 +204,8 @@ export const translations: Record<Language, Translations> = {
     score: 'Rezultāts',
     starsEarned: 'Nopelnītās zvaigznītes',
     roundComplete: 'Tēma pabeigta!',
+    soundOn: 'Skaņa ieslēgta',
+    soundOff: 'Skaņa izslēgta',
     modes: {
       flashcards: 'Kartītes',
       quiz: 'Viktorīna',
@@ -214,6 +233,8 @@ export const translations: Record<Language, Translations> = {
       synced: 'Sinhronizēts ar mākoni',
       notSynced: 'Saglabāts tikai šajā ierīcē',
       syncNow: 'Sinhronizēt tagad',
+      syncShortBtn: 'Sinhron.',
+      cloudShortBtn: 'Mākonis',
       myProfile: 'Mans profils',
       accountLogin: 'Ienākšana profilā',
       accountCreate: 'Jauns spēlētājs',

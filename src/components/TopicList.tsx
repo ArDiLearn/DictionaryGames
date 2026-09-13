@@ -43,6 +43,11 @@ export const TopicList: React.FC<TopicListProps> = ({
     0
   );
 
+  const displayName =
+    !playerName || playerName === 'Знайка' || playerName === 'Zinītis'
+      ? t.defaultPlayerName
+      : playerName;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-6">
       {/* Welcome Banner */}
@@ -55,7 +60,7 @@ export const TopicList: React.FC<TopicListProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-2xl sm:text-3xl font-black font-comic tracking-tight">
-                  Привет, {playerName}!
+                  {t.welcomeGreeting}, {displayName}!
                 </h1>
                 <Sparkles className="w-6 h-6 text-yellow-300 animate-spin-slow" />
               </div>
@@ -125,7 +130,7 @@ export const TopicList: React.FC<TopicListProps> = ({
         <div className="text-center py-12 bg-white rounded-3xl border-2 border-slate-200">
           <p className="text-4xl mb-2">🔍</p>
           <p className="text-lg font-bold text-slate-600">
-            Ничего не нашлось / Nekas netika atrasts
+            {t.noResultsFound}
           </p>
         </div>
       )}

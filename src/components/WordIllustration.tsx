@@ -37,27 +37,80 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
     </svg>
   ),
 
-  // 2. точилка (pencil sharpener - plastic wedge with metal blade, hole and shavings)
+  // 2. точилка (pencil sharpener - isometric blue wedge sharpener matching reference photo)
   'pencil sharpener': (
     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
-      {/* Main plastic body - wedge block */}
-      <path d="M22 30 C22 24 28 20 36 20 L76 28 C82 29 86 34 86 40 L86 68 C86 76 80 82 72 82 L34 82 C26 82 22 76 22 68 Z" fill="#0284c7" />
-      <path d="M22 34 C22 28 28 24 36 24 L76 32 C82 33 86 38 86 44 L86 68 C86 76 80 80 72 80 L34 80 C26 80 22 74 22 68 Z" fill="#38bdf8" />
-      {/* Finger grip ridges */}
-      <line x1="28" y1="42" x2="28" y2="66" stroke="#0369a1" strokeWidth="3" strokeLinecap="round" />
-      <line x1="34" y1="40" x2="34" y2="68" stroke="#0369a1" strokeWidth="3" strokeLinecap="round" />
-      {/* Sharpener pencil hole on side */}
-      <ellipse cx="78" cy="54" rx="5" ry="9" fill="#0f172a" />
-      <ellipse cx="77" cy="54" rx="3.5" ry="7" fill="#334155" />
-      {/* Metal Blade */}
-      <polygon points="42,34 72,40 68,66 38,60" fill="#cbd5e1" stroke="#94a3b8" strokeWidth="1.5" />
-      {/* Sharp Blade Edge */}
-      <line x1="44" y1="35" x2="40" y2="59" stroke="#f8fafc" strokeWidth="2" />
-      {/* Blade Screw */}
-      <circle cx="55" cy="50" r="3.5" fill="#64748b" />
-      <line x1="53" y1="50" x2="57" y2="50" stroke="#f8fafc" strokeWidth="1.2" />
-      {/* Curled pencil shaving */}
-      <path d="M68 64 C76 66 82 74 76 80 C70 86 62 82 66 76" stroke="#f59e0b" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+      {/* Ground Shadow */}
+      <ellipse cx="50" cy="88" rx="38" ry="7" fill="#94a3b8" opacity="0.4" />
+
+      {/* Main Plastic Body - Isometric Wedge */}
+      {/* Front Face (with pencil hole) */}
+      <polygon points="14,38 40,56 40,86 14,68" fill="#1d4ed8" stroke="#1e40af" strokeWidth="1" strokeLinejoin="round" />
+
+      {/* Pencil Hole on Front Face */}
+      <g transform="rotate(-15 27 62)">
+        <ellipse cx="27" cy="62" rx="7.5" ry="11" fill="#0b1e42" />
+        <ellipse cx="27" cy="62" rx="6.5" ry="9.5" fill="#08142c" />
+        {/* Inner Hole Conical Depth Shading */}
+        <path d="M22 62 C22 68 32 68 32 62 C32 58 22 58 22 62 Z" fill="#1e3a8a" opacity="0.6" />
+      </g>
+
+      {/* Right Side Wall (curved concave finger grip) */}
+      <path d="M40 56 C56 61 72 49 88 30 L88 60 C72 79 56 91 40 86 Z" fill="#2563eb" stroke="#1d4ed8" strokeWidth="1" strokeLinejoin="round" />
+
+      {/* Vertical Grip Ridges along the concave side */}
+      <line x1="50" y1="59" x2="50" y2="85" stroke="#1d4ed8" strokeWidth="1.2" />
+      <line x1="50.8" y1="59" x2="50.8" y2="85" stroke="#60a5fa" strokeWidth="0.8" />
+      <line x1="54" y1="57" x2="54" y2="82" stroke="#1d4ed8" strokeWidth="1.2" />
+      <line x1="54.8" y1="57" x2="54.8" y2="82" stroke="#60a5fa" strokeWidth="0.8" />
+      <line x1="58" y1="55" x2="58" y2="79" stroke="#1d4ed8" strokeWidth="1.2" />
+      <line x1="58.8" y1="55" x2="58.8" y2="79" stroke="#60a5fa" strokeWidth="0.8" />
+      <line x1="62" y1="52" x2="62" y2="76" stroke="#1d4ed8" strokeWidth="1.2" />
+      <line x1="62.8" y1="52" x2="62.8" y2="76" stroke="#60a5fa" strokeWidth="0.8" />
+      <line x1="66" y1="49" x2="66" y2="73" stroke="#1d4ed8" strokeWidth="1.2" />
+      <line x1="66.8" y1="49" x2="66.8" y2="73" stroke="#60a5fa" strokeWidth="0.8" />
+      <line x1="70" y1="46" x2="70" y2="70" stroke="#1d4ed8" strokeWidth="1.2" />
+      <line x1="70.8" y1="46" x2="70.8" y2="70" stroke="#60a5fa" strokeWidth="0.8" />
+      <line x1="74" y1="43" x2="74" y2="67" stroke="#1d4ed8" strokeWidth="1.2" />
+      <line x1="74.8" y1="43" x2="74.8" y2="67" stroke="#60a5fa" strokeWidth="0.8" />
+      <line x1="78" y1="40" x2="78" y2="64" stroke="#1d4ed8" strokeWidth="1.2" />
+      <line x1="78.8" y1="40" x2="78.8" y2="64" stroke="#60a5fa" strokeWidth="0.8" />
+
+      {/* Top Surface */}
+      <polygon points="14,38 40,56 88,30 62,12" fill="#3b82f6" />
+
+      {/* Raised Back-Left Stepped Wall with Grip Teeth */}
+      <polygon points="50,19 62,12 88,30 84,33 60,17 50,22" fill="#1d4ed8" />
+      <polygon points="50,19 50,22 60,17 60,14" fill="#60a5fa" />
+      {/* Tiny grip teeth on top back ridge */}
+      <line x1="66" y1="15" x2="68" y2="16.5" stroke="#93c5fd" strokeWidth="1.5" />
+      <line x1="72" y1="19" x2="74" y2="20.5" stroke="#93c5fd" strokeWidth="1.5" />
+      <line x1="78" y1="23" x2="80" y2="24.5" stroke="#93c5fd" strokeWidth="1.5" />
+
+      {/* Blade Bed Recess */}
+      <polygon points="28,48 76,22 84,27 36,53" fill="#1e40af" />
+      {/* Shavings slot opening */}
+      <polygon points="26,45 66,22 68,24 28,47" fill="#0f172a" />
+
+      {/* Steel Blade */}
+      <polygon points="32,49 76,24 82,28 38,53" fill="#cbd5e1" stroke="#94a3b8" strokeWidth="0.8" />
+      {/* Metallic highlight on blade cutting edge */}
+      <line x1="32" y1="49" x2="76" y2="24" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" />
+      {/* Blade bevel shadow */}
+      <polygon points="37,53 82,28 80,30 35,55" fill="#94a3b8" />
+
+      {/* Central Domed Screw */}
+      <ellipse cx="57" cy="38" rx="5" ry="4.2" fill="#94a3b8" />
+      <ellipse cx="56.6" cy="37.6" rx="4.5" ry="3.8" fill="#e2e8f0" />
+      {/* Shiny Specular Highlight */}
+      <circle cx="55.2" cy="36.5" r="1.2" fill="#ffffff" />
+      {/* Screw Cross Slot */}
+      <line x1="53.8" y1="37.6" x2="59.4" y2="37.6" stroke="#475569" strokeWidth="1.2" strokeLinecap="round" />
+      <line x1="56.6" y1="35.2" x2="56.6" y2="40" stroke="#475569" strokeWidth="1.2" strokeLinecap="round" />
+
+      {/* Top Edge Specular Lighting */}
+      <line x1="14" y1="38" x2="40" y2="56" stroke="#93c5fd" strokeWidth="1.2" strokeLinecap="round" />
+      <line x1="40" y1="56" x2="88" y2="30" stroke="#93c5fd" strokeWidth="1" strokeLinecap="round" />
     </svg>
   ),
 
@@ -118,9 +171,11 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
     </svg>
   ),
 
-  // 5. клей (glue - bottle of school PVA glue with dispenser tip & label)
+  // 5. клей (glue - bottle of school PVA glue with dispenser tip & label without text)
   'glue': (
     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground Shadow */}
+      <ellipse cx="50" cy="88" rx="26" ry="5" fill="#cbd5e1" opacity="0.6" />
       {/* Glue Drop from tip */}
       <path d="M50 14 C50 14 47 19 47 21 C47 22.5 48.3 24 50 24 C51.7 24 53 22.5 53 21 C53 19 50 14 50 14 Z" fill="#38bdf8" />
       {/* Orange Nozzle Tip */}
@@ -135,9 +190,12 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
       {/* Label on Bottle */}
       <rect x="34" y="52" width="32" height="24" rx="4" fill="#2563eb" />
       <rect x="36" y="54" width="28" height="20" rx="3" fill="#3b82f6" />
-      {/* Label Text "КЛЕЙ / GLUE" */}
-      <text x="50" y="67" textAnchor="middle" fill="#ffffff" fontWeight="900" fontSize="8" fontFamily="sans-serif" letterSpacing="0.5">КЛЕЙ</text>
-      <line x1="38" y1="70" x2="62" y2="70" stroke="#93c5fd" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Decorative Droplet Emblem (No Text) */}
+      <path d="M50 57 C50 57 45.5 63 45.5 65.5 C45.5 68 47.5 70 50 70 C52.5 70 54.5 68 54.5 65.5 C54.5 63 50 57 50 57 Z" fill="#ffffff" />
+      <circle cx="48.5" cy="65.5" r="1.2" fill="#3b82f6" />
+      {/* Decorative Wave Accent Lines */}
+      <path d="M37 68 C41 66 45 70 50 70 C55 70 59 66 63 68" stroke="#93c5fd" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      <path d="M39 71 C43 69 47 72 50 72 C53 72 57 69 61 71" stroke="#60a5fa" strokeWidth="1.2" strokeLinecap="round" fill="none" />
     </svg>
   ),
 
@@ -411,27 +469,57 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
     </svg>
   ),
 
-  // 16. прямые волосы (straight hair - smooth, sleek, perfectly straight parted hair)
+  // 16. прямые волосы (straight hair - cute child portrait with sleek straight bangs and hair)
   'straight hair': (
     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
-      {/* Neck & Shirt */}
-      <path d="M44 68 L44 80 L30 88 L70 88 L56 80 L56 68 Z" fill="#fed7aa" />
-      <path d="M30 88 C40 82 60 82 70 88 Z" fill="#10b981" />
-      {/* Face */}
-      <circle cx="50" cy="52" r="18" fill="#fed7aa" />
-      {/* Face Details */}
-      <circle cx="44" cy="52" r="2" fill="#1e293b" />
-      <circle cx="56" cy="52" r="2" fill="#1e293b" />
-      <path d="M47 58 C49 61 51 61 53 58" stroke="#e11d48" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-      {/* Perfectly Straight Sleek Hair Falling on Both Sides */}
-      <path d="M32 44 L30 76 C33 77 36 77 38 76 L40 48" fill="#78350f" />
-      <path d="M68 44 L70 76 C67 77 64 77 62 76 L60 48" fill="#78350f" />
-      {/* Crown Hair with straight middle parting */}
-      <path d="M32 44 C30 30 38 20 50 20 C62 20 70 30 68 44 C64 36 58 32 50 32 C42 32 36 36 32 44 Z" fill="#92400e" />
-      <line x1="50" y1="20" x2="50" y2="34" stroke="#451a03" strokeWidth="1.5" />
-      {/* Glossy vertical shine lines emphasizing straightness */}
-      <line x1="34" y1="46" x2="34" y2="70" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" />
-      <line x1="66" y1="46" x2="66" y2="70" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Straight Hair Mass in Back */}
+      <path d="M24 38 L22 76 C24 78 32 78 34 76 L34 50 L66 50 L66 76 C68 78 76 78 78 76 L76 38 C72 20 28 20 24 38 Z" fill="#713f12" />
+
+      {/* Neck */}
+      <rect x="44" y="64" width="12" height="13" fill="#fed7aa" />
+
+      {/* Shirt & Shoulders */}
+      <path d="M26 88 C32 76 44 74 50 74 C56 74 68 76 74 88 Z" fill="#10b981" />
+      {/* White Peter Pan Collar */}
+      <path d="M42 74 C44 79 50 80 50 80 C50 80 56 79 58 74" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1" />
+
+      {/* Cute Symmetrical Ears */}
+      <circle cx="29" cy="48" r="3.5" fill="#fed7aa" />
+      <circle cx="71" cy="48" r="3.5" fill="#fed7aa" />
+
+      {/* Cute, Naturally Proportioned Face Contour */}
+      <path d="M31 40 C31 60 38 68 50 68 C62 68 69 60 69 40 C69 28 62 25 50 25 C38 25 31 28 31 40 Z" fill="#fed7aa" />
+
+      {/* Delicate Eyebrows */}
+      <path d="M39 42 C41 40.5 44 40.5 46 42" stroke="#713f12" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      <path d="M54 42 C56 40.5 59 40.5 61 42" stroke="#713f12" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+
+      {/* Expressive Eyes with Highlights */}
+      <circle cx="42" cy="47" r="2.5" fill="#1e293b" />
+      <circle cx="43" cy="46" r="0.8" fill="#ffffff" />
+      <circle cx="58" cy="47" r="2.5" fill="#1e293b" />
+      <circle cx="59" cy="46" r="0.8" fill="#ffffff" />
+
+      {/* Rosy Cheeks */}
+      <circle cx="37" cy="52" r="3" fill="#fb7185" opacity="0.5" />
+      <circle cx="63" cy="52" r="3" fill="#fb7185" opacity="0.5" />
+
+      {/* Sweet Smile */}
+      <path d="M46 54 C48 57.5 52 57.5 54 54" stroke="#e11d48" strokeWidth="1.6" strokeLinecap="round" fill="none" />
+
+      {/* Front Straight Bangs (Челка) - Clean Straight Horizontal Cut */}
+      <path d="M30 38 C30 23 70 23 70 38 L70 40 L30 40 Z" fill="#854d0e" />
+      <line x1="30" y1="40" x2="70" y2="40" stroke="#713f12" strokeWidth="1" />
+
+      {/* Perfectly Straight Side Strands Framing Face */}
+      <path d="M25 36 L23 72 C26 73 30 73 31 71 L32 40 Z" fill="#854d0e" />
+      <path d="M75 36 L77 72 C74 73 70 73 69 71 L68 40 Z" fill="#854d0e" />
+
+      {/* Silky Straight Vertical Shine Lines */}
+      <line x1="26" y1="42" x2="26" y2="68" stroke="#fbbf24" strokeWidth="1.5" strokeLinecap="round" opacity="0.7" />
+      <line x1="74" y1="42" x2="74" y2="68" stroke="#fbbf24" strokeWidth="1.5" strokeLinecap="round" opacity="0.7" />
+      {/* Crown Light Sheen */}
+      <path d="M42 27 C46 25 54 25 58 27" stroke="#fef08a" strokeWidth="1.8" strokeLinecap="round" fill="none" opacity="0.8" />
     </svg>
   ),
 
@@ -527,60 +615,141 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
     </svg>
   ),
 
-  // 20. диванная подушка (cushion - soft plush square throw pillow with button tufting)
+  // 20. диванная подушка (cushion - cozy plush sofa throw pillow with stitched piping & tassels)
   'cushion': (
     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
-      {/* Pillow Shadow */}
-      <ellipse cx="50" cy="82" rx="30" ry="6" fill="#cbd5e1" opacity="0.6" />
+      {/* Ground Pillow Shadow */}
+      <ellipse cx="50" cy="85" rx="34" ry="7" fill="#cbd5e1" opacity="0.6" />
+
       {/* Main Pillow Cushion Body */}
-      <path d="M50 20 C68 22 78 32 80 50 C78 68 68 78 50 80 C32 78 22 68 20 50 C22 32 32 22 50 20 Z" fill="#8b5cf6" />
-      <path d="M50 22 C66 24 76 34 78 50 C76 66 66 76 50 78 C34 76 24 66 22 50 C24 34 34 24 50 22 Z" fill="#a78bfa" />
-      {/* Corner tassels/piping */}
-      <circle cx="21" cy="21" r="3" fill="#f59e0b" />
-      <circle cx="79" cy="21" r="3" fill="#f59e0b" />
-      <circle cx="21" cy="79" r="3" fill="#f59e0b" />
-      <circle cx="79" cy="79" r="3" fill="#f59e0b" />
-      {/* Tufted Crease Lines Radiating from center button */}
-      <path d="M50 50 L32 32" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" />
-      <path d="M50 50 L68 32" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" />
-      <path d="M50 50 L32 68" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" />
-      <path d="M50 50 L68 68" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" />
+      <path d="M22 26 C34 18 66 18 78 26 C86 42 86 64 78 80 C66 88 34 88 22 80 C14 64 14 42 22 26 Z" fill="#0f766e" />
+      <path d="M24 28 C35 21 65 21 76 28 C83 42 83 62 76 78 C65 85 35 85 24 78 C17 62 17 42 24 28 Z" fill="#14b8a6" />
+
+      {/* Tailored Piping / Seam Border */}
+      <path d="M22 26 C34 18 66 18 78 26 C86 42 86 64 78 80 C66 88 34 88 22 80 C14 64 14 42 22 26 Z" stroke="#5eead4" strokeWidth="2" strokeLinejoin="round" fill="none" />
+
+      {/* Corner Tassels */}
+      {/* Top-Left Tassel */}
+      <path d="M20 24 L14 18" stroke="#d97706" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="21" cy="25" r="3" fill="#f59e0b" />
+      {/* Top-Right Tassel */}
+      <path d="M80 24 L86 18" stroke="#d97706" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="79" cy="25" r="3" fill="#f59e0b" />
+      {/* Bottom-Left Tassel */}
+      <path d="M20 82 L14 88" stroke="#d97706" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="21" cy="81" r="3" fill="#f59e0b" />
+      {/* Bottom-Right Tassel */}
+      <path d="M80 82 L86 88" stroke="#d97706" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="79" cy="81" r="3" fill="#f59e0b" />
+
+      {/* Soft Plush Folds & Indentations */}
+      <path d="M28 32 C38 42 44 48 50 53" stroke="#0f766e" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.4" />
+      <path d="M72 32 C62 42 56 48 50 53" stroke="#0f766e" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.4" />
+      <path d="M28 74 C38 64 44 58 50 53" stroke="#0f766e" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.4" />
+      <path d="M72 74 C62 64 56 58 50 53" stroke="#0f766e" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.4" />
+
+      {/* Top Surface Light Highlight */}
+      <path d="M30 32 C42 26 58 26 70 32" stroke="#99f6e4" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.7" />
+
       {/* Center Tufting Button */}
-      <circle cx="50" cy="50" r="5" fill="#6d28d9" />
-      <circle cx="49" cy="49" r="3.5" fill="#f59e0b" />
+      <circle cx="50" cy="53" r="5" fill="#0f766e" />
+      <circle cx="49.5" cy="52.5" r="3.8" fill="#f59e0b" />
+      <circle cx="48.5" cy="51.5" r="1.2" fill="#ffffff" />
+      <line x1="48" y1="52.5" x2="51" y2="52.5" stroke="#b45309" strokeWidth="1" />
+      <line x1="49.5" y1="51" x2="49.5" y2="54" stroke="#b45309" strokeWidth="1" />
     </svg>
   ),
 
-  // 21. кухня (kitchen - kitchen range, range hood, pots on burner & countertop)
+  // 21. кухня (kitchen - cozy modern home kitchen with cabinets, sink, countertop, kettle & oven)
   'kitchen': (
     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
-      {/* Tiled Wall */}
-      <rect x="18" y="16" width="64" height="72" fill="#f1f5f9" />
-      <line x1="18" y1="36" x2="82" y2="36" stroke="#cbd5e1" strokeWidth="1" />
-      <line x1="18" y1="52" x2="82" y2="52" stroke="#cbd5e1" strokeWidth="1" />
-      {/* Range Hood at Top */}
-      <polygon points="34,16 66,16 72,28 28,28" fill="#64748b" />
-      <rect x="28" y="28" width="44" height="4" fill="#475569" />
-      {/* Upper Cabinet on Left */}
-      <rect x="18" y="16" width="14" height="24" fill="#0284c7" stroke="#0369a1" strokeWidth="1.5" />
-      <rect x="70" y="16" width="12" height="24" fill="#0284c7" stroke="#0369a1" strokeWidth="1.5" />
-      {/* Cooking Stove Unit */}
-      <rect x="32" y="48" width="36" height="40" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1.5" />
-      {/* Stove Controls Bar */}
-      <rect x="32" y="48" width="36" height="6" fill="#cbd5e1" />
-      <circle cx="40" cy="51" r="1.5" fill="#334155" />
-      <circle cx="46" cy="51" r="1.5" fill="#334155" />
-      <circle cx="54" cy="51" r="1.5" fill="#334155" />
-      <circle cx="60" cy="51" r="1.5" fill="#334155" />
-      {/* Oven Window */}
-      <rect x="36" y="58" width="28" height="24" rx="2" fill="#1e293b" />
-      <rect x="39" y="61" width="22" height="18" rx="1" fill="#334155" />
-      <line x1="42" y1="56" x2="58" y2="56" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" />
-      {/* Pot on Stove with Steam */}
-      <rect x="42" y="42" width="16" height="7" rx="1.5" fill="#ea580c" />
-      <rect x="40" y="40" width="20" height="2" rx="1" fill="#c2410c" />
-      <circle cx="50" cy="38" r="1.5" fill="#f59e0b" />
-      <path d="M48 36 C48 34 52 34 52 32" stroke="#94a3b8" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      {/* Kitchen Back Wall with Subtle Frame */}
+      <rect x="12" y="14" width="76" height="74" rx="4" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="1" />
+
+      {/* Tiled Backsplash */}
+      <rect x="12" y="32" width="76" height="17" fill="#f1f5f9" />
+      <line x1="12" y1="37" x2="88" y2="37" stroke="#e2e8f0" strokeWidth="0.8" />
+      <line x1="12" y1="43" x2="88" y2="43" stroke="#e2e8f0" strokeWidth="0.8" />
+      {/* Subtle Tile Vertical Grout Ticks */}
+      <line x1="26" y1="32" x2="26" y2="37" stroke="#e2e8f0" strokeWidth="0.8" />
+      <line x1="50" y1="32" x2="50" y2="37" stroke="#e2e8f0" strokeWidth="0.8" />
+      <line x1="74" y1="32" x2="74" y2="37" stroke="#e2e8f0" strokeWidth="0.8" />
+      <line x1="38" y1="37" x2="38" y2="43" stroke="#e2e8f0" strokeWidth="0.8" />
+      <line x1="62" y1="37" x2="62" y2="43" stroke="#e2e8f0" strokeWidth="0.8" />
+      <line x1="26" y1="43" x2="26" y2="49" stroke="#e2e8f0" strokeWidth="0.8" />
+      <line x1="50" y1="43" x2="50" y2="49" stroke="#e2e8f0" strokeWidth="0.8" />
+      <line x1="74" y1="43" x2="74" y2="49" stroke="#e2e8f0" strokeWidth="0.8" />
+
+      {/* Upper Cabinets on Left */}
+      <rect x="14" y="16" width="30" height="16" rx="2" fill="#0284c7" />
+      <rect x="16" y="18" width="12" height="12" rx="1.5" fill="#38bdf8" />
+      <rect x="30" y="18" width="12" height="12" rx="1.5" fill="#38bdf8" />
+      {/* Cabinet Handles */}
+      <line x1="26" y1="22" x2="26" y2="26" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="32" y1="22" x2="32" y2="26" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" />
+
+      {/* Floating Kitchen Shelf on Right */}
+      <rect x="48" y="22" width="38" height="3" rx="1" fill="#b45309" />
+      {/* Spice Jar on Shelf */}
+      <rect x="52" y="15" width="6" height="7" rx="1.5" fill="#fef08a" stroke="#f59e0b" strokeWidth="0.8" />
+      <rect x="53" y="13.5" width="4" height="2" rx="0.8" fill="#b45309" />
+      {/* Pink Ceramic Mug on Shelf */}
+      <rect x="62" y="16" width="7" height="6" rx="1.5" fill="#ec4899" />
+      <path d="M69 17 C71 17 71 21 69 21" stroke="#db2777" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+      {/* Potted Plant on Shelf */}
+      <polygon points="74,18 80,18 79,22 75,22" fill="#ea580c" />
+      <circle cx="77" cy="15.5" r="3" fill="#22c55e" />
+      <circle cx="79" cy="14" r="2" fill="#16a34a" />
+
+      {/* Warm Wooden Countertop */}
+      <rect x="10" y="49" width="80" height="6" rx="1.5" fill="#d97706" />
+      <rect x="10" y="49" width="80" height="3" fill="#f59e0b" />
+
+      {/* Sink Basin on Left */}
+      <rect x="16" y="50" width="22" height="3.5" rx="1" fill="#94a3b8" />
+      {/* Modern Curved Gooseneck Faucet */}
+      <path d="M26 49 L26 39 C26 35 32 35 32 40 L32 42" stroke="#64748b" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+      <line x1="24" y1="44" x2="28" y2="44" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" />
+
+      {/* Stove Cooktop on Right */}
+      <rect x="47" y="48" width="24" height="3" rx="0.5" fill="#334155" />
+      <ellipse cx="58" cy="49" rx="5.5" ry="1.5" fill="#64748b" />
+
+      {/* Red Whistling Teapot / Kettle */}
+      <path d="M53 49 C52 42 64 42 63 49 Z" fill="#ef4444" />
+      <circle cx="58" cy="41" r="1.5" fill="#f59e0b" />
+      {/* Kettle Spout */}
+      <path d="M54 46 L49 42" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" />
+      {/* Kettle Handle */}
+      <path d="M55 40 C55 36 61 36 61 40" stroke="#1e293b" strokeWidth="1.5" fill="none" />
+      {/* Steam Puff from Kettle Spout */}
+      <path d="M48 40 C47 38 50 37 49 35" stroke="#94a3b8" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+
+      {/* Lower Kitchen Base Cabinets */}
+      <rect x="12" y="55" width="76" height="32" rx="2" fill="#0284c7" />
+
+      {/* Left Cabinet Door */}
+      <rect x="15" y="58" width="26" height="26" rx="2" fill="#0369a1" />
+      <rect x="18" y="61" width="20" height="20" rx="1.5" fill="#0284c7" />
+      {/* Door Handle */}
+      <line x1="36" y1="67" x2="36" y2="73" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+
+      {/* Right Unit - Built-in Modern Oven */}
+      {/* Oven Control Panel */}
+      <rect x="44" y="58" width="41" height="6" rx="1" fill="#1e293b" />
+      <circle cx="50" cy="61" r="1.5" fill="#94a3b8" />
+      <circle cx="56" cy="61" r="1.5" fill="#94a3b8" />
+      <circle cx="79" cy="61" r="1.5" fill="#94a3b8" />
+      {/* Oven Window Door */}
+      <rect x="44" y="65" width="41" height="19" rx="1.5" fill="#334155" />
+      <rect x="48" y="68" width="33" height="13" rx="1" fill="#0f172a" />
+      {/* Glowing Warm Light inside oven */}
+      <line x1="51" y1="75" x2="78" y2="75" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4 2" />
+      {/* Oven Handle Bar */}
+      <line x1="52" y1="66.5" x2="77" y2="66.5" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" />
+
+      {/* Base Toe-Kick Plinth */}
+      <rect x="12" y="87" width="76" height="3" fill="#0c4a6e" />
     </svg>
   ),
 

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Word, Topic, Language } from '../../types';
 import { speakEnglish } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
 import { getWordImage } from '../../utils/wordImages';
-import { Volume2, RotateCw, ArrowLeft } from 'lucide-react';
+import { Volume2, RotateCw, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface FlashcardsGameProps {
   topic: Topic;
@@ -71,6 +71,32 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
       onComplete(correctCount + (known ? 1 : 0), topic.words.length);
     }
   };
+
+  const handleJumpTo = (index: number) => {
+    if (index < 0 || index >= topic.words.length || index === currentIndex) return;
+    sounds.playClick();
+    setCurrentIndex(index);
+    setIsFlipped(false);
+  };
+
+  const paginationItems = useMemo(() => {
+    const total = topic.words.length;
+    const current = currentIndex + 1;
+
+    if (total <= 7) {
+      return Array.from({ length: total }, (_, i) => i + 1);
+    }
+
+    if (current <= 4) {
+      return [1, 2, 3, 4, 5, '...', total];
+    }
+
+    if (current >= total - 3) {
+      return [1, '...', total - 4, total - 3, total - 2, total - 1, total];
+    }
+
+    return [1, '...', current - 1, current, current + 1, '...', total];
+  }, [currentIndex, topic.words.length]);
 
   if (!currentWord) return null;
 
@@ -175,8 +201,63 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
         </div>
       </div>
 
+      {/* Word Pagination Navigation Bar */}
+      <div className="w-full flex items-center justify-center gap-1.5 sm:gap-2 mt-5 px-2 py-1 overflow-x-auto no-scrollbar">
+        {/* Previous Button */}
+        <button
+          onClick={() => handleJumpTo(currentIndex - 1)}
+          disabled={currentIndex === 0}
+          className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white border-2 border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300 disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center font-bold shadow-xs transition-all cursor-pointer"
+          title={language === 'ru' ? 'Предыдущее слово' : 'Iepriekšējais vārds'}
+        >
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 stroke-[2.5]" />
+        </button>
+
+        {/* Page items */}
+        {paginationItems.map((item, idx) => {
+          if (item === '...') {
+            return (
+              <div
+                key={`ellipsis-${idx}`}
+                className="w-6 sm:w-8 h-9 sm:h-11 flex items-center justify-center text-slate-400 font-black text-sm select-none tracking-widest"
+              >
+                ...
+              </div>
+            );
+          }
+
+          const pageNumber = item as number;
+          const pageIndex = pageNumber - 1;
+          const isActive = pageIndex === currentIndex;
+
+          return (
+            <button
+              key={`page-${pageNumber}`}
+              onClick={() => handleJumpTo(pageIndex)}
+              className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl border-2 font-black text-sm sm:text-base flex items-center justify-center transition-all cursor-pointer ${
+                isActive
+                  ? 'bg-slate-900 border-slate-900 text-sky-400 shadow-md scale-105'
+                  : 'bg-white border-slate-200 text-sky-600 hover:border-sky-300 hover:bg-sky-50/40 shadow-xs'
+              }`}
+            >
+              {pageNumber}
+            </button>
+          );
+        })}
+
+        {/* Next Button */}
+        <button
+          onClick={() => handleJumpTo(currentIndex + 1)}
+          disabled={currentIndex >= topic.words.length - 1}
+          className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white border-2 border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300 disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center font-bold shadow-xs transition-all cursor-pointer"
+          title={language === 'ru' ? 'Следующее слово' : 'Nākamais vārds'}
+        >
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 stroke-[2.5]" />
+        </button>
+      </div>
+
       {/* Action Buttons */}
-      <div className="w-full grid grid-cols-2 gap-4 mt-6">
+      <div className="w-full grid grid-cols-2 gap-4 mt-5">
         <button
           onClick={() => handleNext(false)}
           className="btn-3d py-4 px-4 rounded-3xl bg-amber-100 hover:bg-amber-200 border-4 border-amber-300 text-amber-800 font-black text-lg sm:text-xl shadow-lg flex items-center justify-center gap-2"

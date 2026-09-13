@@ -122,6 +122,11 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
               <h2 className="text-4xl sm:text-5xl font-black text-indigo-600 tracking-tight font-comic">
                 {currentWord.en}
               </h2>
+              {currentWord.transcription && (
+                <div className="inline-block mt-2 px-3 py-1 bg-indigo-50 border border-indigo-200 rounded-full text-indigo-500 font-mono text-sm sm:text-base font-semibold">
+                  {currentWord.transcription}
+                </div>
+              )}
               <p className="text-xs sm:text-sm font-semibold text-slate-400 mt-2">
                 {t.tapToFlip}
               </p>
@@ -132,7 +137,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
                 {translation}
               </h2>
               <p className="text-sm font-bold text-slate-400 mt-2">
-                {currentWord.en}
+                {currentWord.en} {currentWord.transcription ? ` ${currentWord.transcription}` : ''}
               </p>
             </div>
           )}

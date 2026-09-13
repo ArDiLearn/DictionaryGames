@@ -998,61 +998,71 @@
         "id": "139",
         "en": "juice",
         "lv": "sula",
-        "ru": "сок"
+        "ru": "сок",
+        "transcription": "[ ʤuːs ]"
       },
       {
         "id": "140",
         "en": "cheese",
         "lv": "siers",
-        "ru": "сыр"
+        "ru": "сыр",
+        "transcription": "[ ʧiːz ]"
       },
       {
         "id": "141",
         "en": "meat",
         "lv": "gaļa",
-        "ru": "мясо"
+        "ru": "мясо",
+        "transcription": "[ miːt ]"
       },
       {
         "id": "142",
         "en": "pasta",
         "lv": "makaroni",
-        "ru": "макароны"
+        "ru": "макароны",
+        "transcription": "[ ˈpæstə ]"
       },
       {
         "id": "143",
         "en": "eggs",
         "lv": "olas",
-        "ru": "яйца"
+        "ru": "яйца",
+        "transcription": "[ eɡz ]"
       },
       {
         "id": "144",
         "en": "bread",
         "lv": "maize",
-        "ru": "хлеб"
+        "ru": "хлеб",
+        "transcription": "[ bred ]"
       },
       {
         "id": "145",
         "en": "fish",
         "lv": "zivs",
-        "ru": "рыба"
+        "ru": "рыба",
+        "transcription": "[ fɪʃ ]"
       },
       {
         "id": "146",
         "en": "sandwiches",
         "lv": "sviestmaizes",
-        "ru": "бутерброды"
+        "ru": "бутерброды",
+        "transcription": "[ sænwɪʤɪz ]"
       },
       {
         "id": "147",
         "en": "milk",
         "lv": "piens",
-        "ru": "молоко"
+        "ru": "молоко",
+        "transcription": "[ mɪlk ]"
       },
       {
         "id": "148",
         "en": "rice",
         "lv": "rīsi",
-        "ru": "рис"
+        "ru": "рис",
+        "transcription": "[ raɪs ]"
       }
     ]
   },

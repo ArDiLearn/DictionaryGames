@@ -1040,7 +1040,7 @@
     "topic_id": "pets",
     "topic_name": {
       "ru": "Домашние питомцы",
-      "lv": "Mājdzīvnieki",
+      "lv": "Mājas mīluļi",
       "en": "Pets"
     },
     "icon": "Cat",
@@ -1133,7 +1133,7 @@
     "topic_id": "farm_animals",
     "topic_name": {
       "ru": "Фермерские животные",
-      "lv": "Mājdzīvnieki",
+      "lv": "Lauku sētas dzīvnieki",
       "en": "Farm animals"
     },
     "icon": "Egg",

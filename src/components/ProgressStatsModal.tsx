@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Topic, Language, UserStats, TopicProgress, WordProgress, Word } from '../types';
-import { translations, getWordsPlural } from '../utils/i18n';
+import { translations, getWordsPlural, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { speakEnglish } from '../utils/speech';
 import {
@@ -241,7 +241,7 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
               <div className="flex items-center gap-2">
                 <h2 className="text-xl sm:text-2xl font-black tracking-tight">{s.title}</h2>
                 <span className="bg-white/20 text-white font-extrabold text-xs px-2.5 py-0.5 rounded-full backdrop-blur-xs">
-                  {stats.playerName || t.defaultPlayerName}
+                  {getPlayerDisplayName(stats.playerName, language)}
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 hidden xs:block">

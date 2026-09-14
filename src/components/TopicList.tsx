@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Topic, Language, TopicProgress, Grade } from '../types';
 import { TopicCard } from './TopicCard';
-import { translations, getGradeFilterInfo } from '../utils/i18n';
+import { translations, getGradeFilterInfo, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { Search, Sparkles, BarChart3 } from 'lucide-react';
 
@@ -56,10 +56,7 @@ export const TopicList: React.FC<TopicListProps> = ({
     0
   );
 
-  const displayName =
-    !playerName || playerName === 'Знайка' || playerName === 'Zinītis'
-      ? t.defaultPlayerName
-      : playerName;
+  const displayName = getPlayerDisplayName(playerName, language);
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6">

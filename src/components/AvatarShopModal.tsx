@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
 import { Language, UserStats, AvatarShopItem } from '../types';
 import { AVATAR_SHOP_ITEMS, DEFAULT_UNLOCKED_AVATARS } from '../data/avatars';
-import { translations } from '../utils/i18n';
+import { translations, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { X, Check, Lock, Sparkles, ShoppingBag } from 'lucide-react';
 
@@ -120,7 +120,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="font-black text-slate-800 text-sm sm:text-base">
-                  {stats.playerName || t.defaultPlayerName}
+                  {getPlayerDisplayName(stats.playerName, language)}
                 </span>
                 <span className="text-[10px] bg-emerald-100 text-emerald-800 font-extrabold px-2 py-0.5 rounded-full">
                   {t.equipped}

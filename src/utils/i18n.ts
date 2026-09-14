@@ -678,3 +678,19 @@ export function formatWordsCount(count: number, language: Language = 'ru'): stri
   return `${count} ${getWordsPlural(count, language)}`;
 }
 
+/**
+ * Возвращает имя игрока с учетом текущего языка интерфейса.
+ * Если имя игрока не задано или установлено значение по умолчанию ("Знайка" / "Zinītis"),
+ * возвращается корректно локализованное имя ("Знайка" для RU, "Zinītis" для LV).
+ */
+export function getPlayerDisplayName(
+  playerName: string | undefined | null,
+  language: Language = 'ru'
+): string {
+  const t = translations[language];
+  if (!playerName || playerName === 'Знайка' || playerName === 'Zinītis') {
+    return t.defaultPlayerName;
+  }
+  return playerName;
+}
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Volume2, VolumeX, Cloud, Check, Sparkles, BarChart3 } from 'lucide-react';
 import { Language, UserStats, Grade } from '../types';
-import { translations, getGradeFilterInfo } from '../utils/i18n';
+import { translations, getGradeFilterInfo, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 
 interface HeaderProps {
@@ -240,7 +240,7 @@ export const Header: React.FC<HeaderProps> = ({
               onOpenShop();
             }}
             className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-amber-100 hover:bg-amber-200 border-2 border-amber-300 flex items-center justify-center text-xl sm:text-2xl shadow-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer"
-            title={`${t.avatarShopTitle} (${stats.playerName || t.defaultPlayerName})`}
+            title={`${t.avatarShopTitle} (${getPlayerDisplayName(stats.playerName, language)})`}
           >
             <span>{stats.avatar || '🦁'}</span>
             <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-amber-400 border border-white rounded-full flex items-center justify-center text-[9px] shadow-sm">

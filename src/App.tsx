@@ -35,7 +35,7 @@ export const App: React.FC = () => {
   const topics = rawWordsData as Topic[];
 
   // App State
-  const [language, setLanguage] = useState<Language>(getStoredLanguage());
+  const [language, setLanguage] = useState<Language>(() => getStoredLanguage());
   const [selectedGrades, setSelectedGrades] = useState<Grade[]>(getStoredGrades());
   const [stats, setStats] = useState<UserStats>(loadLocalStats());
   const [topicProgress, setTopicProgress] = useState<Record<string, TopicProgress>>(

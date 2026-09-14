@@ -9,13 +9,17 @@ const LANG_KEY = 'wordykids_lang';
 const GRADE_KEY = 'wordykids_grade';
 
 export function getStoredLanguage(): 'ru' | 'lv' {
-  const lang = localStorage.getItem(LANG_KEY);
-  if (lang === 'lv' || lang === 'ru') return lang;
+  try {
+    const lang = localStorage.getItem(LANG_KEY);
+    if (lang === 'lv' || lang === 'ru') return lang;
+  } catch {}
   return 'lv';
 }
 
 export function saveStoredLanguage(lang: 'ru' | 'lv') {
-  localStorage.setItem(LANG_KEY, lang);
+  try {
+    localStorage.setItem(LANG_KEY, lang);
+  } catch {}
 }
 
 export function getStoredGrades(): Grade[] {

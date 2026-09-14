@@ -1,5 +1,5 @@
-import React from 'react';
-import { Volume2, VolumeX, Cloud, Check, Sparkles, BarChart3 } from 'lucide-react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
+import { Volume2, VolumeX, Cloud, Check, Sparkles, BarChart3, ChevronRight, ChevronLeft } from 'lucide-react';
 import { Language, UserStats, Grade } from '../types';
 import { translations, getGradeFilterInfo, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
@@ -38,6 +38,34 @@ export const Header: React.FC<HeaderProps> = ({
   onHomeClick,
 }) => {
   const t = translations[language];
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const checkScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const hasOverflow = el.scrollWidth > el.clientWidth + 4;
+    setCanScrollLeft(hasOverflow && el.scrollLeft > 10);
+    setCanScrollRight(hasOverflow && el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  }, []);
+
+  useEffect(() => {
+    checkScroll();
+    const timer = setTimeout(checkScroll, 120);
+    window.addEventListener('resize', checkScroll);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkScroll);
+    };
+  }, [checkScroll, selectedGrades, language]);
+
+  const scrollByAmount = (offset: number) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: offset, behavior: 'smooth' });
+      sounds.playClick();
+    }
+  };
 
   const toggleSound = () => {
     const updated = !stats.soundEnabled;
@@ -47,31 +75,53 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="bg-white/90 backdrop-blur-md sticky top-0 z-40 shadow-sm border-b-2 border-indigo-100 px-2.5 sm:px-6 py-2 w-full">
-      <div className="max-w-5xl mx-auto flex items-center justify-between gap-1.5 sm:gap-3 w-full">
-        {/* Logo and Home Button */}
-        <button
-          onClick={onHomeClick}
-          className="flex items-center gap-1.5 sm:gap-2 group text-left cursor-pointer focus:outline-none shrink-0"
-          title={t.allTopics}
-        >
-          <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-sky-400 to-indigo-600 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform shrink-0">
-            <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
+    <header className="bg-white/90 backdrop-blur-md sticky top-0 z-40 shadow-sm border-b-2 border-indigo-100 px-2 sm:px-6 py-2 w-full">
+      <div className="relative max-w-5xl mx-auto w-full flex items-center">
+        {/* Scroll Left Button / Indicator */}
+        {canScrollLeft && (
+          <div className="absolute left-0 top-0 bottom-0 flex items-center pl-0.5 z-20 pointer-events-none">
+            <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white via-white/85 to-transparent pointer-events-none" />
+            <button
+              type="button"
+              onClick={() => scrollByAmount(-180)}
+              className="relative z-10 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-indigo-600 hover:bg-indigo-700 active:scale-90 text-white flex items-center justify-center shadow-md pointer-events-auto cursor-pointer transition-transform"
+              title="Прокрутить назад"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-4 h-4 stroke-[3]" />
+            </button>
           </div>
-          <div className="shrink-0">
-            <div className="flex items-center gap-1">
-              <span className="text-lg sm:text-2xl font-black tracking-tight text-indigo-600 font-comic whitespace-nowrap">
-                Wordy<span className="text-pink-500">Kids</span>
-              </span>
-            </div>
-            <p className="text-[10px] sm:text-xs text-slate-400 font-medium -mt-1 hidden md:block whitespace-nowrap">
-              {t.appSubtitle}
-            </p>
-          </div>
-        </button>
+        )}
 
-        {/* Right side controls: scrollable horizontally on mobile, never overflows screen */}
-        <div className="flex items-center gap-1.5 sm:gap-2.5 overflow-x-auto no-scrollbar scrollbar-none min-w-0 py-1 pl-1 overscroll-x-contain touch-pan-x">
+        {/* Scrollable track containing Logo AND All Controls */}
+        <div
+          ref={scrollRef}
+          onScroll={checkScroll}
+          className="flex items-center justify-between gap-3 sm:gap-4 overflow-x-auto no-scrollbar scrollbar-none w-full py-0.5 px-0.5 overscroll-x-contain touch-pan-x scroll-smooth"
+        >
+          {/* Logo and Home Button */}
+          <button
+            onClick={onHomeClick}
+            className="flex items-center gap-1.5 sm:gap-2 group text-left cursor-pointer focus:outline-none shrink-0"
+            title={t.allTopics}
+          >
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-sky-400 to-indigo-600 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform shrink-0">
+              <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
+            </div>
+            <div className="shrink-0">
+              <div className="flex items-center gap-1">
+                <span className="text-lg sm:text-2xl font-black tracking-tight text-indigo-600 font-comic whitespace-nowrap">
+                  Wordy<span className="text-pink-500">Kids</span>
+                </span>
+              </div>
+              <p className="text-[10px] sm:text-xs text-slate-400 font-medium -mt-1 hidden md:block whitespace-nowrap">
+                {t.appSubtitle}
+              </p>
+            </div>
+          </button>
+
+          {/* Right side controls */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           {/* Multi-select Grade Switcher (1st / 2nd / 3rd / All) */}
           <div
             className="flex bg-amber-100/90 p-0.5 sm:p-1 rounded-2xl border-2 border-amber-300 shadow-sm shrink-0"
@@ -249,6 +299,23 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
       </div>
-    </header>
-  );
+
+      {/* Right Arrow Scroll Indicator */}
+      {canScrollRight && (
+        <div className="absolute right-0 top-0 bottom-0 flex items-center pr-0.5 z-20 pointer-events-none">
+          <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white via-white/85 to-transparent pointer-events-none" />
+          <button
+            type="button"
+            onClick={() => scrollByAmount(180)}
+            className="relative z-10 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-indigo-600 hover:bg-indigo-700 active:scale-90 text-white flex items-center justify-center shadow-md animate-pulse pointer-events-auto cursor-pointer transition-transform"
+            title="Прокрутить меню вбок"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="w-4 h-4 stroke-[3]" />
+          </button>
+        </div>
+      )}
+    </div>
+  </header>
+);
 };

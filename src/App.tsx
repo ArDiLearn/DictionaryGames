@@ -88,6 +88,10 @@ export const App: React.FC = () => {
     initSync();
   }, []);
 
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
   const handleLanguageChange = (newLang: Language) => {
     setLanguage(newLang);
     saveStoredLanguage(newLang);

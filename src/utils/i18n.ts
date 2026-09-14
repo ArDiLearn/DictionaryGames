@@ -134,6 +134,49 @@ export interface Translations {
   flashcardsFinishedHeadline: string;
   flashcardsNoRewardHint: string;
   cardsViewed: string;
+  progressStatsTitle: string;
+  statsModal: {
+    title: string;
+    subtitle: string;
+    tabOverview: string;
+    tabTopics: string;
+    tabPractice: string;
+    tabAwards: string;
+    overallProgress: string;
+    wordsLearned: string;
+    starsEarned: string;
+    topicsCompleted: string;
+    dayStreak: string;
+    streakDays: string;
+    gradeBreakdownTitle: string;
+    accuracyTitle: string;
+    totalAnswers: string;
+    correctAnswers: string;
+    wrongAnswers: string;
+    accuracyRate: string;
+    wordsToPracticeTitle: string;
+    wordsToPracticeSubtitle: string;
+    noWordsToPractice: string;
+    topicsTitle: string;
+    filterAll: string;
+    filterCompleted: string;
+    filterInProgress: string;
+    filterNotStarted: string;
+    achievementsTitle: string;
+    achievementsSubtitle: string;
+    viewDetails: string;
+    close: string;
+    timesWrongLabel: string;
+    timesCorrectLabel: string;
+    achievements: {
+      firstWord: { title: string; desc: string };
+      tenWords: { title: string; desc: string };
+      starCollector: { title: string; desc: string };
+      fiftyWords: { title: string; desc: string };
+      topicMaster: { title: string; desc: string };
+      streakMaster: { title: string; desc: string };
+    };
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -271,6 +314,49 @@ export const translations: Record<Language, Translations> = {
     flashcardsFinishedHeadline: 'Отличная тренировка!',
     flashcardsNoRewardHint: 'В режиме карточек звёзды не начисляются. Играй в игры, чтобы заработать звёзды!',
     cardsViewed: 'Карточек повторено',
+    progressStatsTitle: 'Статистика прогресса',
+    statsModal: {
+      title: 'Статистика обучения',
+      subtitle: 'Твои успехи и достижения в изучении английского языка!',
+      tabOverview: 'Обзор',
+      tabTopics: 'Темы',
+      tabPractice: 'Повторение',
+      tabAwards: 'Награды',
+      overallProgress: 'Общий прогресс',
+      wordsLearned: 'Выучено слов',
+      starsEarned: 'Всего звёзд',
+      topicsCompleted: 'Освоено тем',
+      dayStreak: 'Серия занятий',
+      streakDays: 'дн. подряд',
+      gradeBreakdownTitle: 'Прогресс по классам',
+      accuracyTitle: 'Точность ответов',
+      totalAnswers: 'Всего ответов',
+      correctAnswers: 'Верно',
+      wrongAnswers: 'Ошибок',
+      accuracyRate: 'Точность',
+      wordsToPracticeTitle: 'Слова для повторения',
+      wordsToPracticeSubtitle: 'Слова, в которых случались ошибки — нажми и повтори их произношение!',
+      noWordsToPractice: 'Отлично! Слов для повторения нет — все ответы уверенные и точные!',
+      topicsTitle: 'Прогресс по темам',
+      filterAll: 'Все темы',
+      filterCompleted: 'Освоены (3 ⭐)',
+      filterInProgress: 'В процессе',
+      filterNotStarted: 'Не начаты',
+      achievementsTitle: 'Достижения и награды',
+      achievementsSubtitle: 'Выполняй задания и открывай кубки за старание!',
+      viewDetails: 'Подробнее',
+      close: 'Закрыть',
+      timesWrongLabel: 'ошибок',
+      timesCorrectLabel: 'верно',
+      achievements: {
+        firstWord: { title: 'Первый шаг!', desc: 'Выучено первое английское слово' },
+        tenWords: { title: 'Знаток десятки', desc: 'Успешно выучено 10 слов' },
+        starCollector: { title: 'Звёздный герой', desc: 'Заработано 25 звёздочек' },
+        fiftyWords: { title: 'Книгочей', desc: 'Выучено 50 английских слов' },
+        topicMaster: { title: 'Отличник темы', desc: 'Любая тема завершена на 3 звезды' },
+        streakMaster: { title: 'Супер-ученик', desc: 'Серия занятий не менее 3 дней подряд' },
+      },
+    },
   },
   lv: {
     appTitle: 'WordyKids',
@@ -406,6 +492,49 @@ export const translations: Record<Language, Translations> = {
     flashcardsFinishedHeadline: 'Lielisks treniņš!',
     flashcardsNoRewardHint: 'Kartīšu režīmā zvaigznes netiek piešķirtas. Spēlē spēles, lai nopelnītu zvaigznes!',
     cardsViewed: 'Atkārtotās kartītes',
+    progressStatsTitle: 'Progresa statistika',
+    statsModal: {
+      title: 'Mācību statistika',
+      subtitle: 'Tavi panākumi un sasniegumi angļu valodas apguvē!',
+      tabOverview: 'Pārskats',
+      tabTopics: 'Tēmas',
+      tabPractice: 'Atkārtošana',
+      tabAwards: 'Balvas',
+      overallProgress: 'Kopējais progress',
+      wordsLearned: 'Apgūtie vārdi',
+      starsEarned: 'Kopā zvaigznes',
+      topicsCompleted: 'Pabeigtās tēmas',
+      dayStreak: 'Dienu sērija',
+      streakDays: 'd. pēc kārtas',
+      gradeBreakdownTitle: 'Progress pa klasēm',
+      accuracyTitle: 'Atbilžu precizitāte',
+      totalAnswers: 'Kopā atbildes',
+      correctAnswers: 'Pareizi',
+      wrongAnswers: 'Kļūdas',
+      accuracyRate: 'Precizitāte',
+      wordsToPracticeTitle: 'Vārdi atkārtošanai',
+      wordsToPracticeSubtitle: 'Vārdi, kuros bija kļūdas — nospied un noklausies to izrunu!',
+      noWordsToPractice: 'Lieliski! Nav vārdu atkārtošanai — visas atbildes ir pārliecinošas!',
+      topicsTitle: 'Progress pa tēmām',
+      filterAll: 'Visas tēmas',
+      filterCompleted: 'Apgūts (3 ⭐)',
+      filterInProgress: 'Procesā',
+      filterNotStarted: 'Nav sāktas',
+      achievementsTitle: 'Sasniegumi un balvas',
+      achievementsSubtitle: 'Pildi uzdevumus un atver jaunus kausus!',
+      viewDetails: 'Sīkāk',
+      close: 'Aizvērt',
+      timesWrongLabel: 'kļūdas',
+      timesCorrectLabel: 'pareizi',
+      achievements: {
+        firstWord: { title: 'Pirmais solis!', desc: 'Apgūts pirmais angļu vārds' },
+        tenWords: { title: 'Desmitnieks', desc: 'Veiksmīgi apgūti 10 vārdi' },
+        starCollector: { title: 'Zvaigžņu varonis', desc: 'Sakrātas 25 zvaigznītes' },
+        fiftyWords: { title: 'Grāmatu tārps', desc: 'Apgūti 50 angļu vārdi' },
+        topicMaster: { title: 'Tēmas teicamnieks', desc: 'Jebkura tēma pabeigta ar 3 zvaigznēm' },
+        streakMaster: { title: 'Super-skolēns', desc: 'Mācību sērija vismaz 3 dienas pēc kārtas' },
+      },
+    },
   },
 };
 

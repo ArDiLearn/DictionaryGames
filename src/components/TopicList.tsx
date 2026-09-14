@@ -3,7 +3,7 @@ import { Topic, Language, TopicProgress, Grade } from '../types';
 import { TopicCard } from './TopicCard';
 import { translations, getGradeFilterInfo } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
-import { Search, Sparkles } from 'lucide-react';
+import { Search, Sparkles, BarChart3 } from 'lucide-react';
 
 interface TopicListProps {
   topics: Topic[];
@@ -16,6 +16,7 @@ interface TopicListProps {
   playerName: string;
   avatar: string;
   onOpenShop?: () => void;
+  onOpenStats?: () => void;
 }
 
 export const TopicList: React.FC<TopicListProps> = ({
@@ -29,6 +30,7 @@ export const TopicList: React.FC<TopicListProps> = ({
   playerName,
   avatar,
   onOpenShop,
+  onOpenStats,
 }) => {
   const t = translations[language];
   const [searchQuery, setSearchQuery] = useState('');
@@ -94,8 +96,17 @@ export const TopicList: React.FC<TopicListProps> = ({
             </div>
           </div>
 
-          {/* Quick stats pills */}
-          <div className="flex items-center gap-2 sm:gap-3 bg-white/15 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/25">
+          {/* Quick stats pills (opens stats modal) */}
+          <button
+            onClick={() => {
+              if (onOpenStats) {
+                sounds.playClick();
+                onOpenStats();
+              }
+            }}
+            className="flex items-center gap-2 sm:gap-3 bg-white/15 hover:bg-white/25 active:scale-95 transition-all backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/25 cursor-pointer text-left group"
+            title={t.progressStatsTitle}
+          >
             <div className="text-center">
               <div className="text-xs text-white/80 font-bold uppercase tracking-wider">
                 {t.allTopics}
@@ -104,14 +115,15 @@ export const TopicList: React.FC<TopicListProps> = ({
             </div>
             <div className="w-px h-8 bg-white/30" />
             <div className="text-center">
-              <div className="text-xs text-white/80 font-bold uppercase tracking-wider">
-                {t.learnedCount}
+              <div className="text-xs text-white/80 font-bold uppercase tracking-wider flex items-center justify-center gap-1">
+                <span>{t.learnedCount}</span>
+                <BarChart3 className="w-3.5 h-3.5 text-yellow-300 group-hover:scale-110 transition-transform" />
               </div>
               <div className="text-lg sm:text-xl font-black text-yellow-300">
                 {totalMastered} / {totalWords}
               </div>
             </div>
-          </div>
+          </button>
         </div>
       </div>
 

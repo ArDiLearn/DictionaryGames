@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, VolumeX, Cloud, Check, Sparkles } from 'lucide-react';
+import { Volume2, VolumeX, Cloud, Check, Sparkles, BarChart3 } from 'lucide-react';
 import { Language, UserStats, Grade } from '../types';
 import { translations, getGradeFilterInfo } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
@@ -16,6 +16,7 @@ interface HeaderProps {
   isCloudSynced: boolean;
   onOpenSync: () => void;
   onOpenShop: () => void;
+  onOpenStats: () => void;
   onUpdateStats: (newStats: UserStats) => void;
   onHomeClick: () => void;
 }
@@ -32,6 +33,7 @@ export const Header: React.FC<HeaderProps> = ({
   isCloudSynced,
   onOpenSync,
   onOpenShop,
+  onOpenStats,
   onUpdateStats,
   onHomeClick,
 }) => {
@@ -145,6 +147,19 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="text-base sm:text-lg">⭐</span>
             <span>{availableStars}</span>
             <span className="hidden sm:inline text-xs text-amber-500 font-bold">🛍️</span>
+          </button>
+
+          {/* Progress Statistics Button */}
+          <button
+            onClick={() => {
+              sounds.playClick();
+              onOpenStats();
+            }}
+            className="flex items-center gap-1.5 bg-indigo-50 hover:bg-indigo-100 border-2 border-indigo-300 px-2 sm:px-2.5 py-1 rounded-2xl text-indigo-700 font-black text-xs sm:text-sm shadow-sm transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+            title={t.progressStatsTitle}
+          >
+            <BarChart3 className="w-4 h-4 text-indigo-600" />
+            <span className="hidden md:inline text-xs">{t.statsModal.title}</span>
           </button>
 
           {/* Language Switcher (RU / LV) */}

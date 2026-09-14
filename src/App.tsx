@@ -15,6 +15,7 @@ import { AuthModal } from './components/AuthModal';
 import { PwaInstallPrompt } from './components/PwaInstallPrompt';
 import { AvatarShopModal } from './components/AvatarShopModal';
 import { ProgressStatsModal } from './components/ProgressStatsModal';
+import { trackGameStart, trackGameComplete, trackLanguageChange } from './utils/analytics';
 import {
   getStoredLanguage,
   saveStoredLanguage,
@@ -95,6 +96,7 @@ export const App: React.FC = () => {
   const handleLanguageChange = (newLang: Language) => {
     setLanguage(newLang);
     saveStoredLanguage(newLang);
+    trackLanguageChange(newLang);
   };
 
   const handleToggleGrade = (grade: Grade) => {
@@ -172,6 +174,7 @@ export const App: React.FC = () => {
     if (!selectedTopic) return;
 
     if (gameMode === 'flashcards') {
+      trackGameComplete('flashcards', selectedTopic.topic_id, correctCount, 0);
       // Flashcards is a study mode: no reward is granted (no stars added to avatar bank)
       setCelebration({
         correct: correctCount,
@@ -183,6 +186,9 @@ export const App: React.FC = () => {
     }
 
     const gameStars = correctCount === totalCount ? 3 : correctCount >= Math.ceil(totalCount / 2) ? 2 : 1;
+    if (gameMode) {
+      trackGameComplete(gameMode, selectedTopic.topic_id, correctCount, gameStars);
+    }
 
     // Add stars to user's piggy bank
     const updatedStats = addEarnedStars(gameStars);
@@ -203,7 +209,17 @@ export const App: React.FC = () => {
     setGameMode(null);
     setTimeout(() => {
       setGameMode(currentMode);
+      if (currentMode && selectedTopic) {
+        trackGameStart(currentMode, selectedTopic.topic_id);
+      }
     }, 50);
+  };
+
+  const handleSelectMode = (mode: GameMode) => {
+    setGameMode(mode);
+    if (selectedTopic) {
+      trackGameStart(mode, selectedTopic.topic_id);
+    }
   };
 
   const handleHomeClick = () => {
@@ -257,7 +273,7 @@ export const App: React.FC = () => {
             topic={selectedTopic}
             language={language}
             progress={topicProgress[selectedTopic.topic_id]}
-            onSelectMode={(mode) => setGameMode(mode)}
+            onSelectMode={handleSelectMode}
             onBack={() => setSelectedTopic(null)}
           />
         )}

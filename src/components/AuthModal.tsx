@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Language } from '../types';
 import { translations } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
+import { trackUserLogin, trackUserSignup } from '../utils/analytics';
 import {
   getCurrentUser,
   getCurrentUserLogin,
@@ -76,6 +77,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       } else {
         sounds.playCorrect();
         setCurrentUser(user);
+        trackUserLogin('username');
         setMessage({
           type: 'success',
           text: t.sync.loginSuccess,
@@ -94,6 +96,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       } else {
         sounds.playCorrect();
         setCurrentUser(user);
+        trackUserSignup('username');
         setMessage({
           type: 'success',
           text: t.sync.signupSuccess,

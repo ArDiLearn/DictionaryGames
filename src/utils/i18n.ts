@@ -649,7 +649,7 @@ export function getGradeFilterInfo(
  * - 1 vārds (21 vārds, 31 vārds...)
  * - 2, 3, 4 ... vārdi
  */
-export function getWordsPlural(count: number, language: Language = 'ru'): string {
+export function getWordsPlural(count: number, language: Language = 'lv'): string {
   if (language === 'ru') {
     const abs = Math.abs(count);
     const mod10 = abs % 10;
@@ -674,7 +674,7 @@ export function getWordsPlural(count: number, language: Language = 'ru'): string
   return 'vārdi';
 }
 
-export function formatWordsCount(count: number, language: Language = 'ru'): string {
+export function formatWordsCount(count: number, language: Language = 'lv'): string {
   return `${count} ${getWordsPlural(count, language)}`;
 }
 
@@ -685,7 +685,7 @@ export function formatWordsCount(count: number, language: Language = 'ru'): stri
  */
 export function getPlayerDisplayName(
   playerName: string | undefined | null,
-  language: Language = 'ru'
+  language: Language = 'lv'
 ): string {
   const t = translations[language];
   if (!playerName || playerName === 'Знайка' || playerName === 'Zinītis') {

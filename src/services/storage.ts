@@ -11,11 +11,7 @@ const GRADE_KEY = 'wordykids_grade';
 export function getStoredLanguage(): 'ru' | 'lv' {
   const lang = localStorage.getItem(LANG_KEY);
   if (lang === 'lv' || lang === 'ru') return lang;
-  // Auto-detect from browser if Latvian
-  if (typeof navigator !== 'undefined' && navigator.language?.startsWith('lv')) {
-    return 'lv';
-  }
-  return 'ru';
+  return 'lv';
 }
 
 export function saveStoredLanguage(lang: 'ru' | 'lv') {
@@ -71,7 +67,7 @@ export function saveStoredGrade(grade: Grade) {
 export function getDefaultStats(): UserStats {
   const today = new Date().toISOString().split('T')[0];
   return {
-    playerName: 'Знайка',
+    playerName: 'Zinītis',
     avatar: '🦁',
     soundEnabled: true,
     speechRate: 0.85,

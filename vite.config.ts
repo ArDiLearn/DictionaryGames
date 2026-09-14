@@ -12,7 +12,7 @@ export default defineConfig({
       manifest: {
         name: 'WordyKids - English for Kids 1-2 Grade',
         short_name: 'WordyKids',
-        description: 'Учим английские слова играя (1-2 класс) | Mācāmies angļu vārdus',
+        description: 'Mācāmies angļu vārdus (1.-2. klase) | Учим английские слова играя',
         theme_color: '#6366f1',
         background_color: '#f0f9ff',
         display: 'standalone',

@@ -162,22 +162,8 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="hidden md:inline text-xs">{t.statsModal.title}</span>
           </button>
 
-          {/* Language Switcher (RU / LV) */}
+          {/* Language Switcher (LV / RU) */}
           <div className="flex bg-slate-100 p-1 rounded-2xl border-2 border-slate-200">
-            <button
-              onClick={() => {
-                onLanguageChange('ru');
-                sounds.playClick();
-              }}
-              className={`px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-                language === 'ru'
-                  ? 'bg-white text-indigo-700 shadow-sm scale-105'
-                  : 'text-slate-500 hover:text-slate-800'
-              }`}
-              title="Русский язык"
-            >
-              🇷🇺 RU
-            </button>
             <button
               onClick={() => {
                 onLanguageChange('lv');
@@ -191,6 +177,20 @@ export const Header: React.FC<HeaderProps> = ({
               title="Latviešu valoda"
             >
               🇱🇻 LV
+            </button>
+            <button
+              onClick={() => {
+                onLanguageChange('ru');
+                sounds.playClick();
+              }}
+              className={`px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                language === 'ru'
+                  ? 'bg-white text-indigo-700 shadow-sm scale-105'
+                  : 'text-slate-500 hover:text-slate-800'
+              }`}
+              title="Русский язык"
+            >
+              🇷🇺 RU
             </button>
           </div>
 

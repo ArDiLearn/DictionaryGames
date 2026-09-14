@@ -78,12 +78,12 @@ npm run parse-words
 В репозитории уже настроен workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
 1. Опубликуйте репозиторий на GitHub:
    ```bash
-   git remote add origin https://github.com/ВАШ_ЛОГИН/DictionaryGames.git
+   git remote add origin https://github.com/ArDiLearn/DictionaryGames.git
    git branch -M main
    git push -u origin main
    ```
 2. В настройках репозитория на GitHub перейдите в **Settings $\rightarrow$ Pages** и выберите **Source: GitHub Actions**.
-3. При каждом коммите в ветку `main` приложение будет автоматически собираться и публиковаться по адресу `https://ВАШ_ЛОГИН.github.io/DictionaryGames/`.
+3. При каждом коммите в ветку `main` приложение будет автоматически собираться и публиковаться по адресу `https://ArDiLearn.github.io/DictionaryGames/`.
 
 ---
 

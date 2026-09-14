@@ -105,16 +105,16 @@ export const Header: React.FC<HeaderProps> = ({
             className="flex items-center gap-1.5 sm:gap-2 group text-left cursor-pointer focus:outline-none shrink-0"
             title={t.allTopics}
           >
-            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-sky-400 to-indigo-600 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform shrink-0">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-sky-400 to-indigo-600 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform shrink-0">
               <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
             </div>
             <div className="shrink-0">
               <div className="flex items-center gap-1">
-                <span className="text-lg sm:text-2xl font-black tracking-tight text-indigo-600 font-comic whitespace-nowrap">
+                <span className="text-2xl font-black tracking-tight text-indigo-600 font-comic whitespace-nowrap">
                   Wordy<span className="text-pink-500">Kids</span>
                 </span>
               </div>
-              <p className="text-[10px] sm:text-xs text-slate-400 font-medium -mt-1 hidden md:block whitespace-nowrap">
+              <p className="text-xs text-slate-400 font-medium -mt-1 hidden md:block whitespace-nowrap">
                 {t.appSubtitle}
               </p>
             </div>
@@ -132,7 +132,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onToggleGrade(1);
                 sounds.playClick();
               }}
-              className={`px-1.5 sm:px-2 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer shrink-0 ${
+              className={`px-2 py-1 rounded-xl text-sm font-black transition-all cursor-pointer shrink-0 ${
                 selectedGrades.includes(1)
                   ? 'bg-amber-500 text-white shadow-sm scale-105'
                   : 'text-amber-800/60 hover:text-amber-950 hover:bg-amber-200/40'
@@ -146,7 +146,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onToggleGrade(2);
                 sounds.playClick();
               }}
-              className={`px-1.5 sm:px-2 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer shrink-0 ${
+              className={`px-2 py-1 rounded-xl text-sm font-black transition-all cursor-pointer shrink-0 ${
                 selectedGrades.includes(2)
                   ? 'bg-amber-500 text-white shadow-sm scale-105'
                   : 'text-amber-800/60 hover:text-amber-950 hover:bg-amber-200/40'
@@ -160,7 +160,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onToggleGrade(3);
                 sounds.playClick();
               }}
-              className={`px-1.5 sm:px-2 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer shrink-0 ${
+              className={`px-2 py-1 rounded-xl text-sm font-black transition-all cursor-pointer shrink-0 ${
                 selectedGrades.includes(3)
                   ? 'bg-amber-500 text-white shadow-sm scale-105'
                   : 'text-amber-800/60 hover:text-amber-950 hover:bg-amber-200/40'
@@ -174,7 +174,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onSelectAllGrades();
                 sounds.playClick();
               }}
-              className={`px-1.5 sm:px-2 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer shrink-0 ${
+              className={`px-2 py-1 rounded-xl text-sm font-black transition-all cursor-pointer shrink-0 ${
                 selectedGrades.length === 3
                   ? 'bg-amber-500 text-white shadow-sm scale-105'
                   : 'text-amber-800/60 hover:text-amber-950 hover:bg-amber-200/40'
@@ -191,7 +191,7 @@ export const Header: React.FC<HeaderProps> = ({
               sounds.playClick();
               onOpenShop();
             }}
-            className="flex items-center gap-1.5 bg-amber-50 hover:bg-amber-100 border-2 border-amber-300 px-2 sm:px-2.5 py-1 rounded-2xl text-amber-700 font-black text-xs sm:text-sm shadow-sm transition-transform hover:scale-105 active:scale-95 cursor-pointer shrink-0"
+            className="flex items-center gap-1.5 bg-amber-50 hover:bg-amber-100 border-2 border-amber-300 px-2 sm:px-2.5 py-1 rounded-2xl text-amber-700 font-black text-sm shadow-sm transition-transform hover:scale-105 active:scale-95 cursor-pointer shrink-0"
             title={`${t.avatarShopTitle} — ${t.myStarBalance}: ${availableStars} ⭐ (${t.totalEarnedStarsLabel}: ${totalStars} ⭐)`}
           >
             <span className="text-base sm:text-lg">⭐</span>
@@ -205,7 +205,7 @@ export const Header: React.FC<HeaderProps> = ({
               sounds.playClick();
               onOpenStats();
             }}
-            className="flex items-center gap-1.5 bg-indigo-50 hover:bg-indigo-100 border-2 border-indigo-300 px-2 sm:px-2.5 py-1 rounded-2xl text-indigo-700 font-black text-xs sm:text-sm shadow-sm transition-transform hover:scale-105 active:scale-95 cursor-pointer shrink-0"
+            className="flex items-center gap-1.5 bg-indigo-50 hover:bg-indigo-100 border-2 border-indigo-300 px-2 sm:px-2.5 py-1 rounded-2xl text-indigo-700 font-black text-sm shadow-sm transition-transform hover:scale-105 active:scale-95 cursor-pointer shrink-0"
             title={t.progressStatsTitle}
           >
             <BarChart3 className="w-4 h-4 text-indigo-600" />
@@ -219,7 +219,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onLanguageChange('lv');
                 sounds.playClick();
               }}
-              className={`px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              className={`px-2 sm:px-2.5 py-1 rounded-xl text-sm font-bold transition-all ${
                 language === 'lv'
                   ? 'bg-white text-indigo-700 shadow-sm scale-105'
                   : 'text-slate-500 hover:text-slate-800'
@@ -233,7 +233,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onLanguageChange('ru');
                 sounds.playClick();
               }}
-              className={`px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              className={`px-2 sm:px-2.5 py-1 rounded-xl text-sm font-bold transition-all ${
                 language === 'ru'
                   ? 'bg-white text-indigo-700 shadow-sm scale-105'
                   : 'text-slate-500 hover:text-slate-800'
@@ -247,7 +247,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Sound Toggle */}
           <button
             onClick={toggleSound}
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-slate-100 hover:bg-slate-200 border-2 border-slate-200 flex items-center justify-center text-slate-700 transition-colors shrink-0"
+            className="w-10 h-10 rounded-2xl bg-slate-100 hover:bg-slate-200 border-2 border-slate-200 flex items-center justify-center text-slate-700 transition-colors shrink-0"
             title={stats.soundEnabled ? t.soundOn : t.soundOff}
           >
             {stats.soundEnabled ? (
@@ -263,7 +263,7 @@ export const Header: React.FC<HeaderProps> = ({
               sounds.playClick();
               onOpenSync();
             }}
-            className={`h-9 sm:h-10 px-2 sm:px-2.5 rounded-2xl border-2 flex items-center gap-1.5 transition-all text-xs font-bold shrink-0 ${
+            className={`h-10 px-2.5 rounded-2xl border-2 flex items-center gap-1.5 transition-all text-sm font-bold shrink-0 ${
               isCloudSynced
                 ? 'bg-emerald-50 border-emerald-300 text-emerald-700 hover:bg-emerald-100'
                 : 'bg-indigo-50 border-indigo-200 text-indigo-600 hover:bg-indigo-100'
@@ -289,7 +289,7 @@ export const Header: React.FC<HeaderProps> = ({
               sounds.playClick();
               onOpenShop();
             }}
-            className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-amber-100 hover:bg-amber-200 border-2 border-amber-300 flex items-center justify-center text-xl sm:text-2xl shadow-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer shrink-0"
+            className="relative w-10 h-10 rounded-2xl bg-amber-100 hover:bg-amber-200 border-2 border-amber-300 flex items-center justify-center text-2xl shadow-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer shrink-0"
             title={`${t.avatarShopTitle} (${getPlayerDisplayName(stats.playerName, language)})`}
           >
             <span>{stats.avatar || '🦁'}</span>

@@ -913,9 +913,218 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
       />
     </svg>
   ),
+
+  // spring - cheerful blooming flower, fresh green leaves, warm sun and cute ladybug
+  'spring': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Soft warm sun in top left */}
+      <circle cx="20" cy="22" r="10" fill="#fde047" />
+      <circle cx="20" cy="22" r="14" stroke="#fef08a" strokeWidth="2" strokeDasharray="3 3" opacity="0.8" />
+      {/* Little soft cloud */}
+      <ellipse cx="80" cy="24" rx="12" ry="7" fill="#e0f2fe" />
+      <circle cx="74" cy="21" r="7" fill="#e0f2fe" />
+      <circle cx="85" cy="20" r="8" fill="#e0f2fe" />
+      {/* Ground hill */}
+      <path d="M0 90 Q 50 78 100 90 L 100 100 L 0 100 Z" fill="#86efac" />
+      <path d="M0 94 Q 50 82 100 94 L 100 100 L 0 100 Z" fill="#4ade80" />
+      {/* Flower stem */}
+      <path d="M50 85 C 48 65 52 50 50 38" stroke="#22c55e" strokeWidth="4" strokeLinecap="round" />
+      {/* Leaves on stem */}
+      <path d="M50 64 C 40 60 32 66 30 72 C 38 74 48 70 50 64 Z" fill="#16a34a" />
+      <path d="M50 55 C 60 51 68 57 70 63 C 62 65 52 61 50 55 Z" fill="#22c55e" />
+      {/* Blooming flower petals (pink & magenta) */}
+      <circle cx="50" cy="26" r="8" fill="#f472b6" />
+      <circle cx="50" cy="46" r="8" fill="#f472b6" />
+      <circle cx="40" cy="36" r="8" fill="#ec4899" />
+      <circle cx="60" cy="36" r="8" fill="#ec4899" />
+      <circle cx="43" cy="29" r="8" fill="#fb7185" />
+      <circle cx="57" cy="29" r="8" fill="#fb7185" />
+      <circle cx="43" cy="43" r="8" fill="#fb7185" />
+      <circle cx="57" cy="43" r="8" fill="#fb7185" />
+      {/* Flower center */}
+      <circle cx="50" cy="36" r="7.5" fill="#facc15" stroke="#eab308" strokeWidth="1" />
+      <circle cx="48" cy="34" r="2" fill="#ffffff" opacity="0.6" />
+      {/* Cute little ladybug on leaf */}
+      <ellipse cx="33" cy="69" rx="4" ry="3.2" fill="#ef4444" />
+      <circle cx="30" cy="68" r="1.8" fill="#1e293b" />
+      <circle cx="34" cy="67.5" r="0.8" fill="#0f172a" />
+      <circle cx="34" cy="70.5" r="0.8" fill="#0f172a" />
+    </svg>
+  ),
+
+  // summer - radiant shining sun, blue sea waves, beach ball and sunglasses
+  'summer': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Warm sky glow */}
+      <circle cx="50" cy="40" r="32" fill="#fef9c3" opacity="0.5" />
+      {/* Sun rays */}
+      <g stroke="#f59e0b" strokeWidth="3" strokeLinecap="round">
+        <line x1="50" y1="6" x2="50" y2="12" />
+        <line x1="50" y1="68" x2="50" y2="74" />
+        <line x1="16" y1="40" x2="22" y2="40" />
+        <line x1="78" y1="40" x2="84" y2="40" />
+        <line x1="26" y1="16" x2="30" y2="20" />
+        <line x1="74" y1="64" x2="70" y2="60" />
+        <line x1="74" y1="16" x2="70" y2="20" />
+        <line x1="26" y1="64" x2="30" y2="60" />
+      </g>
+      {/* Big golden shining sun */}
+      <circle cx="50" cy="40" r="22" fill="#facc15" stroke="#f59e0b" strokeWidth="2" />
+      {/* Cool sunglasses on the sun */}
+      <rect x="36" y="34" width="11" height="8" rx="2.5" fill="#1e293b" />
+      <rect x="53" y="34" width="11" height="8" rx="2.5" fill="#1e293b" />
+      <line x1="47" y1="36" x2="53" y2="36" stroke="#1e293b" strokeWidth="2" />
+      {/* Lens reflection shine */}
+      <line x1="38" y1="36" x2="41" y2="40" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round" />
+      <line x1="55" y1="36" x2="58" y2="40" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round" />
+      {/* Big friendly smile */}
+      <path d="M43 47 Q 50 53 57 47" stroke="#b45309" strokeWidth="2" strokeLinecap="round" />
+      <ellipse cx="38" cy="45" rx="2" ry="1.2" fill="#fb923c" opacity="0.6" />
+      <ellipse cx="62" cy="45" rx="2" ry="1.2" fill="#fb923c" opacity="0.6" />
+      {/* Beach Sand and Tropical Sea Wave */}
+      <path d="M0 86 Q 25 80 50 86 T 100 86 L 100 100 L 0 100 Z" fill="#38bdf8" />
+      <path d="M0 90 Q 25 84 50 90 T 100 90 L 100 100 L 0 100 Z" fill="#0284c7" />
+      {/* Mini beach ball on bottom right */}
+      <circle cx="78" cy="80" r="10" fill="#ef4444" stroke="#ffffff" strokeWidth="1" />
+      <path d="M78 70 A 10 10 0 0 1 88 80 L 78 80 Z" fill="#3b82f6" />
+      <path d="M78 80 L 78 90 A 10 10 0 0 1 68 80 Z" fill="#facc15" />
+      <circle cx="78" cy="80" r="2.5" fill="#ffffff" />
+    </svg>
+  ),
+
+  // autumn - vibrant golden maple leaf, falling foliage, breeze swirl and acorn
+  'autumn': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Wind breeze swirl */}
+      <path d="M12 25 Q 40 18 65 24 T 88 32" stroke="#fed7aa" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      <path d="M8 40 Q 30 35 55 42" stroke="#fdba74" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="4 2" />
+      {/* Little falling leaf top right */}
+      <path d="M76 18 C 76 18 84 16 88 22 C 84 25 78 24 76 18 Z" fill="#f97316" transform="rotate(25 82 20)" />
+      {/* Main Autumn Maple Leaf */}
+      {/* Leaf stem */}
+      <path d="M48 56 C 45 70 38 82 32 86" stroke="#78350f" strokeWidth="3" strokeLinecap="round" />
+      {/* Leaf body */}
+      <path
+        d="M50 14
+           C 54 22 62 25 64 24
+           C 66 28 72 30 76 28
+           C 74 34 80 40 84 42
+           C 78 46 76 52 74 58
+           C 68 56 62 58 56 64
+           C 54 60 46 60 44 64
+           C 38 58 32 56 26 58
+           C 24 52 22 46 16 42
+           C 20 40 26 34 24 28
+           C 28 30 34 28 36 24
+           C 38 25 46 22 50 14 Z"
+        fill="#ea580c"
+        stroke="#c2410c"
+        strokeWidth="1.5"
+      />
+      {/* Leaf inner shading */}
+      <path
+        d="M50 20
+           C 53 26 59 28 61 27
+           C 62 31 67 32 70 30
+           C 68 35 73 40 76 42
+           C 71 45 69 49 67 53
+           C 62 51 58 53 53 58
+           C 52 55 48 55 47 58
+           C 42 53 38 51 33 53
+           C 31 49 29 45 24 42
+           C 27 40 32 35 30 30
+           C 33 32 38 31 39 27
+           C 41 28 47 26 50 20 Z"
+        fill="#f97316"
+      />
+      {/* Central leaf veins */}
+      <line x1="50" y1="20" x2="48" y2="58" stroke="#fbbf24" strokeWidth="1.8" strokeLinecap="round" />
+      <line x1="49" y1="36" x2="68" y2="28" stroke="#fbbf24" strokeWidth="1.4" strokeLinecap="round" />
+      <line x1="49" y1="36" x2="30" y2="28" stroke="#fbbf24" strokeWidth="1.4" strokeLinecap="round" />
+      <line x1="48.5" y1="46" x2="68" y2="44" stroke="#fbbf24" strokeWidth="1.4" strokeLinecap="round" />
+      <line x1="48.5" y1="46" x2="28" y2="44" stroke="#fbbf24" strokeWidth="1.4" strokeLinecap="round" />
+      {/* Cute acorn bottom right */}
+      <g transform="translate(62, 62)">
+        <ellipse cx="14" cy="20" rx="9" ry="11" fill="#b45309" />
+        {/* Acorn cap */}
+        <path d="M3 16 C 3 9 25 9 25 16 Z" fill="#78350f" />
+        <rect x="12" y="5" width="3" height="5" rx="1" fill="#78350f" />
+        {/* Cap texture dots */}
+        <circle cx="9" cy="13" r="1" fill="#92400e" />
+        <circle cx="14" cy="12" r="1" fill="#92400e" />
+        <circle cx="19" cy="13" r="1" fill="#92400e" />
+        {/* Acorn highlight */}
+        <ellipse cx="11" cy="22" rx="2" ry="4" fill="#d97706" opacity="0.6" />
+      </g>
+    </svg>
+  ),
+
+  // winter - cute smiling snowman with red scarf, winter beanie, carrot nose and snowflakes
+  'winter': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Background snowy hill */}
+      <path d="M0 88 Q 50 78 100 88 L 100 100 L 0 100 Z" fill="#e0f2fe" />
+      <path d="M0 92 Q 50 84 100 92 L 100 100 L 0 100 Z" fill="#bae6fd" />
+      {/* Snowflakes in air */}
+      <g stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round">
+        {/* Left snowflake */}
+        <line x1="16" y1="25" x2="24" y2="25" />
+        <line x1="20" y1="21" x2="20" y2="29" />
+        <line x1="17" y1="22" x2="23" y2="28" />
+        <line x1="17" y1="28" x2="23" y2="22" />
+        {/* Right snowflake */}
+        <line x1="76" y1="20" x2="84" y2="20" />
+        <line x1="80" y1="16" x2="80" y2="24" />
+        <line x1="77" y1="17" x2="83" y2="23" />
+        <line x1="77" y1="23" x2="83" y2="17" />
+        {/* Tiny snow dots */}
+        <circle cx="28" cy="45" r="1.5" fill="#93c5fd" stroke="none" />
+        <circle cx="72" cy="48" r="1.5" fill="#93c5fd" stroke="none" />
+        <circle cx="86" cy="40" r="1.2" fill="#93c5fd" stroke="none" />
+      </g>
+      {/* Snowman bottom ball */}
+      <circle cx="50" cy="74" r="20" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1.5" />
+      <ellipse cx="50" cy="78" rx="14" ry="7" fill="#e2e8f0" opacity="0.5" />
+      {/* Coal buttons */}
+      <circle cx="50" cy="68" r="2" fill="#1e293b" />
+      <circle cx="50" cy="76" r="2" fill="#1e293b" />
+      {/* Stick arms */}
+      <path d="M31 62 L 18 54 M 22 56 L 20 50" stroke="#78350f" strokeWidth="2" strokeLinecap="round" />
+      <path d="M69 62 L 82 54 M 78 56 L 80 50" stroke="#78350f" strokeWidth="2" strokeLinecap="round" />
+      {/* Snowman head */}
+      <circle cx="50" cy="42" r="14" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.5" />
+      {/* Coal Eyes */}
+      <circle cx="45" cy="40" r="1.8" fill="#1e293b" />
+      <circle cx="55" cy="40" r="1.8" fill="#1e293b" />
+      {/* Carrot Nose */}
+      <polygon points="49,43 49,46 36,45" fill="#f97316" stroke="#ea580c" strokeWidth="0.5" />
+      {/* Coal smile dots */}
+      <circle cx="44" cy="48" r="1" fill="#334155" />
+      <circle cx="47" cy="50" r="1" fill="#334155" />
+      <circle cx="50" cy="50.5" r="1" fill="#334155" />
+      <circle cx="53" cy="50" r="1" fill="#334155" />
+      <circle cx="56" cy="48" r="1" fill="#334155" />
+      {/* Cozy Winter Beanie Hat */}
+      <path d="M38 34 C 38 20 62 20 62 34 Z" fill="#2563eb" />
+      <rect x="36" y="32" width="28" height="5" rx="2" fill="#1d4ed8" />
+      {/* Hat pompom */}
+      <circle cx="50" cy="18" r="4.5" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1" />
+      {/* Red Scarf */}
+      <rect x="40" y="52" width="20" height="6" rx="2.5" fill="#ef4444" />
+      <path d="M54 55 L 56 70 L 62 70 L 60 55 Z" fill="#dc2626" />
+      {/* Scarf fringes */}
+      <line x1="57" y1="70" x2="57" y2="73" stroke="#b91c1c" strokeWidth="1.2" strokeLinecap="round" />
+      <line x1="59" y1="70" x2="59" y2="73" stroke="#b91c1c" strokeWidth="1.2" strokeLinecap="round" />
+      <line x1="61" y1="70" x2="61" y2="73" stroke="#b91c1c" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  ),
 };
 
 const RU_ALIASES: Record<string, string> = {
+  'весна': 'spring',
+  'лето': 'summer',
+  'осень': 'autumn',
+  'зима': 'winter',
   'парта': 'desk',
   'точилка': 'pencil sharpener',
   'пенал': 'pencil case',

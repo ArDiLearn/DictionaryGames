@@ -60,6 +60,12 @@ export const TRANSCRIPTIONS = {
   "november": "[ nəʊˈvembə ]",
   "december": "[ dɪˈsembə ]",
 
+  // Seasons
+  "spring": "[ sprɪŋ ]",
+  "summer": "[ ˈsʌmə ]",
+  "autumn": "[ ˈɔːtəm ]",
+  "winter": "[ ˈwɪntə ]",
+
   // Classroom objects
   "window": "[ ˈwɪndəʊ ]",
   "poster": "[ ˈpəʊstə ]",

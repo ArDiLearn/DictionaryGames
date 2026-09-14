@@ -43,6 +43,9 @@ const TOPIC_METADATA = {
   'Pronouns': { icon: 'UserCheck', color: 'blue', emoji: '🗣️' },
   'Знакомство': { icon: 'MessageCircle', color: 'purple', emoji: '👋' },
   'Местоимения': { icon: 'UserCheck', color: 'blue', emoji: '🗣️' },
+  'Seasons': { icon: 'SunMedium', color: 'amber', emoji: '🌤️' },
+  'Gadalaiki': { icon: 'SunMedium', color: 'amber', emoji: '🌤️' },
+  'Времена года': { icon: 'SunMedium', color: 'amber', emoji: '🌤️' },
 };
 
 /**

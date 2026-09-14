@@ -20,6 +20,10 @@ export default {
           softBg: "#f8fafc"
         }
       },
+      spacing: {
+        '13': '3.25rem',
+        '15': '3.75rem',
+      },
       fontFamily: {
         comic: ['"Comic Sans MS"', '"Chalkboard SE"', '"Comic Neue"', 'cursive', 'sans-serif'],
       },

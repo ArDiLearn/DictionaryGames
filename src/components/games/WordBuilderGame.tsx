@@ -189,7 +189,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
 
       {/* Selected Letters Slot */}
       <div
-        className={`w-full min-h-[72px] bg-slate-100 rounded-3xl border-4 p-3 flex flex-wrap items-center justify-center gap-2 mb-6 transition-all ${
+        className={`w-full min-h-[80px] bg-slate-100 rounded-3xl border-4 p-3.5 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-6 transition-all ${
           isError
             ? 'border-rose-400 bg-rose-50 animate-wiggle'
             : isChecking
@@ -202,7 +202,12 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
             key={tile.id}
             onClick={() => handleRemoveTile(tile)}
             disabled={isChecking}
-            className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white border-3 border-indigo-400 text-indigo-700 font-black text-2xl shadow-md flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
+            title={t.clearLetters}
+            className={`rounded-2xl bg-white border-3 border-indigo-400 text-indigo-700 font-black font-comic shadow-md flex items-center justify-center hover:scale-105 active:scale-95 transition-transform ${
+              tile.char === ' '
+                ? 'px-4 h-12 sm:h-14 text-sm font-bold text-indigo-400'
+                : 'w-12 h-12 sm:w-14 sm:h-14 text-2xl sm:text-3xl'
+            }`}
           >
             {tile.char === ' ' ? '␣' : tile.char.toUpperCase()}
           </button>
@@ -213,9 +218,9 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
           (_, i) => (
             <div
               key={i}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-300 text-xl font-bold"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50/50 flex items-center justify-center text-slate-400 text-2xl font-bold font-comic"
             >
-              _
+              •
             </div>
           )
         )}
@@ -237,7 +242,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
             {wrongVariants.map((variant, idx) => (
               <span
                 key={idx}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-2xl bg-white border-2 border-rose-300 text-rose-700 font-black text-base sm:text-lg shadow-sm"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-2xl bg-white border-2 border-rose-300 text-rose-700 font-black text-base sm:text-lg shadow-sm font-comic"
               >
                 <span className="text-xs text-rose-400 font-bold">#{idx + 1}</span>
                 <span className="line-through decoration-rose-500 decoration-2 tracking-wider">
@@ -249,14 +254,18 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
         </div>
       )}
 
-      {/* Available Letters Pool */}
-      <div className="w-full flex flex-wrap items-center justify-center gap-2.5 mb-6">
+      {/* Available Letters Pool (letter tray with wide, well-spaced tiles) */}
+      <div className="w-full bg-amber-50/80 border-3 border-amber-200 rounded-3xl p-4 sm:p-5 shadow-inner flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-6">
         {availableTiles.map((tile) => (
           <button
             key={tile.id}
             onClick={() => handleSelectTile(tile)}
             disabled={isChecking}
-            className="btn-3d w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-amber-400 hover:bg-amber-300 border-b-4 border-amber-600 text-amber-950 font-black text-2xl sm:text-3xl shadow-md flex items-center justify-center transition-all"
+            className={`btn-3d rounded-2xl bg-amber-400 hover:bg-amber-300 border-b-4 border-amber-600 text-amber-950 font-black font-comic shadow-md flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer select-none ${
+              tile.char === ' '
+                ? 'px-5 h-14 sm:h-16 min-h-[3.5rem] sm:min-h-[4rem] text-lg font-bold'
+                : 'w-14 h-14 sm:w-16 sm:h-16 min-w-[3.5rem] min-h-[3.5rem] sm:min-w-[4rem] sm:min-h-[4rem] text-2xl sm:text-3xl'
+            }`}
           >
             {tile.char === ' ' ? '␣' : tile.char.toUpperCase()}
           </button>
@@ -267,7 +276,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
       {selectedTiles.length > 0 && (
         <button
           onClick={handleReset}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-sm transition-colors"
+          className="flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-sm transition-colors cursor-pointer"
         >
           <RotateCcw className="w-4 h-4" />
           <span>{t.clearLetters}</span>

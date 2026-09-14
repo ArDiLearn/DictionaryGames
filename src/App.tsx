@@ -213,7 +213,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans pb-12">
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans pb-12 overflow-x-hidden">
       {/* Top Navigation Bar */}
       <Header
         language={language}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import rawWordsData from './data/words.json';
-import { Topic, Language, GameMode, TopicProgress, UserStats, Grade } from './types';
+import { Topic, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress } from './types';
 import { Header } from './components/Header';
 import { TopicList } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
@@ -14,6 +14,7 @@ import { CelebrationModal } from './components/CelebrationModal';
 import { AuthModal } from './components/AuthModal';
 import { PwaInstallPrompt } from './components/PwaInstallPrompt';
 import { AvatarShopModal } from './components/AvatarShopModal';
+import { ProgressStatsModal } from './components/ProgressStatsModal';
 import {
   getStoredLanguage,
   saveStoredLanguage,
@@ -22,6 +23,7 @@ import {
   loadLocalStats,
   saveLocalStats,
   loadTopicProgress,
+  loadWordProgress,
   recordWordAttempt,
   mergeWithCloud,
   purchaseAvatar,
@@ -44,6 +46,10 @@ export const App: React.FC = () => {
   const [isCloudSynced, setIsCloudSynced] = useState<boolean>(false);
   const [isSyncModalOpen, setIsSyncModalOpen] = useState<boolean>(false);
   const [isAvatarShopOpen, setIsAvatarShopOpen] = useState<boolean>(false);
+  const [isStatsModalOpen, setIsStatsModalOpen] = useState<boolean>(false);
+  const [wordProgress, setWordProgress] = useState<Record<string, WordProgress>>(() =>
+    loadWordProgress()
+  );
 
   // Grade filtered topics: supports multi-selection of grades (e.g. [1, 2], [2, 3], [1], [2], [3], [1, 2, 3])
   const filteredTopics = useMemo(() => {
@@ -75,6 +81,7 @@ export const App: React.FC = () => {
       if (user) {
         await mergeWithCloud();
         setTopicProgress(loadTopicProgress());
+        setWordProgress(loadWordProgress());
         setStats(loadLocalStats());
       }
     };
@@ -153,6 +160,7 @@ export const App: React.FC = () => {
     );
     // Reload local progress
     setTopicProgress(loadTopicProgress());
+    setWordProgress(loadWordProgress());
     return newStars;
   };
 
@@ -215,6 +223,7 @@ export const App: React.FC = () => {
         isCloudSynced={isCloudSynced}
         onOpenSync={() => setIsSyncModalOpen(true)}
         onOpenShop={() => setIsAvatarShopOpen(true)}
+        onOpenStats={() => setIsStatsModalOpen(true)}
         onUpdateStats={handleUpdateStats}
         onHomeClick={handleHomeClick}
       />
@@ -234,6 +243,7 @@ export const App: React.FC = () => {
             playerName={stats.playerName}
             avatar={stats.avatar}
             onOpenShop={() => setIsAvatarShopOpen(true)}
+            onOpenStats={() => setIsStatsModalOpen(true)}
           />
         )}
 
@@ -345,6 +355,7 @@ export const App: React.FC = () => {
           const user = await getCurrentUser();
           setIsCloudSynced(!!user);
           setTopicProgress(loadTopicProgress());
+          setWordProgress(loadWordProgress());
           setStats(loadLocalStats());
         }}
       />
@@ -358,6 +369,21 @@ export const App: React.FC = () => {
         totalStarsEarned={totalEarnedStars}
         onPurchase={handlePurchaseAvatar}
         onSelectAvatar={handleSelectAvatar}
+      />
+
+      {/* Progress Statistics Modal */}
+      <ProgressStatsModal
+        isOpen={isStatsModalOpen}
+        onClose={() => setIsStatsModalOpen(false)}
+        language={language}
+        stats={stats}
+        topics={topics}
+        topicProgress={topicProgress}
+        wordProgress={wordProgress}
+        onSelectTopic={(t) => {
+          setSelectedTopic(t);
+          setGameMode(null);
+        }}
       />
 
       {/* PWA "Add to Home Screen" prompt */}

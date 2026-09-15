@@ -101,9 +101,9 @@ sister,māsa,сестра,1
 twin,dvīnis,близнец,1
 uncle,tēvocis,дядя,1
 auntie,tante,тётя,1
-cousin,brālēns/māsīca,двоюродный брат/сестра,1
-baby,mazulis,малыш,2
-toddler,"bērns, kurš tikko sācis staigāt","малыш, начинающий ходить",2
+cousin,brālēns,кузен,1
+baby,zīdainis,младенец,2
+toddler,mazulis,малыш,2
 child,bērns,ребёнок,2
 teenager,pusaudzis,подросток,2
 adult,pieaugušais,взрослый,2

@@ -21,40 +21,40 @@ nineteen,deviņpadsmit,девятнадцать,2
 twenty,divdesmit,двадцать,2
 ,,,
 Colours,Krāsas,Цвета,
-grey,pelēks,Серый,1
-red,sarkans,Красный,1
-blue,zils,Синий,1
-green,zaļš,Зеленый,1
-pink,rozā,Розовый,1
-white,balts,Белый,1
-black,melns,Черный,1
-purple,violets,Фиолетовый,1
-orange,oranžš,Оранжевый,1
-yellow,dzeltens,Желтый,1
-brown,brūns,Коричневый,1
+grey,pelēks,серый,1
+red,sarkans,красный,1
+blue,zils,синий,1
+green,zaļš,зелёный,1
+pink,rozā,розовый,1
+white,balts,белый,1
+black,melns,чёрный,1
+purple,violets,фиолетовый,1
+orange,oranžš,оранжевый,1
+yellow,dzeltens,жёлтый,1
+brown,brūns,коричневый,1
 ,,,
 Days of the week,Nedēļas dienas,Дни недели,
-monday,pirmdiena,Понедельник,2
-tuesday,otrdiena,Вторник,2
-wednesday,trešdiena,Среда,2
-thursday,ceturtdiena,Четверг,2
-friday,piektdiena,Пятница,2
-saturday,sestdiena,Суббота,2
-sunday,svētdiena,Воскресенье,2
+Monday,pirmdiena,понедельник,2
+Tuesday,otrdiena,вторник,2
+Wednesday,trešdiena,среда,2
+Thursday,ceturtdiena,четверг,2
+Friday,piektdiena,пятница,2
+Saturday,sestdiena,суббота,2
+Sunday,svētdiena,воскресенье,2
 ,,,
 Months,Mēneši,Месяцы,
-january,janvāris,январь,3
-february,februāris,февраль,3
-march,marts,март,3
-april,aprīlis,апрель,3
-may,maijs,май,3
-june,jūnijs,июнь,3
-july,jūlijs,июль,3
-august,augusts,август,3
-september,septembris,сентябрь,3
-october,oktobris,октябрь,3
-november,novembris,ноябрь,3
-december,decembris,декабрь,3
+January,janvāris,январь,3
+February,februāris,февраль,3
+March,marts,март,3
+April,aprīlis,апрель,3
+May,maijs,май,3
+June,jūnijs,июнь,3
+July,jūlijs,июль,3
+August,augusts,август,3
+September,septembris,сентябрь,3
+October,oktobris,октябрь,3
+November,novembris,ноябрь,3
+December,decembris,декабрь,3
 ,,,
 Seasons,Gadalaiki,Времена года,
 spring,pavasaris,весна,3
@@ -267,8 +267,8 @@ clay,māls,глина,2
 Actions,Darbības,Действия,
 I can,es varu,я умею,1
 I can't,es nevaru,я не умею,1
-I've got,es dabūju,я имею,2
-I haven't got,еs nedabūju,я не имею,2
+I've got,man ir,у меня есть,2
+I haven't got,man nav,у меня нет,2
 I have,man ir,у меня есть,1
 I haven't,man nav,у меня нет,1
 I like,man patīk,мне нравится,1

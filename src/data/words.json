@@ -949,7 +949,7 @@
       },
       {
         "id": "95",
-        "en": "eldery person",
+        "en": "elderly person",
         "lv": "vecs cilvēks",
         "ru": "пожилой человек",
         "grade": 2,
@@ -2281,7 +2281,7 @@
     "words": [
       {
         "id": "217",
-        "en": "i can",
+        "en": "I can",
         "lv": "es varu",
         "ru": "я умею",
         "grade": 1,
@@ -2290,7 +2290,7 @@
       },
       {
         "id": "218",
-        "en": "i can't",
+        "en": "I can't",
         "lv": "es nevaru",
         "ru": "я не умею",
         "grade": 1,
@@ -2299,7 +2299,7 @@
       },
       {
         "id": "219",
-        "en": "i've got",
+        "en": "I've got",
         "lv": "es dabūju",
         "ru": "я имею",
         "grade": 2,
@@ -2308,7 +2308,7 @@
       },
       {
         "id": "220",
-        "en": "i haven't got",
+        "en": "I haven't got",
         "lv": "еs nedabūju",
         "ru": "я не имею",
         "grade": 2,
@@ -2317,7 +2317,7 @@
       },
       {
         "id": "221",
-        "en": "i have",
+        "en": "I have",
         "lv": "man ir",
         "ru": "у меня есть",
         "grade": 1,
@@ -2326,7 +2326,7 @@
       },
       {
         "id": "222",
-        "en": "i have't",
+        "en": "I haven't",
         "lv": "man nav",
         "ru": "у меня нет",
         "grade": 1,
@@ -2335,7 +2335,7 @@
       },
       {
         "id": "223",
-        "en": "i like",
+        "en": "I like",
         "lv": "man patīk",
         "ru": "мне нравится",
         "grade": 1,
@@ -2344,7 +2344,7 @@
       },
       {
         "id": "224",
-        "en": "i don't like",
+        "en": "I don't like",
         "lv": "man nepatīk",
         "ru": "мне не нравится",
         "grade": 1,
@@ -2384,12 +2384,12 @@
       },
       {
         "id": "227",
-        "en": "How old you?",
+        "en": "How old are you?",
         "lv": "Cik tev gadu?",
         "ru": "Сколько тебе лет?",
         "grade": 1,
         "image": "🎂",
-        "transcription": "[ haʊ əʊld juː ]"
+        "transcription": "[ haʊ əʊld ɑː juː ]"
       },
       {
         "id": "228",
@@ -2424,7 +2424,7 @@
     "words": [
       {
         "id": "230",
-        "en": "i'm",
+        "en": "I'm",
         "lv": "es esmu",
         "ru": "я",
         "grade": 1,

@@ -1178,9 +1178,254 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
       <line x1="61" y1="70" x2="61" y2="73" stroke="#b91c1c" strokeWidth="1.2" strokeLinecap="round" />
     </svg>
   ),
+
+  // tail (хвост / aste - prominent brightly highlighted wagging fluffy tail with focus ring, wag arcs, sparkles and indicator arrow)
+  'tail': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <defs>
+        {/* Soft radial glow behind the tail */}
+        <radialGradient id="tailFocusGlow" cx="68%" cy="46%" r="35%">
+          <stop offset="0%" stopColor="#fef08a" stopOpacity="0.85" />
+          <stop offset="60%" stopColor="#fef08a" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#fef08a" stopOpacity="0" />
+        </radialGradient>
+        {/* Tail vibrant gradient */}
+        <linearGradient id="tailGrad" x1="0%" y1="100%" x2="60%" y2="0%">
+          <stop offset="0%" stopColor="#ea580c" />
+          <stop offset="50%" stopColor="#f97316" />
+          <stop offset="100%" stopColor="#fb923c" />
+        </linearGradient>
+      </defs>
+
+      {/* Ground shadow */}
+      <ellipse cx="46" cy="88" rx="34" ry="6" fill="#cbd5e1" opacity="0.45" />
+
+      {/* Focus Glow Spotlight on Tail */}
+      <circle cx="68" cy="46" r="28" fill="url(#tailFocusGlow)" />
+      {/* Dashed focus highlight ring around the tail */}
+      <ellipse
+        cx="68"
+        cy="46"
+        rx="26"
+        ry="25"
+        stroke="#f59e0b"
+        strokeWidth="2.5"
+        strokeDasharray="4 3"
+        opacity="0.9"
+      />
+
+      {/* Playful wagging motion arcs */}
+      <path d="M 88 34 C 94 40 94 50 88 56" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M 93 28 C 100 37 100 58 93 64" stroke="#fbbf24" strokeWidth="1.8" strokeLinecap="round" opacity="0.75" />
+
+      {/* Sparkles near the tail */}
+      <path d="M 84 22 L 86 16 L 88 22 L 94 24 L 88 26 L 86 32 L 84 26 L 78 24 Z" fill="#f59e0b" />
+      <circle cx="86" cy="24" r="1.5" fill="#ffffff" />
+      <circle cx="56" cy="18" r="1.5" fill="#fbbf24" />
+
+      {/* Body of the puppy (calm soft warm gray/beige so tail pops out) */}
+      {/* Back foot & leg */}
+      <ellipse cx="44" cy="80" rx="9" ry="6" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1.5" />
+      <ellipse cx="28" cy="80" rx="9" ry="6" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1.5" />
+
+      {/* Torso */}
+      <path
+        d="M 28 66 C 26 78 48 84 52 72 C 55 62 48 54 36 54 C 30 54 28 60 28 66 Z"
+        fill="#cbd5e1"
+        stroke="#94a3b8"
+        strokeWidth="1.5"
+      />
+      {/* Front chest */}
+      <path
+        d="M 24 58 C 20 66 22 76 28 80 C 32 80 34 74 34 66 Z"
+        fill="#f1f5f9"
+      />
+
+      {/* Puppy Head looking back happily toward its tail */}
+      <circle cx="32" cy="44" r="13" fill="#cbd5e1" stroke="#94a3b8" strokeWidth="1.5" />
+      {/* Floppy ear */}
+      <path
+        d="M 24 38 C 18 42 18 52 24 52 C 27 52 28 44 26 38 Z"
+        fill="#94a3b8"
+      />
+      {/* Cute face */}
+      {/* Happy eye */}
+      <path d="M 33 42 Q 36 39 39 42" stroke="#334155" strokeWidth="2" strokeLinecap="round" fill="none" />
+      {/* Nose */}
+      <ellipse cx="38" cy="46" rx="2.5" ry="2" fill="#334155" />
+      {/* Smile */}
+      <path d="M 36 49 Q 39 52 41 49" stroke="#334155" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      {/* Rosy cheek */}
+      <circle cx="33" cy="48" r="2.5" fill="#f43f5e" opacity="0.3" />
+
+      {/* THE PROMINENT, VIBRANT FLUFFY TAIL (The Centerpiece!) */}
+      {/* Tail Main Fluffy Shape */}
+      <path
+        d="M 48 68 C 56 68 64 64 68 56 C 74 46 76 34 72 24 C 70 19 64 19 62 25 C 59 33 60 44 54 52 C 50 58 45 62 48 68 Z"
+        fill="url(#tailGrad)"
+        stroke="#c2410c"
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+      />
+
+      {/* Fluffy Tail Tip (Bright White with jagged fluffy border) */}
+      <path
+        d="M 68 34 C 72 31 74 27 72 24 C 70 19 64 19 62 25 C 60 29 60 33 63 35 L 65 32 L 66 35 Z"
+        fill="#ffffff"
+        stroke="#c2410c"
+        strokeWidth="2"
+      />
+
+      {/* Fur tufts / texture on tail */}
+      <path d="M 68 45 C 72 44 76 46 74 49" stroke="#c2410c" strokeWidth="2" strokeLinecap="round" />
+      <path d="M 64 54 C 68 53 71 55 69 58" stroke="#c2410c" strokeWidth="2" strokeLinecap="round" />
+
+      {/* Glossy highlight along tail curve */}
+      <path
+        d="M 53 58 C 58 52 64 42 66 32"
+        stroke="#ffffff"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        opacity="0.85"
+      />
+
+      {/* Bright pointing arrow directly to the tail */}
+      <g transform="translate(68, 76) rotate(-70)">
+        <line x1="0" y1="0" x2="16" y2="0" stroke="#ea580c" strokeWidth="3.5" strokeLinecap="round" />
+        <polygon points="12,-5 20,0 12,5" fill="#ea580c" />
+        <circle cx="-1" cy="0" r="3" fill="#f59e0b" />
+      </g>
+    </svg>
+  ),
+
+  // beak (клюв / knābis - cute bird in profile with an enormous brightly highlighted golden-orange beak, focus ring, sparkles and indicator arrow)
+  'beak': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <defs>
+        {/* Soft radial glow behind the beak */}
+        <radialGradient id="beakFocusGlow" cx="65%" cy="50%" r="40%">
+          <stop offset="0%" stopColor="#fef08a" stopOpacity="0.85" />
+          <stop offset="60%" stopColor="#fde047" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#fde047" stopOpacity="0" />
+        </radialGradient>
+        {/* Upper Beak Gradient */}
+        <linearGradient id="beakUpperGrad" x1="0%" y1="0%" x2="100%" y2="50%">
+          <stop offset="0%" stopColor="#fbbf24" />
+          <stop offset="60%" stopColor="#f59e0b" />
+          <stop offset="100%" stopColor="#ea580c" />
+        </linearGradient>
+        {/* Lower Beak Gradient */}
+        <linearGradient id="beakLowerGrad" x1="0%" y1="0%" x2="100%" y2="50%">
+          <stop offset="0%" stopColor="#f59e0b" />
+          <stop offset="100%" stopColor="#d97706" />
+        </linearGradient>
+      </defs>
+
+      {/* Focus Glow Spotlight on Beak */}
+      <circle cx="66" cy="50" r="28" fill="url(#beakFocusGlow)" />
+      {/* Dashed focus highlight ring around the beak */}
+      <ellipse
+        cx="66"
+        cy="50"
+        rx="28"
+        ry="24"
+        stroke="#f59e0b"
+        strokeWidth="2.5"
+        strokeDasharray="4 3"
+        opacity="0.9"
+      />
+
+      {/* Sparkles and song lines around beak tip */}
+      {/* Big sparkle */}
+      <path d="M 88 28 L 90 22 L 92 28 L 98 30 L 92 32 L 90 38 L 88 32 L 82 30 Z" fill="#f59e0b" />
+      <circle cx="90" cy="30" r="1.5" fill="#ffffff" />
+      {/* Small sparkle */}
+      <circle cx="92" cy="64" r="2" fill="#fbbf24" />
+      {/* Sound / chirp waves from beak tip */}
+      <path d="M 92 46 C 96 48 96 52 92 54" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M 96 42 C 101 47 101 57 96 62" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" opacity="0.75" />
+
+      {/* Bird Body & Head (Soft deep navy/slate blue so the bright beak stands out) */}
+      {/* Bird Body */}
+      <path
+        d="M 12 84 C 10 65 24 55 36 55 C 38 68 32 82 24 86 C 18 88 14 86 12 84 Z"
+        fill="#1e293b"
+      />
+      {/* Wing on body */}
+      <path
+        d="M 16 70 C 22 66 30 70 32 80 C 24 84 18 80 16 70 Z"
+        fill="#0f172a"
+      />
+
+      {/* Bird Head */}
+      <circle cx="34" cy="46" r="18" fill="#1e293b" stroke="#0f172a" strokeWidth="1.5" />
+
+      {/* Cheerful eye patch */}
+      <circle cx="34" cy="44" r="8" fill="#38bdf8" opacity="0.25" />
+      {/* Big Cartoon Eye */}
+      <circle cx="34" cy="44" r="5.5" fill="#ffffff" />
+      <circle cx="35.5" cy="44" r="3.5" fill="#0f172a" />
+      <circle cx="37" cy="42.5" r="1.5" fill="#ffffff" />
+      {/* Cute eyebrow */}
+      <path d="M 31 36 Q 36 33 40 37" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" fill="none" />
+
+      {/* Feather crest on head */}
+      <path d="M 28 29 C 24 22 28 18 32 24 C 34 20 39 20 38 28 Z" fill="#0284c7" />
+
+      {/* THE PROMINENT, GLORIOUS BEAK (Centerpiece!) */}
+      {/* Upper Beak */}
+      <path
+        d="M 44 36 C 54 36 72 38 86 48 C 88 49 88 51 86 52 C 72 54 54 53 44 51 Z"
+        fill="url(#beakUpperGrad)"
+        stroke="#b45309"
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+      />
+
+      {/* Lower Beak */}
+      <path
+        d="M 44 51 C 56 53 72 54 86 52 C 78 60 62 62 44 58 Z"
+        fill="url(#beakLowerGrad)"
+        stroke="#b45309"
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+      />
+
+      {/* Mouth separator line */}
+      <path d="M 44 51 L 86 52" stroke="#78350f" strokeWidth="2" strokeLinecap="round" />
+
+      {/* Red accent at the tip of the beak (like a toucan/parrot) */}
+      <path
+        d="M 76 43 C 81 46 85 49 86 50 C 85 51 81 53 76 53 Z"
+        fill="#ef4444"
+        opacity="0.9"
+      />
+
+      {/* Nostril hole */}
+      <ellipse cx="48" cy="42" rx="2" ry="1.2" fill="#78350f" transform="rotate(-10 48 42)" />
+
+      {/* Glossy shine along the upper curve of the beak */}
+      <path
+        d="M 48 39 C 58 39 70 42 78 47"
+        stroke="#ffffff"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        opacity="0.85"
+      />
+
+      {/* Pointing arrow indicator directly at the beak */}
+      <g transform="translate(66, 80) rotate(-90)">
+        <line x1="0" y1="0" x2="16" y2="0" stroke="#ea580c" strokeWidth="3.5" strokeLinecap="round" />
+        <polygon points="12,-5 20,0 12,5" fill="#ea580c" />
+        <circle cx="-1" cy="0" r="3" fill="#f59e0b" />
+      </g>
+    </svg>
+  ),
 };
 
 const RU_ALIASES: Record<string, string> = {
+  'хвост': 'tail',
+  'клюв': 'beak',
   'весна': 'spring',
   'лето': 'summer',
   'осень': 'autumn',

@@ -63,6 +63,9 @@ const TOPIC_METADATA = {
   'Helper words': { icon: 'Sparkles', color: 'amber', emoji: '🔤' },
   'Palīgvārdi': { icon: 'Sparkles', color: 'amber', emoji: '🔤' },
   'Слова-помощники': { icon: 'Sparkles', color: 'amber', emoji: '🔤' },
+  'Birthday': { icon: 'Gift', color: 'pink', emoji: '🎂' },
+  'Dzimšanas diena': { icon: 'Gift', color: 'pink', emoji: '🎂' },
+  'День рождения': { icon: 'Gift', color: 'pink', emoji: '🎂' },
 };
 
 /**
@@ -186,7 +189,11 @@ export function parseDictionaryCsv(csvString) {
           phTrans = TRANSCRIPTIONS[en.toLowerCase().trim()] || '';
         }
 
-        const image = WORD_IMAGES[en.toLowerCase().trim()] || meta.emoji || '✨';
+        const image =
+          WORD_IMAGES[`${currentTopic.topic_id}:${en.toLowerCase().trim()}`] ||
+          WORD_IMAGES[en.toLowerCase().trim()] ||
+          currentTopic.emoji ||
+          '✨';
 
         currentTopic.words.push({
           id: String(wordCounter++),

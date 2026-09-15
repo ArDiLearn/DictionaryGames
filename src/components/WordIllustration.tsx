@@ -1179,18 +1179,18 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
     </svg>
   ),
 
-  // tail (хвост / aste - joyful ginger kitten from behind wagging a huge, fluffy, vibrant striped tail with motion swishes and sparkles)
+  // tail (хвост / aste - cute gray dog with a bright, vibrant ginger-orange wagging tail)
   'tail': (
     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
       <defs>
-        {/* Soft radial glow behind the tail */}
-        <radialGradient id="catTailGlow" cx="58%" cy="38%" r="46%">
-          <stop offset="0%" stopColor="#fef3c7" stopOpacity="0.85" />
-          <stop offset="65%" stopColor="#fef3c7" stopOpacity="0.25" />
-          <stop offset="100%" stopColor="#fef3c7" stopOpacity="0" />
+        {/* Soft amber-orange attention glow behind the ginger tail */}
+        <radialGradient id="dogTailGlow" cx="74%" cy="38%" r="42%">
+          <stop offset="0%" stopColor="#fed7aa" stopOpacity="0.85" />
+          <stop offset="65%" stopColor="#fed7aa" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="#fed7aa" stopOpacity="0" />
         </radialGradient>
-        {/* Tail vibrant ginger gradient */}
-        <linearGradient id="catTailGrad" x1="0%" y1="100%" x2="40%" y2="0%">
+        {/* Vibrant ginger-orange tail gradient */}
+        <linearGradient id="dogTailGrad" x1="0%" y1="100%" x2="40%" y2="0%">
           <stop offset="0%" stopColor="#ea580c" />
           <stop offset="40%" stopColor="#f97316" />
           <stop offset="80%" stopColor="#fb923c" />
@@ -1199,60 +1199,79 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
       </defs>
 
       {/* Ground shadow */}
-      <ellipse cx="48" cy="90" rx="36" ry="5" fill="#cbd5e1" opacity="0.5" />
+      <ellipse cx="42" cy="88" rx="34" ry="5" fill="#94a3b8" opacity="0.4" />
 
-      {/* Soft warm attention glow behind the tail */}
-      <circle cx="58" cy="38" r="32" fill="url(#catTailGlow)" />
+      {/* Warm glow spotlight focusing on the ginger tail */}
+      <circle cx="74" cy="38" r="28" fill="url(#dogTailGlow)" />
 
-      {/* Wagging Motion Lines (Right swish) */}
-      <path d="M 83 24 C 91 32 91 46 83 54" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" />
-      <path d="M 89 28 C 96 36 96 42 89 48" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" opacity="0.8" />
+      {/* Wagging Motion Lines near the tail tip */}
+      <path d="M 88 22 C 95 30 95 42 88 50" stroke="#f97316" strokeWidth="2.8" strokeLinecap="round" />
+      <path d="M 93 26 C 99 33 99 39 93 45" stroke="#fbbf24" strokeWidth="1.8" strokeLinecap="round" opacity="0.8" />
 
-      {/* Wagging Motion Lines (Left swish) */}
-      <path d="M 37 14 C 30 18 26 26 28 34" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M 32 18 C 26 22 23 28 25 34" stroke="#fbbf24" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
+      {/* Sparkles around the ginger tail */}
+      <path d="M 80 12 L 82 6 L 84 12 L 90 14 L 84 16 L 82 22 L 80 16 L 74 14 Z" fill="#f59e0b" />
+      <circle cx="82" cy="14" r="1.5" fill="#ffffff" />
+      <circle cx="56" cy="14" r="2" fill="#fbbf24" />
 
-      {/* Golden sparkles around wagging tip */}
-      <path d="M 76 12 L 78 6 L 80 12 L 86 14 L 80 16 L 78 22 L 76 16 L 70 14 Z" fill="#f59e0b" />
-      <circle cx="78" cy="14" r="1.5" fill="#ffffff" />
-      <circle cx="48" cy="8" r="2" fill="#fbbf24" />
-      <circle cx="86" cy="38" r="1.5" fill="#f59e0b" />
+      {/* --- CUTE GRAY DOG (Head & Body in soft, clean shades of gray) --- */}
 
-      {/* Kitten Body (Seen from behind, sitting softly at bottom) */}
-      {/* Kitten Back/Body */}
+      {/* Behind Back Foot */}
+      <ellipse cx="44" cy="85" rx="5" ry="3" fill="#94a3b8" stroke="#64748b" strokeWidth="1.5" />
+      {/* Behind Front Leg */}
+      <rect x="33" y="66" width="6" height="19" rx="3" fill="#94a3b8" stroke="#64748b" strokeWidth="1.5" />
+
+      {/* Dog Torso & Sitting Hind Leg (Soft Gray) */}
       <path
-        d="M 32 88 C 28 72 32 60 42 58 C 52 58 56 72 52 88 Z"
-        fill="#fed7aa"
-        stroke="#f97316"
+        d="M 26 48 C 22 56 22 72 23 85 C 24 87 29 87 30 85 C 31 75 32 64 34 58 C 40 64 45 78 46 84 C 47 87 53 88 56 86 C 60 82 62 70 58 64 C 52 56 44 54 38 48 Z"
+        fill="#cbd5e1"
+        stroke="#64748b"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+
+      {/* Lighter Gray Chest Patch */}
+      <path
+        d="M 26 48 C 23 55 24 66 28 68 C 31 66 31 55 34 52 Z"
+        fill="#f1f5f9"
+      />
+
+      {/* Dog Head (Soft Gray) */}
+      <path
+        d="M 24 46 C 18 46 16 41 20 37 C 24 33 32 30 40 32 C 46 34 46 44 42 48 C 38 52 30 52 26 48 Z"
+        fill="#cbd5e1"
+        stroke="#64748b"
+        strokeWidth="2"
+      />
+
+      {/* Light Muzzle */}
+      <path
+        d="M 18 40 C 18 36 24 34 28 35 C 30 39 30 44 26 46 C 22 47 18 44 18 40 Z"
+        fill="#f1f5f9"
+      />
+
+      {/* Floppy Dog Ear (Darker Gray) */}
+      <path
+        d="M 36 33 C 44 33 46 46 40 50 C 35 52 34 42 34 35 Z"
+        fill="#94a3b8"
+        stroke="#64748b"
         strokeWidth="1.5"
       />
 
-      {/* Kitten Head from behind */}
-      <circle cx="40" cy="54" r="12" fill="#fed7aa" stroke="#fb923c" strokeWidth="1.5" />
+      {/* Cute Face Details */}
+      {/* Eye */}
+      <circle cx="28" cy="37" r="2.5" fill="#1e293b" />
+      <circle cx="29" cy="36" r="0.9" fill="#ffffff" />
+      {/* Black Nose */}
+      <ellipse cx="18" cy="39" rx="2.5" ry="2" fill="#1e293b" />
+      {/* Happy Smile & Tongue */}
+      <path d="M 20 42 Q 23 45 26 43" stroke="#334155" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      <path d="M 22 44 Q 24 48 26 44" fill="#f43f5e" />
 
-      {/* Triangular Cat Ears */}
-      {/* Left Ear */}
-      <polygon points="31,48 26,34 38,44" fill="#fb923c" stroke="#ea580c" strokeWidth="1.2" strokeLinejoin="round" />
-      <polygon points="30,46 27,37 36,44" fill="#fecdd3" />
-      {/* Right Ear */}
-      <polygon points="42,44 48,34 49,48" fill="#fb923c" stroke="#ea580c" strokeWidth="1.2" strokeLinejoin="round" />
-      <polygon points="43,44 47,37 48,46" fill="#fecdd3" />
-
-      {/* Cute cheek details (peeking out slightly to the left) */}
-      <line x1="28" y1="55" x2="20" y2="53" stroke="#b45309" strokeWidth="1.2" strokeLinecap="round" />
-      <line x1="28" y1="58" x2="21" y2="60" stroke="#b45309" strokeWidth="1.2" strokeLinecap="round" />
-      <path d="M 31 54 Q 34 51 37 54" stroke="#78350f" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-      <circle cx="31" cy="58" r="2.5" fill="#f43f5e" opacity="0.35" />
-
-      {/* Cute back paws */}
-      <ellipse cx="32" cy="88" rx="6" ry="3.5" fill="#ffedd5" stroke="#fb923c" strokeWidth="1.2" />
-      <ellipse cx="52" cy="88" rx="6" ry="3.5" fill="#ffedd5" stroke="#fb923c" strokeWidth="1.2" />
-
-      {/* THE PROMINENT, MAGNIFICENT WAGGING TAIL (Center of Attention!) */}
-      {/* Tail Main Fluffy Shape */}
+      {/* --- THE VIBRANT GINGER TAIL (The Center of Attention!) --- */}
+      {/* Main Fluffy Ginger Tail */}
       <path
-        d="M 48 80 C 70 72 82 52 79 28 C 77 15 64 11 50 15 C 44 17 42 24 45 27 C 55 29 63 42 62 58 C 61 70 52 76 40 80 Z"
-        fill="url(#catTailGrad)"
+        d="M 57 65 C 72 63 84 52 83 34 C 82 22 74 16 64 19 C 58 21 57 28 61 30 C 69 31 75 42 71 52 C 67 60 59 62 55 67 Z"
+        fill="url(#dogTailGrad)"
         stroke="#c2410c"
         strokeWidth="2.5"
         strokeLinejoin="round"
@@ -1260,26 +1279,24 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
 
       {/* Fluffy White Tail Tip */}
       <path
-        d="M 58 13 C 54 14 50 15 45 17 C 42 20 42 24 45 27 C 49 28 53 28 57 26 C 56 23 58 22 55 20 C 58 18 59 16 58 13 Z"
+        d="M 70 17 C 66 17 61 19 58 22 C 57 26 58 29 61 30 C 65 30 68 28 71 26 C 70 23 72 22 69 20 C 72 19 72 17 70 17 Z"
         fill="#ffffff"
         stroke="#c2410c"
         strokeWidth="2"
         strokeLinejoin="round"
       />
 
-      {/* Dark Amber Stripes on Tail */}
-      <path d="M 68 62 C 71 61 74 60 77 62" stroke="#9a3412" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M 66 50 C 70 48 74 48 78 51" stroke="#9a3412" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M 64 38 C 68 36 72 36 77 39" stroke="#9a3412" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M 60 26 C 64 23 68 23 72 26" stroke="#9a3412" strokeWidth="2.5" strokeLinecap="round" />
+      {/* Subtle fur tufts along the ginger tail */}
+      <path d="M 78 48 C 82 46 84 49 82 52" stroke="#9a3412" strokeWidth="2" strokeLinecap="round" />
+      <path d="M 81 36 C 85 34 86 37 84 40" stroke="#9a3412" strokeWidth="2" strokeLinecap="round" />
 
-      {/* Glossy 3D Highlight streak along tail */}
+      {/* Glossy 3D Highlight along tail curve */}
       <path
-        d="M 52 74 C 62 64 70 50 71 30 C 71 22 66 18 58 17"
+        d="M 60 62 C 70 56 76 46 76 30 C 76 24 72 20 66 21"
         stroke="#ffffff"
         strokeWidth="2.5"
         strokeLinecap="round"
-        opacity="0.8"
+        opacity="0.85"
       />
     </svg>
   ),

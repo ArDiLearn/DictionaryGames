@@ -36,16 +36,15 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
   useEffect(() => {
     if (currentWord) {
       setIsFlipped(false);
-      // Auto-pronounce new word
-      handleSpeak();
     }
   }, [currentIndex]);
 
-  const handleSpeak = () => {
-    if (!currentWord) return;
+  const handleSpeak = (wordToSpeak?: Word) => {
+    const word = wordToSpeak || currentWord;
+    if (!word) return;
     setIsSpeaking(true);
     speakEnglish(
-      currentWord.en,
+      word.en,
       0.85,
       () => setIsSpeaking(true),
       () => setIsSpeaking(false)
@@ -67,8 +66,6 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
     }
   }, [currentIndex]);
 
-
-
   const handleNext = (known: boolean) => {
     if (!currentWord) return;
 
@@ -89,15 +86,20 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
     }
   };
 
-  const handleJumpTo = (index: number) => {
+  const handleJumpTo = (index: number, shouldSpeak = false) => {
     if (index < 0 || index >= topic.words.length) return;
     if (index === currentIndex) {
-      handleSpeak();
+      if (shouldSpeak) {
+        handleSpeak();
+      }
       return;
     }
     sounds.playClick();
     setCurrentIndex(index);
     setIsFlipped(false);
+    if (shouldSpeak) {
+      handleSpeak(topic.words[index]);
+    }
   };
 
   if (!currentWord) return null;
@@ -164,7 +166,14 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
           {!isFlipped ? (
             <div className="flex flex-col items-center">
               {/* Word Picture */}
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-indigo-50 border-3 border-indigo-200 flex items-center justify-center p-2 shadow-inner mb-4 group-hover:scale-110 transition-transform select-none">
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleSpeak();
+                }}
+                className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-indigo-50 border-3 border-indigo-200 flex items-center justify-center p-2 shadow-inner mb-4 group-hover:scale-110 transition-transform select-none cursor-pointer"
+                title={language === 'ru' ? 'Нажми, чтобы послушать' : 'Pieskaries, lai noklausītos'}
+              >
                 <WordIllustration word={currentWord} fallbackEmoji={topic.emoji} />
               </div>
               <h2 className="text-4xl sm:text-5xl font-black text-indigo-600 tracking-tight font-comic">
@@ -182,7 +191,14 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
           ) : (
             <div className="flex flex-col items-center">
               {/* Word Picture */}
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-pink-50 border-3 border-pink-200 flex items-center justify-center p-2 shadow-inner mb-4 select-none">
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleSpeak();
+                }}
+                className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-pink-50 border-3 border-pink-200 flex items-center justify-center p-2 shadow-inner mb-4 select-none cursor-pointer"
+                title={language === 'ru' ? 'Нажми, чтобы послушать' : 'Pieskaries, lai noklausītos'}
+              >
                 <WordIllustration word={currentWord} fallbackEmoji={topic.emoji} />
               </div>
               <h2 className="text-3xl sm:text-4xl font-black text-pink-600 tracking-tight leading-snug">
@@ -239,7 +255,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
         <div className="relative flex items-center">
           {/* Previous Button */}
           <button
-            onClick={() => handleJumpTo(currentIndex - 1)}
+            onClick={() => handleJumpTo(currentIndex - 1, false)}
             disabled={currentIndex === 0}
             className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white border-2 border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300 disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center font-bold shadow-xs transition-all shrink-0 mr-1.5 cursor-pointer"
             title={language === 'ru' ? 'Предыдущее слово' : 'Iepriekšējais vārds'}
@@ -263,7 +279,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
                   ref={(el) => {
                     wordBtnRefs.current[index] = el;
                   }}
-                  onClick={() => handleJumpTo(index)}
+                  onClick={() => handleJumpTo(index, true)}
                   className={`flex flex-col items-center justify-between min-w-[62px] w-[62px] sm:min-w-[70px] sm:w-[70px] h-[74px] sm:h-[82px] p-1.5 rounded-2xl border-3 transition-all shrink-0 cursor-pointer relative select-none ${
                     isCurrent
                       ? 'bg-gradient-to-b from-indigo-500 to-indigo-600 border-indigo-600 text-white shadow-lg scale-105 -translate-y-0.5 ring-3 ring-indigo-200'
@@ -306,7 +322,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
 
           {/* Next Button */}
           <button
-            onClick={() => handleJumpTo(currentIndex + 1)}
+            onClick={() => handleJumpTo(currentIndex + 1, false)}
             disabled={currentIndex >= topic.words.length - 1}
             className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white border-2 border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300 disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center font-bold shadow-xs transition-all shrink-0 ml-1.5 cursor-pointer"
             title={language === 'ru' ? 'Следующее слово' : 'Nākamais vārds'}
@@ -374,7 +390,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
                   <button
                     key={word.id}
                     onClick={() => {
-                      handleJumpTo(index);
+                      handleJumpTo(index, true);
                       setIsWordGridOpen(false);
                     }}
                     className={`flex flex-col items-center p-2.5 rounded-2xl border-2 transition-all cursor-pointer text-center relative select-none hover:scale-105 active:scale-95 ${

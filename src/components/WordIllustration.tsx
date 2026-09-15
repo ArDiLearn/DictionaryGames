@@ -914,6 +914,66 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
     </svg>
   ),
 
+  // 27. круг (circle - LARGE, bold, vibrant red 3D geometric sphere/circle filling the card)
+  'circle': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-md" fill="none">
+      {/* Outer border / shadow base */}
+      <circle cx="50" cy="50" r="42" fill="#dc2626" stroke="#b91c1c" strokeWidth="4" />
+      {/* Vibrant main circle */}
+      <circle cx="50" cy="50" r="38" fill="#ef4444" stroke="#dc2626" strokeWidth="2" />
+      {/* Inner 3D gradient/glow depth */}
+      <circle cx="50" cy="50" r="32" fill="#f87171" opacity="0.4" />
+      {/* Glossy top-left highlight */}
+      <ellipse cx="40" cy="32" rx="14" ry="7" fill="#ffffff" opacity="0.45" transform="rotate(-30 40 32)" />
+      <circle cx="34" cy="27" r="3" fill="#ffffff" opacity="0.6" />
+    </svg>
+  ),
+
+  // 28. квадрат (square - LARGE, bold, vibrant emerald green 3D geometric cube/square filling the card)
+  'square': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-md" fill="none">
+      {/* Outer border / shadow base */}
+      <rect x="10" y="10" width="80" height="80" rx="14" fill="#059669" stroke="#047857" strokeWidth="4" />
+      {/* Vibrant main square */}
+      <rect x="14" y="14" width="72" height="72" rx="12" fill="#10b981" stroke="#059669" strokeWidth="2" />
+      {/* Inner 3D depth layer */}
+      <rect x="20" y="20" width="60" height="60" rx="10" fill="#34d399" opacity="0.35" />
+      {/* Top bevel highlight */}
+      <path d="M18 18 L 82 18 L 74 26 L 26 26 Z" fill="#ffffff" opacity="0.35" />
+      <circle cx="28" cy="28" r="3.5" fill="#ffffff" opacity="0.5" />
+    </svg>
+  ),
+
+  // 29. прямоугольник (rectangle - LARGE, bold, vibrant amber-orange 3D geometric rectangle filling the card)
+  'rectangle': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-md" fill="none">
+      {/* Outer border / shadow base */}
+      <rect x="6" y="22" width="88" height="56" rx="12" fill="#d97706" stroke="#b45309" strokeWidth="4" />
+      {/* Vibrant main rectangle */}
+      <rect x="10" y="26" width="80" height="48" rx="10" fill="#f59e0b" stroke="#d97706" strokeWidth="2" />
+      {/* Inner 3D depth layer */}
+      <rect x="16" y="32" width="68" height="36" rx="8" fill="#fbbf24" opacity="0.4" />
+      {/* Top bevel highlight */}
+      <path d="M14 30 L 86 30 L 78 36 L 22 36 Z" fill="#ffffff" opacity="0.4" />
+      <circle cx="24" cy="38" r="3" fill="#ffffff" opacity="0.5" />
+    </svg>
+  ),
+
+  // 30. овал (oval - LARGE, bold, vibrant purple/violet 3D geometric oval filling the card)
+  'oval': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-md" fill="none">
+      {/* Outer border / shadow base */}
+      <ellipse cx="50" cy="50" rx="44" ry="30" fill="#7c3aed" stroke="#6d28d9" strokeWidth="4" />
+      {/* Vibrant main ellipse */}
+      <ellipse cx="50" cy="50" rx="40" ry="26" fill="#8b5cf6" stroke="#7c3aed" strokeWidth="2" />
+      {/* Inner 3D depth layer */}
+      <ellipse cx="50" cy="50" rx="34" ry="20" fill="#a78bfa" opacity="0.35" />
+      {/* Glossy top-left highlight */}
+      <ellipse cx="42" cy="36" rx="18" ry="6" fill="#ffffff" opacity="0.4" transform="rotate(-15 42 36)" />
+      <circle cx="34" cy="33" r="2.5" fill="#ffffff" opacity="0.6" />
+    </svg>
+  ),
+
   // spring - cheerful blooming flower, fresh green leaves, warm sun and cute ladybug
   'spring': (
     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
@@ -1151,7 +1211,11 @@ const RU_ALIASES: Record<string, string> = {
   'сад': 'garden',
   'корень': 'root',
   'сливы': 'plums',
+  'круг': 'circle',
+  'квадрат': 'square',
   'треугольник': 'triangle',
+  'прямоугольник': 'rectangle',
+  'овал': 'oval',
 };
 
 export const WordIllustration: React.FC<WordIllustrationProps> = ({

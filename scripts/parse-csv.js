@@ -46,6 +46,11 @@ const TOPIC_METADATA = {
   'Seasons': { icon: 'SunMedium', color: 'amber', emoji: '🌤️' },
   'Gadalaiki': { icon: 'SunMedium', color: 'amber', emoji: '🌤️' },
   'Времена года': { icon: 'SunMedium', color: 'amber', emoji: '🌤️' },
+  'Shapes': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
+  'Figūras': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
+  'Фигуры': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
+  'Ģeometriskās figūras': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
+  'Геометрические фигуры': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
 };
 
 /**

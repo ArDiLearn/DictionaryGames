@@ -1238,10 +1238,13 @@ export const WordIllustration: React.FC<WordIllustrationProps> = ({
     enKey;
 
   const customSvg = WORD_SVGS[targetKey];
+  const hasCustomSize = /\b(w-|h-)/.test(className);
+  const sizeClasses = hasCustomSize ? '' : 'w-16 h-16 sm:w-20 sm:h-20';
+  const textClasses = /\btext-/.test(className) ? '' : 'text-5xl sm:text-6xl';
 
   if (customSvg) {
     return (
-      <div className={`w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center select-none ${className}`}>
+      <div className={`flex items-center justify-center select-none ${sizeClasses} ${className}`}>
         {customSvg}
       </div>
     );
@@ -1250,7 +1253,7 @@ export const WordIllustration: React.FC<WordIllustrationProps> = ({
   // Fallback to emoji
   const emoji = getWordImage(word, fallbackEmoji);
   return (
-    <span className={`select-none text-5xl sm:text-6xl ${className}`}>
+    <span className={`select-none flex items-center justify-center leading-none ${textClasses} ${className}`}>
       {emoji}
     </span>
   );

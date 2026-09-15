@@ -27,6 +27,8 @@ export interface Translations {
   correct: string;
   wrong: string;
   tapToFlip: string;
+  selectWord: string;
+  allWords: string;
   spellTheWord: string;
   clearLetters: string;
   wrongVariantsTitle: string;
@@ -207,6 +209,8 @@ export const translations: Record<Language, Translations> = {
     correct: 'Верно!',
     wrong: 'Ой, ошибка!',
     tapToFlip: 'Нажми на карточку, чтобы узнать перевод',
+    selectWord: 'Выбрать слово',
+    allWords: 'Все слова',
     spellTheWord: 'Нажимай на буквы и собери слово',
     clearLetters: 'Сбросить буквы',
     wrongVariantsTitle: 'Неправильные варианты:',
@@ -385,6 +389,8 @@ export const translations: Record<Language, Translations> = {
     correct: 'Pareizi!',
     wrong: 'Oi, kļūdiņa!',
     tapToFlip: 'Pieskaries kartītei, lai redzētu tulkojumu',
+    selectWord: 'Izvēlēties vārdu',
+    allWords: 'Visi vārdi',
     spellTheWord: 'Spied uz burtiem un saliec vārdu',
     clearLetters: 'Notīrīt burtus',
     wrongVariantsTitle: 'Nepareizi varianti:',

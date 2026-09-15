@@ -11,6 +11,10 @@ export interface Translations {
   noResultsFound: string;
   wordsCount: string;
   learnedCount: string;
+  mainTopicsTitle: string;
+  mainTopicsSubtitle: string;
+  extraTopicsTitle: string;
+  extraTopicsSubtitle: string;
   play: string;
   back: string;
   next: string;
@@ -193,6 +197,10 @@ export const translations: Record<Language, Translations> = {
     noResultsFound: 'Ничего не нашлось',
     wordsCount: 'слов',
     learnedCount: 'выучено',
+    mainTopicsTitle: 'Основные темы',
+    mainTopicsSubtitle: '12 тем школьной программы',
+    extraTopicsTitle: 'Дополнительные темы',
+    extraTopicsSubtitle: '6 тем для расширения словарного запаса',
     play: 'Играть',
     back: 'Назад',
     next: 'Дальше',
@@ -373,6 +381,10 @@ export const translations: Record<Language, Translations> = {
     noResultsFound: 'Nekas netika atrasts',
     wordsCount: 'vārdi',
     learnedCount: 'apgūti',
+    mainTopicsTitle: 'Pamatkursa tēmas',
+    mainTopicsSubtitle: '12 skolas programmas tēmas',
+    extraTopicsTitle: 'Papildus tēmas',
+    extraTopicsSubtitle: '6 tēmas vārdu krājuma paplašināšanai',
     play: 'Spēlēt',
     back: 'Atpakaļ',
     next: 'Tālāk',
@@ -699,4 +711,50 @@ export function getPlayerDisplayName(
   }
   return playerName;
 }
+
+export const GRADE_1_MAIN_TOPICS: string[] = [
+  'numbers_1_20',
+  'colours',
+  'classroom_objects',
+  'family',
+  'adjectives',
+  'toys',
+  'activities',
+  'pets',
+  'farm_animals',
+  'wild_animals',
+  'shapes',
+  'actions',
+];
+
+export const GRADE_1_EXTRA_TOPICS: string[] = [
+  'pronouns',
+  'introductions',
+  'questions',
+  'instructions',
+  'places',
+  'helper_words',
+];
+
+export const GRADE_1_TOPIC_ORDER: string[] = [
+  ...GRADE_1_MAIN_TOPICS,
+  ...GRADE_1_EXTRA_TOPICS,
+];
+
+export const GRADE_2_TOPIC_ORDER: string[] = [
+  'food_and_drink',
+  'fruit_and_vegetables',
+  'garden',
+  'body',
+  'face',
+  'abilities',
+  'clothes',
+  'hair',
+  'family',
+  'at_home',
+  'rooms',
+  'building_materials',
+  'days_of_the_week',
+  'actions',
+];
 

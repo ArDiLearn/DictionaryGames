@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { Topic, Language, TopicProgress, Grade } from '../types';
 import { TopicCard } from './TopicCard';
-import { translations, getGradeFilterInfo, getPlayerDisplayName } from '../utils/i18n';
+import {
+  translations,
+  getGradeFilterInfo,
+  getPlayerDisplayName,
+  GRADE_1_MAIN_TOPICS,
+  GRADE_1_EXTRA_TOPICS,
+} from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { Search, Sparkles, BarChart3 } from 'lucide-react';
 
@@ -55,6 +61,14 @@ export const TopicList: React.FC<TopicListProps> = ({
       acc + (p.masteredWordIds?.filter((id) => visibleWordIds.has(id)).length || 0),
     0
   );
+
+  const isGrade1Only = selectedGrades.length === 1 && selectedGrades[0] === 1;
+  const mainTopics = isGrade1Only
+    ? filteredTopics.filter((t) => GRADE_1_MAIN_TOPICS.includes(t.topic_id))
+    : [];
+  const extraTopics = isGrade1Only
+    ? filteredTopics.filter((t) => GRADE_1_EXTRA_TOPICS.includes(t.topic_id))
+    : [];
 
   const displayName = getPlayerDisplayName(playerName, language);
 
@@ -222,17 +236,87 @@ export const TopicList: React.FC<TopicListProps> = ({
       </div>
 
       {/* Grid of Topics */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-        {filteredTopics.map((topic) => (
-          <TopicCard
-            key={topic.topic_id}
-            topic={topic}
-            language={language}
-            progress={topicProgress[topic.topic_id]}
-            onSelect={onSelectTopic}
-          />
-        ))}
-      </div>
+      {isGrade1Only ? (
+        <div className="space-y-8">
+          {/* Main Topics */}
+          {mainTopics.length > 0 && (
+            <div>
+              <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-amber-200">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-2xl">📚</span>
+                  <div>
+                    <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
+                      {t.mainTopicsTitle}
+                    </h2>
+                    <p className="text-xs sm:text-sm font-semibold text-slate-500">
+                      {t.mainTopicsSubtitle}
+                    </p>
+                  </div>
+                </div>
+                <span className="text-xs font-black bg-amber-100 text-amber-900 px-2.5 py-1 rounded-full border border-amber-300">
+                  {mainTopics.length}
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                {mainTopics.map((topic) => (
+                  <TopicCard
+                    key={topic.topic_id}
+                    topic={topic}
+                    language={language}
+                    progress={topicProgress[topic.topic_id]}
+                    onSelect={onSelectTopic}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Extra Topics */}
+          {extraTopics.length > 0 && (
+            <div>
+              <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-indigo-200">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-2xl">⭐</span>
+                  <div>
+                    <h2 className="text-lg sm:text-xl font-black text-indigo-950 tracking-tight">
+                      {t.extraTopicsTitle}
+                    </h2>
+                    <p className="text-xs sm:text-sm font-semibold text-indigo-600/80">
+                      {t.extraTopicsSubtitle}
+                    </p>
+                  </div>
+                </div>
+                <span className="text-xs font-black bg-indigo-100 text-indigo-900 px-2.5 py-1 rounded-full border border-indigo-300">
+                  {extraTopics.length}
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                {extraTopics.map((topic) => (
+                  <TopicCard
+                    key={topic.topic_id}
+                    topic={topic}
+                    language={language}
+                    progress={topicProgress[topic.topic_id]}
+                    onSelect={onSelectTopic}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {filteredTopics.map((topic) => (
+            <TopicCard
+              key={topic.topic_id}
+              topic={topic}
+              language={language}
+              progress={topicProgress[topic.topic_id]}
+              onSelect={onSelectTopic}
+            />
+          ))}
+        </div>
+      )}
 
       {filteredTopics.length === 0 && (
         <div className="text-center py-12 bg-white rounded-3xl border-2 border-slate-200">

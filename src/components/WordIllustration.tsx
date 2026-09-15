@@ -1424,6 +1424,262 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
       </g>
     </svg>
   ),
+
+  // 1. between (между — фигурка человечка между двумя серыми блоками)
+  'between': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="6" y1="84" x2="94" y2="84" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      {/* Left Grey Block */}
+      <g>
+        <ellipse cx="20" cy="84" rx="12" ry="3.5" fill="#475569" opacity="0.2" />
+        <polygon points="8,48 16,40 36,40 28,48" fill="#cbd5e1" stroke="#475569" strokeWidth="1.4" strokeLinejoin="round" />
+        <polygon points="28,48 36,40 36,72 28,80" fill="#64748b" stroke="#475569" strokeWidth="1.4" strokeLinejoin="round" />
+        <rect x="8" y="48" width="20" height="32" rx="2" fill="#94a3b8" stroke="#475569" strokeWidth="1.4" />
+        <line x1="10" y1="50" x2="26" y2="50" stroke="#f1f5f9" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
+      </g>
+      {/* Right Grey Block */}
+      <g>
+        <ellipse cx="80" cy="84" rx="12" ry="3.5" fill="#475569" opacity="0.2" />
+        <polygon points="68,48 76,40 96,40 88,48" fill="#cbd5e1" stroke="#475569" strokeWidth="1.4" strokeLinejoin="round" />
+        <polygon points="88,48 96,40 96,72 88,80" fill="#64748b" stroke="#475569" strokeWidth="1.4" strokeLinejoin="round" />
+        <rect x="68" y="48" width="20" height="32" rx="2" fill="#94a3b8" stroke="#475569" strokeWidth="1.4" />
+        <line x1="70" y1="50" x2="86" y2="50" stroke="#f1f5f9" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
+      </g>
+      {/* Character Standing Between */}
+      <g transform="translate(50, 46) scale(0.95)">
+        <ellipse cx="0" cy="38" rx="9" ry="3" fill="#0f172a" opacity="0.16" />
+        <rect x="-6" y="17" width="4.5" height="18" rx="2" fill="#2563eb" />
+        <rect x="1.5" y="17" width="4.5" height="18" rx="2" fill="#2563eb" />
+        <ellipse cx="-3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <ellipse cx="3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <path d="M -8 4 L 8 4 L 6.5 19 L -6.5 19 Z" fill="#f97316" stroke="#ea580c" strokeWidth="0.5" />
+        <path d="M -3.5 4 Q 0 7.5 3.5 4" stroke="#ffffff" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+        <path d="M -7 6 Q -14 0 -13 -7" stroke="#f97316" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <circle cx="-13" cy="-7" r="2.3" fill="#fed7aa" />
+        <path d="M 7 6 Q 14 0 13 -7" stroke="#f97316" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <circle cx="13" cy="-7" r="2.3" fill="#fed7aa" />
+        <rect x="-2.2" y="1" width="4.4" height="4" fill="#fed7aa" />
+        <circle cx="0" cy="-7" r="9" fill="#fed7aa" stroke="#fba063" strokeWidth="0.6" />
+        <path d="M -9.2 -8 C -8.5 -17 8.5 -17 9.2 -8 C 9.2 -4 6 -4 4 -6 C 2 -4 -2 -4 -4 -6 C -6 -4 -9.2 -4 -9.2 -8 Z" fill="#78350f" />
+        <circle cx="-3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="-5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <circle cx="5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <path d="M -2.5 -3.5 Q 0 -1.2 2.5 -3.5" stroke="#c2410c" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      </g>
+      <path d="M 33 80 L 37 80" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" />
+      <path d="M 67 80 L 63 80" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  ),
+
+  // 2. next to (рядом с — фигурка рядом с серым блоком)
+  'next to': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="8" y1="84" x2="92" y2="84" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      {/* Grey Block on Left */}
+      <g>
+        <ellipse cx="34" cy="84" rx="18" ry="4.5" fill="#475569" opacity="0.2" />
+        <polygon points="17,42 27,32 57,32 47,42" fill="#cbd5e1" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+        <polygon points="47,42 57,32 57,72 47,82" fill="#64748b" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+        <rect x="17" y="42" width="30" height="40" rx="2" fill="#94a3b8" stroke="#475569" strokeWidth="1.5" />
+        <line x1="19" y1="44" x2="45" y2="44" stroke="#f1f5f9" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
+      </g>
+      {/* Colorful Person next to block */}
+      <g transform="translate(73, 46) scale(0.95)">
+        <ellipse cx="0" cy="38" rx="9" ry="3" fill="#0f172a" opacity="0.16" />
+        <rect x="-6" y="17" width="4.5" height="18" rx="2" fill="#2563eb" />
+        <rect x="1.5" y="17" width="4.5" height="18" rx="2" fill="#2563eb" />
+        <ellipse cx="-3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <ellipse cx="3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <path d="M -8 4 L 8 4 L 6.5 19 L -6.5 19 Z" fill="#f97316" stroke="#ea580c" strokeWidth="0.5" />
+        <path d="M -3.5 4 Q 0 7.5 3.5 4" stroke="#ffffff" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+        <path d="M -7 6 Q -13 13 -10 20" stroke="#f97316" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <circle cx="-10" cy="20" r="2.3" fill="#fed7aa" />
+        <path d="M 7 6 Q 14 0 13 -7" stroke="#f97316" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <circle cx="13" cy="-7" r="2.3" fill="#fed7aa" />
+        <rect x="-2.2" y="1" width="4.4" height="4" fill="#fed7aa" />
+        <circle cx="0" cy="-7" r="9" fill="#fed7aa" stroke="#fba063" strokeWidth="0.6" />
+        <path d="M -9.2 -8 C -8.5 -17 8.5 -17 9.2 -8 C 9.2 -4 6 -4 4 -6 C 2 -4 -2 -4 -4 -6 C -6 -4 -9.2 -4 -9.2 -8 Z" fill="#78350f" />
+        <circle cx="-3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="-5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <circle cx="5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <path d="M -2.5 -3.5 Q 0 -1.2 2.5 -3.5" stroke="#c2410c" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      </g>
+      <path d="M 50 56 Q 58 50 64 56" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeDasharray="2 2" fill="none" />
+    </svg>
+  ),
+
+  // 3. in front of (перед — фигурка перед блоком)
+  'in front of': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="10" y1="86" x2="90" y2="86" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      {/* Grey Block in BACKGROUND */}
+      <g>
+        <ellipse cx="53" cy="70" rx="24" ry="5" fill="#475569" opacity="0.2" />
+        <polygon points="28,30 38,20 84,20 74,30" fill="#cbd5e1" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+        <polygon points="74,30 84,20 84,58 74,68" fill="#64748b" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+        <rect x="28" y="30" width="46" height="38" rx="2" fill="#94a3b8" stroke="#475569" strokeWidth="1.5" />
+        <line x1="30" y1="32" x2="72" y2="32" stroke="#f1f5f9" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
+      </g>
+      {/* Colorful Person in FOREGROUND (overlapping block) */}
+      <g transform="translate(50, 52) scale(0.95)">
+        <ellipse cx="0" cy="38" rx="9" ry="3" fill="#0f172a" opacity="0.22" />
+        <rect x="-6" y="17" width="4.5" height="18" rx="2" fill="#2563eb" />
+        <rect x="1.5" y="17" width="4.5" height="18" rx="2" fill="#2563eb" />
+        <ellipse cx="-3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <ellipse cx="3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <path d="M -8 4 L 8 4 L 6.5 19 L -6.5 19 Z" fill="#f97316" stroke="#ea580c" strokeWidth="0.5" />
+        <path d="M -3.5 4 Q 0 7.5 3.5 4" stroke="#ffffff" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+        <path d="M -7 6 Q -13 13 -10 20" stroke="#f97316" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <circle cx="-10" cy="20" r="2.3" fill="#fed7aa" />
+        <path d="M 7 6 Q 14 0 13 -7" stroke="#f97316" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <circle cx="13" cy="-7" r="2.3" fill="#fed7aa" />
+        <rect x="-2.2" y="1" width="4.4" height="4" fill="#fed7aa" />
+        <circle cx="0" cy="-7" r="9" fill="#fed7aa" stroke="#fba063" strokeWidth="0.6" />
+        <path d="M -9.2 -8 C -8.5 -17 8.5 -17 9.2 -8 C 9.2 -4 6 -4 4 -6 C 2 -4 -2 -4 -4 -6 C -6 -4 -9.2 -4 -9.2 -8 Z" fill="#78350f" />
+        <circle cx="-3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="-5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <circle cx="5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <path d="M -2.5 -3.5 Q 0 -1.2 2.5 -3.5" stroke="#c2410c" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      </g>
+      <path d="M 50 89 L 50 94 M 47 91 L 50 94 L 53 91" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+
+  // 4. behind (позади, за — фигурка за низким блоком)
+  'behind': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="10" y1="84" x2="90" y2="84" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      {/* Character in BACKGROUND */}
+      <g transform="translate(50, 44) scale(0.95)">
+        <ellipse cx="0" cy="38" rx="9" ry="3" fill="#0f172a" opacity="0.16" />
+        <rect x="-6" y="17" width="4.5" height="18" rx="2" fill="#2563eb" />
+        <rect x="1.5" y="17" width="4.5" height="18" rx="2" fill="#2563eb" />
+        <ellipse cx="-3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <ellipse cx="3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <path d="M -8 4 L 8 4 L 6.5 19 L -6.5 19 Z" fill="#f97316" stroke="#ea580c" strokeWidth="0.5" />
+        <path d="M -3.5 4 Q 0 7.5 3.5 4" stroke="#ffffff" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+        <path d="M -7 6 Q -13 13 -8 18" stroke="#f97316" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <path d="M 7 6 Q 13 13 8 18" stroke="#f97316" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <rect x="-2.2" y="1" width="4.4" height="4" fill="#fed7aa" />
+        <circle cx="0" cy="-7" r="9" fill="#fed7aa" stroke="#fba063" strokeWidth="0.6" />
+        <path d="M -9.2 -8 C -8.5 -17 8.5 -17 9.2 -8 C 9.2 -4 6 -4 4 -6 C 2 -4 -2 -4 -4 -6 C -6 -4 -9.2 -4 -9.2 -8 Z" fill="#78350f" />
+        <circle cx="-3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="-5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <circle cx="5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <path d="M -2.5 -3.5 Q 0 -1.2 2.5 -3.5" stroke="#c2410c" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      </g>
+      {/* Shorter Grey Block in FOREGROUND (lower height, covers legs/waist) */}
+      <g>
+        <ellipse cx="53" cy="84" rx="25" ry="4.5" fill="#475569" opacity="0.25" />
+        <polygon points="26,56 36,46 84,46 74,56" fill="#cbd5e1" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+        <polygon points="74,56 84,46 84,72 74,82" fill="#64748b" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+        <rect x="26" y="56" width="48" height="26" rx="2" fill="#94a3b8" stroke="#475569" strokeWidth="1.5" />
+        <line x1="28" y1="58" x2="72" y2="58" stroke="#f1f5f9" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
+      </g>
+      {/* Hands peeking over the top edge of the block */}
+      <circle cx="37" cy="56" r="3" fill="#fed7aa" stroke="#ea580c" strokeWidth="0.8" />
+      <circle cx="63" cy="56" r="3" fill="#fed7aa" stroke="#ea580c" strokeWidth="0.8" />
+    </svg>
+  ),
+
+  // 5. opposite (напротив — две фигурки напротив друг друга)
+  'opposite': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="6" y1="84" x2="94" y2="84" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      <line x1="50" y1="32" x2="50" y2="86" stroke="#cbd5e1" strokeWidth="2.5" strokeDasharray="4 3" strokeLinecap="round" />
+      <path d="M 42 50 L 58 50 M 54 46 L 58 50 L 54 54" stroke="#f59e0b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M 58 58 L 42 58 M 46 54 L 42 58 L 46 62" stroke="#f59e0b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Left Character facing right */}
+      <g transform="translate(24, 46) scale(0.9)">
+        <ellipse cx="0" cy="38" rx="9" ry="3" fill="#0f172a" opacity="0.16" />
+        <rect x="-6" y="17" width="4.5" height="18" rx="2" fill="#2563eb" />
+        <rect x="1.5" y="17" width="4.5" height="18" rx="2" fill="#2563eb" />
+        <ellipse cx="-3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <ellipse cx="3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <path d="M -8 4 L 8 4 L 6.5 19 L -6.5 19 Z" fill="#f97316" stroke="#ea580c" strokeWidth="0.5" />
+        <path d="M -3.5 4 Q 0 7.5 3.5 4" stroke="#ffffff" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+        <path d="M -7 6 Q -13 13 -10 20" stroke="#f97316" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <circle cx="-10" cy="20" r="2.3" fill="#fed7aa" />
+        <path d="M 7 6 Q 14 0 13 -7" stroke="#f97316" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <circle cx="13" cy="-7" r="2.3" fill="#fed7aa" />
+        <rect x="-2.2" y="1" width="4.4" height="4" fill="#fed7aa" />
+        <circle cx="0" cy="-7" r="9" fill="#fed7aa" stroke="#fba063" strokeWidth="0.6" />
+        <path d="M -9.2 -8 C -8.5 -17 8.5 -17 9.2 -8 C 9.2 -4 6 -4 4 -6 C 2 -4 -2 -4 -4 -6 C -6 -4 -9.2 -4 -9.2 -8 Z" fill="#78350f" />
+        <circle cx="-3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="-5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <circle cx="5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <path d="M -2.5 -3.5 Q 0 -1.2 2.5 -3.5" stroke="#c2410c" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      </g>
+      {/* Right Character facing left */}
+      <g transform="translate(76, 46) scale(-0.9, 0.9)">
+        <ellipse cx="0" cy="38" rx="9" ry="3" fill="#0f172a" opacity="0.16" />
+        <rect x="-6" y="17" width="4.5" height="18" rx="2" fill="#4f46e5" />
+        <rect x="1.5" y="17" width="4.5" height="18" rx="2" fill="#4f46e5" />
+        <ellipse cx="-3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <ellipse cx="3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <path d="M -8 4 L 8 4 L 6.5 19 L -6.5 19 Z" fill="#10b981" stroke="#059669" strokeWidth="0.5" />
+        <path d="M -3.5 4 Q 0 7.5 3.5 4" stroke="#ffffff" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+        <path d="M -7 6 Q -13 13 -10 20" stroke="#10b981" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <circle cx="-10" cy="20" r="2.3" fill="#fed7aa" />
+        <path d="M 7 6 Q 14 0 13 -7" stroke="#10b981" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <circle cx="13" cy="-7" r="2.3" fill="#fed7aa" />
+        <rect x="-2.2" y="1" width="4.4" height="4" fill="#fed7aa" />
+        <circle cx="0" cy="-7" r="9" fill="#fed7aa" stroke="#fba063" strokeWidth="0.6" />
+        <path d="M -9.2 -8 C -8.5 -17 8.5 -17 9.2 -8 C 9.2 -4 6 -4 4 -6 C 2 -4 -2 -4 -4 -6 C -6 -4 -9.2 -4 -9.2 -8 Z" fill="#78350f" />
+        <circle cx="-3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="-5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <circle cx="5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <path d="M -2.5 -3.5 Q 0 -1.2 2.5 -3.5" stroke="#c2410c" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      </g>
+    </svg>
+  ),
+
+  // 6. above (над — фигурка парит над блоком)
+  'above': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="12" y1="92" x2="88" y2="92" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      {/* Grey Block on Ground */}
+      <g>
+        <ellipse cx="53" cy="92" rx="25" ry="4.5" fill="#475569" opacity="0.2" />
+        <polygon points="26,66 36,56 84,56 74,66" fill="#cbd5e1" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+        <polygon points="74,66 84,56 84,80 74,90" fill="#64748b" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+        <rect x="26" y="66" width="48" height="24" rx="2" fill="#94a3b8" stroke="#475569" strokeWidth="1.5" />
+        <line x1="28" y1="68" x2="72" y2="68" stroke="#f1f5f9" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
+      </g>
+      <ellipse cx="50" cy="62" rx="13" ry="3.5" fill="#475569" opacity="0.25" />
+      <path d="M 40 54 Q 50 51 60 54" stroke="#38bdf8" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="2 2" fill="none" />
+      <path d="M 50 51 L 50 45 M 47 48 L 50 45 L 53 48" stroke="#f59e0b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Floating Person ABOVE */}
+      <g transform="translate(50, 16) scale(0.88)">
+        <rect x="-6" y="17" width="4.5" height="18" rx="2" fill="#2563eb" />
+        <rect x="1.5" y="17" width="4.5" height="18" rx="2" fill="#2563eb" />
+        <ellipse cx="-3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <ellipse cx="3.8" cy="35" rx="4" ry="2.6" fill="#0f172a" />
+        <path d="M -8 4 L 8 4 L 6.5 19 L -6.5 19 Z" fill="#f97316" stroke="#ea580c" strokeWidth="0.5" />
+        <path d="M -3.5 4 Q 0 7.5 3.5 4" stroke="#ffffff" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+        <path d="M -7 6 Q -14 0 -13 -7" stroke="#f97316" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <circle cx="-13" cy="-7" r="2.3" fill="#fed7aa" />
+        <path d="M 7 6 Q 14 0 13 -7" stroke="#f97316" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <circle cx="13" cy="-7" r="2.3" fill="#fed7aa" />
+        <rect x="-2.2" y="1" width="4.4" height="4" fill="#fed7aa" />
+        <circle cx="0" cy="-7" r="9" fill="#fed7aa" stroke="#fba063" strokeWidth="0.6" />
+        <path d="M -9.2 -8 C -8.5 -17 8.5 -17 9.2 -8 C 9.2 -4 6 -4 4 -6 C 2 -4 -2 -4 -4 -6 C -6 -4 -9.2 -4 -9.2 -8 Z" fill="#78350f" />
+        <circle cx="-3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="3" cy="-7" r="1.1" fill="#0f172a" />
+        <circle cx="-5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <circle cx="5.5" cy="-5" r="1.4" fill="#f87171" opacity="0.55" />
+        <path d="M -2.5 -3.5 Q 0 -1.2 2.5 -3.5" stroke="#c2410c" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      </g>
+      <text x="20" y="24" fontSize="9" fill="#f59e0b">✨</text>
+      <text x="72" y="20" fontSize="9" fill="#f59e0b">✨</text>
+    </svg>
+  ),
 };
 
 const RU_ALIASES: Record<string, string> = {
@@ -1464,6 +1720,14 @@ const RU_ALIASES: Record<string, string> = {
   'треугольник': 'triangle',
   'прямоугольник': 'rectangle',
   'овал': 'oval',
+  'между': 'between',
+  'рядом с': 'next to',
+  'перед': 'in front of',
+  'позади, за': 'behind',
+  'позади': 'behind',
+  'за': 'behind',
+  'напротив': 'opposite',
+  'над': 'above',
 };
 
 export const WordIllustration: React.FC<WordIllustrationProps> = ({

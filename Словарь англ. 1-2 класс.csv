@@ -107,7 +107,7 @@ toddler,"bērns, kurš tikko sācis staigāt","малыш, начинающий 
 child,bērns,ребёнок,2
 teenager,pusaudzis,подросток,2
 adult,pieaugušais,взрослый,2
-eldery person,vecs cilvēks,пожилой человек,2
+elderly person,vecs cilvēks,пожилой человек,2
 ,,,
 Adjectives,Īpašības vārdi,Прилагательные,
 tall,garš,высокий,1
@@ -265,24 +265,24 @@ mud,dubļi,грязь,2
 clay,māls,глина,2
 ,,,
 Actions,Darbības,Действия,
-i can,es varu,я умею,1
-i can't,es nevaru,я не умею,1
-i've got,es dabūju,я имею,2
-i haven't got,еs nedabūju,я не имею,2
-i have,man ir,у меня есть,1
-i have't,man nav,у меня нет,1
-i like,man patīk,мне нравится,1
-i don't like,man nepatīk,мне не нравится,1
+I can,es varu,я умею,1
+I can't,es nevaru,я не умею,1
+I've got,es dabūju,я имею,2
+I haven't got,еs nedabūju,я не имею,2
+I have,man ir,у меня есть,1
+I haven't,man nav,у меня нет,1
+I like,man patīk,мне нравится,1
+I don't like,man nepatīk,мне не нравится,1
 ,,,
 Introductions,Iepazīšanās,Знакомство,
 What's your name?,Kā tevi sauc?,Как тебя зовут?,1
 How are you?,Kā tev klājas?,Как дела?,1
-How old you?,Cik tev gadu?,Сколько тебе лет?,1
+How old are you?,Cik tev gadu?,Сколько тебе лет?,1
 What colour?,Kādā krāsā?,Какого цвета?,1
 What's this?,Kas tas ir?,Что это?,1
 ,,,
 Pronouns,Vietniekvārdi,Местоимения,
-i'm,es esmu,я,1
+I'm,es esmu,я,1
 he's,viņš,он,1
 she's,viņa,она,1
 they're,viņi ir,они,1

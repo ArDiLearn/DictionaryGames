@@ -380,5 +380,17 @@ export const TRANSCRIPTIONS = {
 
   // Colours & Family
   "rainbow": "[ ˈreɪnbəʊ ]",
-  "people": "[ ˈpiːpl ]"
+  "people": "[ ˈpiːpl ]",
+
+  // Birthday
+  "board game": "[ ˈbɔːd ɡeɪm ]",
+  "jigsaw": "[ ˈdʒɪɡsɔː ]",
+  "balloon": "[ bəˈluːn ]",
+  "ballon": "[ bəˈluːn ]",
+  "camera": "[ ˈkæmərə ]",
+  "dress": "[ dres ]",
+  "necklace": "[ ˈnekləs ]",
+  "chocolate": "[ ˈtʃɒklət ]",
+  "umbrella": "[ ʌmˈbrelə ]",
+  "dinosaur": "[ ˈdaɪnəsɔː ]"
 };

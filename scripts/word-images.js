@@ -306,5 +306,16 @@ export const WORD_IMAGES = {
   "create": "🎨",
   "miss": "⏭️",
   "rainbow": "🌈",
-  "people": "🧑‍🤝‍🧑"
+  "people": "🧑‍🤝‍🧑",
+  "board game": "🎲",
+  "jigsaw": "🧩",
+  "balloon": "🎈",
+  "ballon": "🎈",
+  "camera": "📷",
+  "dress": "👗",
+  "necklace": "📿",
+  "chocolate": "🍫",
+  "birthday:watch": "⌚",
+  "umbrella": "☂️",
+  "dinosaur": "🦖"
 };

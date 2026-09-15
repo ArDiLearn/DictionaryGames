@@ -3159,5 +3159,108 @@
         "transcription": "[ əˈbaʊt ]"
       }
     ]
+  },
+  {
+    "topic_id": "birthday",
+    "topic_name": {
+      "ru": "День рождения",
+      "lv": "Dzimšanas diena",
+      "en": "Birthday"
+    },
+    "icon": "Gift",
+    "color": "pink",
+    "emoji": "🎂",
+    "words": [
+      {
+        "id": "306",
+        "en": "board game",
+        "lv": "galda spēle",
+        "ru": "настольная игра",
+        "grade": 3,
+        "image": "🎲",
+        "transcription": "[ ˈbɔːd ɡeɪm ]"
+      },
+      {
+        "id": "307",
+        "en": "jigsaw",
+        "lv": "puzle",
+        "ru": "пазл",
+        "grade": 3,
+        "image": "🧩",
+        "transcription": "[ ˈdʒɪɡsɔː ]"
+      },
+      {
+        "id": "308",
+        "en": "balloon",
+        "lv": "balons",
+        "ru": "воздушный шар",
+        "grade": 3,
+        "image": "🎈",
+        "transcription": "[ bəˈluːn ]"
+      },
+      {
+        "id": "309",
+        "en": "camera",
+        "lv": "fotoaparāts",
+        "ru": "фотоаппарат",
+        "grade": 3,
+        "image": "📷",
+        "transcription": "[ ˈkæmərə ]"
+      },
+      {
+        "id": "310",
+        "en": "dress",
+        "lv": "kleita",
+        "ru": "платье",
+        "grade": 3,
+        "image": "👗",
+        "transcription": "[ dres ]"
+      },
+      {
+        "id": "311",
+        "en": "necklace",
+        "lv": "kaklarota",
+        "ru": "ожерелье",
+        "grade": 3,
+        "image": "📿",
+        "transcription": "[ ˈnekləs ]"
+      },
+      {
+        "id": "312",
+        "en": "chocolate",
+        "lv": "šokolāde",
+        "ru": "шоколад",
+        "grade": 3,
+        "image": "🍫",
+        "transcription": "[ ˈtʃɒklət ]"
+      },
+      {
+        "id": "313",
+        "en": "watch",
+        "lv": "pulkstenis",
+        "ru": "наручные часы",
+        "grade": 3,
+        "image": "⌚",
+        "transcription": "[ wɒtʃ ]"
+      },
+      {
+        "id": "314",
+        "en": "umbrella",
+        "lv": "lietussargs",
+        "ru": "зонт",
+        "grade": 3,
+        "image": "☂️",
+        "transcription": "[ ʌmˈbrelə ]"
+      },
+      {
+        "id": "315",
+        "en": "dinosaur",
+        "lv": "dinozaurs",
+        "ru": "динозавр",
+        "grade": 3,
+        "image": "🦖",
+        "transcription": "[ ˈdaɪnəsɔː ]"
+      }
+    ]
   }
 ]

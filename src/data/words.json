@@ -105,7 +105,7 @@
         "en": "eleven",
         "lv": "vienpadsmit",
         "ru": "одиннадцать",
-        "grade": 2,
+        "grade": 1,
         "image": "1️⃣1️⃣",
         "transcription": "[ ɪˈlevn ]"
       },
@@ -114,7 +114,7 @@
         "en": "twelve",
         "lv": "divpadsmit",
         "ru": "двенадцать",
-        "grade": 2,
+        "grade": 1,
         "image": "1️⃣2️⃣",
         "transcription": "[ twelv ]"
       },
@@ -123,7 +123,7 @@
         "en": "thirteen",
         "lv": "trīspadsmit",
         "ru": "тринадцать",
-        "grade": 2,
+        "grade": 1,
         "image": "1️⃣3️⃣",
         "transcription": "[ ˌθɜːˈtiːn ]"
       },
@@ -132,7 +132,7 @@
         "en": "fourteen",
         "lv": "četrpadsmit",
         "ru": "четырнадцать",
-        "grade": 2,
+        "grade": 1,
         "image": "1️⃣4️⃣",
         "transcription": "[ ˌfɔːˈtiːn ]"
       },
@@ -141,7 +141,7 @@
         "en": "fifteen",
         "lv": "piecpadsmit",
         "ru": "пятнадцать",
-        "grade": 2,
+        "grade": 1,
         "image": "1️⃣5️⃣",
         "transcription": "[ ˌfɪfˈtiːn ]"
       },
@@ -150,7 +150,7 @@
         "en": "sixteen",
         "lv": "sešpadsmit",
         "ru": "шестнадцать",
-        "grade": 2,
+        "grade": 1,
         "image": "1️⃣6️⃣",
         "transcription": "[ ˌsɪksˈtiːn ]"
       },
@@ -159,7 +159,7 @@
         "en": "seventeen",
         "lv": "septiņpadsmit",
         "ru": "семнадцать",
-        "grade": 2,
+        "grade": 1,
         "image": "1️⃣7️⃣",
         "transcription": "[ ˌsevnˈtiːn ]"
       },
@@ -168,7 +168,7 @@
         "en": "eighteen",
         "lv": "astoņpadsmit",
         "ru": "восемнадцать",
-        "grade": 2,
+        "grade": 1,
         "image": "1️⃣8️⃣",
         "transcription": "[ ˌeɪˈtiːn ]"
       },
@@ -177,7 +177,7 @@
         "en": "nineteen",
         "lv": "deviņpadsmit",
         "ru": "девятнадцать",
-        "grade": 2,
+        "grade": 1,
         "image": "1️⃣9️⃣",
         "transcription": "[ ˌnaɪnˈtiːn ]"
       },
@@ -186,7 +186,7 @@
         "en": "twenty",
         "lv": "divdesmit",
         "ru": "двадцать",
-        "grade": 2,
+        "grade": 1,
         "image": "2️⃣0️⃣",
         "transcription": "[ ˈtwenti ]"
       }

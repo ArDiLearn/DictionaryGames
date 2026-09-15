@@ -32,22 +32,7 @@ import {
 } from './services/storage';
 import { getCurrentUser } from './services/supabase';
 
-const GRADE_2_TOPIC_ORDER: string[] = [
-  'food_and_drink',
-  'fruit_and_vegetables',
-  'garden',
-  'body',
-  'face',
-  'abilities',
-  'clothes',
-  'hair',
-  'family',
-  'at_home',
-  'rooms',
-  'building_materials',
-  'days_of_the_week',
-  'actions',
-];
+import { GRADE_1_TOPIC_ORDER, GRADE_2_TOPIC_ORDER } from './utils/i18n';
 
 export const App: React.FC = () => {
   const topics = rawWordsData as Topic[];
@@ -81,6 +66,17 @@ export const App: React.FC = () => {
         }),
       }))
       .filter((topic) => topic.words.length > 0);
+
+    // If Grade 1 is selected alone, enforce user-defined topic order
+    if (selectedGrades.length === 1 && selectedGrades[0] === 1) {
+      return [...result].sort((a, b) => {
+        const idxA = GRADE_1_TOPIC_ORDER.indexOf(a.topic_id);
+        const idxB = GRADE_1_TOPIC_ORDER.indexOf(b.topic_id);
+        const posA = idxA === -1 ? 999 : idxA;
+        const posB = idxB === -1 ? 999 : idxB;
+        return posA - posB;
+      });
+    }
 
     // If Grade 2 is selected alone, enforce user-defined topic order
     if (selectedGrades.length === 1 && selectedGrades[0] === 2) {

@@ -896,8 +896,8 @@
       {
         "id": "89",
         "en": "cousin",
-        "lv": "brālēns/māsīca",
-        "ru": "двоюродный брат/сестра",
+        "lv": "brālēns",
+        "ru": "кузен",
         "grade": 1,
         "image": "🧑‍🤝‍🧑",
         "transcription": "[ ˈkʌzn ]"
@@ -905,8 +905,8 @@
       {
         "id": "90",
         "en": "baby",
-        "lv": "mazulis",
-        "ru": "малыш",
+        "lv": "zīdainis",
+        "ru": "младенец",
         "grade": 2,
         "image": "👶",
         "transcription": "[ ˈbeɪbi ]"
@@ -914,8 +914,8 @@
       {
         "id": "91",
         "en": "toddler",
-        "lv": "bērns, kurš tikko sācis staigāt",
-        "ru": "малыш, начинающий ходить",
+        "lv": "mazulis",
+        "ru": "малыш",
         "grade": 2,
         "image": "🧒",
         "transcription": "[ ˈtɒdlə ]"

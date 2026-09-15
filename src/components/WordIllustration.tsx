@@ -1179,122 +1179,108 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
     </svg>
   ),
 
-  // tail (хвост / aste - prominent brightly highlighted wagging fluffy tail with focus ring, wag arcs, sparkles and indicator arrow)
+  // tail (хвост / aste - joyful ginger kitten from behind wagging a huge, fluffy, vibrant striped tail with motion swishes and sparkles)
   'tail': (
     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
       <defs>
         {/* Soft radial glow behind the tail */}
-        <radialGradient id="tailFocusGlow" cx="68%" cy="46%" r="35%">
-          <stop offset="0%" stopColor="#fef08a" stopOpacity="0.85" />
-          <stop offset="60%" stopColor="#fef08a" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#fef08a" stopOpacity="0" />
+        <radialGradient id="catTailGlow" cx="58%" cy="38%" r="46%">
+          <stop offset="0%" stopColor="#fef3c7" stopOpacity="0.85" />
+          <stop offset="65%" stopColor="#fef3c7" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="#fef3c7" stopOpacity="0" />
         </radialGradient>
-        {/* Tail vibrant gradient */}
-        <linearGradient id="tailGrad" x1="0%" y1="100%" x2="60%" y2="0%">
+        {/* Tail vibrant ginger gradient */}
+        <linearGradient id="catTailGrad" x1="0%" y1="100%" x2="40%" y2="0%">
           <stop offset="0%" stopColor="#ea580c" />
-          <stop offset="50%" stopColor="#f97316" />
-          <stop offset="100%" stopColor="#fb923c" />
+          <stop offset="40%" stopColor="#f97316" />
+          <stop offset="80%" stopColor="#fb923c" />
+          <stop offset="100%" stopColor="#ea580c" />
         </linearGradient>
       </defs>
 
       {/* Ground shadow */}
-      <ellipse cx="46" cy="88" rx="34" ry="6" fill="#cbd5e1" opacity="0.45" />
+      <ellipse cx="48" cy="90" rx="36" ry="5" fill="#cbd5e1" opacity="0.5" />
 
-      {/* Focus Glow Spotlight on Tail */}
-      <circle cx="68" cy="46" r="28" fill="url(#tailFocusGlow)" />
-      {/* Dashed focus highlight ring around the tail */}
-      <ellipse
-        cx="68"
-        cy="46"
-        rx="26"
-        ry="25"
-        stroke="#f59e0b"
-        strokeWidth="2.5"
-        strokeDasharray="4 3"
-        opacity="0.9"
-      />
+      {/* Soft warm attention glow behind the tail */}
+      <circle cx="58" cy="38" r="32" fill="url(#catTailGlow)" />
 
-      {/* Playful wagging motion arcs */}
-      <path d="M 88 34 C 94 40 94 50 88 56" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M 93 28 C 100 37 100 58 93 64" stroke="#fbbf24" strokeWidth="1.8" strokeLinecap="round" opacity="0.75" />
+      {/* Wagging Motion Lines (Right swish) */}
+      <path d="M 83 24 C 91 32 91 46 83 54" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" />
+      <path d="M 89 28 C 96 36 96 42 89 48" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" opacity="0.8" />
 
-      {/* Sparkles near the tail */}
-      <path d="M 84 22 L 86 16 L 88 22 L 94 24 L 88 26 L 86 32 L 84 26 L 78 24 Z" fill="#f59e0b" />
-      <circle cx="86" cy="24" r="1.5" fill="#ffffff" />
-      <circle cx="56" cy="18" r="1.5" fill="#fbbf24" />
+      {/* Wagging Motion Lines (Left swish) */}
+      <path d="M 37 14 C 30 18 26 26 28 34" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M 32 18 C 26 22 23 28 25 34" stroke="#fbbf24" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
 
-      {/* Body of the puppy (calm soft warm gray/beige so tail pops out) */}
-      {/* Back foot & leg */}
-      <ellipse cx="44" cy="80" rx="9" ry="6" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1.5" />
-      <ellipse cx="28" cy="80" rx="9" ry="6" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1.5" />
+      {/* Golden sparkles around wagging tip */}
+      <path d="M 76 12 L 78 6 L 80 12 L 86 14 L 80 16 L 78 22 L 76 16 L 70 14 Z" fill="#f59e0b" />
+      <circle cx="78" cy="14" r="1.5" fill="#ffffff" />
+      <circle cx="48" cy="8" r="2" fill="#fbbf24" />
+      <circle cx="86" cy="38" r="1.5" fill="#f59e0b" />
 
-      {/* Torso */}
+      {/* Kitten Body (Seen from behind, sitting softly at bottom) */}
+      {/* Kitten Back/Body */}
       <path
-        d="M 28 66 C 26 78 48 84 52 72 C 55 62 48 54 36 54 C 30 54 28 60 28 66 Z"
-        fill="#cbd5e1"
-        stroke="#94a3b8"
+        d="M 32 88 C 28 72 32 60 42 58 C 52 58 56 72 52 88 Z"
+        fill="#fed7aa"
+        stroke="#f97316"
         strokeWidth="1.5"
       />
-      {/* Front chest */}
-      <path
-        d="M 24 58 C 20 66 22 76 28 80 C 32 80 34 74 34 66 Z"
-        fill="#f1f5f9"
-      />
 
-      {/* Puppy Head looking back happily toward its tail */}
-      <circle cx="32" cy="44" r="13" fill="#cbd5e1" stroke="#94a3b8" strokeWidth="1.5" />
-      {/* Floppy ear */}
-      <path
-        d="M 24 38 C 18 42 18 52 24 52 C 27 52 28 44 26 38 Z"
-        fill="#94a3b8"
-      />
-      {/* Cute face */}
-      {/* Happy eye */}
-      <path d="M 33 42 Q 36 39 39 42" stroke="#334155" strokeWidth="2" strokeLinecap="round" fill="none" />
-      {/* Nose */}
-      <ellipse cx="38" cy="46" rx="2.5" ry="2" fill="#334155" />
-      {/* Smile */}
-      <path d="M 36 49 Q 39 52 41 49" stroke="#334155" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-      {/* Rosy cheek */}
-      <circle cx="33" cy="48" r="2.5" fill="#f43f5e" opacity="0.3" />
+      {/* Kitten Head from behind */}
+      <circle cx="40" cy="54" r="12" fill="#fed7aa" stroke="#fb923c" strokeWidth="1.5" />
 
-      {/* THE PROMINENT, VIBRANT FLUFFY TAIL (The Centerpiece!) */}
+      {/* Triangular Cat Ears */}
+      {/* Left Ear */}
+      <polygon points="31,48 26,34 38,44" fill="#fb923c" stroke="#ea580c" strokeWidth="1.2" strokeLinejoin="round" />
+      <polygon points="30,46 27,37 36,44" fill="#fecdd3" />
+      {/* Right Ear */}
+      <polygon points="42,44 48,34 49,48" fill="#fb923c" stroke="#ea580c" strokeWidth="1.2" strokeLinejoin="round" />
+      <polygon points="43,44 47,37 48,46" fill="#fecdd3" />
+
+      {/* Cute cheek details (peeking out slightly to the left) */}
+      <line x1="28" y1="55" x2="20" y2="53" stroke="#b45309" strokeWidth="1.2" strokeLinecap="round" />
+      <line x1="28" y1="58" x2="21" y2="60" stroke="#b45309" strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M 31 54 Q 34 51 37 54" stroke="#78350f" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+      <circle cx="31" cy="58" r="2.5" fill="#f43f5e" opacity="0.35" />
+
+      {/* Cute back paws */}
+      <ellipse cx="32" cy="88" rx="6" ry="3.5" fill="#ffedd5" stroke="#fb923c" strokeWidth="1.2" />
+      <ellipse cx="52" cy="88" rx="6" ry="3.5" fill="#ffedd5" stroke="#fb923c" strokeWidth="1.2" />
+
+      {/* THE PROMINENT, MAGNIFICENT WAGGING TAIL (Center of Attention!) */}
       {/* Tail Main Fluffy Shape */}
       <path
-        d="M 48 68 C 56 68 64 64 68 56 C 74 46 76 34 72 24 C 70 19 64 19 62 25 C 59 33 60 44 54 52 C 50 58 45 62 48 68 Z"
-        fill="url(#tailGrad)"
+        d="M 48 80 C 70 72 82 52 79 28 C 77 15 64 11 50 15 C 44 17 42 24 45 27 C 55 29 63 42 62 58 C 61 70 52 76 40 80 Z"
+        fill="url(#catTailGrad)"
         stroke="#c2410c"
         strokeWidth="2.5"
         strokeLinejoin="round"
       />
 
-      {/* Fluffy Tail Tip (Bright White with jagged fluffy border) */}
+      {/* Fluffy White Tail Tip */}
       <path
-        d="M 68 34 C 72 31 74 27 72 24 C 70 19 64 19 62 25 C 60 29 60 33 63 35 L 65 32 L 66 35 Z"
+        d="M 58 13 C 54 14 50 15 45 17 C 42 20 42 24 45 27 C 49 28 53 28 57 26 C 56 23 58 22 55 20 C 58 18 59 16 58 13 Z"
         fill="#ffffff"
         stroke="#c2410c"
         strokeWidth="2"
+        strokeLinejoin="round"
       />
 
-      {/* Fur tufts / texture on tail */}
-      <path d="M 68 45 C 72 44 76 46 74 49" stroke="#c2410c" strokeWidth="2" strokeLinecap="round" />
-      <path d="M 64 54 C 68 53 71 55 69 58" stroke="#c2410c" strokeWidth="2" strokeLinecap="round" />
+      {/* Dark Amber Stripes on Tail */}
+      <path d="M 68 62 C 71 61 74 60 77 62" stroke="#9a3412" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M 66 50 C 70 48 74 48 78 51" stroke="#9a3412" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M 64 38 C 68 36 72 36 77 39" stroke="#9a3412" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M 60 26 C 64 23 68 23 72 26" stroke="#9a3412" strokeWidth="2.5" strokeLinecap="round" />
 
-      {/* Glossy highlight along tail curve */}
+      {/* Glossy 3D Highlight streak along tail */}
       <path
-        d="M 53 58 C 58 52 64 42 66 32"
+        d="M 52 74 C 62 64 70 50 71 30 C 71 22 66 18 58 17"
         stroke="#ffffff"
-        strokeWidth="2.2"
+        strokeWidth="2.5"
         strokeLinecap="round"
-        opacity="0.85"
+        opacity="0.8"
       />
-
-      {/* Bright pointing arrow directly to the tail */}
-      <g transform="translate(68, 76) rotate(-70)">
-        <line x1="0" y1="0" x2="16" y2="0" stroke="#ea580c" strokeWidth="3.5" strokeLinecap="round" />
-        <polygon points="12,-5 20,0 12,5" fill="#ea580c" />
-        <circle cx="-1" cy="0" r="3" fill="#f59e0b" />
-      </g>
     </svg>
   ),
 

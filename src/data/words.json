@@ -627,7 +627,7 @@
       {
         "id": "62",
         "en": "desk",
-        "lv": "rakstāmgalds",
+        "lv": "skolas sols",
         "ru": "парта",
         "grade": 1,
         "image": "🪑✏️",
@@ -950,7 +950,7 @@
       {
         "id": "95",
         "en": "elderly person",
-        "lv": "vecs cilvēks",
+        "lv": "seniors",
         "ru": "пожилой человек",
         "grade": 2,
         "image": "🧓",
@@ -982,7 +982,7 @@
         "id": "97",
         "en": "short",
         "lv": "īss",
-        "ru": "короткий",
+        "ru": "низкий",
         "grade": 1,
         "image": "🤏",
         "transcription": "[ ʃɔːt ]"
@@ -1017,7 +1017,7 @@
       {
         "id": "101",
         "en": "handsome",
-        "lv": "skaists",
+        "lv": "izskatīgs",
         "ru": "красивый",
         "grade": 1,
         "image": "🤴",
@@ -2157,7 +2157,7 @@
       {
         "id": "206",
         "en": "flower",
-        "lv": "zieds/puķe",
+        "lv": "puķe",
         "ru": "цветок",
         "grade": 2,
         "image": "🌸",
@@ -2434,7 +2434,7 @@
       {
         "id": "231",
         "en": "he's",
-        "lv": "viņš",
+        "lv": "viņš ir",
         "ru": "он",
         "grade": 1,
         "image": "👦",
@@ -2443,7 +2443,7 @@
       {
         "id": "232",
         "en": "she's",
-        "lv": "viņa",
+        "lv": "viņa ir",
         "ru": "она",
         "grade": 1,
         "image": "👧",

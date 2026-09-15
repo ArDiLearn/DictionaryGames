@@ -32,6 +32,7 @@ purple,violets,фиолетовый,1
 orange,oranžš,оранжевый,1
 yellow,dzeltens,жёлтый,1
 brown,brūns,коричневый,1
+rainbow,varavīksne,радуга,1
 ,,,
 Days of the week,Nedēļas dienas,Дни недели,
 Monday,pirmdiena,понедельник,2
@@ -114,6 +115,7 @@ child,bērns,ребёнок,2
 teenager,pusaudzis,подросток,2
 adult,pieaugušais,взрослый,2
 elderly person,seniors,пожилой человек,2
+people,cilvēki,люди,1
 ,,,
 Adjectives,Īpašības vārdi,Прилагательные,
 tall,garš,высокий,1
@@ -292,12 +294,23 @@ How are you?,Kā tev klājas?,Как дела?,1
 How old are you?,Cik tev gadu?,Сколько тебе лет?,1
 What colour?,Kādā krāsā?,Какого цвета?,1
 What's this?,Kas tas ir?,Что это?,1
+please,lūdzu,пожалуйста,1
+thanks,paldies,спасибо,1
+fine,labi,хорошо,1
 ,,,
 Pronouns,Vietniekvārdi,Местоимения,
 I'm,es esmu,я,1
 he's,viņš ir,он,1
 she's,viņa ir,она,1
 they're,viņi ir,они,1
+we,mēs,мы,1
+they,viņi,они,1
+my,mans,мой,1
+me,mani,меня,1
+this,šis,этот,1
+it's,tas ir,это,1
+that's,tas ir,то,1
+here,šeit,здесь,1
 ,,,
 Instructions,Norādījumi,Инструкции,
 listen,klausīties,слушать,1
@@ -328,8 +341,28 @@ turn,kārta,очередь,1
 remember,atcerēties,запомнить,1
 practise,trenēties,тренироваться,1
 again,vēlreiz,снова,1
+think,domāt,думать,1
+pair,pāris,пара,1
+share,dalīties,делиться,1
+create,veidot,создавать,1
+miss,izlaist,пропустить,1
 ,,,
 Places,Vietas,Места,
 park,parks,парк,1
 playground,rotaļlaukums,детская площадка,1
 farm,ferma,ферма,1
+,,,
+Questions,Jautājumi,Вопросы,
+what,"kas, kāds","что, какой",1
+where,"kur, kurp","где, куда",1
+who,kas,кто,1
+how,kā,как,1
+which,"kurš, kāds","какой, который",1
+,,,
+Helper words,Palīgvārdi,Слова-помощники,
+lots,daudz,много,1
+only,tikai,только,1
+other,cits,другой,1
+maybe,varbūt,может быть,1
+then,"tad, pēc tam","затем, потом",1
+about,par,"о, про",1

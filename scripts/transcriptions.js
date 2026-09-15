@@ -392,5 +392,12 @@ export const TRANSCRIPTIONS = {
   "necklace": "[ ˈnekləs ]",
   "chocolate": "[ ˈtʃɒklət ]",
   "umbrella": "[ ʌmˈbrelə ]",
-  "dinosaur": "[ ˈdaɪnəsɔː ]"
+  "dinosaur": "[ ˈdaɪnəsɔː ]",
+
+  // Feelings
+  "happy": "[ ˈhæpi ]",
+  "sad": "[ sæd ]",
+  "hungry": "[ ˈhʌŋɡri ]",
+  "thirsty": "[ ˈθɜːsti ]",
+  "angry": "[ ˈæŋɡri ]"
 };

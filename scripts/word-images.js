@@ -317,5 +317,10 @@ export const WORD_IMAGES = {
   "chocolate": "🍫",
   "birthday:watch": "⌚",
   "umbrella": "☂️",
-  "dinosaur": "🦖"
+  "dinosaur": "🦖",
+  "happy": "😊",
+  "sad": "😢",
+  "hungry": "😋",
+  "thirsty": "🥤",
+  "angry": "😠"
 };

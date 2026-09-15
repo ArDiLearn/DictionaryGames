@@ -66,6 +66,11 @@ const TOPIC_METADATA = {
   'Birthday': { icon: 'Gift', color: 'pink', emoji: '🎂' },
   'Dzimšanas diena': { icon: 'Gift', color: 'pink', emoji: '🎂' },
   'День рождения': { icon: 'Gift', color: 'pink', emoji: '🎂' },
+  'Feelings': { icon: 'Smile', color: 'amber', emoji: '🎭' },
+  'Jūtas un emocijas': { icon: 'Smile', color: 'amber', emoji: '🎭' },
+  'Чувства и эмоции': { icon: 'Smile', color: 'amber', emoji: '🎭' },
+  'Jūtas': { icon: 'Smile', color: 'amber', emoji: '🎭' },
+  'Чувства': { icon: 'Smile', color: 'amber', emoji: '🎭' },
 };
 
 /**

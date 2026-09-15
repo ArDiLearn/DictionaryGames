@@ -322,5 +322,59 @@ export const WORD_IMAGES = {
   "sad": "😢",
   "hungry": "😋",
   "thirsty": "🥤",
-  "angry": "😠"
+  "angry": "😠",
+
+  // Jobs
+  "police officer": "👮",
+  "cook": "👨‍🍳",
+  "football player": "⚽",
+  "scientist": "🔬",
+  "zoo keeper": "🦁",
+  "doctor": "🩺",
+  "builder": "👷",
+  "waiter": "🤵",
+  "farmer": "🧑‍🌾",
+
+  // Transport
+  "bus": "🚌",
+  "car": "🚗",
+  "motorbike": "🏍️",
+  "lorry": "🚛",
+  "plane": "✈️",
+  "train": "🚆",
+
+  // Senses
+  "see": "👀",
+  "smell": "👃",
+  "taste": "👅",
+  "touch": "✋",
+  "hear": "👂",
+
+  // Town
+  "castle": "🏰",
+  "cinema": "🎬",
+  "museum": "🏛️",
+  "station": "🚉",
+  "hospital": "🏥",
+  "library": "📚",
+  "shop": "🏪",
+  "restaurant": "🍽️",
+  "swimming pool": "🏊",
+  "pet shop": "🐾",
+  "toy shop": "🧸",
+  "school": "🏫",
+  "bookshop": "📖",
+
+  // Prepositions of place
+  "next to": "👥",
+  "between": "↔️",
+  "in front of": "⏩",
+  "behind": "🔙",
+  "opposite": "🔁",
+  "above": "⬆️",
+
+  // Directions
+  "turn left": "⬅️",
+  "turn right": "➡️",
+  "go straight on": "⬆️"
 };

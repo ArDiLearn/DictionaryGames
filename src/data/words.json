@@ -3329,5 +3329,479 @@
         "transcription": "[ ˈtaɪəd ]"
       }
     ]
+  },
+  {
+    "topic_id": "jobs",
+    "topic_name": {
+      "ru": "Профессии",
+      "lv": "Profesijas",
+      "en": "Jobs"
+    },
+    "icon": "Briefcase",
+    "color": "indigo",
+    "emoji": "🧑‍💼",
+    "words": [
+      {
+        "id": "322",
+        "en": "police officer",
+        "lv": "policists",
+        "ru": "полицейский",
+        "grade": 3,
+        "image": "👮",
+        "transcription": "[ pəˈliːs ˈɒfɪsə ]"
+      },
+      {
+        "id": "323",
+        "en": "cook",
+        "lv": "pavārs",
+        "ru": "повар",
+        "grade": 3,
+        "image": "👨‍🍳",
+        "transcription": "[ kʊk ]"
+      },
+      {
+        "id": "324",
+        "en": "football player",
+        "lv": "futbolists",
+        "ru": "футболист",
+        "grade": 3,
+        "image": "⚽",
+        "transcription": "[ ˈfʊtbɔːl ˈpleɪə ]"
+      },
+      {
+        "id": "325",
+        "en": "scientist",
+        "lv": "zinātnieks",
+        "ru": "учёный",
+        "grade": 3,
+        "image": "🔬",
+        "transcription": "[ ˈsaɪəntɪst ]"
+      },
+      {
+        "id": "326",
+        "en": "zoo keeper",
+        "lv": "zoodārza uzraugs",
+        "ru": "смотритель зоопарка",
+        "grade": 3,
+        "image": "🦁",
+        "transcription": "[ ˈzuː ˈkiːpə ]"
+      },
+      {
+        "id": "327",
+        "en": "doctor",
+        "lv": "ārsts",
+        "ru": "врач",
+        "grade": 3,
+        "image": "🩺",
+        "transcription": "[ ˈdɒktə ]"
+      },
+      {
+        "id": "328",
+        "en": "builder",
+        "lv": "celtnieks",
+        "ru": "строитель",
+        "grade": 3,
+        "image": "👷",
+        "transcription": "[ ˈbɪldə ]"
+      },
+      {
+        "id": "329",
+        "en": "waiter",
+        "lv": "viesmīlis",
+        "ru": "официант",
+        "grade": 3,
+        "image": "🤵",
+        "transcription": "[ ˈweɪtə ]"
+      },
+      {
+        "id": "330",
+        "en": "farmer",
+        "lv": "lauksaimnieks",
+        "ru": "фермер",
+        "grade": 3,
+        "image": "🧑‍🌾",
+        "transcription": "[ ˈfɑːmə ]"
+      },
+      {
+        "id": "331",
+        "en": "teacher",
+        "lv": "skolotājs",
+        "ru": "учитель",
+        "grade": 3,
+        "image": "👩‍🏫",
+        "transcription": "[ ˈtiːtʃə ]"
+      }
+    ]
+  },
+  {
+    "topic_id": "transport",
+    "topic_name": {
+      "ru": "Транспорт",
+      "lv": "Transports",
+      "en": "Transport"
+    },
+    "icon": "Car",
+    "color": "sky",
+    "emoji": "🚗",
+    "words": [
+      {
+        "id": "332",
+        "en": "bus",
+        "lv": "autobuss",
+        "ru": "автобус",
+        "grade": 3,
+        "image": "🚌",
+        "transcription": "[ bʌs ]"
+      },
+      {
+        "id": "333",
+        "en": "car",
+        "lv": "mašīna",
+        "ru": "машина",
+        "grade": 3,
+        "image": "🚗",
+        "transcription": "[ kɑː ]"
+      },
+      {
+        "id": "334",
+        "en": "motorbike",
+        "lv": "motocikls",
+        "ru": "мотоцикл",
+        "grade": 3,
+        "image": "🏍️",
+        "transcription": "[ ˈməʊtəbaɪk ]"
+      },
+      {
+        "id": "335",
+        "en": "lorry",
+        "lv": "kravas auto",
+        "ru": "грузовик",
+        "grade": 3,
+        "image": "🚛",
+        "transcription": "[ ˈlɒri ]"
+      },
+      {
+        "id": "336",
+        "en": "plane",
+        "lv": "lidmašīna",
+        "ru": "самолёт",
+        "grade": 3,
+        "image": "✈️",
+        "transcription": "[ pleɪn ]"
+      },
+      {
+        "id": "337",
+        "en": "train",
+        "lv": "vilciens",
+        "ru": "поезд",
+        "grade": 3,
+        "image": "🚆",
+        "transcription": "[ treɪn ]"
+      }
+    ]
+  },
+  {
+    "topic_id": "senses",
+    "topic_name": {
+      "ru": "Органы чувств",
+      "lv": "Maņas",
+      "en": "Senses"
+    },
+    "icon": "Eye",
+    "color": "purple",
+    "emoji": "👁️",
+    "words": [
+      {
+        "id": "338",
+        "en": "see",
+        "lv": "redzēt",
+        "ru": "видеть",
+        "grade": 3,
+        "image": "👀",
+        "transcription": "[ siː ]"
+      },
+      {
+        "id": "339",
+        "en": "smell",
+        "lv": "smaržot",
+        "ru": "чувствовать запах",
+        "grade": 3,
+        "image": "👃",
+        "transcription": "[ smel ]"
+      },
+      {
+        "id": "340",
+        "en": "taste",
+        "lv": "garšot",
+        "ru": "пробовать на вкус",
+        "grade": 3,
+        "image": "👅",
+        "transcription": "[ teɪst ]"
+      },
+      {
+        "id": "341",
+        "en": "touch",
+        "lv": "pieskarties",
+        "ru": "трогать",
+        "grade": 3,
+        "image": "✋",
+        "transcription": "[ tʌtʃ ]"
+      },
+      {
+        "id": "342",
+        "en": "hear",
+        "lv": "dzirdēt",
+        "ru": "слышать",
+        "grade": 3,
+        "image": "👂",
+        "transcription": "[ hɪə ]"
+      }
+    ]
+  },
+  {
+    "topic_id": "town",
+    "topic_name": {
+      "ru": "Город",
+      "lv": "Pilsēta",
+      "en": "Town"
+    },
+    "icon": "Building2",
+    "color": "emerald",
+    "emoji": "🏙️",
+    "words": [
+      {
+        "id": "343",
+        "en": "castle",
+        "lv": "pils",
+        "ru": "замок",
+        "grade": 3,
+        "image": "🏰",
+        "transcription": "[ ˈkɑːsl ]"
+      },
+      {
+        "id": "344",
+        "en": "cinema",
+        "lv": "kinoteātris",
+        "ru": "кинотеатр",
+        "grade": 3,
+        "image": "🎬",
+        "transcription": "[ ˈsɪnəmə ]"
+      },
+      {
+        "id": "345",
+        "en": "museum",
+        "lv": "muzejs",
+        "ru": "музей",
+        "grade": 3,
+        "image": "🏛️",
+        "transcription": "[ mjuˈziːəm ]"
+      },
+      {
+        "id": "346",
+        "en": "station",
+        "lv": "stacija",
+        "ru": "вокзал",
+        "grade": 3,
+        "image": "🚉",
+        "transcription": "[ ˈsteɪʃn ]"
+      },
+      {
+        "id": "347",
+        "en": "hospital",
+        "lv": "slimnīca",
+        "ru": "больница",
+        "grade": 3,
+        "image": "🏥",
+        "transcription": "[ ˈhɒspɪtl ]"
+      },
+      {
+        "id": "348",
+        "en": "park",
+        "lv": "parks",
+        "ru": "парк",
+        "grade": 3,
+        "image": "🏞️",
+        "transcription": "[ pɑːk ]"
+      },
+      {
+        "id": "349",
+        "en": "library",
+        "lv": "bibliotēka",
+        "ru": "библиотека",
+        "grade": 3,
+        "image": "📚",
+        "transcription": "[ ˈlaɪbrəri ]"
+      },
+      {
+        "id": "350",
+        "en": "shop",
+        "lv": "veikals",
+        "ru": "магазин",
+        "grade": 3,
+        "image": "🏪",
+        "transcription": "[ ʃɒp ]"
+      },
+      {
+        "id": "351",
+        "en": "restaurant",
+        "lv": "restorāns",
+        "ru": "ресторан",
+        "grade": 3,
+        "image": "🍽️",
+        "transcription": "[ ˈrestrɒnt ]"
+      },
+      {
+        "id": "352",
+        "en": "swimming pool",
+        "lv": "peldbaseins",
+        "ru": "бассейн",
+        "grade": 3,
+        "image": "🏊",
+        "transcription": "[ ˈswɪmɪŋ puːl ]"
+      },
+      {
+        "id": "353",
+        "en": "pet shop",
+        "lv": "zooveikals",
+        "ru": "зоомагазин",
+        "grade": 3,
+        "image": "🐾",
+        "transcription": "[ ˈpet ʃɒp ]"
+      },
+      {
+        "id": "354",
+        "en": "toy shop",
+        "lv": "rotaļlietu veikals",
+        "ru": "магазин игрушек",
+        "grade": 3,
+        "image": "🧸",
+        "transcription": "[ ˈtɔɪ ʃɒp ]"
+      },
+      {
+        "id": "355",
+        "en": "school",
+        "lv": "skola",
+        "ru": "школа",
+        "grade": 3,
+        "image": "🏫",
+        "transcription": "[ skuːl ]"
+      },
+      {
+        "id": "356",
+        "en": "bookshop",
+        "lv": "grāmatnīca",
+        "ru": "книжный магазин",
+        "grade": 3,
+        "image": "📖",
+        "transcription": "[ ˈbʊkʃɒp ]"
+      }
+    ]
+  },
+  {
+    "topic_id": "prepositions_of_place",
+    "topic_name": {
+      "ru": "Предлоги места",
+      "lv": "Vietas prievārdi",
+      "en": "Prepositions of place"
+    },
+    "icon": "MapPin",
+    "color": "teal",
+    "emoji": "📍",
+    "words": [
+      {
+        "id": "357",
+        "en": "next to",
+        "lv": "blakus",
+        "ru": "рядом с",
+        "grade": 3,
+        "image": "👥",
+        "transcription": "[ nekst tuː ]"
+      },
+      {
+        "id": "358",
+        "en": "between",
+        "lv": "starp",
+        "ru": "между",
+        "grade": 3,
+        "image": "↔️",
+        "transcription": "[ bɪˈtwiːn ]"
+      },
+      {
+        "id": "359",
+        "en": "in front of",
+        "lv": "priekšā",
+        "ru": "перед",
+        "grade": 3,
+        "image": "⏩",
+        "transcription": "[ ɪn frʌnt ɒv ]"
+      },
+      {
+        "id": "360",
+        "en": "behind",
+        "lv": "aiz",
+        "ru": "позади, за",
+        "grade": 3,
+        "image": "🔙",
+        "transcription": "[ bɪˈhaɪnd ]"
+      },
+      {
+        "id": "361",
+        "en": "opposite",
+        "lv": "pretī",
+        "ru": "напротив",
+        "grade": 3,
+        "image": "🔁",
+        "transcription": "[ ˈɒpəzɪt ]"
+      },
+      {
+        "id": "362",
+        "en": "above",
+        "lv": "virs",
+        "ru": "над",
+        "grade": 3,
+        "image": "⬆️",
+        "transcription": "[ əˈbʌv ]"
+      }
+    ]
+  },
+  {
+    "topic_id": "directions",
+    "topic_name": {
+      "ru": "Направления",
+      "lv": "Virzieni",
+      "en": "Directions"
+    },
+    "icon": "Compass",
+    "color": "orange",
+    "emoji": "🧭",
+    "words": [
+      {
+        "id": "363",
+        "en": "turn left",
+        "lv": "pagriezties pa kreisi",
+        "ru": "повернуть налево",
+        "grade": 3,
+        "image": "⬅️",
+        "transcription": "[ tɜːn left ]"
+      },
+      {
+        "id": "364",
+        "en": "turn right",
+        "lv": "pagriezties pa labi",
+        "ru": "повернуть направо",
+        "grade": 3,
+        "image": "➡️",
+        "transcription": "[ tɜːn raɪt ]"
+      },
+      {
+        "id": "365",
+        "en": "go straight on",
+        "lv": "doties taisni",
+        "ru": "идти прямо",
+        "grade": 3,
+        "image": "⬆️",
+        "transcription": "[ ɡəʊ streɪt ɒn ]"
+      }
+    ]
   }
 ]

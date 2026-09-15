@@ -386,3 +386,59 @@ hungry,izsalcis,голодный,3
 thirsty,izslāpis,испытывающий жажду,3
 angry,dusmīgs,сердитый,3
 tired,noguris,уставший,3
+,,,
+Jobs,Profesijas,Профессии,
+police officer,policists,полицейский,3
+cook,pavārs,повар,3
+football player,futbolists,футболист,3
+scientist,zinātnieks,учёный,3
+zoo keeper,zoodārza uzraugs,смотритель зоопарка,3
+doctor,ārsts,врач,3
+builder,celtnieks,строитель,3
+waiter,viesmīlis,официант,3
+farmer,lauksaimnieks,фермер,3
+teacher,skolotājs,учитель,3
+,,,
+Transport,Transports,Транспорт,
+bus,autobuss,автобус,3
+car,mašīna,машина,3
+motorbike,motocikls,мотоцикл,3
+lorry,kravas auto,грузовик,3
+plane,lidmašīna,самолёт,3
+train,vilciens,поезд,3
+,,,
+Senses,Maņas,Органы чувств,
+see,redzēt,видеть,3
+smell,smaržot,чувствовать запах,3
+taste,garšot,пробовать на вкус,3
+touch,pieskarties,трогать,3
+hear,dzirdēt,слышать,3
+,,,
+Town,Pilsēta,Город,
+castle,pils,замок,3
+cinema,kinoteātris,кинотеатр,3
+museum,muzejs,музей,3
+station,stacija,вокзал,3
+hospital,slimnīca,больница,3
+park,parks,парк,3
+library,bibliotēka,библиотека,3
+shop,veikals,магазин,3
+restaurant,restorāns,ресторан,3
+swimming pool,peldbaseins,бассейн,3
+pet shop,zooveikals,зоомагазин,3
+toy shop,rotaļlietu veikals,магазин игрушек,3
+school,skola,школа,3
+bookshop,grāmatnīca,книжный магазин,3
+,,,
+Prepositions of place,Vietas prievārdi,Предлоги места,
+next to,blakus,рядом с,3
+between,starp,между,3
+in front of,priekšā,перед,3
+behind,aiz,"позади, за",3
+opposite,pretī,напротив,3
+above,virs,над,3
+,,,
+Directions,Virzieni,Направления,
+turn left,pagriezties pa kreisi,повернуть налево,3
+turn right,pagriezties pa labi,повернуть направо,3
+go straight on,doties taisni,идти прямо,3

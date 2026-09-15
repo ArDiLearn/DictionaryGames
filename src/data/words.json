@@ -3698,11 +3698,11 @@
     ]
   },
   {
-    "topic_id": "prepositions_of_place",
+    "topic_id": "positions",
     "topic_name": {
-      "ru": "Предлоги места",
-      "lv": "Vietas prievārdi",
-      "en": "Prepositions of place"
+      "ru": "Расположение",
+      "lv": "Novietojums",
+      "en": "Positions"
     },
     "icon": "MapPin",
     "color": "teal",

@@ -51,6 +51,9 @@ const TOPIC_METADATA = {
   'Фигуры': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
   'Ģeometriskās figūras': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
   'Геометрические фигуры': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
+  'Instructions': { icon: 'CheckSquare', color: 'indigo', emoji: '📋' },
+  'Norādījumi': { icon: 'CheckSquare', color: 'indigo', emoji: '📋' },
+  'Инструкции': { icon: 'CheckSquare', color: 'indigo', emoji: '📋' },
 };
 
 /**

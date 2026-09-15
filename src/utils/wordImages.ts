@@ -236,7 +236,29 @@ export const WORD_IMAGES: Record<string, string> = {
   "i'm": "🙋",
   "he's": "👦",
   "she's": "👧",
-  "they're": "🧑‍🤝‍🧑"
+  "they're": "🧑‍🤝‍🧑",
+  "listen": "👂",
+  "point": "👉",
+  "repeat": "🔁",
+  "say": "💬",
+  "look": "👀",
+  "answer": "🙋",
+  "watch": "📺",
+  "complete": "🧩",
+  "sing": "🎤",
+  "match": "🎯",
+  "ask": "❓",
+  "guess": "💡",
+  "join": "🔗",
+  "put": "📥",
+  "find": "🔍",
+  "tick": "✅",
+  "cross": "❌",
+  "colour": "🖍️",
+  "play": "🎲",
+  "write": "✍️",
+  "read": "📖",
+  "make": "✂️"
 };
 
 /**

@@ -292,5 +292,29 @@ export const TRANSCRIPTIONS: Record<string, string> = {
   "i'm": "[ aɪm ]",
   "he's": "[ hiːz ]",
   "she's": "[ ʃiːz ]",
-  "they're": "[ ðeə ]"
+  "they're": "[ ðeə ]",
+
+  // Instructions
+  "listen": "[ ˈlɪsn ]",
+  "point": "[ pɔɪnt ]",
+  "repeat": "[ rɪˈpiːt ]",
+  "say": "[ seɪ ]",
+  "look": "[ lʊk ]",
+  "answer": "[ ˈɑːnsə ]",
+  "watch": "[ wɒtʃ ]",
+  "complete": "[ kəmˈpliːt ]",
+  "sing": "[ sɪŋ ]",
+  "match": "[ mætʃ ]",
+  "ask": "[ ɑːsk ]",
+  "guess": "[ ɡes ]",
+  "join": "[ dʒɔɪn ]",
+  "put": "[ pʊt ]",
+  "find": "[ faɪnd ]",
+  "tick": "[ tɪk ]",
+  "cross": "[ krɒs ]",
+  "colour": "[ ˈkʌlə ]",
+  "play": "[ pleɪ ]",
+  "write": "[ raɪt ]",
+  "read": "[ riːd ]",
+  "make": "[ meɪk ]"
 };

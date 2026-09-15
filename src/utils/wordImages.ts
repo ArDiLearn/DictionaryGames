@@ -258,7 +258,28 @@ export const WORD_IMAGES: Record<string, string> = {
   "play": "🎲",
   "write": "✍️",
   "read": "📖",
-  "make": "✂️"
+  "make": "✂️",
+  "park": "🏞️",
+  "playground": "🛝",
+  "farm": "🚜",
+  "teacher": "👩‍🏫",
+  "stickers": "⭐",
+  "sheet": "📝",
+  "text": "📄",
+  "photo": "📸",
+  "message": "💬",
+  "hello": "👋",
+  "bye": "👋",
+  "draw": "🎨",
+  "check": "✔️",
+  "turn": "🔄",
+  "remember": "🧠",
+  "practise": "🎯",
+  "again": "🔁",
+  "tired": "🥱",
+  "different": "🔀",
+  "activity": "🏃",
+  "tree": "🌳"
 };
 
 /**

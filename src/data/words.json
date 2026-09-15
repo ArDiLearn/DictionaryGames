@@ -740,14 +740,27 @@
         "grade": 1,
         "image": "📄",
         "transcription": "[ ˈpeɪpə ]"
-      },
+      }
+    ]
+  },
+  {
+    "topic_id": "shapes",
+    "topic_name": {
+      "ru": "Фигуры",
+      "lv": "Figūras",
+      "en": "Shapes"
+    },
+    "icon": "Shapes",
+    "color": "cyan",
+    "emoji": "🔷",
+    "words": [
       {
         "id": "75",
         "en": "circle",
         "lv": "aplis",
         "ru": "круг",
         "grade": 1,
-        "image": "⭕",
+        "image": "🔴",
         "transcription": "[ ˈsɜːkl ]"
       },
       {
@@ -756,7 +769,7 @@
         "lv": "kvadrāts",
         "ru": "квадрат",
         "grade": 1,
-        "image": "⬛",
+        "image": "🟩",
         "transcription": "[ skweə ]"
       },
       {
@@ -765,7 +778,7 @@
         "lv": "trīsstūris",
         "ru": "треугольник",
         "grade": 1,
-        "image": "▲",
+        "image": "🔺",
         "transcription": "[ ˈtraɪæŋɡl ]"
       },
       {
@@ -774,7 +787,7 @@
         "lv": "taisnstūris",
         "ru": "прямоугольник",
         "grade": 1,
-        "image": "▭",
+        "image": "🟧",
         "transcription": "[ ˈrektæŋɡl ]"
       },
       {
@@ -783,7 +796,7 @@
         "lv": "ovāls",
         "ru": "овал",
         "grade": 1,
-        "image": "⬭",
+        "image": "🟣",
         "transcription": "[ ˈəʊvl ]"
       }
     ]

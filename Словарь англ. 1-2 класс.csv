@@ -70,7 +70,7 @@ bin,miskaste,мусорное ведро,1
 chair,krēsls,стул,1
 door,durvis,дверь,1
 cupboard,skapītis,шкафчик,1
-desk,rakstāmgalds,парта,1
+desk,skolas sols,парта,1
 book,grāmata,книга,1
 board,tāfele,доска,1
 pencil sharpener,asināmais,точилка,1
@@ -107,15 +107,15 @@ toddler,"bērns, kurš tikko sācis staigāt","малыш, начинающий 
 child,bērns,ребёнок,2
 teenager,pusaudzis,подросток,2
 adult,pieaugušais,взрослый,2
-elderly person,vecs cilvēks,пожилой человек,2
+elderly person,seniors,пожилой человек,2
 ,,,
 Adjectives,Īpašības vārdi,Прилагательные,
 tall,garš,высокий,1
-short,īss,короткий,1
+short,īss,низкий,1
 old,vecs,старый,1
 young,jauns,молодой,1
 pretty,skaista,красивая,1
-handsome,skaists,красивый,1
+handsome,izskatīgs,красивый,1
 big,liels,большой,1
 small,mazs,маленький,1
 ,,,
@@ -250,7 +250,7 @@ living room,viesistaba,гостиная,2
 ,,,
 Garden,Dārzs,Сад,
 root,sakne,корень,2
-flower,zieds/puķe,цветок,2
+flower,puķe,цветок,2
 leaves,lapas,листья,2
 fruit,auglis,фрукт,2
 honey,medus,мёд,2
@@ -283,6 +283,6 @@ What's this?,Kas tas ir?,Что это?,1
 ,,,
 Pronouns,Vietniekvārdi,Местоимения,
 I'm,es esmu,я,1
-he's,viņš,он,1
-she's,viņa,она,1
+he's,viņš ir,он,1
+she's,viņa ir,она,1
 they're,viņi ir,они,1

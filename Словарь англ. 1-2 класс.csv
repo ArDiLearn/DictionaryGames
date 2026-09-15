@@ -83,6 +83,12 @@ box,kaste,коробка,1
 glue,līme,клей,1
 counters,žetoni,фишки,1
 paper,papīrs,бумага,1
+teacher,skolotājs,учитель,1
+stickers,uzlīmes,наклейки,1
+sheet,darba lapa,рабочий лист,1
+text,teksts,текст,1
+photo,foto,фотография,1
+message,ziņa,сообщение,1
 ,,,
 Shapes,Figūras,Фигуры,
 circle,aplis,круг,1
@@ -118,6 +124,8 @@ pretty,skaista,красивая,1
 handsome,izskatīgs,красивый,1
 big,liels,большой,1
 small,mazs,маленький,1
+tired,noguris,уставший,1
+different,atšķirīgs,разный,1
 ,,,
 Toys,Rotaļlietas,Игрушки,
 kite,pūķis,воздушный змей,1
@@ -138,6 +146,7 @@ ride a horse,jāt ar zirgu,кататься на лошади,1
 run,skriet,бегать,1
 ride a bike,braukt ar velosipēdu,кататься на велосипеде,1
 rollerblade,skrituļot,кататься на роликах,1
+activity,nodarbe,занятие,1
 ,,,
 Pets,Mājas mīluļi,Домашние питомцы,
 fish,zivs,рыбка,1
@@ -252,6 +261,7 @@ Garden,Dārzs,Сад,
 root,sakne,корень,2
 flower,puķe,цветок,2
 leaves,lapas,листья,2
+tree,koks,дерево,1
 fruit,auglis,фрукт,2
 honey,medus,мёд,2
 plums,plūmes,сливы,2
@@ -275,6 +285,8 @@ I like,man patīk,мне нравится,1
 I don't like,man nepatīk,мне не нравится,1
 ,,,
 Introductions,Iepazīšanās,Знакомство,
+hello,labdien,привет,1
+bye,atā,пока,1
 What's your name?,Kā tevi sauc?,Как тебя зовут?,1
 How are you?,Kā tev klājas?,Как дела?,1
 How old are you?,Cik tev gadu?,Сколько тебе лет?,1
@@ -310,3 +322,14 @@ play,spēlēt,играть,1
 write,rakstīt,писать,1
 read,lasīt,читать,1
 make,veidot,мастерить,1
+draw,zīmēt,рисовать,1
+check,pārbaudīt,проверить,1
+turn,kārta,очередь,1
+remember,atcerēties,запомнить,1
+practise,trenēties,тренироваться,1
+again,vēlreiz,снова,1
+,,,
+Places,Vietas,Места,
+park,parks,парк,1
+playground,rotaļlaukums,детская площадка,1
+farm,ferma,ферма,1

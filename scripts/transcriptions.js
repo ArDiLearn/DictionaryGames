@@ -316,5 +316,28 @@ export const TRANSCRIPTIONS = {
   "play": "[ pleɪ ]",
   "write": "[ raɪt ]",
   "read": "[ riːd ]",
-  "make": "[ meɪk ]"
+  "make": "[ meɪk ]",
+
+  // New Grade 1 words
+  "park": "[ pɑːk ]",
+  "playground": "[ ˈpleɪɡraʊnd ]",
+  "farm": "[ fɑːm ]",
+  "teacher": "[ ˈtiːtʃə ]",
+  "stickers": "[ ˈstɪkəz ]",
+  "sheet": "[ ʃiːt ]",
+  "text": "[ tekst ]",
+  "photo": "[ ˈfəʊtəʊ ]",
+  "message": "[ ˈmesɪdʒ ]",
+  "hello": "[ həˈləʊ ]",
+  "bye": "[ baɪ ]",
+  "draw": "[ drɔː ]",
+  "check": "[ tʃek ]",
+  "turn": "[ tɜːn ]",
+  "remember": "[ rɪˈmembə ]",
+  "practise": "[ ˈpræktɪs ]",
+  "again": "[ əˈɡen ]",
+  "tired": "[ ˈtaɪəd ]",
+  "different": "[ ˈdɪfrənt ]",
+  "activity": "[ ækˈtɪvəti ]",
+  "tree": "[ triː ]"
 };

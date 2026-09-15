@@ -54,6 +54,9 @@ const TOPIC_METADATA = {
   'Instructions': { icon: 'CheckSquare', color: 'indigo', emoji: '📋' },
   'Norādījumi': { icon: 'CheckSquare', color: 'indigo', emoji: '📋' },
   'Инструкции': { icon: 'CheckSquare', color: 'indigo', emoji: '📋' },
+  'Places': { icon: 'MapPin', color: 'emerald', emoji: '🏞️' },
+  'Vietas': { icon: 'MapPin', color: 'emerald', emoji: '🏞️' },
+  'Места': { icon: 'MapPin', color: 'emerald', emoji: '🏞️' },
 };
 
 /**

@@ -3262,5 +3262,72 @@
         "transcription": "[ ˈdaɪnəsɔː ]"
       }
     ]
+  },
+  {
+    "topic_id": "feelings",
+    "topic_name": {
+      "ru": "Чувства и эмоции",
+      "lv": "Jūtas un emocijas",
+      "en": "Feelings"
+    },
+    "icon": "Smile",
+    "color": "amber",
+    "emoji": "🎭",
+    "words": [
+      {
+        "id": "316",
+        "en": "happy",
+        "lv": "laimīgs",
+        "ru": "счастливый",
+        "grade": 3,
+        "image": "😊",
+        "transcription": "[ ˈhæpi ]"
+      },
+      {
+        "id": "317",
+        "en": "sad",
+        "lv": "bēdīgs",
+        "ru": "грустный",
+        "grade": 3,
+        "image": "😢",
+        "transcription": "[ sæd ]"
+      },
+      {
+        "id": "318",
+        "en": "hungry",
+        "lv": "izsalcis",
+        "ru": "голодный",
+        "grade": 3,
+        "image": "😋",
+        "transcription": "[ ˈhʌŋɡri ]"
+      },
+      {
+        "id": "319",
+        "en": "thirsty",
+        "lv": "izslāpis",
+        "ru": "испытывающий жажду",
+        "grade": 3,
+        "image": "🥤",
+        "transcription": "[ ˈθɜːsti ]"
+      },
+      {
+        "id": "320",
+        "en": "angry",
+        "lv": "dusmīgs",
+        "ru": "сердитый",
+        "grade": 3,
+        "image": "😠",
+        "transcription": "[ ˈæŋɡri ]"
+      },
+      {
+        "id": "321",
+        "en": "tired",
+        "lv": "noguris",
+        "ru": "уставший",
+        "grade": 3,
+        "image": "🥱",
+        "transcription": "[ ˈtaɪəd ]"
+      }
+    ]
   }
 ]

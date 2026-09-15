@@ -2459,5 +2459,216 @@
         "transcription": "[ ðeə ]"
       }
     ]
+  },
+  {
+    "topic_id": "instructions",
+    "topic_name": {
+      "ru": "Инструкции",
+      "lv": "Norādījumi",
+      "en": "Instructions"
+    },
+    "icon": "CheckSquare",
+    "color": "indigo",
+    "emoji": "📋",
+    "words": [
+      {
+        "id": "234",
+        "en": "listen",
+        "lv": "klausīties",
+        "ru": "слушать",
+        "grade": 1,
+        "image": "👂",
+        "transcription": "[ ˈlɪsn ]"
+      },
+      {
+        "id": "235",
+        "en": "point",
+        "lv": "rādīt",
+        "ru": "показывать",
+        "grade": 1,
+        "image": "👉",
+        "transcription": "[ pɔɪnt ]"
+      },
+      {
+        "id": "236",
+        "en": "repeat",
+        "lv": "atkārtot",
+        "ru": "повторять",
+        "grade": 1,
+        "image": "🔁",
+        "transcription": "[ rɪˈpiːt ]"
+      },
+      {
+        "id": "237",
+        "en": "say",
+        "lv": "teikt",
+        "ru": "сказать",
+        "grade": 1,
+        "image": "💬",
+        "transcription": "[ seɪ ]"
+      },
+      {
+        "id": "238",
+        "en": "look",
+        "lv": "skatīties",
+        "ru": "смотреть",
+        "grade": 1,
+        "image": "👀",
+        "transcription": "[ lʊk ]"
+      },
+      {
+        "id": "239",
+        "en": "answer",
+        "lv": "atbildēt",
+        "ru": "отвечать",
+        "grade": 1,
+        "image": "🙋",
+        "transcription": "[ ˈɑːnsə ]"
+      },
+      {
+        "id": "240",
+        "en": "watch",
+        "lv": "skatīties",
+        "ru": "смотреть",
+        "grade": 1,
+        "image": "📺",
+        "transcription": "[ wɒtʃ ]"
+      },
+      {
+        "id": "241",
+        "en": "complete",
+        "lv": "pabeigt",
+        "ru": "закончить",
+        "grade": 1,
+        "image": "🧩",
+        "transcription": "[ kəmˈpliːt ]"
+      },
+      {
+        "id": "242",
+        "en": "sing",
+        "lv": "dziedāt",
+        "ru": "петь",
+        "grade": 1,
+        "image": "🎤",
+        "transcription": "[ sɪŋ ]"
+      },
+      {
+        "id": "243",
+        "en": "match",
+        "lv": "savienot",
+        "ru": "подобрать пару",
+        "grade": 1,
+        "image": "🎯",
+        "transcription": "[ mætʃ ]"
+      },
+      {
+        "id": "244",
+        "en": "ask",
+        "lv": "jautāt",
+        "ru": "спрашивать",
+        "grade": 1,
+        "image": "❓",
+        "transcription": "[ ɑːsk ]"
+      },
+      {
+        "id": "245",
+        "en": "guess",
+        "lv": "uzminēt",
+        "ru": "угадать",
+        "grade": 1,
+        "image": "💡",
+        "transcription": "[ ɡes ]"
+      },
+      {
+        "id": "246",
+        "en": "join",
+        "lv": "savienot",
+        "ru": "соединить",
+        "grade": 1,
+        "image": "🔗",
+        "transcription": "[ dʒɔɪn ]"
+      },
+      {
+        "id": "247",
+        "en": "put",
+        "lv": "likt",
+        "ru": "положить",
+        "grade": 1,
+        "image": "📥",
+        "transcription": "[ pʊt ]"
+      },
+      {
+        "id": "248",
+        "en": "find",
+        "lv": "atrast",
+        "ru": "найти",
+        "grade": 1,
+        "image": "🔍",
+        "transcription": "[ faɪnd ]"
+      },
+      {
+        "id": "249",
+        "en": "tick",
+        "lv": "atzīmēt",
+        "ru": "отметить галочкой",
+        "grade": 1,
+        "image": "✅",
+        "transcription": "[ tɪk ]"
+      },
+      {
+        "id": "250",
+        "en": "cross",
+        "lv": "pārsvītrot",
+        "ru": "зачеркнуть",
+        "grade": 1,
+        "image": "❌",
+        "transcription": "[ krɒs ]"
+      },
+      {
+        "id": "251",
+        "en": "colour",
+        "lv": "izkrāsot",
+        "ru": "раскрасить",
+        "grade": 1,
+        "image": "🖍️",
+        "transcription": "[ ˈkʌlə ]"
+      },
+      {
+        "id": "252",
+        "en": "play",
+        "lv": "spēlēt",
+        "ru": "играть",
+        "grade": 1,
+        "image": "🎲",
+        "transcription": "[ pleɪ ]"
+      },
+      {
+        "id": "253",
+        "en": "write",
+        "lv": "rakstīt",
+        "ru": "писать",
+        "grade": 1,
+        "image": "✍️",
+        "transcription": "[ raɪt ]"
+      },
+      {
+        "id": "254",
+        "en": "read",
+        "lv": "lasīt",
+        "ru": "читать",
+        "grade": 1,
+        "image": "📖",
+        "transcription": "[ riːd ]"
+      },
+      {
+        "id": "255",
+        "en": "make",
+        "lv": "veidot",
+        "ru": "мастерить",
+        "grade": 1,
+        "image": "✂️",
+        "transcription": "[ meɪk ]"
+      }
+    ]
   }
 ]

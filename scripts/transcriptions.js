@@ -399,5 +399,61 @@ export const TRANSCRIPTIONS = {
   "sad": "[ sæd ]",
   "hungry": "[ ˈhʌŋɡri ]",
   "thirsty": "[ ˈθɜːsti ]",
-  "angry": "[ ˈæŋɡri ]"
+  "angry": "[ ˈæŋɡri ]",
+
+  // Jobs
+  "police officer": "[ pəˈliːs ˈɒfɪsə ]",
+  "cook": "[ kʊk ]",
+  "football player": "[ ˈfʊtbɔːl ˈpleɪə ]",
+  "scientist": "[ ˈsaɪəntɪst ]",
+  "zoo keeper": "[ ˈzuː ˈkiːpə ]",
+  "doctor": "[ ˈdɒktə ]",
+  "builder": "[ ˈbɪldə ]",
+  "waiter": "[ ˈweɪtə ]",
+  "farmer": "[ ˈfɑːmə ]",
+  "teacher": "[ ˈtiːtʃə ]",
+
+  // Transport
+  "bus": "[ bʌs ]",
+  "car": "[ kɑː ]",
+  "motorbike": "[ ˈməʊtəbaɪk ]",
+  "lorry": "[ ˈlɒri ]",
+  "plane": "[ pleɪn ]",
+  "train": "[ treɪn ]",
+
+  // Senses
+  "see": "[ siː ]",
+  "smell": "[ smel ]",
+  "taste": "[ teɪst ]",
+  "touch": "[ tʌtʃ ]",
+  "hear": "[ hɪə ]",
+
+  // Town
+  "castle": "[ ˈkɑːsl ]",
+  "cinema": "[ ˈsɪnəmə ]",
+  "museum": "[ mjuˈziːəm ]",
+  "station": "[ ˈsteɪʃn ]",
+  "hospital": "[ ˈhɒspɪtl ]",
+  "park": "[ pɑːk ]",
+  "library": "[ ˈlaɪbrəri ]",
+  "shop": "[ ʃɒp ]",
+  "restaurant": "[ ˈrestrɒnt ]",
+  "swimming pool": "[ ˈswɪmɪŋ puːl ]",
+  "pet shop": "[ ˈpet ʃɒp ]",
+  "toy shop": "[ ˈtɔɪ ʃɒp ]",
+  "school": "[ skuːl ]",
+  "bookshop": "[ ˈbʊkʃɒp ]",
+
+  // Prepositions of place
+  "next to": "[ nekst tuː ]",
+  "between": "[ bɪˈtwiːn ]",
+  "in front of": "[ ɪn frʌnt ɒv ]",
+  "behind": "[ bɪˈhaɪnd ]",
+  "opposite": "[ ˈɒpəzɪt ]",
+  "above": "[ əˈbʌv ]",
+
+  // Directions
+  "turn left": "[ tɜːn left ]",
+  "turn right": "[ tɜːn raɪt ]",
+  "go straight on": "[ ɡəʊ streɪt ɒn ]"
 };

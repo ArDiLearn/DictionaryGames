@@ -207,7 +207,7 @@
         "id": "21",
         "en": "grey",
         "lv": "pelēks",
-        "ru": "Серый",
+        "ru": "серый",
         "grade": 1,
         "image": "🩶",
         "transcription": "[ ɡreɪ ]"
@@ -216,7 +216,7 @@
         "id": "22",
         "en": "red",
         "lv": "sarkans",
-        "ru": "Красный",
+        "ru": "красный",
         "grade": 1,
         "image": "🔴",
         "transcription": "[ red ]"
@@ -225,7 +225,7 @@
         "id": "23",
         "en": "blue",
         "lv": "zils",
-        "ru": "Синий",
+        "ru": "синий",
         "grade": 1,
         "image": "🔵",
         "transcription": "[ bluː ]"
@@ -234,7 +234,7 @@
         "id": "24",
         "en": "green",
         "lv": "zaļš",
-        "ru": "Зеленый",
+        "ru": "зелёный",
         "grade": 1,
         "image": "🟢",
         "transcription": "[ ɡriːn ]"
@@ -243,7 +243,7 @@
         "id": "25",
         "en": "pink",
         "lv": "rozā",
-        "ru": "Розовый",
+        "ru": "розовый",
         "grade": 1,
         "image": "🩷",
         "transcription": "[ pɪŋk ]"
@@ -252,7 +252,7 @@
         "id": "26",
         "en": "white",
         "lv": "balts",
-        "ru": "Белый",
+        "ru": "белый",
         "grade": 1,
         "image": "⚪",
         "transcription": "[ waɪt ]"
@@ -261,7 +261,7 @@
         "id": "27",
         "en": "black",
         "lv": "melns",
-        "ru": "Черный",
+        "ru": "чёрный",
         "grade": 1,
         "image": "⚫",
         "transcription": "[ blæk ]"
@@ -270,7 +270,7 @@
         "id": "28",
         "en": "purple",
         "lv": "violets",
-        "ru": "Фиолетовый",
+        "ru": "фиолетовый",
         "grade": 1,
         "image": "🟣",
         "transcription": "[ ˈpɜːpl ]"
@@ -279,7 +279,7 @@
         "id": "29",
         "en": "orange",
         "lv": "oranžš",
-        "ru": "Оранжевый",
+        "ru": "оранжевый",
         "grade": 1,
         "image": "🟠",
         "transcription": "[ ˈɒrɪndʒ ]"
@@ -288,7 +288,7 @@
         "id": "30",
         "en": "yellow",
         "lv": "dzeltens",
-        "ru": "Желтый",
+        "ru": "жёлтый",
         "grade": 1,
         "image": "🟡",
         "transcription": "[ ˈjeləʊ ]"
@@ -297,7 +297,7 @@
         "id": "31",
         "en": "brown",
         "lv": "brūns",
-        "ru": "Коричневый",
+        "ru": "коричневый",
         "grade": 1,
         "image": "🟤",
         "transcription": "[ braʊn ]"
@@ -317,63 +317,63 @@
     "words": [
       {
         "id": "32",
-        "en": "monday",
+        "en": "Monday",
         "lv": "pirmdiena",
-        "ru": "Понедельник",
+        "ru": "понедельник",
         "grade": 2,
         "image": "1️⃣ 🗓️",
         "transcription": "[ ˈmʌndeɪ ]"
       },
       {
         "id": "33",
-        "en": "tuesday",
+        "en": "Tuesday",
         "lv": "otrdiena",
-        "ru": "Вторник",
+        "ru": "вторник",
         "grade": 2,
         "image": "2️⃣ 🗓️",
         "transcription": "[ ˈtjuːzdeɪ ]"
       },
       {
         "id": "34",
-        "en": "wednesday",
+        "en": "Wednesday",
         "lv": "trešdiena",
-        "ru": "Среда",
+        "ru": "среда",
         "grade": 2,
         "image": "3️⃣ 🗓️",
         "transcription": "[ ˈwenzdeɪ ]"
       },
       {
         "id": "35",
-        "en": "thursday",
+        "en": "Thursday",
         "lv": "ceturtdiena",
-        "ru": "Четверг",
+        "ru": "четверг",
         "grade": 2,
         "image": "4️⃣ 🗓️",
         "transcription": "[ ˈθɜːzdeɪ ]"
       },
       {
         "id": "36",
-        "en": "friday",
+        "en": "Friday",
         "lv": "piektdiena",
-        "ru": "Пятница",
+        "ru": "пятница",
         "grade": 2,
         "image": "5️⃣ 🗓️",
         "transcription": "[ ˈfraɪdeɪ ]"
       },
       {
         "id": "37",
-        "en": "saturday",
+        "en": "Saturday",
         "lv": "sestdiena",
-        "ru": "Суббота",
+        "ru": "суббота",
         "grade": 2,
         "image": "6️⃣ 🗓️",
         "transcription": "[ ˈsætədeɪ ]"
       },
       {
         "id": "38",
-        "en": "sunday",
+        "en": "Sunday",
         "lv": "svētdiena",
-        "ru": "Воскресенье",
+        "ru": "воскресенье",
         "grade": 2,
         "image": "7️⃣ 🗓️",
         "transcription": "[ ˈsʌndeɪ ]"
@@ -393,7 +393,7 @@
     "words": [
       {
         "id": "39",
-        "en": "january",
+        "en": "January",
         "lv": "janvāris",
         "ru": "январь",
         "grade": 3,
@@ -402,7 +402,7 @@
       },
       {
         "id": "40",
-        "en": "february",
+        "en": "February",
         "lv": "februāris",
         "ru": "февраль",
         "grade": 3,
@@ -411,7 +411,7 @@
       },
       {
         "id": "41",
-        "en": "march",
+        "en": "March",
         "lv": "marts",
         "ru": "март",
         "grade": 3,
@@ -420,7 +420,7 @@
       },
       {
         "id": "42",
-        "en": "april",
+        "en": "April",
         "lv": "aprīlis",
         "ru": "апрель",
         "grade": 3,
@@ -429,7 +429,7 @@
       },
       {
         "id": "43",
-        "en": "may",
+        "en": "May",
         "lv": "maijs",
         "ru": "май",
         "grade": 3,
@@ -438,7 +438,7 @@
       },
       {
         "id": "44",
-        "en": "june",
+        "en": "June",
         "lv": "jūnijs",
         "ru": "июнь",
         "grade": 3,
@@ -447,7 +447,7 @@
       },
       {
         "id": "45",
-        "en": "july",
+        "en": "July",
         "lv": "jūlijs",
         "ru": "июль",
         "grade": 3,
@@ -456,7 +456,7 @@
       },
       {
         "id": "46",
-        "en": "august",
+        "en": "August",
         "lv": "augusts",
         "ru": "август",
         "grade": 3,
@@ -465,7 +465,7 @@
       },
       {
         "id": "47",
-        "en": "september",
+        "en": "September",
         "lv": "septembris",
         "ru": "сентябрь",
         "grade": 3,
@@ -474,7 +474,7 @@
       },
       {
         "id": "48",
-        "en": "october",
+        "en": "October",
         "lv": "oktobris",
         "ru": "октябрь",
         "grade": 3,
@@ -483,7 +483,7 @@
       },
       {
         "id": "49",
-        "en": "november",
+        "en": "November",
         "lv": "novembris",
         "ru": "ноябрь",
         "grade": 3,
@@ -492,7 +492,7 @@
       },
       {
         "id": "50",
-        "en": "december",
+        "en": "December",
         "lv": "decembris",
         "ru": "декабрь",
         "grade": 3,
@@ -1459,7 +1459,7 @@
         "ru": "сок",
         "grade": 2,
         "image": "🧃",
-        "transcription": "[ ʤuːs ]"
+        "transcription": "[ dʒuːs ]"
       },
       {
         "id": "142",
@@ -1468,7 +1468,7 @@
         "ru": "сыр",
         "grade": 2,
         "image": "🧀",
-        "transcription": "[ ʧiːz ]"
+        "transcription": "[ tʃiːz ]"
       },
       {
         "id": "143",
@@ -1522,7 +1522,7 @@
         "ru": "бутерброды",
         "grade": 2,
         "image": "🥪",
-        "transcription": "[ sænwɪʤɪz ]"
+        "transcription": "[ ˈsænwɪdʒɪz ]"
       },
       {
         "id": "149",
@@ -2300,8 +2300,8 @@
       {
         "id": "219",
         "en": "I've got",
-        "lv": "es dabūju",
-        "ru": "я имею",
+        "lv": "man ir",
+        "ru": "у меня есть",
         "grade": 2,
         "image": "🎁",
         "transcription": "[ aɪv ɡɒt ]"
@@ -2309,8 +2309,8 @@
       {
         "id": "220",
         "en": "I haven't got",
-        "lv": "еs nedabūju",
-        "ru": "я не имею",
+        "lv": "man nav",
+        "ru": "у меня нет",
         "grade": 2,
         "image": "🚫",
         "transcription": "[ aɪ ˈhævnt ɡɒt ]"

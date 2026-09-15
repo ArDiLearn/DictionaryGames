@@ -57,6 +57,12 @@ const TOPIC_METADATA = {
   'Places': { icon: 'MapPin', color: 'emerald', emoji: '🏞️' },
   'Vietas': { icon: 'MapPin', color: 'emerald', emoji: '🏞️' },
   'Места': { icon: 'MapPin', color: 'emerald', emoji: '🏞️' },
+  'Questions': { icon: 'HelpCircle', color: 'violet', emoji: '❓' },
+  'Jautājumi': { icon: 'HelpCircle', color: 'violet', emoji: '❓' },
+  'Вопросы': { icon: 'HelpCircle', color: 'violet', emoji: '❓' },
+  'Helper words': { icon: 'Sparkles', color: 'amber', emoji: '🔤' },
+  'Palīgvārdi': { icon: 'Sparkles', color: 'amber', emoji: '🔤' },
+  'Слова-помощники': { icon: 'Sparkles', color: 'amber', emoji: '🔤' },
 };
 
 /**

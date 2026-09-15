@@ -339,5 +339,46 @@ export const TRANSCRIPTIONS: Record<string, string> = {
   "tired": "[ ˈtaɪəd ]",
   "different": "[ ˈdɪfrənt ]",
   "activity": "[ ækˈtɪvəti ]",
-  "tree": "[ triː ]"
+  "tree": "[ triː ]",
+
+  // Questions
+  "what": "[ wɒt ]",
+  "where": "[ weə ]",
+  "who": "[ huː ]",
+  "how": "[ haʊ ]",
+  "which": "[ wɪtʃ ]",
+
+  // Helper words
+  "lots": "[ lɒts ]",
+  "only": "[ ˈəʊnli ]",
+  "other": "[ ˈʌðə ]",
+  "maybe": "[ ˈmeɪbi ]",
+  "then": "[ ðen ]",
+  "about": "[ əˈbaʊt ]",
+
+  // Pronouns
+  "we": "[ wiː ]",
+  "they": "[ ðeɪ ]",
+  "my": "[ maɪ ]",
+  "me": "[ miː ]",
+  "this": "[ ðɪs ]",
+  "it's": "[ ɪts ]",
+  "that's": "[ ðæts ]",
+  "here": "[ hɪə ]",
+
+  // Introductions & Courtesy
+  "please": "[ pliːz ]",
+  "thanks": "[ θæŋks ]",
+  "fine": "[ faɪn ]",
+
+  // Instructions
+  "think": "[ θɪŋk ]",
+  "pair": "[ peə ]",
+  "share": "[ ʃeə ]",
+  "create": "[ kriˈeɪt ]",
+  "miss": "[ mɪs ]",
+
+  // Colours & Family
+  "rainbow": "[ ˈreɪnbəʊ ]",
+  "people": "[ ˈpiːpl ]"
 };

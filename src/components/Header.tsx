@@ -6,7 +6,6 @@ import { sounds } from '../utils/soundEffects';
 
 interface HeaderProps {
   course: LearningCourse;
-  onCourseChange: (course: LearningCourse) => void;
   language: Language;
   onLanguageChange: (lang: Language) => void;
   selectedGrades: Grade[];
@@ -25,7 +24,6 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({
   course,
-  onCourseChange,
   language,
   onLanguageChange,
   selectedGrades,
@@ -126,66 +124,6 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Right side controls */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
-          {/* Course Switcher (Learning Mode) */}
-          <div
-            className="flex items-center gap-1 sm:gap-2 bg-gradient-to-r from-purple-50 via-indigo-50/80 to-pink-50/80 p-1 sm:p-1.5 rounded-2xl sm:rounded-3xl border-2 border-purple-200 shadow-sm shrink-0"
-            title={`${t.courseModeTitle}: ${t.courseSwitchHint}`}
-          >
-            {/* Mode Header with hint */}
-            <div className="flex items-center gap-1 pl-1 pr-0.5 text-purple-900 select-none shrink-0">
-              <span className="text-base sm:text-lg">🎓</span>
-              <div className="flex flex-col leading-tight">
-                <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-purple-800 flex items-center gap-1">
-                  <span>{t.courseModeTitle}</span>
-                </span>
-                <span className="text-[9px] text-purple-600 font-bold hidden md:inline">
-                  💡 {t.courseSwitchHint}
-                </span>
-              </div>
-            </div>
-
-            {/* Buttons */}
-            <div className="flex items-center gap-1 bg-white/90 p-0.5 rounded-xl sm:rounded-2xl border border-purple-200/80 shadow-inner">
-              <button
-                onClick={() => {
-                  if (course !== 'en') {
-                    onCourseChange('en');
-                    sounds.playClick();
-                  }
-                }}
-                className={`px-2.5 sm:px-3 py-1.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
-                  course === 'en'
-                    ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-md ring-2 ring-indigo-200 scale-102'
-                    : 'text-slate-600 hover:text-indigo-800 hover:bg-purple-100/60'
-                }`}
-                title={`${t.courseEnglish} (${t.courseSwitchHint})`}
-              >
-                <span className="text-base sm:text-lg">🇬🇧</span>
-                <span className="whitespace-nowrap">{t.courseEnglish}</span>
-                {course === 'en' && <span className="text-xs text-indigo-200 font-bold ml-0.5">✓</span>}
-              </button>
-
-              <button
-                onClick={() => {
-                  if (course !== 'lv') {
-                    onCourseChange('lv');
-                    sounds.playClick();
-                  }
-                }}
-                className={`px-2.5 sm:px-3 py-1.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
-                  course === 'lv'
-                    ? 'bg-gradient-to-r from-rose-600 to-red-700 text-white shadow-md ring-2 ring-rose-200 scale-102'
-                    : 'text-slate-600 hover:text-rose-800 hover:bg-rose-100/60'
-                }`}
-                title={`${t.courseLatvian} (${t.courseSwitchHint})`}
-              >
-                <span className="text-base sm:text-lg">🇱🇻</span>
-                <span className="whitespace-nowrap">{t.courseLatvian}</span>
-                {course === 'lv' && <span className="text-xs text-rose-200 font-bold ml-0.5">✓</span>}
-              </button>
-            </div>
-          </div>
-
           {/* Multi-select Grade Switcher (1st / 2nd / 3rd / All) */}
           <div
             className="flex bg-amber-100/90 p-0.5 sm:p-1 rounded-2xl border-2 border-amber-300 shadow-sm shrink-0"
@@ -282,9 +220,6 @@ export const Header: React.FC<HeaderProps> = ({
               className="flex items-center bg-slate-100/90 p-0.5 sm:p-1 rounded-2xl border-2 border-slate-200 shrink-0"
               title={`${t.interfaceLanguageLabel}: LV / RU`}
             >
-              <span className="text-[10px] font-bold text-slate-400 pl-1.5 pr-0.5 hidden xl:inline select-none">
-                🌐 {t.interfaceLanguageLabel}:
-              </span>
               <button
                 onClick={() => {
                   onLanguageChange('lv');

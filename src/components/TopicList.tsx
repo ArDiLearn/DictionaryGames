@@ -139,35 +139,28 @@ export const TopicList: React.FC<TopicListProps> = ({
       </div>
 
       {/* Course Learning Mode Banner */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-5 bg-gradient-to-r from-purple-50 via-indigo-50/70 to-pink-50/70 border-2 border-purple-200 rounded-3xl p-3.5 sm:px-5 sm:py-4 shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl sm:text-3xl border-2 border-purple-200 shrink-0">
-            {course === 'lv' ? '🇱🇻' : '🇬🇧'}
+      <div className="flex flex-col items-center justify-center text-center gap-3.5 mb-5 bg-gradient-to-r from-purple-50 via-indigo-50/70 to-pink-50/70 border-2 border-purple-200 rounded-3xl p-4 sm:p-5 shadow-sm">
+        <div className="flex flex-col items-center gap-1.5">
+          <div className="flex items-center justify-center gap-2 flex-wrap">
+            <span className="text-xs font-black uppercase tracking-wider text-purple-800 flex items-center gap-1">
+              <span>🎓</span>
+              <span>{t.courseModeTitle}</span>
+            </span>
+            <span className="text-[11px] bg-purple-200/90 text-purple-900 font-extrabold px-2.5 py-0.5 rounded-full">
+              {course === 'lv' ? '🇱🇻 Латышский ➔ Русский' : '🇬🇧 Английский ➔ Русский / Latviešu'}
+            </span>
           </div>
-          <div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-black uppercase tracking-wider text-purple-800 flex items-center gap-1">
-                <span>🎓</span>
-                <span>{t.courseModeTitle}</span>
-              </span>
-              <span className="text-[11px] bg-purple-200/90 text-purple-900 font-extrabold px-2.5 py-0.5 rounded-full">
-                {course === 'lv' ? '🇱🇻 Латышский ➔ Русский' : '🇬🇧 Английский ➔ Русский / Latviešu'}
-              </span>
-              <span className="text-xs text-purple-600 font-bold hidden md:inline">
-                💡 {t.courseSwitchHint}
-              </span>
-            </div>
-            <h2 className="text-lg sm:text-xl font-black text-slate-800 leading-snug mt-0.5">
-              {course === 'lv' ? t.courseLatvian : t.courseEnglish}
-            </h2>
-            <p className="text-xs text-slate-500 font-medium">
-              {course === 'lv' ? t.courseLatvianSubtitle : t.appSubtitle}
-            </p>
-          </div>
+          <h2 className="text-xl sm:text-2xl font-black text-slate-800 flex items-center justify-center gap-2">
+            <span>{course === 'lv' ? '🇱🇻' : '🇬🇧'}</span>
+            <span>{course === 'lv' ? t.courseLatvian : t.courseEnglish}</span>
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-500 font-medium">
+            {course === 'lv' ? t.courseLatvianSubtitle : t.appSubtitle}
+          </p>
         </div>
 
         {onCourseChange && (
-          <div className="flex items-center gap-1.5 bg-white/95 p-1 rounded-2xl border-2 border-purple-200 shadow-inner shrink-0">
+          <div className="flex flex-col items-center gap-2 w-full max-w-xs sm:max-w-sm">
             <button
               onClick={() => {
                 if (course !== 'en') {
@@ -175,16 +168,15 @@ export const TopicList: React.FC<TopicListProps> = ({
                   onCourseChange('en');
                 }
               }}
-              className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`w-full px-4 py-2.5 rounded-2xl text-sm font-black transition-all cursor-pointer flex items-center justify-center gap-2 shadow-sm ${
                 course === 'en'
                   ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-md ring-2 ring-indigo-200 scale-102'
-                  : 'text-slate-600 hover:text-indigo-800 hover:bg-purple-50'
+                  : 'bg-white/95 text-slate-700 hover:text-indigo-800 hover:bg-white border-2 border-purple-200/80'
               }`}
-              title={`${t.courseEnglish} (${t.courseSwitchHint})`}
             >
-              <span className="text-base sm:text-lg">🇬🇧</span>
+              <span className="text-xl">🇬🇧</span>
               <span>{t.courseEnglish}</span>
-              {course === 'en' && <span className="text-xs font-bold text-indigo-200 ml-0.5">✓</span>}
+              {course === 'en' && <span className="text-sm font-bold text-indigo-200 ml-1">✓</span>}
             </button>
             <button
               onClick={() => {
@@ -193,16 +185,15 @@ export const TopicList: React.FC<TopicListProps> = ({
                   onCourseChange('lv');
                 }
               }}
-              className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`w-full px-4 py-2.5 rounded-2xl text-sm font-black transition-all cursor-pointer flex items-center justify-center gap-2 shadow-sm ${
                 course === 'lv'
                   ? 'bg-gradient-to-r from-rose-600 to-red-700 text-white shadow-md ring-2 ring-rose-200 scale-102'
-                  : 'text-slate-600 hover:text-rose-800 hover:bg-rose-50'
+                  : 'bg-white/95 text-slate-700 hover:text-rose-800 hover:bg-white border-2 border-purple-200/80'
               }`}
-              title={`${t.courseLatvian} (${t.courseSwitchHint})`}
             >
-              <span className="text-base sm:text-lg">🇱🇻</span>
+              <span className="text-xl">🇱🇻</span>
               <span>{t.courseLatvian}</span>
-              {course === 'lv' && <span className="text-xs font-bold text-rose-200 ml-0.5">✓</span>}
+              {course === 'lv' && <span className="text-sm font-bold text-rose-200 ml-1">✓</span>}
             </button>
           </div>
         )}

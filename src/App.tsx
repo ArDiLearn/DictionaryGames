@@ -311,7 +311,6 @@ export const App: React.FC = () => {
         language={language}
         onLanguageChange={handleLanguageChange}
         course={course}
-        onCourseChange={handleCourseChange}
         selectedGrades={selectedGrades}
         onToggleGrade={handleToggleGrade}
         onSelectAllGrades={handleSelectAllGrades}

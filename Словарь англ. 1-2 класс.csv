@@ -223,6 +223,10 @@ Thursday,ceturtdiena,четверг,1
 Friday,piektdiena,пятница,1
 Saturday,sestdiena,суббота,1
 Sunday,svētdiena,воскресенье,1
+day,diena,день,1
+today,šodien,сегодня,1
+yesterday,vakar,вчера,1
+tomorrow,rīt,завтра,1
 ,,,
 Shapes,Figūras,Фигуры,
 circle,aplis,круг,1
@@ -234,12 +238,15 @@ oval,ovāls,овал,1
 Actions,Darbības,Действия,
 I can,es varu,я умею,1
 I can't,es nevaru,я не умею,1
-I've got,man ir,у меня есть,2
-I haven't got,man nav,у меня нет,2
+I've got,man ir,у меня есть,1
+I haven't got,man nav,у меня нет,1
 I have,man ir,у меня есть,1
 I haven't,man nav,у меня нет,1
 I like,man patīk,мне нравится,1
 I don't like,man nepatīk,мне не нравится,1
+I don't know,es nezinu,я не знаю,1
+need,vajadzēt,"нужно, требоваться",1
+love,mīlēt,любить,1
 ,,,
 Introductions,Iepazīšanās,Знакомство,
 hello,labdien,привет,1
@@ -252,6 +259,9 @@ What's this?,Kas tas ir?,Что это?,1
 please,lūdzu,пожалуйста,1
 thanks,paldies,спасибо,1
 fine,labi,хорошо,1
+hi,"sveiki, čau",привет,1
+hey,hei,"эй, привет",1
+this is,šis ir...,это...,1
 ,,,
 Pronouns,Vietniekvārdi,Местоимения,
 I'm,es esmu,я,1
@@ -266,6 +276,8 @@ this,šis,этот,1
 it's,tas ir,это,1
 that's,tas ir,то,1
 here,šeit,здесь,1
+your,"tavs, jūsu","твой, ваш",1
+our,mūsu,наш,1
 ,,,
 Instructions,Norādījumi,Инструкции,
 listen,klausīties,слушать,1
@@ -301,6 +313,16 @@ pair,pāris,пара,1
 share,dalīties,делиться,1
 create,veidot,создавать,1
 miss,izlaist,пропустить,1
+number,sanumurē,пронумеруй,1
+trace,apvelc,обведи по контуру,1
+count,saskaiti,посчитай,1
+tell,pastāsti,"расскажи, скажи",1
+circle,apvelc ar apli,обведи в кружок,1
+follow,seko,следуй,1
+design,izveido dizainu,"оформи, нарисуй",1
+go back,dodies atpakaļ,вернись назад,1
+wait,pagaidi,подожди,1
+order,sakārto secībā,расставь по порядку,1
 ,,,
 Places,Vietas,Места,
 park,parks,парк,1
@@ -313,6 +335,9 @@ where,"kur, kurp","где, куда",1
 who,kas,кто,1
 how,kā,как,1
 which,"kurš, kāds","какой, который",1
+who's this,kas tas ir?,кто это?,1
+have you got,vai tev ir?,у тебя есть?,1
+question,jautājums,вопрос,1
 ,,,
 Helper words,Palīgvārdi,Слова-помощники,
 lots,daudz,много,1
@@ -321,6 +346,22 @@ other,cits,другой,1
 maybe,varbūt,может быть,1
 then,"tad, pēc tam","затем, потом",1
 about,par,"о, про",1
+and,un,и,1
+with,ar,"с, вместе с",1
+in,"iekšā, -ā","в, внутри",1
+from,no,"от, из",1
+after,pēc,после,1
+through,cauri,"через, сквозь",1
+below,zemāk,"снизу, под",1
+middle,vidus,середина,1
+right,"pa labi, pareizs","справа, правильный",1
+too,"arī, pārāk","тоже, слишком",1
+else,"vēl, cits","ещё, кроме",1
+both,"abi, abas","оба, обе",1
+another,"cits, vēl viens","другой, ещё один",1
+yes,jā,да,1
+no,nē,нет,1
+true,"pareizi, taisnība","верно, правда",1
 ,,,
 Classroom objects +,Klases aprīkojums +,Оборудование класса +,
 box,kaste,коробка,1
@@ -333,6 +374,14 @@ sheet,darba lapa,рабочий лист,1
 text,teksts,текст,1
 photo,foto,фотография,1
 message,ziņa,сообщение,1
+classroom,klases telpa,классная комната,1
+class,klase,"класс, урок",1
+lesson,stunda,урок,1
+task,uzdevums,задание,1
+group,grupa,группа,1
+things,lietas,"вещи, предметы",1
+scissors,šķēres,ножницы,1
+school,skola,школа,1
 ,,,
 Other words,Dažādi vārdi,Разные слова,
 rainbow,varavīksne,радуга,1
@@ -342,6 +391,19 @@ different,atšķirīgs,разный,1
 activity,nodarbe,занятие,1
 lion,lauva,лев,1
 deer,briedis,олень,1
+sun,saule,солнце,1
+moon,mēness,луна,1
+tree,koks,дерево,1
+animal,dzīvnieks,животное,1
+country,valsts,страна,1
+cup,krūzīte,чашка,1
+wheel,ritenis,колесо,1
+favourite,mīļākais,любимый,1
+happy,laimīgs,счастливый,1
+ruby,rubīns,рубин,1
+toys,rotaļlietas,игрушки,1
+food,ēdiens,еда,1
+shapes,formas,фигуры,1
 ,,,
 Garden,Dārzs,Сад,
 root,sakne,корень,2
@@ -378,12 +440,29 @@ spinach,spināti,шпинат,2
 potatoes,kartupeļi,картофель,2
 ,,,
 Family +,Ģimene +,Семья +,
-baby,zīdainis,младенец,2
+baby,zīdainis,младенец,1
 toddler,mazulis,малыш,2
 child,bērns,ребёнок,2
 teenager,pusaudzis,подросток,2
 adult,pieaugušais,взрослый,2
 elderly person,seniors,пожилой человек,2
+boy,zēns,мальчик,1
+girl,meitene,девочка,1
+children,bērni,дети,1
+friend,draugs,друг,1
+dear,"dārgais, mīļais","дорогой, милый",1
+family,ģimene,семья,1
+,,,
+Art and games +,Māksla un spēles +,Творчество и игры +,
+art,māksla,"искусство, рисование",1
+craft,rokdarbi,"поделка, ремесло",1
+music,mūzika,музыка,1
+game,spēle,игра,1
+card,kartīte,"открытка, карточка",1
+party,ballīte,"праздник, вечеринка",1
+fun,jautrība,"веселье, забава",1
+story,stāsts,"рассказ, история",1
+chant,ritmiska dziesmiņa,"речёвка, песенка",1
 ,,,
 Birthday,Dzimšanas diena,День рождения,
 board game,galda spēle,настольная игра,3

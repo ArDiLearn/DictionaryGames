@@ -116,6 +116,9 @@ const TOPIC_METADATA = {
   'Fruit and vegetables +': { icon: 'Apple', color: 'green', emoji: '🥕' },
   'Augļi un dārzeņi +': { icon: 'Apple', color: 'green', emoji: '🥕' },
   'Фрукты и овощи +': { icon: 'Apple', color: 'green', emoji: '🥕' },
+  'Art and games +': { icon: 'Palette', color: 'pink', emoji: '🎨' },
+  'Māksla un spēles +': { icon: 'Palette', color: 'pink', emoji: '🎨' },
+  'Творчество и игры +': { icon: 'Palette', color: 'pink', emoji: '🎨' },
 };
 
 /**

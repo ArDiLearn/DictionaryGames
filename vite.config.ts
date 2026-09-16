@@ -10,9 +10,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'favicon.ico', 'pwa-192x192.png', 'pwa-512x512.png'],
       manifest: {
-        name: 'WordyKids - English for Kids 1-2 Grade',
+        name: 'WordyKids - Английский и Латышский для детей',
         short_name: 'WordyKids',
-        description: 'Mācāmies angļu vārdus (1.-2. klase) | Учим английские слова играя',
+        description: 'Изучение английского и латышского языков для 1–3 классов в игровой форме | Angļu un latviešu valodas apguve bērniem',
         theme_color: '#6366f1',
         background_color: '#f0f9ff',
         display: 'standalone',

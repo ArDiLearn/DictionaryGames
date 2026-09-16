@@ -33,15 +33,6 @@ orange,oranžš,оранжевый,1
 yellow,dzeltens,жёлтый,1
 brown,brūns,коричневый,1
 ,,,
-Days of the week,Nedēļas dienas,Дни недели,
-Monday,pirmdiena,понедельник,2
-Tuesday,otrdiena,вторник,2
-Wednesday,trešdiena,среда,2
-Thursday,ceturtdiena,четверг,2
-Friday,piektdiena,пятница,2
-Saturday,sestdiena,суббота,2
-Sunday,svētdiena,воскресенье,2
-,,,
 Months,Mēneši,Месяцы,
 January,janvāris,январь,3
 February,februāris,февраль,3
@@ -245,6 +236,15 @@ wood,koks,дерево,2
 rock,akmens,камень,2
 mud,dubļi,грязь,2
 clay,māls,глина,2
+,,,
+Days of the week,Nedēļas dienas,Дни недели,
+Monday,pirmdiena,понедельник,2
+Tuesday,otrdiena,вторник,2
+Wednesday,trešdiena,среда,2
+Thursday,ceturtdiena,четверг,2
+Friday,piektdiena,пятница,2
+Saturday,sestdiena,суббота,2
+Sunday,svētdiena,воскресенье,2
 ,,,
 Shapes,Figūras,Фигуры,
 circle,aplis,круг,1

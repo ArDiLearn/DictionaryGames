@@ -7,7 +7,7 @@ import {
   translations,
   getGradeFilterInfo,
   getPlayerDisplayName,
-  EXTRA_TOPICS,
+  isTopicExtra,
   GRADE_1_MAIN_TOPICS,
   GRADE_2_MAIN_TOPICS,
   GRADE_3_MAIN_TOPICS,
@@ -77,8 +77,8 @@ export const TopicList: React.FC<TopicListProps> = ({
     0
   );
 
-  const mainTopics = filteredTopics.filter((t) => !EXTRA_TOPICS.includes(t.topic_id));
-  const extraTopics = filteredTopics.filter((t) => EXTRA_TOPICS.includes(t.topic_id));
+  const mainTopics = filteredTopics.filter((t) => !isTopicExtra(t.topic_id, selectedGrades));
+  const extraTopics = filteredTopics.filter((t) => isTopicExtra(t.topic_id, selectedGrades));
 
   const displayName = getPlayerDisplayName(playerName, language);
 

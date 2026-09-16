@@ -46,6 +46,7 @@ import {
   GRADE_2_MAIN_TOPICS,
   GRADE_3_MAIN_TOPICS,
   EXTRA_TOPICS,
+  isTopicExtra,
 } from './utils/i18n';
 
 export const App: React.FC = () => {
@@ -86,12 +87,16 @@ export const App: React.FC = () => {
     const gradesSet = new Set(selectedGrades);
     const result = topics
       .map((topic) => {
-        const isExtra = EXTRA_TOPICS.includes(topic.topic_id);
+        const isExtra = isTopicExtra(topic.topic_id, selectedGrades);
         if (!isExtra) {
           return {
             ...topic,
             words: topic.words.filter((w) => {
               const g = (w.grade || 1) as Grade;
+              // For feelings when Grade 3 is included, include Grade 1 and 3 words!
+              if (topic.topic_id === 'feelings' && gradesSet.has(3)) {
+                return g === 1 || g === 3;
+              }
               return gradesSet.has(g);
             }),
           };
@@ -166,8 +171,8 @@ export const App: React.FC = () => {
 
     // For multi-grade or all grades: main topics first, then extra topics
     return [...result].sort((a, b) => {
-      const isExtraA = EXTRA_TOPICS.includes(a.topic_id);
-      const isExtraB = EXTRA_TOPICS.includes(b.topic_id);
+      const isExtraA = isTopicExtra(a.topic_id, selectedGrades);
+      const isExtraB = isTopicExtra(b.topic_id, selectedGrades);
       if (isExtraA && !isExtraB) return 1;
       if (!isExtraA && isExtraB) return -1;
       if (isExtraA && isExtraB) {

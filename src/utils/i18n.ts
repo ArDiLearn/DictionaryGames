@@ -865,6 +865,10 @@ export const EXTRA_TOPICS: string[] = [
   'fruit_and_vegetables_plus',
   'family_plus',
   'art_and_games_plus',
+  'toys_plus',
+  'adjectives_plus',
+  'wild_animals',
+  'nature',
   'garden',
   'building_materials',
   'introductions',
@@ -882,7 +886,13 @@ export const GRADE_1_EXTRA_TOPICS: string[] = [
   'actions',
   'classroom_objects_plus',
   'family_plus',
+  'food_and_drink_plus',
   'art_and_games_plus',
+  'toys_plus',
+  'adjectives_plus',
+  'wild_animals',
+  'feelings',
+  'nature',
   'introductions',
   'questions',
   'instructions',
@@ -936,7 +946,13 @@ export const GRADE_1_TOPIC_ORDER: string[] = [
   'actions',
   'classroom_objects_plus',
   'family_plus',
+  'food_and_drink_plus',
   'art_and_games_plus',
+  'toys_plus',
+  'adjectives_plus',
+  'wild_animals',
+  'feelings',
+  'nature',
   'introductions',
   'questions',
   'instructions',
@@ -952,6 +968,10 @@ export const GRADE_2_TOPIC_ORDER: string[] = [
   'fruit_and_vegetables_plus',
   'family_plus',
   'art_and_games_plus',
+  'toys_plus',
+  'adjectives_plus',
+  'wild_animals',
+  'nature',
   'garden',
   'building_materials',
   'actions',
@@ -971,6 +991,19 @@ export const GRADE_3_TOPIC_ORDER: string[] = [
   ...GRADE_3_MAIN_TOPICS,
   ...EXTRA_TOPICS,
 ];
+
+/**
+ * Checks if a topic should be categorized as Extra (Дополнительно)
+ * taking into account active grade selection.
+ * Specifically: 'feelings' is an extra topic for Grade 1,
+ * but when Grade 3 is selected, it moves to Main topics and is removed from Extra!
+ */
+export function isTopicExtra(topicId: string, selectedGrades: Grade[]): boolean {
+  if (topicId === 'feelings') {
+    return !selectedGrades.includes(3);
+  }
+  return EXTRA_TOPICS.includes(topicId);
+}
 
 export function getTopicsPlural(count: number, language: Language = 'lv'): string {
   if (language === 'ru') {

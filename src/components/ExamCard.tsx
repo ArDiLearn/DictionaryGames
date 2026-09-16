@@ -93,7 +93,9 @@ export const ExamCard: React.FC<ExamCardProps> = ({
                 </span>
               )}
               <span className="text-xs font-bold text-amber-800 bg-amber-100/90 px-2.5 py-1 rounded-full border border-amber-200">
-                {language === 'ru' ? `${topicsCount} тем программы` : `${topicsCount} pamatkursa tēmas`}
+                {language === 'ru'
+                  ? `${topicsCount} тем · 40 слов`
+                  : `${topicsCount} tēmas · 40 vārdi`}
               </span>
             </div>
 

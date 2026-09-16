@@ -43,6 +43,8 @@ function shuffle<T>(array: T[]): T[] {
   return arr;
 }
 
+const EXAM_WORD_COUNT = 40;
+
 function generateExamQuestions(
   topics: Topic[],
   grade: Grade,
@@ -63,16 +65,50 @@ function generateExamQuestions(
     });
   });
 
+  const targetCount = Math.min(EXAM_WORD_COUNT, allGradeWords.length);
+
+  // Prepare topic pools: copy and shuffle words per topic
+  const topicPools = topics
+    .map((topic) => {
+      const words = topic.words.filter((w) => (w.grade || 1) === grade);
+      return {
+        topicId: topic.topic_id,
+        topicEmoji: topic.emoji,
+        words: shuffle(words.length > 0 ? words : topic.words),
+      };
+    })
+    .filter((tp) => tp.words.length > 0);
+
+  // Select 40 words round-robin across topics
+  const selectedItems: { word: Word; topicId: string; topicEmoji?: string }[] = [];
+  const usedWordIds = new Set<string>();
+
+  while (selectedItems.length < targetCount) {
+    let addedInThisRound = 0;
+    for (const pool of topicPools) {
+      if (selectedItems.length >= targetCount) break;
+      const nextWord = pool.words.find((w) => !usedWordIds.has(w.id));
+      if (nextWord) {
+        usedWordIds.add(nextWord.id);
+        selectedItems.push({
+          word: nextWord,
+          topicId: pool.topicId,
+          topicEmoji: pool.topicEmoji,
+        });
+        addedInThisRound++;
+      }
+    }
+    if (addedInThisRound === 0) break;
+  }
+
+  // Shuffle selected items so questions from different topics are nicely distributed
+  const shuffledItems = shuffle(selectedItems);
+
   const questionTypes: ExamQuestionType[] = ['audio', 'choice', 'truefalse'];
   const questions: ExamQuestion[] = [];
 
-  // Pick 1 random word from each topic for this grade
-  topics.forEach((topic, index) => {
-    const topicGradeWords = topic.words.filter((w) => (w.grade || 1) === grade);
-    const pool = topicGradeWords.length > 0 ? topicGradeWords : topic.words;
-    if (pool.length === 0) return;
-
-    const chosenWord = pool[Math.floor(Math.random() * pool.length)];
+  shuffledItems.forEach((item, index) => {
+    const chosenWord = item.word;
     const qType = questionTypes[index % questionTypes.length];
 
     if (qType === 'truefalse') {
@@ -90,9 +126,9 @@ function generateExamQuestions(
       }
 
       questions.push({
-        id: `q-${topic.topic_id}-${chosenWord.id}-${index}`,
-        topicId: topic.topic_id,
-        topicEmoji: topic.emoji,
+        id: `q-${item.topicId}-${chosenWord.id}-${index}`,
+        topicId: item.topicId,
+        topicEmoji: item.topicEmoji,
         type: 'truefalse',
         word: chosenWord,
         displayWord: getLearnWord(chosenWord),
@@ -122,9 +158,9 @@ function generateExamQuestions(
       ]);
 
       questions.push({
-        id: `q-${topic.topic_id}-${chosenWord.id}-${index}`,
-        topicId: topic.topic_id,
-        topicEmoji: topic.emoji,
+        id: `q-${item.topicId}-${chosenWord.id}-${index}`,
+        topicId: item.topicId,
+        topicEmoji: item.topicEmoji,
         type: qType,
         word: chosenWord,
         options,

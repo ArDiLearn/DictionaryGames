@@ -32,7 +32,12 @@ import {
 } from './services/storage';
 import { getCurrentUser } from './services/supabase';
 
-import { GRADE_1_TOPIC_ORDER, GRADE_2_TOPIC_ORDER } from './utils/i18n';
+import {
+  GRADE_1_TOPIC_ORDER,
+  GRADE_2_TOPIC_ORDER,
+  GRADE_3_TOPIC_ORDER,
+  EXTRA_TOPICS,
+} from './utils/i18n';
 
 export const App: React.FC = () => {
   const topics = rawWordsData as Topic[];
@@ -58,13 +63,17 @@ export const App: React.FC = () => {
   const filteredTopics = useMemo(() => {
     const gradesSet = new Set(selectedGrades);
     const result = topics
-      .map((topic) => ({
-        ...topic,
-        words: topic.words.filter((w) => {
-          const g = (w.grade || 1) as Grade;
-          return gradesSet.has(g);
-        }),
-      }))
+      .map((topic) => {
+        const isExtra = EXTRA_TOPICS.includes(topic.topic_id);
+        return {
+          ...topic,
+          words: topic.words.filter((w) => {
+            if (isExtra) return true; // Extra topics are available across all grades
+            const g = (w.grade || 1) as Grade;
+            return gradesSet.has(g);
+          }),
+        };
+      })
       .filter((topic) => topic.words.length > 0);
 
     // If Grade 1 is selected alone, enforce user-defined topic order
@@ -89,7 +98,28 @@ export const App: React.FC = () => {
       });
     }
 
-    return result;
+    // If Grade 3 is selected alone, enforce user-defined topic order
+    if (selectedGrades.length === 1 && selectedGrades[0] === 3) {
+      return [...result].sort((a, b) => {
+        const idxA = GRADE_3_TOPIC_ORDER.indexOf(a.topic_id);
+        const idxB = GRADE_3_TOPIC_ORDER.indexOf(b.topic_id);
+        const posA = idxA === -1 ? 999 : idxA;
+        const posB = idxB === -1 ? 999 : idxB;
+        return posA - posB;
+      });
+    }
+
+    // For multi-grade or all grades: main topics first, then extra topics
+    return [...result].sort((a, b) => {
+      const isExtraA = EXTRA_TOPICS.includes(a.topic_id);
+      const isExtraB = EXTRA_TOPICS.includes(b.topic_id);
+      if (isExtraA && !isExtraB) return 1;
+      if (!isExtraA && isExtraB) return -1;
+      if (isExtraA && isExtraB) {
+        return EXTRA_TOPICS.indexOf(a.topic_id) - EXTRA_TOPICS.indexOf(b.topic_id);
+      }
+      return 0;
+    });
   }, [topics, selectedGrades]);
 
   // Celebration state

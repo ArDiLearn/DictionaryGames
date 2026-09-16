@@ -155,6 +155,7 @@ export interface Translations {
     tabTopics: string;
     tabPractice: string;
     tabAwards: string;
+    tabExams: string;
     overallProgress: string;
     wordsLearned: string;
     starsEarned: string;
@@ -181,6 +182,21 @@ export interface Translations {
     close: string;
     timesWrongLabel: string;
     timesCorrectLabel: string;
+    examsCompletedTitle: string;
+    examsAverageScore: string;
+    examsCupsTitle: string;
+    examsBestByGrade: string;
+    examsHistoryTitle: string;
+    examsHistoryEmpty: string;
+    examsHistoryEmptyHint: string;
+    examsDate: string;
+    examsMark: string;
+    examsScore: string;
+    examsStartForGrade: string;
+    examsNotTakenYet: string;
+    examsStatsBtn: string;
+    examsViewHistory: string;
+    examsOverviewSummary: string;
     achievements: {
       firstWord: { title: string; desc: string };
       tenWords: { title: string; desc: string };
@@ -373,6 +389,7 @@ export const translations: Record<Language, Translations> = {
       tabTopics: 'Темы',
       tabPractice: 'Повторение',
       tabAwards: 'Награды',
+      tabExams: 'Контрольные',
       overallProgress: 'Общий прогресс',
       wordsLearned: 'Выучено слов',
       starsEarned: 'Всего звёзд',
@@ -399,6 +416,21 @@ export const translations: Record<Language, Translations> = {
       close: 'Закрыть',
       timesWrongLabel: 'ошибок',
       timesCorrectLabel: 'верно',
+      examsCompletedTitle: 'Пройдено контрольных',
+      examsAverageScore: 'Средний результат',
+      examsCupsTitle: 'Коллекция кубков',
+      examsBestByGrade: 'Лучшие результаты по классам',
+      examsHistoryTitle: 'История сдачи контрольных',
+      examsHistoryEmpty: 'Контрольные работы ещё не сдавались',
+      examsHistoryEmptyHint: 'Выбери класс выше и пройди свою первую контрольную работу!',
+      examsDate: 'Дата',
+      examsMark: 'Оценка',
+      examsScore: 'Результат',
+      examsStartForGrade: 'Сдать контрольную',
+      examsNotTakenYet: 'Ещё не сдавалась',
+      examsStatsBtn: 'Статистика',
+      examsViewHistory: 'Смотреть статистику контрольных',
+      examsOverviewSummary: 'Контрольные работы',
       achievements: {
         firstWord: { title: 'Первый шаг!', desc: 'Выучено первое английское слово' },
         tenWords: { title: 'Знаток десятки', desc: 'Успешно выучено 10 слов' },
@@ -589,6 +621,7 @@ export const translations: Record<Language, Translations> = {
       tabTopics: 'Tēmas',
       tabPractice: 'Atkārtošana',
       tabAwards: 'Balvas',
+      tabExams: 'Pārbaudes darbi',
       overallProgress: 'Kopējais progress',
       wordsLearned: 'Apgūtie vārdi',
       starsEarned: 'Kopā zvaigznes',
@@ -615,6 +648,21 @@ export const translations: Record<Language, Translations> = {
       close: 'Aizvērt',
       timesWrongLabel: 'kļūdas',
       timesCorrectLabel: 'pareizi',
+      examsCompletedTitle: 'Nokārtoti pārbaudes darbi',
+      examsAverageScore: 'Vidējais rezultāts',
+      examsCupsTitle: 'Kausu kolekcija',
+      examsBestByGrade: 'Labākie rezultāti pa klasēm',
+      examsHistoryTitle: 'Pārbaudes darbu vēsture',
+      examsHistoryEmpty: 'Pārbaudes darbi vēl nav kārtoti',
+      examsHistoryEmptyHint: 'Izvēlies klasi augstāk un nokārto savu pirmo pārbaudes darbu!',
+      examsDate: 'Datums',
+      examsMark: 'Atzīme',
+      examsScore: 'Rezultāts',
+      examsStartForGrade: 'Kārtot pārbaudes darbu',
+      examsNotTakenYet: 'Vēl nav kārtots',
+      examsStatsBtn: 'Statistika',
+      examsViewHistory: 'Skatīt pārbaudes darbu statistiku',
+      examsOverviewSummary: 'Pārbaudes darbi',
       achievements: {
         firstWord: { title: 'Pirmais solis!', desc: 'Apgūts pirmais angļu vārds' },
         tenWords: { title: 'Desmitnieks', desc: 'Veiksmīgi apgūti 10 vārdi' },

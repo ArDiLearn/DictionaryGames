@@ -30,7 +30,7 @@ interface TopicListProps {
   playerName: string;
   avatar: string;
   onOpenShop?: () => void;
-  onOpenStats?: () => void;
+  onOpenStats?: (initialTab?: 'overview' | 'exams' | 'topics' | 'practice' | 'awards') => void;
   examResults?: Record<number, ExamResult>;
   onStartExam?: (grade: Grade) => void;
 }
@@ -329,6 +329,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                     topicsCount={topicsCount}
                     result={examResults ? examResults[activeGrade] : undefined}
                     onStart={onStartExam}
+                    onOpenStats={() => onOpenStats && onOpenStats('exams')}
                   />
                 </div>
               );

@@ -244,11 +244,7 @@ Garden,Dārzs,Сад,
 root,sakne,корень,2
 flower,puķe,цветок,2
 leaves,lapas,листья,2
-tree,koks,дерево,2
 fruit,auglis,фрукт,2
-honey,medus,мёд,2
-plums,plūmes,сливы,2
-insects,kukaiņi,насекомые,2
 ,,,
 Building materials,Būvmateriāli,Строительные материалы,
 bricks,ķieģeļi,кирпичи,2
@@ -368,6 +364,10 @@ different,atšķirīgs,разный,1
 activity,nodarbe,занятие,1
 lion,lauva,лев,1
 deer,briedis,олень,1
+tree,koks,дерево,2
+honey,medus,мёд,2
+plums,plūmes,сливы,2
+insects,kukaiņi,насекомые,2
 ,,,
 Birthday,Dzimšanas diena,День рождения,
 board game,galda spēle,настольная игра,3

@@ -455,5 +455,16 @@ export const TRANSCRIPTIONS = {
   // Directions
   "turn left": "[ tɜːn left ]",
   "turn right": "[ tɜːn raɪt ]",
-  "go straight on": "[ ɡəʊ streɪt ɒn ]"
+  "go straight on": "[ ɡəʊ streɪt ɒn ]",
+
+  // Food & drink + and Fruit & vegetables +
+  "chips": "[ tʃɪps ]",
+  "sausages": "[ ˈsɒsɪdʒɪz ]",
+  "ice cream": "[ ˌaɪs ˈkriːm ]",
+  "water": "[ ˈwɔːtər ]",
+  "watermelon": "[ ˈwɔːtərmelən ]",
+  "grapes": "[ ɡreɪps ]",
+  "pineapple": "[ ˈpaɪnæpl ]",
+  "spinach": "[ ˈspɪnɪtʃ ]",
+  "potatoes": "[ pəˈteɪtəʊz ]"
 };

@@ -216,13 +216,13 @@ garden,dārzs,сад,2
 living room,viesistaba,гостиная,2
 ,,,
 Days of the week,Nedēļas dienas,Дни недели,
-Monday,pirmdiena,понедельник,2
-Tuesday,otrdiena,вторник,2
-Wednesday,trešdiena,среда,2
-Thursday,ceturtdiena,четверг,2
-Friday,piektdiena,пятница,2
-Saturday,sestdiena,суббота,2
-Sunday,svētdiena,воскресенье,2
+Monday,pirmdiena,понедельник,1
+Tuesday,otrdiena,вторник,1
+Wednesday,trešdiena,среда,1
+Thursday,ceturtdiena,четверг,1
+Friday,piektdiena,пятница,1
+Saturday,sestdiena,суббота,1
+Sunday,svētdiena,воскресенье,1
 ,,,
 Shapes,Figūras,Фигуры,
 circle,aplis,круг,1
@@ -322,7 +322,7 @@ maybe,varbūt,может быть,1
 then,"tad, pēc tam","затем, потом",1
 about,par,"о, про",1
 ,,,
-School materials,Skolas materiāli,Школьные материалы,
+Classroom objects +,Klases aprīkojums +,Оборудование класса +,
 box,kaste,коробка,1
 glue,līme,клей,1
 counters,žetoni,фишки,1
@@ -360,12 +360,24 @@ rock,akmens,камень,2
 mud,dubļi,грязь,2
 clay,māls,глина,2
 ,,,
-Meals,Ēdienreizes,Приёмы пищи,
+Food and drink +,Ēdiens un dzērieni +,Еда и напитки +,
 breakfast,brokastis,завтрак,2
 lunch,pusdienas,обед,2
 dinner,vakariņas,ужин,2
+chips,"čipsi, kartupeļu salmiņi",чипсы,2
+sausages,desiņas,сосиски,2
+ice cream,saldējums,мороженое,2
+chocolate,šokolāde,шоколад,2
+water,ūdens,вода,2
 ,,,
-Age and people,Vecums un cilvēki,Возраст и люди,
+Fruit and vegetables +,Augļi un dārzeņi +,Фрукты и овощи +,
+watermelon,arbūzs,арбуз,2
+grapes,vīnogas,виноград,2
+pineapple,ananass,ананас,2
+spinach,spināti,шпинат,2
+potatoes,kartupeļi,картофель,2
+,,,
+Family +,Ģimene +,Семья +,
 baby,zīdainis,младенец,2
 toddler,mazulis,малыш,2
 child,bērns,ребёнок,2

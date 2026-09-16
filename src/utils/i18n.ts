@@ -194,7 +194,7 @@ export interface Translations {
 
 export const translations: Record<Language, Translations> = {
   ru: {
-    appTitle: 'WordyKids',
+    appTitle: 'MindWordy',
     appSubtitle: 'Английский для 1–3 классов',
     welcomeGreeting: 'Привет',
     defaultPlayerName: 'Знайка',
@@ -385,7 +385,7 @@ export const translations: Record<Language, Translations> = {
     },
   },
   lv: {
-    appTitle: 'WordyKids',
+    appTitle: 'MindWordy',
     appSubtitle: 'Angļu valoda 1.–3. klasei',
     welcomeGreeting: 'Sveiks',
     defaultPlayerName: 'Zinītis',

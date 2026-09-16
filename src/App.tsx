@@ -82,14 +82,47 @@ export const App: React.FC = () => {
     const result = topics
       .map((topic) => {
         const isExtra = EXTRA_TOPICS.includes(topic.topic_id);
-        return {
-          ...topic,
-          words: topic.words.filter((w) => {
-            if (isExtra) return true; // Extra topics are available across all grades
-            const g = (w.grade || 1) as Grade;
-            return gradesSet.has(g);
-          }),
-        };
+        if (!isExtra) {
+          return {
+            ...topic,
+            words: topic.words.filter((w) => {
+              const g = (w.grade || 1) as Grade;
+              return gradesSet.has(g);
+            }),
+          };
+        }
+
+        // For Extra topics:
+        // When Grade 1 is selected alone: ONLY show Grade 1 words!
+        if (selectedGrades.length === 1 && selectedGrades[0] === 1) {
+          return {
+            ...topic,
+            words: topic.words.filter((w) => (w.grade || 1) === 1),
+          };
+        }
+
+        // When Grade 2 is selected alone: show Grade 2 words first, then Grade 1 words!
+        if (selectedGrades.length === 1 && selectedGrades[0] === 2) {
+          const g2Words = topic.words.filter((w) => (w.grade || 1) === 2);
+          const g1Words = topic.words.filter((w) => (w.grade || 1) === 1);
+          return {
+            ...topic,
+            words: [...g2Words, ...g1Words],
+          };
+        }
+
+        // When Grade 3 is selected alone or multi-grade:
+        if (gradesSet.has(2)) {
+          const g2Words = topic.words.filter((w) => (w.grade || 1) === 2);
+          const g1Words = topic.words.filter((w) => (w.grade || 1) === 1);
+          const otherWords = topic.words.filter((w) => (w.grade || 1) !== 1 && (w.grade || 1) !== 2);
+          return {
+            ...topic,
+            words: [...g2Words, ...g1Words, ...otherWords],
+          };
+        }
+
+        return topic;
       })
       .filter((topic) => topic.words.length > 0);
 

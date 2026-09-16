@@ -812,12 +812,13 @@ export const EXTRA_TOPICS: string[] = [
   'days_of_the_week',
   'shapes',
   'actions',
-  'school_materials',
+  'classroom_objects_plus',
   'other_words',
+  'food_and_drink_plus',
+  'fruit_and_vegetables_plus',
+  'family_plus',
   'garden',
   'building_materials',
-  'meals',
-  'age_and_people',
   'pronouns',
   'introductions',
   'questions',
@@ -826,7 +827,19 @@ export const EXTRA_TOPICS: string[] = [
   'helper_words',
 ];
 
-export const GRADE_1_EXTRA_TOPICS: string[] = EXTRA_TOPICS;
+export const GRADE_1_EXTRA_TOPICS: string[] = [
+  'days_of_the_week',
+  'shapes',
+  'actions',
+  'classroom_objects_plus',
+  'other_words',
+  'pronouns',
+  'introductions',
+  'questions',
+  'instructions',
+  'places',
+  'helper_words',
+];
 
 export const GRADE_1_MAIN_TOPICS: string[] = [
   'numbers_1_20',
@@ -867,12 +880,37 @@ export const GRADE_3_MAIN_TOPICS: string[] = [
 
 export const GRADE_1_TOPIC_ORDER: string[] = [
   ...GRADE_1_MAIN_TOPICS,
-  ...EXTRA_TOPICS,
+  'days_of_the_week',
+  'shapes',
+  'actions',
+  'classroom_objects_plus',
+  'other_words',
+  'pronouns',
+  'introductions',
+  'questions',
+  'instructions',
+  'places',
+  'helper_words',
 ];
 
 export const GRADE_2_TOPIC_ORDER: string[] = [
   ...GRADE_2_MAIN_TOPICS,
-  ...EXTRA_TOPICS,
+  'food_and_drink_plus',
+  'fruit_and_vegetables_plus',
+  'family_plus',
+  'garden',
+  'building_materials',
+  'actions',
+  'days_of_the_week',
+  'shapes',
+  'classroom_objects_plus',
+  'other_words',
+  'pronouns',
+  'introductions',
+  'questions',
+  'instructions',
+  'places',
+  'helper_words',
 ];
 
 export const GRADE_3_TOPIC_ORDER: string[] = [

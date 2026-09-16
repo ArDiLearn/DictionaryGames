@@ -95,6 +95,9 @@ const TOPIC_METADATA = {
   'School materials': { icon: 'Scissors', color: 'amber', emoji: '📦' },
   'Skolas materiāli': { icon: 'Scissors', color: 'amber', emoji: '📦' },
   'Школьные материалы': { icon: 'Scissors', color: 'amber', emoji: '📦' },
+  'Classroom objects +': { icon: 'School', color: 'amber', emoji: '🎒' },
+  'Klases aprīkojums +': { icon: 'School', color: 'amber', emoji: '🎒' },
+  'Оборудование класса +': { icon: 'School', color: 'amber', emoji: '🎒' },
   'Other words': { icon: 'Sparkles', color: 'emerald', emoji: '🌟' },
   'Dažādi vārdi': { icon: 'Sparkles', color: 'emerald', emoji: '🌟' },
   'Разные слова': { icon: 'Sparkles', color: 'emerald', emoji: '🌟' },
@@ -104,6 +107,15 @@ const TOPIC_METADATA = {
   'Age and people': { icon: 'Users', color: 'indigo', emoji: '🧑‍🤝‍🧑' },
   'Vecums un cilvēki': { icon: 'Users', color: 'indigo', emoji: '🧑‍🤝‍🧑' },
   'Возраст и люди': { icon: 'Users', color: 'indigo', emoji: '🧑‍🤝‍🧑' },
+  'Family +': { icon: 'Users', color: 'pink', emoji: '👨‍👩‍👧‍👦' },
+  'Ģimene +': { icon: 'Users', color: 'pink', emoji: '👨‍👩‍👧‍👦' },
+  'Семья +': { icon: 'Users', color: 'pink', emoji: '👨‍👩‍👧‍👦' },
+  'Food and drink +': { icon: 'Utensils', color: 'rose', emoji: '🍎' },
+  'Ēdiens un dzērieni +': { icon: 'Utensils', color: 'rose', emoji: '🍎' },
+  'Еда и напитки +': { icon: 'Utensils', color: 'rose', emoji: '🍎' },
+  'Fruit and vegetables +': { icon: 'Apple', color: 'green', emoji: '🥕' },
+  'Augļi un dārzeņi +': { icon: 'Apple', color: 'green', emoji: '🥕' },
+  'Фрукты и овощи +': { icon: 'Apple', color: 'green', emoji: '🥕' },
 };
 
 /**
@@ -138,6 +150,7 @@ function parseCsvLine(line) {
 function slugify(text) {
   return text
     .toLowerCase()
+    .replace(/\+/g, 'plus')
     .replace(/[^a-z0-9]+/g, '_')
     .replace(/^_+|_+$/g, '');
 }

@@ -376,5 +376,16 @@ export const WORD_IMAGES = {
   // Directions
   "turn left": "⬅️",
   "turn right": "➡️",
-  "go straight on": "⬆️"
+  "go straight on": "⬆️",
+
+  // Food & drink + and Fruit & vegetables +
+  "chips": "🍟",
+  "sausages": "🌭",
+  "ice cream": "🍨",
+  "water": "💧",
+  "watermelon": "🍉",
+  "grapes": "🍇",
+  "pineapple": "🍍",
+  "spinach": "🥬",
+  "potatoes": "🥔"
 };

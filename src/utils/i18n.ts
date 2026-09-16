@@ -712,6 +712,17 @@ export function getPlayerDisplayName(
   return playerName;
 }
 
+export const EXTRA_TOPICS: string[] = [
+  'pronouns',
+  'introductions',
+  'questions',
+  'instructions',
+  'places',
+  'helper_words',
+];
+
+export const GRADE_1_EXTRA_TOPICS: string[] = EXTRA_TOPICS;
+
 export const GRADE_1_MAIN_TOPICS: string[] = [
   'numbers_1_20',
   'colours',
@@ -727,21 +738,7 @@ export const GRADE_1_MAIN_TOPICS: string[] = [
   'actions',
 ];
 
-export const GRADE_1_EXTRA_TOPICS: string[] = [
-  'pronouns',
-  'introductions',
-  'questions',
-  'instructions',
-  'places',
-  'helper_words',
-];
-
-export const GRADE_1_TOPIC_ORDER: string[] = [
-  ...GRADE_1_MAIN_TOPICS,
-  ...GRADE_1_EXTRA_TOPICS,
-];
-
-export const GRADE_2_TOPIC_ORDER: string[] = [
+export const GRADE_2_MAIN_TOPICS: string[] = [
   'food_and_drink',
   'fruit_and_vegetables',
   'garden',
@@ -757,4 +754,71 @@ export const GRADE_2_TOPIC_ORDER: string[] = [
   'days_of_the_week',
   'actions',
 ];
+
+export const GRADE_3_MAIN_TOPICS: string[] = [
+  'months',
+  'seasons',
+  'birthday',
+  'feelings',
+  'jobs',
+  'transport',
+  'senses',
+  'town',
+  'positions',
+  'directions',
+];
+
+export const GRADE_1_TOPIC_ORDER: string[] = [
+  ...GRADE_1_MAIN_TOPICS,
+  ...EXTRA_TOPICS,
+];
+
+export const GRADE_2_TOPIC_ORDER: string[] = [
+  ...GRADE_2_MAIN_TOPICS,
+  ...EXTRA_TOPICS,
+];
+
+export const GRADE_3_TOPIC_ORDER: string[] = [
+  ...GRADE_3_MAIN_TOPICS,
+  ...EXTRA_TOPICS,
+];
+
+export function getTopicsPlural(count: number, language: Language = 'lv'): string {
+  if (language === 'ru') {
+    const abs = Math.abs(count);
+    const mod10 = abs % 10;
+    const mod100 = abs % 100;
+
+    if (mod10 === 1 && mod100 !== 11) {
+      return 'тема';
+    }
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) {
+      return 'темы';
+    }
+    return 'тем';
+  }
+
+  // Latvian (lv)
+  const abs = Math.abs(count);
+  const mod10 = abs % 10;
+  const mod100 = abs % 100;
+  if (mod10 === 1 && mod100 !== 11) {
+    return 'tēma';
+  }
+  return 'tēmas';
+}
+
+export function getMainTopicsSubtitle(count: number, language: Language = 'lv'): string {
+  if (language === 'ru') {
+    return `${count} ${getTopicsPlural(count, 'ru')} школьной программы`;
+  }
+  return `${count} skolas programmas ${getTopicsPlural(count, 'lv')}`;
+}
+
+export function getExtraTopicsSubtitle(count: number, language: Language = 'lv'): string {
+  if (language === 'ru') {
+    return `${count} ${getTopicsPlural(count, 'ru')} для расширения словарного запаса`;
+  }
+  return `${count} ${getTopicsPlural(count, 'lv')} vārdu krājuma paplašināšanai`;
+}
 

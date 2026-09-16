@@ -16,6 +16,7 @@ interface TopicListProps {
   topics: Topic[];
   language: Language;
   course?: LearningCourse;
+  onCourseChange?: (course: LearningCourse) => void;
   topicProgress: Record<string, TopicProgress>;
   selectedGrades: Grade[];
   onToggleGrade: (grade: Grade) => void;
@@ -31,6 +32,7 @@ export const TopicList: React.FC<TopicListProps> = ({
   topics,
   language,
   course = 'en',
+  onCourseChange,
   topicProgress,
   selectedGrades,
   onToggleGrade,
@@ -134,6 +136,76 @@ export const TopicList: React.FC<TopicListProps> = ({
             </div>
           </button>
         </div>
+      </div>
+
+      {/* Course Learning Mode Banner */}
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-5 bg-gradient-to-r from-purple-50 via-indigo-50/70 to-pink-50/70 border-2 border-purple-200 rounded-3xl p-3.5 sm:px-5 sm:py-4 shadow-sm">
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl sm:text-3xl border-2 border-purple-200 shrink-0">
+            {course === 'lv' ? '🇱🇻' : '🇬🇧'}
+          </div>
+          <div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-xs font-black uppercase tracking-wider text-purple-800 flex items-center gap-1">
+                <span>🎓</span>
+                <span>{t.courseModeTitle}</span>
+              </span>
+              <span className="text-[11px] bg-purple-200/90 text-purple-900 font-extrabold px-2.5 py-0.5 rounded-full">
+                {course === 'lv' ? '🇱🇻 Латышский ➔ Русский' : '🇬🇧 Английский ➔ Русский / Latviešu'}
+              </span>
+              <span className="text-xs text-purple-600 font-bold hidden md:inline">
+                💡 {t.courseSwitchHint}
+              </span>
+            </div>
+            <h2 className="text-lg sm:text-xl font-black text-slate-800 leading-snug mt-0.5">
+              {course === 'lv' ? t.courseLatvian : t.courseEnglish}
+            </h2>
+            <p className="text-xs text-slate-500 font-medium">
+              {course === 'lv' ? t.courseLatvianSubtitle : t.appSubtitle}
+            </p>
+          </div>
+        </div>
+
+        {onCourseChange && (
+          <div className="flex items-center gap-1.5 bg-white/95 p-1 rounded-2xl border-2 border-purple-200 shadow-inner shrink-0">
+            <button
+              onClick={() => {
+                if (course !== 'en') {
+                  sounds.playClick();
+                  onCourseChange('en');
+                }
+              }}
+              className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                course === 'en'
+                  ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-md ring-2 ring-indigo-200 scale-102'
+                  : 'text-slate-600 hover:text-indigo-800 hover:bg-purple-50'
+              }`}
+              title={`${t.courseEnglish} (${t.courseSwitchHint})`}
+            >
+              <span className="text-base sm:text-lg">🇬🇧</span>
+              <span>{t.courseEnglish}</span>
+              {course === 'en' && <span className="text-xs font-bold text-indigo-200 ml-0.5">✓</span>}
+            </button>
+            <button
+              onClick={() => {
+                if (course !== 'lv') {
+                  sounds.playClick();
+                  onCourseChange('lv');
+                }
+              }}
+              className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                course === 'lv'
+                  ? 'bg-gradient-to-r from-rose-600 to-red-700 text-white shadow-md ring-2 ring-rose-200 scale-102'
+                  : 'text-slate-600 hover:text-rose-800 hover:bg-rose-50'
+              }`}
+              title={`${t.courseLatvian} (${t.courseSwitchHint})`}
+            >
+              <span className="text-base sm:text-lg">🇱🇻</span>
+              <span>{t.courseLatvian}</span>
+              {course === 'lv' && <span className="text-xs font-bold text-rose-200 ml-0.5">✓</span>}
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Multi-select Grade Switcher & Info Bar */}

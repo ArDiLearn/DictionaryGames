@@ -16,9 +16,12 @@ export interface Translations {
   extraTopicsTitle: string;
   extraTopicsSubtitle: string;
   courseSelectorLabel: string;
+  courseModeTitle: string;
+  courseSwitchHint: string;
   courseEnglish: string;
   courseLatvian: string;
   courseLatvianSubtitle: string;
+  interfaceLanguageLabel: string;
   play: string;
   back: string;
   next: string;
@@ -205,10 +208,13 @@ export const translations: Record<Language, Translations> = {
     mainTopicsSubtitle: '12 тем школьной программы',
     extraTopicsTitle: 'Дополнительные темы',
     extraTopicsSubtitle: '6 тем для расширения словарного запаса',
-    courseSelectorLabel: 'Курс обучения',
-    courseEnglish: '🇬🇧 Английский',
-    courseLatvian: '🇱🇻 Латышский',
+    courseSelectorLabel: 'Режим обучения',
+    courseModeTitle: 'Режим обучения',
+    courseSwitchHint: 'Сменить режим',
+    courseEnglish: 'Изучение Английского',
+    courseLatvian: 'Изучение Латышского',
     courseLatvianSubtitle: 'Латышский язык с переводом на русский',
+    interfaceLanguageLabel: 'Язык меню',
     play: 'Играть',
     back: 'Назад',
     next: 'Дальше',
@@ -393,10 +399,13 @@ export const translations: Record<Language, Translations> = {
     mainTopicsSubtitle: '12 skolas programmas tēmas',
     extraTopicsTitle: 'Papildus tēmas',
     extraTopicsSubtitle: '6 tēmas vārdu krājuma paplašināšanai',
-    courseSelectorLabel: 'Mācību kurss',
-    courseEnglish: '🇬🇧 Angļu valoda',
-    courseLatvian: '🇱🇻 Latviešu valoda',
+    courseSelectorLabel: 'Mācību režīms',
+    courseModeTitle: 'Mācību režīms',
+    courseSwitchHint: 'Mainīt režīmu',
+    courseEnglish: 'Mācīties angļu',
+    courseLatvian: 'Mācīties latviešu',
     courseLatvianSubtitle: 'Latviešu valoda ar tulkojumu krieviski',
+    interfaceLanguageLabel: 'Izvēlnes valoda',
     play: 'Spēlēt',
     back: 'Atpakaļ',
     next: 'Tālāk',

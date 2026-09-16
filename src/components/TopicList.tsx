@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { Topic, Language, TopicProgress, Grade, LearningCourse } from '../types';
+import { Topic, Language, TopicProgress, Grade, LearningCourse, ExamResult } from '../types';
 import { TopicCard } from './TopicCard';
+import { ExamCard } from './ExamCard';
 import { FlagIcon } from './FlagIcon';
 import {
   translations,
   getGradeFilterInfo,
   getPlayerDisplayName,
   EXTRA_TOPICS,
+  GRADE_1_MAIN_TOPICS,
+  GRADE_2_MAIN_TOPICS,
+  GRADE_3_MAIN_TOPICS,
   getMainTopicsSubtitle,
   getExtraTopicsSubtitle,
 } from '../utils/i18n';
@@ -27,6 +31,8 @@ interface TopicListProps {
   avatar: string;
   onOpenShop?: () => void;
   onOpenStats?: () => void;
+  examResults?: Record<number, ExamResult>;
+  onStartExam?: (grade: Grade) => void;
 }
 
 export const TopicList: React.FC<TopicListProps> = ({
@@ -43,6 +49,8 @@ export const TopicList: React.FC<TopicListProps> = ({
   avatar,
   onOpenShop,
   onOpenStats,
+  examResults,
+  onStartExam,
 }) => {
   const t = translations[language];
   const [searchQuery, setSearchQuery] = useState('');
@@ -296,6 +304,32 @@ export const TopicList: React.FC<TopicListProps> = ({
                 {mainTopics.length}
               </span>
             </div>
+
+            {/* Exam Super Card(s) (Variant A) */}
+            {!searchQuery && onStartExam && (
+              <div className="space-y-4 mb-6">
+                {selectedGrades.map((grade) => {
+                  const topicsCount =
+                    grade === 1
+                      ? GRADE_1_MAIN_TOPICS.length
+                      : grade === 2
+                      ? GRADE_2_MAIN_TOPICS.length
+                      : GRADE_3_MAIN_TOPICS.length;
+                  return (
+                    <ExamCard
+                      key={`exam-grade-${grade}`}
+                      grade={grade}
+                      language={language}
+                      course={course}
+                      topicsCount={topicsCount}
+                      result={examResults ? examResults[grade] : undefined}
+                      onStart={onStartExam}
+                    />
+                  );
+                })}
+              </div>
+            )}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
               {mainTopics.map((topic) => (
                 <TopicCard

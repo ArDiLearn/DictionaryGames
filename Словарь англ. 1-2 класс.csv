@@ -199,7 +199,7 @@ At home,Mājās,Дома,
 picture,attēls,картина,2
 wardrobe,drēbju skapis,шкаф для одежды,2
 bed,gulta,кровать,2
-clock,pulkstenis,часы,2
+clock,"sienas pulkstenis","часы (настенные)",2
 bookcase,grāmatplaukts,книжный шкаф,2
 plant,augs,растение,2
 television,televizors,телевизор,2
@@ -243,8 +243,8 @@ I can,es varu,я умею,1
 I can't,es nevaru,я не умею,1
 I've got,man ir,у меня есть,1
 I haven't got,man nav,у меня нет,1
-I have,man ir,у меня есть,1
-I haven't,man nav,у меня нет,1
+I have,"man pieder (ir)","я имею (у меня есть)",1
+I haven't,"man nepieder (nav)","я не имею (у меня нет)",1
 I like,man patīk,мне нравится,1
 I don't like,man nepatīk,мне не нравится,1
 I don't know,es nezinu,я не знаю,1
@@ -252,7 +252,7 @@ need,vajadzēt,"нужно, требоваться",1
 love,mīlēt,любить,1
 ,,,
 Introductions,Iepazīšanās,Знакомство,
-hello,labdien,привет,1
+hello,labdien,"здравствуйте, привет",1
 bye,atā,пока,1
 What's your name?,Kā tevi sauc?,Как тебя зовут?,1
 How are you?,Kā tev klājas?,Как дела?,1
@@ -270,12 +270,12 @@ listen,klausīties,слушать,1
 point,rādīt,показывать,1
 repeat,atkārtot,повторять,1
 say,teikt,сказать,1
-look,skatīties,смотреть,1
+look,paskatīties,"посмотри, взгляни",1
 answer,atbildēt,отвечать,1
-watch,skatīties,смотреть,1
+watch,"skatīties video","смотреть (видео)",1
 complete,pabeigt,закончить,1
 sing,dziedāt,петь,1
-match,savienot,подобрать пару,1
+match,"savienot pāros",подобрать пару,1
 ask,jautāt,спрашивать,1
 guess,uzminēt,угадать,1
 join,savienot,соединить,1
@@ -297,7 +297,7 @@ again,vēlreiz,снова,1
 think,domāt,думать,1
 pair,pāris,пара,1
 share,dalīties,делиться,1
-create,veidot,создавать,1
+create,"radīt, izveidot",создавать,1
 miss,izlaist,пропустить,1
 number,sanumurē,пронумеруй,1
 trace,apvelc,обведи по контуру,1
@@ -322,7 +322,7 @@ who,kas,кто,1
 how,kā,как,1
 which,"kurš, kāds","какой, который",1
 what's this,kas tas ir?,что это?,1
-who's this,kas tas ir?,кто это?,1
+who's this,kurš tas ir?,кто это?,1
 have you got,vai tev ir?,у тебя есть?,1
 question,jautājums,вопрос,1
 ,,,
@@ -383,7 +383,7 @@ insects,kukaiņi,насекомые,2
 ,,,
 Building materials,Būvmateriāli,Строительные материалы,
 bricks,ķieģeļi,кирпичи,2
-wood,koks,дерево,2
+wood,"koksne, koks","древесина, дерево",2
 rock,akmens,камень,2
 mud,dubļi,грязь,2
 clay,māls,глина,2
@@ -454,14 +454,14 @@ Pronouns,Vietniekvārdi,Местоимения,
 I'm,es esmu,я,1
 he's,viņš ir,он,1
 she's,viņa ir,она,1
-they're,viņi ir,они,1
+they're,viņi ir,"они (есть)",1
 we,mēs,мы,1
 they,viņi,они,1
 my,mans,мой,1
 me,mani,меня,1
 this,šis,этот,1
 it's,tas ir,это,1
-that's,tas ir,то,1
+that's,"tas tur ir",то,1
 here,šeit,здесь,1
 your,"tavs, jūsu","твой, ваш",1
 our,mūsu,наш,1
@@ -479,7 +479,7 @@ camera,fotoaparāts,фотоаппарат,3
 dress,kleita,платье,3
 necklace,kaklarota,ожерелье,3
 chocolate,šokolāde,шоколад,3
-watch,pulkstenis,наручные часы,3
+watch,rokas pulkstenis,наручные часы,3
 umbrella,lietussargs,зонт,3
 dinosaur,dinozaurs,динозавр,3
 ,,,

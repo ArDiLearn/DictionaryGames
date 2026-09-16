@@ -68,3 +68,17 @@ export interface AvatarShopItem {
   price: number;
   category: 'starter' | 'simple' | 'medium' | 'unique';
 }
+
+export type ExamQuestionType = 'audio' | 'choice' | 'truefalse';
+
+export interface ExamResult {
+  grade: Grade;
+  course: LearningCourse;
+  scorePercent: number;
+  gradeMark: '5+' | '4' | '3' | null;
+  cup: 'gold' | 'silver' | 'bronze' | null;
+  correctCount: number;
+  totalCount: number;
+  starsEarned: number;
+  completedAt: string;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import rawWordsData from './data/words.json';
-import { Topic, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress, LearningCourse } from './types';
+import { Topic, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress, LearningCourse, ExamResult } from './types';
 import { Header } from './components/Header';
 import { TopicList } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
@@ -10,6 +10,7 @@ import { BalloonPopGame } from './components/games/BalloonPopGame';
 import { WordBuilderGame } from './components/games/WordBuilderGame';
 import { MatchPairsGame } from './components/games/MatchPairsGame';
 import { AudioQuizGame } from './components/games/AudioQuizGame';
+import { ExamGame } from './components/games/ExamGame';
 import { CelebrationModal } from './components/CelebrationModal';
 import { AuthModal } from './components/AuthModal';
 import { PwaInstallPrompt } from './components/PwaInstallPrompt';
@@ -31,6 +32,8 @@ import {
   mergeWithCloud,
   purchaseAvatar,
   addEarnedStars,
+  loadExamResults,
+  saveExamResult,
 } from './services/storage';
 import { getCurrentUser } from './services/supabase';
 
@@ -38,6 +41,9 @@ import {
   GRADE_1_TOPIC_ORDER,
   GRADE_2_TOPIC_ORDER,
   GRADE_3_TOPIC_ORDER,
+  GRADE_1_MAIN_TOPICS,
+  GRADE_2_MAIN_TOPICS,
+  GRADE_3_MAIN_TOPICS,
   EXTRA_TOPICS,
 } from './utils/i18n';
 
@@ -58,6 +64,10 @@ export const App: React.FC = () => {
   );
   const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
   const [gameMode, setGameMode] = useState<GameMode | null>(null);
+  const [activeExamGrade, setActiveExamGrade] = useState<Grade | null>(null);
+  const [examResults, setExamResults] = useState<Record<number, ExamResult>>(() =>
+    loadExamResults(getStoredCourse())
+  );
   const [isCloudSynced, setIsCloudSynced] = useState<boolean>(false);
   const [isSyncModalOpen, setIsSyncModalOpen] = useState<boolean>(false);
   const [isAvatarShopOpen, setIsAvatarShopOpen] = useState<boolean>(false);
@@ -129,6 +139,18 @@ export const App: React.FC = () => {
     });
   }, [topics, selectedGrades]);
 
+  // Main topics for current active exam grade
+  const examTopics = useMemo(() => {
+    if (!activeExamGrade) return [];
+    const mainTopicIds =
+      activeExamGrade === 1
+        ? GRADE_1_MAIN_TOPICS
+        : activeExamGrade === 2
+        ? GRADE_2_MAIN_TOPICS
+        : GRADE_3_MAIN_TOPICS;
+    return topics.filter((t) => mainTopicIds.includes(t.topic_id));
+  }, [topics, activeExamGrade]);
+
   // Celebration state
   const [celebration, setCelebration] = useState<{
     correct: number;
@@ -146,6 +168,7 @@ export const App: React.FC = () => {
         await mergeWithCloud();
         setTopicProgress(loadTopicProgress(course));
         setWordProgress(loadWordProgress(course));
+        setExamResults(loadExamResults(course));
         setStats(loadLocalStats());
       }
     };
@@ -171,6 +194,7 @@ export const App: React.FC = () => {
     }
     setTopicProgress(loadTopicProgress(newCourse));
     setWordProgress(loadWordProgress(newCourse));
+    setExamResults(loadExamResults(newCourse));
     handleHomeClick();
   };
 
@@ -186,7 +210,7 @@ export const App: React.FC = () => {
     }
     setSelectedGrades(next);
     saveStoredGrades(next);
-    if (selectedTopic) {
+    if (selectedTopic || activeExamGrade) {
       handleHomeClick();
     }
   };
@@ -195,7 +219,7 @@ export const App: React.FC = () => {
     const next: Grade[] = [1, 2, 3];
     setSelectedGrades(next);
     saveStoredGrades(next);
-    if (selectedTopic) {
+    if (selectedTopic || activeExamGrade) {
       handleHomeClick();
     }
   };
@@ -298,10 +322,27 @@ export const App: React.FC = () => {
     }
   };
 
+  const handleStartExam = (grade: Grade) => {
+    setSelectedTopic(null);
+    setGameMode(null);
+    setCelebration(null);
+    setActiveExamGrade(grade);
+  };
+
+  const handleExamComplete = (result: ExamResult) => {
+    const updated = saveExamResult(course, result);
+    setExamResults(updated);
+    if (result.starsEarned > 0) {
+      const updatedStats = addEarnedStars(result.starsEarned);
+      setStats(updatedStats);
+    }
+  };
+
   const handleHomeClick = () => {
     setCelebration(null);
     setGameMode(null);
     setSelectedTopic(null);
+    setActiveExamGrade(null);
   };
 
   return (
@@ -327,8 +368,22 @@ export const App: React.FC = () => {
 
       {/* Main Content Area */}
       <main className="flex-1">
+        {/* Screen: Exam Active */}
+        {activeExamGrade !== null && (
+          <div className="pt-2">
+            <ExamGame
+              grade={activeExamGrade}
+              topics={examTopics}
+              language={language}
+              course={course}
+              onComplete={handleExamComplete}
+              onBack={() => setActiveExamGrade(null)}
+            />
+          </div>
+        )}
+
         {/* Screen 1: Topic Catalog */}
-        {!selectedTopic && (
+        {!selectedTopic && activeExamGrade === null && (
           <TopicList
             topics={filteredTopics}
             language={language}
@@ -343,6 +398,8 @@ export const App: React.FC = () => {
             avatar={stats.avatar}
             onOpenShop={() => setIsAvatarShopOpen(true)}
             onOpenStats={() => setIsStatsModalOpen(true)}
+            examResults={examResults}
+            onStartExam={handleStartExam}
           />
         )}
 
@@ -490,6 +547,7 @@ export const App: React.FC = () => {
         onSelectTopic={(t) => {
           setSelectedTopic(t);
           setGameMode(null);
+          setActiveExamGrade(null);
         }}
       />
 

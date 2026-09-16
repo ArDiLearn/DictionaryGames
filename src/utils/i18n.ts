@@ -190,6 +190,30 @@ export interface Translations {
       streakMaster: { title: string; desc: string };
     };
   };
+  exam: {
+    cardTitle: string;
+    cardSubtitle: string;
+    readyBadge: string;
+    bestScoreLabel: string;
+    startBtn: string;
+    retryBtn: string;
+    questionCounter: string;
+    promptAudio: string;
+    promptChoice: string;
+    promptTrueFalse: string;
+    gradeMark5: string;
+    gradeMark4: string;
+    gradeMark3: string;
+    gradeMarkRetry: string;
+    goldCup: string;
+    silverCup: string;
+    bronzeCup: string;
+    passedHeadline: string;
+    needPracticeHeadline: string;
+    starsAddedToBank: string;
+    againBtn: string;
+    backToCatalog: string;
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -383,6 +407,30 @@ export const translations: Record<Language, Translations> = {
         streakMaster: { title: 'Супер-ученик', desc: 'Серия занятий не менее 3 дней подряд' },
       },
     },
+    exam: {
+      cardTitle: 'Контрольная работа',
+      cardSubtitle: 'Проверка знаний по всем основным темам',
+      readyBadge: 'Проверь свои знания! 🎓',
+      bestScoreLabel: 'Лучший результат',
+      startBtn: 'Начать контрольную',
+      retryBtn: 'Улучшить оценку',
+      questionCounter: 'Вопрос',
+      promptAudio: 'Послушай внимательно и выбери перевод',
+      promptChoice: 'Как переводится это слово?',
+      promptTrueFalse: 'Верно ли указан перевод?',
+      gradeMark5: 'Отлично! 5+',
+      gradeMark4: 'Хорошо! 4',
+      gradeMark3: 'Зачёт! 3',
+      gradeMarkRetry: 'Попробуй ещё раз!',
+      goldCup: 'Золотой кубок 🏆',
+      silverCup: 'Серебряный кубок 🥈',
+      bronzeCup: 'Бронзовый кубок 🥉',
+      passedHeadline: 'Ура! Контрольная сдана!',
+      needPracticeHeadline: 'Нужно ещё немного потренироваться',
+      starsAddedToBank: 'добавлено в копилку!',
+      againBtn: 'Пройти снова',
+      backToCatalog: 'К темам',
+    },
   },
   lv: {
     appTitle: 'MindWordy',
@@ -573,6 +621,30 @@ export const translations: Record<Language, Translations> = {
         topicMaster: { title: 'Tēmas teicamnieks', desc: 'Jebkura tēma pabeigta ar 3 zvaigznēm' },
         streakMaster: { title: 'Super-skolēns', desc: 'Mācību sērija vismaz 3 dienas pēc kārtas' },
       },
+    },
+    exam: {
+      cardTitle: 'Pārbaudes darbs',
+      cardSubtitle: 'Zināšanu pārbaude visās pamatkursa tēmās',
+      readyBadge: 'Pārbaudi savas zināšanas! 🎓',
+      bestScoreLabel: 'Labākais rezultāts',
+      startBtn: 'Sākt pārbaudes darbu',
+      retryBtn: 'Uzlabot atzīmi',
+      questionCounter: 'Jautājums',
+      promptAudio: 'Klausies uzmanīgi un izvēlies tulkojumu',
+      promptChoice: 'Kā tulko šo vārdu?',
+      promptTrueFalse: 'Vai tulkojums ir pareizs?',
+      gradeMark5: 'Teicami! 5+',
+      gradeMark4: 'Labi! 4',
+      gradeMark3: 'Ieskaitīts! 3',
+      gradeMarkRetry: 'Mēģini vēlreiz!',
+      goldCup: 'Zelta kauss 🏆',
+      silverCup: 'Sudraba kauss 🥈',
+      bronzeCup: 'Bronzas kauss 🥉',
+      passedHeadline: 'Urrā! Pārbaudes darbs nokārtots!',
+      needPracticeHeadline: 'Vēl nedaudz jāpatrenējas',
+      starsAddedToBank: 'pievienotas krājkasītei!',
+      againBtn: 'Pildīt vēlreiz',
+      backToCatalog: 'Uz tēmām',
     },
   },
 };

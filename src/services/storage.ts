@@ -1,4 +1,4 @@
-import { TopicProgress, WordProgress, UserStats, Grade, GradeFilter, LearningCourse } from '../types';
+import { TopicProgress, WordProgress, UserStats, Grade, GradeFilter, LearningCourse, ExamResult } from '../types';
 import { getCurrentUser, syncProgressToCloud, fetchProgressFromCloud } from './supabase';
 import { DEFAULT_UNLOCKED_AVATARS } from '../data/avatars';
 
@@ -371,5 +371,50 @@ export async function mergeWithCloud(): Promise<boolean> {
   } catch (err) {
     console.error('Failed to merge with cloud:', err);
     return false;
+  }
+}
+
+const EXAM_RESULTS_KEY = 'mindwordy_exam_results';
+const OLD_EXAM_RESULTS_KEY = 'wordykids_exam_results';
+
+function getExamResultsKey(course: LearningCourse = 'en', legacy = false): string {
+  const base = legacy ? OLD_EXAM_RESULTS_KEY : EXAM_RESULTS_KEY;
+  return course === 'lv' ? `${base}_lv` : base;
+}
+
+export function loadExamResults(course: LearningCourse = 'en'): Record<number, ExamResult> {
+  try {
+    const key = getExamResultsKey(course);
+    const oldKey = getExamResultsKey(course, true);
+    const raw = getItemWithFallback(key, oldKey);
+    if (raw) {
+      return JSON.parse(raw);
+    }
+  } catch {}
+  return {};
+}
+
+export function saveExamResult(
+  course: LearningCourse = 'en',
+  result: ExamResult
+): Record<number, ExamResult> {
+  try {
+    const current = loadExamResults(course);
+    const existing = current[result.grade];
+    // Keep best result: higher score percent, or same score with higher stars
+    const shouldUpdate =
+      !existing ||
+      result.scorePercent > existing.scorePercent ||
+      (result.scorePercent === existing.scorePercent && result.starsEarned > (existing.starsEarned || 0));
+
+    if (shouldUpdate) {
+      current[result.grade] = result;
+      const key = getExamResultsKey(course);
+      localStorage.setItem(key, JSON.stringify(current));
+    }
+    return current;
+  } catch (err) {
+    console.error('Failed to save exam result:', err);
+    return loadExamResults(course);
   }
 }

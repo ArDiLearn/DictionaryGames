@@ -47,6 +47,7 @@ import {
   GRADE_3_MAIN_TOPICS,
   EXTRA_TOPICS,
   isTopicExtra,
+  GRADE_3_EXTRA_DUPLICATES,
 } from './utils/i18n';
 
 export const App: React.FC = () => {
@@ -103,36 +104,35 @@ export const App: React.FC = () => {
         }
 
         // For Extra topics:
+        let extraWords = topic.words;
+
         // When Grade 1 is selected alone: ONLY show Grade 1 words!
         if (selectedGrades.length === 1 && selectedGrades[0] === 1) {
-          return {
-            ...topic,
-            words: topic.words.filter((w) => (w.grade || 1) === 1),
-          };
-        }
-
-        // When Grade 2 is selected alone: show Grade 2 words first, then Grade 1 words!
-        if (selectedGrades.length === 1 && selectedGrades[0] === 2) {
+          extraWords = topic.words.filter((w) => (w.grade || 1) === 1);
+        } else if (selectedGrades.length === 1 && selectedGrades[0] === 2) {
+          // When Grade 2 is selected alone: show Grade 2 words first, then Grade 1 words!
           const g2Words = topic.words.filter((w) => (w.grade || 1) === 2);
           const g1Words = topic.words.filter((w) => (w.grade || 1) === 1);
-          return {
-            ...topic,
-            words: [...g2Words, ...g1Words],
-          };
-        }
-
-        // When Grade 3 is selected alone or multi-grade:
-        if (gradesSet.has(2)) {
+          extraWords = [...g2Words, ...g1Words];
+        } else if (gradesSet.has(2)) {
+          // When multi-grade including Grade 2:
           const g2Words = topic.words.filter((w) => (w.grade || 1) === 2);
           const g1Words = topic.words.filter((w) => (w.grade || 1) === 1);
           const otherWords = topic.words.filter((w) => (w.grade || 1) !== 1 && (w.grade || 1) !== 2);
-          return {
-            ...topic,
-            words: [...g2Words, ...g1Words, ...otherWords],
-          };
+          extraWords = [...g2Words, ...g1Words, ...otherWords];
         }
 
-        return topic;
+        // When Grade 3 is active/selected, remove Group B duplicates (park, school, teacher, chocolate) from extra topics!
+        if (gradesSet.has(3)) {
+          extraWords = extraWords.filter(
+            (w) => !GRADE_3_EXTRA_DUPLICATES.has(w.en.toLowerCase().trim())
+          );
+        }
+
+        return {
+          ...topic,
+          words: extraWords,
+        };
       })
       .filter((topic) => topic.words.length > 0);
 

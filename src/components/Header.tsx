@@ -3,6 +3,7 @@ import { Volume2, VolumeX, Cloud, Check, Sparkles, BarChart3, ChevronRight, Chev
 import { Language, UserStats, Grade, LearningCourse } from '../types';
 import { translations, getGradeFilterInfo, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
+import { FlagIcon } from './FlagIcon';
 
 interface HeaderProps {
   course: LearningCourse;
@@ -116,8 +117,9 @@ export const Header: React.FC<HeaderProps> = ({
                   Wordy<span className="text-pink-500">Kids</span>
                 </span>
               </div>
-              <p className="text-xs text-slate-400 font-medium -mt-1 hidden md:block whitespace-nowrap">
-                {course === 'lv' ? t.courseLatvianSubtitle : t.appSubtitle}
+              <p className="text-xs text-slate-400 font-medium -mt-1 hidden md:flex items-center gap-1.5 whitespace-nowrap">
+                <FlagIcon country={course === 'en' ? 'gb' : 'lv'} size="xs" />
+                <span>{course === 'lv' ? t.courseLatvianSubtitle : t.appSubtitle}</span>
               </p>
             </div>
           </button>

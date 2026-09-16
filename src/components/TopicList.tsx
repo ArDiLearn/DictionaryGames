@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Topic, Language, TopicProgress, Grade, LearningCourse } from '../types';
 import { TopicCard } from './TopicCard';
+import { FlagIcon } from './FlagIcon';
 import {
   translations,
   getGradeFilterInfo,
@@ -120,9 +121,11 @@ export const TopicList: React.FC<TopicListProps> = ({
                   className="flex items-center gap-2.5 bg-white/20 hover:bg-white/30 active:scale-95 transition-all backdrop-blur-md px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl border-2 border-white/40 cursor-pointer text-white shadow-md select-none group/btn"
                   title={t.courseSwitchHint}
                 >
-                  <span className="text-2xl sm:text-3xl shrink-0 transition-transform group-hover/btn:scale-110">
-                    {course === 'en' ? '🇬🇧' : '🇱🇻'}
-                  </span>
+                  <FlagIcon
+                    country={course === 'en' ? 'gb' : 'lv'}
+                    size="xl"
+                    className="shadow-md rounded-md ring-1.5 ring-white/50 group-hover/btn:scale-105 transition-transform"
+                  />
                   <div className="flex flex-col text-left leading-tight">
                     <span className="text-xs sm:text-sm font-black whitespace-nowrap drop-shadow-sm">
                       {course === 'en' ? t.courseEnglish : t.courseLatvian}
@@ -136,6 +139,7 @@ export const TopicList: React.FC<TopicListProps> = ({
 
                 {/* Floating tooltip on hover */}
                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900/95 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xl border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-30 flex items-center gap-1.5">
+                  <FlagIcon country={course === 'en' ? 'lv' : 'gb'} size="xs" />
                   <span>💡</span>
                   <span>{t.courseSwitchHint}</span>
                 </div>

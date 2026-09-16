@@ -418,3 +418,63 @@ export function saveExamResult(
     return loadExamResults(course);
   }
 }
+
+const EXAM_HISTORY_KEY = 'mindwordy_exam_history';
+const OLD_EXAM_HISTORY_KEY = 'wordykids_exam_history';
+
+function getExamHistoryKey(course: LearningCourse = 'en', legacy = false): string {
+  const base = legacy ? OLD_EXAM_HISTORY_KEY : EXAM_HISTORY_KEY;
+  return course === 'lv' ? `${base}_lv` : base;
+}
+
+export function loadExamHistory(course: LearningCourse = 'en'): ExamResult[] {
+  try {
+    const key = getExamHistoryKey(course);
+    const oldKey = getExamHistoryKey(course, true);
+    const raw = getItemWithFallback(key, oldKey);
+    if (raw) {
+      const parsed: ExamResult[] = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch {}
+
+  // Fallback: seed history with existing best results if history is empty
+  try {
+    const bestResults = loadExamResults(course);
+    const seeded = Object.values(bestResults);
+    if (seeded.length > 0) {
+      return seeded.sort(
+        (a, b) => new Date(b.completedAt).getTime() - new Date(a.completedAt).getTime()
+      );
+    }
+  } catch {}
+
+  return [];
+}
+
+export function saveExamHistory(course: LearningCourse = 'en', history: ExamResult[]) {
+  try {
+    const key = getExamHistoryKey(course);
+    localStorage.setItem(key, JSON.stringify(history));
+  } catch (err) {
+    console.error('Failed to save exam history:', err);
+  }
+}
+
+export function recordExamAttempt(
+  course: LearningCourse = 'en',
+  result: ExamResult
+): {
+  results: Record<number, ExamResult>;
+  history: ExamResult[];
+} {
+  const updatedResults = saveExamResult(course, result);
+  const currentHistory = loadExamHistory(course);
+  // Add to beginning of history, max 50 items
+  const newHistory = [result, ...currentHistory.filter((item) => item.completedAt !== result.completedAt)].slice(0, 50);
+  saveExamHistory(course, newHistory);
+  return { results: updatedResults, history: newHistory };
+}
+

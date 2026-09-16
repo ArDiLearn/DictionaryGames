@@ -33,7 +33,8 @@ import {
   purchaseAvatar,
   addEarnedStars,
   loadExamResults,
-  saveExamResult,
+  loadExamHistory,
+  recordExamAttempt,
 } from './services/storage';
 import { getCurrentUser } from './services/supabase';
 
@@ -68,6 +69,10 @@ export const App: React.FC = () => {
   const [examResults, setExamResults] = useState<Record<number, ExamResult>>(() =>
     loadExamResults(getStoredCourse())
   );
+  const [examHistory, setExamHistory] = useState<ExamResult[]>(() =>
+    loadExamHistory(getStoredCourse())
+  );
+  const [statsInitialTab, setStatsInitialTab] = useState<'overview' | 'exams' | 'topics' | 'practice' | 'awards'>('overview');
   const [isCloudSynced, setIsCloudSynced] = useState<boolean>(false);
   const [isSyncModalOpen, setIsSyncModalOpen] = useState<boolean>(false);
   const [isAvatarShopOpen, setIsAvatarShopOpen] = useState<boolean>(false);
@@ -202,6 +207,7 @@ export const App: React.FC = () => {
         setTopicProgress(loadTopicProgress(course));
         setWordProgress(loadWordProgress(course));
         setExamResults(loadExamResults(course));
+        setExamHistory(loadExamHistory(course));
         setStats(loadLocalStats());
       }
     };
@@ -228,6 +234,7 @@ export const App: React.FC = () => {
     setTopicProgress(loadTopicProgress(newCourse));
     setWordProgress(loadWordProgress(newCourse));
     setExamResults(loadExamResults(newCourse));
+    setExamHistory(loadExamHistory(newCourse));
     handleHomeClick();
   };
 
@@ -363,8 +370,9 @@ export const App: React.FC = () => {
   };
 
   const handleExamComplete = (result: ExamResult) => {
-    const updated = saveExamResult(course, result);
-    setExamResults(updated);
+    const { results, history } = recordExamAttempt(course, result);
+    setExamResults(results);
+    setExamHistory(history);
     if (result.starsEarned > 0) {
       const updatedStats = addEarnedStars(result.starsEarned);
       setStats(updatedStats);
@@ -391,7 +399,10 @@ export const App: React.FC = () => {
         isCloudSynced={isCloudSynced}
         onOpenSync={() => setIsSyncModalOpen(true)}
         onOpenShop={() => setIsAvatarShopOpen(true)}
-        onOpenStats={() => setIsStatsModalOpen(true)}
+        onOpenStats={() => {
+          setStatsInitialTab('overview');
+          setIsStatsModalOpen(true);
+        }}
         onUpdateStats={handleUpdateStats}
         onHomeClick={handleHomeClick}
       />
@@ -427,7 +438,10 @@ export const App: React.FC = () => {
             playerName={stats.playerName}
             avatar={stats.avatar}
             onOpenShop={() => setIsAvatarShopOpen(true)}
-            onOpenStats={() => setIsStatsModalOpen(true)}
+            onOpenStats={(tab) => {
+              setStatsInitialTab(tab || 'overview');
+              setIsStatsModalOpen(true);
+            }}
             examResults={examResults}
             onStartExam={handleStartExam}
           />
@@ -574,10 +588,16 @@ export const App: React.FC = () => {
         topics={topics}
         topicProgress={topicProgress}
         wordProgress={wordProgress}
+        examResults={examResults}
+        examHistory={examHistory}
+        initialTab={statsInitialTab}
         onSelectTopic={(t) => {
           setSelectedTopic(t);
           setGameMode(null);
           setActiveExamGrade(null);
+        }}
+        onStartExam={(grade) => {
+          handleStartExam(grade);
         }}
       />
 

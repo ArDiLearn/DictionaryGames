@@ -2,7 +2,7 @@ import React from 'react';
 import { Grade, Language, LearningCourse, ExamResult } from '../types';
 import { translations, formatWordsCount, getTopicsPlural, getExamWordsCountForGrade } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
-import { Play, RotateCcw } from 'lucide-react';
+import { Play, RotateCcw, BarChart3 } from 'lucide-react';
 
 interface ExamCardProps {
   grade: Grade;
@@ -14,6 +14,7 @@ interface ExamCardProps {
   wordsCount?: number;
   result?: ExamResult;
   onStart: (grade: Grade) => void;
+  onOpenStats?: () => void;
 }
 
 export const ExamCard: React.FC<ExamCardProps> = ({
@@ -25,6 +26,7 @@ export const ExamCard: React.FC<ExamCardProps> = ({
   wordsCount,
   result,
   onStart,
+  onOpenStats,
 }) => {
   const t = translations[language];
 
@@ -115,13 +117,22 @@ export const ExamCard: React.FC<ExamCardProps> = ({
 
         <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 w-full md:w-auto justify-between md:justify-end">
           {result ? (
-            <div className="flex items-center gap-2.5 bg-white/90 backdrop-blur-xs border-2 border-amber-200 px-3.5 py-2 rounded-2xl shadow-xs">
-              <span className="text-2xl sm:text-3xl">
+            <button
+              type="button"
+              onClick={() => {
+                sounds.playClick();
+                if (onOpenStats) onOpenStats();
+              }}
+              className="flex items-center gap-2.5 bg-white/95 hover:bg-white active:scale-95 border-2 border-amber-200 hover:border-amber-400 px-3.5 py-2 rounded-2xl shadow-xs transition-all cursor-pointer text-left group"
+              title={t.statsModal.examsViewHistory}
+            >
+              <span className="text-2xl sm:text-3xl group-hover:scale-110 transition-transform">
                 {cupInfo ? cupInfo.emoji : '⭐'}
               </span>
               <div>
-                <div className="text-[10px] sm:text-xs font-extrabold uppercase text-amber-800/70 tracking-wider">
-                  {t.exam.bestScoreLabel}
+                <div className="text-[10px] sm:text-xs font-extrabold uppercase text-amber-800/70 tracking-wider flex items-center gap-1">
+                  <span>{t.exam.bestScoreLabel}</span>
+                  <BarChart3 className="w-3 h-3 text-amber-600 opacity-60 group-hover:opacity-100 transition-opacity" />
                 </div>
                 <div className="flex items-center gap-1.5">
                   {result.gradeMark && (
@@ -134,12 +145,28 @@ export const ExamCard: React.FC<ExamCardProps> = ({
                   </span>
                 </div>
               </div>
-            </div>
+            </button>
           ) : (
-            <div className="hidden lg:flex items-center gap-1.5 bg-amber-100/80 border border-amber-300 px-3 py-1.5 rounded-xl text-xs font-bold text-amber-900">
-              <span>💡</span>
-              <span>{t.exam.readyBadge}</span>
-            </div>
+            <>
+              {onOpenStats && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    sounds.playClick();
+                    onOpenStats();
+                  }}
+                  className="inline-flex items-center gap-1.5 bg-white/90 hover:bg-white active:scale-95 border border-amber-300 px-3 py-2 rounded-2xl text-xs font-bold text-amber-900 transition-all cursor-pointer shadow-2xs"
+                  title={t.statsModal.examsViewHistory}
+                >
+                  <BarChart3 className="w-3.5 h-3.5 text-amber-700" />
+                  <span>{t.statsModal.examsStatsBtn}</span>
+                </button>
+              )}
+              <div className="hidden lg:flex items-center gap-1.5 bg-amber-100/80 border border-amber-300 px-3 py-1.5 rounded-xl text-xs font-bold text-amber-900">
+                <span>💡</span>
+                <span>{t.exam.readyBadge}</span>
+              </div>
+            </>
           )}
 
           <button

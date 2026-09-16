@@ -264,22 +264,6 @@ hi,"sveiki, čau",привет,1
 hey,hei,"эй, привет",1
 this is,šis ir...,это...,1
 ,,,
-Pronouns,Vietniekvārdi,Местоимения,
-I'm,es esmu,я,1
-he's,viņš ir,он,1
-she's,viņa ir,она,1
-they're,viņi ir,они,1
-we,mēs,мы,1
-they,viņi,они,1
-my,mans,мой,1
-me,mani,меня,1
-this,šis,этот,1
-it's,tas ir,это,1
-that's,tas ir,то,1
-here,šeit,здесь,1
-your,"tavs, jūsu","твой, ваш",1
-our,mūsu,наш,1
-,,,
 Instructions,Norādījumi,Инструкции,
 listen,klausīties,слушать,1
 point,rādīt,показывать,1
@@ -385,28 +369,6 @@ things,lietas,"вещи, предметы",1
 scissors,šķēres,ножницы,1
 school,skola,школа,1
 ,,,
-Other words,Dažādi vārdi,Разные слова,
-rainbow,varavīksne,радуга,1
-people,cilvēki,люди,1
-tired,noguris,уставший,1
-different,atšķirīgs,разный,1
-activity,nodarbe,занятие,1
-lion,lauva,лев,1
-deer,briedis,олень,1
-sun,saule,солнце,1
-moon,mēness,луна,1
-tree,koks,дерево,1
-animal,dzīvnieks,животное,1
-country,valsts,страна,1
-cup,krūzīte,чашка,1
-wheel,ritenis,колесо,1
-favourite,mīļākais,любимый,1
-happy,laimīgs,счастливый,1
-ruby,rubīns,рубин,1
-toys,rotaļlietas,игрушки,1
-food,ēdiens,еда,1
-shapes,formas,фигуры,1
-,,,
 Garden,Dārzs,Сад,
 root,sakne,корень,2
 flower,puķe,цветок,2
@@ -465,6 +427,44 @@ party,ballīte,"праздник, вечеринка",1
 fun,jautrība,"веселье, забава",1
 story,stāsts,"рассказ, история",1
 chant,ritmiska dziesmiņa,"речёвка, песенка",1
+,,,
+Pronouns,Vietniekvārdi,Местоимения,
+I'm,es esmu,я,1
+he's,viņš ir,он,1
+she's,viņa ir,она,1
+they're,viņi ir,они,1
+we,mēs,мы,1
+they,viņi,они,1
+my,mans,мой,1
+me,mani,меня,1
+this,šis,этот,1
+it's,tas ir,это,1
+that's,tas ir,то,1
+here,šeit,здесь,1
+your,"tavs, jūsu","твой, ваш",1
+our,mūsu,наш,1
+,,,
+Other words,Dažādi vārdi,Разные слова,
+rainbow,varavīksne,радуга,1
+people,cilvēki,люди,1
+tired,noguris,уставший,1
+different,atšķirīgs,разный,1
+activity,nodarbe,занятие,1
+lion,lauva,лев,1
+deer,briedis,олень,1
+sun,saule,солнце,1
+moon,mēness,луна,1
+tree,koks,дерево,1
+animal,dzīvnieks,животное,1
+country,valsts,страна,1
+cup,krūzīte,чашка,1
+wheel,ritenis,колесо,1
+favourite,mīļākais,любимый,1
+happy,laimīgs,счастливый,1
+ruby,rubīns,рубин,1
+toys,rotaļlietas,игрушки,1
+food,ēdiens,еда,1
+shapes,formas,фигуры,1
 ,,,
 Birthday,Dzimšanas diena,День рождения,
 board game,galda spēle,настольная игра,3

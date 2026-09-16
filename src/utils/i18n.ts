@@ -861,19 +861,19 @@ export const EXTRA_TOPICS: string[] = [
   'shapes',
   'actions',
   'classroom_objects_plus',
-  'other_words',
   'food_and_drink_plus',
   'fruit_and_vegetables_plus',
   'family_plus',
   'art_and_games_plus',
   'garden',
   'building_materials',
-  'pronouns',
   'introductions',
   'questions',
   'instructions',
   'places',
   'helper_words',
+  'pronouns',
+  'other_words',
 ];
 
 export const GRADE_1_EXTRA_TOPICS: string[] = [
@@ -881,15 +881,15 @@ export const GRADE_1_EXTRA_TOPICS: string[] = [
   'shapes',
   'actions',
   'classroom_objects_plus',
-  'other_words',
   'family_plus',
   'art_and_games_plus',
-  'pronouns',
   'introductions',
   'questions',
   'instructions',
   'places',
   'helper_words',
+  'pronouns',
+  'other_words',
 ];
 
 export const GRADE_1_MAIN_TOPICS: string[] = [
@@ -935,15 +935,15 @@ export const GRADE_1_TOPIC_ORDER: string[] = [
   'shapes',
   'actions',
   'classroom_objects_plus',
-  'other_words',
   'family_plus',
   'art_and_games_plus',
-  'pronouns',
   'introductions',
   'questions',
   'instructions',
   'places',
   'helper_words',
+  'pronouns',
+  'other_words',
 ];
 
 export const GRADE_2_TOPIC_ORDER: string[] = [
@@ -958,13 +958,13 @@ export const GRADE_2_TOPIC_ORDER: string[] = [
   'days_of_the_week',
   'shapes',
   'classroom_objects_plus',
-  'other_words',
-  'pronouns',
   'introductions',
   'questions',
   'instructions',
   'places',
   'helper_words',
+  'pronouns',
+  'other_words',
 ];
 
 export const GRADE_3_TOPIC_ORDER: string[] = [

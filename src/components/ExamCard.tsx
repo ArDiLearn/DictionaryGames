@@ -6,6 +6,8 @@ import { Play, RotateCcw } from 'lucide-react';
 
 interface ExamCardProps {
   grade: Grade;
+  availableGrades?: Grade[];
+  onSelectGradeTab?: (grade: Grade) => void;
   language: Language;
   course: LearningCourse;
   topicsCount: number;
@@ -15,6 +17,8 @@ interface ExamCardProps {
 
 export const ExamCard: React.FC<ExamCardProps> = ({
   grade,
+  availableGrades,
+  onSelectGradeTab,
   language,
   topicsCount,
   result,
@@ -57,11 +61,38 @@ export const ExamCard: React.FC<ExamCardProps> = ({
           </div>
 
           <div>
-            <div className="flex flex-wrap items-center gap-2 mb-1">
-              <span className="text-xs font-black uppercase tracking-wider bg-amber-500 text-white px-2.5 py-0.5 rounded-full shadow-xs">
-                {gradeName}
-              </span>
-              <span className="text-xs font-bold text-amber-800 bg-amber-100/90 px-2 py-0.5 rounded-full border border-amber-200">
+            <div className="flex flex-wrap items-center gap-2 mb-1.5">
+              {availableGrades && availableGrades.length > 1 && onSelectGradeTab ? (
+                <div className="flex items-center gap-1 bg-amber-200/90 p-1 rounded-2xl border border-amber-300 shadow-inner">
+                  {availableGrades.map((g) => {
+                    const isTabActive = g === grade;
+                    const label = language === 'ru' ? `${g} класс` : `${g}. klase`;
+                    return (
+                      <button
+                        key={g}
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          sounds.playClick();
+                          onSelectGradeTab(g);
+                        }}
+                        className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                          isTabActive
+                            ? 'bg-amber-600 text-white shadow-xs scale-105'
+                            : 'text-amber-900/80 hover:bg-amber-300/60 hover:text-amber-950'
+                        }`}
+                      >
+                        {label}
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : (
+                <span className="text-xs font-black uppercase tracking-wider bg-amber-500 text-white px-2.5 py-0.5 rounded-full shadow-xs">
+                  {gradeName}
+                </span>
+              )}
+              <span className="text-xs font-bold text-amber-800 bg-amber-100/90 px-2.5 py-1 rounded-full border border-amber-200">
                 {language === 'ru' ? `${topicsCount} тем программы` : `${topicsCount} pamatkursa tēmas`}
               </span>
             </div>

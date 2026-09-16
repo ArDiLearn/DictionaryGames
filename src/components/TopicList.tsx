@@ -54,6 +54,7 @@ export const TopicList: React.FC<TopicListProps> = ({
 }) => {
   const t = translations[language];
   const [searchQuery, setSearchQuery] = useState('');
+  const [examGradeTab, setExamGradeTab] = useState<Grade>(() => selectedGrades[0] || 1);
 
   const filteredTopics = topics.filter((topic) => {
     const query = searchQuery.toLowerCase().trim();
@@ -305,30 +306,34 @@ export const TopicList: React.FC<TopicListProps> = ({
               </span>
             </div>
 
-            {/* Exam Super Card(s) (Variant A) */}
-            {!searchQuery && onStartExam && (
-              <div className="space-y-4 mb-6">
-                {selectedGrades.map((grade) => {
-                  const topicsCount =
-                    grade === 1
-                      ? GRADE_1_MAIN_TOPICS.length
-                      : grade === 2
-                      ? GRADE_2_MAIN_TOPICS.length
-                      : GRADE_3_MAIN_TOPICS.length;
-                  return (
-                    <ExamCard
-                      key={`exam-grade-${grade}`}
-                      grade={grade}
-                      language={language}
-                      course={course}
-                      topicsCount={topicsCount}
-                      result={examResults ? examResults[grade] : undefined}
-                      onStart={onStartExam}
-                    />
-                  );
-                })}
-              </div>
-            )}
+            {/* Exam Super Card (Variant A with Grade Switcher) */}
+            {!searchQuery && onStartExam && selectedGrades.length > 0 && (() => {
+              const activeGrade: Grade = selectedGrades.includes(examGradeTab)
+                ? examGradeTab
+                : selectedGrades[0];
+              const topicsCount =
+                activeGrade === 1
+                  ? GRADE_1_MAIN_TOPICS.length
+                  : activeGrade === 2
+                  ? GRADE_2_MAIN_TOPICS.length
+                  : GRADE_3_MAIN_TOPICS.length;
+
+              return (
+                <div className="mb-6">
+                  <ExamCard
+                    key={`exam-grade-${activeGrade}`}
+                    grade={activeGrade}
+                    availableGrades={selectedGrades.length > 1 ? selectedGrades : undefined}
+                    onSelectGradeTab={(g) => setExamGradeTab(g)}
+                    language={language}
+                    course={course}
+                    topicsCount={topicsCount}
+                    result={examResults ? examResults[activeGrade] : undefined}
+                    onStart={onStartExam}
+                  />
+                </div>
+              );
+            })()}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
               {mainTopics.map((topic) => (

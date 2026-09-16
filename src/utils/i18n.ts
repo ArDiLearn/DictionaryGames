@@ -1005,6 +1005,18 @@ export function isTopicExtra(topicId: string, selectedGrades: Grade[]): boolean 
   return EXTRA_TOPICS.includes(topicId);
 }
 
+/**
+ * Words that are taught as Main topics in Grade 3 (town, jobs, birthday),
+ * but also appear in lower-grade extra topics (places, classroom_objects_plus, food_and_drink_plus).
+ * When Grade 3 is selected, these duplicate words are removed from extra topics.
+ */
+export const GRADE_3_EXTRA_DUPLICATES = new Set([
+  'park',
+  'school',
+  'teacher',
+  'chocolate',
+]);
+
 export function getTopicsPlural(count: number, language: Language = 'lv'): string {
   if (language === 'ru') {
     const abs = Math.abs(count);

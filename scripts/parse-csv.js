@@ -98,6 +98,12 @@ const TOPIC_METADATA = {
   'Other words': { icon: 'Sparkles', color: 'emerald', emoji: '🌟' },
   'Dažādi vārdi': { icon: 'Sparkles', color: 'emerald', emoji: '🌟' },
   'Разные слова': { icon: 'Sparkles', color: 'emerald', emoji: '🌟' },
+  'Meals': { icon: 'Utensils', color: 'rose', emoji: '🍽️' },
+  'Ēdienreizes': { icon: 'Utensils', color: 'rose', emoji: '🍽️' },
+  'Приёмы пищи': { icon: 'Utensils', color: 'rose', emoji: '🍽️' },
+  'Age and people': { icon: 'Users', color: 'indigo', emoji: '🧑‍🤝‍🧑' },
+  'Vecums un cilvēki': { icon: 'Users', color: 'indigo', emoji: '🧑‍🤝‍🧑' },
+  'Возраст и люди': { icon: 'Users', color: 'indigo', emoji: '🧑‍🤝‍🧑' },
 };
 
 /**

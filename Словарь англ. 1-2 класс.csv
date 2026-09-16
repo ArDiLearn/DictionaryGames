@@ -82,12 +82,6 @@ twin,dvīnis,близнец,1
 uncle,tēvocis,дядя,1
 auntie,tante,тётя,1
 cousin,brālēns,кузен,1
-baby,zīdainis,младенец,2
-toddler,mazulis,малыш,2
-child,bērns,ребёнок,2
-teenager,pusaudzis,подросток,2
-adult,pieaugušais,взрослый,2
-elderly person,seniors,пожилой человек,2
 ,,,
 Adjectives,Īpašības vārdi,Прилагательные,
 tall,garš,высокий,1
@@ -140,9 +134,6 @@ goat,kaza,коза,1
 sheep,aita,овца,1
 ,,,
 Food and drink,Ēdiens un dzērieni,Еда и напитки,
-breakfast,brokastis,завтрак,2
-lunch,pusdienas,обед,2
-dinner,vakariņas,ужин,2
 juice,sula,сок,2
 cheese,siers,сыр,2
 meat,gaļa,мясо,2
@@ -223,19 +214,6 @@ bedroom,guļamistaba,спальня,2
 dining room,ēdamistaba,столовая,2
 garden,dārzs,сад,2
 living room,viesistaba,гостиная,2
-,,,
-Garden,Dārzs,Сад,
-root,sakne,корень,2
-flower,puķe,цветок,2
-leaves,lapas,листья,2
-fruit,auglis,фрукт,2
-,,,
-Building materials,Būvmateriāli,Строительные материалы,
-bricks,ķieģeļi,кирпичи,2
-wood,koks,дерево,2
-rock,akmens,камень,2
-mud,dubļi,грязь,2
-clay,māls,глина,2
 ,,,
 Days of the week,Nedēļas dienas,Дни недели,
 Monday,pirmdiena,понедельник,2
@@ -364,10 +342,36 @@ different,atšķirīgs,разный,1
 activity,nodarbe,занятие,1
 lion,lauva,лев,1
 deer,briedis,олень,1
+,,,
+Garden,Dārzs,Сад,
+root,sakne,корень,2
+flower,puķe,цветок,2
+leaves,lapas,листья,2
 tree,koks,дерево,2
+fruit,auglis,фрукт,2
 honey,medus,мёд,2
 plums,plūmes,сливы,2
 insects,kukaiņi,насекомые,2
+,,,
+Building materials,Būvmateriāli,Строительные материалы,
+bricks,ķieģeļi,кирпичи,2
+wood,koks,дерево,2
+rock,akmens,камень,2
+mud,dubļi,грязь,2
+clay,māls,глина,2
+,,,
+Meals,Ēdienreizes,Приёмы пищи,
+breakfast,brokastis,завтрак,2
+lunch,pusdienas,обед,2
+dinner,vakariņas,ужин,2
+,,,
+Age and people,Vecums un cilvēki,Возраст и люди,
+baby,zīdainis,младенец,2
+toddler,mazulis,малыш,2
+child,bērns,ребёнок,2
+teenager,pusaudzis,подросток,2
+adult,pieaugušais,взрослый,2
+elderly person,seniors,пожилой человек,2
 ,,,
 Birthday,Dzimšanas diena,День рождения,
 board game,galda spēle,настольная игра,3

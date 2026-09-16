@@ -43,8 +43,6 @@ function shuffle<T>(array: T[]): T[] {
   return arr;
 }
 
-const EXAM_WORD_COUNT = 40;
-
 function generateExamQuestions(
   topics: Topic[],
   grade: Grade,
@@ -65,7 +63,12 @@ function generateExamQuestions(
     });
   });
 
-  const targetCount = Math.min(EXAM_WORD_COUNT, allGradeWords.length);
+  // Target: approximately 65% of all words in the main curriculum topics of this grade
+  // Grade 1 (97 words) -> 63 words; Grade 2 (64 words) -> 42 words; Grade 3 (76 words) -> 49 words
+  const targetCount = Math.min(
+    Math.round(allGradeWords.length * 0.65),
+    allGradeWords.length
+  );
 
   // Prepare topic pools: copy and shuffle words per topic
   const topicPools = topics

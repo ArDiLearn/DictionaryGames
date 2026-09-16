@@ -916,3 +916,22 @@ export function getExtraTopicsSubtitle(count: number, language: Language = 'lv')
   return `${count} ${getTopicsPlural(count, 'lv')} vārdu krājuma paplašināšanai`;
 }
 
+/**
+ * Returns ~65% of words from the main curriculum topics for the given grade:
+ * - Grade 1: 97 words in main topics -> ~65% is 63 words
+ * - Grade 2: 64 words in main topics -> ~65% is 42 words
+ * - Grade 3: 76 words in main topics -> ~65% is 49 words
+ */
+export function getExamWordsCountForGrade(grade: Grade): number {
+  switch (grade) {
+    case 1:
+      return 63;
+    case 2:
+      return 42;
+    case 3:
+      return 49;
+    default:
+      return 42;
+  }
+}
+

@@ -1680,6 +1680,132 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
       <text x="72" y="20" fontSize="9" fill="#f59e0b">✨</text>
     </svg>
   ),
+
+  // classroom - 2 school desks with chairs, chalkboard in background, notebooks
+  'classroom': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Chalkboard in background */}
+      <rect x="14" y="10" width="72" height="24" rx="3" fill="#14532d" stroke="#b45309" strokeWidth="2.5" />
+      <text x="50" y="24" textAnchor="middle" fill="#86efac" fontSize="9" fontFamily="Comic Sans MS, sans-serif" fontWeight="bold">ABC  123</text>
+      <rect x="40" y="31" width="20" height="2.5" rx="1" fill="#f8fafc" />
+
+      {/* Desk 1 (Left desk & chair) */}
+      <rect x="10" y="42" width="12" height="12" rx="3" fill="#b45309" />
+      <line x1="16" y1="54" x2="16" y2="82" stroke="#64748b" strokeWidth="3" strokeLinecap="round" />
+      <rect x="8" y="54" width="16" height="5" rx="2" fill="#d97706" />
+
+      <path d="M22 86 L26 56 L44 56 L48 86" stroke="#475569" strokeWidth="3.5" strokeLinecap="round" />
+      <line x1="24" y1="70" x2="46" y2="70" stroke="#64748b" strokeWidth="2.5" />
+      <polygon points="18,56 46,51 50,57 20,62" fill="#d97706" />
+      <polygon points="18,54 46,49 50,53 20,58" fill="#f59e0b" />
+      {/* Notebook & pencil left */}
+      <polygon points="26,53 36,51 38,55 28,57" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.8" />
+      <line x1="39" y1="50" x2="44" y2="49" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" />
+
+      {/* Desk 2 (Right desk & chair) */}
+      <rect x="58" y="42" width="12" height="12" rx="3" fill="#b45309" />
+      <line x1="64" y1="54" x2="64" y2="82" stroke="#64748b" strokeWidth="3" strokeLinecap="round" />
+      <rect x="56" y="54" width="16" height="5" rx="2" fill="#d97706" />
+
+      <path d="M70 86 L74 56 L92 56 L96 86" stroke="#475569" strokeWidth="3.5" strokeLinecap="round" />
+      <line x1="72" y1="70" x2="94" y2="70" stroke="#64748b" strokeWidth="2.5" />
+      <polygon points="66,56 94,51 98,57 68,62" fill="#d97706" />
+      <polygon points="66,54 94,49 98,53 68,58" fill="#f59e0b" />
+      {/* Notebook & pencil right */}
+      <polygon points="74,53 84,51 86,55 76,57" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.8" />
+      <line x1="87" y1="50" x2="92" y2="49" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  ),
+
+  // class - одноклассники (2 smiling kid figures sitting at a school desk with books)
+  'class': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Student 1 (Boy on left) */}
+      <path d="M19 56 C19 44 41 44 41 56 Z" fill="#3b82f6" />
+      <path d="M28 46 L30 51 L32 46 Z" fill="#ffffff" />
+      <rect x="27" y="38" width="6" height="6" fill="#fed7aa" rx="1" />
+      <circle cx="30" cy="27" r="11" fill="#fed7aa" />
+      <path d="M19 25 C19 16 41 16 41 25 C38 22 34 24 30 21 C26 24 22 22 19 25 Z" fill="#78350f" />
+      <circle cx="26" cy="27" r="1.5" fill="#1e293b" />
+      <circle cx="34" cy="27" r="1.5" fill="#1e293b" />
+      <path d="M27 31 Q30 35 33 31" stroke="#b45309" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      <ellipse cx="24" cy="29" rx="1.8" ry="1.2" fill="#fca5a5" opacity="0.7" />
+      <ellipse cx="36" cy="29" rx="1.8" ry="1.2" fill="#fca5a5" opacity="0.7" />
+
+      {/* Student 2 (Girl on right) */}
+      <path d="M59 56 C59 44 81 44 81 56 Z" fill="#ec4899" />
+      <path d="M68 46 L70 51 L72 46 Z" fill="#ffffff" />
+      <rect x="67" y="38" width="6" height="6" fill="#fed7aa" rx="1" />
+      <circle cx="70" cy="27" r="11" fill="#fed7aa" />
+      <path d="M59 27 C59 16 81 16 81 27 C77 23 74 24 70 21 C66 24 63 23 59 27 Z" fill="#d97706" />
+      {/* Pigtails */}
+      <circle cx="57" cy="31" r="3.5" fill="#d97706" />
+      <circle cx="83" cy="31" r="3.5" fill="#d97706" />
+      <circle cx="58" cy="29" r="1.5" fill="#ec4899" />
+      <circle cx="82" cy="29" r="1.5" fill="#ec4899" />
+      <circle cx="66" cy="27" r="1.5" fill="#1e293b" />
+      <circle cx="74" cy="27" r="1.5" fill="#1e293b" />
+      <path d="M67 31 Q70 35 73 31" stroke="#b45309" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      <ellipse cx="64" cy="29" rx="1.8" ry="1.2" fill="#fca5a5" opacity="0.7" />
+      <ellipse cx="76" cy="29" rx="1.8" ry="1.2" fill="#fca5a5" opacity="0.7" />
+
+      {/* School Desk in front */}
+      <polygon points="10,56 90,56 87,68 13,68" fill="#d97706" stroke="#b45309" strokeWidth="1.5" />
+      <polygon points="10,54 90,54 90,58 10,58" fill="#f59e0b" />
+      <line x1="18" y1="68" x2="16" y2="92" stroke="#475569" strokeWidth="4" strokeLinecap="round" />
+      <line x1="82" y1="68" x2="84" y2="92" stroke="#475569" strokeWidth="4" strokeLinecap="round" />
+      <line x1="18" y1="80" x2="82" y2="80" stroke="#64748b" strokeWidth="3" />
+
+      {/* Hands on desk */}
+      <ellipse cx="23" cy="58" rx="3.5" ry="2.5" fill="#fed7aa" />
+      <ellipse cx="37" cy="58" rx="3.5" ry="2.5" fill="#fed7aa" />
+      <ellipse cx="63" cy="58" rx="3.5" ry="2.5" fill="#fed7aa" />
+      <ellipse cx="77" cy="58" rx="3.5" ry="2.5" fill="#fed7aa" />
+
+      {/* Open notebooks on desk */}
+      <rect x="22" y="60" width="16" height="6" rx="1" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.8" />
+      <line x1="24" y1="62" x2="34" y2="62" stroke="#3b82f6" strokeWidth="0.8" />
+      <rect x="62" y="60" width="16" height="6" rx="1" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.8" />
+      <line x1="64" y1="62" x2="74" y2="62" stroke="#ec4899" strokeWidth="0.8" />
+      <line x1="44" y1="63" x2="56" y2="63" stroke="#eab308" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  ),
+
+  // ruby - red sparkling faceted gemstone
+  'ruby': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-md" fill="none">
+      {/* Ground soft shadow */}
+      <ellipse cx="50" cy="88" rx="28" ry="5" fill="#991b1b" opacity="0.25" />
+
+      {/* Pavilion (Bottom Cone) */}
+      <polygon points="14,38 34,38 50,86" fill="#881337" />
+      <polygon points="34,38 50,38 50,86" fill="#be123c" />
+      <polygon points="50,38 66,38 50,86" fill="#e11d48" />
+      <polygon points="66,38 86,38 50,86" fill="#9f1239" />
+
+      {/* Crown (Top Facets) */}
+      <polygon points="14,38 28,18 34,38" fill="#9f1239" />
+      <polygon points="28,18 42,18 34,38" fill="#e11d48" />
+      <polygon points="34,38 42,18 58,18 66,38 50,38" fill="#f43f5e" />
+      <polygon points="58,18 72,18 66,38" fill="#fb7185" />
+      <polygon points="72,18 86,38 66,38" fill="#e11d48" />
+
+      {/* Top Flat Table */}
+      <polygon points="30,18 70,18 64,30 36,30" fill="#fda4af" opacity="0.8" />
+      <polygon points="36,20 64,20 60,28 40,28" fill="#fff1f2" opacity="0.6" />
+
+      {/* Gem Facet Outlines / Shimmers */}
+      <line x1="14" y1="38" x2="86" y2="38" stroke="#ffe4e6" strokeWidth="1" opacity="0.7" />
+      <line x1="50" y1="38" x2="50" y2="86" stroke="#ffe4e6" strokeWidth="1" opacity="0.6" />
+      <line x1="34" y1="38" x2="50" y2="86" stroke="#ffe4e6" strokeWidth="0.8" opacity="0.4" />
+      <line x1="66" y1="38" x2="50" y2="86" stroke="#ffe4e6" strokeWidth="0.8" opacity="0.4" />
+
+      {/* Sparkles / Star Glints */}
+      <path d="M26 14 Q26 22 18 22 Q26 22 26 30 Q26 22 34 22 Q26 22 26 14 Z" fill="#ffffff" />
+      <circle cx="26" cy="22" r="1.5" fill="#fff1f2" />
+      <path d="M72 54 Q72 59 67 59 Q72 59 72 64 Q72 59 77 59 Q72 59 72 54 Z" fill="#ffffff" opacity="0.9" />
+    </svg>
+  ),
 };
 
 const RU_ALIASES: Record<string, string> = {
@@ -1728,6 +1854,9 @@ const RU_ALIASES: Record<string, string> = {
   'за': 'behind',
   'напротив': 'opposite',
   'над': 'above',
+  'классная комната': 'classroom',
+  'одноклассники': 'class',
+  'рубин': 'ruby',
 };
 
 export const WordIllustration: React.FC<WordIllustrationProps> = ({

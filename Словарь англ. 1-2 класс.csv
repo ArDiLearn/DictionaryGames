@@ -224,6 +224,7 @@ Friday,piektdiena,пятница,1
 Saturday,sestdiena,суббота,1
 Sunday,svētdiena,воскресенье,1
 day,diena,день,1
+night,nakts,ночь,1
 today,šodien,сегодня,1
 yesterday,vakar,вчера,1
 tomorrow,rīt,завтра,1
@@ -255,7 +256,6 @@ What's your name?,Kā tevi sauc?,Как тебя зовут?,1
 How are you?,Kā tev klājas?,Как дела?,1
 How old are you?,Cik tev gadu?,Сколько тебе лет?,1
 What colour?,Kādā krāsā?,Какого цвета?,1
-What's this?,Kas tas ir?,Что это?,1
 please,lūdzu,пожалуйста,1
 thanks,paldies,спасибо,1
 fine,labi,хорошо,1
@@ -335,6 +335,7 @@ where,"kur, kurp","где, куда",1
 who,kas,кто,1
 how,kā,как,1
 which,"kurš, kāds","какой, который",1
+what's this,kas tas ir?,что это?,1
 who's this,kas tas ir?,кто это?,1
 have you got,vai tev ir?,у тебя есть?,1
 question,jautājums,вопрос,1
@@ -375,7 +376,7 @@ text,teksts,текст,1
 photo,foto,фотография,1
 message,ziņa,сообщение,1
 classroom,klases telpa,классная комната,1
-class,klase,"класс, урок",1
+class,klasesbiedri,одноклассники,1
 lesson,stunda,урок,1
 task,uzdevums,задание,1
 group,grupa,группа,1

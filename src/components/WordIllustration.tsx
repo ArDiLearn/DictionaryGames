@@ -1917,8 +1917,8 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
       <circle cx="81" cy="56.5" r="3.5" fill="#ef4444" />
 
       {/* Caption at bottom */}
-      <rect x="22" y="69" width="56" height="12" rx="3" fill="#f1f5f9" />
-      <text x="50" y="78" textAnchor="middle" fill="#0f172a" fontSize="7" fontWeight="bold">WEEK • НЕДЕЛЯ</text>
+      <rect x="30" y="69" width="40" height="12" rx="3" fill="#f1f5f9" />
+      <text x="50" y="78" textAnchor="middle" fill="#0f172a" fontSize="8" fontWeight="bold" letterSpacing="1">WEEK</text>
     </svg>
   ),
 };

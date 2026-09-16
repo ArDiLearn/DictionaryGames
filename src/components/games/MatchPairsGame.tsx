@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Topic, Language } from '../../types';
-import { speakEnglish } from '../../utils/speech';
+import { Topic, Language, LearningCourse } from '../../types';
+import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations, getWordsPlural } from '../../utils/i18n';
 import { ArrowLeft } from 'lucide-react';
@@ -8,6 +8,7 @@ import { ArrowLeft } from 'lucide-react';
 interface MatchPairsGameProps {
   topic: Topic;
   language: Language;
+  course?: LearningCourse;
   onRecordResult: (wordId: string, isCorrect: boolean) => void;
   onComplete: (correctCount: number, totalCount: number) => void;
   onBack: () => void;
@@ -17,13 +18,14 @@ interface MatchCard {
   id: string; // unique card id
   wordId: string;
   text: string;
-  type: 'en' | 'trans';
+  type: 'target' | 'trans';
   matched: boolean;
 }
 
 export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
   topic,
   language,
+  course = 'en',
   onRecordResult,
   onComplete,
   onBack,
@@ -41,27 +43,28 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
   useEffect(() => {
     if (currentBatch.length === 0) return;
 
-    const enCards: MatchCard[] = currentBatch.map((w) => ({
-      id: `en-${w.id}`,
+    const isLatvianCourse = course === 'lv';
+    const targetCards: MatchCard[] = currentBatch.map((w) => ({
+      id: `target-${w.id}`,
       wordId: w.id,
-      text: w.en,
-      type: 'en',
+      text: isLatvianCourse ? w.lv : w.en,
+      type: 'target',
       matched: false,
     }));
 
     const transCards: MatchCard[] = currentBatch.map((w) => ({
       id: `trans-${w.id}`,
       wordId: w.id,
-      text: w[language] || w.ru || w.lv,
+      text: isLatvianCourse ? w.ru : (w[language] || w.ru || w.lv),
       type: 'trans',
       matched: false,
     }));
 
-    const shuffled = [...enCards, ...transCards].sort(() => 0.5 - Math.random());
+    const shuffled = [...targetCards, ...transCards].sort(() => 0.5 - Math.random());
     setCards(shuffled);
     setSelectedCard(null);
     setWrongCardIds([]);
-  }, [roundOffset]);
+  }, [roundOffset, course]);
 
   const handleCardClick = (card: MatchCard) => {
     if (card.matched || wrongCardIds.length > 0) return;
@@ -72,8 +75,8 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
     if (!selectedCard) {
       // First card clicked
       setSelectedCard(card);
-      if (card.type === 'en') {
-        speakEnglish(card.text);
+      if (card.type === 'target') {
+        speakWord(card.text, course);
       }
       return;
     }
@@ -87,7 +90,8 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
       sounds.playCorrect();
       const matchedWord = currentBatch.find((w) => w.id === card.wordId);
       if (matchedWord) {
-        speakEnglish(matchedWord.en);
+        const textToSpeak = course === 'lv' ? matchedWord.lv : matchedWord.en;
+        speakWord(textToSpeak, course);
         onRecordResult(matchedWord.id, true);
       }
 
@@ -186,7 +190,9 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
               className={`btn-3d min-h-[96px] sm:min-h-[104px] p-3 rounded-3xl border-4 text-center font-bold text-base sm:text-lg shadow-md transition-all flex flex-col items-center justify-center ${style}`}
             >
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
-                {card.type === 'en' ? '🇬🇧 EN' : language === 'ru' ? '🇷🇺 RU' : '🇱🇻 LV'}
+                {card.type === 'target'
+                  ? (course === 'lv' ? '🇱🇻 LV' : '🇬🇧 EN')
+                  : (course === 'lv' ? '🇷🇺 RU' : (language === 'ru' ? '🇷🇺 RU' : '🇱🇻 LV'))}
               </span>
               <span className="leading-snug">{card.text}</span>
             </button>

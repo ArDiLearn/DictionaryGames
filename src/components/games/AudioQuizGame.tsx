@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Word, Topic, Language } from '../../types';
-import { speakEnglish } from '../../utils/speech';
+import { Word, Topic, Language, LearningCourse } from '../../types';
+import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
 import { Volume2, ArrowLeft, Headphones } from 'lucide-react';
@@ -9,6 +9,7 @@ interface AudioQuizGameProps {
   topic: Topic;
   allTopics: Topic[];
   language: Language;
+  course?: LearningCourse;
   onRecordResult: (wordId: string, isCorrect: boolean) => void;
   onComplete: (correctCount: number, totalCount: number) => void;
   onBack: () => void;
@@ -18,6 +19,7 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
   topic,
   allTopics,
   language,
+  course = 'en',
   onRecordResult,
   onComplete,
   onBack,
@@ -35,8 +37,10 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
   const playVoice = () => {
     if (!currentWord) return;
     setIsSpeaking(true);
-    speakEnglish(
-      currentWord.en,
+    const textToSpeak = course === 'lv' ? currentWord.lv : currentWord.en;
+    speakWord(
+      textToSpeak,
+      course,
       0.85,
       () => setIsSpeaking(true),
       () => setIsSpeaking(false)
@@ -152,7 +156,7 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
 
         {isAnswered && (
           <div className="mt-3 text-lg font-black text-indigo-600 font-comic animate-pop">
-            {currentWord.en}
+            {course === 'lv' ? currentWord.lv : currentWord.en}
           </div>
         )}
       </div>
@@ -160,7 +164,7 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
       {/* 4 Choices */}
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3.5">
         {options.map((option) => {
-          const translation = option[language] || option.ru || option.lv;
+          const translation = course === 'lv' ? option.ru : (option[language] || option.ru || option.lv);
           const isCorrect = option.id === currentWord.id;
           const isChosen = option.id === selectedWordId;
 

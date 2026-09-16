@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Topic, Language, TopicProgress, Grade } from '../types';
+import { Topic, Language, TopicProgress, Grade, LearningCourse } from '../types';
 import { TopicCard } from './TopicCard';
 import {
   translations,
@@ -15,6 +15,7 @@ import { Search, Sparkles, BarChart3 } from 'lucide-react';
 interface TopicListProps {
   topics: Topic[];
   language: Language;
+  course?: LearningCourse;
   topicProgress: Record<string, TopicProgress>;
   selectedGrades: Grade[];
   onToggleGrade: (grade: Grade) => void;
@@ -29,6 +30,7 @@ interface TopicListProps {
 export const TopicList: React.FC<TopicListProps> = ({
   topics,
   language,
+  course = 'en',
   topicProgress,
   selectedGrades,
   onToggleGrade,
@@ -258,6 +260,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                   key={topic.topic_id}
                   topic={topic}
                   language={language}
+                  course={course}
                   progress={topicProgress[topic.topic_id]}
                   onSelect={onSelectTopic}
                 />
@@ -291,6 +294,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                   key={topic.topic_id}
                   topic={topic}
                   language={language}
+                  course={course}
                   progress={topicProgress[topic.topic_id]}
                   onSelect={onSelectTopic}
                 />

@@ -1,4 +1,4 @@
-import { TopicProgress, WordProgress, UserStats, Grade, GradeFilter } from '../types';
+import { TopicProgress, WordProgress, UserStats, Grade, GradeFilter, LearningCourse } from '../types';
 import { getCurrentUser, syncProgressToCloud, fetchProgressFromCloud } from './supabase';
 import { DEFAULT_UNLOCKED_AVATARS } from '../data/avatars';
 
@@ -7,6 +7,29 @@ const TOPIC_PROGRESS_KEY = 'wordykids_topic_progress';
 const WORD_PROGRESS_KEY = 'wordykids_word_progress';
 const LANG_KEY = 'wordykids_lang';
 const GRADE_KEY = 'wordykids_grade';
+const COURSE_KEY = 'wordykids_course';
+
+export function getStoredCourse(): LearningCourse {
+  try {
+    const c = localStorage.getItem(COURSE_KEY);
+    if (c === 'lv' || c === 'en') return c;
+  } catch {}
+  return 'en';
+}
+
+export function saveStoredCourse(course: LearningCourse) {
+  try {
+    localStorage.setItem(COURSE_KEY, course);
+  } catch {}
+}
+
+function getTopicProgressKey(course: LearningCourse = 'en'): string {
+  return course === 'lv' ? `${TOPIC_PROGRESS_KEY}_lv` : TOPIC_PROGRESS_KEY;
+}
+
+function getWordProgressKey(course: LearningCourse = 'en'): string {
+  return course === 'lv' ? `${WORD_PROGRESS_KEY}_lv` : WORD_PROGRESS_KEY;
+}
 
 export function getStoredLanguage(): 'ru' | 'lv' {
   try {
@@ -165,31 +188,31 @@ export function saveLocalStats(stats: UserStats) {
   triggerCloudSync();
 }
 
-export function loadTopicProgress(): Record<string, TopicProgress> {
+export function loadTopicProgress(course: LearningCourse = 'en'): Record<string, TopicProgress> {
   try {
-    const raw = localStorage.getItem(TOPIC_PROGRESS_KEY);
+    const raw = localStorage.getItem(getTopicProgressKey(course));
     return raw ? JSON.parse(raw) : {};
   } catch {
     return {};
   }
 }
 
-export function saveTopicProgress(progress: Record<string, TopicProgress>) {
-  localStorage.setItem(TOPIC_PROGRESS_KEY, JSON.stringify(progress));
+export function saveTopicProgress(progress: Record<string, TopicProgress>, course: LearningCourse = 'en') {
+  localStorage.setItem(getTopicProgressKey(course), JSON.stringify(progress));
   triggerCloudSync();
 }
 
-export function loadWordProgress(): Record<string, WordProgress> {
+export function loadWordProgress(course: LearningCourse = 'en'): Record<string, WordProgress> {
   try {
-    const raw = localStorage.getItem(WORD_PROGRESS_KEY);
+    const raw = localStorage.getItem(getWordProgressKey(course));
     return raw ? JSON.parse(raw) : {};
   } catch {
     return {};
   }
 }
 
-export function saveWordProgress(progress: Record<string, WordProgress>) {
-  localStorage.setItem(WORD_PROGRESS_KEY, JSON.stringify(progress));
+export function saveWordProgress(progress: Record<string, WordProgress>, course: LearningCourse = 'en') {
+  localStorage.setItem(getWordProgressKey(course), JSON.stringify(progress));
   triggerCloudSync();
 }
 
@@ -197,10 +220,11 @@ export function recordWordAttempt(
   wordId: string,
   topicId: string,
   isCorrect: boolean,
-  totalWordsInTopic: number
+  totalWordsInTopic: number,
+  course: LearningCourse = 'en'
 ): { stars: number; newlyMastered: boolean } {
-  const words = loadWordProgress();
-  const topics = loadTopicProgress();
+  const words = loadWordProgress(course);
+  const topics = loadTopicProgress(course);
 
   const prev = words[wordId] || {
     word_id: wordId,
@@ -223,7 +247,7 @@ export function recordWordAttempt(
     isLearned,
     lastReviewedAt: new Date().toISOString(),
   };
-  saveWordProgress(words);
+  saveWordProgress(words, course);
 
   // Update Topic progress
   const topic = topics[topicId] || {
@@ -253,7 +277,7 @@ export function recordWordAttempt(
   topic.lastPlayedAt = new Date().toISOString();
   topics[topicId] = topic;
 
-  saveTopicProgress(topics);
+  saveTopicProgress(topics, course);
 
   return { stars: topic.stars, newlyMastered };
 }

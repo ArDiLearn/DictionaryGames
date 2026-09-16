@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
-import { Word, Topic, Language } from '../../types';
-import { speakEnglish } from '../../utils/speech';
+import { Word, Topic, Language, LearningCourse } from '../../types';
+import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
 import { Volume2, ArrowLeft, Sparkles, Cloud } from 'lucide-react';
@@ -10,6 +10,7 @@ interface BalloonPopGameProps {
   topic: Topic;
   allTopics: Topic[];
   language: Language;
+  course?: LearningCourse;
   onRecordResult: (wordId: string, isCorrect: boolean) => void;
   onComplete: (correctCount: number, totalCount: number) => void;
   onBack: () => void;
@@ -17,7 +18,7 @@ interface BalloonPopGameProps {
 
 interface BalloonOption {
   id: string;
-  en: string;
+  text: string;
   isCorrect: boolean;
   color: {
     gradient: string;
@@ -69,6 +70,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
   topic,
   allTopics,
   language,
+  course = 'en',
   onRecordResult,
   onComplete,
   onBack,
@@ -107,10 +109,12 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
     const distractor1 = shuffledPool[0] || currentWord;
     const distractor2 = shuffledPool[1] || currentWord;
 
+    const getWordText = (w: Word) => (course === 'lv' ? w.lv : w.en);
+
     const rawOptions = [
-      { id: currentWord.id, en: currentWord.en, isCorrect: true },
-      { id: distractor1.id, en: distractor1.en, isCorrect: false },
-      { id: distractor2.id, en: distractor2.en, isCorrect: false },
+      { id: currentWord.id, text: getWordText(currentWord), isCorrect: true },
+      { id: distractor1.id, text: getWordText(distractor1), isCorrect: false },
+      { id: distractor2.id, text: getWordText(distractor2), isCorrect: false },
     ];
 
     // Shuffle options order
@@ -135,7 +139,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
     setFallProgress(0);
     setRoundState('playing');
     startTimeRef.current = performance.now();
-  }, [currentWord, topic, allTopics]);
+  }, [currentWord, topic, allTopics, course]);
 
   // Next round / game completion
   const advanceRound = useCallback(
@@ -176,7 +180,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
         sounds.playWrong();
         if (currentWord) {
           onRecordResult(currentWord.id, false);
-          speakEnglish(currentWord.en);
+          speakWord(course === 'lv' ? currentWord.lv : currentWord.en, course);
         }
 
         setTimeout(() => {
@@ -193,7 +197,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
       isCancelled = true;
       if (animRef.current) cancelAnimationFrame(animRef.current);
     };
-  }, [roundState, currentWord, advanceRound, score, onRecordResult]);
+  }, [roundState, currentWord, advanceRound, score, onRecordResult, course]);
 
   // Click handler on balloon
   const handleBalloonClick = (balloonIndex: number) => {
@@ -208,8 +212,8 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
       sounds.playCorrect();
       setScore((prev) => prev + 1);
 
-      // Speak the English word!
-      speakEnglish(target.en);
+      // Speak target word!
+      speakWord(target.text, course);
 
       if (currentWord) {
         onRecordResult(currentWord.id, true);
@@ -244,7 +248,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
 
   const playVoice = () => {
     if (!currentWord) return;
-    speakEnglish(currentWord.en);
+    speakWord(course === 'lv' ? currentWord.lv : currentWord.en, course);
   };
 
   if (!currentWord) {
@@ -255,7 +259,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
     );
   }
 
-  const targetTranslation = currentWord[language] || currentWord.ru;
+  const targetTranslation = course === 'lv' ? currentWord.ru : (currentWord[language] || currentWord.ru);
   const progressPercent = ((currentIndex + 1) / shuffledWords.length) * 100;
 
   return (
@@ -276,7 +280,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
         <div className="flex items-center gap-2 bg-indigo-50 border-2 border-indigo-200 px-3 py-1 rounded-full text-indigo-700 font-bold text-xs sm:text-sm">
           <span>{topic.emoji || '📖'}</span>
           <span className="truncate max-w-[130px] sm:max-w-[170px]">
-            {topic.topic_name[language] || topic.topic_name.en}
+            {topic.topic_name[course === 'lv' ? 'lv' : language] || topic.topic_name.lv || topic.topic_name.en}
           </span>
         </div>
 
@@ -331,7 +335,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
           <div className="absolute inset-0 bg-emerald-500/20 backdrop-blur-[2px] z-30 flex items-center justify-center animate-pop">
             <div className="bg-white/95 px-6 py-3.5 rounded-3xl border-4 border-emerald-400 shadow-2xl flex items-center gap-2 text-emerald-700 font-black text-xl sm:text-2xl">
               <Sparkles className="w-7 h-7 text-amber-400 animate-spin" />
-              <span>{t.correct} {currentWord.en}!</span>
+              <span>{t.correct} {course === 'lv' ? currentWord.lv : currentWord.en}!</span>
             </div>
           </div>
         )}
@@ -343,7 +347,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
                 {t.balloonMissed}
               </p>
               <p className="text-xl sm:text-2xl font-black text-slate-800">
-                {currentWord.en}
+                {course === 'lv' ? currentWord.lv : currentWord.en}
               </p>
             </div>
           </div>
@@ -391,17 +395,17 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
                 {/* Glossy highlight reflection */}
                 <div className="absolute top-2.5 left-3.5 w-4 sm:w-5 h-6 sm:h-7 rounded-full bg-white/40 -rotate-35 pointer-events-none blur-[0.5px]" />
 
-                {/* English Word: Large, straight (non-italic), bold font */}
+                {/* Target Word: Large, straight (non-italic), bold font */}
                 <span
                   className={`text-white font-sans font-black not-italic tracking-normal text-center leading-snug drop-shadow-[0_2px_4px_rgba(0,0,0,0.75)] px-1.5 ${
-                    balloon.en.length > 13
+                    balloon.text.length > 13
                       ? 'text-xs sm:text-sm font-extrabold'
-                      : balloon.en.length > 8
+                      : balloon.text.length > 8
                       ? 'text-sm sm:text-base'
                       : 'text-base sm:text-lg md:text-xl'
                   }`}
                 >
-                  {balloon.en}
+                  {balloon.text}
                 </span>
 
                 {/* Balloon Knot */}

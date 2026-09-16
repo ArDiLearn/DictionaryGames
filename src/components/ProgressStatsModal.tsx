@@ -1,8 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Topic, Language, UserStats, TopicProgress, WordProgress, Word } from '../types';
+import { Topic, Language, UserStats, TopicProgress, WordProgress, Word, LearningCourse } from '../types';
 import { translations, getWordsPlural, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
-import { speakEnglish } from '../utils/speech';
+import { speakWord } from '../utils/speech';
 import {
   X,
   Volume2,
@@ -23,6 +23,7 @@ interface ProgressStatsModalProps {
   isOpen: boolean;
   onClose: () => void;
   language: Language;
+  course?: LearningCourse;
   stats: UserStats;
   topics: Topic[];
   topicProgress: Record<string, TopicProgress>;
@@ -37,6 +38,7 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
   isOpen,
   onClose,
   language,
+  course = 'en',
   stats,
   topics,
   topicProgress,
@@ -541,8 +543,11 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
                   const total = topic.words.length;
                   const percent = total > 0 ? Math.round((mastered / total) * 100) : 0;
                   const isCompleted = stars >= 3 || (total > 0 && mastered >= total);
-                  const title =
-                    topic.topic_name[language] || topic.topic_name.en || topic.topic_id;
+                  const isLatvianCourse = course === 'lv';
+                  const title = isLatvianCourse
+                    ? topic.topic_name.lv || topic.topic_name.en
+                    : topic.topic_name[language] || topic.topic_name.en || topic.topic_id;
+                  const subtitle = isLatvianCourse ? topic.topic_name.ru : topic.topic_name.en;
 
                   return (
                     <div
@@ -568,7 +573,7 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
                             )}
                           </div>
                           <p className="text-xs font-semibold text-slate-400 truncate">
-                            {topic.topic_name.en} • {mastered}/{total} {getWordsPlural(total, language)} ({percent}%)
+                            {subtitle} • {mastered}/{total} {getWordsPlural(total, language)} ({percent}%)
                           </p>
                         </div>
                       </div>
@@ -615,45 +620,54 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
                 </div>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {wordsToPractice.map(({ word, topic, wp }) => (
-                    <div
-                      key={word.id}
-                      className="bg-white border-2 border-slate-200 hover:border-indigo-300 p-3 rounded-2xl shadow-xs flex items-center justify-between gap-2"
-                    >
-                      <div className="flex items-center gap-2.5 min-w-0">
-                        <button
-                          onClick={() => {
-                            sounds.playClick();
-                            speakEnglish(word.en);
-                          }}
-                          className="w-9 h-9 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-600 flex items-center justify-center shrink-0 cursor-pointer"
-                          title={t.listen}
-                        >
-                          <Volume2 className="w-4 h-4" />
-                        </button>
-                        <div className="min-w-0">
-                          <div className="flex items-center gap-1.5">
-                            <h4 className="font-black text-slate-900 text-sm">{word.en}</h4>
-                            <span className="text-[10px] font-bold text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded truncate max-w-[120px]">
-                              {topic.emoji || '📚'} {topic.topic_name[language] || topic.topic_name.ru}
-                            </span>
+                  {wordsToPractice.map(({ word, topic, wp }) => {
+                    const isLatvianCourse = course === 'lv';
+                    const wordTarget = isLatvianCourse ? word.lv : word.en;
+                    const wordTranslation = isLatvianCourse ? word.ru : (word[language] || word.ru);
+                    const topicTitle = isLatvianCourse
+                      ? topic.topic_name.lv || topic.topic_name.ru
+                      : topic.topic_name[language] || topic.topic_name.ru;
+
+                    return (
+                      <div
+                        key={word.id}
+                        className="bg-white border-2 border-slate-200 hover:border-indigo-300 p-3 rounded-2xl shadow-xs flex items-center justify-between gap-2"
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <button
+                            onClick={() => {
+                              sounds.playClick();
+                              speakWord(wordTarget, course);
+                            }}
+                            className="w-9 h-9 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-600 flex items-center justify-center shrink-0 cursor-pointer"
+                            title={t.listen}
+                          >
+                            <Volume2 className="w-4 h-4" />
+                          </button>
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-1.5">
+                              <h4 className="font-black text-slate-900 text-sm">{wordTarget}</h4>
+                              <span className="text-[10px] font-bold text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded truncate max-w-[120px]">
+                                {topic.emoji || '📚'} {topicTitle}
+                              </span>
+                            </div>
+                            <p className="text-xs font-semibold text-slate-500 truncate">
+                              {wordTranslation}
+                            </p>
                           </div>
-                          <p className="text-xs font-semibold text-slate-500 truncate">
-                            {word[language] || word.ru}
-                          </p>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          <span className="text-[11px] bg-rose-100 text-rose-700 font-black px-2 py-0.5 rounded-lg" title={s.wrongAnswers}>
+                            -{wp.timesWrong} {s.timesWrongLabel}
+                          </span>
+                          <span className="text-[11px] bg-emerald-100 text-emerald-700 font-black px-2 py-0.5 rounded-lg" title={s.correctAnswers}>
+                            +{wp.timesCorrect}
+                          </span>
                         </div>
                       </div>
-
-                      <div className="flex items-center gap-1.5 shrink-0">
-                        <span className="text-[11px] bg-rose-100 text-rose-700 font-black px-2 py-0.5 rounded-lg" title={s.wrongAnswers}>
-                          -{wp.timesWrong} {s.timesWrongLabel}
-                        </span>
-                        <span className="text-[11px] bg-emerald-100 text-emerald-700 font-black px-2 py-0.5 rounded-lg" title={s.correctAnswers}>
-                          +{wp.timesCorrect}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>

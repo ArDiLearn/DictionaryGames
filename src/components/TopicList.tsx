@@ -87,7 +87,7 @@ export const TopicList: React.FC<TopicListProps> = ({
       {/* Welcome Banner */}
       <div className="relative rounded-3xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-5 sm:p-7 text-white shadow-xl mb-6">
         <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3.5 sm:gap-4">
             <button
               onClick={() => {
                 if (onOpenShop) {
@@ -98,20 +98,19 @@ export const TopicList: React.FC<TopicListProps> = ({
               className="relative group w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-white/20 hover:bg-white/30 backdrop-blur-md border-2 border-white/40 flex items-center justify-center text-4xl sm:text-5xl shadow-inner transition-transform hover:scale-105 active:scale-95 cursor-pointer shrink-0"
               title={t.avatarShopTitle}
             >
-              <span>{avatar}</span>
-              <span className="absolute -bottom-1.5 -right-1.5 bg-amber-400 text-amber-950 font-black text-[10px] px-1.5 py-0.5 rounded-full shadow-md border border-white flex items-center gap-0.5">
-                <span>🛍️</span>
-                <span className="hidden sm:inline">{t.avatarShopTitle}</span>
+              <span className="select-none leading-none flex items-center justify-center">{avatar}</span>
+              <span className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-7 sm:h-7 bg-amber-400 border-2 border-white rounded-full shadow-md flex items-center justify-center text-xs sm:text-sm pointer-events-none">
+                🛍️
               </span>
             </button>
-            <div>
+            <div className="flex flex-col justify-center">
               <div className="flex items-center gap-2">
-                <h1 className="text-2xl sm:text-3xl font-black font-comic tracking-tight">
+                <h1 className="text-2xl sm:text-3xl font-black font-comic tracking-tight leading-tight">
                   {t.welcomeGreeting}, {displayName}!
                 </h1>
-                <Sparkles className="w-6 h-6 text-yellow-300 animate-spin-slow" />
+                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-300 animate-spin-slow shrink-0" />
               </div>
-              <p className="text-white/90 text-sm sm:text-base font-semibold mt-0.5">
+              <p className="text-white/90 text-sm sm:text-base font-semibold mt-0.5 leading-snug">
                 {t.chooseTopic}
               </p>
             </div>

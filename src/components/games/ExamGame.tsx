@@ -644,7 +644,7 @@ export const ExamGame: React.FC<ExamGameProps> = ({
                   key={tile.id}
                   onClick={() => handleRemoveTile(tile)}
                   disabled={isAnswered}
-                  className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-white border-3 border-indigo-400 text-indigo-700 font-black font-comic shadow-md flex items-center justify-center hover:scale-105 active:scale-95 transition-transform text-xl sm:text-2xl cursor-pointer disabled:cursor-default"
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white border-3 border-indigo-400 text-indigo-700 font-black font-comic shadow-md flex items-center justify-center hover:scale-105 active:scale-95 transition-transform text-2xl sm:text-3xl cursor-pointer disabled:cursor-default"
                 >
                   {tile.char.toUpperCase()}
                 </button>
@@ -659,7 +659,7 @@ export const ExamGame: React.FC<ExamGameProps> = ({
               }).map((_, i) => (
                 <div
                   key={i}
-                  className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50/60 flex items-center justify-center text-slate-400 text-xl font-bold font-comic"
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50/60 flex items-center justify-center text-slate-400 text-2xl font-bold font-comic"
                 >
                   •
                 </div>
@@ -668,19 +668,19 @@ export const ExamGame: React.FC<ExamGameProps> = ({
 
             {/* Wrong reveal */}
             {builderStatus === 'wrong' && (
-              <div className="mt-3 text-emerald-700 font-black text-lg sm:text-xl font-comic animate-fadeIn">
+              <div className="mt-3 text-emerald-700 font-black text-xl sm:text-2xl font-comic animate-fadeIn">
                 ✓ {getTargetToSpell(currentQuestion.word, course).toUpperCase()}
               </div>
             )}
 
             {/* Available Letters Tray */}
-            <div className="mt-5 bg-amber-50/80 border-3 border-amber-200 rounded-3xl p-3 sm:p-4 shadow-inner flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 max-w-lg mx-auto">
+            <div className="mt-5 bg-amber-50/80 border-3 border-amber-200 rounded-3xl p-3.5 sm:p-5 shadow-inner flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 max-w-lg mx-auto">
               {availableTiles.map((tile) => (
                 <button
                   key={tile.id}
                   onClick={() => handleSelectTile(tile)}
                   disabled={isAnswered}
-                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-400 hover:bg-amber-300 active:scale-95 border-b-4 border-amber-600 text-amber-950 font-black font-comic shadow-md flex items-center justify-center transition-all text-xl sm:text-2xl cursor-pointer select-none disabled:opacity-50 disabled:cursor-default"
+                  className="w-13 h-13 sm:w-15 sm:h-15 rounded-2xl bg-amber-400 hover:bg-amber-300 active:scale-95 border-b-4 border-amber-600 text-amber-950 font-black font-comic shadow-md flex items-center justify-center transition-all text-2xl sm:text-3xl cursor-pointer select-none disabled:opacity-50 disabled:cursor-default"
                 >
                   {tile.char.toUpperCase()}
                 </button>
@@ -786,23 +786,23 @@ export const ExamGame: React.FC<ExamGameProps> = ({
                   key={`${option.text}-${idx}`}
                   disabled={isAnswered}
                   onClick={() => handleSelectChoice(option)}
-                  className={`relative p-4 sm:p-5 rounded-2xl border-3 font-black text-base sm:text-lg shadow-sm transition-all cursor-pointer flex items-center justify-center gap-3 ${btnStyle}`}
+                  className={`relative p-4 sm:p-5 rounded-2xl border-3 font-black text-xl sm:text-2xl font-comic shadow-sm transition-all cursor-pointer flex items-center justify-center gap-3 min-h-[4.5rem] sm:min-h-[5rem] ${btnStyle}`}
                 >
                   {option.word && (
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0 select-none">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0 select-none">
                       <WordIllustration
                         word={option.word}
                         fallbackEmoji={currentQuestion.topicEmoji || '📖'}
-                        className="w-7 h-7 sm:w-9 sm:h-9 text-2xl"
+                        className="w-9 h-9 sm:w-11 sm:h-11 text-3xl sm:text-4xl"
                       />
                     </div>
                   )}
-                  <span>{option.text}</span>
+                  <span className="leading-snug">{option.text}</span>
                   {isAnswered && option.isCorrect && (
-                    <CheckCircle2 className="w-5 h-5 text-white absolute right-4" />
+                    <CheckCircle2 className="w-6 h-6 text-white absolute right-4" />
                   )}
                   {isAnswered && isSelected && !option.isCorrect && (
-                    <XCircle className="w-5 h-5 text-white absolute right-4" />
+                    <XCircle className="w-6 h-6 text-white absolute right-4" />
                   )}
                 </button>
               );
@@ -817,7 +817,7 @@ export const ExamGame: React.FC<ExamGameProps> = ({
             <button
               disabled={isAnswered}
               onClick={() => handleSelectTrueFalse(true)}
-              className={`p-4 sm:p-5 rounded-2xl border-3 font-black text-lg sm:text-xl shadow-sm transition-all cursor-pointer flex items-center justify-center gap-2 ${
+              className={`p-4 sm:p-5 rounded-2xl border-3 font-black text-xl sm:text-2xl font-comic shadow-sm transition-all cursor-pointer flex items-center justify-center gap-2.5 min-h-[4.25rem] sm:min-h-[4.75rem] ${
                 isAnswered
                   ? currentQuestion.isTrue
                     ? 'bg-emerald-500 border-emerald-600 text-white shadow-lg scale-102'
@@ -827,7 +827,7 @@ export const ExamGame: React.FC<ExamGameProps> = ({
                   : 'bg-emerald-50 border-emerald-300 text-emerald-800 hover:bg-emerald-100 hover:border-emerald-500'
               }`}
             >
-              <CheckCircle2 className="w-6 h-6" />
+              <CheckCircle2 className="w-7 h-7" />
               <span>{t.trueBtn}</span>
             </button>
 
@@ -835,7 +835,7 @@ export const ExamGame: React.FC<ExamGameProps> = ({
             <button
               disabled={isAnswered}
               onClick={() => handleSelectTrueFalse(false)}
-              className={`p-4 sm:p-5 rounded-2xl border-3 font-black text-lg sm:text-xl shadow-sm transition-all cursor-pointer flex items-center justify-center gap-2 ${
+              className={`p-4 sm:p-5 rounded-2xl border-3 font-black text-xl sm:text-2xl font-comic shadow-sm transition-all cursor-pointer flex items-center justify-center gap-2.5 min-h-[4.25rem] sm:min-h-[4.75rem] ${
                 isAnswered
                   ? !currentQuestion.isTrue
                     ? 'bg-emerald-500 border-emerald-600 text-white shadow-lg scale-102'
@@ -845,7 +845,7 @@ export const ExamGame: React.FC<ExamGameProps> = ({
                   : 'bg-rose-50 border-rose-300 text-rose-800 hover:bg-rose-100 hover:border-rose-500'
               }`}
             >
-              <XCircle className="w-6 h-6" />
+              <XCircle className="w-7 h-7" />
               <span>{t.falseBtn}</span>
             </button>
           </div>

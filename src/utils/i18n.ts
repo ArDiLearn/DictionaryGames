@@ -205,9 +205,9 @@ export const translations: Record<Language, Translations> = {
     wordsCount: 'слов',
     learnedCount: 'выучено',
     mainTopicsTitle: 'Основные темы',
-    mainTopicsSubtitle: '12 тем школьной программы',
+    mainTopicsSubtitle: '11 тем школьной программы',
     extraTopicsTitle: 'Дополнительные темы',
-    extraTopicsSubtitle: '6 тем для расширения словарного запаса',
+    extraTopicsSubtitle: '8 тем для расширения словарного запаса',
     courseSelectorLabel: 'Режим обучения',
     courseModeTitle: 'Режим обучения',
     courseSwitchHint: 'Сменить режим',
@@ -396,9 +396,9 @@ export const translations: Record<Language, Translations> = {
     wordsCount: 'vārdi',
     learnedCount: 'apgūti',
     mainTopicsTitle: 'Pamatkursa tēmas',
-    mainTopicsSubtitle: '12 skolas programmas tēmas',
+    mainTopicsSubtitle: '11 skolas programmas tēmas',
     extraTopicsTitle: 'Papildus tēmas',
-    extraTopicsSubtitle: '6 tēmas vārdu krājuma paplašināšanai',
+    extraTopicsSubtitle: '8 tēmas vārdu krājuma paplašināšanai',
     courseSelectorLabel: 'Mācību režīms',
     courseModeTitle: 'Mācību režīms',
     courseSwitchHint: 'Mainīt režīmu',
@@ -734,6 +734,8 @@ export function getPlayerDisplayName(
 }
 
 export const EXTRA_TOPICS: string[] = [
+  'school_materials',
+  'other_words',
   'pronouns',
   'introductions',
   'questions',
@@ -754,7 +756,6 @@ export const GRADE_1_MAIN_TOPICS: string[] = [
   'activities',
   'pets',
   'farm_animals',
-  'wild_animals',
   'shapes',
   'actions',
 ];

@@ -92,6 +92,12 @@ const TOPIC_METADATA = {
   'Directions': { icon: 'Compass', color: 'orange', emoji: '🧭' },
   'Virzieni': { icon: 'Compass', color: 'orange', emoji: '🧭' },
   'Направления': { icon: 'Compass', color: 'orange', emoji: '🧭' },
+  'School materials': { icon: 'Scissors', color: 'amber', emoji: '📦' },
+  'Skolas materiāli': { icon: 'Scissors', color: 'amber', emoji: '📦' },
+  'Школьные материалы': { icon: 'Scissors', color: 'amber', emoji: '📦' },
+  'Other words': { icon: 'Sparkles', color: 'emerald', emoji: '🌟' },
+  'Dažādi vārdi': { icon: 'Sparkles', color: 'emerald', emoji: '🌟' },
+  'Разные слова': { icon: 'Sparkles', color: 'emerald', emoji: '🌟' },
 };
 
 /**

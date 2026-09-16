@@ -32,7 +32,6 @@ purple,violets,фиолетовый,1
 orange,oranžš,оранжевый,1
 yellow,dzeltens,жёлтый,1
 brown,brūns,коричневый,1
-rainbow,varavīksne,радуга,1
 ,,,
 Days of the week,Nedēļas dienas,Дни недели,
 Monday,pirmdiena,понедельник,2
@@ -80,16 +79,6 @@ ruler,lineāls,линейка,1
 rubber,dzēšgumija,ластик,1
 pen,pildspalva,ручка,1
 pencil,zīmulis,карандаш,1
-box,kaste,коробка,1
-glue,līme,клей,1
-counters,žetoni,фишки,1
-paper,papīrs,бумага,1
-teacher,skolotājs,учитель,1
-stickers,uzlīmes,наклейки,1
-sheet,darba lapa,рабочий лист,1
-text,teksts,текст,1
-photo,foto,фотография,1
-message,ziņa,сообщение,1
 ,,,
 Shapes,Figūras,Фигуры,
 circle,aplis,круг,1
@@ -115,7 +104,6 @@ child,bērns,ребёнок,2
 teenager,pusaudzis,подросток,2
 adult,pieaugušais,взрослый,2
 elderly person,seniors,пожилой человек,2
-people,cilvēki,люди,1
 ,,,
 Adjectives,Īpašības vārdi,Прилагательные,
 tall,garš,высокий,1
@@ -126,8 +114,6 @@ pretty,skaista,красивая,1
 handsome,izskatīgs,красивый,1
 big,liels,большой,1
 small,mazs,маленький,1
-tired,noguris,уставший,1
-different,atšķirīgs,разный,1
 ,,,
 Toys,Rotaļlietas,Игрушки,
 kite,pūķis,воздушный змей,1
@@ -148,7 +134,6 @@ ride a horse,jāt ar zirgu,кататься на лошади,1
 run,skriet,бегать,1
 ride a bike,braukt ar velosipēdu,кататься на велосипеде,1
 rollerblade,skrituļot,кататься на роликах,1
-activity,nodarbe,занятие,1
 ,,,
 Pets,Mājas mīluļi,Домашние питомцы,
 fish,zivs,рыбка,1
@@ -169,10 +154,6 @@ donkey,ēzelis,осёл,1
 duck,pīle,утка,1
 goat,kaza,коза,1
 sheep,aita,овца,1
-,,,
-Wild animals,Savvaļas dzīvnieki,Дикие животные,
-lion,lauva,лев,1
-deer,briedis,олень,1
 ,,,
 Food and drink,Ēdiens un dzērieni,Еда и напитки,
 breakfast,brokastis,завтрак,2
@@ -366,6 +347,27 @@ other,cits,другой,1
 maybe,varbūt,может быть,1
 then,"tad, pēc tam","затем, потом",1
 about,par,"о, про",1
+,,,
+School materials,Skolas materiāli,Школьные материалы,
+box,kaste,коробка,1
+glue,līme,клей,1
+counters,žetoni,фишки,1
+paper,papīrs,бумага,1
+teacher,skolotājs,учитель,1
+stickers,uzlīmes,наклейки,1
+sheet,darba lapa,рабочий лист,1
+text,teksts,текст,1
+photo,foto,фотография,1
+message,ziņa,сообщение,1
+,,,
+Other words,Dažādi vārdi,Разные слова,
+rainbow,varavīksne,радуга,1
+people,cilvēki,люди,1
+tired,noguris,уставший,1
+different,atšķirīgs,разный,1
+activity,nodarbe,занятие,1
+lion,lauva,лев,1
+deer,briedis,олень,1
 ,,,
 Birthday,Dzimšanas diena,День рождения,
 board game,galda spēle,настольная игра,3

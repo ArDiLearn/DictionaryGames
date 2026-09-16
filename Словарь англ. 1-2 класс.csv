@@ -80,13 +80,6 @@ rubber,dzēšgumija,ластик,1
 pen,pildspalva,ручка,1
 pencil,zīmulis,карандаш,1
 ,,,
-Shapes,Figūras,Фигуры,
-circle,aplis,круг,1
-square,kvadrāts,квадрат,1
-triangle,trīsstūris,треугольник,1
-rectangle,taisnstūris,прямоугольник,1
-oval,ovāls,овал,1
-,,,
 Family,Ģimene,Семья,
 mum,mamma,мама,1
 dad,tētis,папа,1
@@ -252,6 +245,13 @@ wood,koks,дерево,2
 rock,akmens,камень,2
 mud,dubļi,грязь,2
 clay,māls,глина,2
+,,,
+Shapes,Figūras,Фигуры,
+circle,aplis,круг,1
+square,kvadrāts,квадрат,1
+triangle,trīsstūris,треугольник,1
+rectangle,taisnstūris,прямоугольник,1
+oval,ovāls,овал,1
 ,,,
 Actions,Darbības,Действия,
 I can,es varu,я умею,1

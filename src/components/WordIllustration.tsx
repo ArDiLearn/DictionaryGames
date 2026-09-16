@@ -1806,6 +1806,121 @@ const WORD_SVGS: Record<string, React.ReactNode> = {
       <path d="M72 54 Q72 59 67 59 Q72 59 72 64 Q72 59 77 59 Q72 59 72 54 Z" fill="#ffffff" opacity="0.9" />
     </svg>
   ),
+
+  // children - группа детей (several smiling kids standing together)
+  'children': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground soft shadow */}
+      <ellipse cx="50" cy="91" rx="42" ry="5" fill="#64748b" opacity="0.25" />
+
+      {/* Child 1 (Boy on left - blue shirt, waving) */}
+      <path d="M18 52 L11 36" stroke="#3b82f6" strokeWidth="4.5" strokeLinecap="round" />
+      <circle cx="10" cy="34" r="3" fill="#fed7aa" />
+      <path d="M28 52 L36 58" stroke="#3b82f6" strokeWidth="4.5" strokeLinecap="round" />
+      <line x1="20" y1="72" x2="19" y2="88" stroke="#1e3a8a" strokeWidth="4" strokeLinecap="round" />
+      <line x1="26" y1="72" x2="27" y2="88" stroke="#1e3a8a" strokeWidth="4" strokeLinecap="round" />
+      <ellipse cx="18" cy="89" rx="3.5" ry="2" fill="#ef4444" />
+      <ellipse cx="28" cy="89" rx="3.5" ry="2" fill="#ef4444" />
+      <path d="M15 72 L16 50 C16 46 30 46 30 50 L31 72 Z" fill="#3b82f6" />
+      <path d="M21 47 L23 52 L25 47 Z" fill="#ffffff" />
+      <rect x="21" y="41" width="5" height="6" fill="#fed7aa" rx="1" />
+      <circle cx="23.5" cy="33" r="9.5" fill="#fed7aa" />
+      <path d="M14 31 C14 23 33 23 33 31 C30 28 27 30 23.5 27 C20 30 17 28 14 31 Z" fill="#78350f" />
+      <circle cx="20.5" cy="33" r="1.3" fill="#1e293b" />
+      <circle cx="26.5" cy="33" r="1.3" fill="#1e293b" />
+      <path d="M21 37 Q23.5 40 26 37" stroke="#b45309" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+      <ellipse cx="19" cy="35" rx="1.5" ry="1" fill="#fca5a5" opacity="0.6" />
+      <ellipse cx="28" cy="35" rx="1.5" ry="1" fill="#fca5a5" opacity="0.6" />
+
+      {/* Child 3 (Right child - green shirt, waving right) */}
+      <path d="M82 52 L89 36" stroke="#10b981" strokeWidth="4.5" strokeLinecap="round" />
+      <circle cx="90" cy="34" r="3" fill="#fed7aa" />
+      <path d="M72 52 L64 58" stroke="#10b981" strokeWidth="4.5" strokeLinecap="round" />
+      <line x1="73" y1="72" x2="72" y2="88" stroke="#065f46" strokeWidth="4" strokeLinecap="round" />
+      <line x1="79" y1="72" x2="80" y2="88" stroke="#065f46" strokeWidth="4" strokeLinecap="round" />
+      <ellipse cx="71" cy="89" rx="3.5" ry="2" fill="#3b82f6" />
+      <ellipse cx="81" cy="89" rx="3.5" ry="2" fill="#3b82f6" />
+      <path d="M69 72 L70 50 C70 46 84 46 84 50 L85 72 Z" fill="#10b981" />
+      <rect x="74" y="41" width="5" height="6" fill="#fed7aa" rx="1" />
+      <circle cx="76.5" cy="33" r="9.5" fill="#fed7aa" />
+      <path d="M67 33 C66 22 86 22 86 33 C84 27 80 25 76.5 27 C73 25 69 27 67 33 Z" fill="#b45309" />
+      <circle cx="68" cy="27" r="3" fill="#b45309" />
+      <circle cx="85" cy="27" r="3" fill="#b45309" />
+      <circle cx="73.5" cy="33" r="1.3" fill="#1e293b" />
+      <circle cx="79.5" cy="33" r="1.3" fill="#1e293b" />
+      <path d="M74 37 Q76.5 40 79 37" stroke="#b45309" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+      <ellipse cx="72" cy="35" rx="1.5" ry="1" fill="#fca5a5" opacity="0.6" />
+      <ellipse cx="81" cy="35" rx="1.5" ry="1" fill="#fca5a5" opacity="0.6" />
+
+      {/* Child 2 (Center Girl - foreground, cheerful yellow t-shirt with heart) */}
+      <path d="M38 52 L30 58" stroke="#f59e0b" strokeWidth="4.5" strokeLinecap="round" />
+      <circle cx="29" cy="59" r="2.8" fill="#fed7aa" />
+      <path d="M62 52 L70 58" stroke="#f59e0b" strokeWidth="4.5" strokeLinecap="round" />
+      <circle cx="71" cy="59" r="2.8" fill="#fed7aa" />
+      <line x1="45" y1="74" x2="44" y2="89" stroke="#ec4899" strokeWidth="4" strokeLinecap="round" />
+      <line x1="55" y1="74" x2="56" y2="89" stroke="#ec4899" strokeWidth="4" strokeLinecap="round" />
+      <ellipse cx="43" cy="90" rx="3.5" ry="2" fill="#8b5cf6" />
+      <ellipse cx="57" cy="90" rx="3.5" ry="2" fill="#8b5cf6" />
+      <path d="M38 72 L39 48 C39 43 61 43 61 48 L62 72 Z" fill="#fbbf24" />
+      <path d="M50 56 C48 53 45 54 45 57 C45 60 50 63 50 63 C50 63 55 60 55 57 C55 54 52 53 50 56 Z" fill="#ef4444" />
+      <rect x="47" y="38" width="6" height="6" fill="#fed7aa" rx="1" />
+      <circle cx="50" cy="28" r="10.5" fill="#fed7aa" />
+      <path d="M40 27 C40 16 60 16 60 27 C57 23 54 24 50 21 C46 24 43 23 40 27 Z" fill="#d97706" />
+      <circle cx="38" cy="30" r="3.5" fill="#d97706" />
+      <circle cx="62" cy="30" r="3.5" fill="#d97706" />
+      <circle cx="39" cy="28" r="1.5" fill="#ec4899" />
+      <circle cx="61" cy="28" r="1.5" fill="#ec4899" />
+      <circle cx="46.5" cy="28" r="1.4" fill="#1e293b" />
+      <circle cx="53.5" cy="28" r="1.4" fill="#1e293b" />
+      <path d="M47 32 Q50 36 53 32" stroke="#b45309" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      <ellipse cx="44" cy="30" rx="1.8" ry="1.2" fill="#fca5a5" opacity="0.7" />
+      <ellipse cx="56" cy="30" rx="1.8" ry="1.2" fill="#fca5a5" opacity="0.7" />
+
+      {/* Sparkles around */}
+      <text x="18" y="20" fontSize="8" fill="#fbbf24">✨</text>
+      <text x="76" y="20" fontSize="8" fill="#fbbf24">✨</text>
+    </svg>
+  ),
+
+  // week - календарь недели (7 days of the week calendar strip)
+  'week': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Calendar Base Card */}
+      <rect x="10" y="16" width="80" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1" strokeWidth="2" />
+      {/* Calendar Header */}
+      <path d="M10 24 C10 19.5 13.5 16 18 16 L82 16 C86.5 16 90 19.5 90 24 L90 34 L10 34 Z" fill="#ef4444" />
+      <text x="50" y="28" textAnchor="middle" fill="#ffffff" fontSize="9" fontFamily="Comic Sans MS, sans-serif" fontWeight="bold" letterSpacing="1">7 DAYS</text>
+
+      {/* Spiral Binder Rings */}
+      <rect x="24" y="12" width="5" height="9" rx="2.5" fill="#64748b" stroke="#ffffff" strokeWidth="1" />
+      <rect x="42" y="12" width="5" height="9" rx="2.5" fill="#64748b" stroke="#ffffff" strokeWidth="1" />
+      <rect x="58" y="12" width="5" height="9" rx="2.5" fill="#64748b" stroke="#ffffff" strokeWidth="1" />
+      <rect x="72" y="12" width="5" height="9" rx="2.5" fill="#64748b" stroke="#ffffff" strokeWidth="1" />
+
+      {/* 7 Columns for Days of the week */}
+      <text x="19" y="44" textAnchor="middle" fill="#64748b" fontSize="6.5" fontWeight="bold">M</text>
+      <text x="29" y="44" textAnchor="middle" fill="#64748b" fontSize="6.5" fontWeight="bold">T</text>
+      <text x="39" y="44" textAnchor="middle" fill="#64748b" fontSize="6.5" fontWeight="bold">W</text>
+      <text x="50" y="44" textAnchor="middle" fill="#64748b" fontSize="6.5" fontWeight="bold">T</text>
+      <text x="61" y="44" textAnchor="middle" fill="#64748b" fontSize="6.5" fontWeight="bold">F</text>
+      <text x="71" y="44" textAnchor="middle" fill="#ef4444" fontSize="6.5" fontWeight="bold">S</text>
+      <text x="81" y="44" textAnchor="middle" fill="#ef4444" fontSize="6.5" fontWeight="bold">S</text>
+
+      {/* Golden Highlight for the whole week row */}
+      <rect x="13" y="49" width="74" height="15" rx="4" fill="#fef08a" stroke="#eab308" strokeWidth="1.5" />
+      <circle cx="19" cy="56.5" r="3.5" fill="#3b82f6" />
+      <circle cx="29" cy="56.5" r="3.5" fill="#3b82f6" />
+      <circle cx="39" cy="56.5" r="3.5" fill="#3b82f6" />
+      <circle cx="50" cy="56.5" r="3.5" fill="#3b82f6" />
+      <circle cx="61" cy="56.5" r="3.5" fill="#3b82f6" />
+      <circle cx="71" cy="56.5" r="3.5" fill="#f59e0b" />
+      <circle cx="81" cy="56.5" r="3.5" fill="#ef4444" />
+
+      {/* Caption at bottom */}
+      <rect x="22" y="69" width="56" height="12" rx="3" fill="#f1f5f9" />
+      <text x="50" y="78" textAnchor="middle" fill="#0f172a" fontSize="7" fontWeight="bold">WEEK • НЕДЕЛЯ</text>
+    </svg>
+  ),
 };
 
 const RU_ALIASES: Record<string, string> = {
@@ -1857,6 +1972,8 @@ const RU_ALIASES: Record<string, string> = {
   'классная комната': 'classroom',
   'одноклассники': 'class',
   'рубин': 'ruby',
+  'дети': 'children',
+  'неделя': 'week',
 };
 
 export const WordIllustration: React.FC<WordIllustrationProps> = ({

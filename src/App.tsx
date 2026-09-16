@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import rawWordsData from './data/words.json';
-import { Topic, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress } from './types';
+import { Topic, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress, LearningCourse } from './types';
 import { Header } from './components/Header';
 import { TopicList } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
@@ -19,6 +19,8 @@ import { trackGameStart, trackGameComplete, trackLanguageChange } from './utils/
 import {
   getStoredLanguage,
   saveStoredLanguage,
+  getStoredCourse,
+  saveStoredCourse,
   getStoredGrades,
   saveStoredGrades,
   loadLocalStats,
@@ -43,11 +45,16 @@ export const App: React.FC = () => {
   const topics = rawWordsData as Topic[];
 
   // App State
-  const [language, setLanguage] = useState<Language>(() => getStoredLanguage());
+  const [course, setCourse] = useState<LearningCourse>(() => getStoredCourse());
+  const [language, setLanguage] = useState<Language>(() => {
+    const storedCourse = getStoredCourse();
+    if (storedCourse === 'lv') return 'ru';
+    return getStoredLanguage();
+  });
   const [selectedGrades, setSelectedGrades] = useState<Grade[]>(getStoredGrades());
   const [stats, setStats] = useState<UserStats>(loadLocalStats());
-  const [topicProgress, setTopicProgress] = useState<Record<string, TopicProgress>>(
-    loadTopicProgress()
+  const [topicProgress, setTopicProgress] = useState<Record<string, TopicProgress>>(() =>
+    loadTopicProgress(getStoredCourse())
   );
   const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
   const [gameMode, setGameMode] = useState<GameMode | null>(null);
@@ -56,7 +63,7 @@ export const App: React.FC = () => {
   const [isAvatarShopOpen, setIsAvatarShopOpen] = useState<boolean>(false);
   const [isStatsModalOpen, setIsStatsModalOpen] = useState<boolean>(false);
   const [wordProgress, setWordProgress] = useState<Record<string, WordProgress>>(() =>
-    loadWordProgress()
+    loadWordProgress(getStoredCourse())
   );
 
   // Grade filtered topics: supports multi-selection of grades (e.g. [1, 2], [2, 3], [1], [2], [3], [1, 2, 3])
@@ -137,13 +144,13 @@ export const App: React.FC = () => {
       setIsCloudSynced(!!user);
       if (user) {
         await mergeWithCloud();
-        setTopicProgress(loadTopicProgress());
-        setWordProgress(loadWordProgress());
+        setTopicProgress(loadTopicProgress(course));
+        setWordProgress(loadWordProgress(course));
         setStats(loadLocalStats());
       }
     };
     initSync();
-  }, []);
+  }, [course]);
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -153,6 +160,18 @@ export const App: React.FC = () => {
     setLanguage(newLang);
     saveStoredLanguage(newLang);
     trackLanguageChange(newLang);
+  };
+
+  const handleCourseChange = (newCourse: LearningCourse) => {
+    setCourse(newCourse);
+    saveStoredCourse(newCourse);
+    if (newCourse === 'lv') {
+      setLanguage('ru');
+      saveStoredLanguage('ru');
+    }
+    setTopicProgress(loadTopicProgress(newCourse));
+    setWordProgress(loadWordProgress(newCourse));
+    handleHomeClick();
   };
 
   const handleToggleGrade = (grade: Grade) => {
@@ -218,11 +237,12 @@ export const App: React.FC = () => {
       wordId,
       selectedTopic.topic_id,
       isCorrect,
-      selectedTopic.words.length
+      selectedTopic.words.length,
+      course
     );
     // Reload local progress
-    setTopicProgress(loadTopicProgress());
-    setWordProgress(loadWordProgress());
+    setTopicProgress(loadTopicProgress(course));
+    setWordProgress(loadWordProgress(course));
     return newStars;
   };
 
@@ -290,6 +310,8 @@ export const App: React.FC = () => {
       <Header
         language={language}
         onLanguageChange={handleLanguageChange}
+        course={course}
+        onCourseChange={handleCourseChange}
         selectedGrades={selectedGrades}
         onToggleGrade={handleToggleGrade}
         onSelectAllGrades={handleSelectAllGrades}
@@ -311,6 +333,7 @@ export const App: React.FC = () => {
           <TopicList
             topics={filteredTopics}
             language={language}
+            course={course}
             topicProgress={topicProgress}
             selectedGrades={selectedGrades}
             onToggleGrade={handleToggleGrade}
@@ -328,6 +351,7 @@ export const App: React.FC = () => {
           <GameSelector
             topic={selectedTopic}
             language={language}
+            course={course}
             progress={topicProgress[selectedTopic.topic_id]}
             onSelectMode={handleSelectMode}
             onBack={() => setSelectedTopic(null)}
@@ -342,6 +366,7 @@ export const App: React.FC = () => {
                 key={`${selectedTopic.topic_id}-flashcards`}
                 topic={selectedTopic}
                 language={language}
+                course={course}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}
                 onBack={() => setGameMode(null)}
@@ -354,6 +379,7 @@ export const App: React.FC = () => {
                 topic={selectedTopic}
                 allTopics={filteredTopics}
                 language={language}
+                course={course}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}
                 onBack={() => setGameMode(null)}
@@ -366,6 +392,7 @@ export const App: React.FC = () => {
                 topic={selectedTopic}
                 allTopics={filteredTopics}
                 language={language}
+                course={course}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}
                 onBack={() => setGameMode(null)}
@@ -377,6 +404,7 @@ export const App: React.FC = () => {
                 key={`${selectedTopic.topic_id}-builder`}
                 topic={selectedTopic}
                 language={language}
+                course={course}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}
                 onBack={() => setGameMode(null)}
@@ -388,6 +416,7 @@ export const App: React.FC = () => {
                 key={`${selectedTopic.topic_id}-match`}
                 topic={selectedTopic}
                 language={language}
+                course={course}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}
                 onBack={() => setGameMode(null)}
@@ -400,6 +429,7 @@ export const App: React.FC = () => {
                 topic={selectedTopic}
                 allTopics={filteredTopics}
                 language={language}
+                course={course}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}
                 onBack={() => setGameMode(null)}
@@ -430,8 +460,8 @@ export const App: React.FC = () => {
         onSyncCompleted={async () => {
           const user = await getCurrentUser();
           setIsCloudSynced(!!user);
-          setTopicProgress(loadTopicProgress());
-          setWordProgress(loadWordProgress());
+          setTopicProgress(loadTopicProgress(course));
+          setWordProgress(loadWordProgress(course));
           setStats(loadLocalStats());
         }}
       />
@@ -452,6 +482,7 @@ export const App: React.FC = () => {
         isOpen={isStatsModalOpen}
         onClose={() => setIsStatsModalOpen(false)}
         language={language}
+        course={course}
         stats={stats}
         topics={topics}
         topicProgress={topicProgress}

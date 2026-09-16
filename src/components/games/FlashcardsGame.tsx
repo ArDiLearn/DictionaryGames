@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Word, Topic, Language } from '../../types';
-import { speakEnglish } from '../../utils/speech';
+import { Word, Topic, Language, LearningCourse } from '../../types';
+import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
 import { WordIllustration } from '../WordIllustration';
@@ -9,6 +9,7 @@ import { Volume2, RotateCw, ArrowLeft, ChevronLeft, ChevronRight, LayoutGrid, X 
 interface FlashcardsGameProps {
   topic: Topic;
   language: Language;
+  course?: LearningCourse;
   onRecordResult: (wordId: string, isCorrect: boolean) => void;
   onComplete: (correctCount: number, totalCount: number) => void;
   onBack: () => void;
@@ -17,6 +18,7 @@ interface FlashcardsGameProps {
 export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
   topic,
   language,
+  course = 'en',
   onRecordResult,
   onComplete,
   onBack,
@@ -42,9 +44,11 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
   const handleSpeak = (wordToSpeak?: Word) => {
     const word = wordToSpeak || currentWord;
     if (!word) return;
+    const textToSpeak = course === 'lv' ? word.lv : word.en;
     setIsSpeaking(true);
-    speakEnglish(
-      word.en,
+    speakWord(
+      textToSpeak,
+      course,
       0.85,
       () => setIsSpeaking(true),
       () => setIsSpeaking(false)
@@ -104,7 +108,9 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
 
   if (!currentWord) return null;
 
-  const translation = currentWord[language] || currentWord.ru || currentWord.lv;
+  const isLatvianCourse = course === 'lv';
+  const targetText = isLatvianCourse ? currentWord.lv : currentWord.en;
+  const translation = isLatvianCourse ? currentWord.ru : (currentWord[language] || currentWord.ru || currentWord.lv);
 
   return (
     <div className="max-w-xl mx-auto px-4 py-4 flex flex-col items-center">
@@ -156,7 +162,9 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
       >
         <div className="w-full flex justify-between items-center text-slate-400">
           <span className="text-xs font-bold uppercase tracking-wider">
-            {isFlipped ? (language === 'ru' ? '🇷🇺 Русский' : '🇱🇻 Latviešu') : '🇬🇧 English'}
+            {isFlipped
+              ? (isLatvianCourse ? '🇷🇺 Русский' : (language === 'ru' ? '🇷🇺 Русский' : '🇱🇻 Latviešu'))
+              : (isLatvianCourse ? '🇱🇻 Latviešu' : '🇬🇧 English')}
           </span>
           <RotateCw className="w-5 h-5 text-indigo-400 group-hover:rotate-180 transition-transform duration-500" />
         </div>
@@ -177,9 +185,9 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
                 <WordIllustration word={currentWord} fallbackEmoji={topic.emoji} />
               </div>
               <h2 className="text-4xl sm:text-5xl font-black text-indigo-600 tracking-tight font-comic">
-                {currentWord.en}
+                {targetText}
               </h2>
-              {currentWord.transcription && (
+              {!isLatvianCourse && currentWord.transcription && (
                 <div className="mt-3 px-4 py-1.5 bg-indigo-50 border-2 border-indigo-200 rounded-2xl text-indigo-700 font-mono text-xl sm:text-2xl font-bold tracking-wider shadow-sm">
                   {currentWord.transcription}
                 </div>
@@ -205,8 +213,8 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
                 {translation}
               </h2>
               <div className="mt-3 flex items-center justify-center gap-2 flex-wrap">
-                <span className="text-base font-bold text-slate-600">{currentWord.en}</span>
-                {currentWord.transcription && (
+                <span className="text-base font-bold text-slate-600">{targetText}</span>
+                {!isLatvianCourse && currentWord.transcription && (
                   <span className="px-2.5 py-0.5 bg-slate-100 border border-slate-200 rounded-xl text-indigo-600 font-mono text-sm sm:text-base font-bold">
                     {currentWord.transcription}
                   </span>
@@ -271,7 +279,8 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
             {topic.words.map((word, index) => {
               const isCurrent = index === currentIndex;
               const isLearned = knownWordIds.has(word.id);
-              const wordTitle = word[language] || word.ru || word.lv;
+              const ribbonTarget = isLatvianCourse ? word.lv : word.en;
+              const ribbonTranslation = isLatvianCourse ? word.ru : (word[language] || word.ru || word.lv);
 
               return (
                 <button
@@ -285,7 +294,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
                       ? 'bg-gradient-to-b from-indigo-500 to-indigo-600 border-indigo-600 text-white shadow-lg scale-105 -translate-y-0.5 ring-3 ring-indigo-200'
                       : 'bg-slate-50 hover:bg-indigo-50/50 border-slate-200 hover:border-indigo-300 text-slate-700 shadow-xs'
                   }`}
-                  title={`${word.en} — ${wordTitle}`}
+                  title={`${ribbonTarget} — ${ribbonTranslation}`}
                 >
                   {/* Picture / Icon */}
                   <div
@@ -306,7 +315,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
                       isCurrent ? 'text-white' : 'text-slate-800'
                     }`}
                   >
-                    {word.en}
+                    {ribbonTarget}
                   </span>
 
                   {/* Known checkmark badge */}
@@ -366,7 +375,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
                     {t.selectWord}
                   </h3>
                   <p className="text-xs font-semibold text-slate-400">
-                    {topic.topic_name[language] || topic.topic_name.en} • {topic.words.length}{' '}
+                    {topic.topic_name[isLatvianCourse ? 'lv' : language] || topic.topic_name.lv || topic.topic_name.en} • {topic.words.length}{' '}
                     {language === 'ru' ? 'слов' : 'vārdi'}
                   </p>
                 </div>
@@ -384,7 +393,8 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
               {topic.words.map((word, index) => {
                 const isCurrent = index === currentIndex;
                 const isLearned = knownWordIds.has(word.id);
-                const wordTitle = word[language] || word.ru || word.lv;
+                const gridTarget = isLatvianCourse ? word.lv : word.en;
+                const gridTranslation = isLatvianCourse ? word.ru : (word[language] || word.ru || word.lv);
 
                 return (
                   <button
@@ -407,10 +417,10 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
                       />
                     </div>
                     <span className="text-sm font-black text-slate-800 font-comic tracking-tight truncate w-full">
-                      {word.en}
+                      {gridTarget}
                     </span>
                     <span className="text-xs font-semibold text-slate-400 truncate w-full mt-0.5">
-                      {wordTitle}
+                      {gridTranslation}
                     </span>
                     {isLearned && (
                       <span className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] font-black shadow-xs">

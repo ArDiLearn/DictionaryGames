@@ -1,5 +1,5 @@
 import React from 'react';
-import { Topic, Language, TopicProgress } from '../types';
+import { Topic, Language, TopicProgress, LearningCourse } from '../types';
 import { translations, getWordsPlural } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { CheckCircle2 } from 'lucide-react';
@@ -7,6 +7,7 @@ import { CheckCircle2 } from 'lucide-react';
 interface TopicCardProps {
   topic: Topic;
   language: Language;
+  course?: LearningCourse;
   progress?: TopicProgress;
   onSelect: (topic: Topic) => void;
 }
@@ -35,6 +36,7 @@ const COLOR_MAP: Record<string, { bg: string; border: string; badge: string; sha
 export const TopicCard: React.FC<TopicCardProps> = ({
   topic,
   language,
+  course = 'en',
   progress,
   onSelect,
 }) => {
@@ -49,8 +51,12 @@ export const TopicCard: React.FC<TopicCardProps> = ({
   ).length;
   const isAllMastered = totalCount > 0 && masteredCount >= totalCount;
 
-  const localizedTitle = topic.topic_name[language] || topic.topic_name.en || topic.topic_id;
-  const englishTitle = topic.topic_name.en || '';
+  const localizedTitle = course === 'lv'
+    ? (topic.topic_name.lv || topic.topic_name.ru || topic.topic_id)
+    : (topic.topic_name[language] || topic.topic_name.en || topic.topic_id);
+  const subtitle = course === 'lv'
+    ? (topic.topic_name.ru || '')
+    : (topic.topic_name.en || '');
 
   const handleClick = () => {
     sounds.playClick();
@@ -90,9 +96,9 @@ export const TopicCard: React.FC<TopicCardProps> = ({
         <h3 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight leading-tight group-hover:text-indigo-600 transition-colors">
           {localizedTitle}
         </h3>
-        {englishTitle && englishTitle !== localizedTitle && (
+        {subtitle && subtitle !== localizedTitle && (
           <p className="text-xs sm:text-sm font-semibold text-slate-400 mt-0.5">
-            {englishTitle}
+            {subtitle}
           </p>
         )}
       </div>

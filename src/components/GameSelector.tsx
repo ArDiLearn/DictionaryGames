@@ -1,5 +1,5 @@
 import React from 'react';
-import { Topic, Language, GameMode, TopicProgress } from '../types';
+import { Topic, Language, GameMode, TopicProgress, LearningCourse } from '../types';
 import { translations, getWordsPlural } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { ArrowLeft, Play, Layers, SpellCheck, Grid, Headphones, CheckCircle2, Sparkles } from 'lucide-react';
@@ -7,6 +7,7 @@ import { ArrowLeft, Play, Layers, SpellCheck, Grid, Headphones, CheckCircle2, Sp
 interface GameSelectorProps {
   topic: Topic;
   language: Language;
+  course?: LearningCourse;
   progress?: TopicProgress;
   onSelectMode: (mode: GameMode) => void;
   onBack: () => void;
@@ -15,12 +16,17 @@ interface GameSelectorProps {
 export const GameSelector: React.FC<GameSelectorProps> = ({
   topic,
   language,
+  course = 'en',
   progress,
   onSelectMode,
   onBack,
 }) => {
   const t = translations[language];
-  const localizedTitle = topic.topic_name[language] || topic.topic_name.en || topic.topic_id;
+  const isLatvianCourse = course === 'lv';
+  const primaryTitle = isLatvianCourse
+    ? topic.topic_name.lv || topic.topic_name.en
+    : topic.topic_name[language] || topic.topic_name.en || topic.topic_id;
+  const secondaryTitle = isLatvianCourse ? topic.topic_name.ru : topic.topic_name.en;
   const stars = progress?.stars || 0;
 
   const MODES: { id: GameMode; title: string; desc: string; icon: React.ReactNode; color: string; border: string; bg: string }[] = [
@@ -102,10 +108,10 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
           </div>
           <div>
             <h1 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight">
-              {localizedTitle}
+              {primaryTitle}
             </h1>
             <p className="text-sm sm:text-base font-bold text-slate-400">
-              {topic.topic_name.en} • {topic.words.length} {getWordsPlural(topic.words.length, language)}
+              {secondaryTitle} • {topic.words.length} {getWordsPlural(topic.words.length, language)}
             </p>
           </div>
         </div>

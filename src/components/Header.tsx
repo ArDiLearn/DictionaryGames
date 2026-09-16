@@ -1,10 +1,12 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { Volume2, VolumeX, Cloud, Check, Sparkles, BarChart3, ChevronRight, ChevronLeft } from 'lucide-react';
-import { Language, UserStats, Grade } from '../types';
+import { Language, UserStats, Grade, LearningCourse } from '../types';
 import { translations, getGradeFilterInfo, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 
 interface HeaderProps {
+  course: LearningCourse;
+  onCourseChange: (course: LearningCourse) => void;
   language: Language;
   onLanguageChange: (lang: Language) => void;
   selectedGrades: Grade[];
@@ -22,6 +24,8 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({
+  course,
+  onCourseChange,
   language,
   onLanguageChange,
   selectedGrades,
@@ -115,13 +119,50 @@ export const Header: React.FC<HeaderProps> = ({
                 </span>
               </div>
               <p className="text-xs text-slate-400 font-medium -mt-1 hidden md:block whitespace-nowrap">
-                {t.appSubtitle}
+                {course === 'lv' ? t.courseLatvianSubtitle : t.appSubtitle}
               </p>
             </div>
           </button>
 
           {/* Right side controls */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+          {/* Course Switcher (EN / LV) */}
+          <div
+            className="flex bg-purple-100/90 p-0.5 sm:p-1 rounded-2xl border-2 border-purple-300 shadow-sm shrink-0"
+            title={t.courseSelectorLabel}
+          >
+            <button
+              onClick={() => {
+                onCourseChange('en');
+                sounds.playClick();
+              }}
+              className={`px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1 shrink-0 ${
+                course === 'en'
+                  ? 'bg-purple-600 text-white shadow-sm scale-105'
+                  : 'text-purple-800/70 hover:text-purple-950 hover:bg-purple-200/50'
+              }`}
+              title={t.courseEnglish}
+            >
+              <span>🇬🇧</span>
+              <span>EN</span>
+            </button>
+            <button
+              onClick={() => {
+                onCourseChange('lv');
+                sounds.playClick();
+              }}
+              className={`px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1 shrink-0 ${
+                course === 'lv'
+                  ? 'bg-rose-600 text-white shadow-sm scale-105'
+                  : 'text-rose-900/70 hover:text-rose-950 hover:bg-rose-200/50'
+              }`}
+              title={t.courseLatvian}
+            >
+              <span>🇱🇻</span>
+              <span>LV</span>
+            </button>
+          </div>
+
           {/* Multi-select Grade Switcher (1st / 2nd / 3rd / All) */}
           <div
             className="flex bg-amber-100/90 p-0.5 sm:p-1 rounded-2xl border-2 border-amber-300 shadow-sm shrink-0"
@@ -212,37 +253,39 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="hidden md:inline text-xs">{t.statsModal.title}</span>
           </button>
 
-          {/* Language Switcher (LV / RU) */}
-          <div className="flex bg-slate-100 p-1 rounded-2xl border-2 border-slate-200 shrink-0">
-            <button
-              onClick={() => {
-                onLanguageChange('lv');
-                sounds.playClick();
-              }}
-              className={`px-2 sm:px-2.5 py-1 rounded-xl text-sm font-bold transition-all ${
-                language === 'lv'
-                  ? 'bg-white text-indigo-700 shadow-sm scale-105'
-                  : 'text-slate-500 hover:text-slate-800'
-              }`}
-              title="Latviešu valoda"
-            >
-              🇱🇻 LV
-            </button>
-            <button
-              onClick={() => {
-                onLanguageChange('ru');
-                sounds.playClick();
-              }}
-              className={`px-2 sm:px-2.5 py-1 rounded-xl text-sm font-bold transition-all ${
-                language === 'ru'
-                  ? 'bg-white text-indigo-700 shadow-sm scale-105'
-                  : 'text-slate-500 hover:text-slate-800'
-              }`}
-              title="Русский язык"
-            >
-              🇷🇺 RU
-            </button>
-          </div>
+          {/* Language Switcher (LV / RU) - only shown when studying English */}
+          {course === 'en' && (
+            <div className="flex bg-slate-100 p-1 rounded-2xl border-2 border-slate-200 shrink-0">
+              <button
+                onClick={() => {
+                  onLanguageChange('lv');
+                  sounds.playClick();
+                }}
+                className={`px-2 sm:px-2.5 py-1 rounded-xl text-sm font-bold transition-all ${
+                  language === 'lv'
+                    ? 'bg-white text-indigo-700 shadow-sm scale-105'
+                    : 'text-slate-500 hover:text-slate-800'
+                }`}
+                title="Latviešu valoda"
+              >
+                🇱🇻 LV
+              </button>
+              <button
+                onClick={() => {
+                  onLanguageChange('ru');
+                  sounds.playClick();
+                }}
+                className={`px-2 sm:px-2.5 py-1 rounded-xl text-sm font-bold transition-all ${
+                  language === 'ru'
+                    ? 'bg-white text-indigo-700 shadow-sm scale-105'
+                    : 'text-slate-500 hover:text-slate-800'
+                }`}
+                title="Русский язык"
+              >
+                🇷🇺 RU
+              </button>
+            </div>
+          )}
 
           {/* Sound Toggle */}
           <button

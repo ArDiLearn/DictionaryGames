@@ -1,5 +1,7 @@
+import { LearningCourse } from '../types';
+
 /**
- * Web Speech API wrapper tailored for 1st-2nd grade English learners.
+ * Web Speech API wrapper tailored for English and Latvian learners.
  * Speaks with slightly reduced speed (0.85x) for clarity.
  */
 
@@ -74,6 +76,72 @@ export function speakEnglish(
     if (onEnd) onEnd();
     return false;
   }
+}
+
+export function speakLatvian(
+  text: string,
+  rate = 0.85,
+  onStart?: () => void,
+  onEnd?: () => void
+): boolean {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+    console.warn('Speech synthesis not supported in this browser.');
+    return false;
+  }
+
+  try {
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'lv-LV';
+    utterance.rate = Math.max(0.6, Math.min(1.2, rate));
+    utterance.pitch = 1.05;
+
+    if (!voicesLoaded) {
+      loadVoices();
+    }
+
+    // Try to find a Latvian voice
+    const latvianVoices = voices.filter(
+      (v) => v.lang.toLowerCase().startsWith('lv')
+    );
+
+    const preferredVoice =
+      latvianVoices.find((v) => v.name.includes('Nils') || v.name.includes('Everita') || v.name.includes('Natural')) ||
+      latvianVoices[0];
+
+    if (preferredVoice) {
+      utterance.voice = preferredVoice;
+    }
+
+    if (onStart) {
+      utterance.onstart = onStart;
+    }
+    if (onEnd) {
+      utterance.onend = onEnd;
+      utterance.onerror = onEnd;
+    }
+
+    window.speechSynthesis.speak(utterance);
+    return true;
+  } catch (err) {
+    console.error('Latvian speech error:', err);
+    if (onEnd) onEnd();
+    return false;
+  }
+}
+
+export function speakWord(
+  text: string,
+  course: LearningCourse = 'en',
+  rate = 0.85,
+  onStart?: () => void,
+  onEnd?: () => void
+): boolean {
+  if (course === 'lv') {
+    return speakLatvian(text, rate, onStart, onEnd);
+  }
+  return speakEnglish(text, rate, onStart, onEnd);
 }
 
 export function isSpeechSupported(): boolean {

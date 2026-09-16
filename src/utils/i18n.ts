@@ -15,6 +15,10 @@ export interface Translations {
   mainTopicsSubtitle: string;
   extraTopicsTitle: string;
   extraTopicsSubtitle: string;
+  courseSelectorLabel: string;
+  courseEnglish: string;
+  courseLatvian: string;
+  courseLatvianSubtitle: string;
   play: string;
   back: string;
   next: string;
@@ -201,6 +205,10 @@ export const translations: Record<Language, Translations> = {
     mainTopicsSubtitle: '12 тем школьной программы',
     extraTopicsTitle: 'Дополнительные темы',
     extraTopicsSubtitle: '6 тем для расширения словарного запаса',
+    courseSelectorLabel: 'Курс обучения',
+    courseEnglish: '🇬🇧 Английский',
+    courseLatvian: '🇱🇻 Латышский',
+    courseLatvianSubtitle: 'Латышский язык с переводом на русский',
     play: 'Играть',
     back: 'Назад',
     next: 'Дальше',
@@ -385,6 +393,10 @@ export const translations: Record<Language, Translations> = {
     mainTopicsSubtitle: '12 skolas programmas tēmas',
     extraTopicsTitle: 'Papildus tēmas',
     extraTopicsSubtitle: '6 tēmas vārdu krājuma paplašināšanai',
+    courseSelectorLabel: 'Mācību kurss',
+    courseEnglish: '🇬🇧 Angļu valoda',
+    courseLatvian: '🇱🇻 Latviešu valoda',
+    courseLatvianSubtitle: 'Latviešu valoda ar tulkojumu krieviski',
     play: 'Spēlēt',
     back: 'Atpakaļ',
     next: 'Tālāk',

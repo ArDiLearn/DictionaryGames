@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Word, Topic, Language } from '../../types';
-import { speakEnglish } from '../../utils/speech';
+import { Word, Topic, Language, LearningCourse } from '../../types';
+import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
 import { WordIllustration } from '../WordIllustration';
@@ -9,6 +9,7 @@ import { Volume2, ArrowLeft, RotateCcw } from 'lucide-react';
 interface WordBuilderGameProps {
   topic: Topic;
   language: Language;
+  course?: LearningCourse;
   onRecordResult: (wordId: string, isCorrect: boolean) => void;
   onComplete: (correctCount: number, totalCount: number) => void;
   onBack: () => void;
@@ -19,9 +20,17 @@ interface LetterTile {
   char: string;
 }
 
+const getTargetWord = (word: Word, currentCourse: LearningCourse): string => {
+  if (currentCourse === 'lv') {
+    return (word.lv.split(',')[0] || word.lv).trim();
+  }
+  return word.en;
+};
+
 export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
   topic,
   language,
+  course = 'en',
   onRecordResult,
   onComplete,
   onBack,
@@ -36,6 +45,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
   const [score, setScore] = useState(0);
 
   const currentWord: Word | undefined = topic.words[currentIndex];
+  const targetWord = currentWord ? getTargetWord(currentWord, course) : '';
 
   useEffect(() => {
     if (!currentWord) return;
@@ -45,12 +55,12 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
     setIsError(false);
     setWrongVariants([]);
 
+    const wordToSpell = getTargetWord(currentWord, course);
     // Speak word
-    speakEnglish(currentWord.en);
+    speakWord(wordToSpell, course);
 
-    // Prepare letters (exclude spaces or include them)
-    // If word has spaces, let's treat letters cleanly
-    const chars = currentWord.en.toLowerCase().split('');
+    // Prepare letters
+    const chars = wordToSpell.toLowerCase().split('');
     const tiles: LetterTile[] = chars.map((char, index) => ({
       id: `${char}-${index}-${Math.random()}`,
       char,
@@ -58,10 +68,10 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
 
     // Shuffle tiles
     setAvailableTiles([...tiles].sort(() => 0.5 - Math.random()));
-  }, [currentIndex, currentWord]);
+  }, [currentIndex, currentWord, course]);
 
   const handleSelectTile = (tile: LetterTile) => {
-    if (isChecking) return;
+    if (isChecking || !currentWord) return;
     sounds.playClick();
 
     setAvailableTiles((prev) => prev.filter((t) => t.id !== tile.id));
@@ -69,14 +79,15 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
     setSelectedTiles(nextSelected);
 
     // Check if finished
-    if (currentWord && nextSelected.length === currentWord.en.length) {
+    const wordToSpell = getTargetWord(currentWord, course);
+    if (nextSelected.length === wordToSpell.length) {
       const spelled = nextSelected.map((t) => t.char).join('');
-      const target = currentWord.en.toLowerCase();
+      const target = wordToSpell.toLowerCase();
 
       if (spelled === target) {
         setIsChecking(true);
         sounds.playCorrect();
-        speakEnglish(currentWord.en);
+        speakWord(wordToSpell, course);
         setScore((prev) => prev + 1);
         onRecordResult(currentWord.id, true);
 
@@ -96,7 +107,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
         setTimeout(() => {
           setIsError(false);
           // Return all back to available
-          const chars = currentWord.en.toLowerCase().split('');
+          const chars = wordToSpell.toLowerCase().split('');
           const resetTiles = chars.map((char, index) => ({
             id: `${char}-${index}-${Math.random()}`,
             char,
@@ -118,7 +129,8 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
   const handleReset = () => {
     if (isChecking || !currentWord) return;
     sounds.playClick();
-    const chars = currentWord.en.toLowerCase().split('');
+    const wordToSpell = getTargetWord(currentWord, course);
+    const chars = wordToSpell.toLowerCase().split('');
     const resetTiles = chars.map((char, index) => ({
       id: `${char}-${index}-${Math.random()}`,
       char,
@@ -129,7 +141,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
 
   if (!currentWord) return null;
 
-  const translation = currentWord[language] || currentWord.ru || currentWord.lv;
+  const translation = course === 'lv' ? currentWord.ru : (currentWord[language] || currentWord.ru || currentWord.lv);
 
   return (
     <div className="max-w-xl mx-auto px-4 py-4 flex flex-col items-center">
@@ -179,7 +191,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
           {translation}
         </h2>
         <button
-          onClick={() => speakEnglish(currentWord.en)}
+          onClick={() => speakWord(targetWord, course)}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-amber-50 border-2 border-amber-200 text-amber-700 font-bold text-sm shadow-sm hover:scale-105 active:scale-95 transition-transform"
         >
           <Volume2 className="w-5 h-5 text-amber-600" />
@@ -214,7 +226,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
         ))}
 
         {/* Empty placeholder dots if not enough letters */}
-        {Array.from({ length: Math.max(0, currentWord.en.length - selectedTiles.length) }).map(
+        {Array.from({ length: Math.max(0, targetWord.length - selectedTiles.length) }).map(
           (_, i) => (
             <div
               key={i}

@@ -537,6 +537,7 @@ export const TRANSCRIPTIONS = {
   "trace": "[ treɪs ]",
   "true": "[ truː ]",
   "wait": "[ weɪt ]",
+  "week": "[ wiːk ]",
   "wheel": "[ wiːl ]",
   "what's this": "[ wɒts ðɪs ]",
   "who's this": "[ huːz ðɪs ]",

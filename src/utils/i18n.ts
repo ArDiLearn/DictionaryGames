@@ -205,9 +205,9 @@ export const translations: Record<Language, Translations> = {
     wordsCount: 'слов',
     learnedCount: 'выучено',
     mainTopicsTitle: 'Основные темы',
-    mainTopicsSubtitle: '11 тем школьной программы',
+    mainTopicsSubtitle: '9 тем школьной программы',
     extraTopicsTitle: 'Дополнительные темы',
-    extraTopicsSubtitle: '8 тем для расширения словарного запаса',
+    extraTopicsSubtitle: '10 тем для расширения словарного запаса',
     courseSelectorLabel: 'Режим обучения',
     courseModeTitle: 'Режим обучения',
     courseSwitchHint: 'Сменить режим',
@@ -396,9 +396,9 @@ export const translations: Record<Language, Translations> = {
     wordsCount: 'vārdi',
     learnedCount: 'apgūti',
     mainTopicsTitle: 'Pamatkursa tēmas',
-    mainTopicsSubtitle: '11 skolas programmas tēmas',
+    mainTopicsSubtitle: '9 skolas programmas tēmas',
     extraTopicsTitle: 'Papildus tēmas',
-    extraTopicsSubtitle: '8 tēmas vārdu krājuma paplašināšanai',
+    extraTopicsSubtitle: '10 tēmas vārdu krājuma paplašināšanai',
     courseSelectorLabel: 'Mācību režīms',
     courseModeTitle: 'Mācību režīms',
     courseSwitchHint: 'Mainīt režīmu',
@@ -734,6 +734,8 @@ export function getPlayerDisplayName(
 }
 
 export const EXTRA_TOPICS: string[] = [
+  'shapes',
+  'actions',
   'school_materials',
   'other_words',
   'pronouns',
@@ -756,8 +758,6 @@ export const GRADE_1_MAIN_TOPICS: string[] = [
   'activities',
   'pets',
   'farm_animals',
-  'shapes',
-  'actions',
 ];
 
 export const GRADE_2_MAIN_TOPICS: string[] = [
@@ -774,7 +774,6 @@ export const GRADE_2_MAIN_TOPICS: string[] = [
   'rooms',
   'building_materials',
   'days_of_the_week',
-  'actions',
 ];
 
 export const GRADE_3_MAIN_TOPICS: string[] = [

@@ -216,6 +216,10 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     document.documentElement.lang = language;
+    document.title =
+      language === 'lv'
+        ? 'MindWordy — Angļu un latviešu valoda bērniem | Английский и Латышский для детей'
+        : 'MindWordy — Английский и Латышский для детей | Angļu un latviešu valoda bērniem';
   }, [language]);
 
   const handleLanguageChange = (newLang: Language) => {

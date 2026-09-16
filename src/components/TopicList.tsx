@@ -75,8 +75,8 @@ export const TopicList: React.FC<TopicListProps> = ({
   return (
     <div className="max-w-5xl mx-auto px-4 py-6">
       {/* Welcome Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-5 sm:p-7 text-white shadow-xl mb-6">
-        <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="relative rounded-3xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-5 sm:p-7 text-white shadow-xl mb-6">
+        <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <button
               onClick={() => {
@@ -85,7 +85,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                   onOpenShop();
                 }
               }}
-              className="relative group w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-white/20 hover:bg-white/30 backdrop-blur-md border-2 border-white/40 flex items-center justify-center text-4xl sm:text-5xl shadow-inner transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+              className="relative group w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-white/20 hover:bg-white/30 backdrop-blur-md border-2 border-white/40 flex items-center justify-center text-4xl sm:text-5xl shadow-inner transition-transform hover:scale-105 active:scale-95 cursor-pointer shrink-0"
               title={t.avatarShopTitle}
             >
               <span>{avatar}</span>
@@ -107,96 +107,71 @@ export const TopicList: React.FC<TopicListProps> = ({
             </div>
           </div>
 
-          {/* Quick stats pills (opens stats modal) */}
-          <button
-            onClick={() => {
-              if (onOpenStats) {
-                sounds.playClick();
-                onOpenStats();
-              }
-            }}
-            className="flex items-center gap-2 sm:gap-3 bg-white/15 hover:bg-white/25 active:scale-95 transition-all backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/25 cursor-pointer text-left group"
-            title={t.progressStatsTitle}
-          >
-            <div className="text-center">
-              <div className="text-xs text-white/80 font-bold uppercase tracking-wider">
-                {t.allTopics}
-              </div>
-              <div className="text-lg sm:text-xl font-black">{topics.length}</div>
-            </div>
-            <div className="w-px h-8 bg-white/30" />
-            <div className="text-center">
-              <div className="text-xs text-white/80 font-bold uppercase tracking-wider flex items-center justify-center gap-1">
-                <span>{t.learnedCount}</span>
-                <BarChart3 className="w-3.5 h-3.5 text-yellow-300 group-hover:scale-110 transition-transform" />
-              </div>
-              <div className="text-lg sm:text-xl font-black text-yellow-300">
-                {totalMastered} / {totalWords}
-              </div>
-            </div>
-          </button>
-        </div>
-      </div>
+          <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+            {/* Single Course Toggle Button with Tooltip */}
+            {onCourseChange && (
+              <div className="relative group">
+                <button
+                  onClick={() => {
+                    const nextCourse = course === 'en' ? 'lv' : 'en';
+                    sounds.playClick();
+                    onCourseChange(nextCourse);
+                  }}
+                  className="flex items-center gap-2.5 bg-white/20 hover:bg-white/30 active:scale-95 transition-all backdrop-blur-md px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl border-2 border-white/40 cursor-pointer text-white shadow-md select-none group/btn"
+                  title={t.courseSwitchHint}
+                >
+                  <span className="text-2xl sm:text-3xl shrink-0 transition-transform group-hover/btn:scale-110">
+                    {course === 'en' ? '🇬🇧' : '🇱🇻'}
+                  </span>
+                  <div className="flex flex-col text-left leading-tight">
+                    <span className="text-xs sm:text-sm font-black whitespace-nowrap drop-shadow-sm">
+                      {course === 'en' ? t.courseEnglish : t.courseLatvian}
+                    </span>
+                    <span className="text-[10px] sm:text-[11px] text-yellow-200 font-bold flex items-center gap-1">
+                      <span>🔄</span>
+                      <span>{t.courseSwitchHint}</span>
+                    </span>
+                  </div>
+                </button>
 
-      {/* Course Learning Mode Banner */}
-      <div className="flex flex-col items-center justify-center text-center gap-3.5 mb-5 bg-gradient-to-r from-purple-50 via-indigo-50/70 to-pink-50/70 border-2 border-purple-200 rounded-3xl p-4 sm:p-5 shadow-sm">
-        <div className="flex flex-col items-center gap-1.5">
-          <div className="flex items-center justify-center gap-2 flex-wrap">
-            <span className="text-xs font-black uppercase tracking-wider text-purple-800 flex items-center gap-1">
-              <span>🎓</span>
-              <span>{t.courseModeTitle}</span>
-            </span>
-            <span className="text-[11px] bg-purple-200/90 text-purple-900 font-extrabold px-2.5 py-0.5 rounded-full">
-              {course === 'lv' ? '🇱🇻 Латышский ➔ Русский' : '🇬🇧 Английский ➔ Русский / Latviešu'}
-            </span>
-          </div>
-          <h2 className="text-xl sm:text-2xl font-black text-slate-800 flex items-center justify-center gap-2">
-            <span>{course === 'lv' ? '🇱🇻' : '🇬🇧'}</span>
-            <span>{course === 'lv' ? t.courseLatvian : t.courseEnglish}</span>
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium">
-            {course === 'lv' ? t.courseLatvianSubtitle : t.appSubtitle}
-          </p>
-        </div>
+                {/* Floating tooltip on hover */}
+                <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900/95 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xl border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-30 flex items-center gap-1.5">
+                  <span>💡</span>
+                  <span>{t.courseSwitchHint}</span>
+                </div>
+              </div>
+            )}
 
-        {onCourseChange && (
-          <div className="flex flex-col items-center gap-2 w-full max-w-xs sm:max-w-sm">
+            {/* Quick stats pills (opens stats modal) */}
             <button
               onClick={() => {
-                if (course !== 'en') {
+                if (onOpenStats) {
                   sounds.playClick();
-                  onCourseChange('en');
+                  onOpenStats();
                 }
               }}
-              className={`w-full px-4 py-2.5 rounded-2xl text-sm font-black transition-all cursor-pointer flex items-center justify-center gap-2 shadow-sm ${
-                course === 'en'
-                  ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-md ring-2 ring-indigo-200 scale-102'
-                  : 'bg-white/95 text-slate-700 hover:text-indigo-800 hover:bg-white border-2 border-purple-200/80'
-              }`}
+              className="flex items-center gap-2 sm:gap-3 bg-white/15 hover:bg-white/25 active:scale-95 transition-all backdrop-blur-md px-4 py-2 sm:py-2.5 rounded-2xl border border-white/25 cursor-pointer text-left group"
+              title={t.progressStatsTitle}
             >
-              <span className="text-xl">🇬🇧</span>
-              <span>{t.courseEnglish}</span>
-              {course === 'en' && <span className="text-sm font-bold text-indigo-200 ml-1">✓</span>}
-            </button>
-            <button
-              onClick={() => {
-                if (course !== 'lv') {
-                  sounds.playClick();
-                  onCourseChange('lv');
-                }
-              }}
-              className={`w-full px-4 py-2.5 rounded-2xl text-sm font-black transition-all cursor-pointer flex items-center justify-center gap-2 shadow-sm ${
-                course === 'lv'
-                  ? 'bg-gradient-to-r from-rose-600 to-red-700 text-white shadow-md ring-2 ring-rose-200 scale-102'
-                  : 'bg-white/95 text-slate-700 hover:text-rose-800 hover:bg-white border-2 border-purple-200/80'
-              }`}
-            >
-              <span className="text-xl">🇱🇻</span>
-              <span>{t.courseLatvian}</span>
-              {course === 'lv' && <span className="text-sm font-bold text-rose-200 ml-1">✓</span>}
+              <div className="text-center">
+                <div className="text-xs text-white/80 font-bold uppercase tracking-wider">
+                  {t.allTopics}
+                </div>
+                <div className="text-lg sm:text-xl font-black">{topics.length}</div>
+              </div>
+              <div className="w-px h-8 bg-white/30" />
+              <div className="text-center">
+                <div className="text-xs text-white/80 font-bold uppercase tracking-wider flex items-center justify-center gap-1">
+                  <span>{t.learnedCount}</span>
+                  <BarChart3 className="w-3.5 h-3.5 text-yellow-300 group-hover:scale-110 transition-transform" />
+                </div>
+                <div className="text-lg sm:text-xl font-black text-yellow-300">
+                  {totalMastered} / {totalWords}
+                </div>
+              </div>
             </button>
           </div>
-        )}
+        </div>
       </div>
 
       {/* Multi-select Grade Switcher & Info Bar */}

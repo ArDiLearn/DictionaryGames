@@ -105,12 +105,16 @@ function generateExamQuestions(
       const shuffledOthers = shuffle(otherWords);
       const distractors = shuffledOthers.slice(0, 3).map((w) => ({
         text: getTransWord(w),
-        image: w.image,
+        image: qType === 'choice' ? undefined : w.image,
         isCorrect: false,
       }));
 
       const options = shuffle([
-        { text: correctText, image: chosenWord.image, isCorrect: true },
+        {
+          text: correctText,
+          image: qType === 'choice' ? undefined : chosenWord.image,
+          isCorrect: true,
+        },
         ...distractors,
       ]);
 
@@ -427,7 +431,7 @@ export const ExamGame: React.FC<ExamGameProps> = ({
           )}
           {currentQuestion.type === 'choice' && (
             <>
-              <span>🖼️</span>
+              <span>📝</span>
               <span>{t.exam.promptChoice}</span>
             </>
           )}
@@ -527,7 +531,9 @@ export const ExamGame: React.FC<ExamGameProps> = ({
                   onClick={() => handleSelectChoice(option)}
                   className={`relative p-4 sm:p-5 rounded-2xl border-3 font-black text-base sm:text-lg shadow-sm transition-all cursor-pointer flex items-center justify-center gap-3 ${btnStyle}`}
                 >
-                  {option.image && <span className="text-2xl">{option.image}</span>}
+                  {currentQuestion.type !== 'choice' && option.image && (
+                    <span className="text-2xl">{option.image}</span>
+                  )}
                   <span>{option.text}</span>
                   {isAnswered && option.isCorrect && (
                     <CheckCircle2 className="w-5 h-5 text-white absolute right-4" />

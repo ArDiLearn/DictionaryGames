@@ -114,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="shrink-0">
               <div className="flex items-center gap-1">
                 <span className="text-2xl font-black tracking-tight text-indigo-600 font-comic whitespace-nowrap">
-                  Wordy<span className="text-pink-500">Kids</span>
+                  Mind<span className="text-pink-500">Wordy</span>
                 </span>
               </div>
               <p className="text-xs text-slate-400 font-medium -mt-1 hidden md:flex items-center gap-1.5 whitespace-nowrap">

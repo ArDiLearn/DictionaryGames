@@ -1,4 +1,4 @@
--- Schema for WordyKids (PostgreSQL on Supabase)
+-- Schema for MindWordy (PostgreSQL on Supabase)
 -- Execute this script in the Supabase SQL Editor
 
 -- 1. Profiles Table

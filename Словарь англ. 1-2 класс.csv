@@ -230,12 +230,13 @@ today,šodien,сегодня,1
 yesterday,vakar,вчера,1
 tomorrow,rīt,завтра,1
 ,,,
-Shapes,Figūras,Фигуры,
+Shapes +,Figūras +,Фигуры +,
 circle,aplis,круг,1
 square,kvadrāts,квадрат,1
 triangle,trīsstūris,треугольник,1
 rectangle,taisnstūris,прямоугольник,1
 oval,ovāls,овал,1
+shapes,formas,фигуры,1
 ,,,
 Actions,Darbības,Действия,
 I can,es varu,я умею,1
@@ -368,6 +369,7 @@ group,grupa,группа,1
 things,lietas,"вещи, предметы",1
 scissors,šķēres,ножницы,1
 school,skola,школа,1
+activity,nodarbe,занятие,1
 ,,,
 Garden,Dārzs,Сад,
 root,sakne,корень,2
@@ -395,6 +397,8 @@ sausages,desiņas,сосиски,2
 ice cream,saldējums,мороженое,2
 chocolate,šokolāde,шоколад,2
 water,ūdens,вода,2
+food,ēdiens,еда,1
+cup,krūzīte,чашка,1
 ,,,
 Fruit and vegetables +,Augļi un dārzeņi +,Фрукты и овощи +,
 watermelon,arbūzs,арбуз,2
@@ -416,6 +420,7 @@ children,bērni,дети,1
 friend,draugs,друг,1
 dear,"dārgais, mīļais","дорогой, милый",1
 family,ģimene,семья,1
+people,cilvēki,люди,1
 ,,,
 Art and games +,Māksla un spēles +,Творчество и игры +,
 art,māksla,"искусство, рисование",1
@@ -427,6 +432,23 @@ party,ballīte,"праздник, вечеринка",1
 fun,jautrība,"веселье, забава",1
 story,stāsts,"рассказ, история",1
 chant,ritmiska dziesmiņa,"речёвка, песенка",1
+,,,
+Toys +,Rotaļlietas +,Игрушки +,
+toys,rotaļlietas,игрушки,1
+,,,
+Adjectives +,Īpašības vārdi +,Прилагательные +,
+favourite,mīļākais,любимый,1
+different,atšķirīgs,разный,1
+,,,
+Wild animals,Savvaļas dzīvnieki,Дикие животные,
+animal,dzīvnieks,животное,1
+lion,lauva,лев,1
+deer,briedis,олень,1
+,,,
+Nature,Daba,Природа,
+sun,saule,солнце,1
+moon,mēness,луна,1
+rainbow,varavīksne,радуга,1
 ,,,
 Pronouns,Vietniekvārdi,Местоимения,
 I'm,es esmu,я,1
@@ -445,26 +467,9 @@ your,"tavs, jūsu","твой, ваш",1
 our,mūsu,наш,1
 ,,,
 Other words,Dažādi vārdi,Разные слова,
-rainbow,varavīksne,радуга,1
-people,cilvēki,люди,1
-tired,noguris,уставший,1
-different,atšķirīgs,разный,1
-activity,nodarbe,занятие,1
-lion,lauva,лев,1
-deer,briedis,олень,1
-sun,saule,солнце,1
-moon,mēness,луна,1
-tree,koks,дерево,1
-animal,dzīvnieks,животное,1
 country,valsts,страна,1
-cup,krūzīte,чашка,1
 wheel,ritenis,колесо,1
-favourite,mīļākais,любимый,1
-happy,laimīgs,счастливый,1
 ruby,rubīns,рубин,1
-toys,rotaļlietas,игрушки,1
-food,ēdiens,еда,1
-shapes,formas,фигуры,1
 ,,,
 Birthday,Dzimšanas diena,День рождения,
 board game,galda spēle,настольная игра,3
@@ -479,12 +484,12 @@ umbrella,lietussargs,зонт,3
 dinosaur,dinozaurs,динозавр,3
 ,,,
 Feelings,Jūtas un emocijas,Чувства и эмоции,
-happy,laimīgs,счастливый,3
+happy,laimīgs,счастливый,1
 sad,bēdīgs,грустный,3
 hungry,izsalcis,голодный,3
 thirsty,izslāpis,испытывающий жажду,3
 angry,dusmīgs,сердитый,3
-tired,noguris,уставший,3
+tired,noguris,уставший,1
 ,,,
 Jobs,Profesijas,Профессии,
 police officer,policists,полицейский,3

@@ -1985,9 +1985,9 @@
   {
     "topic_id": "shapes",
     "topic_name": {
-      "ru": "Фигуры",
-      "lv": "Figūras",
-      "en": "Shapes"
+      "ru": "Фигуры +",
+      "lv": "Figūras +",
+      "en": "Shapes +"
     },
     "icon": "Shapes",
     "color": "cyan",
@@ -2037,6 +2037,15 @@
         "grade": 1,
         "image": "🟣",
         "transcription": "[ ˈəʊvl ]"
+      },
+      {
+        "id": "196",
+        "en": "shapes",
+        "lv": "formas",
+        "ru": "фигуры",
+        "grade": 1,
+        "image": "🔷",
+        "transcription": "[ ʃeɪps ]"
       }
     ]
   },
@@ -2052,7 +2061,7 @@
     "emoji": "⚡",
     "words": [
       {
-        "id": "196",
+        "id": "197",
         "en": "I can",
         "lv": "es varu",
         "ru": "я умею",
@@ -2061,7 +2070,7 @@
         "transcription": "[ aɪ kæn ]"
       },
       {
-        "id": "197",
+        "id": "198",
         "en": "I can't",
         "lv": "es nevaru",
         "ru": "я не умею",
@@ -2070,7 +2079,7 @@
         "transcription": "[ aɪ kɑːnt ]"
       },
       {
-        "id": "198",
+        "id": "199",
         "en": "I've got",
         "lv": "man ir",
         "ru": "у меня есть",
@@ -2079,7 +2088,7 @@
         "transcription": "[ aɪv ɡɒt ]"
       },
       {
-        "id": "199",
+        "id": "200",
         "en": "I haven't got",
         "lv": "man nav",
         "ru": "у меня нет",
@@ -2088,7 +2097,7 @@
         "transcription": "[ aɪ ˈhævnt ɡɒt ]"
       },
       {
-        "id": "200",
+        "id": "201",
         "en": "I have",
         "lv": "man ir",
         "ru": "у меня есть",
@@ -2097,7 +2106,7 @@
         "transcription": "[ aɪ hæv ]"
       },
       {
-        "id": "201",
+        "id": "202",
         "en": "I haven't",
         "lv": "man nav",
         "ru": "у меня нет",
@@ -2106,7 +2115,7 @@
         "transcription": "[ aɪ ˈhævnt ]"
       },
       {
-        "id": "202",
+        "id": "203",
         "en": "I like",
         "lv": "man patīk",
         "ru": "мне нравится",
@@ -2115,7 +2124,7 @@
         "transcription": "[ aɪ laɪk ]"
       },
       {
-        "id": "203",
+        "id": "204",
         "en": "I don't like",
         "lv": "man nepatīk",
         "ru": "мне не нравится",
@@ -2124,7 +2133,7 @@
         "transcription": "[ aɪ dəʊnt laɪk ]"
       },
       {
-        "id": "204",
+        "id": "205",
         "en": "I don't know",
         "lv": "es nezinu",
         "ru": "я не знаю",
@@ -2133,7 +2142,7 @@
         "transcription": "[ aɪ dəʊnt nəʊ ]"
       },
       {
-        "id": "205",
+        "id": "206",
         "en": "need",
         "lv": "vajadzēt",
         "ru": "нужно, требоваться",
@@ -2142,7 +2151,7 @@
         "transcription": "[ niːd ]"
       },
       {
-        "id": "206",
+        "id": "207",
         "en": "love",
         "lv": "mīlēt",
         "ru": "любить",
@@ -2164,7 +2173,7 @@
     "emoji": "👋",
     "words": [
       {
-        "id": "207",
+        "id": "208",
         "en": "hello",
         "lv": "labdien",
         "ru": "привет",
@@ -2173,7 +2182,7 @@
         "transcription": "[ həˈləʊ ]"
       },
       {
-        "id": "208",
+        "id": "209",
         "en": "bye",
         "lv": "atā",
         "ru": "пока",
@@ -2182,7 +2191,7 @@
         "transcription": "[ baɪ ]"
       },
       {
-        "id": "209",
+        "id": "210",
         "en": "What's your name?",
         "lv": "Kā tevi sauc?",
         "ru": "Как тебя зовут?",
@@ -2191,7 +2200,7 @@
         "transcription": "[ wɒts jɔː neɪm ]"
       },
       {
-        "id": "210",
+        "id": "211",
         "en": "How are you?",
         "lv": "Kā tev klājas?",
         "ru": "Как дела?",
@@ -2200,7 +2209,7 @@
         "transcription": "[ haʊ ɑː juː ]"
       },
       {
-        "id": "211",
+        "id": "212",
         "en": "How old are you?",
         "lv": "Cik tev gadu?",
         "ru": "Сколько тебе лет?",
@@ -2209,7 +2218,7 @@
         "transcription": "[ haʊ əʊld ɑː juː ]"
       },
       {
-        "id": "212",
+        "id": "213",
         "en": "What colour?",
         "lv": "Kādā krāsā?",
         "ru": "Какого цвета?",
@@ -2218,7 +2227,7 @@
         "transcription": "[ wɒt ˈkʌlə ]"
       },
       {
-        "id": "213",
+        "id": "214",
         "en": "please",
         "lv": "lūdzu",
         "ru": "пожалуйста",
@@ -2227,7 +2236,7 @@
         "transcription": "[ pliːz ]"
       },
       {
-        "id": "214",
+        "id": "215",
         "en": "thanks",
         "lv": "paldies",
         "ru": "спасибо",
@@ -2236,7 +2245,7 @@
         "transcription": "[ θæŋks ]"
       },
       {
-        "id": "215",
+        "id": "216",
         "en": "fine",
         "lv": "labi",
         "ru": "хорошо",
@@ -2245,7 +2254,7 @@
         "transcription": "[ faɪn ]"
       },
       {
-        "id": "216",
+        "id": "217",
         "en": "hi",
         "lv": "sveiki, čau",
         "ru": "привет",
@@ -2254,7 +2263,7 @@
         "transcription": "[ haɪ ]"
       },
       {
-        "id": "217",
+        "id": "218",
         "en": "hey",
         "lv": "hei",
         "ru": "эй, привет",
@@ -2263,7 +2272,7 @@
         "transcription": "[ heɪ ]"
       },
       {
-        "id": "218",
+        "id": "219",
         "en": "this is",
         "lv": "šis ir...",
         "ru": "это...",
@@ -2285,7 +2294,7 @@
     "emoji": "📋",
     "words": [
       {
-        "id": "219",
+        "id": "220",
         "en": "listen",
         "lv": "klausīties",
         "ru": "слушать",
@@ -2294,7 +2303,7 @@
         "transcription": "[ ˈlɪsn ]"
       },
       {
-        "id": "220",
+        "id": "221",
         "en": "point",
         "lv": "rādīt",
         "ru": "показывать",
@@ -2303,7 +2312,7 @@
         "transcription": "[ pɔɪnt ]"
       },
       {
-        "id": "221",
+        "id": "222",
         "en": "repeat",
         "lv": "atkārtot",
         "ru": "повторять",
@@ -2312,7 +2321,7 @@
         "transcription": "[ rɪˈpiːt ]"
       },
       {
-        "id": "222",
+        "id": "223",
         "en": "say",
         "lv": "teikt",
         "ru": "сказать",
@@ -2321,7 +2330,7 @@
         "transcription": "[ seɪ ]"
       },
       {
-        "id": "223",
+        "id": "224",
         "en": "look",
         "lv": "skatīties",
         "ru": "смотреть",
@@ -2330,7 +2339,7 @@
         "transcription": "[ lʊk ]"
       },
       {
-        "id": "224",
+        "id": "225",
         "en": "answer",
         "lv": "atbildēt",
         "ru": "отвечать",
@@ -2339,7 +2348,7 @@
         "transcription": "[ ˈɑːnsə ]"
       },
       {
-        "id": "225",
+        "id": "226",
         "en": "watch",
         "lv": "skatīties",
         "ru": "смотреть",
@@ -2348,7 +2357,7 @@
         "transcription": "[ wɒtʃ ]"
       },
       {
-        "id": "226",
+        "id": "227",
         "en": "complete",
         "lv": "pabeigt",
         "ru": "закончить",
@@ -2357,7 +2366,7 @@
         "transcription": "[ kəmˈpliːt ]"
       },
       {
-        "id": "227",
+        "id": "228",
         "en": "sing",
         "lv": "dziedāt",
         "ru": "петь",
@@ -2366,7 +2375,7 @@
         "transcription": "[ sɪŋ ]"
       },
       {
-        "id": "228",
+        "id": "229",
         "en": "match",
         "lv": "savienot",
         "ru": "подобрать пару",
@@ -2375,7 +2384,7 @@
         "transcription": "[ mætʃ ]"
       },
       {
-        "id": "229",
+        "id": "230",
         "en": "ask",
         "lv": "jautāt",
         "ru": "спрашивать",
@@ -2384,7 +2393,7 @@
         "transcription": "[ ɑːsk ]"
       },
       {
-        "id": "230",
+        "id": "231",
         "en": "guess",
         "lv": "uzminēt",
         "ru": "угадать",
@@ -2393,7 +2402,7 @@
         "transcription": "[ ɡes ]"
       },
       {
-        "id": "231",
+        "id": "232",
         "en": "join",
         "lv": "savienot",
         "ru": "соединить",
@@ -2402,7 +2411,7 @@
         "transcription": "[ dʒɔɪn ]"
       },
       {
-        "id": "232",
+        "id": "233",
         "en": "put",
         "lv": "likt",
         "ru": "положить",
@@ -2411,7 +2420,7 @@
         "transcription": "[ pʊt ]"
       },
       {
-        "id": "233",
+        "id": "234",
         "en": "find",
         "lv": "atrast",
         "ru": "найти",
@@ -2420,7 +2429,7 @@
         "transcription": "[ faɪnd ]"
       },
       {
-        "id": "234",
+        "id": "235",
         "en": "tick",
         "lv": "atzīmēt",
         "ru": "отметить галочкой",
@@ -2429,7 +2438,7 @@
         "transcription": "[ tɪk ]"
       },
       {
-        "id": "235",
+        "id": "236",
         "en": "cross",
         "lv": "pārsvītrot",
         "ru": "зачеркнуть",
@@ -2438,7 +2447,7 @@
         "transcription": "[ krɒs ]"
       },
       {
-        "id": "236",
+        "id": "237",
         "en": "colour",
         "lv": "izkrāsot",
         "ru": "раскрасить",
@@ -2447,7 +2456,7 @@
         "transcription": "[ ˈkʌlə ]"
       },
       {
-        "id": "237",
+        "id": "238",
         "en": "play",
         "lv": "spēlēt",
         "ru": "играть",
@@ -2456,7 +2465,7 @@
         "transcription": "[ pleɪ ]"
       },
       {
-        "id": "238",
+        "id": "239",
         "en": "write",
         "lv": "rakstīt",
         "ru": "писать",
@@ -2465,7 +2474,7 @@
         "transcription": "[ raɪt ]"
       },
       {
-        "id": "239",
+        "id": "240",
         "en": "read",
         "lv": "lasīt",
         "ru": "читать",
@@ -2474,7 +2483,7 @@
         "transcription": "[ riːd ]"
       },
       {
-        "id": "240",
+        "id": "241",
         "en": "make",
         "lv": "veidot",
         "ru": "мастерить",
@@ -2483,7 +2492,7 @@
         "transcription": "[ meɪk ]"
       },
       {
-        "id": "241",
+        "id": "242",
         "en": "draw",
         "lv": "zīmēt",
         "ru": "рисовать",
@@ -2492,7 +2501,7 @@
         "transcription": "[ drɔː ]"
       },
       {
-        "id": "242",
+        "id": "243",
         "en": "check",
         "lv": "pārbaudīt",
         "ru": "проверить",
@@ -2501,7 +2510,7 @@
         "transcription": "[ tʃek ]"
       },
       {
-        "id": "243",
+        "id": "244",
         "en": "turn",
         "lv": "kārta",
         "ru": "очередь",
@@ -2510,7 +2519,7 @@
         "transcription": "[ tɜːn ]"
       },
       {
-        "id": "244",
+        "id": "245",
         "en": "remember",
         "lv": "atcerēties",
         "ru": "запомнить",
@@ -2519,7 +2528,7 @@
         "transcription": "[ rɪˈmembə ]"
       },
       {
-        "id": "245",
+        "id": "246",
         "en": "practise",
         "lv": "trenēties",
         "ru": "тренироваться",
@@ -2528,7 +2537,7 @@
         "transcription": "[ ˈpræktɪs ]"
       },
       {
-        "id": "246",
+        "id": "247",
         "en": "again",
         "lv": "vēlreiz",
         "ru": "снова",
@@ -2537,7 +2546,7 @@
         "transcription": "[ əˈɡen ]"
       },
       {
-        "id": "247",
+        "id": "248",
         "en": "think",
         "lv": "domāt",
         "ru": "думать",
@@ -2546,7 +2555,7 @@
         "transcription": "[ θɪŋk ]"
       },
       {
-        "id": "248",
+        "id": "249",
         "en": "pair",
         "lv": "pāris",
         "ru": "пара",
@@ -2555,7 +2564,7 @@
         "transcription": "[ peə ]"
       },
       {
-        "id": "249",
+        "id": "250",
         "en": "share",
         "lv": "dalīties",
         "ru": "делиться",
@@ -2564,7 +2573,7 @@
         "transcription": "[ ʃeə ]"
       },
       {
-        "id": "250",
+        "id": "251",
         "en": "create",
         "lv": "veidot",
         "ru": "создавать",
@@ -2573,7 +2582,7 @@
         "transcription": "[ kriˈeɪt ]"
       },
       {
-        "id": "251",
+        "id": "252",
         "en": "miss",
         "lv": "izlaist",
         "ru": "пропустить",
@@ -2582,7 +2591,7 @@
         "transcription": "[ mɪs ]"
       },
       {
-        "id": "252",
+        "id": "253",
         "en": "number",
         "lv": "sanumurē",
         "ru": "пронумеруй",
@@ -2591,7 +2600,7 @@
         "transcription": "[ ˈnʌmbə ]"
       },
       {
-        "id": "253",
+        "id": "254",
         "en": "trace",
         "lv": "apvelc",
         "ru": "обведи по контуру",
@@ -2600,7 +2609,7 @@
         "transcription": "[ treɪs ]"
       },
       {
-        "id": "254",
+        "id": "255",
         "en": "count",
         "lv": "saskaiti",
         "ru": "посчитай",
@@ -2609,7 +2618,7 @@
         "transcription": "[ kaʊnt ]"
       },
       {
-        "id": "255",
+        "id": "256",
         "en": "tell",
         "lv": "pastāsti",
         "ru": "расскажи, скажи",
@@ -2618,7 +2627,7 @@
         "transcription": "[ tel ]"
       },
       {
-        "id": "256",
+        "id": "257",
         "en": "circle",
         "lv": "apvelc ar apli",
         "ru": "обведи в кружок",
@@ -2627,7 +2636,7 @@
         "transcription": "[ ˈsɜːkl ]"
       },
       {
-        "id": "257",
+        "id": "258",
         "en": "follow",
         "lv": "seko",
         "ru": "следуй",
@@ -2636,7 +2645,7 @@
         "transcription": "[ ˈfɒləʊ ]"
       },
       {
-        "id": "258",
+        "id": "259",
         "en": "design",
         "lv": "izveido dizainu",
         "ru": "оформи, нарисуй",
@@ -2645,7 +2654,7 @@
         "transcription": "[ dɪˈzaɪn ]"
       },
       {
-        "id": "259",
+        "id": "260",
         "en": "go back",
         "lv": "dodies atpakaļ",
         "ru": "вернись назад",
@@ -2654,7 +2663,7 @@
         "transcription": "[ ɡəʊ bæk ]"
       },
       {
-        "id": "260",
+        "id": "261",
         "en": "wait",
         "lv": "pagaidi",
         "ru": "подожди",
@@ -2663,7 +2672,7 @@
         "transcription": "[ weɪt ]"
       },
       {
-        "id": "261",
+        "id": "262",
         "en": "order",
         "lv": "sakārto secībā",
         "ru": "расставь по порядку",
@@ -2685,7 +2694,7 @@
     "emoji": "🏞️",
     "words": [
       {
-        "id": "262",
+        "id": "263",
         "en": "park",
         "lv": "parks",
         "ru": "парк",
@@ -2694,7 +2703,7 @@
         "transcription": "[ pɑːk ]"
       },
       {
-        "id": "263",
+        "id": "264",
         "en": "playground",
         "lv": "rotaļlaukums",
         "ru": "детская площадка",
@@ -2703,7 +2712,7 @@
         "transcription": "[ ˈpleɪɡraʊnd ]"
       },
       {
-        "id": "264",
+        "id": "265",
         "en": "farm",
         "lv": "ferma",
         "ru": "ферма",
@@ -2725,7 +2734,7 @@
     "emoji": "❓",
     "words": [
       {
-        "id": "265",
+        "id": "266",
         "en": "what",
         "lv": "kas, kāds",
         "ru": "что, какой",
@@ -2734,7 +2743,7 @@
         "transcription": "[ wɒt ]"
       },
       {
-        "id": "266",
+        "id": "267",
         "en": "where",
         "lv": "kur, kurp",
         "ru": "где, куда",
@@ -2743,7 +2752,7 @@
         "transcription": "[ weə ]"
       },
       {
-        "id": "267",
+        "id": "268",
         "en": "who",
         "lv": "kas",
         "ru": "кто",
@@ -2752,7 +2761,7 @@
         "transcription": "[ huː ]"
       },
       {
-        "id": "268",
+        "id": "269",
         "en": "how",
         "lv": "kā",
         "ru": "как",
@@ -2761,7 +2770,7 @@
         "transcription": "[ haʊ ]"
       },
       {
-        "id": "269",
+        "id": "270",
         "en": "which",
         "lv": "kurš, kāds",
         "ru": "какой, который",
@@ -2770,7 +2779,7 @@
         "transcription": "[ wɪtʃ ]"
       },
       {
-        "id": "270",
+        "id": "271",
         "en": "what's this",
         "lv": "kas tas ir?",
         "ru": "что это?",
@@ -2779,7 +2788,7 @@
         "transcription": "[ wɒts ðɪs ]"
       },
       {
-        "id": "271",
+        "id": "272",
         "en": "who's this",
         "lv": "kas tas ir?",
         "ru": "кто это?",
@@ -2788,7 +2797,7 @@
         "transcription": "[ huːz ðɪs ]"
       },
       {
-        "id": "272",
+        "id": "273",
         "en": "have you got",
         "lv": "vai tev ir?",
         "ru": "у тебя есть?",
@@ -2797,7 +2806,7 @@
         "transcription": "[ hæv juː ɡɒt ]"
       },
       {
-        "id": "273",
+        "id": "274",
         "en": "question",
         "lv": "jautājums",
         "ru": "вопрос",
@@ -2819,7 +2828,7 @@
     "emoji": "🔤",
     "words": [
       {
-        "id": "274",
+        "id": "275",
         "en": "lots",
         "lv": "daudz",
         "ru": "много",
@@ -2828,7 +2837,7 @@
         "transcription": "[ lɒts ]"
       },
       {
-        "id": "275",
+        "id": "276",
         "en": "only",
         "lv": "tikai",
         "ru": "только",
@@ -2837,7 +2846,7 @@
         "transcription": "[ ˈəʊnli ]"
       },
       {
-        "id": "276",
+        "id": "277",
         "en": "other",
         "lv": "cits",
         "ru": "другой",
@@ -2846,7 +2855,7 @@
         "transcription": "[ ˈʌðə ]"
       },
       {
-        "id": "277",
+        "id": "278",
         "en": "maybe",
         "lv": "varbūt",
         "ru": "может быть",
@@ -2855,7 +2864,7 @@
         "transcription": "[ ˈmeɪbi ]"
       },
       {
-        "id": "278",
+        "id": "279",
         "en": "then",
         "lv": "tad, pēc tam",
         "ru": "затем, потом",
@@ -2864,7 +2873,7 @@
         "transcription": "[ ðen ]"
       },
       {
-        "id": "279",
+        "id": "280",
         "en": "about",
         "lv": "par",
         "ru": "о, про",
@@ -2873,7 +2882,7 @@
         "transcription": "[ əˈbaʊt ]"
       },
       {
-        "id": "280",
+        "id": "281",
         "en": "and",
         "lv": "un",
         "ru": "и",
@@ -2882,7 +2891,7 @@
         "transcription": "[ ænd ]"
       },
       {
-        "id": "281",
+        "id": "282",
         "en": "with",
         "lv": "ar",
         "ru": "с, вместе с",
@@ -2891,7 +2900,7 @@
         "transcription": "[ wɪð ]"
       },
       {
-        "id": "282",
+        "id": "283",
         "en": "in",
         "lv": "iekšā, -ā",
         "ru": "в, внутри",
@@ -2900,7 +2909,7 @@
         "transcription": "[ ɪn ]"
       },
       {
-        "id": "283",
+        "id": "284",
         "en": "from",
         "lv": "no",
         "ru": "от, из",
@@ -2909,7 +2918,7 @@
         "transcription": "[ frɒm ]"
       },
       {
-        "id": "284",
+        "id": "285",
         "en": "after",
         "lv": "pēc",
         "ru": "после",
@@ -2918,7 +2927,7 @@
         "transcription": "[ ˈɑːftə ]"
       },
       {
-        "id": "285",
+        "id": "286",
         "en": "through",
         "lv": "cauri",
         "ru": "через, сквозь",
@@ -2927,7 +2936,7 @@
         "transcription": "[ θruː ]"
       },
       {
-        "id": "286",
+        "id": "287",
         "en": "below",
         "lv": "zemāk",
         "ru": "снизу, под",
@@ -2936,7 +2945,7 @@
         "transcription": "[ bɪˈləʊ ]"
       },
       {
-        "id": "287",
+        "id": "288",
         "en": "middle",
         "lv": "vidus",
         "ru": "середина",
@@ -2945,7 +2954,7 @@
         "transcription": "[ ˈmɪdl ]"
       },
       {
-        "id": "288",
+        "id": "289",
         "en": "right",
         "lv": "pa labi, pareizs",
         "ru": "справа, правильный",
@@ -2954,7 +2963,7 @@
         "transcription": "[ raɪt ]"
       },
       {
-        "id": "289",
+        "id": "290",
         "en": "too",
         "lv": "arī, pārāk",
         "ru": "тоже, слишком",
@@ -2963,7 +2972,7 @@
         "transcription": "[ tuː ]"
       },
       {
-        "id": "290",
+        "id": "291",
         "en": "else",
         "lv": "vēl, cits",
         "ru": "ещё, кроме",
@@ -2972,7 +2981,7 @@
         "transcription": "[ els ]"
       },
       {
-        "id": "291",
+        "id": "292",
         "en": "both",
         "lv": "abi, abas",
         "ru": "оба, обе",
@@ -2981,7 +2990,7 @@
         "transcription": "[ bəʊθ ]"
       },
       {
-        "id": "292",
+        "id": "293",
         "en": "another",
         "lv": "cits, vēl viens",
         "ru": "другой, ещё один",
@@ -2990,7 +2999,7 @@
         "transcription": "[ əˈnʌðə ]"
       },
       {
-        "id": "293",
+        "id": "294",
         "en": "yes",
         "lv": "jā",
         "ru": "да",
@@ -2999,7 +3008,7 @@
         "transcription": "[ jes ]"
       },
       {
-        "id": "294",
+        "id": "295",
         "en": "no",
         "lv": "nē",
         "ru": "нет",
@@ -3008,7 +3017,7 @@
         "transcription": "[ nəʊ ]"
       },
       {
-        "id": "295",
+        "id": "296",
         "en": "true",
         "lv": "pareizi, taisnība",
         "ru": "верно, правда",
@@ -3030,7 +3039,7 @@
     "emoji": "🎒",
     "words": [
       {
-        "id": "296",
+        "id": "297",
         "en": "box",
         "lv": "kaste",
         "ru": "коробка",
@@ -3039,7 +3048,7 @@
         "transcription": "[ bɒks ]"
       },
       {
-        "id": "297",
+        "id": "298",
         "en": "glue",
         "lv": "līme",
         "ru": "клей",
@@ -3048,7 +3057,7 @@
         "transcription": "[ ɡluː ]"
       },
       {
-        "id": "298",
+        "id": "299",
         "en": "counters",
         "lv": "žetoni",
         "ru": "фишки",
@@ -3057,7 +3066,7 @@
         "transcription": "[ ˈkaʊntəz ]"
       },
       {
-        "id": "299",
+        "id": "300",
         "en": "paper",
         "lv": "papīrs",
         "ru": "бумага",
@@ -3066,7 +3075,7 @@
         "transcription": "[ ˈpeɪpə ]"
       },
       {
-        "id": "300",
+        "id": "301",
         "en": "teacher",
         "lv": "skolotājs",
         "ru": "учитель",
@@ -3075,7 +3084,7 @@
         "transcription": "[ ˈtiːtʃə ]"
       },
       {
-        "id": "301",
+        "id": "302",
         "en": "stickers",
         "lv": "uzlīmes",
         "ru": "наклейки",
@@ -3084,7 +3093,7 @@
         "transcription": "[ ˈstɪkəz ]"
       },
       {
-        "id": "302",
+        "id": "303",
         "en": "sheet",
         "lv": "darba lapa",
         "ru": "рабочий лист",
@@ -3093,7 +3102,7 @@
         "transcription": "[ ʃiːt ]"
       },
       {
-        "id": "303",
+        "id": "304",
         "en": "text",
         "lv": "teksts",
         "ru": "текст",
@@ -3102,7 +3111,7 @@
         "transcription": "[ tekst ]"
       },
       {
-        "id": "304",
+        "id": "305",
         "en": "photo",
         "lv": "foto",
         "ru": "фотография",
@@ -3111,7 +3120,7 @@
         "transcription": "[ ˈfəʊtəʊ ]"
       },
       {
-        "id": "305",
+        "id": "306",
         "en": "message",
         "lv": "ziņa",
         "ru": "сообщение",
@@ -3120,7 +3129,7 @@
         "transcription": "[ ˈmesɪdʒ ]"
       },
       {
-        "id": "306",
+        "id": "307",
         "en": "classroom",
         "lv": "klases telpa",
         "ru": "классная комната",
@@ -3129,7 +3138,7 @@
         "transcription": "[ ˈklɑːsruːm ]"
       },
       {
-        "id": "307",
+        "id": "308",
         "en": "class",
         "lv": "klasesbiedri",
         "ru": "одноклассники",
@@ -3138,7 +3147,7 @@
         "transcription": "[ klɑːs ]"
       },
       {
-        "id": "308",
+        "id": "309",
         "en": "lesson",
         "lv": "stunda",
         "ru": "урок",
@@ -3147,7 +3156,7 @@
         "transcription": "[ ˈlesn ]"
       },
       {
-        "id": "309",
+        "id": "310",
         "en": "task",
         "lv": "uzdevums",
         "ru": "задание",
@@ -3156,7 +3165,7 @@
         "transcription": "[ tɑːsk ]"
       },
       {
-        "id": "310",
+        "id": "311",
         "en": "group",
         "lv": "grupa",
         "ru": "группа",
@@ -3165,7 +3174,7 @@
         "transcription": "[ ɡruːp ]"
       },
       {
-        "id": "311",
+        "id": "312",
         "en": "things",
         "lv": "lietas",
         "ru": "вещи, предметы",
@@ -3174,7 +3183,7 @@
         "transcription": "[ θɪŋz ]"
       },
       {
-        "id": "312",
+        "id": "313",
         "en": "scissors",
         "lv": "šķēres",
         "ru": "ножницы",
@@ -3183,13 +3192,22 @@
         "transcription": "[ ˈsɪzəz ]"
       },
       {
-        "id": "313",
+        "id": "314",
         "en": "school",
         "lv": "skola",
         "ru": "школа",
         "grade": 1,
         "image": "🏫",
         "transcription": "[ skuːl ]"
+      },
+      {
+        "id": "315",
+        "en": "activity",
+        "lv": "nodarbe",
+        "ru": "занятие",
+        "grade": 1,
+        "image": "🏃",
+        "transcription": "[ ækˈtɪvəti ]"
       }
     ]
   },
@@ -3205,7 +3223,7 @@
     "emoji": "🌻",
     "words": [
       {
-        "id": "314",
+        "id": "316",
         "en": "root",
         "lv": "sakne",
         "ru": "корень",
@@ -3214,7 +3232,7 @@
         "transcription": "[ ruːt ]"
       },
       {
-        "id": "315",
+        "id": "317",
         "en": "flower",
         "lv": "puķe",
         "ru": "цветок",
@@ -3223,7 +3241,7 @@
         "transcription": "[ ˈflaʊə ]"
       },
       {
-        "id": "316",
+        "id": "318",
         "en": "leaves",
         "lv": "lapas",
         "ru": "листья",
@@ -3232,7 +3250,7 @@
         "transcription": "[ liːvz ]"
       },
       {
-        "id": "317",
+        "id": "319",
         "en": "tree",
         "lv": "koks",
         "ru": "дерево",
@@ -3241,7 +3259,7 @@
         "transcription": "[ triː ]"
       },
       {
-        "id": "318",
+        "id": "320",
         "en": "fruit",
         "lv": "auglis",
         "ru": "фрукт",
@@ -3250,7 +3268,7 @@
         "transcription": "[ fruːt ]"
       },
       {
-        "id": "319",
+        "id": "321",
         "en": "honey",
         "lv": "medus",
         "ru": "мёд",
@@ -3259,7 +3277,7 @@
         "transcription": "[ ˈhʌni ]"
       },
       {
-        "id": "320",
+        "id": "322",
         "en": "plums",
         "lv": "plūmes",
         "ru": "сливы",
@@ -3268,7 +3286,7 @@
         "transcription": "[ plʌmz ]"
       },
       {
-        "id": "321",
+        "id": "323",
         "en": "insects",
         "lv": "kukaiņi",
         "ru": "насекомые",
@@ -3290,7 +3308,7 @@
     "emoji": "🧱",
     "words": [
       {
-        "id": "322",
+        "id": "324",
         "en": "bricks",
         "lv": "ķieģeļi",
         "ru": "кирпичи",
@@ -3299,7 +3317,7 @@
         "transcription": "[ brɪks ]"
       },
       {
-        "id": "323",
+        "id": "325",
         "en": "wood",
         "lv": "koks",
         "ru": "дерево",
@@ -3308,7 +3326,7 @@
         "transcription": "[ wʊd ]"
       },
       {
-        "id": "324",
+        "id": "326",
         "en": "rock",
         "lv": "akmens",
         "ru": "камень",
@@ -3317,7 +3335,7 @@
         "transcription": "[ rɒk ]"
       },
       {
-        "id": "325",
+        "id": "327",
         "en": "mud",
         "lv": "dubļi",
         "ru": "грязь",
@@ -3326,7 +3344,7 @@
         "transcription": "[ mʌd ]"
       },
       {
-        "id": "326",
+        "id": "328",
         "en": "clay",
         "lv": "māls",
         "ru": "глина",
@@ -3348,7 +3366,7 @@
     "emoji": "🍎",
     "words": [
       {
-        "id": "327",
+        "id": "329",
         "en": "breakfast",
         "lv": "brokastis",
         "ru": "завтрак",
@@ -3357,7 +3375,7 @@
         "transcription": "[ ˈbrekfəst ]"
       },
       {
-        "id": "328",
+        "id": "330",
         "en": "lunch",
         "lv": "pusdienas",
         "ru": "обед",
@@ -3366,7 +3384,7 @@
         "transcription": "[ lʌntʃ ]"
       },
       {
-        "id": "329",
+        "id": "331",
         "en": "dinner",
         "lv": "vakariņas",
         "ru": "ужин",
@@ -3375,7 +3393,7 @@
         "transcription": "[ ˈdɪnə ]"
       },
       {
-        "id": "330",
+        "id": "332",
         "en": "chips",
         "lv": "čipsi, kartupeļu salmiņi",
         "ru": "чипсы",
@@ -3384,7 +3402,7 @@
         "transcription": "[ tʃɪps ]"
       },
       {
-        "id": "331",
+        "id": "333",
         "en": "sausages",
         "lv": "desiņas",
         "ru": "сосиски",
@@ -3393,7 +3411,7 @@
         "transcription": "[ ˈsɒsɪdʒɪz ]"
       },
       {
-        "id": "332",
+        "id": "334",
         "en": "ice cream",
         "lv": "saldējums",
         "ru": "мороженое",
@@ -3402,7 +3420,7 @@
         "transcription": "[ ˌaɪs ˈkriːm ]"
       },
       {
-        "id": "333",
+        "id": "335",
         "en": "chocolate",
         "lv": "šokolāde",
         "ru": "шоколад",
@@ -3411,13 +3429,31 @@
         "transcription": "[ ˈtʃɒklət ]"
       },
       {
-        "id": "334",
+        "id": "336",
         "en": "water",
         "lv": "ūdens",
         "ru": "вода",
         "grade": 2,
         "image": "💧",
         "transcription": "[ ˈwɔːtər ]"
+      },
+      {
+        "id": "337",
+        "en": "food",
+        "lv": "ēdiens",
+        "ru": "еда",
+        "grade": 1,
+        "image": "🥪",
+        "transcription": "[ fuːd ]"
+      },
+      {
+        "id": "338",
+        "en": "cup",
+        "lv": "krūzīte",
+        "ru": "чашка",
+        "grade": 1,
+        "image": "☕",
+        "transcription": "[ kʌp ]"
       }
     ]
   },
@@ -3433,7 +3469,7 @@
     "emoji": "🥕",
     "words": [
       {
-        "id": "335",
+        "id": "339",
         "en": "watermelon",
         "lv": "arbūzs",
         "ru": "арбуз",
@@ -3442,7 +3478,7 @@
         "transcription": "[ ˈwɔːtərmelən ]"
       },
       {
-        "id": "336",
+        "id": "340",
         "en": "grapes",
         "lv": "vīnogas",
         "ru": "виноград",
@@ -3451,7 +3487,7 @@
         "transcription": "[ ɡreɪps ]"
       },
       {
-        "id": "337",
+        "id": "341",
         "en": "pineapple",
         "lv": "ananass",
         "ru": "ананас",
@@ -3460,7 +3496,7 @@
         "transcription": "[ ˈpaɪnæpl ]"
       },
       {
-        "id": "338",
+        "id": "342",
         "en": "spinach",
         "lv": "spināti",
         "ru": "шпинат",
@@ -3469,7 +3505,7 @@
         "transcription": "[ ˈspɪnɪtʃ ]"
       },
       {
-        "id": "339",
+        "id": "343",
         "en": "potatoes",
         "lv": "kartupeļi",
         "ru": "картофель",
@@ -3491,7 +3527,7 @@
     "emoji": "👨‍👩‍👧‍👦",
     "words": [
       {
-        "id": "340",
+        "id": "344",
         "en": "baby",
         "lv": "zīdainis",
         "ru": "младенец",
@@ -3500,7 +3536,7 @@
         "transcription": "[ ˈbeɪbi ]"
       },
       {
-        "id": "341",
+        "id": "345",
         "en": "toddler",
         "lv": "mazulis",
         "ru": "малыш",
@@ -3509,7 +3545,7 @@
         "transcription": "[ ˈtɒdlə ]"
       },
       {
-        "id": "342",
+        "id": "346",
         "en": "child",
         "lv": "bērns",
         "ru": "ребёнок",
@@ -3518,7 +3554,7 @@
         "transcription": "[ tʃaɪld ]"
       },
       {
-        "id": "343",
+        "id": "347",
         "en": "teenager",
         "lv": "pusaudzis",
         "ru": "подросток",
@@ -3527,7 +3563,7 @@
         "transcription": "[ ˈtiːneɪdʒə ]"
       },
       {
-        "id": "344",
+        "id": "348",
         "en": "adult",
         "lv": "pieaugušais",
         "ru": "взрослый",
@@ -3536,7 +3572,7 @@
         "transcription": "[ ˈædʌlt ]"
       },
       {
-        "id": "345",
+        "id": "349",
         "en": "elderly person",
         "lv": "seniors",
         "ru": "пожилой человек",
@@ -3545,7 +3581,7 @@
         "transcription": "[ ˈeldəli ˈpɜːsn ]"
       },
       {
-        "id": "346",
+        "id": "350",
         "en": "boy",
         "lv": "zēns",
         "ru": "мальчик",
@@ -3554,7 +3590,7 @@
         "transcription": "[ bɔɪ ]"
       },
       {
-        "id": "347",
+        "id": "351",
         "en": "girl",
         "lv": "meitene",
         "ru": "девочка",
@@ -3563,7 +3599,7 @@
         "transcription": "[ ɡɜːl ]"
       },
       {
-        "id": "348",
+        "id": "352",
         "en": "children",
         "lv": "bērni",
         "ru": "дети",
@@ -3572,7 +3608,7 @@
         "transcription": "[ ˈtʃɪldrən ]"
       },
       {
-        "id": "349",
+        "id": "353",
         "en": "friend",
         "lv": "draugs",
         "ru": "друг",
@@ -3581,7 +3617,7 @@
         "transcription": "[ frend ]"
       },
       {
-        "id": "350",
+        "id": "354",
         "en": "dear",
         "lv": "dārgais, mīļais",
         "ru": "дорогой, милый",
@@ -3590,13 +3626,22 @@
         "transcription": "[ dɪə ]"
       },
       {
-        "id": "351",
+        "id": "355",
         "en": "family",
         "lv": "ģimene",
         "ru": "семья",
         "grade": 1,
         "image": "👨‍👩‍👧",
         "transcription": "[ ˈfæməli ]"
+      },
+      {
+        "id": "356",
+        "en": "people",
+        "lv": "cilvēki",
+        "ru": "люди",
+        "grade": 1,
+        "image": "🧑‍🤝‍🧑",
+        "transcription": "[ ˈpiːpl ]"
       }
     ]
   },
@@ -3612,7 +3657,7 @@
     "emoji": "🎨",
     "words": [
       {
-        "id": "352",
+        "id": "357",
         "en": "art",
         "lv": "māksla",
         "ru": "искусство, рисование",
@@ -3621,7 +3666,7 @@
         "transcription": "[ ɑːt ]"
       },
       {
-        "id": "353",
+        "id": "358",
         "en": "craft",
         "lv": "rokdarbi",
         "ru": "поделка, ремесло",
@@ -3630,7 +3675,7 @@
         "transcription": "[ krɑːft ]"
       },
       {
-        "id": "354",
+        "id": "359",
         "en": "music",
         "lv": "mūzika",
         "ru": "музыка",
@@ -3639,7 +3684,7 @@
         "transcription": "[ ˈmjuːzɪk ]"
       },
       {
-        "id": "355",
+        "id": "360",
         "en": "game",
         "lv": "spēle",
         "ru": "игра",
@@ -3648,7 +3693,7 @@
         "transcription": "[ ɡeɪm ]"
       },
       {
-        "id": "356",
+        "id": "361",
         "en": "card",
         "lv": "kartīte",
         "ru": "открытка, карточка",
@@ -3657,7 +3702,7 @@
         "transcription": "[ kɑːd ]"
       },
       {
-        "id": "357",
+        "id": "362",
         "en": "party",
         "lv": "ballīte",
         "ru": "праздник, вечеринка",
@@ -3666,7 +3711,7 @@
         "transcription": "[ ˈpɑːti ]"
       },
       {
-        "id": "358",
+        "id": "363",
         "en": "fun",
         "lv": "jautrība",
         "ru": "веселье, забава",
@@ -3675,7 +3720,7 @@
         "transcription": "[ fʌn ]"
       },
       {
-        "id": "359",
+        "id": "364",
         "en": "story",
         "lv": "stāsts",
         "ru": "рассказ, история",
@@ -3684,13 +3729,146 @@
         "transcription": "[ ˈstɔːri ]"
       },
       {
-        "id": "360",
+        "id": "365",
         "en": "chant",
         "lv": "ritmiska dziesmiņa",
         "ru": "речёвка, песенка",
         "grade": 1,
         "image": "🎶",
         "transcription": "[ tʃɑːnt ]"
+      }
+    ]
+  },
+  {
+    "topic_id": "toys_plus",
+    "topic_name": {
+      "ru": "Игрушки +",
+      "lv": "Rotaļlietas +",
+      "en": "Toys +"
+    },
+    "icon": "Gamepad2",
+    "color": "orange",
+    "emoji": "🧸",
+    "words": [
+      {
+        "id": "366",
+        "en": "toys",
+        "lv": "rotaļlietas",
+        "ru": "игрушки",
+        "grade": 1,
+        "image": "🧸",
+        "transcription": "[ tɔɪz ]"
+      }
+    ]
+  },
+  {
+    "topic_id": "adjectives_plus",
+    "topic_name": {
+      "ru": "Прилагательные +",
+      "lv": "Īpašības vārdi +",
+      "en": "Adjectives +"
+    },
+    "icon": "Sparkles",
+    "color": "emerald",
+    "emoji": "✨",
+    "words": [
+      {
+        "id": "367",
+        "en": "favourite",
+        "lv": "mīļākais",
+        "ru": "любимый",
+        "grade": 1,
+        "image": "⭐",
+        "transcription": "[ ˈfeɪvərɪt ]"
+      },
+      {
+        "id": "368",
+        "en": "different",
+        "lv": "atšķirīgs",
+        "ru": "разный",
+        "grade": 1,
+        "image": "🔀",
+        "transcription": "[ ˈdɪfrənt ]"
+      }
+    ]
+  },
+  {
+    "topic_id": "wild_animals",
+    "topic_name": {
+      "ru": "Дикие животные",
+      "lv": "Savvaļas dzīvnieki",
+      "en": "Wild animals"
+    },
+    "icon": "Compass",
+    "color": "yellow",
+    "emoji": "🦁",
+    "words": [
+      {
+        "id": "369",
+        "en": "animal",
+        "lv": "dzīvnieks",
+        "ru": "животное",
+        "grade": 1,
+        "image": "🐾",
+        "transcription": "[ ˈænɪml ]"
+      },
+      {
+        "id": "370",
+        "en": "lion",
+        "lv": "lauva",
+        "ru": "лев",
+        "grade": 1,
+        "image": "🦁",
+        "transcription": "[ ˈlaɪən ]"
+      },
+      {
+        "id": "371",
+        "en": "deer",
+        "lv": "briedis",
+        "ru": "олень",
+        "grade": 1,
+        "image": "🦌",
+        "transcription": "[ dɪə ]"
+      }
+    ]
+  },
+  {
+    "topic_id": "nature",
+    "topic_name": {
+      "ru": "Природа",
+      "lv": "Daba",
+      "en": "Nature"
+    },
+    "icon": "SunMedium",
+    "color": "amber",
+    "emoji": "☀️",
+    "words": [
+      {
+        "id": "372",
+        "en": "sun",
+        "lv": "saule",
+        "ru": "солнце",
+        "grade": 1,
+        "image": "☀️",
+        "transcription": "[ sʌn ]"
+      },
+      {
+        "id": "373",
+        "en": "moon",
+        "lv": "mēness",
+        "ru": "луна",
+        "grade": 1,
+        "image": "🌙",
+        "transcription": "[ muːn ]"
+      },
+      {
+        "id": "374",
+        "en": "rainbow",
+        "lv": "varavīksne",
+        "ru": "радуга",
+        "grade": 1,
+        "image": "🌈",
+        "transcription": "[ ˈreɪnbəʊ ]"
       }
     ]
   },
@@ -3706,7 +3884,7 @@
     "emoji": "🗣️",
     "words": [
       {
-        "id": "361",
+        "id": "375",
         "en": "I'm",
         "lv": "es esmu",
         "ru": "я",
@@ -3715,7 +3893,7 @@
         "transcription": "[ aɪm ]"
       },
       {
-        "id": "362",
+        "id": "376",
         "en": "he's",
         "lv": "viņš ir",
         "ru": "он",
@@ -3724,7 +3902,7 @@
         "transcription": "[ hiːz ]"
       },
       {
-        "id": "363",
+        "id": "377",
         "en": "she's",
         "lv": "viņa ir",
         "ru": "она",
@@ -3733,7 +3911,7 @@
         "transcription": "[ ʃiːz ]"
       },
       {
-        "id": "364",
+        "id": "378",
         "en": "they're",
         "lv": "viņi ir",
         "ru": "они",
@@ -3742,7 +3920,7 @@
         "transcription": "[ ðeə ]"
       },
       {
-        "id": "365",
+        "id": "379",
         "en": "we",
         "lv": "mēs",
         "ru": "мы",
@@ -3751,7 +3929,7 @@
         "transcription": "[ wiː ]"
       },
       {
-        "id": "366",
+        "id": "380",
         "en": "they",
         "lv": "viņi",
         "ru": "они",
@@ -3760,7 +3938,7 @@
         "transcription": "[ ðeɪ ]"
       },
       {
-        "id": "367",
+        "id": "381",
         "en": "my",
         "lv": "mans",
         "ru": "мой",
@@ -3769,7 +3947,7 @@
         "transcription": "[ maɪ ]"
       },
       {
-        "id": "368",
+        "id": "382",
         "en": "me",
         "lv": "mani",
         "ru": "меня",
@@ -3778,7 +3956,7 @@
         "transcription": "[ miː ]"
       },
       {
-        "id": "369",
+        "id": "383",
         "en": "this",
         "lv": "šis",
         "ru": "этот",
@@ -3787,7 +3965,7 @@
         "transcription": "[ ðɪs ]"
       },
       {
-        "id": "370",
+        "id": "384",
         "en": "it's",
         "lv": "tas ir",
         "ru": "это",
@@ -3796,7 +3974,7 @@
         "transcription": "[ ɪts ]"
       },
       {
-        "id": "371",
+        "id": "385",
         "en": "that's",
         "lv": "tas ir",
         "ru": "то",
@@ -3805,7 +3983,7 @@
         "transcription": "[ ðæts ]"
       },
       {
-        "id": "372",
+        "id": "386",
         "en": "here",
         "lv": "šeit",
         "ru": "здесь",
@@ -3814,7 +3992,7 @@
         "transcription": "[ hɪə ]"
       },
       {
-        "id": "373",
+        "id": "387",
         "en": "your",
         "lv": "tavs, jūsu",
         "ru": "твой, ваш",
@@ -3823,7 +4001,7 @@
         "transcription": "[ jɔː ]"
       },
       {
-        "id": "374",
+        "id": "388",
         "en": "our",
         "lv": "mūsu",
         "ru": "наш",
@@ -3845,106 +4023,7 @@
     "emoji": "🌟",
     "words": [
       {
-        "id": "375",
-        "en": "rainbow",
-        "lv": "varavīksne",
-        "ru": "радуга",
-        "grade": 1,
-        "image": "🌈",
-        "transcription": "[ ˈreɪnbəʊ ]"
-      },
-      {
-        "id": "376",
-        "en": "people",
-        "lv": "cilvēki",
-        "ru": "люди",
-        "grade": 1,
-        "image": "🧑‍🤝‍🧑",
-        "transcription": "[ ˈpiːpl ]"
-      },
-      {
-        "id": "377",
-        "en": "tired",
-        "lv": "noguris",
-        "ru": "уставший",
-        "grade": 1,
-        "image": "🥱",
-        "transcription": "[ ˈtaɪəd ]"
-      },
-      {
-        "id": "378",
-        "en": "different",
-        "lv": "atšķirīgs",
-        "ru": "разный",
-        "grade": 1,
-        "image": "🔀",
-        "transcription": "[ ˈdɪfrənt ]"
-      },
-      {
-        "id": "379",
-        "en": "activity",
-        "lv": "nodarbe",
-        "ru": "занятие",
-        "grade": 1,
-        "image": "🏃",
-        "transcription": "[ ækˈtɪvəti ]"
-      },
-      {
-        "id": "380",
-        "en": "lion",
-        "lv": "lauva",
-        "ru": "лев",
-        "grade": 1,
-        "image": "🦁",
-        "transcription": "[ ˈlaɪən ]"
-      },
-      {
-        "id": "381",
-        "en": "deer",
-        "lv": "briedis",
-        "ru": "олень",
-        "grade": 1,
-        "image": "🦌",
-        "transcription": "[ dɪə ]"
-      },
-      {
-        "id": "382",
-        "en": "sun",
-        "lv": "saule",
-        "ru": "солнце",
-        "grade": 1,
-        "image": "☀️",
-        "transcription": "[ sʌn ]"
-      },
-      {
-        "id": "383",
-        "en": "moon",
-        "lv": "mēness",
-        "ru": "луна",
-        "grade": 1,
-        "image": "🌙",
-        "transcription": "[ muːn ]"
-      },
-      {
-        "id": "384",
-        "en": "tree",
-        "lv": "koks",
-        "ru": "дерево",
-        "grade": 1,
-        "image": "🌳",
-        "transcription": "[ triː ]"
-      },
-      {
-        "id": "385",
-        "en": "animal",
-        "lv": "dzīvnieks",
-        "ru": "животное",
-        "grade": 1,
-        "image": "🐾",
-        "transcription": "[ ˈænɪml ]"
-      },
-      {
-        "id": "386",
+        "id": "389",
         "en": "country",
         "lv": "valsts",
         "ru": "страна",
@@ -3953,40 +4032,13 @@
         "transcription": "[ ˈkʌntri ]"
       },
       {
-        "id": "387",
-        "en": "cup",
-        "lv": "krūzīte",
-        "ru": "чашка",
-        "grade": 1,
-        "image": "☕",
-        "transcription": "[ kʌp ]"
-      },
-      {
-        "id": "388",
+        "id": "390",
         "en": "wheel",
         "lv": "ritenis",
         "ru": "колесо",
         "grade": 1,
         "image": "🎡",
         "transcription": "[ wiːl ]"
-      },
-      {
-        "id": "389",
-        "en": "favourite",
-        "lv": "mīļākais",
-        "ru": "любимый",
-        "grade": 1,
-        "image": "⭐",
-        "transcription": "[ ˈfeɪvərɪt ]"
-      },
-      {
-        "id": "390",
-        "en": "happy",
-        "lv": "laimīgs",
-        "ru": "счастливый",
-        "grade": 1,
-        "image": "😊",
-        "transcription": "[ ˈhæpi ]"
       },
       {
         "id": "391",
@@ -3996,33 +4048,6 @@
         "grade": 1,
         "image": "🔻",
         "transcription": "[ ˈruːbi ]"
-      },
-      {
-        "id": "392",
-        "en": "toys",
-        "lv": "rotaļlietas",
-        "ru": "игрушки",
-        "grade": 1,
-        "image": "🧸",
-        "transcription": "[ tɔɪz ]"
-      },
-      {
-        "id": "393",
-        "en": "food",
-        "lv": "ēdiens",
-        "ru": "еда",
-        "grade": 1,
-        "image": "🥪",
-        "transcription": "[ fuːd ]"
-      },
-      {
-        "id": "394",
-        "en": "shapes",
-        "lv": "formas",
-        "ru": "фигуры",
-        "grade": 1,
-        "image": "🔷",
-        "transcription": "[ ʃeɪps ]"
       }
     ]
   },
@@ -4038,7 +4063,7 @@
     "emoji": "🎂",
     "words": [
       {
-        "id": "395",
+        "id": "392",
         "en": "board game",
         "lv": "galda spēle",
         "ru": "настольная игра",
@@ -4047,7 +4072,7 @@
         "transcription": "[ ˈbɔːd ɡeɪm ]"
       },
       {
-        "id": "396",
+        "id": "393",
         "en": "jigsaw",
         "lv": "puzle",
         "ru": "пазл",
@@ -4056,7 +4081,7 @@
         "transcription": "[ ˈdʒɪɡsɔː ]"
       },
       {
-        "id": "397",
+        "id": "394",
         "en": "balloon",
         "lv": "balons",
         "ru": "воздушный шар",
@@ -4065,7 +4090,7 @@
         "transcription": "[ bəˈluːn ]"
       },
       {
-        "id": "398",
+        "id": "395",
         "en": "camera",
         "lv": "fotoaparāts",
         "ru": "фотоаппарат",
@@ -4074,7 +4099,7 @@
         "transcription": "[ ˈkæmərə ]"
       },
       {
-        "id": "399",
+        "id": "396",
         "en": "dress",
         "lv": "kleita",
         "ru": "платье",
@@ -4083,7 +4108,7 @@
         "transcription": "[ dres ]"
       },
       {
-        "id": "400",
+        "id": "397",
         "en": "necklace",
         "lv": "kaklarota",
         "ru": "ожерелье",
@@ -4092,7 +4117,7 @@
         "transcription": "[ ˈnekləs ]"
       },
       {
-        "id": "401",
+        "id": "398",
         "en": "chocolate",
         "lv": "šokolāde",
         "ru": "шоколад",
@@ -4101,7 +4126,7 @@
         "transcription": "[ ˈtʃɒklət ]"
       },
       {
-        "id": "402",
+        "id": "399",
         "en": "watch",
         "lv": "pulkstenis",
         "ru": "наручные часы",
@@ -4110,7 +4135,7 @@
         "transcription": "[ wɒtʃ ]"
       },
       {
-        "id": "403",
+        "id": "400",
         "en": "umbrella",
         "lv": "lietussargs",
         "ru": "зонт",
@@ -4119,7 +4144,7 @@
         "transcription": "[ ʌmˈbrelə ]"
       },
       {
-        "id": "404",
+        "id": "401",
         "en": "dinosaur",
         "lv": "dinozaurs",
         "ru": "динозавр",
@@ -4141,16 +4166,16 @@
     "emoji": "🎭",
     "words": [
       {
-        "id": "405",
+        "id": "402",
         "en": "happy",
         "lv": "laimīgs",
         "ru": "счастливый",
-        "grade": 3,
+        "grade": 1,
         "image": "😊",
         "transcription": "[ ˈhæpi ]"
       },
       {
-        "id": "406",
+        "id": "403",
         "en": "sad",
         "lv": "bēdīgs",
         "ru": "грустный",
@@ -4159,7 +4184,7 @@
         "transcription": "[ sæd ]"
       },
       {
-        "id": "407",
+        "id": "404",
         "en": "hungry",
         "lv": "izsalcis",
         "ru": "голодный",
@@ -4168,7 +4193,7 @@
         "transcription": "[ ˈhʌŋɡri ]"
       },
       {
-        "id": "408",
+        "id": "405",
         "en": "thirsty",
         "lv": "izslāpis",
         "ru": "испытывающий жажду",
@@ -4177,7 +4202,7 @@
         "transcription": "[ ˈθɜːsti ]"
       },
       {
-        "id": "409",
+        "id": "406",
         "en": "angry",
         "lv": "dusmīgs",
         "ru": "сердитый",
@@ -4186,11 +4211,11 @@
         "transcription": "[ ˈæŋɡri ]"
       },
       {
-        "id": "410",
+        "id": "407",
         "en": "tired",
         "lv": "noguris",
         "ru": "уставший",
-        "grade": 3,
+        "grade": 1,
         "image": "🥱",
         "transcription": "[ ˈtaɪəd ]"
       }
@@ -4208,7 +4233,7 @@
     "emoji": "🧑‍💼",
     "words": [
       {
-        "id": "411",
+        "id": "408",
         "en": "police officer",
         "lv": "policists",
         "ru": "полицейский",
@@ -4217,7 +4242,7 @@
         "transcription": "[ pəˈliːs ˈɒfɪsə ]"
       },
       {
-        "id": "412",
+        "id": "409",
         "en": "cook",
         "lv": "pavārs",
         "ru": "повар",
@@ -4226,7 +4251,7 @@
         "transcription": "[ kʊk ]"
       },
       {
-        "id": "413",
+        "id": "410",
         "en": "football player",
         "lv": "futbolists",
         "ru": "футболист",
@@ -4235,7 +4260,7 @@
         "transcription": "[ ˈfʊtbɔːl ˈpleɪə ]"
       },
       {
-        "id": "414",
+        "id": "411",
         "en": "scientist",
         "lv": "zinātnieks",
         "ru": "учёный",
@@ -4244,7 +4269,7 @@
         "transcription": "[ ˈsaɪəntɪst ]"
       },
       {
-        "id": "415",
+        "id": "412",
         "en": "zoo keeper",
         "lv": "zoodārza uzraugs",
         "ru": "смотритель зоопарка",
@@ -4253,7 +4278,7 @@
         "transcription": "[ ˈzuː ˈkiːpə ]"
       },
       {
-        "id": "416",
+        "id": "413",
         "en": "doctor",
         "lv": "ārsts",
         "ru": "врач",
@@ -4262,7 +4287,7 @@
         "transcription": "[ ˈdɒktə ]"
       },
       {
-        "id": "417",
+        "id": "414",
         "en": "builder",
         "lv": "celtnieks",
         "ru": "строитель",
@@ -4271,7 +4296,7 @@
         "transcription": "[ ˈbɪldə ]"
       },
       {
-        "id": "418",
+        "id": "415",
         "en": "waiter",
         "lv": "viesmīlis",
         "ru": "официант",
@@ -4280,7 +4305,7 @@
         "transcription": "[ ˈweɪtə ]"
       },
       {
-        "id": "419",
+        "id": "416",
         "en": "farmer",
         "lv": "lauksaimnieks",
         "ru": "фермер",
@@ -4289,7 +4314,7 @@
         "transcription": "[ ˈfɑːmə ]"
       },
       {
-        "id": "420",
+        "id": "417",
         "en": "teacher",
         "lv": "skolotājs",
         "ru": "учитель",
@@ -4311,7 +4336,7 @@
     "emoji": "🚗",
     "words": [
       {
-        "id": "421",
+        "id": "418",
         "en": "bus",
         "lv": "autobuss",
         "ru": "автобус",
@@ -4320,7 +4345,7 @@
         "transcription": "[ bʌs ]"
       },
       {
-        "id": "422",
+        "id": "419",
         "en": "car",
         "lv": "mašīna",
         "ru": "машина",
@@ -4329,7 +4354,7 @@
         "transcription": "[ kɑː ]"
       },
       {
-        "id": "423",
+        "id": "420",
         "en": "motorbike",
         "lv": "motocikls",
         "ru": "мотоцикл",
@@ -4338,7 +4363,7 @@
         "transcription": "[ ˈməʊtəbaɪk ]"
       },
       {
-        "id": "424",
+        "id": "421",
         "en": "lorry",
         "lv": "kravas auto",
         "ru": "грузовик",
@@ -4347,7 +4372,7 @@
         "transcription": "[ ˈlɒri ]"
       },
       {
-        "id": "425",
+        "id": "422",
         "en": "plane",
         "lv": "lidmašīna",
         "ru": "самолёт",
@@ -4356,7 +4381,7 @@
         "transcription": "[ pleɪn ]"
       },
       {
-        "id": "426",
+        "id": "423",
         "en": "train",
         "lv": "vilciens",
         "ru": "поезд",
@@ -4378,7 +4403,7 @@
     "emoji": "👁️",
     "words": [
       {
-        "id": "427",
+        "id": "424",
         "en": "see",
         "lv": "redzēt",
         "ru": "видеть",
@@ -4387,7 +4412,7 @@
         "transcription": "[ siː ]"
       },
       {
-        "id": "428",
+        "id": "425",
         "en": "smell",
         "lv": "smaržot",
         "ru": "чувствовать запах",
@@ -4396,7 +4421,7 @@
         "transcription": "[ smel ]"
       },
       {
-        "id": "429",
+        "id": "426",
         "en": "taste",
         "lv": "garšot",
         "ru": "пробовать на вкус",
@@ -4405,7 +4430,7 @@
         "transcription": "[ teɪst ]"
       },
       {
-        "id": "430",
+        "id": "427",
         "en": "touch",
         "lv": "pieskarties",
         "ru": "трогать",
@@ -4414,7 +4439,7 @@
         "transcription": "[ tʌtʃ ]"
       },
       {
-        "id": "431",
+        "id": "428",
         "en": "hear",
         "lv": "dzirdēt",
         "ru": "слышать",
@@ -4436,7 +4461,7 @@
     "emoji": "🏙️",
     "words": [
       {
-        "id": "432",
+        "id": "429",
         "en": "castle",
         "lv": "pils",
         "ru": "замок",
@@ -4445,7 +4470,7 @@
         "transcription": "[ ˈkɑːsl ]"
       },
       {
-        "id": "433",
+        "id": "430",
         "en": "cinema",
         "lv": "kinoteātris",
         "ru": "кинотеатр",
@@ -4454,7 +4479,7 @@
         "transcription": "[ ˈsɪnəmə ]"
       },
       {
-        "id": "434",
+        "id": "431",
         "en": "museum",
         "lv": "muzejs",
         "ru": "музей",
@@ -4463,7 +4488,7 @@
         "transcription": "[ mjuˈziːəm ]"
       },
       {
-        "id": "435",
+        "id": "432",
         "en": "station",
         "lv": "stacija",
         "ru": "вокзал",
@@ -4472,7 +4497,7 @@
         "transcription": "[ ˈsteɪʃn ]"
       },
       {
-        "id": "436",
+        "id": "433",
         "en": "hospital",
         "lv": "slimnīca",
         "ru": "больница",
@@ -4481,7 +4506,7 @@
         "transcription": "[ ˈhɒspɪtl ]"
       },
       {
-        "id": "437",
+        "id": "434",
         "en": "park",
         "lv": "parks",
         "ru": "парк",
@@ -4490,7 +4515,7 @@
         "transcription": "[ pɑːk ]"
       },
       {
-        "id": "438",
+        "id": "435",
         "en": "library",
         "lv": "bibliotēka",
         "ru": "библиотека",
@@ -4499,7 +4524,7 @@
         "transcription": "[ ˈlaɪbrəri ]"
       },
       {
-        "id": "439",
+        "id": "436",
         "en": "shop",
         "lv": "veikals",
         "ru": "магазин",
@@ -4508,7 +4533,7 @@
         "transcription": "[ ʃɒp ]"
       },
       {
-        "id": "440",
+        "id": "437",
         "en": "restaurant",
         "lv": "restorāns",
         "ru": "ресторан",
@@ -4517,7 +4542,7 @@
         "transcription": "[ ˈrestrɒnt ]"
       },
       {
-        "id": "441",
+        "id": "438",
         "en": "swimming pool",
         "lv": "peldbaseins",
         "ru": "бассейн",
@@ -4526,7 +4551,7 @@
         "transcription": "[ ˈswɪmɪŋ puːl ]"
       },
       {
-        "id": "442",
+        "id": "439",
         "en": "pet shop",
         "lv": "zooveikals",
         "ru": "зоомагазин",
@@ -4535,7 +4560,7 @@
         "transcription": "[ ˈpet ʃɒp ]"
       },
       {
-        "id": "443",
+        "id": "440",
         "en": "toy shop",
         "lv": "rotaļlietu veikals",
         "ru": "магазин игрушек",
@@ -4544,7 +4569,7 @@
         "transcription": "[ ˈtɔɪ ʃɒp ]"
       },
       {
-        "id": "444",
+        "id": "441",
         "en": "school",
         "lv": "skola",
         "ru": "школа",
@@ -4553,7 +4578,7 @@
         "transcription": "[ skuːl ]"
       },
       {
-        "id": "445",
+        "id": "442",
         "en": "bookshop",
         "lv": "grāmatnīca",
         "ru": "книжный магазин",
@@ -4575,7 +4600,7 @@
     "emoji": "📍",
     "words": [
       {
-        "id": "446",
+        "id": "443",
         "en": "next to",
         "lv": "blakus",
         "ru": "рядом с",
@@ -4584,7 +4609,7 @@
         "transcription": "[ nekst tuː ]"
       },
       {
-        "id": "447",
+        "id": "444",
         "en": "between",
         "lv": "starp",
         "ru": "между",
@@ -4593,7 +4618,7 @@
         "transcription": "[ bɪˈtwiːn ]"
       },
       {
-        "id": "448",
+        "id": "445",
         "en": "in front of",
         "lv": "priekšā",
         "ru": "перед",
@@ -4602,7 +4627,7 @@
         "transcription": "[ ɪn frʌnt ɒv ]"
       },
       {
-        "id": "449",
+        "id": "446",
         "en": "behind",
         "lv": "aiz",
         "ru": "позади, за",
@@ -4611,7 +4636,7 @@
         "transcription": "[ bɪˈhaɪnd ]"
       },
       {
-        "id": "450",
+        "id": "447",
         "en": "opposite",
         "lv": "pretī",
         "ru": "напротив",
@@ -4620,7 +4645,7 @@
         "transcription": "[ ˈɒpəzɪt ]"
       },
       {
-        "id": "451",
+        "id": "448",
         "en": "above",
         "lv": "virs",
         "ru": "над",
@@ -4642,7 +4667,7 @@
     "emoji": "🧭",
     "words": [
       {
-        "id": "452",
+        "id": "449",
         "en": "turn left",
         "lv": "pagriezties pa kreisi",
         "ru": "повернуть налево",
@@ -4651,7 +4676,7 @@
         "transcription": "[ tɜːn left ]"
       },
       {
-        "id": "453",
+        "id": "450",
         "en": "turn right",
         "lv": "pagriezties pa labi",
         "ru": "повернуть направо",
@@ -4660,7 +4685,7 @@
         "transcription": "[ tɜːn raɪt ]"
       },
       {
-        "id": "454",
+        "id": "451",
         "en": "go straight on",
         "lv": "doties taisni",
         "ru": "идти прямо",

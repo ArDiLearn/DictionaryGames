@@ -119,6 +119,21 @@ const TOPIC_METADATA = {
   'Art and games +': { icon: 'Palette', color: 'pink', emoji: '🎨' },
   'Māksla un spēles +': { icon: 'Palette', color: 'pink', emoji: '🎨' },
   'Творчество и игры +': { icon: 'Palette', color: 'pink', emoji: '🎨' },
+  'Toys +': { icon: 'Gamepad2', color: 'orange', emoji: '🧸' },
+  'Rotaļlietas +': { icon: 'Gamepad2', color: 'orange', emoji: '🧸' },
+  'Игрушки +': { icon: 'Gamepad2', color: 'orange', emoji: '🧸' },
+  'Adjectives +': { icon: 'Sparkles', color: 'emerald', emoji: '✨' },
+  'Īpašības vārdi +': { icon: 'Sparkles', color: 'emerald', emoji: '✨' },
+  'Прилагательные +': { icon: 'Sparkles', color: 'emerald', emoji: '✨' },
+  'Wild animals': { icon: 'Compass', color: 'yellow', emoji: '🦁' },
+  'Savvaļas dzīvnieki': { icon: 'Compass', color: 'yellow', emoji: '🦁' },
+  'Дикие животные': { icon: 'Compass', color: 'yellow', emoji: '🦁' },
+  'Nature': { icon: 'SunMedium', color: 'amber', emoji: '☀️' },
+  'Daba': { icon: 'SunMedium', color: 'amber', emoji: '☀️' },
+  'Природа': { icon: 'SunMedium', color: 'amber', emoji: '☀️' },
+  'Shapes +': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
+  'Figūras +': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
+  'Фигуры +': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
 };
 
 /**
@@ -198,6 +213,9 @@ export function parseDictionaryCsv(csvString) {
       let topicId = slugify(en || 'topic');
       if (topicId === 'numbers') {
         topicId = 'numbers_1_20';
+      }
+      if (topicId === 'shapes_plus') {
+        topicId = 'shapes';
       }
       const meta = TOPIC_METADATA[en] || TOPIC_METADATA[ru] || {
         icon: 'BookOpen',

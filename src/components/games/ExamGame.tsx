@@ -108,14 +108,14 @@ function generateExamQuestions(
       const shuffledOthers = shuffle(otherWords);
       const distractors = shuffledOthers.slice(0, 3).map((w) => ({
         text: getTransWord(w),
-        word: qType === 'choice' ? undefined : w,
+        word: w,
         isCorrect: false,
       }));
 
       const options = shuffle([
         {
           text: correctText,
-          word: qType === 'choice' ? undefined : chosenWord,
+          word: chosenWord,
           isCorrect: true,
         },
         ...distractors,
@@ -464,13 +464,7 @@ export const ExamGame: React.FC<ExamGameProps> = ({
         )}
 
         {currentQuestion.type === 'choice' && (
-          <div className="my-6">
-            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-amber-50 border-3 border-amber-200 flex items-center justify-center p-2 shadow-inner mb-4 select-none">
-              <WordIllustration
-                word={currentQuestion.word}
-                fallbackEmoji={currentQuestion.topicEmoji || '📖'}
-              />
-            </div>
+          <div className="my-8">
             <div className="flex items-center justify-center gap-2">
               <h3 className="text-3xl sm:text-4xl font-black text-slate-800 font-comic tracking-tight">
                 {targetLearnWord}
@@ -541,7 +535,7 @@ export const ExamGame: React.FC<ExamGameProps> = ({
                   onClick={() => handleSelectChoice(option)}
                   className={`relative p-4 sm:p-5 rounded-2xl border-3 font-black text-base sm:text-lg shadow-sm transition-all cursor-pointer flex items-center justify-center gap-3 ${btnStyle}`}
                 >
-                  {currentQuestion.type === 'audio' && option.word && (
+                  {option.word && (
                     <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0 select-none">
                       <WordIllustration
                         word={option.word}

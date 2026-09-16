@@ -69,7 +69,7 @@ export interface AvatarShopItem {
   category: 'starter' | 'simple' | 'medium' | 'unique';
 }
 
-export type ExamQuestionType = 'audio' | 'choice' | 'truefalse';
+export type ExamQuestionType = 'audio' | 'choice' | 'truefalse' | 'builder';
 
 export interface ExamResult {
   grade: Grade;

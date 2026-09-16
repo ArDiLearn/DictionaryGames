@@ -34,6 +34,24 @@ interface ExamQuestion {
   isTrue?: boolean;
 }
 
+interface LetterTile {
+  id: string;
+  char: string;
+}
+
+function getTargetToSpell(word: Word, course: LearningCourse): string {
+  if (course === 'lv') {
+    return (word.lv.split(',')[0] || word.lv).trim();
+  }
+  return word.en.trim();
+}
+
+function isSingleWord(word: Word, course: LearningCourse): boolean {
+  const target = getTargetToSpell(word, course);
+  const regex = /^[a-zA-ZāčēģīķļņšūžĀČĒĢĪĶĻŅŠŪŽ]+$/;
+  return target.length >= 2 && regex.test(target);
+}
+
 function shuffle<T>(array: T[]): T[] {
   const arr = [...array];
   for (let i = arr.length - 1; i > 0; i--) {
@@ -107,14 +125,28 @@ function generateExamQuestions(
   // Shuffle selected items so questions from different topics are nicely distributed
   const shuffledItems = shuffle(selectedItems);
 
-  const questionTypes: ExamQuestionType[] = ['audio', 'choice', 'truefalse'];
+  const questionTypes: ExamQuestionType[] = ['audio', 'choice', 'truefalse', 'builder'];
   const questions: ExamQuestion[] = [];
 
   shuffledItems.forEach((item, index) => {
     const chosenWord = item.word;
-    const qType = questionTypes[index % questionTypes.length];
+    let qType = questionTypes[index % questionTypes.length];
 
-    if (qType === 'truefalse') {
+    // Single-word restriction for 'builder'
+    if (qType === 'builder' && !isSingleWord(chosenWord, course)) {
+      qType = index % 2 === 0 ? 'choice' : 'audio';
+    }
+
+    if (qType === 'builder') {
+      questions.push({
+        id: `q-${item.topicId}-${chosenWord.id}-${index}`,
+        topicId: item.topicId,
+        topicEmoji: item.topicEmoji,
+        type: 'builder',
+        word: chosenWord,
+        displayTranslation: getTransWord(chosenWord),
+      });
+    } else if (qType === 'truefalse') {
       const isTrue = Math.random() < 0.5;
       let displayTrans = getTransWord(chosenWord);
 
@@ -196,6 +228,11 @@ export const ExamGame: React.FC<ExamGameProps> = ({
   const [finalResult, setFinalResult] = useState<ExamResult | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+  // States for 'builder' question type
+  const [availableTiles, setAvailableTiles] = useState<LetterTile[]>([]);
+  const [selectedTiles, setSelectedTiles] = useState<LetterTile[]>([]);
+  const [builderStatus, setBuilderStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
+
   const currentQuestion = questions[currentIndex];
   const totalQuestions = questions.length;
 
@@ -208,7 +245,7 @@ export const ExamGame: React.FC<ExamGameProps> = ({
     }
   };
 
-  // Auto-play speech on audio questions or when question changes
+  // Auto-play speech on audio questions or prepare letters for builder questions
   useEffect(() => {
     if (!currentQuestion || isFinished) return;
 
@@ -217,8 +254,22 @@ export const ExamGame: React.FC<ExamGameProps> = ({
         playQuestionAudio(currentQuestion.word);
       }, 350);
       return () => clearTimeout(timeout);
+    } else if (currentQuestion.type === 'builder') {
+      const targetWord = getTargetToSpell(currentQuestion.word, course);
+      const chars = targetWord.toLowerCase().split('');
+      const tiles: LetterTile[] = chars.map((char, index) => ({
+        id: `${char}-${index}-${Math.random()}`,
+        char,
+      }));
+      let shuffled = shuffle(tiles);
+      if (tiles.length > 1 && shuffled.map((t) => t.char).join('') === targetWord.toLowerCase()) {
+        shuffled = [...tiles].reverse();
+      }
+      setAvailableTiles(shuffled);
+      setSelectedTiles([]);
+      setBuilderStatus('idle');
     }
-  }, [currentIndex, currentQuestion, isFinished]);
+  }, [currentIndex, currentQuestion, isFinished, course]);
 
   // Clean up speech and timers on unmount
   useEffect(() => {
@@ -263,9 +314,67 @@ export const ExamGame: React.FC<ExamGameProps> = ({
     }, 1300);
   };
 
+  const handleSelectTile = (tile: LetterTile) => {
+    if (isAnswered || !currentQuestion || currentQuestion.type !== 'builder') return;
+    sounds.playClick();
+
+    const nextAvailable = availableTiles.filter((t) => t.id !== tile.id);
+    const nextSelected = [...selectedTiles, tile];
+    setAvailableTiles(nextAvailable);
+    setSelectedTiles(nextSelected);
+
+    const targetWord = getTargetToSpell(currentQuestion.word, course).toLowerCase();
+    if (nextSelected.length === targetWord.length) {
+      setIsAnswered(true);
+      const spelled = nextSelected.map((t) => t.char).join('').toLowerCase();
+      const isCorrect = spelled === targetWord;
+
+      if (isCorrect) {
+        setBuilderStatus('correct');
+        sounds.playCorrect();
+        playQuestionAudio(currentQuestion.word);
+        setCorrectCount((prev) => prev + 1);
+      } else {
+        setBuilderStatus('wrong');
+        sounds.playWrong();
+      }
+
+      timerRef.current = setTimeout(() => {
+        advanceQuestion(isCorrect);
+      }, isCorrect ? 1300 : 1800);
+    }
+  };
+
+  const handleRemoveTile = (tile: LetterTile) => {
+    if (isAnswered) return;
+    sounds.playClick();
+    setSelectedTiles((prev) => prev.filter((t) => t.id !== tile.id));
+    setAvailableTiles((prev) => [...prev, tile]);
+  };
+
+  const handleResetBuilder = () => {
+    if (isAnswered || !currentQuestion || currentQuestion.type !== 'builder') return;
+    sounds.playClick();
+    const targetWord = getTargetToSpell(currentQuestion.word, course);
+    const chars = targetWord.toLowerCase().split('');
+    const tiles: LetterTile[] = chars.map((char, index) => ({
+      id: `${char}-${index}-${Math.random()}`,
+      char,
+    }));
+    let shuffled = shuffle(tiles);
+    if (tiles.length > 1 && shuffled.map((t) => t.char).join('') === targetWord.toLowerCase()) {
+      shuffled = [...tiles].reverse();
+    }
+    setAvailableTiles(shuffled);
+    setSelectedTiles([]);
+  };
+
   const advanceQuestion = (lastWasCorrect: boolean) => {
     setIsAnswered(false);
     setSelectedAnswer(null);
+    setSelectedTiles([]);
+    setAvailableTiles([]);
+    setBuilderStatus('idle');
 
     if (currentIndex + 1 < totalQuestions) {
       setCurrentIndex((prev) => prev + 1);
@@ -335,6 +444,9 @@ export const ExamGame: React.FC<ExamGameProps> = ({
     setIsAnswered(false);
     setIsFinished(false);
     setFinalResult(null);
+    setSelectedTiles([]);
+    setAvailableTiles([]);
+    setBuilderStatus('idle');
   };
 
   const gradeName = language === 'ru' ? `${grade} класс` : `${grade}. klase`;
@@ -484,9 +596,111 @@ export const ExamGame: React.FC<ExamGameProps> = ({
               <span>{t.exam.promptTrueFalse}</span>
             </>
           )}
+          {currentQuestion.type === 'builder' && (
+            <>
+              <span>🔤</span>
+              <span>{t.exam.promptBuilder}</span>
+            </>
+          )}
         </div>
 
         {/* Word Display Section */}
+        {currentQuestion.type === 'builder' && (
+          <div className="my-4">
+            {/* Word Picture Illustration */}
+            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-amber-50 border-3 border-amber-200 flex items-center justify-center p-2 shadow-inner mb-3 select-none">
+              <WordIllustration
+                word={currentQuestion.word}
+                fallbackEmoji={currentQuestion.topicEmoji || '📖'}
+              />
+            </div>
+
+            {/* Translation text with listen button */}
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <h3 className="text-2xl sm:text-3xl font-black text-slate-800 font-comic">
+                {currentQuestion.displayTranslation}
+              </h3>
+              <button
+                onClick={() => playQuestionAudio(currentQuestion.word)}
+                className="p-1.5 text-indigo-600 hover:bg-indigo-50 rounded-xl transition-colors cursor-pointer"
+                title={t.listen}
+              >
+                <Volume2 className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Selected Letters Slot */}
+            <div
+              className={`min-h-[72px] sm:min-h-[80px] bg-slate-100 rounded-3xl border-4 p-3 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-lg mx-auto transition-all ${
+                builderStatus === 'wrong'
+                  ? 'border-rose-400 bg-rose-50 animate-shake'
+                  : builderStatus === 'correct'
+                  ? 'border-emerald-400 bg-emerald-50'
+                  : 'border-slate-300'
+              }`}
+            >
+              {selectedTiles.map((tile) => (
+                <button
+                  key={tile.id}
+                  onClick={() => handleRemoveTile(tile)}
+                  disabled={isAnswered}
+                  className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-white border-3 border-indigo-400 text-indigo-700 font-black font-comic shadow-md flex items-center justify-center hover:scale-105 active:scale-95 transition-transform text-xl sm:text-2xl cursor-pointer disabled:cursor-default"
+                >
+                  {tile.char.toUpperCase()}
+                </button>
+              ))}
+
+              {/* Empty placeholder dots */}
+              {Array.from({
+                length: Math.max(
+                  0,
+                  getTargetToSpell(currentQuestion.word, course).length - selectedTiles.length
+                ),
+              }).map((_, i) => (
+                <div
+                  key={i}
+                  className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50/60 flex items-center justify-center text-slate-400 text-xl font-bold font-comic"
+                >
+                  •
+                </div>
+              ))}
+            </div>
+
+            {/* Wrong reveal */}
+            {builderStatus === 'wrong' && (
+              <div className="mt-3 text-emerald-700 font-black text-lg sm:text-xl font-comic animate-fadeIn">
+                ✓ {getTargetToSpell(currentQuestion.word, course).toUpperCase()}
+              </div>
+            )}
+
+            {/* Available Letters Tray */}
+            <div className="mt-5 bg-amber-50/80 border-3 border-amber-200 rounded-3xl p-3 sm:p-4 shadow-inner flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 max-w-lg mx-auto">
+              {availableTiles.map((tile) => (
+                <button
+                  key={tile.id}
+                  onClick={() => handleSelectTile(tile)}
+                  disabled={isAnswered}
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-400 hover:bg-amber-300 active:scale-95 border-b-4 border-amber-600 text-amber-950 font-black font-comic shadow-md flex items-center justify-center transition-all text-xl sm:text-2xl cursor-pointer select-none disabled:opacity-50 disabled:cursor-default"
+                >
+                  {tile.char.toUpperCase()}
+                </button>
+              ))}
+            </div>
+
+            {/* Clear / Reset button */}
+            {selectedTiles.length > 0 && !isAnswered && (
+              <div className="mt-3">
+                <button
+                  onClick={handleResetBuilder}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-2xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs sm:text-sm transition-colors cursor-pointer"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>{t.clearLetters}</span>
+                </button>
+              </div>
+            )}
+          </div>
+        )}
         {currentQuestion.type === 'audio' && (
           <div className="my-6">
             <button

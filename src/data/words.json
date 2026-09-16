@@ -1723,8 +1723,8 @@
       {
         "id": "165",
         "en": "clock",
-        "lv": "pulkstenis",
-        "ru": "часы",
+        "lv": "sienas pulkstenis",
+        "ru": "часы (настенные)",
         "grade": 2,
         "image": "⏰",
         "transcription": "[ klɒk ]"
@@ -2099,8 +2099,8 @@
       {
         "id": "201",
         "en": "I have",
-        "lv": "man ir",
-        "ru": "у меня есть",
+        "lv": "man pieder (ir)",
+        "ru": "я имею (у меня есть)",
         "grade": 1,
         "image": "🤲",
         "transcription": "[ aɪ hæv ]"
@@ -2108,8 +2108,8 @@
       {
         "id": "202",
         "en": "I haven't",
-        "lv": "man nav",
-        "ru": "у меня нет",
+        "lv": "man nepieder (nav)",
+        "ru": "я не имею (у меня нет)",
         "grade": 1,
         "image": "🙅",
         "transcription": "[ aɪ ˈhævnt ]"
@@ -2176,7 +2176,7 @@
         "id": "208",
         "en": "hello",
         "lv": "labdien",
-        "ru": "привет",
+        "ru": "здравствуйте, привет",
         "grade": 1,
         "image": "👋",
         "transcription": "[ həˈləʊ ]"
@@ -2332,8 +2332,8 @@
       {
         "id": "224",
         "en": "look",
-        "lv": "skatīties",
-        "ru": "смотреть",
+        "lv": "paskatīties",
+        "ru": "посмотри, взгляни",
         "grade": 1,
         "image": "👀",
         "transcription": "[ lʊk ]"
@@ -2350,8 +2350,8 @@
       {
         "id": "226",
         "en": "watch",
-        "lv": "skatīties",
-        "ru": "смотреть",
+        "lv": "skatīties video",
+        "ru": "смотреть (видео)",
         "grade": 1,
         "image": "📺",
         "transcription": "[ wɒtʃ ]"
@@ -2377,7 +2377,7 @@
       {
         "id": "229",
         "en": "match",
-        "lv": "savienot",
+        "lv": "savienot pāros",
         "ru": "подобрать пару",
         "grade": 1,
         "image": "🎯",
@@ -2575,7 +2575,7 @@
       {
         "id": "251",
         "en": "create",
-        "lv": "veidot",
+        "lv": "radīt, izveidot",
         "ru": "создавать",
         "grade": 1,
         "image": "🎨",
@@ -2790,7 +2790,7 @@
       {
         "id": "272",
         "en": "who's this",
-        "lv": "kas tas ir?",
+        "lv": "kurš tas ir?",
         "ru": "кто это?",
         "grade": 1,
         "image": "🕵️",
@@ -3319,8 +3319,8 @@
       {
         "id": "325",
         "en": "wood",
-        "lv": "koks",
-        "ru": "дерево",
+        "lv": "koksne, koks",
+        "ru": "древесина, дерево",
         "grade": 2,
         "image": "🪵",
         "transcription": "[ wʊd ]"
@@ -3914,7 +3914,7 @@
         "id": "378",
         "en": "they're",
         "lv": "viņi ir",
-        "ru": "они",
+        "ru": "они (есть)",
         "grade": 1,
         "image": "🧑‍🤝‍🧑",
         "transcription": "[ ðeə ]"
@@ -3976,7 +3976,7 @@
       {
         "id": "385",
         "en": "that's",
-        "lv": "tas ir",
+        "lv": "tas tur ir",
         "ru": "то",
         "grade": 1,
         "image": "👉",
@@ -4128,7 +4128,7 @@
       {
         "id": "399",
         "en": "watch",
-        "lv": "pulkstenis",
+        "lv": "rokas pulkstenis",
         "ru": "наручные часы",
         "grade": 3,
         "image": "⌚",

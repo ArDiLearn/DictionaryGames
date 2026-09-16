@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/parse-csv.js && tsc && vite build",
+    "build": "node scripts/parse-csv.js && node scripts/generate-lv-audio.cjs && tsc && vite build",
     "preview": "vite preview",
-    "parse-words": "node scripts/parse-csv.js"
+    "parse-words": "node scripts/parse-csv.js",
+    "generate-lv-audio": "node scripts/generate-lv-audio.cjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.48.1",

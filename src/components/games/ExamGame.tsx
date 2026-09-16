@@ -4,6 +4,7 @@ import { Topic, Word, Grade, Language, LearningCourse, ExamResult, ExamQuestionT
 import { translations } from '../../utils/i18n';
 import { sounds } from '../../utils/soundEffects';
 import { speakEnglish, speakLatvian, stopSpeech } from '../../utils/speech';
+import { WordIllustration } from '../WordIllustration';
 import { ArrowLeft, Volume2, CheckCircle2, XCircle, RotateCcw, Home, Sparkles } from 'lucide-react';
 
 interface ExamGameProps {
@@ -18,12 +19,13 @@ interface ExamGameProps {
 interface ExamQuestion {
   id: string;
   topicId: string;
+  topicEmoji?: string;
   type: ExamQuestionType;
   word: Word;
   // For 'audio' and 'choice' questions:
   options?: {
     text: string;
-    image?: string;
+    word?: Word;
     isCorrect: boolean;
   }[];
   // For 'truefalse' questions:
@@ -90,6 +92,7 @@ function generateExamQuestions(
       questions.push({
         id: `q-${topic.topic_id}-${chosenWord.id}-${index}`,
         topicId: topic.topic_id,
+        topicEmoji: topic.emoji,
         type: 'truefalse',
         word: chosenWord,
         displayWord: getLearnWord(chosenWord),
@@ -105,14 +108,14 @@ function generateExamQuestions(
       const shuffledOthers = shuffle(otherWords);
       const distractors = shuffledOthers.slice(0, 3).map((w) => ({
         text: getTransWord(w),
-        image: qType === 'choice' ? undefined : w.image,
+        word: qType === 'choice' ? undefined : w,
         isCorrect: false,
       }));
 
       const options = shuffle([
         {
           text: correctText,
-          image: qType === 'choice' ? undefined : chosenWord.image,
+          word: qType === 'choice' ? undefined : chosenWord,
           isCorrect: true,
         },
         ...distractors,
@@ -121,6 +124,7 @@ function generateExamQuestions(
       questions.push({
         id: `q-${topic.topic_id}-${chosenWord.id}-${index}`,
         topicId: topic.topic_id,
+        topicEmoji: topic.emoji,
         type: qType,
         word: chosenWord,
         options,
@@ -461,8 +465,11 @@ export const ExamGame: React.FC<ExamGameProps> = ({
 
         {currentQuestion.type === 'choice' && (
           <div className="my-6">
-            <div className="text-5xl sm:text-6xl mb-3">
-              {currentQuestion.word.image || '📖'}
+            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-amber-50 border-3 border-amber-200 flex items-center justify-center p-2 shadow-inner mb-4 select-none">
+              <WordIllustration
+                word={currentQuestion.word}
+                fallbackEmoji={currentQuestion.topicEmoji || '📖'}
+              />
             </div>
             <div className="flex items-center justify-center gap-2">
               <h3 className="text-3xl sm:text-4xl font-black text-slate-800 font-comic tracking-tight">
@@ -486,8 +493,11 @@ export const ExamGame: React.FC<ExamGameProps> = ({
 
         {currentQuestion.type === 'truefalse' && (
           <div className="my-6">
-            <div className="text-5xl sm:text-6xl mb-3">
-              {currentQuestion.word.image || '📖'}
+            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-amber-50 border-3 border-amber-200 flex items-center justify-center p-2 shadow-inner mb-4 select-none">
+              <WordIllustration
+                word={currentQuestion.word}
+                fallbackEmoji={currentQuestion.topicEmoji || '📖'}
+              />
             </div>
             <div className="inline-flex items-center gap-2 bg-slate-50 border-2 border-slate-200 px-4 py-2 rounded-2xl mb-2">
               <span className="text-2xl sm:text-3xl font-black text-slate-800 font-comic">
@@ -531,8 +541,14 @@ export const ExamGame: React.FC<ExamGameProps> = ({
                   onClick={() => handleSelectChoice(option)}
                   className={`relative p-4 sm:p-5 rounded-2xl border-3 font-black text-base sm:text-lg shadow-sm transition-all cursor-pointer flex items-center justify-center gap-3 ${btnStyle}`}
                 >
-                  {currentQuestion.type !== 'choice' && option.image && (
-                    <span className="text-2xl">{option.image}</span>
+                  {currentQuestion.type === 'audio' && option.word && (
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0 select-none">
+                      <WordIllustration
+                        word={option.word}
+                        fallbackEmoji={currentQuestion.topicEmoji || '📖'}
+                        className="w-7 h-7 sm:w-9 sm:h-9 text-2xl"
+                      />
+                    </div>
                   )}
                   <span>{option.text}</span>
                   {isAnswered && option.isCorrect && (

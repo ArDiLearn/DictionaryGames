@@ -155,13 +155,12 @@ export function loadLocalStats(): UserStats {
     const raw = getItemWithFallback(STATS_KEY, OLD_STATS_KEY, LEGACY_STATS_KEY);
     if (!raw) return getDefaultStats();
     const stats: UserStats = JSON.parse(raw);
-    const today = new Date().toISOString().split('T')[0];
-    let needsSave = false;
+    let needsLocalSave = false;
 
     // Ensure unlockedAvatars, spentStars and totalStarsEarned exist
     if (!stats.unlockedAvatars || stats.unlockedAvatars.length === 0) {
       stats.unlockedAvatars = DEFAULT_UNLOCKED_AVATARS;
-      needsSave = true;
+      needsLocalSave = true;
     } else {
       const currentSet = new Set(stats.unlockedAvatars);
       let added = false;
@@ -171,76 +170,102 @@ export function loadLocalStats(): UserStats {
           added = true;
         }
       }
-      if (added) needsSave = true;
+      if (added) needsLocalSave = true;
     }
     if (stats.spentStars === undefined || typeof stats.spentStars !== 'number') {
       stats.spentStars = 0;
-      needsSave = true;
+      needsLocalSave = true;
     }
     if (stats.totalStarsEarned === undefined || typeof stats.totalStarsEarned !== 'number') {
       const topics = loadTopicProgress();
       const topicStarsSum = Object.values(topics).reduce((sum, tp) => sum + (tp.stars || 0), 0);
       stats.totalStarsEarned = topicStarsSum;
-      needsSave = true;
+      needsLocalSave = true;
     }
 
-    // Cumulative non-coercive active dates & totalActiveDays
-    if (!stats.activeDates || !Array.isArray(stats.activeDates) || stats.activeDates.length === 0) {
-      stats.activeDates = [stats.lastActiveDate || today];
-      needsSave = true;
+    // Default structure checks
+    if (!stats.activeDates || !Array.isArray(stats.activeDates)) {
+      stats.activeDates = [stats.lastActiveDate || new Date().toISOString().split('T')[0]];
+      needsLocalSave = true;
     }
-    if (!stats.activeDates.includes(today)) {
-      stats.activeDates.push(today);
-      needsSave = true;
-    }
-    const computedDays = stats.activeDates.length;
-    if (stats.totalActiveDays !== computedDays) {
-      stats.totalActiveDays = computedDays;
-      needsSave = true;
+    if (typeof stats.totalActiveDays !== 'number') {
+      stats.totalActiveDays = stats.activeDates.length;
+      needsLocalSave = true;
     }
 
     // Title systems
     if (!stats.equippedTitleId) {
       stats.equippedTitleId = 'starter';
-      needsSave = true;
+      needsLocalSave = true;
     }
     if (!stats.unlockedTitleIds || !Array.isArray(stats.unlockedTitleIds) || stats.unlockedTitleIds.length === 0) {
       stats.unlockedTitleIds = DEFAULT_UNLOCKED_TITLES;
-      needsSave = true;
+      needsLocalSave = true;
     }
     if (!stats.claimedTopicBonusIds || !Array.isArray(stats.claimedTopicBonusIds)) {
       stats.claimedTopicBonusIds = [];
-      needsSave = true;
+      needsLocalSave = true;
     }
     if (!stats.claimedMilestoneIds || !Array.isArray(stats.claimedMilestoneIds)) {
       stats.claimedMilestoneIds = [];
-      needsSave = true;
+      needsLocalSave = true;
     }
     if (!stats.playedModes || !Array.isArray(stats.playedModes)) {
       stats.playedModes = [];
-      needsSave = true;
+      needsLocalSave = true;
     }
 
-    // Streak tracking (legacy backward-compatibility)
-    if (stats.lastActiveDate !== today) {
-      const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
-      if (stats.lastActiveDate === yesterday) {
-        stats.streak = (stats.streak || 0) + 1;
-      } else {
-        stats.streak = 1;
-      }
-      stats.lastActiveDate = today;
-      needsSave = true;
-    }
-
-    if (needsSave) {
-      saveLocalStats(stats);
+    // Only update localStorage if schema structure was repaired, WITHOUT triggering network cloud sync
+    if (needsLocalSave) {
+      localStorage.setItem(STATS_KEY, JSON.stringify(stats));
     }
 
     return stats;
   } catch {
     return getDefaultStats();
   }
+}
+
+/**
+ * Explicitly records daily attendance, streak increment and active dates.
+ * Called on application startup or activity completion.
+ */
+export function recordDailyActivity(existingStats?: UserStats): UserStats {
+  const stats = existingStats || loadLocalStats();
+  const today = new Date().toISOString().split('T')[0];
+  let changed = false;
+
+  if (!stats.activeDates || !Array.isArray(stats.activeDates) || stats.activeDates.length === 0) {
+    stats.activeDates = [today];
+    changed = true;
+  } else if (!stats.activeDates.includes(today)) {
+    stats.activeDates.push(today);
+    changed = true;
+  }
+
+  const computedDays = stats.activeDates.length;
+  if (stats.totalActiveDays !== computedDays) {
+    stats.totalActiveDays = computedDays;
+    changed = true;
+  }
+
+  // Streak tracking (legacy backward-compatibility)
+  if (stats.lastActiveDate !== today) {
+    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+    if (stats.lastActiveDate === yesterday) {
+      stats.streak = (stats.streak || 0) + 1;
+    } else {
+      stats.streak = 1;
+    }
+    stats.lastActiveDate = today;
+    changed = true;
+  }
+
+  if (changed) {
+    saveLocalStats(stats);
+  }
+
+  return stats;
 }
 
 export function addEarnedStars(starsCount: number): UserStats {

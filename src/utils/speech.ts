@@ -213,31 +213,8 @@ export function speakLatvian(
     return true;
   }
 
-  // 2. If not in local pre-recorded map, stream from Google TTS
-  try {
-    const streamUrl = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=lv&q=${encodeURIComponent(cleanText)}`;
-    const audio = new Audio(streamUrl);
-    currentAudio = audio;
-
-    audio.onplay = triggerStart;
-    audio.onended = () => {
-      currentAudio = null;
-      triggerEnd();
-    };
-    audio.onerror = () => {
-      currentAudio = null;
-      speakLatvianSynthesis(cleanText, rate, onStart, onEnd);
-    };
-
-    audio.play().catch(() => {
-      currentAudio = null;
-      speakLatvianSynthesis(cleanText, rate, onStart, onEnd);
-    });
-
-    return true;
-  } catch {
-    return speakLatvianSynthesis(cleanText, rate, onStart, onEnd);
-  }
+  // 2. Offline-safe fallback: Web Speech API synthesis
+  return speakLatvianSynthesis(cleanText, rate, onStart, onEnd);
 }
 
 export function speakWord(

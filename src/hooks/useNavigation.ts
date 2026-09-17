@@ -1,27 +1,13 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Topic, GameMode, Grade, Language, LearningCourse } from '../types';
-import { getStoredCourse } from '../services/storage';
+import { getStoredCourse, findFirstActiveExamGrade, hasInProgressExamSession } from '../services/storage';
 
 export type Screen = 'catalog' | 'mode_select' | 'game' | 'exam';
 
 function getInitialExamGrade(): Grade | null {
   try {
     const storedCourse = getStoredCourse();
-    for (const g of [1, 2, 3, 4] as Grade[]) {
-      const raw = sessionStorage.getItem(`wordymind_exam_session_${g}_${storedCourse}`);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (
-          parsed &&
-          Array.isArray(parsed.questions) &&
-          parsed.questions.length > 0 &&
-          typeof parsed.currentIndex === 'number' &&
-          parsed.currentIndex < parsed.questions.length
-        ) {
-          return g;
-        }
-      }
-    }
+    return findFirstActiveExamGrade(storedCourse);
   } catch {}
   return null;
 }
@@ -80,17 +66,10 @@ export function useNavigation(
           skipNextHashConfirmRef.current = false;
         } else {
           // Check if the user has an unfinished exam with progress
-          const sessionKey = `wordymind_exam_session_${activeExamGradeRef.current}_${courseRef.current}`;
-          let hasInProgressExam = false;
-          try {
-            const raw = sessionStorage.getItem(sessionKey);
-            if (raw) {
-              const data = JSON.parse(raw);
-              if (data && typeof data.currentIndex === 'number' && data.currentIndex > 0) {
-                hasInProgressExam = true;
-              }
-            }
-          } catch {}
+          const hasInProgressExam = hasInProgressExamSession(
+            activeExamGradeRef.current,
+            courseRef.current
+          );
 
           if (hasInProgressExam) {
             const confirmText =
@@ -191,17 +170,7 @@ export function useNavigation(
   const navigateToHome = useCallback(
     (lang: Language = language): boolean => {
       if (activeExamGrade !== null) {
-        const sessionKey = `wordymind_exam_session_${activeExamGrade}_${course}`;
-        let hasInProgressExam = false;
-        try {
-          const raw = sessionStorage.getItem(sessionKey);
-          if (raw) {
-            const data = JSON.parse(raw);
-            if (data && typeof data.currentIndex === 'number' && data.currentIndex > 0) {
-              hasInProgressExam = true;
-            }
-          }
-        } catch {}
+        const hasInProgressExam = hasInProgressExamSession(activeExamGrade, course);
 
         if (hasInProgressExam) {
           const confirmText =

@@ -6,6 +6,7 @@ import { sounds } from '../../utils/soundEffects';
 import { speakEnglish, speakLatvian, stopSpeech } from '../../utils/speech';
 import { WordIllustration } from '../WordIllustration';
 import { ArrowLeft, Volume2, CheckCircle2, XCircle, RotateCcw, Home, Sparkles } from 'lucide-react';
+import { saveExamSession, loadExamSession, clearExamSession } from '../../services/examSession';
 
 interface ExamGameProps {
   grade: Grade;
@@ -216,26 +217,8 @@ export const ExamGame: React.FC<ExamGameProps> = ({
 }) => {
   const t = translations[language];
   const isLatvian = course === 'lv';
-  const sessionKey = `wordymind_exam_session_${grade}_${course}`;
 
-  const [sessionData] = useState(() => {
-    try {
-      const raw = sessionStorage.getItem(`wordymind_exam_session_${grade}_${course}`);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (
-          parsed &&
-          Array.isArray(parsed.questions) &&
-          parsed.questions.length > 0 &&
-          typeof parsed.currentIndex === 'number' &&
-          parsed.currentIndex < parsed.questions.length
-        ) {
-          return parsed;
-        }
-      }
-    } catch {}
-    return null;
-  });
+  const [sessionData] = useState(() => loadExamSession(grade, course));
 
   const [questions, setQuestions] = useState<ExamQuestion[]>(() =>
     sessionData?.questions || generateExamQuestions(topics, grade, language, course)
@@ -248,23 +231,18 @@ export const ExamGame: React.FC<ExamGameProps> = ({
   const [finalResult, setFinalResult] = useState<ExamResult | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Automatically save exam progress to sessionStorage so sync/refresh never loses progress
+  // Automatically save exam progress to persistent storage so tab unload or refresh never loses progress
   useEffect(() => {
     if (!isFinished && questions.length > 0) {
-      try {
-        sessionStorage.setItem(
-          sessionKey,
-          JSON.stringify({
-            questions,
-            currentIndex,
-            correctCount,
-            grade,
-            course,
-          })
-        );
-      } catch {}
+      saveExamSession(grade, course, {
+        questions,
+        currentIndex,
+        correctCount,
+        grade,
+        course,
+      });
     }
-  }, [sessionKey, questions, currentIndex, correctCount, isFinished, grade, course]);
+  }, [questions, currentIndex, correctCount, isFinished, grade, course]);
 
   // States for 'builder' question type
   const [availableTiles, setAvailableTiles] = useState<LetterTile[]>([]);
@@ -485,18 +463,14 @@ export const ExamGame: React.FC<ExamGameProps> = ({
       sounds.playClick();
     }
 
-    try {
-      sessionStorage.removeItem(sessionKey);
-    } catch {}
+    clearExamSession(grade, course);
 
     onComplete(result);
   };
 
   const handleRestart = () => {
     sounds.playClick();
-    try {
-      sessionStorage.removeItem(sessionKey);
-    } catch {}
+    clearExamSession(grade, course);
     const newQuestions = generateExamQuestions(topics, grade, language, course);
     setQuestions(newQuestions);
     setCurrentIndex(0);

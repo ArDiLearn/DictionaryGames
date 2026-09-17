@@ -317,6 +317,7 @@ export const App: React.FC = () => {
           <div className="pt-2">
             <Suspense fallback={<GameLoadingFallback />}>
               <ExamGame
+                key={`exam-${activeExamGrade}-${course}`}
                 grade={activeExamGrade}
                 topics={examTopics}
                 language={language}

@@ -158,6 +158,21 @@ const TOPIC_METADATA = {
   'Shapes +': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
   'Figūras +': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
   'Фигуры +': { icon: 'Shapes', color: 'cyan', emoji: '🔷' },
+  'School subjects': { icon: 'BookOpen', color: 'indigo', emoji: '📐' },
+  'Mācību priekšmeti': { icon: 'BookOpen', color: 'indigo', emoji: '📐' },
+  'Школьные предметы': { icon: 'BookOpen', color: 'indigo', emoji: '📐' },
+  'Outdoor things': { icon: 'Compass', color: 'emerald', emoji: '🎒' },
+  'Lietas pastaigai': { icon: 'Compass', color: 'emerald', emoji: '🎒' },
+  'Вещи для прогулки': { icon: 'Compass', color: 'emerald', emoji: '🎒' },
+  'Food': { icon: 'Utensils', color: 'rose', emoji: '🍪' },
+  'Ēdiens': { icon: 'Utensils', color: 'rose', emoji: '🍪' },
+  'Еда': { icon: 'Utensils', color: 'rose', emoji: '🍪' },
+  'Crafts': { icon: 'Scissors', color: 'amber', emoji: '🎭' },
+  'Rokdarbi': { icon: 'Scissors', color: 'amber', emoji: '🎭' },
+  'Поделки и творчество': { icon: 'Scissors', color: 'amber', emoji: '🎭' },
+  'Arts and crafts materials': { icon: 'Palette', color: 'purple', emoji: '🎨' },
+  'Materiāli rokdarbiem': { icon: 'Palette', color: 'purple', emoji: '🎨' },
+  'Материалы для творчества': { icon: 'Palette', color: 'purple', emoji: '🎨' },
 };
 
 /**
@@ -266,17 +281,17 @@ export function parseDictionaryCsv(csvString) {
         let grade = 1;
         let phTrans = '';
 
-        if (col4 === '1' || col4 === '2' || col4 === '3') {
+        if (col4 === '1' || col4 === '2' || col4 === '3' || col4 === '4') {
           grade = parseInt(col4, 10);
           if (col5) phTrans = col5;
         } else if (col4 && col4.startsWith('[')) {
           phTrans = col4;
-          if (col5 === '1' || col5 === '2' || col5 === '3') {
+          if (col5 === '1' || col5 === '2' || col5 === '3' || col5 === '4') {
             grade = parseInt(col5, 10);
           }
         } else if (col4) {
           const parsed = parseInt(col4, 10);
-          if (!isNaN(parsed) && (parsed >= 1 && parsed <= 3)) {
+          if (!isNaN(parsed) && (parsed >= 1 && parsed <= 4)) {
             grade = parsed;
           }
         }

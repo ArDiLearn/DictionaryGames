@@ -128,8 +128,8 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
 
   // Grade Breakdown
   const gradeStats = useMemo(() => {
-    return [1, 2, 3].map((grade) => {
-      const gWords = allWords.filter((w) => w.grade === grade);
+    return [1, 2, 3, 4].map((grade) => {
+      const gWords = allWords.filter((w) => (w.grade || 1) === grade);
       const gMastered = gWords.filter((w) => masteredWordIds.has(w.id)).length;
       const gTotal = gWords.length;
       const gPercent = gTotal > 0 ? Math.round((gMastered / gTotal) * 100) : 0;
@@ -517,7 +517,7 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
                   </h3>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                   {gradeStats.map(({ grade, mastered, total, percent }) => (
                     <div
                       key={grade}
@@ -525,7 +525,7 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
                     >
                       <div className="flex items-center justify-between mb-1.5">
                         <span className="text-xs font-black uppercase text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md">
-                          {grade === 1 ? t.grade1 : grade === 2 ? t.grade2 : t.grade3}
+                          {grade === 1 ? t.grade1 : grade === 2 ? t.grade2 : grade === 3 ? t.grade3 : t.grade4}
                         </span>
                         <span className="text-xs font-black text-slate-500">{percent}%</span>
                       </div>
@@ -721,11 +721,12 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
                   </h3>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {[1, 2, 3].map((g) => {
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {[1, 2, 3, 4].map((g) => {
                     const grade = g as Grade;
                     const best = examResults?.[grade];
-                    const gradeTitle = grade === 1 ? t.grade1 : grade === 2 ? t.grade2 : t.grade3;
+                    const gradeTitle =
+                      grade === 1 ? t.grade1 : grade === 2 ? t.grade2 : grade === 3 ? t.grade3 : t.grade4;
                     return (
                       <div
                         key={grade}
@@ -800,7 +801,7 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
 
                   {/* Grade filter pills for history */}
                   <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200">
-                    {(['all', 1, 2, 3] as (number | 'all')[]).map((f) => {
+                    {(['all', 1, 2, 3, 4] as (number | 'all')[]).map((f) => {
                       const isTab = examHistoryGradeFilter === f;
                       const label =
                         f === 'all'
@@ -809,7 +810,9 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
                           ? t.grade1Short
                           : f === 2
                           ? t.grade2Short
-                          : t.grade3Short;
+                          : f === 3
+                          ? t.grade3Short
+                          : t.grade4Short;
                       return (
                         <button
                           key={f}
@@ -841,7 +844,14 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
                 ) : (
                   <div className="space-y-2">
                     {filteredExamHistory.map((item, idx) => {
-                      const gradeLabel = item.grade === 1 ? t.grade1 : item.grade === 2 ? t.grade2 : t.grade3;
+                      const gradeLabel =
+                        item.grade === 1
+                          ? t.grade1
+                          : item.grade === 2
+                          ? t.grade2
+                          : item.grade === 3
+                          ? t.grade3
+                          : t.grade4;
                       const cupEmoji =
                         item.cup === 'gold' ? '🏆' : item.cup === 'silver' ? '🥈' : item.cup === 'bronze' ? '🥉' : '💡';
                       return (

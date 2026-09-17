@@ -35,6 +35,13 @@ export const PLAYER_TITLES: PlayerTitle[] = [
     category: 'academic',
   },
   {
+    id: 'grad_g4',
+    name: { ru: 'Знаток 4-го класса', lv: '4. klases lietpratējs' },
+    desc: { ru: 'Сдать школьный экзамен за 4-й класс', lv: 'Nokārtot 4. klases skolas eksāmenu' },
+    icon: '🎖️',
+    category: 'academic',
+  },
+  {
     id: 'gold_medalist',
     name: { ru: 'Золотой медалист', lv: 'Zelta medaļnieks' },
     desc: { ru: 'Сдать любой экзамен на 100% без ошибок', lv: 'Nokārtot jebkuru eksāmenu uz 100% bez kļūdām' },

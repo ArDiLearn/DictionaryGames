@@ -1,7 +1,7 @@
 export type Language = 'ru' | 'lv';
 export type LearningCourse = 'en' | 'lv';
-export type Grade = 1 | 2 | 3;
-export type GradeFilter = '1' | '2' | '3' | 'all';
+export type Grade = 1 | 2 | 3 | 4;
+export type GradeFilter = '1' | '2' | '3' | '4' | 'all';
 
 export interface Word {
   id: string;

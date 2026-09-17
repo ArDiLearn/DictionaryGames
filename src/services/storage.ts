@@ -82,25 +82,26 @@ export function saveStoredLanguage(lang: 'ru' | 'lv') {
 
 export function getStoredGrades(): Grade[] {
   const g = getItemWithFallback(GRADE_KEY, OLD_GRADE_KEY, LEGACY_GRADE_KEY);
-  if (!g || g === 'all') return [1, 2, 3];
+  if (!g || g === 'all') return [1, 2, 3, 4];
   if (g === '1') return [1];
   if (g === '2') return [2];
   if (g === '3') return [3];
+  if (g === '4') return [4];
   try {
     const parsed = g
       .split(',')
       .map(Number)
-      .filter((n): n is Grade => n === 1 || n === 2 || n === 3);
+      .filter((n): n is Grade => n === 1 || n === 2 || n === 3 || n === 4);
     if (parsed.length > 0) {
       return Array.from(new Set(parsed)).sort() as Grade[];
     }
   } catch {}
-  return [1, 2, 3];
+  return [1, 2, 3, 4];
 }
 
 export function saveStoredGrades(grades: Grade[]) {
   const sorted = Array.from(new Set(grades)).sort() as Grade[];
-  if (sorted.length >= 3) {
+  if (sorted.length >= 4) {
     localStorage.setItem(GRADE_KEY, 'all');
   } else {
     localStorage.setItem(GRADE_KEY, sorted.join(','));
@@ -109,7 +110,7 @@ export function saveStoredGrades(grades: Grade[]) {
 
 export function getStoredGradeFilter(): GradeFilter {
   const g = getItemWithFallback(GRADE_KEY, OLD_GRADE_KEY, LEGACY_GRADE_KEY);
-  if (g === '1' || g === '2' || g === '3' || g === 'all') return g;
+  if (g === '1' || g === '2' || g === '3' || g === '4' || g === 'all') return g;
   return 'all';
 }
 
@@ -615,6 +616,7 @@ export function evaluateUnlockedTitles(stats?: UserStats): {
   checkAndUnlock('grad_g1', Boolean(hasPassedGrade(1)));
   checkAndUnlock('grad_g2', Boolean(hasPassedGrade(2)));
   checkAndUnlock('grad_g3', Boolean(hasPassedGrade(3)));
+  checkAndUnlock('grad_g4', Boolean(hasPassedGrade(4)));
   checkAndUnlock('gold_medalist', Boolean(hasPerfectExam()));
 
   // 2. Word Milestones

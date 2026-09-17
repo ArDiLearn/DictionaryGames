@@ -21,6 +21,7 @@ import { trackGameStart, trackLanguageChange } from './utils/analytics';
 import { translations } from './utils/i18n';
 import { useNavigation } from './hooks/useNavigation';
 import { useGameRewards } from './hooks/useGameRewards';
+import { useCloudSync } from './hooks/useCloudSync';
 import {
   getStoredLanguage,
   saveStoredLanguage,
@@ -33,14 +34,12 @@ import {
   loadTopicProgress,
   loadWordProgress,
   recordWordAttempt,
-  mergeWithCloud,
   purchaseAvatar,
   loadExamResults,
   loadExamHistory,
   equipTitle,
   evaluateUnlockedTitles,
 } from './services/storage';
-import { getCurrentUser, getCurrentUserLogin } from './services/supabase';
 
 import {
   GRADE_1_TOPIC_ORDER,
@@ -89,7 +88,6 @@ export const App: React.FC = () => {
     loadExamHistory(getStoredCourse())
   );
   const [statsInitialTab, setStatsInitialTab] = useState<'overview' | 'exams' | 'topics' | 'practice' | 'awards'>('overview');
-  const [isCloudSynced, setIsCloudSynced] = useState<boolean>(false);
   const [isSyncModalOpen, setIsSyncModalOpen] = useState<boolean>(false);
   const [isAvatarShopOpen, setIsAvatarShopOpen] = useState<boolean>(false);
   const [isStatsModalOpen, setIsStatsModalOpen] = useState<boolean>(false);
@@ -97,6 +95,15 @@ export const App: React.FC = () => {
   const [wordProgress, setWordProgress] = useState<Record<string, WordProgress>>(() =>
     loadWordProgress(getStoredCourse())
   );
+  const { isCloudSynced, reloadAllFromLocal, handleManualSyncComplete } = useCloudSync({
+    course,
+    isGameActive,
+    setTopicProgress,
+    setWordProgress,
+    setExamResults,
+    setExamHistory,
+    setStats,
+  });
   const {
     celebration,
     setCelebration,
@@ -239,65 +246,6 @@ export const App: React.FC = () => {
   }, [topics, activeExamGrade]);
 
 
-  // Initialize and check cloud sync
-  useEffect(() => {
-    const initSync = async () => {
-      const user = await getCurrentUser();
-      setIsCloudSynced(!!user);
-      if (user) {
-        const userLogin = getCurrentUserLogin(user);
-        if (userLogin && userLogin !== 'Player') {
-          const currentStats = loadLocalStats();
-          if (
-            !currentStats.playerName ||
-            currentStats.playerName === 'Знайка' ||
-            currentStats.playerName === 'Zinītis' ||
-            currentStats.playerName === 'Супер-Знайка'
-          ) {
-            saveLocalStats({ ...currentStats, playerName: userLogin });
-          }
-        }
-        await mergeWithCloud();
-        setTopicProgress(loadTopicProgress(course));
-        setWordProgress(loadWordProgress(course));
-        setExamResults(loadExamResults(course));
-        setExamHistory(loadExamHistory(course));
-        setStats(loadLocalStats());
-      }
-    };
-    initSync();
-  }, [course]);
-
-  // Auto-sync when returning to tab/app on another device (NEVER during active games or exams)
-  useEffect(() => {
-    let syncThrottle = false;
-    const handleVisibilityOrFocus = async () => {
-      // NEVER trigger background cloud sync or state resets during an active exam or mini-game!
-      if (activeExamGrade !== null || gameMode !== null) return;
-
-      if (document.visibilityState === 'visible' && !syncThrottle) {
-        syncThrottle = true;
-        setTimeout(() => {
-          syncThrottle = false;
-        }, 3000);
-
-        const user = await getCurrentUser();
-        if (user) {
-          await mergeWithCloud();
-          setTopicProgress(loadTopicProgress(course));
-          setWordProgress(loadWordProgress(course));
-          setStats(loadLocalStats());
-        }
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityOrFocus);
-    window.addEventListener('focus', handleVisibilityOrFocus);
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityOrFocus);
-      window.removeEventListener('focus', handleVisibilityOrFocus);
-    };
-  }, [course, activeExamGrade, gameMode]);
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -335,10 +283,7 @@ export const App: React.FC = () => {
       setLanguage('ru');
       saveStoredLanguage('ru');
     }
-    setTopicProgress(loadTopicProgress(newCourse));
-    setWordProgress(loadWordProgress(newCourse));
-    setExamResults(loadExamResults(newCourse));
-    setExamHistory(loadExamHistory(newCourse));
+    reloadAllFromLocal(newCourse);
     handleHomeClick();
   };
 
@@ -627,20 +572,7 @@ export const App: React.FC = () => {
         language={language}
         isOpen={isSyncModalOpen}
         onClose={() => setIsSyncModalOpen(false)}
-        onSyncCompleted={async () => {
-          const user = await getCurrentUser();
-          setIsCloudSynced(!!user);
-          if (user) {
-            const userLogin = getCurrentUserLogin(user);
-            if (userLogin && userLogin !== 'Player') {
-              const currentStats = loadLocalStats();
-              saveLocalStats({ ...currentStats, playerName: userLogin });
-            }
-          }
-          setTopicProgress(loadTopicProgress(course));
-          setWordProgress(loadWordProgress(course));
-          setStats(loadLocalStats());
-        }}
+        onSyncCompleted={handleManualSyncComplete}
       />
 
       {/* Avatar Shop Modal */}

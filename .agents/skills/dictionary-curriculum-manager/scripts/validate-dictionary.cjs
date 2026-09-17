@@ -28,7 +28,7 @@ const totalWords = allWords.length;
 console.log(`📊 Topics found: ${totalTopics}, Total words: ${totalWords}`);
 
 // Check grades breakdown
-const gradeCounts = { 1: 0, 2: 0, 3: 0 };
+const gradeCounts = { 1: 0, 2: 0, 3: 0, 4: 0 };
 allWords.forEach(w => {
   if (gradeCounts[w.grade] !== undefined) {
     gradeCounts[w.grade]++;
@@ -38,7 +38,7 @@ allWords.forEach(w => {
   }
 });
 
-console.log(`   Grade 1: ${gradeCounts[1]} words | Grade 2: ${gradeCounts[2]} words | Grade 3: ${gradeCounts[3]} words`);
+console.log(`   Grade 1: ${gradeCounts[1]} words | Grade 2: ${gradeCounts[2]} words | Grade 3: ${gradeCounts[3]} words | Grade 4: ${gradeCounts[4]} words`);
 
 // Validate each topic
 wordsData.forEach(t => {

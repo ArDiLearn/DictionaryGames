@@ -112,6 +112,12 @@ ride a horse,jāt ar zirgu,кататься на лошади,1
 run,skriet,бегать,1
 ride a bike,braukt ar velosipēdu,кататься на велосипеде,1
 rollerblade,skrituļot,кататься на роликах,1
+do sport,nodarboties ar sportu,заниматься спортом,4
+draw,zīmēt,рисовать,4
+learn about space,mācīties par kosmosu,изучать космос,4
+listen to music,klausīties mūziku,слушать музыку,4
+sing,dziedāt,петь,4
+write,rakstīt,писать,4
 ,,,
 Pets,Mājas mīluļi,Домашние питомцы,
 fish,zivs,рыбка,1
@@ -672,3 +678,55 @@ cycle,cikls,"цикл, круговорот",2
 live,dzīvot,жить,2
 year,gads,год,2
 every,katrs,каждый,2
+,,,
+School subjects,Mācību priekšmeti,Школьные предметы,
+art,vizuālā māksla,"изо, рисование",4
+drama,teātra māksla,"театр, драма",4
+English,angļu valoda,английский язык,4
+geography,ģeogrāfija,география,4
+history,vēsture,история,4
+ICT,datorika,информатика,4
+math,matemātika,математика,4
+music,mūzika,музыка,4
+PE,sports,физкультура,4
+science,dabaszinības,"естествознание, наука",4
+,,,
+Outdoor things,Lietas pastaigai,Вещи для прогулки,
+backpack,mugursoma,рюкзак,4
+cap,cepure ar nagu,кепка,4
+coat,mētelis,пальто,4
+guide book,ceļvedis,путеводитель,4
+magnifying glass,palielināmais stikls,лупа,4
+map,karte,карта,4
+mobile phone,mobilais tālrunis,мобильный телефон,4
+notebook,piezīmju grāmatiņa,блокнот,4
+sun cream,saules aizsargkrēms,солнцезащитный крем,4
+water bottle,ūdens pudele,бутылка для воды,4
+,,,
+Food,Ēdiens,Еда,
+biscuit,cepums,печенье,4
+cherries,ķirši,вишни,4
+crisps,čipsi,чипсы,4
+drink,dzēriens,напиток,4
+grapes,vīnogas,виноград,4
+orange,apelsīns,апельсин,4
+,,,
+Crafts,Rokdarbi,Поделки и творчество,
+badge,nozīmīte,значок,4
+box,kaste,коробка,4
+bracelet,aproce,браслет,4
+cake,kūka,торт,4
+calendar,kalendārs,календарь,4
+card,apsveikuma kartīte,открытка,4
+decorations,rotājumi,украшения,4
+mask,maska,маска,4
+photo frame,foto rāmītis,фоторамка,4
+puppet,lelle,кукла-марионетка,4
+,,,
+Arts and crafts materials,Materiāli rokdarbiem,Материалы для творчества,
+colouring pens,krāsu flomāsteri,фломастеры,4
+crayons,krītiņi,восковые мелки,4
+glue,līme,клей,4
+paintbrush,ota,кисточка,4
+paints,krāsas,краски,4
+scissors,šķēres,ножницы,4

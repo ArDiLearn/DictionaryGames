@@ -51,9 +51,11 @@ import {
   GRADE_1_TOPIC_ORDER,
   GRADE_2_TOPIC_ORDER,
   GRADE_3_TOPIC_ORDER,
+  GRADE_4_TOPIC_ORDER,
   GRADE_1_MAIN_TOPICS,
   GRADE_2_MAIN_TOPICS,
   GRADE_3_MAIN_TOPICS,
+  GRADE_4_MAIN_TOPICS,
   EXTRA_TOPICS,
   isTopicExtra,
   hasNewWordsForGrades,
@@ -182,6 +184,17 @@ export const App: React.FC = () => {
       });
     }
 
+    // If Grade 4 is selected alone, enforce user-defined topic order
+    if (selectedGrades.length === 1 && selectedGrades[0] === 4) {
+      return [...result].sort((a, b) => {
+        const idxA = GRADE_4_TOPIC_ORDER.indexOf(a.topic_id);
+        const idxB = GRADE_4_TOPIC_ORDER.indexOf(b.topic_id);
+        const posA = idxA === -1 ? 999 : idxA;
+        const posB = idxB === -1 ? 999 : idxB;
+        return posA - posB;
+      });
+    }
+
     // For multi-grade or all grades: main topics first, then extra topics
     return [...result].sort((a, b) => {
       const isExtraA = isTopicExtra(a.topic_id, selectedGrades);
@@ -209,7 +222,9 @@ export const App: React.FC = () => {
         ? GRADE_1_MAIN_TOPICS
         : activeExamGrade === 2
         ? GRADE_2_MAIN_TOPICS
-        : GRADE_3_MAIN_TOPICS;
+        : activeExamGrade === 3
+        ? GRADE_3_MAIN_TOPICS
+        : GRADE_4_MAIN_TOPICS;
     return topics.filter((t) => mainTopicIds.includes(t.topic_id));
   }, [topics, activeExamGrade]);
 

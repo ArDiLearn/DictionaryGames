@@ -110,18 +110,22 @@ export interface Translations {
   grade1: string;
   grade2: string;
   grade3: string;
+  grade4: string;
   gradeAll: string;
   grade1Short: string;
   grade2Short: string;
   grade3Short: string;
+  grade4Short: string;
   gradeAllShort: string;
   gradeTitle1: string;
   gradeTitle2: string;
   gradeTitle3: string;
+  gradeTitle4: string;
   gradeTitleAll: string;
   gradeFilterNotice1: string;
   gradeFilterNotice2: string;
   gradeFilterNotice3: string;
+  gradeFilterNotice4: string;
   gradeFilterNoticeAll: string;
   // Avatar Shop
   avatarShopTitle: string;
@@ -362,19 +366,23 @@ export const translations: Record<Language, Translations> = {
     grade1: '1 класс',
     grade2: '2 класс',
     grade3: '3 класс',
+    grade4: '4 класс',
     gradeAll: 'Все классы',
     grade1Short: '1 кл.',
     grade2Short: '2 кл.',
     grade3Short: '3 кл.',
+    grade4Short: '4 кл.',
     gradeAllShort: 'Все',
     gradeTitle1: 'Только 1 класс',
     gradeTitle2: 'Только 2 класс',
     gradeTitle3: 'Только 3 класс',
-    gradeTitleAll: 'Все классы (1, 2 и 3)',
+    gradeTitle4: 'Только 4 класс',
+    gradeTitleAll: 'Все классы (1, 2, 3 и 4)',
     gradeFilterNotice1: 'Показаны темы только для 1 класса',
     gradeFilterNotice2: 'Показаны темы только для 2 класса',
     gradeFilterNotice3: 'Показаны темы только для 3 класса',
-    gradeFilterNoticeAll: 'Показаны темы для всех классов (1, 2 и 3)',
+    gradeFilterNotice4: 'Показаны темы только для 4 класса',
+    gradeFilterNoticeAll: 'Показаны темы для всех классов (1, 2, 3 и 4)',
     // Avatar Shop
     avatarShopTitle: 'Магазин аватаров',
     avatarShopSubtitle: 'Выбирай и покупай новых героев за звёздочки!',
@@ -612,19 +620,23 @@ export const translations: Record<Language, Translations> = {
     grade1: '1. klase',
     grade2: '2. klase',
     grade3: '3. klase',
+    grade4: '4. klase',
     gradeAll: 'Visas klases',
     grade1Short: '1. kl.',
     grade2Short: '2. kl.',
     grade3Short: '3. kl.',
+    grade4Short: '4. kl.',
     gradeAllShort: 'Visi',
     gradeTitle1: 'Tikai 1. klase',
     gradeTitle2: 'Tikai 2. klase',
     gradeTitle3: 'Tikai 3. klase',
-    gradeTitleAll: 'Visas klases (1., 2. un 3.)',
+    gradeTitle4: 'Tikai 4. klase',
+    gradeTitleAll: 'Visas klases (1., 2., 3. un 4.)',
     gradeFilterNotice1: 'Rādītās tēmas tikai 1. klasei',
     gradeFilterNotice2: 'Rādītās tēmas tikai 2. klasei',
     gradeFilterNotice3: 'Rādītās tēmas tikai 3. klasei',
-    gradeFilterNoticeAll: 'Rādītās tēmas visām klasēm (1., 2. un 3.)',
+    gradeFilterNotice4: 'Rādītās tēmas tikai 4. klasei',
+    gradeFilterNoticeAll: 'Rādītās tēmas visām klasēm (1., 2., 3. un 4.)',
     // Avatar Shop
     avatarShopTitle: 'Avataru veikals',
     avatarShopSubtitle: 'Izvēlies un pērc jaunus varoņus par zvaigznītēm!',
@@ -763,24 +775,6 @@ export function getGradeFilterInfo(
 
   if (language === 'ru') {
     switch (key) {
-      case '1,2':
-        return {
-          notice: '1 и 2 классы (без 3)',
-          badge: '1 и 2 кл.',
-          subtitle: 'Показаны слова для 1 и 2 классов, без 3 класса',
-        };
-      case '2,3':
-        return {
-          notice: '2 и 3 классы (без 1)',
-          badge: '2 и 3 кл.',
-          subtitle: 'Показаны слова для 2 и 3 классов, без 1 класса',
-        };
-      case '1,3':
-        return {
-          notice: '1 и 3 классы (без 2)',
-          badge: '1 и 3 кл.',
-          subtitle: 'Показаны слова для 1 и 3 классов, без 2 класса',
-        };
       case '1':
         return {
           notice: 'Только 1 класс',
@@ -799,34 +793,28 @@ export function getGradeFilterInfo(
           badge: '3 класс',
           subtitle: 'Показаны темы только для 3 класса',
         };
+      case '4':
+        return {
+          notice: 'Только 4 класс',
+          badge: '4 класс',
+          subtitle: 'Показаны темы только для 4 класса',
+        };
+      case '1,2,3,4':
+        return {
+          notice: 'Все классы (1, 2, 3 и 4)',
+          badge: 'Все классы',
+          subtitle: 'Показаны слова всех классов (1, 2, 3 и 4)',
+        };
       default:
         return {
-          notice: 'Все классы (1, 2 и 3)',
-          badge: 'Все классы',
-          subtitle: 'Показаны слова всех классов (1, 2 и 3)',
+          notice: `${sorted.join(', ')} классы`,
+          badge: `${sorted.join(', ')} кл.`,
+          subtitle: `Показаны слова для выбранных классов (${sorted.join(', ')})`,
         };
     }
   } else {
     // Latvian
     switch (key) {
-      case '1,2':
-        return {
-          notice: '1. un 2. klase (bez 3.)',
-          badge: '1. un 2. kl.',
-          subtitle: 'Rādīti 1. un 2. klases vārdi, bez 3. klases',
-        };
-      case '2,3':
-        return {
-          notice: '2. un 3. klase (bez 1.)',
-          badge: '2. un 3. kl.',
-          subtitle: 'Rādīti 2. un 3. klases vārdi, bez 1. klases',
-        };
-      case '1,3':
-        return {
-          notice: '1. un 3. klase (bez 2.)',
-          badge: '1. un 3. kl.',
-          subtitle: 'Rādīti 1. un 3. klases vārdi, bez 2. klases',
-        };
       case '1':
         return {
           notice: 'Tikai 1. klase',
@@ -845,11 +833,23 @@ export function getGradeFilterInfo(
           badge: '3. klase',
           subtitle: 'Rādītās tēmas tikai 3. klasei',
         };
+      case '4':
+        return {
+          notice: 'Tikai 4. klase',
+          badge: '4. klase',
+          subtitle: 'Rādītās tēmas tikai 4. klasei',
+        };
+      case '1,2,3,4':
+        return {
+          notice: 'Visas klases (1., 2., 3. un 4.)',
+          badge: 'Visas klases',
+          subtitle: 'Rādīti visu klašu vārdi (1., 2., 3. un 4.)',
+        };
       default:
         return {
-          notice: 'Visas klases (1., 2. un 3.)',
-          badge: 'Visas klases',
-          subtitle: 'Rādīti visu klašu vārdi (1., 2. un 3.)',
+          notice: `${sorted.join('. un ')}. klase`,
+          badge: `${sorted.join(', ')}. kl.`,
+          subtitle: `Rādīti izvēlēto klašu vārdi (${sorted.join(', ')})`,
         };
     }
   }
@@ -1067,6 +1067,20 @@ export const GRADE_3_TOPIC_ORDER: string[] = [
   ...EXTRA_TOPICS,
 ];
 
+export const GRADE_4_MAIN_TOPICS: string[] = [
+  'school_subjects',
+  'activities',
+  'outdoor_things',
+  'food',
+  'crafts',
+  'arts_and_crafts_materials',
+];
+
+export const GRADE_4_TOPIC_ORDER: string[] = [
+  ...GRADE_4_MAIN_TOPICS,
+  ...EXTRA_TOPICS,
+];
+
 /**
  * Checks if a topic should be categorized as Extra (Дополнительно)
  * taking into account active grade selection.
@@ -1087,6 +1101,9 @@ export function isTopicExtra(topicId: string, selectedGrades: Grade[]): boolean 
  * - Grade 3: count of words with w.grade === 3 ("в 3ем классе слова из 2го не считаются новыми").
  */
 export function getNewWordsCountForGrades(topic: { words: { grade?: number }[] }, selectedGrades: Grade[]): number {
+  if (selectedGrades.includes(4)) {
+    return topic.words.filter((w) => (w.grade || 1) === 4).length;
+  }
   if (selectedGrades.includes(3)) {
     return topic.words.filter((w) => (w.grade || 1) === 3).length;
   }
@@ -1172,8 +1189,10 @@ export function getExamWordsCountForGrade(grade: Grade): number {
       return 42;
     case 3:
       return 49;
+    case 4:
+      return 31;
     default:
-      return 42;
+      return 31;
   }
 }
 

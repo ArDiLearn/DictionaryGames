@@ -13,6 +13,7 @@ import {
   GRADE_1_MAIN_TOPICS,
   GRADE_2_MAIN_TOPICS,
   GRADE_3_MAIN_TOPICS,
+  GRADE_4_MAIN_TOPICS,
   getMainTopicsSubtitle,
   getExtraTopicsSubtitle,
 } from '../utils/i18n';
@@ -287,9 +288,21 @@ export const TopicList: React.FC<TopicListProps> = ({
                 <span>{t.grade3}</span>
               </button>
               <button
+                onClick={() => onToggleGrade(4)}
+                className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                  selectedGrades.includes(4)
+                    ? 'bg-amber-500 text-white shadow-sm scale-105'
+                    : 'text-amber-800/70 hover:text-amber-950 hover:bg-amber-50'
+                }`}
+                title={selectedGrades.includes(4) ? t.grade4 : t.grade4}
+              >
+                <span>{selectedGrades.includes(4) ? '✓' : '○'}</span>
+                <span>{t.grade4}</span>
+              </button>
+              <button
                 onClick={onSelectAllGrades}
                 className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-                  selectedGrades.length === 3
+                  selectedGrades.length === 4
                     ? 'bg-amber-500 text-white shadow-sm scale-105'
                     : 'text-amber-800/70 hover:text-amber-950 hover:bg-amber-50'
                 }`}
@@ -356,7 +369,9 @@ export const TopicList: React.FC<TopicListProps> = ({
                   ? GRADE_1_MAIN_TOPICS.length
                   : activeGrade === 2
                   ? GRADE_2_MAIN_TOPICS.length
-                  : GRADE_3_MAIN_TOPICS.length;
+                  : activeGrade === 3
+                  ? GRADE_3_MAIN_TOPICS.length
+                  : GRADE_4_MAIN_TOPICS.length;
 
               return (
                 <div className="mb-6">

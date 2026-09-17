@@ -53,10 +53,20 @@ export interface UserStats {
   speechRate: number; // 0.8 to 1.0
   streak: number;
   lastActiveDate: string;
+  totalActiveDays?: number;
+  activeDates?: string[];
+  equippedTitleId?: string;
+  unlockedTitleIds?: string[];
+  claimedTopicBonusIds?: string[];
+  claimedMilestoneIds?: string[];
+  playedModes?: GameMode[];
+  hasSniperAchieved?: boolean;
   unlockedAvatars?: string[];
   spentStars?: number;
   totalStarsEarned?: number;
 }
+
+export type AvatarCategory = 'starter' | 'simple' | 'medium' | 'unique' | 'legendary';
 
 export interface AvatarShopItem {
   id: string;
@@ -66,7 +76,23 @@ export interface AvatarShopItem {
     lv: string;
   };
   price: number;
-  category: 'starter' | 'simple' | 'medium' | 'unique';
+  category: AvatarCategory;
+}
+
+export type TitleCategory = 'academic' | 'words' | 'topics' | 'activity';
+
+export interface PlayerTitle {
+  id: string;
+  name: {
+    ru: string;
+    lv: string;
+  };
+  desc: {
+    ru: string;
+    lv: string;
+  };
+  icon: string;
+  category: TitleCategory;
 }
 
 export type ExamQuestionType = 'audio' | 'choice' | 'truefalse' | 'builder';

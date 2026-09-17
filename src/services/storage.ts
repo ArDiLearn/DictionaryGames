@@ -1,6 +1,7 @@
-import { TopicProgress, WordProgress, UserStats, Grade, GradeFilter, LearningCourse, ExamResult } from '../types';
+import { TopicProgress, WordProgress, UserStats, Grade, GradeFilter, LearningCourse, ExamResult, GameMode, PlayerTitle } from '../types';
 import { getCurrentUser, syncProgressToCloud, fetchProgressFromCloud } from './supabase';
 import { DEFAULT_UNLOCKED_AVATARS } from '../data/avatars';
+import { DEFAULT_UNLOCKED_TITLES, getTitleById } from '../data/titles';
 
 const STATS_KEY = 'wordymind_user_stats';
 const OLD_STATS_KEY = 'mindwordy_user_stats';
@@ -134,6 +135,14 @@ export function getDefaultStats(): UserStats {
     speechRate: 0.85,
     streak: 1,
     lastActiveDate: today,
+    totalActiveDays: 1,
+    activeDates: [today],
+    equippedTitleId: 'starter',
+    unlockedTitleIds: DEFAULT_UNLOCKED_TITLES,
+    claimedTopicBonusIds: [],
+    claimedMilestoneIds: [],
+    playedModes: [],
+    hasSniperAchieved: false,
     unlockedAvatars: DEFAULT_UNLOCKED_AVATARS,
     spentStars: 0,
     totalStarsEarned: 0,
@@ -145,22 +154,63 @@ export function loadLocalStats(): UserStats {
     const raw = getItemWithFallback(STATS_KEY, OLD_STATS_KEY, LEGACY_STATS_KEY);
     if (!raw) return getDefaultStats();
     const stats: UserStats = JSON.parse(raw);
-    
+    const today = new Date().toISOString().split('T')[0];
+    let needsSave = false;
+
     // Ensure unlockedAvatars, spentStars and totalStarsEarned exist
     if (!stats.unlockedAvatars || stats.unlockedAvatars.length === 0) {
       stats.unlockedAvatars = DEFAULT_UNLOCKED_AVATARS;
+      needsSave = true;
     }
     if (stats.spentStars === undefined || typeof stats.spentStars !== 'number') {
       stats.spentStars = 0;
+      needsSave = true;
     }
     if (stats.totalStarsEarned === undefined || typeof stats.totalStarsEarned !== 'number') {
       const topics = loadTopicProgress();
       const topicStarsSum = Object.values(topics).reduce((sum, tp) => sum + (tp.stars || 0), 0);
       stats.totalStarsEarned = topicStarsSum;
+      needsSave = true;
     }
 
-    // Check streak
-    const today = new Date().toISOString().split('T')[0];
+    // Cumulative non-coercive active dates & totalActiveDays
+    if (!stats.activeDates || !Array.isArray(stats.activeDates) || stats.activeDates.length === 0) {
+      stats.activeDates = [stats.lastActiveDate || today];
+      needsSave = true;
+    }
+    if (!stats.activeDates.includes(today)) {
+      stats.activeDates.push(today);
+      needsSave = true;
+    }
+    const computedDays = stats.activeDates.length;
+    if (stats.totalActiveDays !== computedDays) {
+      stats.totalActiveDays = computedDays;
+      needsSave = true;
+    }
+
+    // Title systems
+    if (!stats.equippedTitleId) {
+      stats.equippedTitleId = 'starter';
+      needsSave = true;
+    }
+    if (!stats.unlockedTitleIds || !Array.isArray(stats.unlockedTitleIds) || stats.unlockedTitleIds.length === 0) {
+      stats.unlockedTitleIds = DEFAULT_UNLOCKED_TITLES;
+      needsSave = true;
+    }
+    if (!stats.claimedTopicBonusIds || !Array.isArray(stats.claimedTopicBonusIds)) {
+      stats.claimedTopicBonusIds = [];
+      needsSave = true;
+    }
+    if (!stats.claimedMilestoneIds || !Array.isArray(stats.claimedMilestoneIds)) {
+      stats.claimedMilestoneIds = [];
+      needsSave = true;
+    }
+    if (!stats.playedModes || !Array.isArray(stats.playedModes)) {
+      stats.playedModes = [];
+      needsSave = true;
+    }
+
+    // Streak tracking (legacy backward-compatibility)
     if (stats.lastActiveDate !== today) {
       const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
       if (stats.lastActiveDate === yesterday) {
@@ -169,8 +219,13 @@ export function loadLocalStats(): UserStats {
         stats.streak = 1;
       }
       stats.lastActiveDate = today;
+      needsSave = true;
+    }
+
+    if (needsSave) {
       saveLocalStats(stats);
     }
+
     return stats;
   } catch {
     return getDefaultStats();
@@ -498,5 +553,215 @@ export function recordExamAttempt(
   const newHistory = [result, ...currentHistory.filter((item) => item.completedAt !== result.completedAt)].slice(0, 50);
   saveExamHistory(course, newHistory);
   return { results: updatedResults, history: newHistory };
+}
+
+// --- Title System & Progression Rewards ---
+
+export function equipTitle(titleId: string): UserStats {
+  const currentStats = loadLocalStats();
+  const unlocked = currentStats.unlockedTitleIds || DEFAULT_UNLOCKED_TITLES;
+  if (!unlocked.includes(titleId) && titleId !== 'starter') {
+    return currentStats;
+  }
+  const newStats: UserStats = {
+    ...currentStats,
+    equippedTitleId: titleId,
+  };
+  saveLocalStats(newStats);
+  return newStats;
+}
+
+export function evaluateUnlockedTitles(stats?: UserStats): {
+  newlyUnlockedTitles: PlayerTitle[];
+  updatedStats: UserStats;
+} {
+  const currentStats = stats || loadLocalStats();
+  const unlockedSet = new Set(currentStats.unlockedTitleIds || DEFAULT_UNLOCKED_TITLES);
+  const newlyUnlocked: PlayerTitle[] = [];
+
+  const examResultsEn = loadExamResults('en');
+  const examResultsLv = loadExamResults('lv');
+  const hasPassedGrade = (g: Grade) => {
+    return (examResultsEn[g] && examResultsEn[g].scorePercent >= 60) ||
+           (examResultsLv[g] && examResultsLv[g].scorePercent >= 60);
+  };
+  const hasPerfectExam = () => {
+    return Object.values(examResultsEn).some((r) => r.scorePercent === 100) ||
+           Object.values(examResultsLv).some((r) => r.scorePercent === 100);
+  };
+
+  const wordsEn = loadWordProgress('en');
+  const wordsLv = loadWordProgress('lv');
+  const masteredEnCount = Object.values(wordsEn).filter((w) => w.isLearned).length;
+  const masteredLvCount = Object.values(wordsLv).filter((w) => w.isLearned).length;
+  const totalMasteredWords = Math.max(masteredEnCount, masteredLvCount);
+
+  const topicsEn = loadTopicProgress('en');
+  const topicsLv = loadTopicProgress('lv');
+  const isTopicMastered = (topicId: string) => {
+    return (topicsEn[topicId] && topicsEn[topicId].stars === 3) ||
+           (topicsLv[topicId] && topicsLv[topicId].stars === 3);
+  };
+
+  const checkAndUnlock = (titleId: string, condition: boolean) => {
+    if (condition && !unlockedSet.has(titleId)) {
+      unlockedSet.add(titleId);
+      const title = getTitleById(titleId);
+      if (title) newlyUnlocked.push(title);
+    }
+  };
+
+  // 1. Academic Titles
+  checkAndUnlock('grad_g1', Boolean(hasPassedGrade(1)));
+  checkAndUnlock('grad_g2', Boolean(hasPassedGrade(2)));
+  checkAndUnlock('grad_g3', Boolean(hasPassedGrade(3)));
+  checkAndUnlock('gold_medalist', Boolean(hasPerfectExam()));
+
+  // 2. Word Milestones
+  checkAndUnlock('words_25', totalMasteredWords >= 25);
+  checkAndUnlock('words_50', totalMasteredWords >= 50);
+  checkAndUnlock('words_100', totalMasteredWords >= 100);
+  checkAndUnlock('words_250', totalMasteredWords >= 250);
+  checkAndUnlock('words_400', totalMasteredWords >= 400);
+  checkAndUnlock('words_500', totalMasteredWords >= 500);
+
+  // 3. Topics
+  checkAndUnlock(
+    'beast_master',
+    isTopicMastered('pets') &&
+      isTopicMastered('farm_animals') &&
+      isTopicMastered('farm_animals_plus') &&
+      isTopicMastered('wild_animals')
+  );
+  checkAndUnlock(
+    'master_chef',
+    isTopicMastered('food_and_drink') &&
+      isTopicMastered('food_and_drink_plus') &&
+      isTopicMastered('fruit_and_vegetables') &&
+      isTopicMastered('fruit_and_vegetables_plus')
+  );
+  checkAndUnlock('nature_guardian', isTopicMastered('nature') && isTopicMastered('garden'));
+  checkAndUnlock('order_master', isTopicMastered('instructions'));
+  checkAndUnlock('true_friend', isTopicMastered('family') && isTopicMastered('family_plus') && isTopicMastered('friendship'));
+  checkAndUnlock('circus_star', isTopicMastered('circus'));
+
+  // 4. Activity
+  const activeDays = currentStats.totalActiveDays || (currentStats.activeDates?.length ?? 1);
+  checkAndUnlock('first_step', activeDays >= 3);
+  checkAndUnlock('curious_student', activeDays >= 7);
+  checkAndUnlock('persistent_thinker', activeDays >= 15);
+  checkAndUnlock('consistency_master', activeDays >= 30);
+
+  const played = currentStats.playedModes || [];
+  const allModes: GameMode[] = ['flashcards', 'builder', 'match', 'truefalse', 'balloons', 'audio'];
+  checkAndUnlock('explorer', allModes.every((m) => played.includes(m)));
+  checkAndUnlock('sniper', Boolean(currentStats.hasSniperAchieved));
+
+  if (newlyUnlocked.length > 0) {
+    const updatedStats: UserStats = {
+      ...currentStats,
+      unlockedTitleIds: Array.from(unlockedSet),
+    };
+    saveLocalStats(updatedStats);
+    return { newlyUnlockedTitles: newlyUnlocked, updatedStats };
+  }
+
+  return { newlyUnlockedTitles: [], updatedStats: currentStats };
+}
+
+export function recordGameModePlayed(
+  mode: GameMode,
+  isFlawless: boolean = false
+): { newlyUnlockedTitles: PlayerTitle[]; updatedStats: UserStats } {
+  const currentStats = loadLocalStats();
+  const played = new Set(currentStats.playedModes || []);
+  played.add(mode);
+  const updatedStats: UserStats = {
+    ...currentStats,
+    playedModes: Array.from(played),
+    hasSniperAchieved: currentStats.hasSniperAchieved || isFlawless,
+  };
+  saveLocalStats(updatedStats);
+  return evaluateUnlockedTitles(updatedStats);
+}
+
+export function checkAndClaimTopicMasteryBonus(
+  topicId: string,
+  totalWordsInTopic: number,
+  course: LearningCourse = 'en'
+): { claimed: boolean; bonusStars: number; updatedStats: UserStats } {
+  const currentStats = loadLocalStats();
+  const topics = loadTopicProgress(course);
+  const topic = topics[topicId];
+  const claimedList = currentStats.claimedTopicBonusIds || [];
+
+  if (!topic || topic.stars < 3 || claimedList.includes(topicId)) {
+    return { claimed: false, bonusStars: 0, updatedStats: currentStats };
+  }
+
+  let bonusStars = 5;
+  if (topicId === 'instructions') {
+    bonusStars = 25;
+  } else if (totalWordsInTopic >= 15) {
+    bonusStars = 10;
+  }
+
+  const updatedStats: UserStats = {
+    ...currentStats,
+    claimedTopicBonusIds: [...claimedList, topicId],
+    totalStarsEarned: (currentStats.totalStarsEarned || 0) + bonusStars,
+  };
+  saveLocalStats(updatedStats);
+
+  return { claimed: true, bonusStars, updatedStats };
+}
+
+export interface WordMilestoneReward {
+  id: string;
+  wordsThreshold: number;
+  bonusStars: number;
+}
+
+export const WORD_MILESTONES: WordMilestoneReward[] = [
+  { id: 'ms_words_25', wordsThreshold: 25, bonusStars: 10 },
+  { id: 'ms_words_50', wordsThreshold: 50, bonusStars: 25 },
+  { id: 'ms_words_100', wordsThreshold: 100, bonusStars: 50 },
+  { id: 'ms_words_250', wordsThreshold: 250, bonusStars: 75 },
+  { id: 'ms_words_400', wordsThreshold: 400, bonusStars: 100 },
+  { id: 'ms_words_500', wordsThreshold: 500, bonusStars: 150 },
+];
+
+export function checkAndClaimWordMilestones(course: LearningCourse = 'en'): {
+  claimedMilestones: WordMilestoneReward[];
+  totalBonusStars: number;
+  updatedStats: UserStats;
+} {
+  const currentStats = loadLocalStats();
+  const words = loadWordProgress(course);
+  const masteredCount = Object.values(words).filter((w) => w.isLearned).length;
+  const claimedIds = new Set(currentStats.claimedMilestoneIds || []);
+
+  const newlyClaimed: WordMilestoneReward[] = [];
+  let totalBonus = 0;
+
+  for (const ms of WORD_MILESTONES) {
+    if (masteredCount >= ms.wordsThreshold && !claimedIds.has(ms.id)) {
+      claimedIds.add(ms.id);
+      newlyClaimed.push(ms);
+      totalBonus += ms.bonusStars;
+    }
+  }
+
+  if (newlyClaimed.length > 0) {
+    const updatedStats: UserStats = {
+      ...currentStats,
+      claimedMilestoneIds: Array.from(claimedIds),
+      totalStarsEarned: (currentStats.totalStarsEarned || 0) + totalBonus,
+    };
+    saveLocalStats(updatedStats);
+    return { claimedMilestones: newlyClaimed, totalBonusStars: totalBonus, updatedStats };
+  }
+
+  return { claimedMilestones: [], totalBonusStars: 0, updatedStats: currentStats };
 }
 

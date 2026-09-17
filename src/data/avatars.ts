@@ -185,4 +185,41 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
     price: 100,
     category: 'unique',
   },
+
+  // 5. Легендарные / Leģendārie (150 - 200 ⭐)
+  {
+    id: 'dragon_king',
+    emoji: '🐉',
+    name: { ru: 'Королевский дракон', lv: 'Karaliskais pūķis' },
+    price: 150,
+    category: 'legendary',
+  },
+  {
+    id: 'grand_wizard',
+    emoji: '🧙‍♂️',
+    name: { ru: 'Великий волшебник', lv: 'Lielais burvis' },
+    price: 150,
+    category: 'legendary',
+  },
+  {
+    id: 'thunder_phoenix',
+    emoji: '🦅',
+    name: { ru: 'Громовой феникс', lv: 'Pērkona fēnikss' },
+    price: 150,
+    category: 'legendary',
+  },
+  {
+    id: 'astronaut',
+    emoji: '🧑‍🚀',
+    name: { ru: 'Звёздный космонавт', lv: 'Zvaigžņu kosmonauts' },
+    price: 200,
+    category: 'legendary',
+  },
+  {
+    id: 'gold_champion',
+    emoji: '🥇',
+    name: { ru: 'Абсолютный чемпион', lv: 'Absolūtais čempions' },
+    price: 200,
+    category: 'legendary',
+  },
 ];

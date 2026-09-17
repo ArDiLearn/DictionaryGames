@@ -17,6 +17,7 @@ import {
   getExtraTopicsSubtitle,
 } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
+import { getTitleById } from '../data/titles';
 import { Search, Sparkles, BarChart3 } from 'lucide-react';
 
 interface TopicListProps {
@@ -35,6 +36,8 @@ interface TopicListProps {
   onOpenStats?: (initialTab?: 'overview' | 'exams' | 'topics' | 'practice' | 'awards') => void;
   examResults?: Record<number, ExamResult>;
   onStartExam?: (grade: Grade) => void;
+  equippedTitleId?: string;
+  onOpenTitles?: () => void;
 }
 
 export const TopicList: React.FC<TopicListProps> = ({
@@ -53,6 +56,8 @@ export const TopicList: React.FC<TopicListProps> = ({
   onOpenStats,
   examResults,
   onStartExam,
+  equippedTitleId,
+  onOpenTitles,
 }) => {
   const t = translations[language];
   const [searchQuery, setSearchQuery] = useState('');
@@ -95,6 +100,7 @@ export const TopicList: React.FC<TopicListProps> = ({
   }, [filteredTopics, selectedGrades]);
 
   const displayName = getPlayerDisplayName(playerName, language);
+  const equippedTitle = getTitleById(equippedTitleId);
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6">
@@ -124,7 +130,28 @@ export const TopicList: React.FC<TopicListProps> = ({
                 </h1>
                 <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-300 animate-spin-slow shrink-0" />
               </div>
-              <p className="text-white/90 text-sm sm:text-base font-semibold mt-0.5 leading-snug">
+
+              {/* Equipped Title Badge Button */}
+              {onOpenTitles && (
+                <div className="mt-1 flex items-center">
+                  <button
+                    onClick={() => {
+                      sounds.playClick();
+                      onOpenTitles();
+                    }}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 hover:bg-white/30 border border-white/40 backdrop-blur-md text-white text-xs sm:text-sm font-black shadow-xs transition-all hover:scale-105 active:scale-95 cursor-pointer group select-none"
+                    title={t.titlesModalTitle}
+                  >
+                    <span>{equippedTitle.icon}</span>
+                    <span className="underline decoration-dotted decoration-yellow-200/80 underline-offset-2">
+                      {equippedTitle.name[language] || equippedTitle.name.ru}
+                    </span>
+                    <span className="text-[11px] opacity-80 group-hover:opacity-100 transition-opacity">🎖️</span>
+                  </button>
+                </div>
+              )}
+
+              <p className="text-white/90 text-sm sm:text-base font-semibold mt-1 leading-snug">
                 {t.chooseTopic}
               </p>
             </div>

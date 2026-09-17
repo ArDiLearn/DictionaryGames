@@ -904,7 +904,7 @@ export function getPlayerDisplayName(
   language: Language = 'lv'
 ): string {
   const t = translations[language];
-  if (!playerName || playerName === 'Знайка' || playerName === 'Zinītis') {
+  if (!playerName || playerName === 'Знайка' || playerName === 'Zinītis' || playerName === 'Супер-Знайка') {
     return t.defaultPlayerName;
   }
   return playerName;

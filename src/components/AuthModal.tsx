@@ -10,7 +10,7 @@ import {
   signUpUser,
   signOutUser,
 } from '../services/supabase';
-import { mergeWithCloud, triggerCloudSync } from '../services/storage';
+import { mergeWithCloud, triggerCloudSync, loadLocalStats, saveLocalStats } from '../services/storage';
 import { X, Cloud, CheckCircle, AlertCircle, RefreshCw, LogOut, User as UserIcon } from 'lucide-react';
 import { User } from '@supabase/supabase-js';
 
@@ -125,6 +125,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         sounds.playWrong();
         setMessage({ type: 'error', text: formatAuthError(error, language) });
       } else {
+        const cleanLogin = username.trim();
+        const currentStats = loadLocalStats();
+        saveLocalStats({ ...currentStats, playerName: cleanLogin });
+
         sounds.playCorrect();
         setCurrentUser(user);
         trackUserLogin('username');
@@ -144,6 +148,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         sounds.playWrong();
         setMessage({ type: 'error', text: formatAuthError(error, language) });
       } else {
+        const cleanLogin = username.trim();
+        const currentStats = loadLocalStats();
+        saveLocalStats({ ...currentStats, playerName: cleanLogin });
+
         sounds.playCorrect();
         setCurrentUser(user);
         trackUserSignup('username');
@@ -151,6 +159,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           type: 'success',
           text: t.sync.signupSuccess,
         });
+        await mergeWithCloud();
         triggerCloudSync();
         onSyncCompleted();
       }
@@ -162,6 +171,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     await signOutUser();
     setCurrentUser(null);
     setMessage(null);
+    const currentStats = loadLocalStats();
+    saveLocalStats({ ...currentStats, playerName: 'Zinītis' });
     onSyncCompleted();
   };
 

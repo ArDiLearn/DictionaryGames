@@ -1,5 +1,5 @@
 import { TopicProgress, WordProgress, UserStats, Grade, GradeFilter, LearningCourse, ExamResult, GameMode, PlayerTitle } from '../types';
-import { getCurrentUser, syncProgressToCloud, fetchProgressFromCloud } from './supabase';
+import { getCurrentUser, getCurrentUserLogin, syncProgressToCloud, fetchProgressFromCloud } from './supabase';
 import { DEFAULT_UNLOCKED_AVATARS } from '../data/avatars';
 import { DEFAULT_UNLOCKED_TITLES, getTitleById } from '../data/titles';
 
@@ -433,11 +433,16 @@ export async function mergeWithCloud(): Promise<boolean> {
     saveWordProgress(mergedWords);
 
     // Merge stats
+    const currentStats = loadLocalStats();
+    let mergedStats = { ...currentStats };
     if (cloudData.statsPartial) {
-      const currentStats = loadLocalStats();
-      const mergedStats = { ...currentStats, ...cloudData.statsPartial };
-      saveLocalStats(mergedStats);
+      mergedStats = { ...mergedStats, ...cloudData.statsPartial };
     }
+    const userLogin = getCurrentUserLogin(user);
+    if (userLogin && userLogin !== 'Player') {
+      mergedStats.playerName = userLogin;
+    }
+    saveLocalStats(mergedStats);
 
     return true;
   } catch (err) {

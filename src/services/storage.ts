@@ -470,10 +470,14 @@ export async function mergeWithCloud(): Promise<boolean> {
         const unionWords = Array.from(
           new Set([...(mergedTopicsEn[tid].masteredWordIds || []), ...(cTopic.masteredWordIds || [])])
         );
+        const unionModes = Array.from(
+          new Set([...(mergedTopicsEn[tid].completedModes || []), ...(cTopic.completedModes || [])])
+        );
         mergedTopicsEn[tid] = {
           topic_id: tid,
           stars: Math.max(mergedTopicsEn[tid].stars || 0, cTopic.stars || 0),
           masteredWordIds: unionWords,
+          completedModes: unionModes,
           lastPlayedAt: mergedTopicsEn[tid].lastPlayedAt || cTopic.lastPlayedAt,
         };
       }
@@ -490,10 +494,14 @@ export async function mergeWithCloud(): Promise<boolean> {
         const unionWords = Array.from(
           new Set([...(mergedTopicsLv[tid].masteredWordIds || []), ...(cTopic.masteredWordIds || [])])
         );
+        const unionModes = Array.from(
+          new Set([...(mergedTopicsLv[tid].completedModes || []), ...(cTopic.completedModes || [])])
+        );
         mergedTopicsLv[tid] = {
           topic_id: tid,
           stars: Math.max(mergedTopicsLv[tid].stars || 0, cTopic.stars || 0),
           masteredWordIds: unionWords,
+          completedModes: unionModes,
           lastPlayedAt: mergedTopicsLv[tid].lastPlayedAt || cTopic.lastPlayedAt,
         };
       }

@@ -35,6 +35,7 @@ export interface TopicProgress {
   stars: number; // 0 to 3
   masteredWordIds: string[];
   lastPlayedAt?: string;
+  completedModes?: string[];
 }
 
 export interface WordProgress {

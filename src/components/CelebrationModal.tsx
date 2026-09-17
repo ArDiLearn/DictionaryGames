@@ -13,6 +13,9 @@ interface CelebrationModalProps {
   maxStars?: number;
   isRewardDisabled?: boolean;
   isMiniTopicPractice?: boolean;
+  isFirstClear?: boolean;
+  isRepeatClear?: boolean;
+  isFailedThreshold?: boolean;
   onRestart: () => void;
   onHome: () => void;
 }
@@ -25,11 +28,14 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
   maxStars = 3,
   isRewardDisabled,
   isMiniTopicPractice,
+  isFirstClear,
+  isRepeatClear,
+  isFailedThreshold,
   onRestart,
   onHome,
 }) => {
   const t = translations[language];
-  const isNoReward = isRewardDisabled || isMiniTopicPractice || maxStars === 0;
+  const isNoReward = isRewardDisabled || isMiniTopicPractice || maxStars === 0 || isFailedThreshold;
 
   useEffect(() => {
     if (isNoReward) {
@@ -38,34 +44,41 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
       sounds.playFanfare();
     }
 
-    // Fire Confetti Cannon
-    const duration = 2.5 * 1000;
-    const animationEnd = Date.now() + duration;
+    // Fire Confetti Cannon only when stars are awarded
+    if (stars > 0) {
+      const duration = 2.5 * 1000;
+      const animationEnd = Date.now() + duration;
 
-    const interval: ReturnType<typeof setInterval> = setInterval(() => {
-      const timeLeft = animationEnd - Date.now();
-      if (timeLeft <= 0) {
-        return clearInterval(interval);
-      }
+      const interval: ReturnType<typeof setInterval> = setInterval(() => {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
 
-      confetti({
-        particleCount: 40,
-        startVelocity: 30,
-        spread: 360,
-        origin: {
-          x: Math.random(),
-          y: Math.random() * 0.5,
-        },
-        colors: ['#38bdf8', '#6366f1', '#ec4899', '#facc15', '#4ade80'],
-      });
-    }, 300);
+        confetti({
+          particleCount: 40,
+          startVelocity: 30,
+          spread: 360,
+          origin: {
+            x: Math.random(),
+            y: Math.random() * 0.5,
+          },
+          colors: ['#38bdf8', '#6366f1', '#ec4899', '#facc15', '#4ade80'],
+        });
+      }, 300);
 
-    return () => clearInterval(interval);
-  }, [isNoReward]);
+      return () => clearInterval(interval);
+    }
+  }, [isNoReward, stars]);
 
   const percentage = Math.round((correctCount / Math.max(1, totalCount)) * 100);
-  const headline =
-    percentage >= 80 ? t.awesome : percentage >= 50 ? t.goodJob : t.tryAgain;
+  const headline = isFailedThreshold
+    ? t.tryAgain
+    : percentage >= 80
+    ? t.awesome
+    : percentage >= 50
+    ? t.goodJob
+    : t.tryAgain;
 
   const starCount = Math.max(1, Math.min(3, maxStars));
   const starSlots = Array.from({ length: starCount }, (_, i) => i + 1);
@@ -79,7 +92,7 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
 
         {/* Mascot / Trophy */}
         <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-3xl bg-gradient-to-tr from-indigo-200 to-purple-300 border-4 border-indigo-200 flex items-center justify-center text-5xl sm:text-6xl shadow-lg mb-4 animate-bounce">
-          {isRewardDisabled ? '🎴' : isMiniTopicPractice ? '💡' : '🏆'}
+          {isRewardDisabled ? '🎴' : isFailedThreshold ? '🎯' : isMiniTopicPractice ? '💡' : '🏆'}
         </div>
 
         <div className="flex items-center justify-center gap-1 text-indigo-500 mb-1">
@@ -89,6 +102,8 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
               ? t.flashcardsComplete
               : isMiniTopicPractice
               ? t.miniTopicComplete
+              : isFailedThreshold
+              ? t.tryAgain
               : t.roundComplete}
           </span>
           <Sparkles className="w-5 h-5" />
@@ -119,11 +134,30 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
         {/* Reward pill or Practice note */}
         <div className="flex flex-col items-center gap-1.5 mb-6">
           {!isNoReward ? (
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl px-4 py-2 border-2 border-amber-300 shadow-xs">
-              <span className="text-xl animate-bounce">⭐</span>
-              <span className="text-sm sm:text-base font-black text-amber-900">
-                +{stars} {t.starsAddedToBank}
-              </span>
+            <>
+              {isFirstClear && (
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-black bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-xs">
+                  <span>🎉</span>
+                  <span>{t.firstClearRewardBadge}</span>
+                </span>
+              )}
+              {isRepeatClear && (
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-black bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-xs">
+                  <span>🔄</span>
+                  <span>{t.repeatClearRewardBadge}</span>
+                </span>
+              )}
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl px-4 py-2 border-2 border-amber-300 shadow-xs">
+                <span className="text-xl animate-bounce">⭐</span>
+                <span className="text-sm sm:text-base font-black text-amber-900">
+                  +{stars} {t.starsAddedToBank}
+                </span>
+              </div>
+            </>
+          ) : isFailedThreshold ? (
+            <div className="inline-flex items-center gap-2 bg-amber-50 rounded-2xl px-4 py-2.5 border-2 border-amber-300 text-amber-900 text-xs sm:text-sm font-bold shadow-xs max-w-sm text-left">
+              <span className="text-base flex-shrink-0">💡</span>
+              <span>{t.accuracyThresholdHint}</span>
             </div>
           ) : isMiniTopicPractice ? (
             <div className="inline-flex items-center gap-2 bg-amber-50 rounded-2xl px-4 py-2.5 border-2 border-amber-200 text-amber-900 text-xs sm:text-sm font-bold shadow-xs max-w-xs">

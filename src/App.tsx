@@ -461,6 +461,9 @@ export const App: React.FC = () => {
             maxStars={celebration.maxStars}
             isRewardDisabled={celebration.isRewardDisabled}
             isMiniTopicPractice={celebration.isMiniTopicPractice}
+            isFirstClear={celebration.isFirstClear}
+            isRepeatClear={celebration.isRepeatClear}
+            isFailedThreshold={celebration.isFailedThreshold}
             onRestart={handleRestartGame}
             onHome={handleHomeClick}
           />

@@ -450,27 +450,29 @@ export const App: React.FC = () => {
       />
 
       {/* Progress Statistics Modal */}
-      <ProgressStatsModal
-        isOpen={isStatsModalOpen}
-        onClose={() => setIsStatsModalOpen(false)}
-        language={language}
-        course={course}
-        stats={stats}
-        topics={topics}
-        topicProgress={topicProgress}
-        wordProgress={wordProgress}
-        examResults={examResults}
-        examHistory={examHistory}
-        initialTab={statsInitialTab}
-        onSelectTopic={(t) => {
-          setSelectedTopic(t);
-          setGameMode(null);
-          setActiveExamGrade(null);
-        }}
-        onStartExam={(grade) => {
-          handleStartExam(grade);
-        }}
-      />
+      {isStatsModalOpen && (
+        <ProgressStatsModal
+          isOpen={isStatsModalOpen}
+          onClose={() => setIsStatsModalOpen(false)}
+          language={language}
+          course={course}
+          stats={stats}
+          topics={topics}
+          topicProgress={topicProgress}
+          wordProgress={wordProgress}
+          examResults={examResults}
+          examHistory={examHistory}
+          initialTab={statsInitialTab}
+          onSelectTopic={(t) => {
+            setSelectedTopic(t);
+            setGameMode(null);
+            setActiveExamGrade(null);
+          }}
+          onStartExam={(grade) => {
+            handleStartExam(grade);
+          }}
+        />
+      )}
 
       {/* Title Selection & Achievements Modal */}
       <TitleSelectModal

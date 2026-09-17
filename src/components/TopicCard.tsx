@@ -10,6 +10,7 @@ interface TopicCardProps {
   course?: LearningCourse;
   progress?: TopicProgress;
   onSelect: (topic: Topic) => void;
+  hasNewWords?: boolean;
 }
 
 const COLOR_MAP: Record<string, { bg: string; border: string; badge: string; shadow: string }> = {
@@ -39,6 +40,7 @@ export const TopicCard: React.FC<TopicCardProps> = ({
   course = 'en',
   progress,
   onSelect,
+  hasNewWords = false,
 }) => {
   const t = translations[language];
   const colorScheme = COLOR_MAP[topic.color || 'sky'] || COLOR_MAP.sky;
@@ -66,28 +68,42 @@ export const TopicCard: React.FC<TopicCardProps> = ({
   return (
     <button
       onClick={handleClick}
-      className={`group relative text-left w-full p-4 sm:p-5 rounded-3xl border-4 bg-white ${colorScheme.border} shadow-lg ${colorScheme.shadow} hover:shadow-xl hover:-translate-y-1 active:translate-y-0.5 transition-all duration-200 focus:outline-none flex flex-col justify-between`}
+      className={`group relative text-left w-full p-4 sm:p-5 rounded-3xl bg-white shadow-lg ${colorScheme.shadow} hover:shadow-xl hover:-translate-y-1 active:translate-y-0.5 transition-all duration-200 focus:outline-none flex flex-col justify-between ${
+        hasNewWords
+          ? 'border-[6px] border-double border-amber-400 hover:border-amber-500 shadow-amber-200/60 ring-2 ring-amber-300/70 ring-offset-2'
+          : `border-4 ${colorScheme.border}`
+      }`}
     >
-      {/* Top row: Emoji & Stars */}
-      <div className="flex items-start justify-between w-full mb-3">
-        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-white to-slate-100 shadow-inner flex items-center justify-center text-2xl sm:text-3xl border-2 border-slate-200/80 group-hover:scale-110 transition-transform">
+      {/* Top row: Emoji, Stars & New Words Badge */}
+      <div className="flex items-start justify-between w-full mb-3 gap-2">
+        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-white to-slate-100 shadow-inner flex items-center justify-center text-2xl sm:text-3xl border-2 border-slate-200/80 group-hover:scale-110 transition-transform shrink-0">
           {topic.emoji || '📖'}
         </div>
 
-        {/* 3 Stars display */}
-        <div className="flex items-center gap-0.5 bg-amber-50 border-2 border-amber-200 px-2 py-1 rounded-2xl">
-          {[1, 2, 3].map((starIndex) => (
-            <span
-              key={starIndex}
-              className={`text-base sm:text-lg transition-transform ${
-                starIndex <= stars
-                  ? 'text-amber-400 scale-100'
-                  : 'text-slate-200 opacity-60 scale-90'
-              }`}
-            >
-              ★
+        <div className="flex flex-col items-end gap-1.5">
+          {/* 3 Stars display */}
+          <div className="flex items-center gap-0.5 bg-amber-50 border-2 border-amber-200 px-2 py-1 rounded-2xl">
+            {[1, 2, 3].map((starIndex) => (
+              <span
+                key={starIndex}
+                className={`text-base sm:text-lg transition-transform ${
+                  starIndex <= stars
+                    ? 'text-amber-400 scale-100'
+                    : 'text-slate-200 opacity-60 scale-90'
+                }`}
+              >
+                ★
+              </span>
+            ))}
+          </div>
+
+          {/* New words label */}
+          {hasNewWords && (
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-black bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-sm border border-amber-300 tracking-tight whitespace-nowrap">
+              <span>✨</span>
+              <span>{t.newWordsBadge}</span>
             </span>
-          ))}
+          )}
         </div>
       </div>
 

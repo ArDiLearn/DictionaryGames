@@ -45,7 +45,7 @@ import {
   checkAndClaimTopicMasteryBonus,
   checkAndClaimWordMilestones,
 } from './services/storage';
-import { getCurrentUser } from './services/supabase';
+import { getCurrentUser, getCurrentUserLogin } from './services/supabase';
 
 import {
   GRADE_1_TOPIC_ORDER,
@@ -242,6 +242,18 @@ export const App: React.FC = () => {
       const user = await getCurrentUser();
       setIsCloudSynced(!!user);
       if (user) {
+        const userLogin = getCurrentUserLogin(user);
+        if (userLogin && userLogin !== 'Player') {
+          const currentStats = loadLocalStats();
+          if (
+            !currentStats.playerName ||
+            currentStats.playerName === 'Знайка' ||
+            currentStats.playerName === 'Zinītis' ||
+            currentStats.playerName === 'Супер-Знайка'
+          ) {
+            saveLocalStats({ ...currentStats, playerName: userLogin });
+          }
+        }
         await mergeWithCloud();
         setTopicProgress(loadTopicProgress(course));
         setWordProgress(loadWordProgress(course));
@@ -676,6 +688,13 @@ export const App: React.FC = () => {
         onSyncCompleted={async () => {
           const user = await getCurrentUser();
           setIsCloudSynced(!!user);
+          if (user) {
+            const userLogin = getCurrentUserLogin(user);
+            if (userLogin && userLogin !== 'Player') {
+              const currentStats = loadLocalStats();
+              saveLocalStats({ ...currentStats, playerName: userLogin });
+            }
+          }
           setTopicProgress(loadTopicProgress(course));
           setWordProgress(loadWordProgress(course));
           setStats(loadLocalStats());

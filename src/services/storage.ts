@@ -320,7 +320,29 @@ export function loadTopicProgress(course: LearningCourse = 'en'): Record<string,
       getTopicProgressKey(course, 'mindwordy'),
       getTopicProgressKey(course, 'wordykids')
     );
-    return raw ? JSON.parse(raw) : {};
+    const progress: Record<string, TopicProgress> = raw ? JSON.parse(raw) : {};
+
+    // Backward compatibility migration for split topics
+    let needsSave = false;
+    if (progress['numbers_1_20'] && !progress['numbers_1_10']) {
+      const old = progress['numbers_1_20'];
+      progress['numbers_1_10'] = { ...old, topic_id: 'numbers_1_10' };
+      progress['numbers_11_20'] = { ...old, topic_id: 'numbers_11_20' };
+      needsSave = true;
+    }
+    if (progress['classroom_objects'] && !progress['stationery']) {
+      const old = progress['classroom_objects'];
+      progress['stationery'] = { ...old, topic_id: 'stationery' };
+      progress['classroom'] = { ...old, topic_id: 'classroom' };
+      needsSave = true;
+    }
+    if (needsSave) {
+      try {
+        localStorage.setItem(getTopicProgressKey(course), JSON.stringify(progress));
+      } catch {}
+    }
+
+    return progress;
   } catch {
     return {};
   }

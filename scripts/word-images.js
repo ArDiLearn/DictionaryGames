@@ -656,4 +656,5 @@ export const WORD_IMAGES = {
   "like fruit": "🍌",
   "live in a group": "🦁",
   "sleep in a tree": "🌳",
+  "stop": "🛑",
 };

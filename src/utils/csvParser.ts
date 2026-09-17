@@ -76,7 +76,11 @@ export function parseDictionaryCsv(csvString: string): Topic[] {
       }
 
       let topicId = slugify(en || 'topic');
-      if (topicId === 'numbers') {
+      if (topicId === 'numbers_1-10' || topicId === 'numbers_1_10') {
+        topicId = 'numbers_1_10';
+      } else if (topicId === 'numbers_11-20' || topicId === 'numbers_11_20') {
+        topicId = 'numbers_11_20';
+      } else if (topicId === 'numbers') {
         topicId = 'numbers_1_20';
       }
       currentTopic = {

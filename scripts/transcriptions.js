@@ -733,5 +733,6 @@ export const TRANSCRIPTIONS = {
   "like fruit": "[ laɪk fruːt ]",
   "live in a group": "[ lɪv ɪn ə ɡruːp ]",
   "sleep in a tree": "[ sliːp ɪn ə triː ]",
+  "stop": "[ stɒp ]",
 };
 

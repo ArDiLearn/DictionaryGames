@@ -18,7 +18,9 @@ export interface CelebrationState {
   correct: number;
   total: number;
   stars: number;
+  maxStars?: number;
   isRewardDisabled?: boolean;
+  isMiniTopicPractice?: boolean;
 }
 
 export function useGameRewards(
@@ -63,21 +65,50 @@ export function useGameRewards(
           correct: correctCount,
           total: totalCount,
           stars: 0,
+          maxStars: 0,
           isRewardDisabled: true,
         });
         return;
       }
 
+      // Dynamic star caps based on word count:
+      // < 5 words: 0 stars (practice mode, prevents 2-sec micro-farming)
+      // 5-8 words: max 2 stars
+      // >= 9 words: max 3 stars
+      let maxStars = 3;
+      if (totalCount < 5) {
+        maxStars = 0;
+      } else if (totalCount <= 8) {
+        maxStars = 2;
+      }
+
+      let gameStars = 0;
+      if (maxStars === 3) {
+        gameStars =
+          correctCount === totalCount
+            ? 3
+            : correctCount >= Math.ceil(totalCount * 0.6)
+            ? 2
+            : 1;
+      } else if (maxStars === 2) {
+        gameStars =
+          correctCount === totalCount
+            ? 2
+            : correctCount >= Math.ceil(totalCount * 0.5)
+            ? 1
+            : 0;
+      } else {
+        gameStars = 0;
+      }
+
       const isFlawless = correctCount === totalCount && totalCount >= 4;
-      const gameStars =
-        correctCount === totalCount ? 3 : correctCount >= Math.ceil(totalCount / 2) ? 2 : 1;
       if (gameMode) {
         trackGameComplete(gameMode, selectedTopic.topic_id, correctCount, gameStars);
         recordGameModePlayed(gameMode, isFlawless);
       }
 
-      // Add stars to user's piggy bank
-      let updatedStats = addEarnedStars(gameStars);
+      // Add stars to user's piggy bank only if gameStars > 0
+      let updatedStats = gameStars > 0 ? addEarnedStars(gameStars) : stats;
       const newToasts: RewardToast[] = [];
 
       // Topic Mastery Bonus (+25 ⭐ for instructions, +10 ⭐ for >= 15 words, +5 ⭐ for others)
@@ -134,10 +165,12 @@ export function useGameRewards(
         correct: correctCount,
         total: totalCount,
         stars: gameStars,
+        maxStars,
         isRewardDisabled: false,
+        isMiniTopicPractice: maxStars === 0,
       });
     },
-    [course, language, setStats]
+    [course, language, setStats, stats]
   );
 
   const handleExamComplete = useCallback(

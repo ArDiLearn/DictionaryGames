@@ -37,6 +37,12 @@ const TOPIC_METADATA = {
   'Dienas ritms un laiks': { icon: 'Clock', color: 'amber', emoji: '⏰' },
   'Время и распорядок': { icon: 'Clock', color: 'amber', emoji: '⏰' },
   'Numbers': { icon: 'Hash', color: 'indigo', emoji: '🔢' },
+  'Numbers 1-10': { icon: 'Hash', color: 'indigo', emoji: '🔢' },
+  'Числа 1-10': { icon: 'Hash', color: 'indigo', emoji: '🔢' },
+  'Skaitļi 1-10': { icon: 'Hash', color: 'indigo', emoji: '🔢' },
+  'Numbers 11-20': { icon: 'Hash', color: 'blue', emoji: '🔟' },
+  'Числа 11-20': { icon: 'Hash', color: 'blue', emoji: '🔟' },
+  'Skaitļi 11-20': { icon: 'Hash', color: 'blue', emoji: '🔟' },
   'Numbers 1-20': { icon: 'Hash', color: 'indigo', emoji: '🔢' },
   'Числа': { icon: 'Hash', color: 'indigo', emoji: '🔢' },
   'Skaitļi': { icon: 'Hash', color: 'indigo', emoji: '🔢' },
@@ -44,6 +50,12 @@ const TOPIC_METADATA = {
   'Days of the week': { icon: 'Calendar', color: 'sky', emoji: '📅' },
   'Months': { icon: 'CalendarDays', color: 'teal', emoji: '🗓️' },
   'Classroom objects': { icon: 'School', color: 'amber', emoji: '🎒' },
+  'Stationery': { icon: 'Pencil', color: 'amber', emoji: '✏️' },
+  'Skolas piederumi': { icon: 'Pencil', color: 'amber', emoji: '✏️' },
+  'Школьные принадлежности': { icon: 'Pencil', color: 'amber', emoji: '✏️' },
+  'Classroom': { icon: 'School', color: 'teal', emoji: '🏫' },
+  'Klases telpa': { icon: 'School', color: 'teal', emoji: '🏫' },
+  'Классная комната': { icon: 'School', color: 'teal', emoji: '🏫' },
   'Family': { icon: 'Users', color: 'pink', emoji: '👨‍👩‍👧‍👦' },
   'Adjectives': { icon: 'Sparkles', color: 'emerald', emoji: '✨' },
   'Toys': { icon: 'Gamepad2', color: 'orange', emoji: '🧸' },
@@ -258,7 +270,11 @@ export function parseDictionaryCsv(csvString) {
       }
 
       let topicId = slugify(en || 'topic');
-      if (topicId === 'numbers') {
+      if (topicId === 'numbers_1-10' || topicId === 'numbers_1_10') {
+        topicId = 'numbers_1_10';
+      } else if (topicId === 'numbers_11-20' || topicId === 'numbers_11_20') {
+        topicId = 'numbers_11_20';
+      } else if (topicId === 'numbers') {
         topicId = 'numbers_1_20';
       }
       if (topicId === 'shapes_plus') {

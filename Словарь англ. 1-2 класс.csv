@@ -266,6 +266,7 @@ hey,hei,"эй, привет",1
 this is,šis ir...,это...,1
 ,,,
 Instructions,Norādījumi,Инструкции,
+review,atkārtojums,повторение,1
 listen,klausīties,слушать,1
 point,rādīt,показывать,1
 repeat,atkārtot,повторять,1
@@ -311,6 +312,7 @@ wait,pagaidi,подожди,1
 order,sakārto secībā,расставь по порядку,1
 ,,,
 Places,Vietas,Места,
+home,mājas,дом,1
 park,parks,парк,1
 playground,rotaļlaukums,детская площадка,1
 farm,ferma,ферма,1
@@ -327,6 +329,15 @@ have you got,vai tev ir?,у тебя есть?,1
 question,jautājums,вопрос,1
 ,,,
 Helper words,Palīgvārdi,Слова-помощники,
+first,pirmais,первый,2
+second,otrais,второй,2
+many,daudzi,много,2
+all,"visi, viss","все, всё",2
+false,nepareizi,"неверно, ложь",2
+very,ļoti,очень,2
+really,patiešām,"действительно, правда",2
+ability,spēja,"умение, способность",2
+come,nākt,приходить,2
 lots,daudz,много,1
 only,tikai,только,1
 other,cits,другой,1
@@ -372,6 +383,8 @@ school,skola,школа,1
 activity,nodarbe,занятие,1
 ,,,
 Garden,Dārzs,Сад,
+grass,zāle,трава,2
+stick,"nūjiņa, zariņš","палочка, веточка",2
 root,sakne,корень,2
 flower,puķe,цветок,2
 leaves,lapas,листья,2
@@ -389,6 +402,7 @@ mud,dubļi,грязь,2
 clay,māls,глина,2
 ,,,
 Food and drink +,Ēdiens un dzērieni +,Еда и напитки +,
+eat,ēst,"кушать, есть",2
 breakfast,brokastis,завтрак,2
 lunch,pusdienas,обед,2
 dinner,vakariņas,ужин,2
@@ -401,6 +415,7 @@ food,ēdiens,еда,1
 cup,krūzīte,чашка,1
 ,,,
 Fruit and vegetables +,Augļi un dārzeņi +,Фрукты и овощи +,
+vegetable,dārzenis,овощ,2
 watermelon,arbūzs,арбуз,2
 grapes,vīnogas,виноград,2
 pineapple,ananass,ананас,2
@@ -423,6 +438,8 @@ family,ģimene,семья,1
 people,cilvēki,люди,1
 ,,,
 Art and games +,Māksla un spēles +,Творчество и игры +,
+start,sākums,"старт, начало",1
+finish,finišs,"финиш, конец",1
 art,māksla,"искусство, рисование",1
 craft,rokdarbi,"поделка, ремесло",1
 music,mūzika,музыка,1
@@ -437,6 +454,17 @@ Toys +,Rotaļlietas +,Игрушки +,
 toys,rotaļlietas,игрушки,1
 ,,,
 Adjectives +,Īpašības vārdi +,Прилагательные +,
+greedy,alkatīgs,жадный,2
+nice,jauks,"милый, приятный",2
+cool,foršs,"классный, крутой",2
+tidy,kārtīgs,аккуратный,2
+honest,godīgs,честный,2
+bright,spilgts,яркий,2
+perfect,ideāls,"идеальный, отличный",2
+important,svarīgs,важный,2
+helpful,palīdzīgs,"полезный, отзывчивый",2
+noise,troksnis,шум,2
+extra,papildu,дополнительный,2
 favourite,mīļākais,любимый,1
 different,atšķirīgs,разный,1
 ok,viss kārtībā,"в порядке, окей",1
@@ -444,11 +472,22 @@ good,labs,хороший,1
 excellent,lielisks,отличный,1
 ,,,
 Wild animals,Savvaļas dzīvnieki,Дикие животные,
+giraffe,žirafe,жираф,2
+elephant,zilonis,слон,2
+chameleon,hameleons,хамелеон,2
+squirrel,vāvere,белка,2
+bat,sikspārnis,летучая мышь,2
+footprints,pēdu nospiedumi,следы лап,2
 animal,dzīvnieks,животное,1
 lion,lauva,лев,1
 deer,briedis,олень,1
 ,,,
 Nature,Daba,Природа,
+land,zeme,"суша, земля",1
+jungle,džungļi,джунгли,2
+forest,mežs,лес,2
+sea,jūra,море,2
+ground,zeme,земля,2
 sun,saule,солнце,1
 moon,mēness,луна,1
 rainbow,varavīksne,радуга,1
@@ -470,6 +509,8 @@ your,"tavs, jūsu","твой, ваш",1
 our,mūsu,наш,1
 ,,,
 Other words,Dažādi vārdi,Разные слова,
+body,ķermenis,тело,2
+language,valoda,"язык, речь",2
 country,valsts,страна,1
 wheel,ritenis,колесо,1
 ruby,rubīns,рубин,1
@@ -549,3 +590,86 @@ Directions,Virzieni,Направления,
 turn left,pagriezties pa kreisi,повернуть налево,3
 turn right,pagriezties pa labi,повернуть направо,3
 go straight on,doties taisni,идти прямо,3
+,,,
+Farm animals +,Lauku dzīvnieki +,Фермерские животные +,
+horse,zirgs,лошадь,1
+,,,
+Christmas and holidays,Ziemassvētki un svētki,Рождество и праздники,
+Christmas,Ziemassvētki,Рождество,2
+father Christmas,Ziemassvētku vecītis,Дед Мороз,2
+Christmas tree,Ziemassvētku eglīte,рождественская ёлка,2
+stocking,Ziemassvētku zeķe,рождественский носок,2
+bell,zvaniņš,колокольчик,2
+decorations,rotājumi,украшения,2
+present,dāvana,подарок,2
+,,,
+Circus,Cirks,Цирк и костюмы,
+circus,cirks,цирк,2
+clown,klauns,клоун,2
+dress up,pārģērbties,наряжаться,2
+wear,valkāt,носить (одежду),2
+clothes,"drēbes, apģērbs",одежда,2
+,,,
+Positions +,Novietojums +,Расположение +,
+under,zem,под,2
+on,uz,на,2
+over there,tur,вон там,2
+front,priekšpuse,"передняя сторона, спереди",2
+out,ārā,"снаружи, наружу",2
+before,pirms,"до, перед",2
+next,nākamais,"следующий, дальше",2
+,,,
+At home +,Mājās +,Дом и интерьер,
+house,māja,"дом, здание",2
+flat,dzīvoklis,квартира,2
+room,istaba,комната,2
+wall,siena,стена,2
+furniture,mēbeles,мебель,2
+interior,interjers,интерьер,2
+mirror,spogulis,зеркало,2
+light,gaisma,"свет, лампа",2
+,,,
+Town +,Pilsēta +,Город и мир,
+city,lielpilsēta,большой город,2
+palace,pils,дворец,2
+markets,tirgi,"рынки, ярмарки",2
+transport,transports,транспорт,2
+cultures,kultūras,"культуры, традиции",2
+international,starptautisks,международный,2
+,,,
+Friendship,Draudzība,Дружба и общение,
+friendship,draudzība,дружба,2
+human,cilvēks,человек,2
+person,persona,"человек, персона",2
+letter,vēstule,письмо,2
+best,labākais,лучший,2
+wishes,novēlējumi,пожелания,2
+visit,apciemot,"навещать, ходить в гости",2
+call,zvanīt,звонить,2
+send,sūtīt,отправлять,2
+,,,
+Craft and projects,Darbiņi un projekti,Творчество и проекты,
+cut,griezt,"резать, вырезать",2
+fold,locīt,"складывать, сгибать",2
+decorate,"rotāt, izrotāt",украшать,2
+prepare,sagatavot,"готовить, подготавливать",2
+collage,kolāža,коллаж,2
+materials,materiāli,материалы,2
+creative,radošs,творческий,2
+try,mēģināt,"пробовать, стараться",2
+collaborate,sadarboties,сотрудничать,2
+riddle,mīkla,загадка,2
+compare,salīdzināt,сравнивать,2
+choose,izvēlēties,выбирать,2
+correct,"izlabot, pareizs","исправлять, правильный",2
+examples,piemēri,примеры,2
+,,,
+Routine and time,Dienas ritms un laiks,Время и распорядок,
+wake up,mosties,просыпаться,2
+sleep,gulēt,спать,2
+hour,stunda,час,2
+life,dzīve,жизнь,2
+cycle,cikls,"цикл, круговорот",2
+live,dzīvot,жить,2
+year,gads,год,2
+every,katrs,каждый,2

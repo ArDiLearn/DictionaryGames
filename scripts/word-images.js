@@ -615,4 +615,45 @@ export const WORD_IMAGES = {
   "crayons": "🖍️",
   "paintbrush": "🖌️",
   "paints": "🎨",
+
+  // Grade 3 – Seasons additions
+  "hot": "🌡️",
+  "cold": "🥶",
+
+  // Grade 3 – Wild animals (new)
+  "crocodile": "🐊",
+  "hippo": "🦛",
+  "monkey": "🐒",
+  "penguin": "🐧",
+  "shark": "🦈",
+  "whale": "🐋",
+  "zebra": "🦓",
+
+  // Grade 3 – Sports
+  "do athletics": "🏃",
+  "do gymnastics": "🤸",
+  "do trampolining": "🤸",
+  "go mountainbiking": "🚵",
+  "go rowing": "🚣",
+  "go swimming": "🏊",
+  "play badminton": "🏸",
+  "play baseball": "⚾",
+  "play handball": "🤾",
+  "play rugby": "🏉",
+
+  // Grade 3 – Break time activities
+  "do exercise": "💪",
+  "drink lemonade": "🍋",
+  "drink milk": "🥛",
+  "eat fruit": "🍎",
+  "eat sweets": "🍬",
+  "go outdoors": "🌿",
+
+  // Grade 3 – Wild animal actions
+  "drink water": "💧",
+  "eat grass": "🌱",
+  "hunt animals": "🎯",
+  "like fruit": "🍌",
+  "live in a group": "🦁",
+  "sleep in a tree": "🌳",
 };

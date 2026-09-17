@@ -52,6 +52,8 @@ spring,pavasaris,весна,3
 summer,vasara,лето,3
 autumn,rudens,осень,3
 winter,ziema,зима,3
+hot,karsts,жаркий,3
+cold,auksts,холодный,3
 ,,,
 Classroom objects,Klases aprīkojums,Оборудование класса,
 window,logs,окно,1
@@ -492,14 +494,21 @@ excellent,lielisks,отличный,1
 creative,radošs,творческий,2
 ,,,
 Wild animals,Savvaļas dzīvnieki,Дикие животные,
-giraffe,žirafe,жираф,2
-elephant,zilonis,слон,2
+giraffe,žirafe,жираф,3
+elephant,zilonis,слон,3
+crocodile,krokodils,крокодил,3
+hippo,nīlzirgs,бегемот,3
+lion,lauva,лев,3
+monkey,mērkaķis,обезьяна,3
+penguin,pingvīns,пингвин,3
+shark,haizivs,акула,3
+whale,valis,кит,3
+zebra,zebra,зебра,3
 chameleon,hameleons,хамелеон,2
 squirrel,vāvere,белка,2
 bat,sikspārnis,летучая мышь,2
 footprints,pēdu nospiedumi,следы лап,2
 animal,dzīvnieks,животное,1
-lion,lauva,лев,1
 deer,briedis,олень,1
 ,,,
 Nature,Daba,Природа,
@@ -595,10 +604,6 @@ library,bibliotēka,библиотека,3
 shop,veikals,магазин,3
 restaurant,restorāns,ресторан,3
 swimming pool,peldbaseins,бассейн,3
-pet shop,zooveikals,зоомагазин,3
-toy shop,rotaļlietu veikals,магазин игрушек,3
-school,skola,школа,3
-bookshop,grāmatnīca,книжный магазин,3
 ,,,
 Positions,Novietojums,Расположение,
 next to,blakus,рядом с,3
@@ -612,6 +617,34 @@ Directions,Virzieni,Направления,
 turn left,pagriezties pa kreisi,повернуть налево,3
 turn right,pagriezties pa labi,повернуть направо,3
 go straight on,doties taisni,идти прямо,3
+,,,
+Sports,Sports,Спорт,
+do athletics,nodarboties ar vieglatlētiku,заниматься лёгкой атлетикой,3
+do gymnastics,nodarboties ar vingrošanu,заниматься гимнастикой,3
+do trampolining,lēkt uz batuta,прыгать на батуте,3
+go mountainbiking,braukt ar kalnu velosipēdu,ехать на горном велосипеде,3
+go rowing,airēt,заниматься греблей,3
+go swimming,peldēties,плавать,3
+play badminton,spēlēt badmintonu,играть в бадминтон,3
+play baseball,spēlēt beisbolu,играть в бейсбол,3
+play handball,spēlēt handbolu,играть в гандбол,3
+play rugby,spēlēt regbiju,играть в регби,3
+,,,
+Break time activities,Pārtraukuma aktivitātes,Активности на перемене,
+do exercise,vingrot,делать упражнения,3
+drink lemonade,dzert limonādi,пить лимонад,3
+drink milk,dzert pienu,пить молоко,3
+eat fruit,ēst augļus,есть фрукты,3
+eat sweets,ēst konfektes,есть сладости,3
+go outdoors,doties ārā,идти на улицу,3
+,,,
+Wild animal actions,Savvaļas dzīvnieku darbības,Действия диких животных,
+drink water,dzert ūdeni,пить воду,3
+eat grass,ēst zāli,есть траву,3
+hunt animals,medīt dzīvniekus,охотиться на животных,3
+like fruit,mīlēt augļus,любить фрукты,3
+live in a group,dzīvot grupā,жить в группе,3
+sleep in a tree,gulēt kokā,спать на дереве,3
 ,,,
 Farm animals +,Lauku dzīvnieki +,Фермерские животные +,
 horse,zirgs,лошадь,1
@@ -658,6 +691,10 @@ markets,tirgi,"рынки, ярмарки",2
 transport,transports,транспорт,2
 cultures,kultūras,"культуры, традиции",2
 international,starptautisks,международный,2
+pet shop,zooveikals,зоомагазин,3
+toy shop,rotaļlietu veikals,магазин игрушек,3
+school,skola,школа,3
+bookshop,grāmatnīca,книжный магазин,3
 ,,,
 Friendship,Draudzība,Дружба и общение,
 friendship,draudzība,дружба,2

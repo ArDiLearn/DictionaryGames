@@ -173,6 +173,14 @@ const TOPIC_METADATA = {
   'Arts and crafts materials': { icon: 'Palette', color: 'purple', emoji: '🎨' },
   'Materiāli rokdarbiem': { icon: 'Palette', color: 'purple', emoji: '🎨' },
   'Материалы для творчества': { icon: 'Palette', color: 'purple', emoji: '🎨' },
+  'Sports': { icon: 'Trophy', color: 'green', emoji: '🏆' },
+  'Спорт': { icon: 'Trophy', color: 'green', emoji: '🏆' },
+  'Break time activities': { icon: 'Coffee', color: 'sky', emoji: '🧃' },
+  'Pārtraukuma aktivitātes': { icon: 'Coffee', color: 'sky', emoji: '🧃' },
+  'Активности на перемене': { icon: 'Coffee', color: 'sky', emoji: '🧃' },
+  'Wild animal actions': { icon: 'Cat', color: 'amber', emoji: '🦁' },
+  'Savvaļas dzīvnieku darbības': { icon: 'Cat', color: 'amber', emoji: '🦁' },
+  'Действия диких животных': { icon: 'Cat', color: 'amber', emoji: '🦁' },
 };
 
 /**

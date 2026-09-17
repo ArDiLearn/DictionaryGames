@@ -37,35 +37,60 @@ alter table public.profiles enable row level security;
 alter table public.topic_progress enable row level security;
 alter table public.word_progress enable row level security;
 
--- 5. RLS Policies
+-- 5. RLS Policies for Profiles (uses "id")
+drop policy if exists "Users can view own profile" on public.profiles;
 create policy "Users can view own profile" on public.profiles
   for select using (auth.uid() = id);
 
+drop policy if exists "Users can insert own profile" on public.profiles;
+create policy "Users can insert own profile" on public.profiles
+  for insert with check (auth.uid() = id);
+
+drop policy if exists "Users can update own profile" on public.profiles;
 create policy "Users can update own profile" on public.profiles
-  for all using (auth.uid() = id) with check (auth.uid() = id);
+  for update using (auth.uid() = id) with check (auth.uid() = id);
 
+-- 6. RLS Policies for Topic Progress (uses "user_id")
+drop policy if exists "Users can view own topic progress" on public.topic_progress;
+drop policy if exists "Users can manage own topic progress" on public.topic_progress;
 create policy "Users can view own topic progress" on public.topic_progress
-  for select using (auth.uid() = id);
+  for select using (auth.uid() = user_id);
 
-create policy "Users can manage own topic progress" on public.topic_progress
-  for all using (auth.uid() = id) with check (auth.uid() = id);
+drop policy if exists "Users can insert own topic progress" on public.topic_progress;
+create policy "Users can insert own topic progress" on public.topic_progress
+  for insert with check (auth.uid() = user_id);
 
+drop policy if exists "Users can update own topic progress" on public.topic_progress;
+create policy "Users can update own topic progress" on public.topic_progress
+  for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+-- 7. RLS Policies for Word Progress (uses "user_id")
+drop policy if exists "Users can view own word progress" on public.word_progress;
+drop policy if exists "Users can manage own word progress" on public.word_progress;
 create policy "Users can view own word progress" on public.word_progress
-  for select using (auth.uid() = id);
+  for select using (auth.uid() = user_id);
 
-create policy "Users can manage own word progress" on public.word_progress
-  for all using (auth.uid() = id) with check (auth.uid() = id);
+drop policy if exists "Users can insert own word progress" on public.word_progress;
+create policy "Users can insert own word progress" on public.word_progress
+  for insert with check (auth.uid() = user_id);
 
--- 6. Trigger to auto-create profile on signup
+drop policy if exists "Users can update own word progress" on public.word_progress;
+create policy "Users can update own word progress" on public.word_progress
+  for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+-- 8. Trigger to auto-create profile on signup
 create or replace function public.handle_new_user()
-returns trigger as $$
+returns trigger
+language plpgsql
+security definer set search_path = public
+as $$
 begin
   insert into public.profiles (id, player_name, avatar)
   values (new.id, coalesce(new.raw_user_meta_data->>'player_name', 'Супер-Знайка'), '🦁')
   on conflict (id) do nothing;
   return new;
 end;
-$$ language plpgsql security definer;
+$$;
 
 drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created

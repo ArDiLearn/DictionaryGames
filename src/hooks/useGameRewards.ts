@@ -8,6 +8,8 @@ import {
   evaluateUnlockedTitles,
   recordGameModePlayed,
   recordExamAttempt,
+  loadTopicProgress,
+  saveTopicProgress,
 } from '../services/storage';
 import { trackGameComplete } from '../utils/analytics';
 import { sounds } from '../utils/soundEffects';
@@ -21,6 +23,9 @@ export interface CelebrationState {
   maxStars?: number;
   isRewardDisabled?: boolean;
   isMiniTopicPractice?: boolean;
+  isFirstClear?: boolean;
+  isRepeatClear?: boolean;
+  isFailedThreshold?: boolean;
 }
 
 export function useGameRewards(
@@ -71,6 +76,9 @@ export function useGameRewards(
         return;
       }
 
+      const percentage = Math.round((correctCount / Math.max(1, totalCount)) * 100);
+      const isPassThreshold = percentage >= 70;
+
       // Dynamic star caps based on word count:
       // < 5 words: 0 stars (practice mode, prevents 2-sec micro-farming)
       // 5-8 words: max 2 stars
@@ -82,23 +90,39 @@ export function useGameRewards(
         maxStars = 2;
       }
 
+      // Check whether this game mode was previously completed with >= 70%
+      const allTopicProgress = loadTopicProgress(course);
+      const currentTopicProgress = allTopicProgress[selectedTopic.topic_id] || {
+        topic_id: selectedTopic.topic_id,
+        stars: 0,
+        masteredWordIds: [],
+        completedModes: [],
+      };
+      const completedModes = currentTopicProgress.completedModes || [];
+      const isFirstClear = Boolean(gameMode && !completedModes.includes(gameMode));
+
       let gameStars = 0;
-      if (maxStars === 3) {
-        gameStars =
-          correctCount === totalCount
-            ? 3
-            : correctCount >= Math.ceil(totalCount * 0.6)
-            ? 2
-            : 1;
-      } else if (maxStars === 2) {
-        gameStars =
-          correctCount === totalCount
-            ? 2
-            : correctCount >= Math.ceil(totalCount * 0.5)
-            ? 1
-            : 0;
-      } else {
+      let isFailedThreshold = false;
+      let isRepeatClear = false;
+
+      if (maxStars === 0) {
         gameStars = 0;
+      } else if (!isPassThreshold) {
+        // Less than 70%: no stars earned (practice needed)
+        gameStars = 0;
+        isFailedThreshold = true;
+      } else if (isFirstClear) {
+        // First successful pass: full star reward (3 for 9+ words, 2 for 5-8 words)
+        gameStars = maxStars;
+        if (gameMode) {
+          currentTopicProgress.completedModes = [...completedModes, gameMode];
+          allTopicProgress[selectedTopic.topic_id] = currentTopicProgress;
+          saveTopicProgress(allTopicProgress, course);
+        }
+      } else {
+        // Subsequent pass: 1 star
+        gameStars = 1;
+        isRepeatClear = true;
       }
 
       const isFlawless = correctCount === totalCount && totalCount >= 4;
@@ -165,9 +189,12 @@ export function useGameRewards(
         correct: correctCount,
         total: totalCount,
         stars: gameStars,
-        maxStars,
+        maxStars: isRepeatClear ? 1 : maxStars,
         isRewardDisabled: false,
         isMiniTopicPractice: maxStars === 0,
+        isFirstClear: isPassThreshold && isFirstClear && maxStars > 0,
+        isRepeatClear: isPassThreshold && isRepeatClear && maxStars > 0,
+        isFailedThreshold,
       });
     },
     [course, language, setStats, stats]

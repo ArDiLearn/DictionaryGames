@@ -177,6 +177,9 @@ export interface Translations {
   flashcardsNoRewardHint: string;
   miniTopicComplete: string;
   miniTopicNoRewardHint: string;
+  firstClearRewardBadge: string;
+  repeatClearRewardBadge: string;
+  accuracyThresholdHint: string;
   cardsViewed: string;
   progressStatsTitle: string;
   statsModal: {
@@ -442,6 +445,9 @@ export const translations: Record<Language, Translations> = {
     flashcardsNoRewardHint: 'В режиме карточек звёзды не начисляются. Играй в игры, чтобы заработать звёзды!',
     miniTopicComplete: 'Тренировка завершена!',
     miniTopicNoRewardHint: 'В теме меньше 5 слов — это режим тренировки. Звёзды в копилку даются в темах от 5 слов!',
+    firstClearRewardBadge: 'Первая победа в игре!',
+    repeatClearRewardBadge: 'Повторное прохождение (+1 ⭐)',
+    accuracyThresholdHint: 'Нужно набрать от 70% верных ответов, чтобы получить звёзды. Попробуй ещё раз!',
     cardsViewed: 'Карточек повторено',
     progressStatsTitle: 'Статистика прогресса',
     statsModal: {
@@ -705,6 +711,9 @@ export const translations: Record<Language, Translations> = {
     flashcardsNoRewardHint: 'Kartīšu režīmā zvaigznes netiek piešķirtas. Spēlē spēles, lai nopelnītu zvaigznes!',
     miniTopicComplete: 'Treniņš pabeigts!',
     miniTopicNoRewardHint: 'Tēmā ir mazāk par 5 vārdiem — treniņa režīms. Zvaigznes tiek piešķirtas tēmās ar vismaz 5 vārdiem!',
+    firstClearRewardBadge: 'Pirmā uzvara spēlē!',
+    repeatClearRewardBadge: 'Spēles atkārtojums (+1 ⭐)',
+    accuracyThresholdHint: 'Lai iegūtu zvaigznes, nepieciešams vismaz 70% pareizu atbilžu. Pamēģini vēlreiz!',
     cardsViewed: 'Atkārtotās kartītes',
     progressStatsTitle: 'Progresa statistika',
     statsModal: {

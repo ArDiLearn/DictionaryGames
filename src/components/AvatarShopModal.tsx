@@ -16,7 +16,7 @@ interface AvatarShopModalProps {
   onSelectAvatar: (avatarEmoji: string) => void;
 }
 
-type CategoryFilter = 'all' | 'starter' | 'simple' | 'medium' | 'unique';
+type CategoryFilter = 'all' | 'starter' | 'simple' | 'medium' | 'unique' | 'legendary';
 
 export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
   isOpen,
@@ -43,6 +43,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
     { id: 'simple', label: t.categorySimple },
     { id: 'medium', label: t.categoryMedium },
     { id: 'unique', label: t.categoryUnique },
+    { id: 'legendary', label: t.categoryLegendary },
   ];
 
   const filteredItems = AVATAR_SHOP_ITEMS.filter((item) => {
@@ -175,59 +176,66 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
             const isEquipped = stats.avatar === item.emoji;
             const canAfford = starBalance >= item.price;
             const name = item.name[language] || item.name.ru;
+            const isUnique = item.category === 'unique';
+            const isLegendary = item.category === 'legendary';
 
-              const isUnique = item.category === 'unique';
+            return (
+              <div
+                key={item.id}
+                className={`relative rounded-3xl p-3 sm:p-4 flex flex-col items-center justify-between text-center transition-all ${
+                  isEquipped
+                    ? 'bg-amber-50 border-3 border-amber-400 shadow-md scale-[1.02]'
+                    : isLegendary
+                    ? 'bg-gradient-to-b from-purple-50/80 via-white to-pink-50/50 border-2 border-purple-300 shadow-sm hover:border-purple-400'
+                    : isUnique
+                    ? 'bg-gradient-to-b from-amber-50/70 via-white to-yellow-50/40 border-2 border-amber-300 shadow-sm hover:border-amber-400'
+                    : isUnlocked
+                    ? 'bg-white border-2 border-slate-200 hover:border-amber-300 shadow-sm'
+                    : 'bg-slate-50/80 border-2 border-slate-200/80'
+                }`}
+              >
+                {/* Active checkmark */}
+                {isEquipped && (
+                  <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-sm">
+                    <Check className="w-4 h-4 stroke-[3]" />
+                  </div>
+                )}
 
-              return (
-                <div
-                  key={item.id}
-                  className={`relative rounded-3xl p-3 sm:p-4 flex flex-col items-center justify-between text-center transition-all ${
-                    isEquipped
-                      ? 'bg-amber-50 border-3 border-amber-400 shadow-md scale-[1.02]'
-                      : isUnique
-                      ? 'bg-gradient-to-b from-amber-50/70 via-white to-yellow-50/40 border-2 border-amber-300 shadow-sm hover:border-amber-400'
-                      : isUnlocked
-                      ? 'bg-white border-2 border-slate-200 hover:border-amber-300 shadow-sm'
-                      : 'bg-slate-50/80 border-2 border-slate-200/80'
-                  }`}
-                >
-                  {/* Active checkmark */}
-                  {isEquipped && (
-                    <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-sm">
-                      <Check className="w-4 h-4 stroke-[3]" />
-                    </div>
+                {/* Tier Badge */}
+                <div className="mb-1">
+                  {item.category === 'legendary' && (
+                    <span className="text-[10px] font-black text-purple-900 bg-purple-100 border border-purple-300 px-2 py-0.5 rounded-full shadow-xs">
+                      {t.tierBadgeLegendary}
+                    </span>
                   )}
+                  {item.category === 'unique' && (
+                    <span className="text-[10px] font-black text-amber-900 bg-amber-100 border border-amber-300 px-2 py-0.5 rounded-full shadow-xs">
+                      {t.tierBadgeUnique}
+                    </span>
+                  )}
+                  {item.category === 'medium' && (
+                    <span className="text-[10px] font-black text-indigo-900 bg-indigo-100 border border-indigo-200 px-2 py-0.5 rounded-full">
+                      {t.tierBadgeMedium}
+                    </span>
+                  )}
+                  {item.category === 'simple' && (
+                    <span className="text-[10px] font-black text-emerald-900 bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded-full">
+                      {t.tierBadgeSimple}
+                    </span>
+                  )}
+                  {item.category === 'starter' && (
+                    <span className="text-[10px] font-black text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-full">
+                      {t.freeStarter}
+                    </span>
+                  )}
+                </div>
 
-                  {/* Tier Badge */}
-                  <div className="mb-1">
-                    {item.category === 'unique' && (
-                      <span className="text-[10px] font-black text-amber-900 bg-amber-100 border border-amber-300 px-2 py-0.5 rounded-full shadow-xs">
-                        {t.tierBadgeUnique}
-                      </span>
-                    )}
-                    {item.category === 'medium' && (
-                      <span className="text-[10px] font-black text-indigo-900 bg-indigo-100 border border-indigo-200 px-2 py-0.5 rounded-full">
-                        {t.tierBadgeMedium}
-                      </span>
-                    )}
-                    {item.category === 'simple' && (
-                      <span className="text-[10px] font-black text-emerald-900 bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded-full">
-                        {t.tierBadgeSimple}
-                      </span>
-                    )}
-                    {item.category === 'starter' && (
-                      <span className="text-[10px] font-black text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-full">
-                        {t.freeStarter}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Avatar Emoji */}
-                  <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white shadow-inner border flex items-center justify-center text-4xl sm:text-5xl mb-2 hover:scale-110 transition-transform select-none ${
-                    isUnique ? 'border-amber-200' : 'border-slate-100'
-                  }`}>
-                    {item.emoji}
-                  </div>
+                {/* Avatar Emoji */}
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white shadow-inner border flex items-center justify-center text-4xl sm:text-5xl mb-2 hover:scale-110 transition-transform select-none ${
+                  isLegendary ? 'border-purple-200' : isUnique ? 'border-amber-200' : 'border-slate-100'
+                }`}>
+                  {item.emoji}
+                </div>
 
                   {/* Avatar Name */}
                   <h3 className="text-xs sm:text-sm font-black text-slate-800 mb-2 truncate w-full">

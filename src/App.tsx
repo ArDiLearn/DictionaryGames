@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import confetti from 'canvas-confetti';
 import rawWordsData from './data/words.json';
-import { Topic, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress, LearningCourse, ExamResult } from './types';
+import { Topic, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress, LearningCourse, ExamResult, PlayerTitle } from './types';
 import { Header } from './components/Header';
 import { TopicList } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
@@ -16,7 +17,10 @@ import { AuthModal } from './components/AuthModal';
 import { PwaInstallPrompt } from './components/PwaInstallPrompt';
 import { AvatarShopModal } from './components/AvatarShopModal';
 import { ProgressStatsModal } from './components/ProgressStatsModal';
+import { TitleSelectModal } from './components/TitleSelectModal';
 import { trackGameStart, trackGameComplete, trackLanguageChange } from './utils/analytics';
+import { sounds } from './utils/soundEffects';
+import { translations } from './utils/i18n';
 import {
   getStoredLanguage,
   saveStoredLanguage,
@@ -35,6 +39,11 @@ import {
   loadExamResults,
   loadExamHistory,
   recordExamAttempt,
+  equipTitle,
+  evaluateUnlockedTitles,
+  recordGameModePlayed,
+  checkAndClaimTopicMasteryBonus,
+  checkAndClaimWordMilestones,
 } from './services/storage';
 import { getCurrentUser } from './services/supabase';
 
@@ -80,6 +89,9 @@ export const App: React.FC = () => {
   const [isSyncModalOpen, setIsSyncModalOpen] = useState<boolean>(false);
   const [isAvatarShopOpen, setIsAvatarShopOpen] = useState<boolean>(false);
   const [isStatsModalOpen, setIsStatsModalOpen] = useState<boolean>(false);
+  const [isTitleSelectOpen, setIsTitleSelectOpen] = useState<boolean>(false);
+  const [unlockedTitleToast, setUnlockedTitleToast] = useState<PlayerTitle | null>(null);
+  const [bonusRewardToast, setBonusRewardToast] = useState<{ message: string; stars: number } | null>(null);
   const [wordProgress, setWordProgress] = useState<Record<string, WordProgress>>(() =>
     loadWordProgress(getStoredCourse())
   );
@@ -242,6 +254,24 @@ export const App: React.FC = () => {
     }
   }, [language]);
 
+  useEffect(() => {
+    // Initial evaluation for existing progress to award titles and milestones
+    const titleResult = evaluateUnlockedTitles();
+    setStats(titleResult.updatedStats);
+  }, []);
+
+  useEffect(() => {
+    if (!unlockedTitleToast) return;
+    const timer = setTimeout(() => setUnlockedTitleToast(null), 5000);
+    return () => clearTimeout(timer);
+  }, [unlockedTitleToast]);
+
+  useEffect(() => {
+    if (!bonusRewardToast) return;
+    const timer = setTimeout(() => setBonusRewardToast(null), 5000);
+    return () => clearTimeout(timer);
+  }, [bonusRewardToast]);
+
   const handleLanguageChange = (newLang: Language) => {
     setLanguage(newLang);
     saveStoredLanguage(newLang);
@@ -349,14 +379,49 @@ export const App: React.FC = () => {
       return;
     }
 
+    const isFlawless = correctCount === totalCount && totalCount >= 4;
     const gameStars = correctCount === totalCount ? 3 : correctCount >= Math.ceil(totalCount / 2) ? 2 : 1;
     if (gameMode) {
       trackGameComplete(gameMode, selectedTopic.topic_id, correctCount, gameStars);
+      recordGameModePlayed(gameMode, isFlawless);
     }
 
     // Add stars to user's piggy bank
-    const updatedStats = addEarnedStars(gameStars);
-    setStats(updatedStats);
+    let updatedStats = addEarnedStars(gameStars);
+
+    // Topic Mastery Bonus (+25 ⭐ for instructions, +10 ⭐ for >= 15 words, +5 ⭐ for others)
+    const mastery = checkAndClaimTopicMasteryBonus(
+      selectedTopic.topic_id,
+      selectedTopic.words.length,
+      course
+    );
+    if (mastery.claimed) {
+      updatedStats = mastery.updatedStats;
+      setBonusRewardToast({
+        message: `${translations[language].topicMasteryBonusToast} (${selectedTopic.topic_name[language] || selectedTopic.topic_name.ru})`,
+        stars: mastery.bonusStars,
+      });
+    }
+
+    // Word Milestones Bonus
+    const msResult = checkAndClaimWordMilestones(course);
+    if (msResult.totalBonusStars > 0) {
+      updatedStats = msResult.updatedStats;
+      setBonusRewardToast({
+        message: translations[language].wordMilestoneToast,
+        stars: msResult.totalBonusStars,
+      });
+    }
+
+    // Evaluate Unlocked Titles
+    const titleResult = evaluateUnlockedTitles(updatedStats);
+    if (titleResult.newlyUnlockedTitles.length > 0) {
+      setUnlockedTitleToast(titleResult.newlyUnlockedTitles[0]);
+      sounds.playFanfare();
+      confetti({ particleCount: 80, spread: 80, origin: { y: 0.4 } });
+    }
+
+    setStats(titleResult.updatedStats);
 
     setCelebration({
       correct: correctCount,
@@ -397,10 +462,19 @@ export const App: React.FC = () => {
     const { results, history } = recordExamAttempt(course, result);
     setExamResults(results);
     setExamHistory(history);
+    let updatedStats = stats;
     if (result.starsEarned > 0) {
-      const updatedStats = addEarnedStars(result.starsEarned);
-      setStats(updatedStats);
+      updatedStats = addEarnedStars(result.starsEarned);
     }
+
+    // Evaluate Unlocked Titles after exam
+    const titleResult = evaluateUnlockedTitles(updatedStats);
+    if (titleResult.newlyUnlockedTitles.length > 0) {
+      setUnlockedTitleToast(titleResult.newlyUnlockedTitles[0]);
+      sounds.playFanfare();
+      confetti({ particleCount: 90, spread: 90, origin: { y: 0.4 } });
+    }
+    setStats(titleResult.updatedStats);
   };
 
   const handleHomeClick = () => {
@@ -468,6 +542,8 @@ export const App: React.FC = () => {
             }}
             examResults={examResults}
             onStartExam={handleStartExam}
+            equippedTitleId={stats.equippedTitleId}
+            onOpenTitles={() => setIsTitleSelectOpen(true)}
           />
         )}
 
@@ -624,6 +700,68 @@ export const App: React.FC = () => {
           handleStartExam(grade);
         }}
       />
+
+      {/* Title Selection & Achievements Modal */}
+      <TitleSelectModal
+        isOpen={isTitleSelectOpen}
+        onClose={() => setIsTitleSelectOpen(false)}
+        language={language}
+        stats={stats}
+        onEquipTitle={(titleId) => {
+          const updated = equipTitle(titleId);
+          setStats(updated);
+        }}
+      />
+
+      {/* Floating Toast: Newly Unlocked Title */}
+      {unlockedTitleToast && (
+        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 animate-bounce max-w-md w-[92%] p-4 rounded-3xl bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 text-white shadow-2xl border-2 border-white flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-2xl bg-white/30 flex items-center justify-center text-3xl shadow-inner shrink-0">
+              {unlockedTitleToast.icon}
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-wider font-extrabold text-amber-950/80">
+                {translations[language].titleUnlockedToast}
+              </div>
+              <div className="font-black text-base leading-tight">
+                {unlockedTitleToast.name[language] || unlockedTitleToast.name.ru}
+              </div>
+            </div>
+          </div>
+          <button
+            onClick={() => setUnlockedTitleToast(null)}
+            className="w-8 h-8 rounded-full bg-black/20 hover:bg-black/30 flex items-center justify-center text-white cursor-pointer shrink-0"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
+      {/* Floating Toast: Bonus Stars (Topic Mastery / Word Milestone) */}
+      {bonusRewardToast && (
+        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 animate-bounce max-w-md w-[92%] p-4 rounded-3xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-2xl border-2 border-white flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-2xl bg-white/30 flex items-center justify-center text-3xl shadow-inner shrink-0">
+              🎁
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-wider font-extrabold text-emerald-950/80">
+                {bonusRewardToast.message}
+              </div>
+              <div className="font-black text-base leading-tight flex items-center gap-1">
+                <span>+{bonusRewardToast.stars} ⭐ {translations[language].starsAddedToBank}</span>
+              </div>
+            </div>
+          </div>
+          <button
+            onClick={() => setBonusRewardToast(null)}
+            className="w-8 h-8 rounded-full bg-black/20 hover:bg-black/30 flex items-center justify-center text-white cursor-pointer shrink-0"
+          >
+            ✕
+          </button>
+        </div>
+      )}
 
       {/* PWA "Add to Home Screen" prompt */}
       <PwaInstallPrompt language={language} />

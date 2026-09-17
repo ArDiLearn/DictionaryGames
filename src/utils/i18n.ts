@@ -138,9 +138,26 @@ export interface Translations {
   categorySimple: string;
   categoryMedium: string;
   categoryUnique: string;
+  categoryLegendary: string;
   tierBadgeSimple: string;
   tierBadgeMedium: string;
   tierBadgeUnique: string;
+  tierBadgeLegendary: string;
+  titlesModalTitle: string;
+  titlesModalSubtitle: string;
+  equippedTitleBadge: string;
+  equipTitleAction: string;
+  lockedTitleBadge: string;
+  titleCategoryAll: string;
+  titleCategoryAcademic: string;
+  titleCategoryWords: string;
+  titleCategoryTopics: string;
+  titleCategoryActivity: string;
+  activeDaysLabel: string;
+  activeDaysSubtitle: string;
+  titleUnlockedToast: string;
+  topicMasteryBonusToast: string;
+  wordMilestoneToast: string;
   starsAddedToBank: string;
   shopNotice: string;
   congratsAvatarPurchased: string;
@@ -373,9 +390,26 @@ export const translations: Record<Language, Translations> = {
     categorySimple: 'Простые (10 ⭐)',
     categoryMedium: 'Средние (50 ⭐)',
     categoryUnique: 'Уникальные (100 ⭐)',
+    categoryLegendary: 'Легендарные (150–200 ⭐)',
     tierBadgeSimple: 'Простой',
     tierBadgeMedium: 'Средний',
     tierBadgeUnique: '✨ Уникальный',
+    tierBadgeLegendary: '👑 Легендарный',
+    titlesModalTitle: 'Мои титулы и звания',
+    titlesModalSubtitle: 'Заслуженные почётные звания за успехи и упорство',
+    equippedTitleBadge: 'Надет',
+    equipTitleAction: 'Надеть',
+    lockedTitleBadge: 'Закрыт',
+    titleCategoryAll: 'Все',
+    titleCategoryAcademic: '🎓 Экзамены',
+    titleCategoryWords: '📖 Словарный запас',
+    titleCategoryTopics: '🐾 Темы',
+    titleCategoryActivity: '🚀 Усердие',
+    activeDaysLabel: 'Календарь усердия',
+    activeDaysSubtitle: 'Дней занятий (не сгорают)',
+    titleUnlockedToast: 'Получен новый титул!',
+    topicMasteryBonusToast: 'Бонус за 100% темы!',
+    wordMilestoneToast: 'Словарная веха достигнута!',
     starsAddedToBank: 'в копилку аватаров!',
     shopNotice: 'Играй в игры и учи слова, чтобы пополнять копилку звёздочек и открывать новых героев!',
     congratsAvatarPurchased: 'Ура! Новый аватар разблокирован!',
@@ -606,9 +640,26 @@ export const translations: Record<Language, Translations> = {
     categorySimple: 'Vienkāršie (10 ⭐)',
     categoryMedium: 'Vidējie (50 ⭐)',
     categoryUnique: 'Unikālie (100 ⭐)',
+    categoryLegendary: 'Leģendārie (150–200 ⭐)',
     tierBadgeSimple: 'Vienkāršs',
     tierBadgeMedium: 'Vidējs',
     tierBadgeUnique: '✨ Unikāls',
+    tierBadgeLegendary: '👑 Leģendārs',
+    titlesModalTitle: 'Mani tituli un pakāpes',
+    titlesModalSubtitle: 'Nopelnītie goda tituli par panākumiem un centību',
+    equippedTitleBadge: 'Uzvilkts',
+    equipTitleAction: 'Uzvilkt',
+    lockedTitleBadge: 'Slēgts',
+    titleCategoryAll: 'Visi',
+    titleCategoryAcademic: '🎓 Eksāmeni',
+    titleCategoryWords: '📖 Vārdu krājums',
+    titleCategoryTopics: '🐾 Tēmas',
+    titleCategoryActivity: '🚀 Centība',
+    activeDaysLabel: 'Centības kalendārs',
+    activeDaysSubtitle: 'Mācību dienas (nekad nepazūd)',
+    titleUnlockedToast: 'Iegūts jauns tituls!',
+    topicMasteryBonusToast: 'Bonuss par 100% tēmu!',
+    wordMilestoneToast: 'Vārdu krājuma robežstabs sasniegts!',
     starsAddedToBank: 'avataru krājkasītē!',
     shopNotice: 'Spēlē spēles un mācies vārdus, lai pelnītu zvaigznītes un atbloķētu jaunus varoņus!',
     congratsAvatarPurchased: 'Urā! Jauns avatars atbloķēts!',

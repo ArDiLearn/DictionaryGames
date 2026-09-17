@@ -389,20 +389,36 @@ export const ExamGame: React.FC<ExamGameProps> = ({
 
     let mark: ExamResult['gradeMark'] = null;
     let cup: ExamResult['cup'] = null;
-    let starsEarned = 2; // consolation
+    let starsEarned = grade === 1 ? 5 : 4; // consolation
 
-    if (percent === 100) {
-      mark = '5+';
-      cup = 'gold';
-      starsEarned = 10;
-    } else if (percent >= 80) {
-      mark = '4';
-      cup = 'silver';
-      starsEarned = 7;
-    } else if (percent >= 60) {
-      mark = '3';
-      cup = 'bronze';
-      starsEarned = 5;
+    if (grade === 1) {
+      if (percent === 100) {
+        mark = '5+';
+        cup = 'gold';
+        starsEarned = 25;
+      } else if (percent >= 80) {
+        mark = '4';
+        cup = 'silver';
+        starsEarned = 18;
+      } else if (percent >= 60) {
+        mark = '3';
+        cup = 'bronze';
+        starsEarned = 12;
+      }
+    } else {
+      if (percent === 100) {
+        mark = '5+';
+        cup = 'gold';
+        starsEarned = 20;
+      } else if (percent >= 80) {
+        mark = '4';
+        cup = 'silver';
+        starsEarned = 15;
+      } else if (percent >= 60) {
+        mark = '3';
+        cup = 'bronze';
+        starsEarned = 10;
+      }
     }
 
     const result: ExamResult = {

@@ -3,6 +3,7 @@ import { Topic, Language, UserStats, TopicProgress, WordProgress, Word, Learning
 import { translations, getWordsPlural, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { speakWord } from '../utils/speech';
+import { AvatarBadge } from './AvatarBadge';
 import {
   X,
   Volume2,
@@ -298,9 +299,7 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
         {/* Modal Header */}
         <div className="relative bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-5 sm:px-7 py-4 sm:py-5 text-white flex items-center justify-between shadow-md shrink-0">
           <div className="flex items-center gap-3 sm:gap-4">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/20 border-2 border-white/40 flex items-center justify-center text-2xl sm:text-3xl shadow-inner">
-              <span>{stats.avatar || '🦁'}</span>
-            </div>
+            <AvatarBadge avatar={stats.avatar || '🦁'} size="lg" />
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-xl sm:text-2xl font-black tracking-tight">{s.title}</h2>

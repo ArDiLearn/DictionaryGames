@@ -36,11 +36,22 @@ export default {
           '0%': { transform: 'scale(0.95)' },
           '50%': { transform: 'scale(1.05)' },
           '100%': { transform: 'scale(1)' },
-        }
+        },
+        twinkle: {
+          '0%, 100%': { transform: 'scale(0.75) rotate(0deg)', opacity: '0.35' },
+          '50%': { transform: 'scale(1.2) rotate(20deg)', opacity: '1' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-3px)' },
+        },
       },
       animation: {
         wiggle: 'wiggle 0.3s ease-in-out infinite',
         pop: 'pop 0.25s ease-out',
+        twinkle: 'twinkle 2s ease-in-out infinite',
+        'twinkle-delay': 'twinkle 2.5s ease-in-out 1.2s infinite',
+        float: 'float 3s ease-in-out infinite',
       }
     },
   },

@@ -4,6 +4,7 @@ import { Language, UserStats, LearningCourse } from '../types';
 import { translations, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { FlagIcon } from './FlagIcon';
+import { AvatarBadge } from './AvatarBadge';
 
 interface HeaderProps {
   course: LearningCourse;
@@ -229,11 +230,11 @@ export const Header: React.FC<HeaderProps> = ({
               sounds.playClick();
               onOpenShop();
             }}
-            className="relative w-10 h-10 rounded-2xl bg-amber-100 hover:bg-amber-200 border-2 border-amber-300 flex items-center justify-center text-2xl shadow-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer shrink-0"
+            className="relative flex items-center justify-center shadow-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer shrink-0"
             title={`${t.avatarShopTitle} (${getPlayerDisplayName(stats.playerName, language)})`}
           >
-            <span>{stats.avatar || '🦁'}</span>
-            <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-amber-400 border border-white rounded-full flex items-center justify-center text-[9px] shadow-sm">
+            <AvatarBadge avatar={stats.avatar || '🦁'} size="sm" />
+            <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-amber-400 border border-white rounded-full flex items-center justify-center text-[9px] shadow-sm z-20">
               🛍️
             </span>
           </button>

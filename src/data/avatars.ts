@@ -222,4 +222,105 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
     price: 200,
     category: 'legendary',
   },
+
+  // 6. Мифические и Космические / Mītiskie un Kosmiskie (1000+ ⭐)
+  {
+    id: 'cosmic_lion',
+    emoji: '🦁✨',
+    name: { ru: 'Космический Лев — Владыка Галактики', lv: 'Kosmiskais Lauva — Galaktikas Pavēlnieks' },
+    price: 1000,
+    category: 'mythic',
+    vfx: {
+      bgGradient: 'bg-gradient-to-br from-indigo-950 via-purple-900 to-slate-950',
+      borderClass: 'border-purple-400/80 ring-2 ring-purple-400/50 shadow-purple-500/30',
+      glowClass: 'shadow-lg shadow-purple-600/40',
+      sparkles: ['✨', '⭐', '✨', '🌟'],
+      theme: 'cosmic',
+      cardBg: 'bg-gradient-to-b from-indigo-950/20 via-purple-900/15 to-slate-900/10 border-2 border-purple-400',
+    },
+  },
+  {
+    id: 'astral_dragon',
+    emoji: '🐉✨',
+    name: { ru: 'Звёздный Дракон Бесконечности', lv: 'Zvaigžņu Bezgalības Pūķis' },
+    price: 1200,
+    category: 'mythic',
+    vfx: {
+      bgGradient: 'bg-gradient-to-br from-emerald-950 via-teal-900 to-cyan-950',
+      borderClass: 'border-teal-400/80 ring-2 ring-teal-400/50 shadow-teal-500/30',
+      glowClass: 'shadow-lg shadow-teal-600/40',
+      sparkles: ['💎', '✨', '⭐', '✨'],
+      theme: 'astral',
+      cardBg: 'bg-gradient-to-b from-emerald-950/20 via-teal-900/15 to-cyan-950/10 border-2 border-teal-400',
+    },
+  },
+  {
+    id: 'supernova_unicorn',
+    emoji: '🦄✨',
+    name: { ru: 'Единорог Сверхновой', lv: 'Supernovas Vienradzis' },
+    price: 1200,
+    category: 'mythic',
+    vfx: {
+      bgGradient: 'bg-gradient-to-br from-pink-950 via-purple-900 to-indigo-950',
+      borderClass: 'border-pink-400/80 ring-2 ring-pink-400/50 shadow-pink-500/30',
+      glowClass: 'shadow-lg shadow-pink-600/40',
+      sparkles: ['💖', '✨', '🌸', '✨'],
+      theme: 'supernova',
+      cardBg: 'bg-gradient-to-b from-pink-950/20 via-purple-900/15 to-indigo-950/10 border-2 border-pink-400',
+    },
+  },
+  {
+    id: 'cyber_explorer',
+    emoji: '🤖✨',
+    name: { ru: 'Кибер-Робот Межзвёздный', lv: 'Starpplanētu Kibernētiskais Robots' },
+    price: 1500,
+    category: 'mythic',
+    vfx: {
+      bgGradient: 'bg-gradient-to-br from-slate-950 via-blue-950 to-cyan-900',
+      borderClass: 'border-cyan-400/80 ring-2 ring-cyan-400/50 shadow-cyan-500/30',
+      glowClass: 'shadow-lg shadow-cyan-500/40',
+      sparkles: ['⚡', '🪐', '✨', '⚡'],
+      theme: 'cyber',
+      cardBg: 'bg-gradient-to-b from-slate-950/20 via-blue-950/15 to-cyan-900/10 border-2 border-cyan-400',
+    },
+  },
+  {
+    id: 'universe_archmage',
+    emoji: '🧙‍♂️✨',
+    name: { ru: 'Архимаг Вселенной', lv: 'Visuma Virsmags' },
+    price: 1500,
+    category: 'mythic',
+    vfx: {
+      bgGradient: 'bg-gradient-to-br from-purple-950 via-violet-900 to-indigo-950',
+      borderClass: 'border-violet-400/80 ring-2 ring-violet-400/50 shadow-violet-500/30',
+      glowClass: 'shadow-lg shadow-violet-600/40',
+      sparkles: ['🔮', '✨', '⭐', '✨'],
+      theme: 'archmage',
+      cardBg: 'bg-gradient-to-b from-purple-950/20 via-violet-900/15 to-indigo-950/10 border-2 border-violet-400',
+    },
+  },
+  {
+    id: 'solar_emperor',
+    emoji: '👑✨',
+    name: { ru: 'Солнечный Король — Абсолют', lv: 'Saules Karalis Absolūts' },
+    price: 2000,
+    category: 'mythic',
+    vfx: {
+      bgGradient: 'bg-gradient-to-br from-amber-600 via-yellow-500 to-orange-600',
+      borderClass: 'border-amber-300 ring-2 ring-yellow-400 shadow-yellow-500/50',
+      glowClass: 'shadow-lg shadow-amber-500/50',
+      sparkles: ['⭐', '☀️', '✨', '🌟'],
+      theme: 'solar',
+      cardBg: 'bg-gradient-to-b from-amber-500/20 via-yellow-400/15 to-orange-500/10 border-2 border-amber-400',
+    },
+  },
 ];
+
+export function getAvatarShopItem(avatarStr: string): AvatarShopItem | undefined {
+  if (!avatarStr) return undefined;
+  return AVATAR_SHOP_ITEMS.find((item) => item.emoji === avatarStr || item.id === avatarStr);
+}
+
+export function getAvatarVFX(avatarStr: string) {
+  return getAvatarShopItem(avatarStr)?.vfx;
+}

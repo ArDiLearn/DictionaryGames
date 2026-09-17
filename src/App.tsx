@@ -64,11 +64,13 @@ export const App: React.FC = () => {
     gameMode,
     activeExamGrade,
     isGameActive,
-    setSelectedTopic,
-    setGameMode,
-    setActiveExamGrade,
+    selectTopic,
+    selectMode,
+    startExam,
     navigateToHome,
-  } = useNavigation();
+    goBack,
+  } = useNavigation(topics, course, language);
+  const [gameSessionId, setGameSessionId] = useState(0);
   const [examResults, setExamResults] = useState<Record<number, ExamResult>>(() =>
     loadExamResults(getStoredCourse())
   );
@@ -229,29 +231,22 @@ export const App: React.FC = () => {
 
   const handleRestartGame = () => {
     setCelebration(null);
-    // Keep same topic and gameMode, triggers remount
-    const currentMode = gameMode;
-    setGameMode(null);
-    setTimeout(() => {
-      setGameMode(currentMode);
-      if (currentMode && selectedTopic) {
-        trackGameStart(currentMode, selectedTopic.topic_id);
-      }
-    }, 50);
+    setGameSessionId((prev) => prev + 1);
+    if (gameMode && selectedTopic) {
+      trackGameStart(gameMode, selectedTopic.topic_id);
+    }
   };
 
   const handleSelectMode = (mode: GameMode) => {
-    setGameMode(mode);
+    selectMode(mode);
     if (selectedTopic) {
       trackGameStart(mode, selectedTopic.topic_id);
     }
   };
 
   const handleStartExam = (grade: Grade) => {
-    setSelectedTopic(null);
-    setGameMode(null);
     setCelebration(null);
-    setActiveExamGrade(grade);
+    startExam(grade);
   };
 
 
@@ -294,7 +289,7 @@ export const App: React.FC = () => {
               language={language}
               course={course}
               onComplete={handleExamComplete}
-              onBack={() => setActiveExamGrade(null)}
+              onBack={() => goBack(language)}
             />
           </div>
         )}
@@ -310,7 +305,7 @@ export const App: React.FC = () => {
             selectedGrades={selectedGrades}
             onToggleGrade={handleToggleGrade}
             onSelectAllGrades={handleSelectAllGrades}
-            onSelectTopic={(topic) => setSelectedTopic(topic)}
+            onSelectTopic={selectTopic}
             playerName={stats.playerName}
             avatar={stats.avatar}
             onOpenShop={() => setIsAvatarShopOpen(true)}
@@ -333,7 +328,7 @@ export const App: React.FC = () => {
             course={course}
             progress={topicProgress[selectedTopic.topic_id]}
             onSelectMode={handleSelectMode}
-            onBack={() => setSelectedTopic(null)}
+            onBack={() => goBack(language)}
           />
         )}
 
@@ -342,76 +337,76 @@ export const App: React.FC = () => {
           <div className="pt-2">
             {gameMode === 'flashcards' && (
               <FlashcardsGame
-                key={`${selectedTopic.topic_id}-flashcards`}
+                key={`${selectedTopic.topic_id}-flashcards-${gameSessionId}`}
                 topic={selectedTopic}
                 language={language}
                 course={course}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}
-                onBack={() => setGameMode(null)}
+                onBack={() => goBack(language)}
               />
             )}
 
             {gameMode === 'truefalse' && (
               <TrueFalseGame
-                key={`${selectedTopic.topic_id}-truefalse`}
+                key={`${selectedTopic.topic_id}-truefalse-${gameSessionId}`}
                 topic={selectedTopic}
                 allTopics={filteredTopics}
                 language={language}
                 course={course}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}
-                onBack={() => setGameMode(null)}
+                onBack={() => goBack(language)}
               />
             )}
 
             {gameMode === 'balloons' && (
               <BalloonPopGame
-                key={`${selectedTopic.topic_id}-balloons`}
+                key={`${selectedTopic.topic_id}-balloons-${gameSessionId}`}
                 topic={selectedTopic}
                 allTopics={filteredTopics}
                 language={language}
                 course={course}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}
-                onBack={() => setGameMode(null)}
+                onBack={() => goBack(language)}
               />
             )}
 
             {gameMode === 'builder' && (
               <WordBuilderGame
-                key={`${selectedTopic.topic_id}-builder`}
+                key={`${selectedTopic.topic_id}-builder-${gameSessionId}`}
                 topic={selectedTopic}
                 language={language}
                 course={course}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}
-                onBack={() => setGameMode(null)}
+                onBack={() => goBack(language)}
               />
             )}
 
             {gameMode === 'match' && (
               <MatchPairsGame
-                key={`${selectedTopic.topic_id}-match`}
+                key={`${selectedTopic.topic_id}-match-${gameSessionId}`}
                 topic={selectedTopic}
                 language={language}
                 course={course}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}
-                onBack={() => setGameMode(null)}
+                onBack={() => goBack(language)}
               />
             )}
 
             {gameMode === 'audio' && (
               <AudioQuizGame
-                key={`${selectedTopic.topic_id}-audio`}
+                key={`${selectedTopic.topic_id}-audio-${gameSessionId}`}
                 topic={selectedTopic}
                 allTopics={filteredTopics}
                 language={language}
                 course={course}
                 onRecordResult={handleRecordWordResult}
                 onComplete={handleGameComplete}
-                onBack={() => setGameMode(null)}
+                onBack={() => goBack(language)}
               />
             )}
           </div>
@@ -465,12 +460,12 @@ export const App: React.FC = () => {
           examHistory={examHistory}
           initialTab={statsInitialTab}
           onSelectTopic={(t) => {
-            setSelectedTopic(t);
-            setGameMode(null);
-            setActiveExamGrade(null);
+            selectTopic(t);
+            setIsStatsModalOpen(false);
           }}
           onStartExam={(grade) => {
             handleStartExam(grade);
+            setIsStatsModalOpen(false);
           }}
         />
       )}

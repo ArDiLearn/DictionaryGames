@@ -1,27 +1,59 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import rawWordsData from './data/words.json';
 import { Topic, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress, LearningCourse, ExamResult } from './types';
 import { Header } from './components/Header';
 import { TopicList } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
-import { FlashcardsGame } from './components/games/FlashcardsGame';
-import { TrueFalseGame } from './components/games/TrueFalseGame';
-import { BalloonPopGame } from './components/games/BalloonPopGame';
-import { WordBuilderGame } from './components/games/WordBuilderGame';
-import { MatchPairsGame } from './components/games/MatchPairsGame';
-import { AudioQuizGame } from './components/games/AudioQuizGame';
-import { ExamGame } from './components/games/ExamGame';
-import { CelebrationModal } from './components/CelebrationModal';
-import { AuthModal } from './components/AuthModal';
 import { PwaInstallPrompt } from './components/PwaInstallPrompt';
-import { AvatarShopModal } from './components/AvatarShopModal';
-import { ProgressStatsModal } from './components/ProgressStatsModal';
-import { TitleSelectModal } from './components/TitleSelectModal';
 import { RewardToastOverlay } from './components/RewardToastOverlay';
 import { trackGameStart, trackLanguageChange } from './utils/analytics';
 import { useNavigation } from './hooks/useNavigation';
 import { useGameRewards } from './hooks/useGameRewards';
 import { useCloudSync } from './hooks/useCloudSync';
+
+// Lazy-loaded mini-games and heavy modals for code-splitting
+const FlashcardsGame = React.lazy(() =>
+  import('./components/games/FlashcardsGame').then((m) => ({ default: m.FlashcardsGame }))
+);
+const TrueFalseGame = React.lazy(() =>
+  import('./components/games/TrueFalseGame').then((m) => ({ default: m.TrueFalseGame }))
+);
+const BalloonPopGame = React.lazy(() =>
+  import('./components/games/BalloonPopGame').then((m) => ({ default: m.BalloonPopGame }))
+);
+const WordBuilderGame = React.lazy(() =>
+  import('./components/games/WordBuilderGame').then((m) => ({ default: m.WordBuilderGame }))
+);
+const MatchPairsGame = React.lazy(() =>
+  import('./components/games/MatchPairsGame').then((m) => ({ default: m.MatchPairsGame }))
+);
+const AudioQuizGame = React.lazy(() =>
+  import('./components/games/AudioQuizGame').then((m) => ({ default: m.AudioQuizGame }))
+);
+const ExamGame = React.lazy(() =>
+  import('./components/games/ExamGame').then((m) => ({ default: m.ExamGame }))
+);
+const CelebrationModal = React.lazy(() =>
+  import('./components/CelebrationModal').then((m) => ({ default: m.CelebrationModal }))
+);
+const AuthModal = React.lazy(() =>
+  import('./components/AuthModal').then((m) => ({ default: m.AuthModal }))
+);
+const AvatarShopModal = React.lazy(() =>
+  import('./components/AvatarShopModal').then((m) => ({ default: m.AvatarShopModal }))
+);
+const ProgressStatsModal = React.lazy(() =>
+  import('./components/ProgressStatsModal').then((m) => ({ default: m.ProgressStatsModal }))
+);
+const TitleSelectModal = React.lazy(() =>
+  import('./components/TitleSelectModal').then((m) => ({ default: m.TitleSelectModal }))
+);
+
+const GameLoadingFallback: React.FC = () => (
+  <div className="flex flex-col items-center justify-center min-h-[360px] py-16">
+    <div className="w-12 h-12 border-4 border-amber-300 border-t-amber-500 rounded-full animate-spin" />
+  </div>
+);
 import {
   getStoredLanguage,
   saveStoredLanguage,
@@ -283,14 +315,16 @@ export const App: React.FC = () => {
         {/* Screen: Exam Active */}
         {activeExamGrade !== null && (
           <div className="pt-2">
-            <ExamGame
-              grade={activeExamGrade}
-              topics={examTopics}
-              language={language}
-              course={course}
-              onComplete={handleExamComplete}
-              onBack={() => goBack(language)}
-            />
+            <Suspense fallback={<GameLoadingFallback />}>
+              <ExamGame
+                grade={activeExamGrade}
+                topics={examTopics}
+                language={language}
+                course={course}
+                onComplete={handleExamComplete}
+                onBack={() => goBack(language)}
+              />
+            </Suspense>
           </div>
         )}
 
@@ -335,152 +369,158 @@ export const App: React.FC = () => {
         {/* Screen 3: Active Game */}
         {selectedTopic && gameMode && (
           <div className="pt-2">
-            {gameMode === 'flashcards' && (
-              <FlashcardsGame
-                key={`${selectedTopic.topic_id}-flashcards-${gameSessionId}`}
-                topic={selectedTopic}
-                language={language}
-                course={course}
-                onRecordResult={handleRecordWordResult}
-                onComplete={handleGameComplete}
-                onBack={() => goBack(language)}
-              />
-            )}
+            <Suspense fallback={<GameLoadingFallback />}>
+              {gameMode === 'flashcards' && (
+                <FlashcardsGame
+                  key={`${selectedTopic.topic_id}-flashcards-${gameSessionId}`}
+                  topic={selectedTopic}
+                  language={language}
+                  course={course}
+                  onRecordResult={handleRecordWordResult}
+                  onComplete={handleGameComplete}
+                  onBack={() => goBack(language)}
+                />
+              )}
 
-            {gameMode === 'truefalse' && (
-              <TrueFalseGame
-                key={`${selectedTopic.topic_id}-truefalse-${gameSessionId}`}
-                topic={selectedTopic}
-                allTopics={filteredTopics}
-                language={language}
-                course={course}
-                onRecordResult={handleRecordWordResult}
-                onComplete={handleGameComplete}
-                onBack={() => goBack(language)}
-              />
-            )}
+              {gameMode === 'truefalse' && (
+                <TrueFalseGame
+                  key={`${selectedTopic.topic_id}-truefalse-${gameSessionId}`}
+                  topic={selectedTopic}
+                  allTopics={filteredTopics}
+                  language={language}
+                  course={course}
+                  onRecordResult={handleRecordWordResult}
+                  onComplete={handleGameComplete}
+                  onBack={() => goBack(language)}
+                />
+              )}
 
-            {gameMode === 'balloons' && (
-              <BalloonPopGame
-                key={`${selectedTopic.topic_id}-balloons-${gameSessionId}`}
-                topic={selectedTopic}
-                allTopics={filteredTopics}
-                language={language}
-                course={course}
-                onRecordResult={handleRecordWordResult}
-                onComplete={handleGameComplete}
-                onBack={() => goBack(language)}
-              />
-            )}
+              {gameMode === 'balloons' && (
+                <BalloonPopGame
+                  key={`${selectedTopic.topic_id}-balloons-${gameSessionId}`}
+                  topic={selectedTopic}
+                  allTopics={filteredTopics}
+                  language={language}
+                  course={course}
+                  onRecordResult={handleRecordWordResult}
+                  onComplete={handleGameComplete}
+                  onBack={() => goBack(language)}
+                />
+              )}
 
-            {gameMode === 'builder' && (
-              <WordBuilderGame
-                key={`${selectedTopic.topic_id}-builder-${gameSessionId}`}
-                topic={selectedTopic}
-                language={language}
-                course={course}
-                onRecordResult={handleRecordWordResult}
-                onComplete={handleGameComplete}
-                onBack={() => goBack(language)}
-              />
-            )}
+              {gameMode === 'builder' && (
+                <WordBuilderGame
+                  key={`${selectedTopic.topic_id}-builder-${gameSessionId}`}
+                  topic={selectedTopic}
+                  language={language}
+                  course={course}
+                  onRecordResult={handleRecordWordResult}
+                  onComplete={handleGameComplete}
+                  onBack={() => goBack(language)}
+                />
+              )}
 
-            {gameMode === 'match' && (
-              <MatchPairsGame
-                key={`${selectedTopic.topic_id}-match-${gameSessionId}`}
-                topic={selectedTopic}
-                language={language}
-                course={course}
-                onRecordResult={handleRecordWordResult}
-                onComplete={handleGameComplete}
-                onBack={() => goBack(language)}
-              />
-            )}
+              {gameMode === 'match' && (
+                <MatchPairsGame
+                  key={`${selectedTopic.topic_id}-match-${gameSessionId}`}
+                  topic={selectedTopic}
+                  language={language}
+                  course={course}
+                  onRecordResult={handleRecordWordResult}
+                  onComplete={handleGameComplete}
+                  onBack={() => goBack(language)}
+                />
+              )}
 
-            {gameMode === 'audio' && (
-              <AudioQuizGame
-                key={`${selectedTopic.topic_id}-audio-${gameSessionId}`}
-                topic={selectedTopic}
-                allTopics={filteredTopics}
-                language={language}
-                course={course}
-                onRecordResult={handleRecordWordResult}
-                onComplete={handleGameComplete}
-                onBack={() => goBack(language)}
-              />
-            )}
+              {gameMode === 'audio' && (
+                <AudioQuizGame
+                  key={`${selectedTopic.topic_id}-audio-${gameSessionId}`}
+                  topic={selectedTopic}
+                  allTopics={filteredTopics}
+                  language={language}
+                  course={course}
+                  onRecordResult={handleRecordWordResult}
+                  onComplete={handleGameComplete}
+                  onBack={() => goBack(language)}
+                />
+              )}
+            </Suspense>
           </div>
         )}
       </main>
 
-      {/* Celebration Win Modal */}
-      {celebration && (
-        <CelebrationModal
-          language={language}
-          correctCount={celebration.correct}
-          totalCount={celebration.total}
-          stars={celebration.stars}
-          isRewardDisabled={celebration.isRewardDisabled}
-          onRestart={handleRestartGame}
-          onHome={handleHomeClick}
-        />
-      )}
+      {/* Lazy-loaded Modals */}
+      <Suspense fallback={null}>
+        {celebration && (
+          <CelebrationModal
+            language={language}
+            correctCount={celebration.correct}
+            totalCount={celebration.total}
+            stars={celebration.stars}
+            isRewardDisabled={celebration.isRewardDisabled}
+            onRestart={handleRestartGame}
+            onHome={handleHomeClick}
+          />
+        )}
 
-      {/* Auth & Cloud Sync Modal */}
-      <AuthModal
-        language={language}
-        isOpen={isSyncModalOpen}
-        onClose={() => setIsSyncModalOpen(false)}
-        onSyncCompleted={handleManualSyncComplete}
-      />
+        {isSyncModalOpen && (
+          <AuthModal
+            language={language}
+            isOpen={isSyncModalOpen}
+            onClose={() => setIsSyncModalOpen(false)}
+            onSyncCompleted={handleManualSyncComplete}
+          />
+        )}
 
-      {/* Avatar Shop Modal */}
-      <AvatarShopModal
-        isOpen={isAvatarShopOpen}
-        onClose={() => setIsAvatarShopOpen(false)}
-        language={language}
-        stats={stats}
-        totalStarsEarned={totalEarnedStars}
-        onPurchase={handlePurchaseAvatar}
-        onSelectAvatar={handleSelectAvatar}
-      />
+        {isAvatarShopOpen && (
+          <AvatarShopModal
+            isOpen={isAvatarShopOpen}
+            onClose={() => setIsAvatarShopOpen(false)}
+            language={language}
+            stats={stats}
+            totalStarsEarned={totalEarnedStars}
+            onPurchase={handlePurchaseAvatar}
+            onSelectAvatar={handleSelectAvatar}
+          />
+        )}
 
-      {/* Progress Statistics Modal */}
-      {isStatsModalOpen && (
-        <ProgressStatsModal
-          isOpen={isStatsModalOpen}
-          onClose={() => setIsStatsModalOpen(false)}
-          language={language}
-          course={course}
-          stats={stats}
-          topics={topics}
-          topicProgress={topicProgress}
-          wordProgress={wordProgress}
-          examResults={examResults}
-          examHistory={examHistory}
-          initialTab={statsInitialTab}
-          onSelectTopic={(t) => {
-            selectTopic(t);
-            setIsStatsModalOpen(false);
-          }}
-          onStartExam={(grade) => {
-            handleStartExam(grade);
-            setIsStatsModalOpen(false);
-          }}
-        />
-      )}
+        {isStatsModalOpen && (
+          <ProgressStatsModal
+            isOpen={isStatsModalOpen}
+            onClose={() => setIsStatsModalOpen(false)}
+            language={language}
+            course={course}
+            stats={stats}
+            topics={topics}
+            topicProgress={topicProgress}
+            wordProgress={wordProgress}
+            examResults={examResults}
+            examHistory={examHistory}
+            initialTab={statsInitialTab}
+            onSelectTopic={(t) => {
+              selectTopic(t);
+              setIsStatsModalOpen(false);
+            }}
+            onStartExam={(grade) => {
+              handleStartExam(grade);
+              setIsStatsModalOpen(false);
+            }}
+          />
+        )}
 
-      {/* Title Selection & Achievements Modal */}
-      <TitleSelectModal
-        isOpen={isTitleSelectOpen}
-        onClose={() => setIsTitleSelectOpen(false)}
-        language={language}
-        stats={stats}
-        onEquipTitle={(titleId) => {
-          const updated = equipTitle(titleId);
-          setStats(updated);
-        }}
-      />
+        {isTitleSelectOpen && (
+          <TitleSelectModal
+            isOpen={isTitleSelectOpen}
+            onClose={() => setIsTitleSelectOpen(false)}
+            language={language}
+            stats={stats}
+            onEquipTitle={(titleId) => {
+              const updated = equipTitle(titleId);
+              setStats(updated);
+            }}
+          />
+        )}
+      </Suspense>
 
       {/* Floating Toast Overlay with Queue Support */}
       <RewardToastOverlay

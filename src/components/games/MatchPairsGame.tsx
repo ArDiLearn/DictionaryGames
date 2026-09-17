@@ -162,8 +162,25 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
           {t.modes.match}
         </h2>
         <p className="text-sm font-semibold text-slate-500 mt-1">
-          {t.matchPrompt}
+          {course === 'lv'
+            ? (language === 'lv' ? 'Atrodi pārus: latviešu vārds un tulkojums' : 'Найди пары: латышское слово и перевод')
+            : t.matchPrompt}
         </p>
+
+        {/* Visual Color Legend for Kids */}
+        <div className="flex items-center justify-center gap-3 mt-2.5 text-xs font-bold">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-sky-50 border-2 border-sky-400 text-sky-700 shadow-sm">
+            <span className="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
+            {course === 'lv'
+              ? (language === 'lv' ? 'Vārds (LV)' : 'Слово (LV)')
+              : (language === 'lv' ? 'Vārds (EN)' : 'Слово (EN)')}
+          </span>
+          <span className="text-slate-300 font-black">↔</span>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-amber-50 border-2 border-amber-400 text-amber-800 shadow-sm">
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+            {language === 'lv' ? 'Tulkojums' : 'Перевод'}
+          </span>
+        </div>
       </div>
 
       {/* Cards Grid */}
@@ -172,15 +189,36 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
           const isSelected = selectedCard?.id === card.id;
           const isWrong = wrongCardIds.includes(card.id);
 
-          let style = 'bg-white border-slate-200 text-slate-700 hover:border-emerald-300';
+          let style = '';
 
           if (card.matched) {
             style = 'bg-emerald-100 border-emerald-400 text-emerald-800 opacity-60 pointer-events-none scale-95';
           } else if (isWrong) {
             style = 'bg-rose-500 border-rose-600 text-white animate-wiggle';
           } else if (isSelected) {
-            style = 'bg-indigo-50 border-indigo-500 text-indigo-700 ring-4 ring-indigo-200 scale-102';
+            style =
+              card.type === 'target'
+                ? 'bg-sky-100 border-sky-500 text-sky-950 ring-4 ring-sky-200 scale-102 shadow-md'
+                : 'bg-amber-100 border-amber-500 text-amber-950 ring-4 ring-amber-200 scale-102 shadow-md';
+          } else if (card.type === 'target') {
+            style =
+              'bg-sky-50/70 border-sky-400 text-slate-800 hover:border-sky-500 hover:bg-sky-100/70 shadow-sm';
+          } else {
+            style =
+              'bg-amber-50/70 border-amber-400 text-slate-800 hover:border-amber-500 hover:bg-amber-100/70 shadow-sm';
           }
+
+          const badgeStyle = card.matched
+            ? 'text-emerald-700 bg-emerald-200/60'
+            : isWrong
+            ? 'text-rose-100 bg-rose-600/60'
+            : isSelected
+            ? card.type === 'target'
+              ? 'text-sky-700 bg-sky-200/80'
+              : 'text-amber-800 bg-amber-200/80'
+            : card.type === 'target'
+            ? 'text-sky-700 bg-sky-100'
+            : 'text-amber-800 bg-amber-100';
 
           return (
             <button
@@ -189,7 +227,9 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
               disabled={card.matched}
               className={`btn-3d min-h-[96px] sm:min-h-[104px] p-3 rounded-3xl border-4 text-center font-bold text-base sm:text-lg shadow-md transition-all flex flex-col items-center justify-center ${style}`}
             >
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
+              <span
+                className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full mb-1 ${badgeStyle}`}
+              >
                 {card.type === 'target'
                   ? (course === 'lv' ? '🇱🇻 LV' : '🇬🇧 EN')
                   : (course === 'lv' ? '🇷🇺 RU' : (language === 'ru' ? '🇷🇺 RU' : '🇱🇻 LV'))}

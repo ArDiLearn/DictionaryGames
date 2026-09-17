@@ -221,10 +221,18 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     document.documentElement.lang = language;
-    document.title =
+    const title =
       language === 'lv'
-        ? 'MindWordy — Angļu un latviešu valoda bērniem | Английский и Латышский для детей'
-        : 'MindWordy — Английский и Латышский для детей | Angļu un latviešu valoda bērniem';
+        ? 'WordyMind — Angļu un latviešu valoda bērniem | Английский и Латышский для детей'
+        : 'WordyMind — Английский и Латышский для детей | Angļu un latviešu valoda bērniem';
+    document.title = title;
+
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', 'page_view', {
+        page_title: title,
+        page_location: window.location.href,
+      });
+    }
   }, [language]);
 
   const handleLanguageChange = (newLang: Language) => {

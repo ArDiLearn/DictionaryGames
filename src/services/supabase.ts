@@ -47,7 +47,7 @@ export function getSupabase(): SupabaseClient | null {
  * Converts a child-friendly username (e.g. 'ivan', 'jānis', 'alise')
  * to a valid synthetic email for Supabase Auth without exposing email to the user.
  */
-export function loginToEmail(username: string, domain = 'mindwordy.app'): string {
+export function loginToEmail(username: string, domain = 'wordymind.app'): string {
   const clean = username.trim().toLowerCase();
   if (clean.includes('@')) return clean;
   // Safely encode non-ascii or special chars into valid email alphanumeric tokens
@@ -127,16 +127,26 @@ export async function signInUser(
     password,
   });
 
-  // Fallback to legacy domain for accounts created before rebranding
+  // Fallback to mindwordy.app and legacy wordykids.app domains for accounts created before rebranding
   if (error && !cleanLogin.includes('@')) {
-    const legacyEmail = loginToEmail(cleanLogin, 'wordykids.app');
-    const legacyResult = await client.auth.signInWithPassword({
-      email: legacyEmail,
+    const mindwordyEmail = loginToEmail(cleanLogin, 'mindwordy.app');
+    const mindwordyResult = await client.auth.signInWithPassword({
+      email: mindwordyEmail,
       password,
     });
-    if (!legacyResult.error) {
-      data = legacyResult.data;
+    if (!mindwordyResult.error) {
+      data = mindwordyResult.data;
       error = null;
+    } else {
+      const legacyEmail = loginToEmail(cleanLogin, 'wordykids.app');
+      const legacyResult = await client.auth.signInWithPassword({
+        email: legacyEmail,
+        password,
+      });
+      if (!legacyResult.error) {
+        data = legacyResult.data;
+        error = null;
+      }
     }
   }
 

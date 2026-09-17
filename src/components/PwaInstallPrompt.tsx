@@ -52,7 +52,7 @@ export const PwaInstallPrompt: React.FC<PwaInstallPromptProps> = ({ language }) 
         </div>
         <div>
           <h4 className="text-sm font-black text-slate-800">
-            MindWordy PWA
+            WordyMind PWA
           </h4>
           <p className="text-xs font-semibold text-slate-500">
             {t.installApp}

@@ -98,6 +98,11 @@ export interface Translations {
     signupSuccess: string;
     emptyFieldsError: string;
     shortPasswordError: string;
+    confirmPasswordLabel: string;
+    confirmPasswordPlaceholder: string;
+    passwordMismatchError: string;
+    showPassword: string;
+    hidePassword: string;
     alreadyHaveAccount: string;
     needNewAccount: string;
     switchModeToSignup: string;
@@ -354,6 +359,11 @@ export const translations: Record<Language, Translations> = {
       signupSuccess: 'Профиль создан! Синхронизируем...',
       emptyFieldsError: 'Пожалуйста, введите логин и пароль',
       shortPasswordError: 'Пароль должен содержать от 6 символов',
+      confirmPasswordLabel: 'Повторите пароль:',
+      confirmPasswordPlaceholder: 'Введите пароль ещё раз',
+      passwordMismatchError: 'Пароли не совпадают. Проверьте ввод',
+      showPassword: 'Показать пароль',
+      hidePassword: 'Скрыть пароль',
       alreadyHaveAccount: 'Уже есть профиль?',
       needNewAccount: 'Ещё нет профиля?',
       switchModeToSignup: 'Создать новый профиль',
@@ -608,6 +618,11 @@ export const translations: Record<Language, Translations> = {
       signupSuccess: 'Profils izveidots! Sinhronizējam...',
       emptyFieldsError: 'Lūdzu, ievadi lietotājvārdu un paroli',
       shortPasswordError: 'Parolei jābūt vismaz 6 simbolu garai',
+      confirmPasswordLabel: 'Apstipriniet paroli:',
+      confirmPasswordPlaceholder: 'Ievadiet paroli vēlreiz',
+      passwordMismatchError: 'Paroles nesakrīt. Lūdzu, pārbaudiet',
+      showPassword: 'Rādīt paroli',
+      hidePassword: 'Paslēpt paroli',
       alreadyHaveAccount: 'Jau ir profils?',
       needNewAccount: 'Vēl nav profila?',
       switchModeToSignup: 'Izveidot jaunu profilu',

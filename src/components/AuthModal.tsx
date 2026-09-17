@@ -11,7 +11,7 @@ import {
   signOutUser,
 } from '../services/supabase';
 import { mergeWithCloud, triggerCloudSync, loadLocalStats, saveLocalStats } from '../services/storage';
-import { X, Cloud, CheckCircle, AlertCircle, RefreshCw, LogOut, User as UserIcon } from 'lucide-react';
+import { X, Cloud, CheckCircle, AlertCircle, RefreshCw, LogOut, User as UserIcon, Eye, EyeOff } from 'lucide-react';
 import { User } from '@supabase/supabase-js';
 
 interface AuthModalProps {
@@ -81,6 +81,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [mode, setMode] = useState<'login' | 'signup'>('login');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
@@ -89,6 +92,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     if (isOpen) {
       checkUser();
       setMessage(null);
+      setShowPassword(false);
+      setShowConfirmPassword(false);
+      setConfirmPassword('');
     }
   }, [isOpen]);
 
@@ -101,7 +107,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!username.trim() || !password) {
+    if (!username.trim() || !password || (mode === 'signup' && !confirmPassword)) {
       sounds.playWrong();
       setMessage({ type: 'error', text: t.sync.emptyFieldsError });
       return;
@@ -110,6 +116,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     if (password.length < 6) {
       sounds.playWrong();
       setMessage({ type: 'error', text: t.sync.shortPasswordError });
+      return;
+    }
+
+    if (mode === 'signup' && password !== confirmPassword) {
+      sounds.playWrong();
+      setMessage({ type: 'error', text: t.sync.passwordMismatchError });
       return;
     }
 
@@ -286,6 +298,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 onClick={() => {
                   setMode('login');
                   setMessage(null);
+                  setConfirmPassword('');
+                  setShowPassword(false);
+                  setShowConfirmPassword(false);
                   sounds.playClick();
                 }}
                 className={`flex-1 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all ${
@@ -300,6 +315,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 onClick={() => {
                   setMode('signup');
                   setMessage(null);
+                  setConfirmPassword('');
+                  setShowPassword(false);
+                  setShowConfirmPassword(false);
                   sounds.playClick();
                 }}
                 className={`flex-1 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all ${
@@ -331,15 +349,53 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <label className="block text-xs font-bold text-slate-600 mb-1">
                   {t.sync.passwordLabel}
                 </label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder={t.sync.passwordPlaceholder}
-                  autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
-                  className="w-full px-4 py-3 rounded-2xl border-2 border-slate-200 text-sm font-semibold focus:border-indigo-500 focus:outline-none"
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder={t.sync.passwordPlaceholder}
+                    autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+                    className="w-full pl-4 pr-11 py-3 rounded-2xl border-2 border-slate-200 text-sm font-semibold focus:border-indigo-500 focus:outline-none"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-slate-400 hover:text-slate-600 rounded-xl transition-colors focus:outline-none"
+                    title={showPassword ? t.sync.hidePassword : t.sync.showPassword}
+                    aria-label={showPassword ? t.sync.hidePassword : t.sync.showPassword}
+                  >
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  </button>
+                </div>
               </div>
+
+              {mode === 'signup' && (
+                <div>
+                  <label className="block text-xs font-bold text-slate-600 mb-1">
+                    {t.sync.confirmPasswordLabel}
+                  </label>
+                  <div className="relative">
+                    <input
+                      type={showConfirmPassword ? 'text' : 'password'}
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      placeholder={t.sync.confirmPasswordPlaceholder}
+                      autoComplete="new-password"
+                      className="w-full pl-4 pr-11 py-3 rounded-2xl border-2 border-slate-200 text-sm font-semibold focus:border-indigo-500 focus:outline-none"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowConfirmPassword((prev) => !prev)}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-slate-400 hover:text-slate-600 rounded-xl transition-colors focus:outline-none"
+                      title={showConfirmPassword ? t.sync.hidePassword : t.sync.showPassword}
+                      aria-label={showConfirmPassword ? t.sync.hidePassword : t.sync.showPassword}
+                    >
+                      {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    </button>
+                  </div>
+                </div>
+              )}
 
               <div className="pt-2">
                 <button
@@ -365,6 +421,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     onClick={() => {
                       setMode('signup');
                       setMessage(null);
+                      setConfirmPassword('');
+                      setShowPassword(false);
+                      setShowConfirmPassword(false);
                       sounds.playClick();
                     }}
                     className="text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors"
@@ -377,6 +436,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     onClick={() => {
                       setMode('login');
                       setMessage(null);
+                      setConfirmPassword('');
+                      setShowPassword(false);
+                      setShowConfirmPassword(false);
                       sounds.playClick();
                     }}
                     className="text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors"

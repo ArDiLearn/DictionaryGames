@@ -8,6 +8,7 @@ import {
   getGradeFilterInfo,
   getPlayerDisplayName,
   isTopicExtra,
+  hasNewWordsForGrades,
   GRADE_1_MAIN_TOPICS,
   GRADE_2_MAIN_TOPICS,
   GRADE_3_MAIN_TOPICS,
@@ -378,6 +379,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                   course={course}
                   progress={topicProgress[topic.topic_id]}
                   onSelect={onSelectTopic}
+                  hasNewWords={hasNewWordsForGrades(topic, selectedGrades)}
                 />
               ))}
             </div>

@@ -310,6 +310,16 @@ design,izveido dizainu,"оформи, нарисуй",1
 go back,dodies atpakaļ,вернись назад,1
 wait,pagaidi,подожди,1
 order,sakārto secībā,расставь по порядку,1
+cut,griezt,"резать, вырезать",2
+fold,locīt,"складывать, сгибать",2
+choose,izvēlēties,выбирать,2
+compare,salīdzināt,сравнивать,2
+correct,"izlabot, pareizs","исправлять, правильный",2
+decorate,"rotāt, izrotāt",украшать,2
+prepare,sagatavot,"готовить, подготавливать",2
+try,mēģināt,"пробовать, стараться",2
+examples,piemēri,примеры,2
+come,nākt,приходить,2
 ,,,
 Places,Vietas,Места,
 home,mājas,дом,1
@@ -336,8 +346,6 @@ all,"visi, viss","все, всё",2
 false,nepareizi,"неверно, ложь",2
 very,ļoti,очень,2
 really,patiešām,"действительно, правда",2
-ability,spēja,"умение, способность",2
-come,nākt,приходить,2
 lots,daudz,много,1
 only,tikai,только,1
 other,cits,другой,1
@@ -436,6 +444,8 @@ friend,draugs,друг,1
 dear,"dārgais, mīļais","дорогой, милый",1
 family,ģimene,семья,1
 people,cilvēki,люди,1
+human,cilvēks,человек,2
+person,persona,"человек, персона",2
 ,,,
 Art and games +,Māksla un spēles +,Творчество и игры +,
 start,sākums,"старт, начало",1
@@ -449,6 +459,9 @@ party,ballīte,"праздник, вечеринка",1
 fun,jautrība,"веселье, забава",1
 story,stāsts,"рассказ, история",1
 chant,ritmiska dziesmiņa,"речёвка, песенка",1
+riddle,mīkla,загадка,2
+collage,kolāža,коллаж,2
+materials,materiāli,материалы,2
 ,,,
 Toys +,Rotaļlietas +,Игрушки +,
 toys,rotaļlietas,игрушки,1
@@ -463,13 +476,13 @@ bright,spilgts,яркий,2
 perfect,ideāls,"идеальный, отличный",2
 important,svarīgs,важный,2
 helpful,palīdzīgs,"полезный, отзывчивый",2
-noise,troksnis,шум,2
 extra,papildu,дополнительный,2
 favourite,mīļākais,любимый,1
 different,atšķirīgs,разный,1
 ok,viss kārtībā,"в порядке, окей",1
 good,labs,хороший,1
 excellent,lielisks,отличный,1
+creative,radošs,творческий,2
 ,,,
 Wild animals,Savvaļas dzīvnieki,Дикие животные,
 giraffe,žirafe,жираф,2
@@ -514,6 +527,8 @@ language,valoda,"язык, речь",2
 country,valsts,страна,1
 wheel,ritenis,колесо,1
 ruby,rubīns,рубин,1
+noise,troksnis,шум,2
+ability,spēja,"умение, способность",2
 ,,,
 Birthday,Dzimšanas diena,День рождения,
 board game,galda spēle,настольная игра,3
@@ -639,30 +654,13 @@ international,starptautisks,международный,2
 ,,,
 Friendship,Draudzība,Дружба и общение,
 friendship,draudzība,дружба,2
-human,cilvēks,человек,2
-person,persona,"человек, персона",2
 letter,vēstule,письмо,2
 best,labākais,лучший,2
 wishes,novēlējumi,пожелания,2
 visit,apciemot,"навещать, ходить в гости",2
 call,zvanīt,звонить,2
 send,sūtīt,отправлять,2
-,,,
-Craft and projects,Darbiņi un projekti,Творчество и проекты,
-cut,griezt,"резать, вырезать",2
-fold,locīt,"складывать, сгибать",2
-decorate,"rotāt, izrotāt",украшать,2
-prepare,sagatavot,"готовить, подготавливать",2
-collage,kolāža,коллаж,2
-materials,materiāli,материалы,2
-creative,radošs,творческий,2
-try,mēģināt,"пробовать, стараться",2
 collaborate,sadarboties,сотрудничать,2
-riddle,mīkla,загадка,2
-compare,salīdzināt,сравнивать,2
-choose,izvēlēties,выбирать,2
-correct,"izlabot, pareizs","исправлять, правильный",2
-examples,piemēri,примеры,2
 ,,,
 Routine and time,Dienas ritms un laiks,Время и распорядок,
 wake up,mosties,просыпаться,2

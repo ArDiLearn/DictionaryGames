@@ -336,6 +336,31 @@ export function loadTopicProgress(course: LearningCourse = 'en'): Record<string,
       progress['classroom'] = { ...old, topic_id: 'classroom' };
       needsSave = true;
     }
+    if (progress['instructions'] && !progress['instructions_actions']) {
+      const old = progress['instructions'];
+      progress['instructions_actions'] = { ...old, topic_id: 'instructions_actions' };
+      progress['instructions_games_art'] = { ...old, topic_id: 'instructions_games_art' };
+      progress['instructions_logic_numbers'] = { ...old, topic_id: 'instructions_logic_numbers' };
+      progress['instructions_teamwork_practice'] = { ...old, topic_id: 'instructions_teamwork_practice' };
+      needsSave = true;
+    }
+    if (progress['helper_words'] && !progress['prepositions_and_place']) {
+      const old = progress['helper_words'];
+      progress['prepositions_and_place'] = { ...old, topic_id: 'prepositions_and_place' };
+      progress['connecting_words'] = { ...old, topic_id: 'connecting_words' };
+      needsSave = true;
+    }
+    if (progress['classroom_objects_plus'] && !progress['school_materials']) {
+      const old = progress['classroom_objects_plus'];
+      progress['school_materials'] = { ...old, topic_id: 'school_materials' };
+      progress['school_and_lessons'] = { ...old, topic_id: 'school_and_lessons' };
+      needsSave = true;
+    }
+    if (progress['places'] && !progress['nature']) {
+      const old = progress['places'];
+      progress['nature'] = { ...old, topic_id: 'nature' };
+      needsSave = true;
+    }
     if (needsSave) {
       try {
         localStorage.setItem(getTopicProgressKey(course), JSON.stringify(progress));

@@ -83,6 +83,9 @@ export function parseDictionaryCsv(csvString: string): Topic[] {
       } else if (topicId === 'numbers') {
         topicId = 'numbers_1_20';
       }
+      if (topicId === 'shapes_plus') {
+        topicId = 'shapes';
+      }
       currentTopic = {
         topic_id: topicId,
         topic_name: {

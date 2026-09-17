@@ -954,6 +954,8 @@ export const EXTRA_TOPICS: string[] = [
   'town_plus',
   'friendship',
   'routine_and_time',
+  'senses',
+  'directions',
   'introductions',
   'questions',
   'instructions',
@@ -1017,10 +1019,12 @@ export const GRADE_3_MAIN_TOPICS: string[] = [
   'feelings',
   'jobs',
   'transport',
-  'senses',
   'town',
   'positions',
-  'directions',
+  'sports',
+  'break_time_activities',
+  'wild_animals',
+  'wild_animal_actions',
 ];
 
 export const GRADE_1_TOPIC_ORDER: string[] = [
@@ -1110,6 +1114,10 @@ export const GRADE_4_TOPIC_ORDER: string[] = [
  */
 export function isTopicExtra(topicId: string, selectedGrades: Grade[]): boolean {
   if (topicId === 'feelings') {
+    return !selectedGrades.includes(3);
+  }
+  // wild_animals is extra for Grade 1/2, but main for Grade 3
+  if (topicId === 'wild_animals') {
     return !selectedGrades.includes(3);
   }
   return EXTRA_TOPICS.includes(topicId);

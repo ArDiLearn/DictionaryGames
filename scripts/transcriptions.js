@@ -692,5 +692,46 @@ export const TRANSCRIPTIONS = {
   "crayons": "[ ˈkreɪənz ]",
   "paintbrush": "[ ˈpeɪntbrʌʃ ]",
   "paints": "[ peɪnts ]",
+
+  // Grade 3 – Seasons additions
+  "hot": "[ hɒt ]",
+  "cold": "[ kəʊld ]",
+
+  // Grade 3 – Wild animals additions
+  "crocodile": "[ ˈkrɒkədaɪl ]",
+  "hippo": "[ ˈhɪpəʊ ]",
+  "monkey": "[ ˈmʌŋki ]",
+  "penguin": "[ ˈpeŋɡwɪn ]",
+  "shark": "[ ʃɑːk ]",
+  "whale": "[ weɪl ]",
+  "zebra": "[ ˈziːbrə ]",
+
+  // Grade 3 – Sports
+  "do athletics": "[ duː æθˈletɪks ]",
+  "do gymnastics": "[ duː dʒɪmˈnæstɪks ]",
+  "do trampolining": "[ duː ˈtræmpəliːnɪŋ ]",
+  "go mountainbiking": "[ ɡəʊ ˈmaʊntɪnbaɪkɪŋ ]",
+  "go rowing": "[ ɡəʊ ˈrəʊɪŋ ]",
+  "go swimming": "[ ɡəʊ ˈswɪmɪŋ ]",
+  "play badminton": "[ pleɪ ˈbædmɪntən ]",
+  "play baseball": "[ pleɪ ˈbeɪsbɔːl ]",
+  "play handball": "[ pleɪ ˈhændbɔːl ]",
+  "play rugby": "[ pleɪ ˈrʌɡbi ]",
+
+  // Grade 3 – Break time activities
+  "do exercise": "[ duː ˈeksəsaɪz ]",
+  "drink lemonade": "[ drɪŋk ˌleməˈneɪd ]",
+  "drink milk": "[ drɪŋk mɪlk ]",
+  "eat fruit": "[ iːt fruːt ]",
+  "eat sweets": "[ iːt swiːts ]",
+  "go outdoors": "[ ɡəʊ ˌaʊtˈdɔːz ]",
+
+  // Grade 3 – Wild animal actions
+  "drink water": "[ drɪŋk ˈwɔːtə ]",
+  "eat grass": "[ iːt ɡrɑːs ]",
+  "hunt animals": "[ hʌnt ˈænɪməlz ]",
+  "like fruit": "[ laɪk fruːt ]",
+  "live in a group": "[ lɪv ɪn ə ɡruːp ]",
+  "sleep in a tree": "[ sliːp ɪn ə triː ]",
 };
 

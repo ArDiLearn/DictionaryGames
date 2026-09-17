@@ -1,5 +1,30 @@
 import { createClient, SupabaseClient, User } from '@supabase/supabase-js';
-import { TopicProgress, WordProgress, UserStats } from '../types';
+import { TopicProgress, WordProgress, UserStats, ExamResult } from '../types';
+
+export interface ExamCloudSyncData {
+  results: {
+    en: Record<number, ExamResult>;
+    lv: Record<number, ExamResult>;
+  };
+  history: {
+    en: ExamResult[];
+    lv: ExamResult[];
+  };
+}
+
+export interface CloudSyncData {
+  topicProgress: Record<string, TopicProgress>;
+  wordProgress: Record<string, WordProgress>;
+  statsPartial?: Partial<UserStats>;
+  examResults?: {
+    en: Record<number, ExamResult>;
+    lv: Record<number, ExamResult>;
+  };
+  examHistory?: {
+    en: ExamResult[];
+    lv: ExamResult[];
+  };
+}
 
 export function getSupabaseConfig(): { url: string; key: string } {
   return {
@@ -174,14 +199,15 @@ export async function syncProgressToCloud(
   userId: string,
   topicProgress: Record<string, TopicProgress>,
   wordProgress: Record<string, WordProgress>,
-  stats: UserStats
+  stats: UserStats,
+  examData?: ExamCloudSyncData
 ): Promise<boolean> {
   const client = getSupabase();
   if (!client) return false;
 
   try {
-    // 1. Sync full rich stats & topic stars to Supabase Auth user_metadata
-    // This provides 100% reliable star & inventory synchronization across all devices and platforms
+    // 1. Sync full rich stats, topic stars & exam results to Supabase Auth user_metadata
+    // This provides 100% reliable star, inventory & exam synchronization across all devices and platforms
     try {
       await client.auth.updateUser({
         data: {
@@ -210,6 +236,8 @@ export async function syncProgressToCloud(
               { stars: tp.stars, masteredWords: tp.masteredWordIds },
             ])
           ),
+          exam_results: examData?.results,
+          exam_history: examData?.history,
         },
       });
     } catch (metaErr) {
@@ -291,11 +319,7 @@ export async function syncProgressToCloud(
 /**
  * Cloud Sync: Pull remote progress from Supabase
  */
-export async function fetchProgressFromCloud(userId: string): Promise<{
-  topicProgress: Record<string, TopicProgress>;
-  wordProgress: Record<string, WordProgress>;
-  statsPartial?: Partial<UserStats>;
-} | null> {
+export async function fetchProgressFromCloud(userId: string): Promise<CloudSyncData | null> {
   const client = getSupabase();
   if (!client) return null;
 
@@ -402,7 +426,14 @@ export async function fetchProgressFromCloud(userId: string): Promise<{
       }
     }
 
-    return { topicProgress, wordProgress, statsPartial };
+    const examResults = user?.user_metadata?.exam_results as
+      | { en: Record<number, ExamResult>; lv: Record<number, ExamResult> }
+      | undefined;
+    const examHistory = user?.user_metadata?.exam_history as
+      | { en: ExamResult[]; lv: ExamResult[] }
+      | undefined;
+
+    return { topicProgress, wordProgress, statsPartial, examResults, examHistory };
   } catch (err) {
     console.error('Error fetching progress from Supabase:', err);
     return null;

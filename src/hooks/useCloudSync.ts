@@ -92,6 +92,8 @@ export function useCloudSync({
           await mergeWithCloud();
           setTopicProgress(loadTopicProgress(course));
           setWordProgress(loadWordProgress(course));
+          setExamResults(loadExamResults(course));
+          setExamHistory(loadExamHistory(course));
           setStats(loadLocalStats());
         }
       }
@@ -103,7 +105,7 @@ export function useCloudSync({
       document.removeEventListener('visibilitychange', handleVisibilityOrFocus);
       window.removeEventListener('focus', handleVisibilityOrFocus);
     };
-  }, [course, isGameActive, setTopicProgress, setWordProgress, setStats]);
+  }, [course, isGameActive, setTopicProgress, setWordProgress, setExamResults, setExamHistory, setStats]);
 
   const handleManualSyncComplete = useCallback(async () => {
     const user = await getCurrentUser();

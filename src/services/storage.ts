@@ -441,7 +441,16 @@ export function triggerCloudSync() {
         mergedWordProg[`lv:${wid}`] = { ...wp, word_id: `lv:${wid}`, topic_id: `lv:${wp.topic_id}` };
       }
 
-      await syncProgressToCloud(user.id, mergedTopicProg, mergedWordProg, stats);
+      // Gather exam results and history from both courses
+      const examResultsEn = loadExamResults('en');
+      const examResultsLv = loadExamResults('lv');
+      const examHistoryEn = loadExamHistory('en');
+      const examHistoryLv = loadExamHistory('lv');
+
+      await syncProgressToCloud(user.id, mergedTopicProg, mergedWordProg, stats, {
+        results: { en: examResultsEn, lv: examResultsLv },
+        history: { en: examHistoryEn, lv: examHistoryLv },
+      });
     } catch {
       // ignore offline errors
     }
@@ -516,7 +525,8 @@ export async function mergeWithCloud(): Promise<boolean> {
     for (const [wid, cWord] of Object.entries(cloudData.wordProgress)) {
       if (wid.startsWith('lv:') || cWord.topic_id?.startsWith('lv:')) {
         const cleanWid = wid.startsWith('lv:') ? wid.slice(3) : wid;
-        cloudWordsLv[cleanWid] = { ...cWord, word_id: cleanWid };
+        const cleanTid = cWord.topic_id?.startsWith('lv:') ? cWord.topic_id.slice(3) : cWord.topic_id;
+        cloudWordsLv[cleanWid] = { ...cWord, word_id: cleanWid, topic_id: cleanTid };
       } else {
         cloudWordsEn[wid] = cWord;
       }
@@ -639,6 +649,52 @@ export async function mergeWithCloud(): Promise<boolean> {
 
     saveLocalStats(mergedStats);
 
+    // 4. Merge Exam Results & History for both English and Latvian
+    if (cloudData.examResults) {
+      for (const c of ['en', 'lv'] as LearningCourse[]) {
+        const cloudResults = cloudData.examResults[c] || {};
+        if (Object.keys(cloudResults).length > 0) {
+          const localResults = loadExamResults(c);
+          const mergedResults: Record<number, ExamResult> = { ...localResults };
+          for (const [gradeStr, cRes] of Object.entries(cloudResults)) {
+            const g = parseInt(gradeStr, 10);
+            const lRes = mergedResults[g];
+            if (!lRes) {
+              mergedResults[g] = cRes;
+            } else {
+              const shouldPickCloud =
+                cRes.scorePercent > lRes.scorePercent ||
+                (cRes.scorePercent === lRes.scorePercent && (cRes.starsEarned || 0) > (lRes.starsEarned || 0));
+              if (shouldPickCloud) {
+                mergedResults[g] = cRes;
+              }
+            }
+          }
+          localStorage.setItem(getExamResultsKey(c), JSON.stringify(mergedResults));
+        }
+      }
+    }
+
+    if (cloudData.examHistory) {
+      for (const c of ['en', 'lv'] as LearningCourse[]) {
+        const cloudHistory = cloudData.examHistory[c] || [];
+        if (cloudHistory.length > 0) {
+          const localHistory = loadExamHistory(c);
+          const historyMap = new Map<string, ExamResult>();
+          for (const item of [...localHistory, ...cloudHistory]) {
+            const key = `${item.grade}_${item.completedAt}`;
+            if (!historyMap.has(key)) {
+              historyMap.set(key, item);
+            }
+          }
+          const mergedHistory = Array.from(historyMap.values())
+            .sort((a, b) => new Date(b.completedAt).getTime() - new Date(a.completedAt).getTime())
+            .slice(0, 50);
+          localStorage.setItem(getExamHistoryKey(c), JSON.stringify(mergedHistory));
+        }
+      }
+    }
+
     return true;
   } catch (err) {
     console.error('Failed to merge with cloud:', err);
@@ -753,6 +809,7 @@ export function recordExamAttempt(
   // Add to beginning of history, max 50 items
   const newHistory = [result, ...currentHistory.filter((item) => item.completedAt !== result.completedAt)].slice(0, 50);
   saveExamHistory(course, newHistory);
+  triggerCloudSync();
   return { results: updatedResults, history: newHistory };
 }
 

@@ -9,6 +9,7 @@ import {
   getPlayerDisplayName,
   isTopicExtra,
   hasNewWordsForGrades,
+  getNewWordsCountForGrades,
   GRADE_1_MAIN_TOPICS,
   GRADE_2_MAIN_TOPICS,
   GRADE_3_MAIN_TOPICS,
@@ -383,17 +384,21 @@ export const TopicList: React.FC<TopicListProps> = ({
               </span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-              {extraTopics.map((topic) => (
-                <TopicCard
-                  key={topic.topic_id}
-                  topic={topic}
-                  language={language}
-                  course={course}
-                  progress={topicProgress[topic.topic_id]}
-                  onSelect={onSelectTopic}
-                  hasNewWords={hasNewWordsForGrades(topic, selectedGrades)}
-                />
-              ))}
+              {extraTopics.map((topic) => {
+                const newCount = getNewWordsCountForGrades(topic, selectedGrades);
+                return (
+                  <TopicCard
+                    key={topic.topic_id}
+                    topic={topic}
+                    language={language}
+                    course={course}
+                    progress={topicProgress[topic.topic_id]}
+                    onSelect={onSelectTopic}
+                    hasNewWords={newCount > 0}
+                    newWordsCount={newCount}
+                  />
+                );
+              })}
             </div>
           </div>
         )}

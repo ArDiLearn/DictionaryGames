@@ -39,6 +39,7 @@ import {
   loadExamHistory,
   equipTitle,
   evaluateUnlockedTitles,
+  recordDailyActivity,
 } from './services/storage';
 
 import { useTopicCatalog } from './hooks/useTopicCatalog';
@@ -127,8 +128,10 @@ export const App: React.FC = () => {
   }, [language]);
 
   useEffect(() => {
+    // Record daily attendance and streak on startup
+    const dailyStats = recordDailyActivity();
     // Initial evaluation for existing progress to award titles and milestones
-    const titleResult = evaluateUnlockedTitles();
+    const titleResult = evaluateUnlockedTitles(dailyStats);
     setStats(titleResult.updatedStats);
   }, []);
 

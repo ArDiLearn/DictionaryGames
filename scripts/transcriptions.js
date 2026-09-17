@@ -544,6 +544,9 @@ export const TRANSCRIPTIONS = {
   "with": "[ wɪð ]",
   "yes": "[ jes ]",
   "yesterday": "[ ˈjestədeɪ ]",
-  "your": "[ jɔː ]"
+  "your": "[ jɔː ]",
+  "good": "[ ɡʊd ]",
+  "excellent": "[ ˈeksələnt ]",
+  "ok": "[ ˌəʊˈkeɪ ]"
 };
 

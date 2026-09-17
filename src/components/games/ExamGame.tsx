@@ -216,17 +216,55 @@ export const ExamGame: React.FC<ExamGameProps> = ({
 }) => {
   const t = translations[language];
   const isLatvian = course === 'lv';
+  const sessionKey = `wordymind_exam_session_${grade}_${course}`;
+
+  const [sessionData] = useState(() => {
+    try {
+      const raw = sessionStorage.getItem(`wordymind_exam_session_${grade}_${course}`);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (
+          parsed &&
+          Array.isArray(parsed.questions) &&
+          parsed.questions.length > 0 &&
+          typeof parsed.currentIndex === 'number' &&
+          parsed.currentIndex < parsed.questions.length
+        ) {
+          return parsed;
+        }
+      }
+    } catch {}
+    return null;
+  });
 
   const [questions, setQuestions] = useState<ExamQuestion[]>(() =>
-    generateExamQuestions(topics, grade, language, course)
+    sessionData?.questions || generateExamQuestions(topics, grade, language, course)
   );
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [correctCount, setCorrectCount] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(sessionData?.currentIndex || 0);
+  const [correctCount, setCorrectCount] = useState<number>(sessionData?.correctCount || 0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | boolean | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [finalResult, setFinalResult] = useState<ExamResult | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Automatically save exam progress to sessionStorage so sync/refresh never loses progress
+  useEffect(() => {
+    if (!isFinished && questions.length > 0) {
+      try {
+        sessionStorage.setItem(
+          sessionKey,
+          JSON.stringify({
+            questions,
+            currentIndex,
+            correctCount,
+            grade,
+            course,
+          })
+        );
+      } catch {}
+    }
+  }, [sessionKey, questions, currentIndex, correctCount, isFinished, grade, course]);
 
   // States for 'builder' question type
   const [availableTiles, setAvailableTiles] = useState<LetterTile[]>([]);
@@ -447,11 +485,18 @@ export const ExamGame: React.FC<ExamGameProps> = ({
       sounds.playClick();
     }
 
+    try {
+      sessionStorage.removeItem(sessionKey);
+    } catch {}
+
     onComplete(result);
   };
 
   const handleRestart = () => {
     sounds.playClick();
+    try {
+      sessionStorage.removeItem(sessionKey);
+    } catch {}
     const newQuestions = generateExamQuestions(topics, grade, language, course);
     setQuestions(newQuestions);
     setCurrentIndex(0);
@@ -463,6 +508,21 @@ export const ExamGame: React.FC<ExamGameProps> = ({
     setSelectedTiles([]);
     setAvailableTiles([]);
     setBuilderStatus('idle');
+  };
+
+  const handleBackWithConfirm = () => {
+    sounds.playClick();
+    if (!isFinished && currentIndex > 0) {
+      const confirmText =
+        language === 'ru'
+          ? 'Выйти из контрольной? Прогресс будет сохранен, вы сможете продолжить позже.'
+          : 'Iziet no pārbaudes darba? Progress tiks saglabāts, varēsiet turpināt vēlāk.';
+      if (!window.confirm(confirmText)) {
+        return;
+      }
+    }
+    stopSpeech();
+    onBack();
   };
 
   const gradeName = language === 'ru' ? `${grade} класс` : `${grade}. klase`;
@@ -553,11 +613,7 @@ export const ExamGame: React.FC<ExamGameProps> = ({
       {/* Top Navigation Bar */}
       <div className="flex items-center justify-between gap-3 mb-5">
         <button
-          onClick={() => {
-            sounds.playClick();
-            stopSpeech();
-            onBack();
-          }}
+          onClick={handleBackWithConfirm}
           className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-2xl border-2 border-slate-200 text-slate-700 font-bold hover:bg-slate-50 transition-colors shadow-xs cursor-pointer text-sm"
         >
           <ArrowLeft className="w-4 h-4" />

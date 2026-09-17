@@ -79,7 +79,41 @@ export const App: React.FC = () => {
   );
   const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
   const [gameMode, setGameMode] = useState<GameMode | null>(null);
-  const [activeExamGrade, setActiveExamGrade] = useState<Grade | null>(null);
+  const [activeExamGrade, setActiveExamGrade] = useState<Grade | null>(() => {
+    try {
+      const storedCourse = getStoredCourse();
+      for (const g of [1, 2, 3, 4] as Grade[]) {
+        const raw = sessionStorage.getItem(`wordymind_exam_session_${g}_${storedCourse}`);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (
+            parsed &&
+            Array.isArray(parsed.questions) &&
+            parsed.questions.length > 0 &&
+            typeof parsed.currentIndex === 'number' &&
+            parsed.currentIndex < parsed.questions.length
+          ) {
+            return g;
+          }
+        }
+      }
+    } catch {}
+    return null;
+  });
+
+  const isGameActive = activeExamGrade !== null || gameMode !== null;
+
+  useEffect(() => {
+    try {
+      (window as unknown as { __WORDYMIND_GAME_ACTIVE__?: boolean }).__WORDYMIND_GAME_ACTIVE__ = isGameActive;
+      if (isGameActive) {
+        sessionStorage.setItem('wordymind_game_active', 'true');
+      } else {
+        sessionStorage.removeItem('wordymind_game_active');
+        window.dispatchEvent(new CustomEvent('wordymind_game_ended'));
+      }
+    } catch {}
+  }, [isGameActive]);
   const [examResults, setExamResults] = useState<Record<number, ExamResult>>(() =>
     loadExamResults(getStoredCourse())
   );
@@ -265,10 +299,13 @@ export const App: React.FC = () => {
     initSync();
   }, [course]);
 
-  // Auto-sync when returning to tab/app on another device
+  // Auto-sync when returning to tab/app on another device (NEVER during active games or exams)
   useEffect(() => {
     let syncThrottle = false;
     const handleVisibilityOrFocus = async () => {
+      // NEVER trigger background cloud sync or state resets during an active exam or mini-game!
+      if (activeExamGrade !== null || gameMode !== null) return;
+
       if (document.visibilityState === 'visible' && !syncThrottle) {
         syncThrottle = true;
         setTimeout(() => {
@@ -291,7 +328,7 @@ export const App: React.FC = () => {
       document.removeEventListener('visibilitychange', handleVisibilityOrFocus);
       window.removeEventListener('focus', handleVisibilityOrFocus);
     };
-  }, [course]);
+  }, [course, activeExamGrade, gameMode]);
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -533,6 +570,15 @@ export const App: React.FC = () => {
   };
 
   const handleHomeClick = () => {
+    if (activeExamGrade !== null) {
+      const confirmText =
+        language === 'ru'
+          ? 'Выйти из контрольной? Прогресс будет сохранен, вы сможете продолжить позже.'
+          : 'Iziet no pārbaudes darba? Progress tiks saglabāts, varēsiet turpināt vēlāk.';
+      if (!window.confirm(confirmText)) {
+        return;
+      }
+    }
     setCelebration(null);
     setGameMode(null);
     setSelectedTopic(null);
@@ -558,6 +604,7 @@ export const App: React.FC = () => {
         }}
         onUpdateStats={handleUpdateStats}
         onHomeClick={handleHomeClick}
+        isGameActive={isGameActive}
       />
 
       {/* Main Content Area */}

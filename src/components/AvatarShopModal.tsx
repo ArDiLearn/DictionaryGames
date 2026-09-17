@@ -154,23 +154,44 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
         )}
 
         {/* Category Filter Tabs */}
-        <div className="px-5 pt-3 pb-1 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => {
-                sounds.playClick();
-                setSelectedCategory(cat.id);
-              }}
-              className={`px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black whitespace-nowrap transition-all cursor-pointer ${
-                selectedCategory === cat.id
-                  ? 'bg-amber-500 text-white shadow-md scale-105'
-                  : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
+        <div className="px-3 sm:px-5 pt-3 pb-2.5 flex flex-wrap items-center gap-1.5 sm:gap-2 bg-slate-50/70 border-b border-slate-200/80">
+          {categories.map((cat) => {
+            const isSelected = selectedCategory === cat.id;
+            let activeClasses = 'bg-amber-500 text-white shadow-md scale-105';
+            let inactiveClasses = 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs';
+
+            if (cat.id === 'mythic') {
+              activeClasses =
+                'bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 text-white shadow-md scale-105 ring-2 ring-pink-400 font-black';
+              inactiveClasses =
+                'bg-purple-50/80 hover:bg-purple-100 text-purple-900 border border-purple-300 shadow-2xs';
+            } else if (cat.id === 'legendary') {
+              activeClasses =
+                'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md scale-105 font-black';
+              inactiveClasses =
+                'bg-indigo-50/80 hover:bg-indigo-100 text-indigo-900 border border-indigo-200 shadow-2xs';
+            } else if (cat.id === 'unique') {
+              activeClasses =
+                'bg-gradient-to-r from-amber-500 to-yellow-500 text-amber-950 shadow-md scale-105 font-black';
+              inactiveClasses =
+                'bg-amber-50/80 hover:bg-amber-100 text-amber-900 border border-amber-300 shadow-2xs';
+            }
+
+            return (
+              <button
+                key={cat.id}
+                onClick={() => {
+                  sounds.playClick();
+                  setSelectedCategory(cat.id);
+                }}
+                className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black whitespace-nowrap transition-all cursor-pointer ${
+                  isSelected ? activeClasses : inactiveClasses
+                }`}
+              >
+                {cat.id === 'mythic' ? `✨ ${cat.label}` : cat.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Avatar Grid */}

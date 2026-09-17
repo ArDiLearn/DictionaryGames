@@ -3,6 +3,7 @@ import { Language, UserStats, TitleCategory } from '../types';
 import { PLAYER_TITLES, DEFAULT_UNLOCKED_TITLES, getTitleById } from '../data/titles';
 import { translations, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
+import { AvatarBadge } from './AvatarBadge';
 import { X, Check, Lock, Sparkles, Calendar, CheckCircle2 } from 'lucide-react';
 
 interface TitleSelectModalProps {
@@ -95,9 +96,7 @@ export const TitleSelectModal: React.FC<TitleSelectModalProps> = ({
         <div className="px-5 py-3.5 bg-amber-50/90 border-b border-amber-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
           {/* Current equipped title display */}
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-white border-2 border-amber-300 flex items-center justify-center text-3xl shadow-sm shrink-0">
-              {stats.avatar || '🦁'}
-            </div>
+            <AvatarBadge avatar={stats.avatar || '🦁'} size="md" />
             <div>
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="font-black text-slate-800 text-sm sm:text-base">

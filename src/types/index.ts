@@ -66,7 +66,16 @@ export interface UserStats {
   totalStarsEarned?: number;
 }
 
-export type AvatarCategory = 'starter' | 'simple' | 'medium' | 'unique' | 'legendary';
+export type AvatarCategory = 'starter' | 'simple' | 'medium' | 'unique' | 'legendary' | 'mythic';
+
+export interface AvatarVFX {
+  bgGradient: string;
+  borderClass: string;
+  glowClass: string;
+  sparkles: string[];
+  theme: 'cosmic' | 'astral' | 'supernova' | 'cyber' | 'archmage' | 'solar';
+  cardBg: string;
+}
 
 export interface AvatarShopItem {
   id: string;
@@ -77,6 +86,7 @@ export interface AvatarShopItem {
   };
   price: number;
   category: AvatarCategory;
+  vfx?: AvatarVFX;
 }
 
 export type TitleCategory = 'academic' | 'words' | 'topics' | 'activity';

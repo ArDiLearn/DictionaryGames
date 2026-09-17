@@ -4,6 +4,7 @@ import { Language, UserStats, AvatarShopItem } from '../types';
 import { AVATAR_SHOP_ITEMS, DEFAULT_UNLOCKED_AVATARS } from '../data/avatars';
 import { translations, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
+import { AvatarBadge } from './AvatarBadge';
 import { X, Check, Lock, Sparkles, ShoppingBag } from 'lucide-react';
 
 interface AvatarShopModalProps {
@@ -16,7 +17,7 @@ interface AvatarShopModalProps {
   onSelectAvatar: (avatarEmoji: string) => void;
 }
 
-type CategoryFilter = 'all' | 'starter' | 'simple' | 'medium' | 'unique' | 'legendary';
+type CategoryFilter = 'all' | 'starter' | 'simple' | 'medium' | 'unique' | 'legendary' | 'mythic';
 
 export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
   isOpen,
@@ -44,6 +45,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
     { id: 'medium', label: t.categoryMedium },
     { id: 'unique', label: t.categoryUnique },
     { id: 'legendary', label: t.categoryLegendary },
+    { id: 'mythic', label: t.categoryMythic },
   ];
 
   const filteredItems = AVATAR_SHOP_ITEMS.filter((item) => {
@@ -115,9 +117,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
         {/* Player Profile Summary Bar */}
         <div className="px-5 py-3 bg-amber-50/80 border-b border-amber-200/80 flex items-center justify-between flex-wrap gap-2">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-white border-2 border-amber-300 flex items-center justify-center text-3xl shadow-sm">
-              {stats.avatar || '🦁'}
-            </div>
+            <AvatarBadge avatar={stats.avatar || '🦁'} size="md" />
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="font-black text-slate-800 text-sm sm:text-base">
@@ -178,6 +178,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
             const name = item.name[language] || item.name.ru;
             const isUnique = item.category === 'unique';
             const isLegendary = item.category === 'legendary';
+            const isMythic = item.category === 'mythic';
 
             return (
               <div
@@ -185,6 +186,8 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
                 className={`relative rounded-3xl p-3 sm:p-4 flex flex-col items-center justify-between text-center transition-all ${
                   isEquipped
                     ? 'bg-amber-50 border-3 border-amber-400 shadow-md scale-[1.02]'
+                    : isMythic
+                    ? `${item.vfx?.cardBg || 'bg-slate-900 border-2 border-purple-400'} shadow-md hover:scale-102`
                     : isLegendary
                     ? 'bg-gradient-to-b from-purple-50/80 via-white to-pink-50/50 border-2 border-purple-300 shadow-sm hover:border-purple-400'
                     : isUnique
@@ -203,6 +206,11 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
 
                 {/* Tier Badge */}
                 <div className="mb-1">
+                  {item.category === 'mythic' && (
+                    <span className="text-[10px] font-black text-amber-300 bg-slate-950/90 border border-amber-400/80 px-2 py-0.5 rounded-full shadow-xs animate-pulse">
+                      {t.tierBadgeMythic}
+                    </span>
+                  )}
                   {item.category === 'legendary' && (
                     <span className="text-[10px] font-black text-purple-900 bg-purple-100 border border-purple-300 px-2 py-0.5 rounded-full shadow-xs">
                       {t.tierBadgeLegendary}
@@ -230,51 +238,51 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
                   )}
                 </div>
 
-                {/* Avatar Emoji */}
-                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white shadow-inner border flex items-center justify-center text-4xl sm:text-5xl mb-2 hover:scale-110 transition-transform select-none ${
-                  isLegendary ? 'border-purple-200' : isUnique ? 'border-amber-200' : 'border-slate-100'
-                }`}>
-                  {item.emoji}
+                {/* Avatar Badge & Preview */}
+                <div className="mb-2 hover:scale-110 transition-transform select-none">
+                  <AvatarBadge avatar={item.emoji} size="xl" showStars={true} animate={isMythic} />
                 </div>
 
-                  {/* Avatar Name */}
-                  <h3 className="text-xs sm:text-sm font-black text-slate-800 mb-2 truncate w-full">
-                    {name}
-                  </h3>
+                {/* Avatar Name */}
+                <h3 className={`text-xs sm:text-sm font-black mb-2 truncate w-full ${isMythic ? 'text-purple-950' : 'text-slate-800'}`}>
+                  {name}
+                </h3>
 
-                  {/* Action button */}
-                  {isEquipped ? (
-                    <span className="w-full py-1.5 rounded-xl bg-emerald-100 text-emerald-800 font-extrabold text-xs">
-                      {t.equipped}
-                    </span>
-                  ) : isUnlocked ? (
-                    <button
-                      onClick={() => handleEquip(item)}
-                      className="w-full py-1.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-black text-xs shadow-sm hover:scale-105 active:scale-95 transition-all cursor-pointer"
-                    >
-                      {t.equip}
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => handleBuy(item)}
-                      disabled={!canAfford}
-                      className={`w-full py-1.5 rounded-xl font-black text-xs flex items-center justify-center gap-1 transition-all ${
-                        canAfford
-                          ? isUnique
-                            ? 'btn-3d bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 border-b-2 border-amber-600 text-amber-950 shadow-md cursor-pointer hover:scale-105 active:scale-95'
-                            : 'btn-3d bg-amber-400 hover:bg-amber-300 border-b-2 border-amber-600 text-amber-950 shadow-md cursor-pointer hover:scale-105 active:scale-95'
-                          : 'bg-slate-200 text-slate-400 border border-slate-300 cursor-not-allowed'
-                      }`}
-                      title={canAfford ? '' : `${t.notEnoughStars} (ещё ${item.price - starBalance} ⭐)`}
-                    >
-                      {!canAfford && <Lock className="w-3.5 h-3.5" />}
-                      <span>⭐ {item.price}</span>
-                    </button>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+                {/* Action button */}
+                {isEquipped ? (
+                  <span className="w-full py-1.5 rounded-xl bg-emerald-100 text-emerald-800 font-extrabold text-xs">
+                    {t.equipped}
+                  </span>
+                ) : isUnlocked ? (
+                  <button
+                    onClick={() => handleEquip(item)}
+                    className="w-full py-1.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-black text-xs shadow-sm hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                  >
+                    {t.equip}
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => handleBuy(item)}
+                    disabled={!canAfford}
+                    className={`w-full py-1.5 rounded-xl font-black text-xs flex items-center justify-center gap-1 transition-all ${
+                      canAfford
+                        ? isMythic
+                          ? 'btn-3d bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-md cursor-pointer hover:scale-105 active:scale-95 border-b-2 border-purple-800'
+                          : isUnique
+                          ? 'btn-3d bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 border-b-2 border-amber-600 text-amber-950 shadow-md cursor-pointer hover:scale-105 active:scale-95'
+                          : 'btn-3d bg-amber-400 hover:bg-amber-300 border-b-2 border-amber-600 text-amber-950 shadow-md cursor-pointer hover:scale-105 active:scale-95'
+                        : 'bg-slate-200 text-slate-400 border border-slate-300 cursor-not-allowed'
+                    }`}
+                    title={canAfford ? '' : `${t.notEnoughStars} (${item.price - starBalance} ⭐)`}
+                  >
+                    {!canAfford && <Lock className="w-3.5 h-3.5" />}
+                    <span>⭐ {item.price}</span>
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </div>
 
         {/* Footer info note */}
         <div className="px-5 py-2.5 bg-slate-100 border-t border-slate-200 text-center text-xs text-slate-500 font-medium">

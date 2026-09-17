@@ -148,10 +148,12 @@ export interface Translations {
   categoryMedium: string;
   categoryUnique: string;
   categoryLegendary: string;
+  categoryMythic: string;
   tierBadgeSimple: string;
   tierBadgeMedium: string;
   tierBadgeUnique: string;
   tierBadgeLegendary: string;
+  tierBadgeMythic: string;
   titlesModalTitle: string;
   titlesModalSubtitle: string;
   equippedTitleBadge: string;
@@ -409,10 +411,12 @@ export const translations: Record<Language, Translations> = {
     categoryMedium: 'Средние (50 ⭐)',
     categoryUnique: 'Уникальные (100 ⭐)',
     categoryLegendary: 'Легендарные (150–200 ⭐)',
+    categoryMythic: 'Мифические (1000+ ⭐)',
     tierBadgeSimple: 'Простой',
     tierBadgeMedium: 'Средний',
     tierBadgeUnique: '✨ Уникальный',
     tierBadgeLegendary: '👑 Легендарный',
+    tierBadgeMythic: '🌌 Мифический',
     titlesModalTitle: 'Мои титулы и звания',
     titlesModalSubtitle: 'Заслуженные почётные звания за успехи и упорство',
     equippedTitleBadge: 'Надет',
@@ -668,10 +672,12 @@ export const translations: Record<Language, Translations> = {
     categoryMedium: 'Vidējie (50 ⭐)',
     categoryUnique: 'Unikālie (100 ⭐)',
     categoryLegendary: 'Leģendārie (150–200 ⭐)',
+    categoryMythic: 'Mītiskie (1000+ ⭐)',
     tierBadgeSimple: 'Vienkāršs',
     tierBadgeMedium: 'Vidējs',
     tierBadgeUnique: '✨ Unikāls',
     tierBadgeLegendary: '👑 Leģendārs',
+    tierBadgeMythic: '🌌 Mītisks',
     titlesModalTitle: 'Mani tituli un pakāpes',
     titlesModalSubtitle: 'Nopelnītie goda tituli par panākumiem un centību',
     equippedTitleBadge: 'Uzvilkts',

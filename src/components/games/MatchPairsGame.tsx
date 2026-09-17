@@ -78,8 +78,9 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
       matched: false,
     }));
 
-    const shuffled = shuffleArray([...targetCards, ...transCards]);
-    setCards(shuffled);
+    const shuffledTarget = shuffleArray(targetCards);
+    const shuffledTrans = shuffleArray(transCards);
+    setCards([...shuffledTarget, ...shuffledTrans]);
     setSelectedCard(null);
     setWrongCardIds([]);
   }, [roundOffset, course, shuffledWords]);
@@ -99,9 +100,17 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
       return;
     }
 
-    // Second card clicked: check if match
-    const isPair =
-      selectedCard.wordId === card.wordId && selectedCard.type !== card.type;
+    // If user clicks another card of the same type (same column), just switch active selection
+    if (selectedCard.type === card.type) {
+      setSelectedCard(card);
+      if (card.type === 'target') {
+        speakWord(card.text, course);
+      }
+      return;
+    }
+
+    // Second card clicked from opposite column: check if match
+    const isPair = selectedCard.wordId === card.wordId;
 
     if (isPair) {
       // MATCH!
@@ -153,6 +162,45 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
     }
   };
 
+  const leftCards = cards.filter((c) => c.type === 'target');
+  const rightCards = cards.filter((c) => c.type === 'trans');
+
+  const renderCard = (card: MatchCard) => {
+    const isSelected = selectedCard?.id === card.id;
+    const isWrong = wrongCardIds.includes(card.id);
+
+    let style = '';
+
+    if (card.matched) {
+      style =
+        'bg-emerald-100 border-emerald-400 text-emerald-800 opacity-50 pointer-events-none scale-95';
+    } else if (isWrong) {
+      style = 'bg-rose-500 border-rose-600 text-white animate-wiggle';
+    } else if (isSelected) {
+      style =
+        card.type === 'target'
+          ? 'bg-sky-100 border-sky-500 text-sky-950 ring-4 ring-sky-300 scale-102 shadow-md'
+          : 'bg-amber-100 border-amber-500 text-amber-950 ring-4 ring-amber-300 scale-102 shadow-md';
+    } else if (card.type === 'target') {
+      style =
+        'bg-sky-50/70 border-sky-400 text-slate-800 hover:border-sky-500 hover:bg-sky-100/70 shadow-sm';
+    } else {
+      style =
+        'bg-amber-50/70 border-amber-400 text-slate-800 hover:border-amber-500 hover:bg-amber-100/70 shadow-sm';
+    }
+
+    return (
+      <button
+        key={card.id}
+        onClick={() => handleCardClick(card)}
+        disabled={card.matched}
+        className={`btn-3d w-full min-h-[58px] sm:min-h-[68px] p-2.5 sm:p-3.5 rounded-2xl sm:rounded-3xl border-3 sm:border-4 text-center font-bold text-sm sm:text-base shadow-sm transition-all flex items-center justify-center cursor-pointer select-none leading-snug ${style}`}
+      >
+        <span className="break-words max-w-full">{card.text}</span>
+      </button>
+    );
+  };
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-4 flex flex-col items-center">
       {/* Top bar */}
@@ -175,87 +223,50 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
         </div>
       </div>
 
-      <div className="text-center mb-5">
+      <div className="text-center mb-4 sm:mb-5">
         <h2 className="text-2xl font-black text-slate-800">
           {t.modes.match}
         </h2>
-        <p className="text-sm font-semibold text-slate-500 mt-1">
+        <p className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
           {course === 'lv'
             ? (language === 'lv' ? 'Atrodi pārus: latviešu vārds un tulkojums' : 'Найди пары: латышское слово и перевод')
             : t.matchPrompt}
         </p>
-
-        {/* Visual Color Legend for Kids */}
-        <div className="flex items-center justify-center gap-3 mt-2.5 text-xs font-bold">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-sky-50 border-2 border-sky-400 text-sky-700 shadow-sm">
-            <span className="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
-            {course === 'lv'
-              ? (language === 'lv' ? 'Vārds (LV)' : 'Слово (LV)')
-              : (language === 'lv' ? 'Vārds (EN)' : 'Слово (EN)')}
-          </span>
-          <span className="text-slate-300 font-black">↔</span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-amber-50 border-2 border-amber-400 text-amber-800 shadow-sm">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-            {language === 'lv' ? 'Tulkojums' : 'Перевод'}
-          </span>
-        </div>
       </div>
 
-      {/* Cards Grid */}
-      <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-3">
-        {cards.map((card) => {
-          const isSelected = selectedCard?.id === card.id;
-          const isWrong = wrongCardIds.includes(card.id);
+      {/* 2 Columns: Left = Meaning (Target), Right = Translation */}
+      <div className="w-full grid grid-cols-2 gap-3 sm:gap-6">
+        {/* Left Column: Значение / Слово */}
+        <div className="flex flex-col gap-2.5 sm:gap-3">
+          <div className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-2xl bg-sky-100/80 border-2 border-sky-300 text-sky-800 text-xs sm:text-sm font-black shadow-xs">
+            <span>{course === 'lv' ? '🇱🇻' : '🇬🇧'}</span>
+            <span>
+              {course === 'lv'
+                ? 'Vārds (LV)'
+                : language === 'lv'
+                ? 'Vārds (EN)'
+                : 'Значение (EN)'}
+            </span>
+          </div>
+          {leftCards.map((card) => renderCard(card))}
+        </div>
 
-          let style = '';
-
-          if (card.matched) {
-            style = 'bg-emerald-100 border-emerald-400 text-emerald-800 opacity-60 pointer-events-none scale-95';
-          } else if (isWrong) {
-            style = 'bg-rose-500 border-rose-600 text-white animate-wiggle';
-          } else if (isSelected) {
-            style =
-              card.type === 'target'
-                ? 'bg-sky-100 border-sky-500 text-sky-950 ring-4 ring-sky-200 scale-102 shadow-md'
-                : 'bg-amber-100 border-amber-500 text-amber-950 ring-4 ring-amber-200 scale-102 shadow-md';
-          } else if (card.type === 'target') {
-            style =
-              'bg-sky-50/70 border-sky-400 text-slate-800 hover:border-sky-500 hover:bg-sky-100/70 shadow-sm';
-          } else {
-            style =
-              'bg-amber-50/70 border-amber-400 text-slate-800 hover:border-amber-500 hover:bg-amber-100/70 shadow-sm';
-          }
-
-          const badgeStyle = card.matched
-            ? 'text-emerald-700 bg-emerald-200/60'
-            : isWrong
-            ? 'text-rose-100 bg-rose-600/60'
-            : isSelected
-            ? card.type === 'target'
-              ? 'text-sky-700 bg-sky-200/80'
-              : 'text-amber-800 bg-amber-200/80'
-            : card.type === 'target'
-            ? 'text-sky-700 bg-sky-100'
-            : 'text-amber-800 bg-amber-100';
-
-          return (
-            <button
-              key={card.id}
-              onClick={() => handleCardClick(card)}
-              disabled={card.matched}
-              className={`btn-3d min-h-[96px] sm:min-h-[104px] p-3 rounded-3xl border-4 text-center font-bold text-base sm:text-lg shadow-md transition-all flex flex-col items-center justify-center ${style}`}
-            >
-              <span
-                className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full mb-1 ${badgeStyle}`}
-              >
-                {card.type === 'target'
-                  ? (course === 'lv' ? '🇱🇻 LV' : '🇬🇧 EN')
-                  : (course === 'lv' ? '🇷🇺 RU' : (language === 'ru' ? '🇷🇺 RU' : '🇱🇻 LV'))}
-              </span>
-              <span className="leading-snug">{card.text}</span>
-            </button>
-          );
-        })}
+        {/* Right Column: Перевод */}
+        <div className="flex flex-col gap-2.5 sm:gap-3">
+          <div className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-2xl bg-amber-100/80 border-2 border-amber-300 text-amber-900 text-xs sm:text-sm font-black shadow-xs">
+            <span>{course === 'lv' ? '🇷🇺' : language === 'ru' ? '🇷🇺' : '🇱🇻'}</span>
+            <span>
+              {course === 'lv'
+                ? language === 'lv'
+                  ? 'Tulkojums (RU)'
+                  : 'Перевод (RU)'
+                : language === 'lv'
+                ? 'Tulkojums'
+                : 'Перевод'}
+            </span>
+          </div>
+          {rightCards.map((card) => renderCard(card))}
+        </div>
       </div>
     </div>
   );

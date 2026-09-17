@@ -21,6 +21,7 @@ import { TitleSelectModal } from './components/TitleSelectModal';
 import { trackGameStart, trackGameComplete, trackLanguageChange } from './utils/analytics';
 import { sounds } from './utils/soundEffects';
 import { translations } from './utils/i18n';
+import { useNavigation } from './hooks/useNavigation';
 import {
   getStoredLanguage,
   saveStoredLanguage,
@@ -77,43 +78,16 @@ export const App: React.FC = () => {
   const [topicProgress, setTopicProgress] = useState<Record<string, TopicProgress>>(() =>
     loadTopicProgress(getStoredCourse())
   );
-  const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
-  const [gameMode, setGameMode] = useState<GameMode | null>(null);
-  const [activeExamGrade, setActiveExamGrade] = useState<Grade | null>(() => {
-    try {
-      const storedCourse = getStoredCourse();
-      for (const g of [1, 2, 3, 4] as Grade[]) {
-        const raw = sessionStorage.getItem(`wordymind_exam_session_${g}_${storedCourse}`);
-        if (raw) {
-          const parsed = JSON.parse(raw);
-          if (
-            parsed &&
-            Array.isArray(parsed.questions) &&
-            parsed.questions.length > 0 &&
-            typeof parsed.currentIndex === 'number' &&
-            parsed.currentIndex < parsed.questions.length
-          ) {
-            return g;
-          }
-        }
-      }
-    } catch {}
-    return null;
-  });
-
-  const isGameActive = activeExamGrade !== null || gameMode !== null;
-
-  useEffect(() => {
-    try {
-      (window as unknown as { __WORDYMIND_GAME_ACTIVE__?: boolean }).__WORDYMIND_GAME_ACTIVE__ = isGameActive;
-      if (isGameActive) {
-        sessionStorage.setItem('wordymind_game_active', 'true');
-      } else {
-        sessionStorage.removeItem('wordymind_game_active');
-        window.dispatchEvent(new CustomEvent('wordymind_game_ended'));
-      }
-    } catch {}
-  }, [isGameActive]);
+  const {
+    selectedTopic,
+    gameMode,
+    activeExamGrade,
+    isGameActive,
+    setSelectedTopic,
+    setGameMode,
+    setActiveExamGrade,
+    navigateToHome,
+  } = useNavigation();
   const [examResults, setExamResults] = useState<Record<number, ExamResult>>(() =>
     loadExamResults(getStoredCourse())
   );
@@ -570,19 +544,9 @@ export const App: React.FC = () => {
   };
 
   const handleHomeClick = () => {
-    if (activeExamGrade !== null) {
-      const confirmText =
-        language === 'ru'
-          ? 'Выйти из контрольной? Прогресс будет сохранен, вы сможете продолжить позже.'
-          : 'Iziet no pārbaudes darba? Progress tiks saglabāts, varēsiet turpināt vēlāk.';
-      if (!window.confirm(confirmText)) {
-        return;
-      }
+    if (navigateToHome(language)) {
+      setCelebration(null);
     }
-    setCelebration(null);
-    setGameMode(null);
-    setSelectedTopic(null);
-    setActiveExamGrade(null);
   };
 
   return (

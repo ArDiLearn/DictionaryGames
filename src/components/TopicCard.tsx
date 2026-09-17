@@ -69,6 +69,9 @@ export const TopicCard: React.FC<TopicCardProps> = ({
       ? topic.topic_name.en
       : topic.topic_name.en;
 
+  const topicMaxStars = totalCount < 5 ? 0 : totalCount <= 8 ? 2 : 3;
+  const starSlots = Array.from({ length: topicMaxStars }, (_, i) => i + 1);
+
   return (
     <button
       onClick={() => {
@@ -90,22 +93,28 @@ export const TopicCard: React.FC<TopicCardProps> = ({
           {topic.emoji || '📖'}
         </div>
 
+        {/* Top-Right: Stars and New Words Badge */}
         <div className="flex flex-col items-end gap-1.5">
-          {/* 3 Stars display */}
-          <div className="flex items-center gap-0.5 bg-amber-50 border-2 border-amber-200 px-2 py-1 rounded-2xl">
-            {[1, 2, 3].map((starIndex) => (
-              <span
-                key={starIndex}
-                className={`text-base sm:text-lg transition-transform ${
-                  starIndex <= stars
-                    ? 'text-amber-400 scale-100'
-                    : 'text-slate-200 opacity-60 scale-90'
-                }`}
-              >
-                ★
-              </span>
-            ))}
-          </div>
+          {topicMaxStars > 0 ? (
+            <div className="flex items-center gap-0.5 bg-amber-50 border-2 border-amber-200 px-2 py-1 rounded-2xl">
+              {starSlots.map((starIndex) => (
+                <span
+                  key={starIndex}
+                  className={`text-base sm:text-lg transition-transform ${
+                    starIndex <= stars
+                      ? 'text-amber-400 scale-100'
+                      : 'text-slate-200 opacity-60 scale-90'
+                  }`}
+                >
+                  ★
+                </span>
+              ))}
+            </div>
+          ) : (
+            <div className="flex items-center gap-1 bg-slate-100 border border-slate-200 px-2 py-1 rounded-2xl text-[11px] font-bold text-slate-400">
+              <span>💡</span>
+            </div>
+          )}
 
           {/* New words label */}
           {isHighlightNewWords && (

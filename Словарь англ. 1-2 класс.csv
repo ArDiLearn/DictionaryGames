@@ -278,8 +278,7 @@ hi,"sveiki, čau",привет,1
 hey,hei,"эй, привет",1
 this is,šis ir...,это...,1
 ,,,
-Instructions,Norādījumi,Инструкции,
-review,atkārtojums,повторение,1
+Instructions: Actions,Norādījumi: darbības,Инструкции: действия,
 listen,klausīties,слушать,1
 point,rādīt,показывать,1
 repeat,atkārtot,повторять,1
@@ -288,57 +287,58 @@ look,paskatīties,"посмотри, взгляни",1
 answer,atbildēt,отвечать,1
 watch,"skatīties video","смотреть (видео)",1
 complete,pabeigt,закончить,1
-sing,dziedāt,петь,1
-match,"savienot pāros",подобрать пару,1
-ask,jautāt,спрашивать,1
-guess,uzminēt,угадать,1
-join,savienot,соединить,1
-put,likt,положить,1
-find,atrast,найти,1
-tick,atzīmēt,отметить галочкой,1
-cross,pārsvītrot,зачеркнуть,1
-colour,izkrāsot,раскрасить,1
-play,spēlēt,играть,1
 write,rakstīt,писать,1
 read,lasīt,читать,1
+check,pārbaudīt,проверить,1
+prepare,sagatavot,"готовить, подготавливать",2
+come,nākt,приходить,2
+,,,
+Instructions: Games & Art,Norādījumi: spēles un māksla,Инструкции: игры и творчество,
+sing,dziedāt,петь,1
+play,spēlēt,играть,1
 make,veidot,мастерить,1
 draw,zīmēt,рисовать,1
-check,pārbaudīt,проверить,1
-turn,kārta,очередь,1
-remember,atcerēties,запомнить,1
-practise,trenēties,тренироваться,1
-again,vēlreiz,снова,1
-think,domāt,думать,1
-pair,pāris,пара,1
-share,dalīties,делиться,1
-create,"radīt, izveidot",создавать,1
-miss,izlaist,пропустить,1
-number,sanumurē,пронумеруй,1
+colour,izkrāsot,раскрасить,1
 trace,apvelc,обведи по контуру,1
-count,saskaiti,посчитай,1
-tell,pastāsti,"расскажи, скажи",1
 circle,apvelc ar apli,обведи в кружок,1
-follow,seko,следуй,1
 design,izveido dizainu,"оформи, нарисуй",1
-go back,dodies atpakaļ,вернись назад,1
-wait,pagaidi,подожди,1
-order,sakārto secībā,расставь по порядку,1
+create,"radīt, izveidot",создавать,1
+match,"savienot pāros",подобрать пару,1
+join,savienot,соединить,1
 cut,griezt,"резать, вырезать",2
 fold,locīt,"складывать, сгибать",2
+decorate,"rotāt, izrotāt",украшать,2
+,,,
+Instructions: Logic & Numbers,Norādījumi: loģika un skaitīšana,Инструкции: логика и счёт,
+count,saskaiti,посчитай,1
+number,sanumurē,пронумеруй,1
+order,sakārto secībā,расставь по порядку,1
+ask,jautāt,спрашивать,1
+guess,uzminēt,угадать,1
+find,atrast,найти,1
+tell,pastāsti,"расскажи, скажи",1
+review,atkārtojums,повторение,1
+again,vēlreiz,снова,1
+turn,kārta,очередь,1
+miss,izlaist,пропустить,1
 choose,izvēlēties,выбирать,2
 compare,salīdzināt,сравнивать,2
 correct,"izlabot, pareizs","исправлять, правильный",2
-decorate,"rotāt, izrotāt",украшать,2
-prepare,sagatavot,"готовить, подготавливать",2
-try,mēģināt,"пробовать, стараться",2
 examples,piemēri,примеры,2
-come,nākt,приходить,2
 ,,,
-Places,Vietas,Места,
-home,mājas,дом,1
-park,parks,парк,1
-playground,rotaļlaukums,детская площадка,1
-farm,ferma,ферма,1
+Instructions: Teamwork & Practice,Norādījumi: darbs klasē,Инструкции: работа в классе,
+tick,atzīmēt,отметить галочкой,1
+cross,pārsvītrot,зачеркнуть,1
+put,likt,положить,1
+remember,atcerēties,запомнить,1
+practise,trenēties,тренироваться,1
+think,domāt,думать,1
+pair,pāris,пара,1
+share,dalīties,делиться,1
+follow,seko,следуй,1
+go back,dodies atpakaļ,вернись назад,1
+wait,pagaidi,подожди,1
+try,mēģināt,"пробовать, стараться",2
 ,,,
 Questions,Jautājumi,Вопросы,
 what,"kas, kāds","что, какой",1
@@ -351,19 +351,7 @@ who's this,kurš tas ir?,кто это?,1
 have you got,vai tev ir?,у тебя есть?,1
 question,jautājums,вопрос,1
 ,,,
-Helper words,Palīgvārdi,Слова-помощники,
-first,pirmais,первый,2
-second,otrais,второй,2
-many,daudzi,много,2
-all,"visi, viss","все, всё",2
-false,nepareizi,"неверно, ложь",2
-very,ļoti,очень,2
-really,patiešām,"действительно, правда",2
-lots,daudz,много,1
-only,tikai,только,1
-other,cits,другой,1
-maybe,varbūt,может быть,1
-then,"tad, pēc tam","затем, потом",1
+Prepositions and place,Prievārdi un vieta,Предлоги и место,
 about,par,"о, про",1
 and,un,и,1
 with,ar,"с, вместе с",1
@@ -374,6 +362,13 @@ through,cauri,"через, сквозь",1
 below,zemāk,"снизу, под",1
 middle,vidus,середина,1
 right,"pa labi, pareizs","справа, правильный",1
+then,"tad, pēc tam","затем, потом",1
+,,,
+Connecting words,Loģika un daudzums,Логика и количество,
+lots,daudz,много,1
+only,tikai,только,1
+other,cits,другой,1
+maybe,varbūt,может быть,1
 too,"arī, pārāk","тоже, слишком",1
 else,"vēl, cits","ещё, кроме",1
 both,"abi, abas","оба, обе",1
@@ -381,25 +376,34 @@ another,"cits, vēl viens","другой, ещё один",1
 yes,jā,да,1
 no,nē,нет,1
 true,"pareizi, taisnība","верно, правда",1
+first,pirmais,первый,2
+second,otrais,второй,2
+many,daudzi,много,2
+all,"visi, viss","все, всё",2
+false,nepareizi,"неверно, ложь",2
+very,ļoti,очень,2
+really,patiešām,"действительно, правда",2
 ,,,
-Classroom objects +,Klases aprīkojums +,Оборудование класса +,
+School materials,Mācību materiāli,Материалы для уроков,
 box,kaste,коробка,1
 glue,līme,клей,1
 counters,žetoni,фишки,1
 paper,papīrs,бумага,1
-teacher,skolotājs,учитель,1
 stickers,uzlīmes,наклейки,1
 sheet,darba lapa,рабочий лист,1
-text,teksts,текст,1
 photo,foto,фотография,1
+things,lietas,"вещи, предметы",1
+scissors,šķēres,ножницы,1
+,,,
+School and lessons,Skola un stundas,Школа и уроки,
+teacher,skolotājs,учитель,1
+text,teksts,текст,1
 message,ziņa,сообщение,1
 classroom,klases telpa,классная комната,1
 class,klasesbiedri,одноклассники,1
 lesson,stunda,урок,1
 task,uzdevums,задание,1
 group,grupa,группа,1
-things,lietas,"вещи, предметы",1
-scissors,šķēres,ножницы,1
 school,skola,школа,1
 activity,nodarbe,занятие,1
 ,,,
@@ -432,8 +436,6 @@ sausages,desiņas,сосиски,2
 ice cream,saldējums,мороженое,2
 chocolate,šokolāde,шоколад,2
 water,ūdens,вода,2
-food,ēdiens,еда,1
-cup,krūzīte,чашка,1
 ,,,
 Fruit and vegetables +,Augļi un dārzeņi +,Фрукты и овощи +,
 vegetable,dārzenis,овощ,2
@@ -492,6 +494,8 @@ different,atšķirīgs,разный,1
 ok,viss kārtībā,"в порядке, окей",1
 good,labs,хороший,1
 excellent,lielisks,отличный,1
+happy,laimīgs,счастливый,1
+tired,noguris,уставший,1
 creative,radošs,творческий,2
 ,,,
 Wild animals,Savvaļas dzīvnieki,Дикие животные,
@@ -509,18 +513,22 @@ chameleon,hameleons,хамелеон,2
 squirrel,vāvere,белка,2
 bat,sikspārnis,летучая мышь,2
 footprints,pēdu nospiedumi,следы лап,2
-animal,dzīvnieks,животное,1
-deer,briedis,олень,1
 ,,,
 Nature,Daba,Природа,
 land,zeme,"суша, земля",1
+sun,saule,солнце,1
+moon,mēness,луна,1
+rainbow,varavīksne,радуга,1
+animal,dzīvnieks,животное,1
+deer,briedis,олень,1
+home,mājas,дом,1
+park,parks,парк,1
+playground,rotaļlaukums,детская площадка,1
+farm,ferma,ферма,1
 jungle,džungļi,джунгли,2
 forest,mežs,лес,2
 sea,jūra,море,2
 ground,zeme,земля,2
-sun,saule,солнце,1
-moon,mēness,луна,1
-rainbow,varavīksne,радуга,1
 ,,,
 Pronouns,Vietniekvārdi,Местоимения,
 I'm,es esmu,я,1
@@ -546,6 +554,8 @@ wheel,ritenis,колесо,1
 ruby,rubīns,рубин,1
 toys,rotaļlietas,игрушки,1
 horse,zirgs,лошадь,1
+food,ēdiens,еда,1
+cup,krūzīte,чашка,1
 noise,troksnis,шум,2
 ability,spēja,"умение, способность",2
 ,,,
@@ -562,12 +572,12 @@ umbrella,lietussargs,зонт,3
 dinosaur,dinozaurs,динозавр,3
 ,,,
 Feelings,Jūtas un emocijas,Чувства и эмоции,
-happy,laimīgs,счастливый,1
+happy,laimīgs,счастливый,3
 sad,bēdīgs,грустный,3
 hungry,izsalcis,голодный,3
 thirsty,izslāpis,испытывающий жажду,3
 angry,dusmīgs,сердитый,3
-tired,noguris,уставший,1
+tired,noguris,уставший,3
 ,,,
 Jobs,Profesijas,Профессии,
 police officer,policists,полицейский,3

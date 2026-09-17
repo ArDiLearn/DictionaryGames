@@ -2,32 +2,40 @@ import { TopicProgress, WordProgress, UserStats, Grade, GradeFilter, LearningCou
 import { getCurrentUser, syncProgressToCloud, fetchProgressFromCloud } from './supabase';
 import { DEFAULT_UNLOCKED_AVATARS } from '../data/avatars';
 
-const STATS_KEY = 'mindwordy_user_stats';
-const OLD_STATS_KEY = 'wordykids_user_stats';
+const STATS_KEY = 'wordymind_user_stats';
+const OLD_STATS_KEY = 'mindwordy_user_stats';
+const LEGACY_STATS_KEY = 'wordykids_user_stats';
 
-const TOPIC_PROGRESS_KEY = 'mindwordy_topic_progress';
-const OLD_TOPIC_PROGRESS_KEY = 'wordykids_topic_progress';
+const TOPIC_PROGRESS_KEY = 'wordymind_topic_progress';
+const OLD_TOPIC_PROGRESS_KEY = 'mindwordy_topic_progress';
+const LEGACY_TOPIC_PROGRESS_KEY = 'wordykids_topic_progress';
 
-const WORD_PROGRESS_KEY = 'mindwordy_word_progress';
-const OLD_WORD_PROGRESS_KEY = 'wordykids_word_progress';
+const WORD_PROGRESS_KEY = 'wordymind_word_progress';
+const OLD_WORD_PROGRESS_KEY = 'mindwordy_word_progress';
+const LEGACY_WORD_PROGRESS_KEY = 'wordykids_word_progress';
 
-const LANG_KEY = 'mindwordy_lang';
-const OLD_LANG_KEY = 'wordykids_lang';
+const LANG_KEY = 'wordymind_lang';
+const OLD_LANG_KEY = 'mindwordy_lang';
+const LEGACY_LANG_KEY = 'wordykids_lang';
 
-const GRADE_KEY = 'mindwordy_grade';
-const OLD_GRADE_KEY = 'wordykids_grade';
+const GRADE_KEY = 'wordymind_grade';
+const OLD_GRADE_KEY = 'mindwordy_grade';
+const LEGACY_GRADE_KEY = 'wordykids_grade';
 
-const COURSE_KEY = 'mindwordy_course';
-const OLD_COURSE_KEY = 'wordykids_course';
+const COURSE_KEY = 'wordymind_course';
+const OLD_COURSE_KEY = 'mindwordy_course';
+const LEGACY_COURSE_KEY = 'wordykids_course';
 
-function getItemWithFallback(newKey: string, oldKey: string): string | null {
+function getItemWithFallback(newKey: string, ...oldKeys: string[]): string | null {
   try {
     const val = localStorage.getItem(newKey);
     if (val !== null) return val;
-    const oldVal = localStorage.getItem(oldKey);
-    if (oldVal !== null) {
-      localStorage.setItem(newKey, oldVal);
-      return oldVal;
+    for (const oldKey of oldKeys) {
+      const oldVal = localStorage.getItem(oldKey);
+      if (oldVal !== null) {
+        localStorage.setItem(newKey, oldVal);
+        return oldVal;
+      }
     }
   } catch {}
   return null;
@@ -35,7 +43,7 @@ function getItemWithFallback(newKey: string, oldKey: string): string | null {
 
 export function getStoredCourse(): LearningCourse {
   try {
-    const c = getItemWithFallback(COURSE_KEY, OLD_COURSE_KEY);
+    const c = getItemWithFallback(COURSE_KEY, OLD_COURSE_KEY, LEGACY_COURSE_KEY);
     if (c === 'lv' || c === 'en') return c;
   } catch {}
   return 'en';
@@ -47,19 +55,19 @@ export function saveStoredCourse(course: LearningCourse) {
   } catch {}
 }
 
-function getTopicProgressKey(course: LearningCourse = 'en', legacy = false): string {
-  const base = legacy ? OLD_TOPIC_PROGRESS_KEY : TOPIC_PROGRESS_KEY;
+function getTopicProgressKey(course: LearningCourse = 'en', legacy: 'none' | 'mindwordy' | 'wordykids' = 'none'): string {
+  const base = legacy === 'wordykids' ? LEGACY_TOPIC_PROGRESS_KEY : legacy === 'mindwordy' ? OLD_TOPIC_PROGRESS_KEY : TOPIC_PROGRESS_KEY;
   return course === 'lv' ? `${base}_lv` : base;
 }
 
-function getWordProgressKey(course: LearningCourse = 'en', legacy = false): string {
-  const base = legacy ? OLD_WORD_PROGRESS_KEY : WORD_PROGRESS_KEY;
+function getWordProgressKey(course: LearningCourse = 'en', legacy: 'none' | 'mindwordy' | 'wordykids' = 'none'): string {
+  const base = legacy === 'wordykids' ? LEGACY_WORD_PROGRESS_KEY : legacy === 'mindwordy' ? OLD_WORD_PROGRESS_KEY : WORD_PROGRESS_KEY;
   return course === 'lv' ? `${base}_lv` : base;
 }
 
 export function getStoredLanguage(): 'ru' | 'lv' {
   try {
-    const lang = getItemWithFallback(LANG_KEY, OLD_LANG_KEY);
+    const lang = getItemWithFallback(LANG_KEY, OLD_LANG_KEY, LEGACY_LANG_KEY);
     if (lang === 'lv' || lang === 'ru') return lang;
   } catch {}
   return 'lv';
@@ -72,7 +80,7 @@ export function saveStoredLanguage(lang: 'ru' | 'lv') {
 }
 
 export function getStoredGrades(): Grade[] {
-  const g = getItemWithFallback(GRADE_KEY, OLD_GRADE_KEY);
+  const g = getItemWithFallback(GRADE_KEY, OLD_GRADE_KEY, LEGACY_GRADE_KEY);
   if (!g || g === 'all') return [1, 2, 3];
   if (g === '1') return [1];
   if (g === '2') return [2];
@@ -99,7 +107,7 @@ export function saveStoredGrades(grades: Grade[]) {
 }
 
 export function getStoredGradeFilter(): GradeFilter {
-  const g = getItemWithFallback(GRADE_KEY, OLD_GRADE_KEY);
+  const g = getItemWithFallback(GRADE_KEY, OLD_GRADE_KEY, LEGACY_GRADE_KEY);
   if (g === '1' || g === '2' || g === '3' || g === 'all') return g;
   return 'all';
 }
@@ -134,7 +142,7 @@ export function getDefaultStats(): UserStats {
 
 export function loadLocalStats(): UserStats {
   try {
-    const raw = getItemWithFallback(STATS_KEY, OLD_STATS_KEY);
+    const raw = getItemWithFallback(STATS_KEY, OLD_STATS_KEY, LEGACY_STATS_KEY);
     if (!raw) return getDefaultStats();
     const stats: UserStats = JSON.parse(raw);
     
@@ -216,7 +224,11 @@ export function saveLocalStats(stats: UserStats) {
 
 export function loadTopicProgress(course: LearningCourse = 'en'): Record<string, TopicProgress> {
   try {
-    const raw = getItemWithFallback(getTopicProgressKey(course), getTopicProgressKey(course, true));
+    const raw = getItemWithFallback(
+      getTopicProgressKey(course, 'none'),
+      getTopicProgressKey(course, 'mindwordy'),
+      getTopicProgressKey(course, 'wordykids')
+    );
     return raw ? JSON.parse(raw) : {};
   } catch {
     return {};
@@ -230,7 +242,11 @@ export function saveTopicProgress(progress: Record<string, TopicProgress>, cours
 
 export function loadWordProgress(course: LearningCourse = 'en'): Record<string, WordProgress> {
   try {
-    const raw = getItemWithFallback(getWordProgressKey(course), getWordProgressKey(course, true));
+    const raw = getItemWithFallback(
+      getWordProgressKey(course, 'none'),
+      getWordProgressKey(course, 'mindwordy'),
+      getWordProgressKey(course, 'wordykids')
+    );
     return raw ? JSON.parse(raw) : {};
   } catch {
     return {};
@@ -374,19 +390,22 @@ export async function mergeWithCloud(): Promise<boolean> {
   }
 }
 
-const EXAM_RESULTS_KEY = 'mindwordy_exam_results';
-const OLD_EXAM_RESULTS_KEY = 'wordykids_exam_results';
+const EXAM_RESULTS_KEY = 'wordymind_exam_results';
+const OLD_EXAM_RESULTS_KEY = 'mindwordy_exam_results';
+const LEGACY_EXAM_RESULTS_KEY = 'wordykids_exam_results';
 
-function getExamResultsKey(course: LearningCourse = 'en', legacy = false): string {
-  const base = legacy ? OLD_EXAM_RESULTS_KEY : EXAM_RESULTS_KEY;
+function getExamResultsKey(course: LearningCourse = 'en', legacy: 'none' | 'mindwordy' | 'wordykids' = 'none'): string {
+  const base = legacy === 'wordykids' ? LEGACY_EXAM_RESULTS_KEY : legacy === 'mindwordy' ? OLD_EXAM_RESULTS_KEY : EXAM_RESULTS_KEY;
   return course === 'lv' ? `${base}_lv` : base;
 }
 
 export function loadExamResults(course: LearningCourse = 'en'): Record<number, ExamResult> {
   try {
-    const key = getExamResultsKey(course);
-    const oldKey = getExamResultsKey(course, true);
-    const raw = getItemWithFallback(key, oldKey);
+    const raw = getItemWithFallback(
+      getExamResultsKey(course, 'none'),
+      getExamResultsKey(course, 'mindwordy'),
+      getExamResultsKey(course, 'wordykids')
+    );
     if (raw) {
       return JSON.parse(raw);
     }
@@ -419,19 +438,22 @@ export function saveExamResult(
   }
 }
 
-const EXAM_HISTORY_KEY = 'mindwordy_exam_history';
-const OLD_EXAM_HISTORY_KEY = 'wordykids_exam_history';
+const EXAM_HISTORY_KEY = 'wordymind_exam_history';
+const OLD_EXAM_HISTORY_KEY = 'mindwordy_exam_history';
+const LEGACY_EXAM_HISTORY_KEY = 'wordykids_exam_history';
 
-function getExamHistoryKey(course: LearningCourse = 'en', legacy = false): string {
-  const base = legacy ? OLD_EXAM_HISTORY_KEY : EXAM_HISTORY_KEY;
+function getExamHistoryKey(course: LearningCourse = 'en', legacy: 'none' | 'mindwordy' | 'wordykids' = 'none'): string {
+  const base = legacy === 'wordykids' ? LEGACY_EXAM_HISTORY_KEY : legacy === 'mindwordy' ? OLD_EXAM_HISTORY_KEY : EXAM_HISTORY_KEY;
   return course === 'lv' ? `${base}_lv` : base;
 }
 
 export function loadExamHistory(course: LearningCourse = 'en'): ExamResult[] {
   try {
-    const key = getExamHistoryKey(course);
-    const oldKey = getExamHistoryKey(course, true);
-    const raw = getItemWithFallback(key, oldKey);
+    const raw = getItemWithFallback(
+      getExamHistoryKey(course, 'none'),
+      getExamHistoryKey(course, 'mindwordy'),
+      getExamHistoryKey(course, 'wordykids')
+    );
     if (raw) {
       const parsed: ExamResult[] = JSON.parse(raw);
       if (Array.isArray(parsed) && parsed.length > 0) {

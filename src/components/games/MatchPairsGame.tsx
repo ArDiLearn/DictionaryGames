@@ -179,14 +179,14 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
     } else if (isSelected) {
       style =
         card.type === 'target'
-          ? 'bg-sky-100 border-sky-500 text-sky-950 ring-4 ring-sky-300 scale-102 shadow-md'
-          : 'bg-amber-100 border-amber-500 text-amber-950 ring-4 ring-amber-300 scale-102 shadow-md';
+          ? 'bg-sky-500 border-sky-600 text-white ring-4 ring-sky-300 scale-102 shadow-lg'
+          : 'bg-amber-500 border-amber-600 text-white ring-4 ring-amber-300 scale-102 shadow-lg';
     } else if (card.type === 'target') {
       style =
-        'bg-sky-50/70 border-sky-400 text-slate-800 hover:border-sky-500 hover:bg-sky-100/70 shadow-sm';
+        'bg-sky-100 border-sky-400 text-sky-950 hover:border-sky-500 hover:bg-sky-200 shadow-md';
     } else {
       style =
-        'bg-amber-50/70 border-amber-400 text-slate-800 hover:border-amber-500 hover:bg-amber-100/70 shadow-sm';
+        'bg-amber-100 border-amber-400 text-amber-950 hover:border-amber-500 hover:bg-amber-200 shadow-md';
     }
 
     return (
@@ -194,7 +194,7 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
         key={card.id}
         onClick={() => handleCardClick(card)}
         disabled={card.matched}
-        className={`btn-3d w-full min-h-[58px] sm:min-h-[68px] p-2.5 sm:p-3.5 rounded-2xl sm:rounded-3xl border-3 sm:border-4 text-center font-bold text-sm sm:text-base shadow-sm transition-all flex items-center justify-center cursor-pointer select-none leading-snug ${style}`}
+        className={`btn-3d w-full min-h-[58px] sm:min-h-[68px] p-2.5 sm:p-3.5 rounded-2xl sm:rounded-3xl border-3 sm:border-4 text-center font-black text-sm sm:text-base font-comic shadow-md transition-all flex items-center justify-center cursor-pointer select-none leading-snug ${style}`}
       >
         <span className="break-words max-w-full">{card.text}</span>
       </button>
@@ -238,7 +238,7 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
       <div className="w-full grid grid-cols-2 gap-3 sm:gap-6">
         {/* Left Column: Значение / Слово */}
         <div className="flex flex-col gap-2.5 sm:gap-3">
-          <div className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-2xl bg-sky-100/80 border-2 border-sky-300 text-sky-800 text-xs sm:text-sm font-black shadow-xs">
+          <div className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-2xl bg-sky-500 border-2 border-sky-600 text-white text-xs sm:text-sm font-black shadow-sm">
             <span>{course === 'lv' ? '🇱🇻' : '🇬🇧'}</span>
             <span>
               {course === 'lv'
@@ -253,7 +253,7 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
 
         {/* Right Column: Перевод */}
         <div className="flex flex-col gap-2.5 sm:gap-3">
-          <div className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-2xl bg-amber-100/80 border-2 border-amber-300 text-amber-900 text-xs sm:text-sm font-black shadow-xs">
+          <div className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-2xl bg-amber-500 border-2 border-amber-600 text-white text-xs sm:text-sm font-black shadow-sm">
             <span>{course === 'lv' ? '🇷🇺' : language === 'ru' ? '🇷🇺' : '🇱🇻'}</span>
             <span>
               {course === 'lv'

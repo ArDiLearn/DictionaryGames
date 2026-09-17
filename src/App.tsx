@@ -265,6 +265,34 @@ export const App: React.FC = () => {
     initSync();
   }, [course]);
 
+  // Auto-sync when returning to tab/app on another device
+  useEffect(() => {
+    let syncThrottle = false;
+    const handleVisibilityOrFocus = async () => {
+      if (document.visibilityState === 'visible' && !syncThrottle) {
+        syncThrottle = true;
+        setTimeout(() => {
+          syncThrottle = false;
+        }, 3000);
+
+        const user = await getCurrentUser();
+        if (user) {
+          await mergeWithCloud();
+          setTopicProgress(loadTopicProgress(course));
+          setWordProgress(loadWordProgress(course));
+          setStats(loadLocalStats());
+        }
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityOrFocus);
+    window.addEventListener('focus', handleVisibilityOrFocus);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityOrFocus);
+      window.removeEventListener('focus', handleVisibilityOrFocus);
+    };
+  }, [course]);
+
   useEffect(() => {
     document.documentElement.lang = language;
     const title =

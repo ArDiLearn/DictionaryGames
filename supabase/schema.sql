@@ -7,8 +7,24 @@ create table if not exists public.profiles (
   player_name text default 'Знайка',
   avatar text default '🦁',
   streak integer default 1,
+  total_stars_earned integer default 0,
+  spent_stars integer default 0,
+  unlocked_avatars jsonb default '["🦁"]'::jsonb,
+  equipped_title_id text default 'title_starter',
+  unlocked_title_ids jsonb default '["title_starter"]'::jsonb,
+  claimed_topic_bonus_ids jsonb default '[]'::jsonb,
+  claimed_milestone_ids jsonb default '[]'::jsonb,
   updated_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
+
+-- Idempotent column additions for existing installations:
+alter table public.profiles add column if not exists total_stars_earned integer default 0;
+alter table public.profiles add column if not exists spent_stars integer default 0;
+alter table public.profiles add column if not exists unlocked_avatars jsonb default '["🦁"]'::jsonb;
+alter table public.profiles add column if not exists equipped_title_id text default 'title_starter';
+alter table public.profiles add column if not exists unlocked_title_ids jsonb default '["title_starter"]'::jsonb;
+alter table public.profiles add column if not exists claimed_topic_bonus_ids jsonb default '[]'::jsonb;
+alter table public.profiles add column if not exists claimed_milestone_ids jsonb default '[]'::jsonb;
 
 -- 2. Topic Progress Table
 create table if not exists public.topic_progress (

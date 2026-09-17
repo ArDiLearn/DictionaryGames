@@ -388,10 +388,25 @@ export function triggerCloudSync() {
     try {
       const user = await getCurrentUser();
       if (!user) return;
+
       const stats = loadLocalStats();
-      const topicProg = loadTopicProgress();
-      const wordProg = loadWordProgress();
-      await syncProgressToCloud(user.id, topicProg, wordProg, stats);
+
+      // Gather progress from both English and Latvian courses
+      const topicProgEn = loadTopicProgress('en');
+      const topicProgLv = loadTopicProgress('lv');
+      const mergedTopicProg: Record<string, TopicProgress> = { ...topicProgEn };
+      for (const [tid, tp] of Object.entries(topicProgLv)) {
+        mergedTopicProg[`lv:${tid}`] = { ...tp, topic_id: `lv:${tid}` };
+      }
+
+      const wordProgEn = loadWordProgress('en');
+      const wordProgLv = loadWordProgress('lv');
+      const mergedWordProg: Record<string, WordProgress> = { ...wordProgEn };
+      for (const [wid, wp] of Object.entries(wordProgLv)) {
+        mergedWordProg[`lv:${wid}`] = { ...wp, word_id: `lv:${wid}`, topic_id: `lv:${wp.topic_id}` };
+      }
+
+      await syncProgressToCloud(user.id, mergedTopicProg, mergedWordProg, stats);
     } catch {
       // ignore offline errors
     }
@@ -406,42 +421,187 @@ export async function mergeWithCloud(): Promise<boolean> {
     const cloudData = await fetchProgressFromCloud(user.id);
     if (!cloudData) return false;
 
-    // Merge local and cloud topic progress (taking max stars and union of words)
-    const localTopics = loadTopicProgress();
-    const mergedTopics = { ...localTopics };
+    // 1. Separate English and Latvian topic progress from cloud
+    const cloudTopicsEn: Record<string, TopicProgress> = {};
+    const cloudTopicsLv: Record<string, TopicProgress> = {};
 
     for (const [tid, cTopic] of Object.entries(cloudData.topicProgress)) {
-      if (!mergedTopics[tid]) {
-        mergedTopics[tid] = cTopic;
+      if (tid.startsWith('lv:')) {
+        const cleanTid = tid.slice(3);
+        cloudTopicsLv[cleanTid] = { ...cTopic, topic_id: cleanTid };
+      } else {
+        cloudTopicsEn[tid] = cTopic;
+      }
+    }
+
+    // Merge English topics
+    const localTopicsEn = loadTopicProgress('en');
+    const mergedTopicsEn = { ...localTopicsEn };
+    for (const [tid, cTopic] of Object.entries(cloudTopicsEn)) {
+      if (!mergedTopicsEn[tid]) {
+        mergedTopicsEn[tid] = cTopic;
       } else {
         const unionWords = Array.from(
-          new Set([...mergedTopics[tid].masteredWordIds, ...cTopic.masteredWordIds])
+          new Set([...(mergedTopicsEn[tid].masteredWordIds || []), ...(cTopic.masteredWordIds || [])])
         );
-        mergedTopics[tid] = {
+        mergedTopicsEn[tid] = {
           topic_id: tid,
-          stars: Math.max(mergedTopics[tid].stars, cTopic.stars),
+          stars: Math.max(mergedTopicsEn[tid].stars || 0, cTopic.stars || 0),
           masteredWordIds: unionWords,
-          lastPlayedAt: mergedTopics[tid].lastPlayedAt || cTopic.lastPlayedAt,
+          lastPlayedAt: mergedTopicsEn[tid].lastPlayedAt || cTopic.lastPlayedAt,
         };
       }
     }
-    saveTopicProgress(mergedTopics);
+    saveTopicProgress(mergedTopicsEn, 'en');
 
-    // Merge word progress
-    const localWords = loadWordProgress();
-    const mergedWords = { ...localWords, ...cloudData.wordProgress };
-    saveWordProgress(mergedWords);
+    // Merge Latvian topics
+    const localTopicsLv = loadTopicProgress('lv');
+    const mergedTopicsLv = { ...localTopicsLv };
+    for (const [tid, cTopic] of Object.entries(cloudTopicsLv)) {
+      if (!mergedTopicsLv[tid]) {
+        mergedTopicsLv[tid] = cTopic;
+      } else {
+        const unionWords = Array.from(
+          new Set([...(mergedTopicsLv[tid].masteredWordIds || []), ...(cTopic.masteredWordIds || [])])
+        );
+        mergedTopicsLv[tid] = {
+          topic_id: tid,
+          stars: Math.max(mergedTopicsLv[tid].stars || 0, cTopic.stars || 0),
+          masteredWordIds: unionWords,
+          lastPlayedAt: mergedTopicsLv[tid].lastPlayedAt || cTopic.lastPlayedAt,
+        };
+      }
+    }
+    saveTopicProgress(mergedTopicsLv, 'lv');
 
-    // Merge stats
+    // 2. Separate English and Latvian word progress
+    const cloudWordsEn: Record<string, WordProgress> = {};
+    const cloudWordsLv: Record<string, WordProgress> = {};
+
+    for (const [wid, cWord] of Object.entries(cloudData.wordProgress)) {
+      if (wid.startsWith('lv:') || cWord.topic_id?.startsWith('lv:')) {
+        const cleanWid = wid.startsWith('lv:') ? wid.slice(3) : wid;
+        cloudWordsLv[cleanWid] = { ...cWord, word_id: cleanWid };
+      } else {
+        cloudWordsEn[wid] = cWord;
+      }
+    }
+
+    // Merge English words
+    const localWordsEn = loadWordProgress('en');
+    const mergedWordsEn = { ...localWordsEn };
+    for (const [wid, cWord] of Object.entries(cloudWordsEn)) {
+      if (!mergedWordsEn[wid]) {
+        mergedWordsEn[wid] = cWord;
+      } else {
+        mergedWordsEn[wid] = {
+          word_id: wid,
+          topic_id: cWord.topic_id || mergedWordsEn[wid].topic_id,
+          timesCorrect: Math.max(mergedWordsEn[wid].timesCorrect || 0, cWord.timesCorrect || 0),
+          timesWrong: Math.max(mergedWordsEn[wid].timesWrong || 0, cWord.timesWrong || 0),
+          isLearned: mergedWordsEn[wid].isLearned || cWord.isLearned,
+          lastReviewedAt: mergedWordsEn[wid].lastReviewedAt || cWord.lastReviewedAt,
+        };
+      }
+    }
+    saveWordProgress(mergedWordsEn, 'en');
+
+    // Merge Latvian words
+    const localWordsLv = loadWordProgress('lv');
+    const mergedWordsLv = { ...localWordsLv };
+    for (const [wid, cWord] of Object.entries(cloudWordsLv)) {
+      if (!mergedWordsLv[wid]) {
+        mergedWordsLv[wid] = cWord;
+      } else {
+        mergedWordsLv[wid] = {
+          word_id: wid,
+          topic_id: cWord.topic_id || mergedWordsLv[wid].topic_id,
+          timesCorrect: Math.max(mergedWordsLv[wid].timesCorrect || 0, cWord.timesCorrect || 0),
+          timesWrong: Math.max(mergedWordsLv[wid].timesWrong || 0, cWord.timesWrong || 0),
+          isLearned: mergedWordsLv[wid].isLearned || cWord.isLearned,
+          lastReviewedAt: mergedWordsLv[wid].lastReviewedAt || cWord.lastReviewedAt,
+        };
+      }
+    }
+    saveWordProgress(mergedWordsLv, 'lv');
+
+    // 3. Merge UserStats (Piggy bank stars, spent stars, avatars, titles, milestones)
     const currentStats = loadLocalStats();
-    let mergedStats = { ...currentStats };
-    if (cloudData.statsPartial) {
-      mergedStats = { ...mergedStats, ...cloudData.statsPartial };
-    }
+    const cloudStats = cloudData.statsPartial || {};
+
+    const totalStarsSumTopics =
+      Object.values(mergedTopicsEn).reduce((s, tp) => s + (tp.stars || 0), 0) +
+      Object.values(mergedTopicsLv).reduce((s, tp) => s + (tp.stars || 0), 0);
+
+    const mergedTotalStarsEarned = Math.max(
+      currentStats.totalStarsEarned || 0,
+      cloudStats.totalStarsEarned || 0,
+      totalStarsSumTopics
+    );
+
+    const mergedSpentStars = Math.max(
+      currentStats.spentStars || 0,
+      cloudStats.spentStars || 0
+    );
+
+    const mergedAvatars = Array.from(
+      new Set([
+        ...(currentStats.unlockedAvatars || DEFAULT_UNLOCKED_AVATARS),
+        ...(cloudStats.unlockedAvatars || []),
+      ])
+    );
+
+    const mergedTitles = Array.from(
+      new Set([
+        ...(currentStats.unlockedTitleIds || DEFAULT_UNLOCKED_TITLES),
+        ...(cloudStats.unlockedTitleIds || []),
+      ])
+    );
+
+    const mergedTopicBonuses = Array.from(
+      new Set([
+        ...(currentStats.claimedTopicBonusIds || []),
+        ...(cloudStats.claimedTopicBonusIds || []),
+      ])
+    );
+
+    const mergedMilestones = Array.from(
+      new Set([
+        ...(currentStats.claimedMilestoneIds || []),
+        ...(cloudStats.claimedMilestoneIds || []),
+      ])
+    );
+
+    const mergedPlayedModes = Array.from(
+      new Set([
+        ...(currentStats.playedModes || []),
+        ...(cloudStats.playedModes || []),
+      ])
+    );
+
     const userLogin = getCurrentUserLogin(user);
-    if (userLogin && userLogin !== 'Player') {
-      mergedStats.playerName = userLogin;
-    }
+
+    const mergedStats: UserStats = {
+      ...currentStats,
+      ...cloudStats,
+      playerName:
+        userLogin && userLogin !== 'Player'
+          ? userLogin
+          : currentStats.playerName || cloudStats.playerName || 'Zinītis',
+      avatar: cloudStats.avatar || currentStats.avatar || '🦁',
+      streak: Math.max(currentStats.streak || 1, cloudStats.streak || 1),
+      totalActiveDays: Math.max(currentStats.totalActiveDays || 1, cloudStats.totalActiveDays || 1),
+      totalStarsEarned: mergedTotalStarsEarned,
+      spentStars: mergedSpentStars,
+      unlockedAvatars: mergedAvatars,
+      unlockedTitleIds: mergedTitles,
+      equippedTitleId: cloudStats.equippedTitleId || currentStats.equippedTitleId || 'title_starter',
+      claimedTopicBonusIds: mergedTopicBonuses,
+      claimedMilestoneIds: mergedMilestones,
+      playedModes: mergedPlayedModes,
+      hasSniperAchieved: Boolean(currentStats.hasSniperAchieved || cloudStats.hasSniperAchieved),
+    };
+
     saveLocalStats(mergedStats);
 
     return true;

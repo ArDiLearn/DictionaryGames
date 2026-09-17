@@ -73,7 +73,7 @@ export interface AvatarVFX {
   borderClass: string;
   glowClass: string;
   sparkles: string[];
-  theme: 'cosmic' | 'astral' | 'supernova' | 'cyber' | 'archmage' | 'solar';
+  theme: 'cosmic' | 'astral' | 'supernova' | 'cyber' | 'archmage' | 'solar' | 'kitten';
   cardBg: string;
 }
 

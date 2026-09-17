@@ -162,6 +162,16 @@ export function loadLocalStats(): UserStats {
     if (!stats.unlockedAvatars || stats.unlockedAvatars.length === 0) {
       stats.unlockedAvatars = DEFAULT_UNLOCKED_AVATARS;
       needsSave = true;
+    } else {
+      const currentSet = new Set(stats.unlockedAvatars);
+      let added = false;
+      for (const def of DEFAULT_UNLOCKED_AVATARS) {
+        if (!currentSet.has(def)) {
+          stats.unlockedAvatars.push(def);
+          added = true;
+        }
+      }
+      if (added) needsSave = true;
     }
     if (stats.spentStars === undefined || typeof stats.spentStars !== 'number') {
       stats.spentStars = 0;

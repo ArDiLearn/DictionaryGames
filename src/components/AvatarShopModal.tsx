@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import confetti from 'canvas-confetti';
 import { Language, UserStats, AvatarShopItem } from '../types';
 import { AVATAR_SHOP_ITEMS, DEFAULT_UNLOCKED_AVATARS } from '../data/avatars';
@@ -13,8 +13,8 @@ interface AvatarShopModalProps {
   language: Language;
   stats: UserStats;
   totalStarsEarned: number;
-  onPurchase: (avatarEmoji: string, price: number) => void;
   onSelectAvatar: (avatarEmoji: string) => void;
+  onPurchase: (avatarEmoji: string, price: number) => void;
 }
 
 type CategoryFilter = 'all' | 'starter' | 'simple' | 'medium' | 'unique' | 'legendary' | 'mythic';
@@ -25,18 +25,22 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
   language,
   stats,
   totalStarsEarned,
-  onPurchase,
   onSelectAvatar,
+  onPurchase,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('all');
   const [purchasedJustNow, setPurchasedJustNow] = useState<string | null>(null);
 
-  if (!isOpen) return null;
-
   const t = translations[language];
   const spentStars = stats.spentStars || 0;
   const starBalance = Math.max(0, totalStarsEarned - spentStars);
-  const unlockedSet = new Set(stats.unlockedAvatars || DEFAULT_UNLOCKED_AVATARS);
+  const unlockedSet = useMemo(() => {
+    const set = new Set(stats.unlockedAvatars || DEFAULT_UNLOCKED_AVATARS);
+    DEFAULT_UNLOCKED_AVATARS.forEach((a) => set.add(a));
+    return set;
+  }, [stats.unlockedAvatars]);
+
+  if (!isOpen) return null;
 
   const categories: { id: CategoryFilter; label: string }[] = [
     { id: 'all', label: t.categoryAll },
@@ -172,7 +176,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
         {/* Avatar Grid */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
           {filteredItems.map((item) => {
-            const isUnlocked = unlockedSet.has(item.emoji);
+            const isUnlocked = item.price === 0 || unlockedSet.has(item.emoji);
             const isEquipped = stats.avatar === item.emoji;
             const canAfford = starBalance >= item.price;
             const name = item.name[language] || item.name.ru;

@@ -54,18 +54,29 @@ export function recordWordAttempt(
   }
   topic.masteredWordIds = Array.from(masteredSet);
 
-  // Calculate stars (0-3)
+  // Calculate stars (capped at maxTopicStars: 0 for <5 words, 2 for 5-8 words, 3 for 9+ words)
+  const maxTopicStars = totalWordsInTopic < 5 ? 0 : totalWordsInTopic <= 8 ? 2 : 3;
   const ratio = topic.masteredWordIds.length / Math.max(1, totalWordsInTopic);
   let stars = 0;
-  if (ratio >= 1) {
-    stars = 3;
-  } else if (ratio >= 0.5) {
-    stars = 2;
-  } else if (ratio > 0.1 || topic.masteredWordIds.length >= 1) {
-    stars = 1;
+  if (maxTopicStars === 3) {
+    if (ratio >= 1) {
+      stars = 3;
+    } else if (ratio >= 0.5) {
+      stars = 2;
+    } else if (ratio > 0.1 || topic.masteredWordIds.length >= 1) {
+      stars = 1;
+    }
+  } else if (maxTopicStars === 2) {
+    if (ratio >= 1) {
+      stars = 2;
+    } else if (ratio > 0.1 || topic.masteredWordIds.length >= 1) {
+      stars = 1;
+    }
+  } else {
+    stars = 0;
   }
 
-  topic.stars = Math.max(topic.stars, stars);
+  topic.stars = Math.min(Math.max(topic.stars, stars), maxTopicStars);
   topic.lastPlayedAt = new Date().toISOString();
   topics[topicId] = topic;
 
@@ -84,7 +95,14 @@ export function checkAndClaimTopicMasteryBonus(
   const topic = topics[topicId];
   const claimedList = currentStats.claimedTopicBonusIds || [];
 
-  if (!topic || topic.stars < 3 || claimedList.includes(topicId)) {
+  const isMastered = Boolean(
+    topic &&
+    totalWordsInTopic >= 5 &&
+    topic.masteredWordIds &&
+    topic.masteredWordIds.length >= totalWordsInTopic
+  );
+
+  if (!topic || !isMastered || claimedList.includes(topicId)) {
     return { claimed: false, bonusStars: 0, updatedStats: currentStats };
   }
 

@@ -28,6 +28,9 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
     : topic.topic_name[language] || topic.topic_name.en || topic.topic_id;
   const secondaryTitle = isLatvianCourse ? topic.topic_name.ru : topic.topic_name.en;
   const stars = progress?.stars || 0;
+  const totalCount = topic.words.length;
+  const topicMaxStars = totalCount < 5 ? 0 : totalCount <= 8 ? 2 : 3;
+  const starSlots = Array.from({ length: topicMaxStars }, (_, i) => i + 1);
 
   const MODES: { id: GameMode; title: string; desc: string; icon: React.ReactNode; color: string; border: string; bg: string }[] = [
     {
@@ -117,18 +120,25 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
         </div>
 
         {/* Stars */}
-        <div className="flex items-center gap-1.5 bg-amber-50 border-2 border-amber-300 px-4 py-2 rounded-2xl">
-          {[1, 2, 3].map((starIndex) => (
-            <span
-              key={starIndex}
-              className={`text-2xl sm:text-3xl ${
-                starIndex <= stars ? 'text-amber-400' : 'text-slate-200'
-              }`}
-            >
-              ★
-            </span>
-          ))}
-        </div>
+        {topicMaxStars > 0 ? (
+          <div className="flex items-center gap-1.5 bg-amber-50 border-2 border-amber-300 px-4 py-2 rounded-2xl">
+            {starSlots.map((starIndex) => (
+              <span
+                key={starIndex}
+                className={`text-2xl sm:text-3xl ${
+                  starIndex <= stars ? 'text-amber-400' : 'text-slate-200'
+                }`}
+              >
+                ★
+              </span>
+            ))}
+          </div>
+        ) : (
+          <div className="flex items-center gap-1.5 bg-slate-100 border-2 border-slate-200 px-3 py-1.5 rounded-2xl text-xs font-bold text-slate-500">
+            <span>💡</span>
+            <span>{t.miniTopicComplete}</span>
+          </div>
+        )}
       </div>
 
       {/* Games List */}

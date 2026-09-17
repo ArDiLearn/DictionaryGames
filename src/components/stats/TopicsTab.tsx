@@ -129,7 +129,7 @@ export const TopicsTab: React.FC<TopicsTabProps> = ({
               <div className="flex items-center gap-2 shrink-0">
                 {/* Stars */}
                 <div className="flex items-center">
-                  {[1, 2, 3].map((starIdx) => (
+                  {Array.from({ length: total < 5 ? 0 : total <= 8 ? 2 : 3 }, (_, i) => i + 1).map((starIdx) => (
                     <span
                       key={starIdx}
                       className={`text-sm ${

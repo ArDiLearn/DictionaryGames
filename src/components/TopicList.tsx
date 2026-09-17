@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Topic, Language, TopicProgress, Grade, LearningCourse, ExamResult } from '../types';
 import { TopicCard } from './TopicCard';
 import { ExamCard } from './ExamCard';
@@ -79,7 +79,19 @@ export const TopicList: React.FC<TopicListProps> = ({
   );
 
   const mainTopics = filteredTopics.filter((t) => !isTopicExtra(t.topic_id, selectedGrades));
-  const extraTopics = filteredTopics.filter((t) => isTopicExtra(t.topic_id, selectedGrades));
+  const extraTopics = useMemo(() => {
+    const list = filteredTopics.filter((t) => isTopicExtra(t.topic_id, selectedGrades));
+    if (!selectedGrades.some((g) => g >= 2)) {
+      return list;
+    }
+    return [...list].sort((a, b) => {
+      const aNew = hasNewWordsForGrades(a, selectedGrades);
+      const bNew = hasNewWordsForGrades(b, selectedGrades);
+      if (aNew && !bNew) return -1;
+      if (!aNew && bNew) return 1;
+      return 0;
+    });
+  }, [filteredTopics, selectedGrades]);
 
   const displayName = getPlayerDisplayName(playerName, language);
 

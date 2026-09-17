@@ -47,6 +47,7 @@ import {
   GRADE_3_MAIN_TOPICS,
   EXTRA_TOPICS,
   isTopicExtra,
+  hasNewWordsForGrades,
   GRADE_3_EXTRA_DUPLICATES,
 } from './utils/i18n';
 
@@ -176,6 +177,12 @@ export const App: React.FC = () => {
       if (isExtraA && !isExtraB) return 1;
       if (!isExtraA && isExtraB) return -1;
       if (isExtraA && isExtraB) {
+        if (selectedGrades.some((g) => g >= 2)) {
+          const aNew = hasNewWordsForGrades(a, selectedGrades);
+          const bNew = hasNewWordsForGrades(b, selectedGrades);
+          if (aNew && !bNew) return -1;
+          if (!aNew && bNew) return 1;
+        }
         return EXTRA_TOPICS.indexOf(a.topic_id) - EXTRA_TOPICS.indexOf(b.topic_id);
       }
       return 0;

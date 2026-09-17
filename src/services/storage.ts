@@ -748,7 +748,9 @@ export function recordExamAttempt(
   return { results: updatedResults, history: newHistory };
 }
 
-// --- Progression & Titles Domains ---
+// --- Progression, Titles & Exam Domains ---
 export * from './progression';
 export * from './titles';
+export * from './examSession';
+
 

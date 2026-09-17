@@ -27,6 +27,15 @@ const getTargetWord = (word: Word, currentCourse: LearningCourse): string => {
   return word.en;
 };
 
+function shuffleArray<T>(array: T[]): T[] {
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
 export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
   topic,
   language,
@@ -36,6 +45,9 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
   onBack,
 }) => {
   const t = translations[language];
+  const [shuffledWords, setShuffledWords] = useState<Word[]>(() =>
+    shuffleArray(topic.words || [])
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [availableTiles, setAvailableTiles] = useState<LetterTile[]>([]);
   const [selectedTiles, setSelectedTiles] = useState<LetterTile[]>([]);
@@ -44,7 +56,13 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
   const [wrongVariants, setWrongVariants] = useState<string[]>([]);
   const [score, setScore] = useState(0);
 
-  const currentWord: Word | undefined = topic.words[currentIndex];
+  useEffect(() => {
+    setShuffledWords(shuffleArray(topic.words || []));
+    setCurrentIndex(0);
+    setScore(0);
+  }, [topic]);
+
+  const currentWord: Word | undefined = shuffledWords[currentIndex];
   const targetWord = currentWord ? getTargetWord(currentWord, course) : '';
 
   useEffect(() => {
@@ -67,7 +85,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
     }));
 
     // Shuffle tiles
-    setAvailableTiles([...tiles].sort(() => 0.5 - Math.random()));
+    setAvailableTiles(shuffleArray(tiles));
   }, [currentIndex, currentWord, course]);
 
   const handleSelectTile = (tile: LetterTile) => {
@@ -92,10 +110,10 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
         onRecordResult(currentWord.id, true);
 
         setTimeout(() => {
-          if (currentIndex + 1 < topic.words.length) {
+          if (currentIndex + 1 < shuffledWords.length) {
             setCurrentIndex((prev) => prev + 1);
           } else {
-            onComplete(score + 1, topic.words.length);
+            onComplete(score + 1, shuffledWords.length);
           }
         }, 1200);
       } else {
@@ -163,7 +181,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
             ⭐ {score}
           </div>
           <div className="px-3 py-1 rounded-2xl bg-amber-50 border-2 border-amber-200 text-amber-700 font-black text-sm">
-            {currentIndex + 1} / {topic.words.length}
+            {currentIndex + 1} / {shuffledWords.length}
           </div>
         </div>
       </div>
@@ -172,7 +190,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
       <div className="w-full h-3 bg-slate-200 rounded-full mb-6 overflow-hidden border border-slate-300">
         <div
           className="h-full bg-amber-400 rounded-full transition-all duration-300"
-          style={{ width: `${((currentIndex + 1) / topic.words.length) * 100}%` }}
+          style={{ width: `${((currentIndex + 1) / shuffledWords.length) * 100}%` }}
         />
       </div>
 

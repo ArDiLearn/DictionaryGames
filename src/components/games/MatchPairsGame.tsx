@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Topic, Language, LearningCourse } from '../../types';
+import { Word, Topic, Language, LearningCourse } from '../../types';
 import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations, getWordsPlural } from '../../utils/i18n';
@@ -22,6 +22,15 @@ interface MatchCard {
   matched: boolean;
 }
 
+function shuffleArray<T>(array: T[]): T[] {
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
 export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
   topic,
   language,
@@ -31,14 +40,23 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
   onBack,
 }) => {
   const t = translations[language];
+  const [shuffledWords, setShuffledWords] = useState<Word[]>(() =>
+    shuffleArray(topic.words || [])
+  );
   const [roundOffset, setRoundOffset] = useState(0);
   const [cards, setCards] = useState<MatchCard[]>([]);
   const [selectedCard, setSelectedCard] = useState<MatchCard | null>(null);
   const [wrongCardIds, setWrongCardIds] = useState<string[]>([]);
   const [totalMatched, setTotalMatched] = useState(0);
 
+  useEffect(() => {
+    setShuffledWords(shuffleArray(topic.words || []));
+    setRoundOffset(0);
+    setTotalMatched(0);
+  }, [topic]);
+
   const ROUND_SIZE = 4;
-  const currentBatch = topic.words.slice(roundOffset, roundOffset + ROUND_SIZE);
+  const currentBatch = shuffledWords.slice(roundOffset, roundOffset + ROUND_SIZE);
 
   useEffect(() => {
     if (currentBatch.length === 0) return;
@@ -60,11 +78,11 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
       matched: false,
     }));
 
-    const shuffled = [...targetCards, ...transCards].sort(() => 0.5 - Math.random());
+    const shuffled = shuffleArray([...targetCards, ...transCards]);
     setCards(shuffled);
     setSelectedCard(null);
     setWrongCardIds([]);
-  }, [roundOffset, course]);
+  }, [roundOffset, course, shuffledWords]);
 
   const handleCardClick = (card: MatchCard) => {
     if (card.matched || wrongCardIds.length > 0) return;
@@ -113,10 +131,10 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
       if (remainingUnmatched.length === 0) {
         // Move to next round or finish
         setTimeout(() => {
-          if (roundOffset + ROUND_SIZE < topic.words.length) {
+          if (roundOffset + ROUND_SIZE < shuffledWords.length) {
             setRoundOffset((prev) => prev + ROUND_SIZE);
           } else {
-            onComplete(nextMatched, topic.words.length);
+            onComplete(nextMatched, shuffledWords.length);
           }
         }, 800);
       }
@@ -152,7 +170,7 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
 
         <div className="flex items-center gap-2">
           <div className="px-3 py-1 rounded-2xl bg-emerald-50 border-2 border-emerald-200 text-emerald-700 font-black text-sm">
-            {totalMatched} / {topic.words.length} {getWordsPlural(topic.words.length, language)}
+            {totalMatched} / {shuffledWords.length} {getWordsPlural(shuffledWords.length, language)}
           </div>
         </div>
       </div>

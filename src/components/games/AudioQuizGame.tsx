@@ -15,6 +15,15 @@ interface AudioQuizGameProps {
   onBack: () => void;
 }
 
+function shuffleArray<T>(array: T[]): T[] {
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
 export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
   topic,
   allTopics,
@@ -25,6 +34,9 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
   onBack,
 }) => {
   const t = translations[language];
+  const [shuffledWords, setShuffledWords] = useState<Word[]>(() =>
+    shuffleArray(topic.words || [])
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [options, setOptions] = useState<Word[]>([]);
   const [selectedWordId, setSelectedWordId] = useState<string | null>(null);
@@ -32,7 +44,13 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [score, setScore] = useState(0);
 
-  const currentWord: Word | undefined = topic.words[currentIndex];
+  useEffect(() => {
+    setShuffledWords(shuffleArray(topic.words || []));
+    setCurrentIndex(0);
+    setScore(0);
+  }, [topic]);
+
+  const currentWord: Word | undefined = shuffledWords[currentIndex];
 
   const playVoice = () => {
     if (!currentWord) return;
@@ -66,9 +84,9 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
       pool = [...pool, ...externalWords];
     }
 
-    const shuffledPool = [...pool].sort(() => 0.5 - Math.random());
+    const shuffledPool = shuffleArray(pool);
     const distractors = shuffledPool.slice(0, 3);
-    const combined = [currentWord, ...distractors].sort(() => 0.5 - Math.random());
+    const combined = shuffleArray([currentWord, ...distractors]);
     setOptions(combined);
   }, [currentIndex, currentWord]);
 
@@ -90,10 +108,10 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
     onRecordResult(currentWord.id, isCorrect);
 
     setTimeout(() => {
-      if (currentIndex + 1 < topic.words.length) {
+      if (currentIndex + 1 < shuffledWords.length) {
         setCurrentIndex((prev) => prev + 1);
       } else {
-        onComplete(score + (isCorrect ? 1 : 0), topic.words.length);
+        onComplete(score + (isCorrect ? 1 : 0), shuffledWords.length);
       }
     }, 1200);
   };
@@ -120,7 +138,7 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
             ⭐ {score}
           </div>
           <div className="px-3 py-1 rounded-2xl bg-sky-50 border-2 border-sky-200 text-sky-700 font-black text-sm">
-            {currentIndex + 1} / {topic.words.length}
+            {currentIndex + 1} / {shuffledWords.length}
           </div>
         </div>
       </div>
@@ -129,7 +147,7 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
       <div className="w-full h-2.5 sm:h-3 bg-slate-200 rounded-full mb-3 sm:mb-4 overflow-hidden border border-slate-300">
         <div
           className="h-full bg-sky-500 rounded-full transition-all duration-300"
-          style={{ width: `${((currentIndex + 1) / topic.words.length) * 100}%` }}
+          style={{ width: `${((currentIndex + 1) / shuffledWords.length) * 100}%` }}
         />
       </div>
 

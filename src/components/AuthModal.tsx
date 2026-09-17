@@ -21,6 +21,56 @@ interface AuthModalProps {
   onSyncCompleted: () => void;
 }
 
+function formatAuthError(error: string, language: Language): string {
+  const isRu = language === 'ru';
+  const lower = error.toLowerCase();
+
+  if (
+    lower.includes('rate limit') ||
+    lower.includes('over_email_send_rate_limit')
+  ) {
+    return isRu
+      ? 'Слишком много попыток входа/регистрации. Подождите несколько минут или отключите «Confirm email» в Supabase.'
+      : 'Pārāk daudz mēģinājumu. Lūdzu, uzgaidiet dažas minūtes vai atslēdziet «Confirm email» Supabase.';
+  }
+
+  if (
+    lower.includes('already registered') ||
+    lower.includes('already exists') ||
+    lower.includes('user_already_exists')
+  ) {
+    return isRu
+      ? 'Игрок с таким логином уже зарегистрирован! Переключитесь на «Вход в профиль».'
+      : 'Spēlētājs ar šādu vārdu jau ir reģistrēts! Pārslēdzieties uz «Ieiet profilā».';
+  }
+
+  if (
+    lower.includes('invalid login credentials') ||
+    lower.includes('invalid_credentials')
+  ) {
+    return isRu
+      ? 'Неверный логин или пароль. Пожалуйста, проверьте ввод.'
+      : 'Nepareizs lietotājvārds vai parole. Lūdzu, pārbaudiet ievadītos datus.';
+  }
+
+  if (
+    lower.includes('is invalid') &&
+    (lower.includes('email') || lower.includes('address'))
+  ) {
+    return isRu
+      ? 'Не удалось создать профиль: в настройках Supabase включено «Confirm email» (подтверждение почты). Отключите его в панели Supabase (Authentication -> Providers -> Email).'
+      : 'Neizdevās izveidot profilu: Supabase ir ieslēgts «Confirm email». Atslēdziet to Supabase panelī (Authentication -> Providers -> Email).';
+  }
+
+  if (lower.includes('password should be at least')) {
+    return isRu
+      ? 'Пароль должен содержать не менее 6 символов.'
+      : 'Parolei jābūt vismaz 6 rakstzīmes garai.';
+  }
+
+  return error;
+}
+
 export const AuthModal: React.FC<AuthModalProps> = ({
   language,
   isOpen,
@@ -73,7 +123,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
       if (error) {
         sounds.playWrong();
-        setMessage({ type: 'error', text: error });
+        setMessage({ type: 'error', text: formatAuthError(error, language) });
       } else {
         sounds.playCorrect();
         setCurrentUser(user);
@@ -92,7 +142,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
       if (error) {
         sounds.playWrong();
-        setMessage({ type: 'error', text: error });
+        setMessage({ type: 'error', text: formatAuthError(error, language) });
       } else {
         sounds.playCorrect();
         setCurrentUser(user);

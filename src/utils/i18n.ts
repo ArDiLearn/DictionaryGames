@@ -977,6 +977,7 @@ export const GRADE_1_TOPIC_ORDER: string[] = [
 
 export const GRADE_2_TOPIC_ORDER: string[] = [
   ...GRADE_2_MAIN_TOPICS,
+  // Extra topics with new Grade 2 words placed first
   'christmas_and_holidays',
   'circus',
   'positions_plus',
@@ -984,28 +985,30 @@ export const GRADE_2_TOPIC_ORDER: string[] = [
   'town_plus',
   'friendship',
   'routine_and_time',
+  'instructions',
+  'adjectives_plus',
+  'garden',
   'food_and_drink_plus',
   'fruit_and_vegetables_plus',
   'family_plus',
-  'garden',
-  'building_materials',
   'wild_animals',
   'nature',
-  'adjectives_plus',
-  'farm_animals_plus',
+  'building_materials',
   'art_and_games_plus',
-  'toys_plus',
-  'actions',
+  'helper_words',
+  'other_words',
+  // Extra topics without new Grade 2 words
   'days_of_the_week',
   'shapes',
+  'actions',
   'classroom_objects_plus',
+  'farm_animals_plus',
+  'toys_plus',
+  'feelings',
   'introductions',
   'questions',
-  'instructions',
   'places',
-  'helper_words',
   'pronouns',
-  'other_words',
 ];
 
 export const GRADE_3_TOPIC_ORDER: string[] = [

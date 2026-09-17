@@ -109,6 +109,18 @@ export async function signUpUser(
   if (error) {
     return { user: null, error: error.message };
   }
+
+  // If signUp succeeded without an active session (e.g. if auto-sign-in is needed)
+  if (data.user && !data.session) {
+    const signInResult = await client.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (!signInResult.error && signInResult.data.user) {
+      return { user: signInResult.data.user, error: null };
+    }
+  }
+
   return { user: data.user, error: null };
 }
 
@@ -176,13 +188,17 @@ export async function syncProgressToCloud(
 
   try {
     // 1. Save / Update User Profile
-    await client.from('profiles').upsert({
+    const { error: profileErr } = await client.from('profiles').upsert({
       id: userId,
       player_name: stats.playerName,
       avatar: stats.avatar,
       streak: stats.streak,
       updated_at: new Date().toISOString(),
     });
+    if (profileErr) {
+      console.error('Error saving profile to Supabase:', profileErr);
+      return false;
+    }
 
     // 2. Batch upsert Topic Progress
     const topicRows = Object.values(topicProgress).map((tp) => ({
@@ -194,9 +210,13 @@ export async function syncProgressToCloud(
     }));
 
     if (topicRows.length > 0) {
-      await client.from('topic_progress').upsert(topicRows, {
+      const { error: topicErr } = await client.from('topic_progress').upsert(topicRows, {
         onConflict: 'user_id,topic_id',
       });
+      if (topicErr) {
+        console.error('Error saving topic_progress to Supabase:', topicErr);
+        return false;
+      }
     }
 
     // 3. Batch upsert Word Progress
@@ -211,9 +231,13 @@ export async function syncProgressToCloud(
     }));
 
     if (wordRows.length > 0) {
-      await client.from('word_progress').upsert(wordRows, {
+      const { error: wordErr } = await client.from('word_progress').upsert(wordRows, {
         onConflict: 'user_id,word_id',
       });
+      if (wordErr) {
+        console.error('Error saving word_progress to Supabase:', wordErr);
+        return false;
+      }
     }
 
     return true;

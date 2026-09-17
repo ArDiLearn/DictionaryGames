@@ -19,6 +19,7 @@ interface HeaderProps {
   onOpenStats: () => void;
   onUpdateStats: (newStats: UserStats) => void;
   onHomeClick: () => void;
+  isGameActive?: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -34,6 +35,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenStats,
   onUpdateStats,
   onHomeClick,
+  isGameActive = false,
 }) => {
   const t = translations[language];
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -201,15 +203,27 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Cloud Sync Button */}
           <button
             onClick={() => {
+              if (isGameActive) return;
               sounds.playClick();
               onOpenSync();
             }}
+            disabled={isGameActive}
             className={`h-10 px-2.5 rounded-2xl border-2 flex items-center gap-1.5 transition-all text-sm font-bold shrink-0 ${
-              isCloudSynced
-                ? 'bg-emerald-50 border-emerald-300 text-emerald-700 hover:bg-emerald-100'
-                : 'bg-indigo-50 border-indigo-200 text-indigo-600 hover:bg-indigo-100'
+              isGameActive
+                ? 'opacity-50 cursor-not-allowed bg-slate-100 border-slate-200 text-slate-400'
+                : isCloudSynced
+                ? 'bg-emerald-50 border-emerald-300 text-emerald-700 hover:bg-emerald-100 cursor-pointer'
+                : 'bg-indigo-50 border-indigo-200 text-indigo-600 hover:bg-indigo-100 cursor-pointer'
             }`}
-            title={isCloudSynced ? t.sync.synced : t.sync.notSynced}
+            title={
+              isGameActive
+                ? language === 'ru'
+                  ? 'Синхронизация на паузе во время игры'
+                  : 'Sinhronizācija ir pauzēta spēles laikā'
+                : isCloudSynced
+                ? t.sync.synced
+                : t.sync.notSynced
+            }
           >
             {isCloudSynced ? (
               <div className="relative">

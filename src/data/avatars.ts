@@ -1,6 +1,6 @@
 import { AvatarShopItem } from '../types';
 
-export const DEFAULT_UNLOCKED_AVATARS = ['🦁', '🐱', '🐶', '🐰'];
+export const DEFAULT_UNLOCKED_AVATARS = ['🦁', '🐱', '🐈', '🐶', '🐰'];
 
 export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
   // 1. Starter (0 ⭐ - Unlocked from start)
@@ -14,7 +14,14 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
   {
     id: 'cat',
     emoji: '🐱',
-    name: { ru: 'Котёнок', lv: 'Kaķēns' },
+    name: { ru: 'Котёнок (мордочка)', lv: 'Kaķēns (galva)' },
+    price: 0,
+    category: 'starter',
+  },
+  {
+    id: 'ginger_cat',
+    emoji: '🐈',
+    name: { ru: 'Рыжий котёнок', lv: 'Rudais kaķēns' },
     price: 0,
     category: 'starter',
   },
@@ -92,6 +99,13 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
   },
 
   // 3. Средние / Vidējie (50 ⭐)
+  {
+    id: 'black_cat',
+    emoji: '🐈‍⬛',
+    name: { ru: 'Чёрный котёнок', lv: 'Melnais kaķēns' },
+    price: 50,
+    category: 'medium',
+  },
   {
     id: 'unicorn',
     emoji: '🦄',
@@ -224,6 +238,21 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
   },
 
   // 6. Мифические и Космические / Mītiskie un Kosmiskie (1000+ ⭐)
+  {
+    id: 'cosmic_kitten',
+    emoji: '🐈✨',
+    name: { ru: 'Звёздный Котёнок', lv: 'Zvaigžņu Kaķēns' },
+    price: 1000,
+    category: 'mythic',
+    vfx: {
+      bgGradient: 'bg-gradient-to-br from-indigo-950 via-purple-900 to-pink-950',
+      borderClass: 'border-pink-400/80 ring-2 ring-pink-400/50 shadow-pink-500/30',
+      glowClass: 'shadow-lg shadow-pink-600/40',
+      sparkles: ['🐾', '✨', '⭐', '💖'],
+      theme: 'kitten',
+      cardBg: 'bg-gradient-to-b from-pink-950/20 via-purple-900/15 to-indigo-950/10 border-2 border-pink-400',
+    },
+  },
   {
     id: 'cosmic_lion',
     emoji: '🦁✨',

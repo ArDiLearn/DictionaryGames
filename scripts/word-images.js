@@ -466,6 +466,9 @@ export const WORD_IMAGES = {
   "with": "🧑‍🤝‍🧑",
   "yes": "✅",
   "yesterday": "⏮️",
-  "your": "🫵"
+  "your": "🫵",
+  "good": "👍",
+  "excellent": "🌟",
+  "ok": "👌"
 };
 

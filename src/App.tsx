@@ -203,7 +203,7 @@ export const App: React.FC = () => {
   };
 
   const handleSelectAllGrades = () => {
-    const next: Grade[] = [1, 2, 3];
+    const next: Grade[] = [1, 2, 3, 4];
     setSelectedGrades(next);
     saveStoredGrades(next);
     if (selectedTopic || activeExamGrade) {

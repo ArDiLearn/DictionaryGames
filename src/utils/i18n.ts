@@ -175,6 +175,8 @@ export interface Translations {
   flashcardsComplete: string;
   flashcardsFinishedHeadline: string;
   flashcardsNoRewardHint: string;
+  miniTopicComplete: string;
+  miniTopicNoRewardHint: string;
   cardsViewed: string;
   progressStatsTitle: string;
   statsModal: {
@@ -438,6 +440,8 @@ export const translations: Record<Language, Translations> = {
     flashcardsComplete: 'Карточки пройдены!',
     flashcardsFinishedHeadline: 'Отличная тренировка!',
     flashcardsNoRewardHint: 'В режиме карточек звёзды не начисляются. Играй в игры, чтобы заработать звёзды!',
+    miniTopicComplete: 'Тренировка завершена!',
+    miniTopicNoRewardHint: 'В теме меньше 5 слов — это режим тренировки. Звёзды в копилку даются в темах от 5 слов!',
     cardsViewed: 'Карточек повторено',
     progressStatsTitle: 'Статистика прогресса',
     statsModal: {
@@ -699,6 +703,8 @@ export const translations: Record<Language, Translations> = {
     flashcardsComplete: 'Kartītes pabeigtas!',
     flashcardsFinishedHeadline: 'Lielisks treniņš!',
     flashcardsNoRewardHint: 'Kartīšu režīmā zvaigznes netiek piešķirtas. Spēlē spēles, lai nopelnītu zvaigznes!',
+    miniTopicComplete: 'Treniņš pabeigts!',
+    miniTopicNoRewardHint: 'Tēmā ir mazāk par 5 vārdiem — treniņa režīms. Zvaigznes tiek piešķirtas tēmās ar vismaz 5 vārdiem!',
     cardsViewed: 'Atkārtotās kartītes',
     progressStatsTitle: 'Progresa statistika',
     statsModal: {

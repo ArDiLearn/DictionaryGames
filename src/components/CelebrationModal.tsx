@@ -10,7 +10,9 @@ interface CelebrationModalProps {
   correctCount: number;
   totalCount: number;
   stars: number;
+  maxStars?: number;
   isRewardDisabled?: boolean;
+  isMiniTopicPractice?: boolean;
   onRestart: () => void;
   onHome: () => void;
 }
@@ -20,14 +22,17 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
   correctCount,
   totalCount,
   stars,
+  maxStars = 3,
   isRewardDisabled,
+  isMiniTopicPractice,
   onRestart,
   onHome,
 }) => {
   const t = translations[language];
+  const isNoReward = isRewardDisabled || isMiniTopicPractice || maxStars === 0;
 
   useEffect(() => {
-    if (isRewardDisabled) {
+    if (isNoReward) {
       sounds.playCorrect();
     } else {
       sounds.playFanfare();
@@ -56,11 +61,14 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
     }, 300);
 
     return () => clearInterval(interval);
-  }, [isRewardDisabled]);
+  }, [isNoReward]);
 
   const percentage = Math.round((correctCount / Math.max(1, totalCount)) * 100);
   const headline =
     percentage >= 80 ? t.awesome : percentage >= 50 ? t.goodJob : t.tryAgain;
+
+  const starCount = Math.max(1, Math.min(3, maxStars));
+  const starSlots = Array.from({ length: starCount }, (_, i) => i + 1);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-pop">
@@ -71,13 +79,17 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
 
         {/* Mascot / Trophy */}
         <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-3xl bg-gradient-to-tr from-indigo-200 to-purple-300 border-4 border-indigo-200 flex items-center justify-center text-5xl sm:text-6xl shadow-lg mb-4 animate-bounce">
-          {isRewardDisabled ? '🎴' : '🏆'}
+          {isRewardDisabled ? '🎴' : isMiniTopicPractice ? '💡' : '🏆'}
         </div>
 
         <div className="flex items-center justify-center gap-1 text-indigo-500 mb-1">
           <Sparkles className="w-5 h-5" />
           <span className="text-xs font-black uppercase tracking-wider">
-            {isRewardDisabled ? t.flashcardsComplete : t.roundComplete}
+            {isRewardDisabled
+              ? t.flashcardsComplete
+              : isMiniTopicPractice
+              ? t.miniTopicComplete
+              : t.roundComplete}
           </span>
           <Sparkles className="w-5 h-5" />
         </div>
@@ -86,10 +98,10 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
           {isRewardDisabled ? t.flashcardsFinishedHeadline : headline}
         </h2>
 
-        {/* Stars - only shown when reward is enabled */}
-        {!isRewardDisabled && (
+        {/* Stars - only shown when reward is enabled and maxStars > 0 */}
+        {!isNoReward && (
           <div className="flex items-center justify-center gap-2 mb-4">
-            {[1, 2, 3].map((starIndex) => (
+            {starSlots.map((starIndex) => (
               <span
                 key={starIndex}
                 className={`text-4xl sm:text-5xl transition-all duration-300 ${
@@ -104,14 +116,19 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
           </div>
         )}
 
-        {/* Reward pill or Flashcards note */}
+        {/* Reward pill or Practice note */}
         <div className="flex flex-col items-center gap-1.5 mb-6">
-          {!isRewardDisabled ? (
+          {!isNoReward ? (
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl px-4 py-2 border-2 border-amber-300 shadow-xs">
               <span className="text-xl animate-bounce">⭐</span>
               <span className="text-sm sm:text-base font-black text-amber-900">
                 +{stars} {t.starsAddedToBank}
               </span>
+            </div>
+          ) : isMiniTopicPractice ? (
+            <div className="inline-flex items-center gap-2 bg-amber-50 rounded-2xl px-4 py-2.5 border-2 border-amber-200 text-amber-900 text-xs sm:text-sm font-bold shadow-xs max-w-xs">
+              <span className="text-base">💡</span>
+              <span>{t.miniTopicNoRewardHint}</span>
             </div>
           ) : (
             <div className="inline-flex items-center gap-2 bg-indigo-50 rounded-2xl px-4 py-2.5 border-2 border-indigo-200 text-indigo-800 text-xs sm:text-sm font-bold shadow-xs max-w-xs">

@@ -1,4 +1,4 @@
-Numbers,Skaitļi,Числа,Класс
+Numbers 1-10,Skaitļi 1-10,Числа 1-10,Класс
 one,viens,один,1
 two,divi,два,1
 three,trīs,три,1
@@ -9,6 +9,8 @@ seven,septiņi,семь,1
 eight,astoņi,восемь,1
 nine,deviņi,девять,1
 ten,desmit,десять,1
+,,,
+Numbers 11-20,Skaitļi 11-20,Числа 11-20,
 eleven,vienpadsmit,одиннадцать,1
 twelve,divpadsmit,двенадцать,1
 thirteen,trīspadsmit,тринадцать,1
@@ -55,23 +57,25 @@ winter,ziema,зима,3
 hot,karsts,жаркий,3
 cold,auksts,холодный,3
 ,,,
-Classroom objects,Klases aprīkojums,Оборудование класса,
-window,logs,окно,1
-poster,plakāts,плакат,1
-bag,soma,портфель,1
-bin,miskaste,мусорное ведро,1
-chair,krēsls,стул,1
-door,durvis,дверь,1
-cupboard,skapītis,шкафчик,1
-desk,skolas sols,парта,1
-book,grāmata,книга,1
-board,tāfele,доска,1
+Stationery,Skolas piederumi,Школьные принадлежности,
+pen,pildspalva,ручка,1
+pencil,zīmulis,карандаш,1
 pencil sharpener,asināmais,точилка,1
 pencil case,penālis,пенал,1
 ruler,lineāls,линейка,1
 rubber,dzēšgumija,ластик,1
-pen,pildspalva,ручка,1
-pencil,zīmulis,карандаш,1
+book,grāmata,книга,1
+bag,soma,портфель,1
+,,,
+Classroom,Klases telpa,Классная комната,
+desk,skolas sols,парта,1
+chair,krēsls,стул,1
+board,tāfele,доска,1
+cupboard,skapītis,шкафчик,1
+door,durvis,дверь,1
+window,logs,окно,1
+bin,miskaste,мусорное ведро,1
+poster,plakāts,плакат,1
 ,,,
 Family,Ģimene,Семья,
 mum,mamma,мама,1
@@ -472,9 +476,6 @@ riddle,mīkla,загадка,2
 collage,kolāža,коллаж,2
 materials,materiāli,материалы,2
 ,,,
-Toys +,Rotaļlietas +,Игрушки +,
-toys,rotaļlietas,игрушки,1
-,,,
 Adjectives +,Īpašības vārdi +,Прилагательные +,
 greedy,alkatīgs,жадный,2
 nice,jauks,"милый, приятный",2
@@ -543,6 +544,8 @@ language,valoda,"язык, речь",2
 country,valsts,страна,1
 wheel,ritenis,колесо,1
 ruby,rubīns,рубин,1
+toys,rotaļlietas,игрушки,1
+horse,zirgs,лошадь,1
 noise,troksnis,шум,2
 ability,spēja,"умение, способность",2
 ,,,
@@ -617,6 +620,7 @@ Directions,Virzieni,Направления,
 turn left,pagriezties pa kreisi,повернуть налево,3
 turn right,pagriezties pa labi,повернуть направо,3
 go straight on,doties taisni,идти прямо,3
+stop,apstāties,остановиться,3
 ,,,
 Sports,Sports,Спорт,
 do athletics,nodarboties ar vieglatlētiku,заниматься лёгкой атлетикой,3
@@ -645,9 +649,6 @@ hunt animals,medīt dzīvniekus,охотиться на животных,3
 like fruit,mīlēt augļus,любить фрукты,3
 live in a group,dzīvot grupā,жить в группе,3
 sleep in a tree,gulēt kokā,спать на дереве,3
-,,,
-Farm animals +,Lauku dzīvnieki +,Фермерские животные +,
-horse,zirgs,лошадь,1
 ,,,
 Christmas and holidays,Ziemassvētki un svētki,Рождество и праздники,
 Christmas,Ziemassvētki,Рождество,2

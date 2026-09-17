@@ -1,17 +1,10 @@
 import { createClient, SupabaseClient, User } from '@supabase/supabase-js';
 import { TopicProgress, WordProgress, UserStats } from '../types';
 
-// Pre-configured Supabase Project settings
-const DEFAULT_SUPABASE_URL = 'https://pxexrgtoaeudqeceqeoq.supabase.co';
-const DEFAULT_SUPABASE_KEY = 'sb_publishable_sKx7Fs12mMWZlC-KXhdk-g_wuRrwMc9';
-
 export function getSupabaseConfig(): { url: string; key: string } {
-  const envUrl = (import.meta as unknown as { env: Record<string, string> }).env?.VITE_SUPABASE_URL;
-  const envKey = (import.meta as unknown as { env: Record<string, string> }).env?.VITE_SUPABASE_ANON_KEY;
-
   return {
-    url: envUrl || DEFAULT_SUPABASE_URL,
-    key: envKey || DEFAULT_SUPABASE_KEY,
+    url: import.meta.env.VITE_SUPABASE_URL || '',
+    key: import.meta.env.VITE_SUPABASE_ANON_KEY || '',
   };
 }
 

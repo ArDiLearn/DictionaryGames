@@ -780,9 +780,9 @@ export const ExamGame: React.FC<ExamGameProps> = ({
           </div>
         )}
 
-        {/* Answer Options for 'audio' and 'choice' */}
+        {/* Answer Options for 'audio' and 'choice' in 2x2 grid */}
         {currentQuestion.options && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-6">
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-4 mt-4 sm:mt-6">
             {currentQuestion.options.map((option, idx) => {
               const isSelected = selectedAnswer === option.text;
               let btnStyle = 'bg-white border-slate-200 hover:border-amber-400 text-slate-800 hover:bg-amber-50/50';
@@ -802,23 +802,23 @@ export const ExamGame: React.FC<ExamGameProps> = ({
                   key={`${option.text}-${idx}`}
                   disabled={isAnswered}
                   onClick={() => handleSelectChoice(option)}
-                  className={`relative p-4 sm:p-5 rounded-2xl border-3 font-black text-xl sm:text-2xl font-comic shadow-sm transition-all cursor-pointer flex items-center justify-center gap-3 min-h-[4.5rem] sm:min-h-[5rem] ${btnStyle}`}
+                  className={`relative p-2.5 sm:p-5 rounded-2xl border-3 font-black text-base sm:text-2xl font-comic shadow-sm transition-all cursor-pointer flex items-center justify-center gap-2 sm:gap-3 min-h-[3.75rem] sm:min-h-[5rem] ${btnStyle}`}
                 >
                   {option.word && (
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0 select-none">
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0 select-none">
                       <WordIllustration
                         word={option.word}
                         fallbackEmoji={currentQuestion.topicEmoji || '📖'}
-                        className="w-9 h-9 sm:w-11 sm:h-11 text-3xl sm:text-4xl"
+                        className="w-7 h-7 sm:w-11 sm:h-11 text-2xl sm:text-4xl"
                       />
                     </div>
                   )}
                   <span className="leading-snug">{option.text}</span>
                   {isAnswered && option.isCorrect && (
-                    <CheckCircle2 className="w-6 h-6 text-white absolute right-4" />
+                    <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-white absolute right-2 sm:right-4" />
                   )}
                   {isAnswered && isSelected && !option.isCorrect && (
-                    <XCircle className="w-6 h-6 text-white absolute right-4" />
+                    <XCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white absolute right-2 sm:right-4" />
                   )}
                 </button>
               );

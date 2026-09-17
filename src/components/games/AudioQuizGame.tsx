@@ -101,9 +101,9 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
   if (!currentWord) return null;
 
   return (
-    <div className="max-w-xl mx-auto px-4 py-4 flex flex-col items-center">
+    <div className="max-w-xl mx-auto px-4 py-3 sm:py-4 flex flex-col items-center">
       {/* Header */}
-      <div className="w-full flex items-center justify-between mb-4">
+      <div className="w-full flex items-center justify-between mb-3">
         <button
           onClick={() => {
             sounds.playClick();
@@ -126,7 +126,7 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
       </div>
 
       {/* Progress */}
-      <div className="w-full h-3 bg-slate-200 rounded-full mb-6 overflow-hidden border border-slate-300">
+      <div className="w-full h-2.5 sm:h-3 bg-slate-200 rounded-full mb-3 sm:mb-4 overflow-hidden border border-slate-300">
         <div
           className="h-full bg-sky-500 rounded-full transition-all duration-300"
           style={{ width: `${((currentIndex + 1) / topic.words.length) * 100}%` }}
@@ -134,35 +134,36 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
       </div>
 
       {/* Audio Prompter Card */}
-      <div className="w-full bg-white rounded-3xl border-4 border-sky-300 shadow-xl p-6 text-center mb-6 flex flex-col items-center">
-        <div className="flex items-center gap-1.5 text-xs font-bold text-sky-600 uppercase tracking-wider mb-3">
-          <Headphones className="w-4 h-4" />
+      <div className="w-full bg-white rounded-3xl border-4 border-sky-300 shadow-xl p-4 sm:p-5 text-center mb-3 sm:mb-4 flex flex-col items-center">
+        <div className="flex items-center gap-1.5 text-xs font-bold text-sky-600 uppercase tracking-wider mb-2">
+          <Headphones className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           <span>{t.modes.audio}</span>
         </div>
 
         {/* Big tactile speaker button */}
         <button
           onClick={playVoice}
-          className={`btn-3d w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-tr from-sky-400 to-indigo-500 border-4 border-white shadow-xl flex items-center justify-center text-white mb-3 hover:scale-105 active:scale-95 transition-all ${
-            isSpeaking ? 'ring-8 ring-sky-200 animate-pulse' : ''
+          className={`btn-3d w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-sky-400 to-indigo-500 border-4 border-white shadow-xl flex items-center justify-center text-white mb-2 hover:scale-105 active:scale-95 transition-all ${
+            isSpeaking ? 'ring-6 sm:ring-8 ring-sky-200 animate-pulse' : ''
           }`}
+          title={t.listen}
         >
-          <Volume2 className="w-14 h-14 sm:w-16 sm:h-16" />
+          <Volume2 className="w-10 h-10 sm:w-12 sm:h-12" />
         </button>
 
-        <p className="text-sm font-bold text-slate-500">
+        <p className="text-xs sm:text-sm font-bold text-slate-500">
           {t.audioPrompt}
         </p>
 
         {isAnswered && (
-          <div className="mt-3 text-lg font-black text-indigo-600 font-comic animate-pop">
+          <div className="mt-2 text-base sm:text-lg font-black text-indigo-600 font-comic animate-pop">
             {course === 'lv' ? currentWord.lv : currentWord.en}
           </div>
         )}
       </div>
 
-      {/* 4 Choices */}
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+      {/* 4 Choices in 2x2 Grid (2 columns on all devices so button 4 is always visible without scrolling) */}
+      <div className="w-full grid grid-cols-2 gap-2.5 sm:gap-3.5">
         {options.map((option) => {
           const translation = course === 'lv' ? option.ru : (option[language] || option.ru || option.lv);
           const isCorrect = option.id === currentWord.id;
@@ -185,7 +186,7 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
               key={option.id}
               disabled={isAnswered}
               onClick={() => handleSelectOption(option)}
-              className={`btn-3d p-4 rounded-3xl border-4 text-lg sm:text-xl font-black text-center shadow-md transition-all flex items-center justify-center min-h-[72px] ${btnStyle}`}
+              className={`btn-3d p-2.5 sm:p-4 rounded-2xl sm:rounded-3xl border-3 sm:border-4 text-base sm:text-xl font-black text-center shadow-md transition-all flex items-center justify-center min-h-[58px] sm:min-h-[72px] leading-snug ${btnStyle}`}
             >
               <span>{translation}</span>
             </button>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import confetti from 'canvas-confetti';
 import rawWordsData from './data/words.json';
-import { Topic, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress, LearningCourse, ExamResult, PlayerTitle } from './types';
+import { Topic, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress, LearningCourse, ExamResult } from './types';
 import { Header } from './components/Header';
 import { TopicList } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
@@ -18,10 +17,10 @@ import { PwaInstallPrompt } from './components/PwaInstallPrompt';
 import { AvatarShopModal } from './components/AvatarShopModal';
 import { ProgressStatsModal } from './components/ProgressStatsModal';
 import { TitleSelectModal } from './components/TitleSelectModal';
-import { trackGameStart, trackGameComplete, trackLanguageChange } from './utils/analytics';
-import { sounds } from './utils/soundEffects';
+import { trackGameStart, trackLanguageChange } from './utils/analytics';
 import { translations } from './utils/i18n';
 import { useNavigation } from './hooks/useNavigation';
+import { useGameRewards } from './hooks/useGameRewards';
 import {
   getStoredLanguage,
   saveStoredLanguage,
@@ -36,15 +35,10 @@ import {
   recordWordAttempt,
   mergeWithCloud,
   purchaseAvatar,
-  addEarnedStars,
   loadExamResults,
   loadExamHistory,
-  recordExamAttempt,
   equipTitle,
   evaluateUnlockedTitles,
-  recordGameModePlayed,
-  checkAndClaimTopicMasteryBonus,
-  checkAndClaimWordMilestones,
 } from './services/storage';
 import { getCurrentUser, getCurrentUserLogin } from './services/supabase';
 
@@ -100,11 +94,19 @@ export const App: React.FC = () => {
   const [isAvatarShopOpen, setIsAvatarShopOpen] = useState<boolean>(false);
   const [isStatsModalOpen, setIsStatsModalOpen] = useState<boolean>(false);
   const [isTitleSelectOpen, setIsTitleSelectOpen] = useState<boolean>(false);
-  const [unlockedTitleToast, setUnlockedTitleToast] = useState<PlayerTitle | null>(null);
-  const [bonusRewardToast, setBonusRewardToast] = useState<{ message: string; stars: number } | null>(null);
   const [wordProgress, setWordProgress] = useState<Record<string, WordProgress>>(() =>
     loadWordProgress(getStoredCourse())
   );
+  const {
+    celebration,
+    setCelebration,
+    unlockedTitleToast,
+    setUnlockedTitleToast,
+    bonusRewardToast,
+    setBonusRewardToast,
+    handleGameComplete: onGameComplete,
+    handleExamComplete,
+  } = useGameRewards(course, language, stats, setStats, setExamResults, setExamHistory);
 
   // Grade filtered topics: supports multi-selection of grades (e.g. [1, 2], [2, 3], [1], [2], [3], [1, 2, 3])
   const filteredTopics = useMemo(() => {
@@ -236,13 +238,6 @@ export const App: React.FC = () => {
     return topics.filter((t) => mainTopicIds.includes(t.topic_id));
   }, [topics, activeExamGrade]);
 
-  // Celebration state
-  const [celebration, setCelebration] = useState<{
-    correct: number;
-    total: number;
-    stars: number;
-    isRewardDisabled?: boolean;
-  } | null>(null);
 
   // Initialize and check cloud sync
   useEffect(() => {
@@ -326,17 +321,6 @@ export const App: React.FC = () => {
     setStats(titleResult.updatedStats);
   }, []);
 
-  useEffect(() => {
-    if (!unlockedTitleToast) return;
-    const timer = setTimeout(() => setUnlockedTitleToast(null), 5000);
-    return () => clearTimeout(timer);
-  }, [unlockedTitleToast]);
-
-  useEffect(() => {
-    if (!bonusRewardToast) return;
-    const timer = setTimeout(() => setBonusRewardToast(null), 5000);
-    return () => clearTimeout(timer);
-  }, [bonusRewardToast]);
 
   const handleLanguageChange = (newLang: Language) => {
     setLanguage(newLang);
@@ -431,70 +415,7 @@ export const App: React.FC = () => {
   };
 
   const handleGameComplete = (correctCount: number, totalCount: number) => {
-    if (!selectedTopic) return;
-
-    if (gameMode === 'flashcards') {
-      trackGameComplete('flashcards', selectedTopic.topic_id, correctCount, 0);
-      // Flashcards is a study mode: no reward is granted (no stars added to avatar bank)
-      setCelebration({
-        correct: correctCount,
-        total: totalCount,
-        stars: 0,
-        isRewardDisabled: true,
-      });
-      return;
-    }
-
-    const isFlawless = correctCount === totalCount && totalCount >= 4;
-    const gameStars = correctCount === totalCount ? 3 : correctCount >= Math.ceil(totalCount / 2) ? 2 : 1;
-    if (gameMode) {
-      trackGameComplete(gameMode, selectedTopic.topic_id, correctCount, gameStars);
-      recordGameModePlayed(gameMode, isFlawless);
-    }
-
-    // Add stars to user's piggy bank
-    let updatedStats = addEarnedStars(gameStars);
-
-    // Topic Mastery Bonus (+25 ⭐ for instructions, +10 ⭐ for >= 15 words, +5 ⭐ for others)
-    const mastery = checkAndClaimTopicMasteryBonus(
-      selectedTopic.topic_id,
-      selectedTopic.words.length,
-      course
-    );
-    if (mastery.claimed) {
-      updatedStats = mastery.updatedStats;
-      setBonusRewardToast({
-        message: `${translations[language].topicMasteryBonusToast} (${selectedTopic.topic_name[language] || selectedTopic.topic_name.ru})`,
-        stars: mastery.bonusStars,
-      });
-    }
-
-    // Word Milestones Bonus
-    const msResult = checkAndClaimWordMilestones(course);
-    if (msResult.totalBonusStars > 0) {
-      updatedStats = msResult.updatedStats;
-      setBonusRewardToast({
-        message: translations[language].wordMilestoneToast,
-        stars: msResult.totalBonusStars,
-      });
-    }
-
-    // Evaluate Unlocked Titles
-    const titleResult = evaluateUnlockedTitles(updatedStats);
-    if (titleResult.newlyUnlockedTitles.length > 0) {
-      setUnlockedTitleToast(titleResult.newlyUnlockedTitles[0]);
-      sounds.playFanfare();
-      confetti({ particleCount: 80, spread: 80, origin: { y: 0.4 } });
-    }
-
-    setStats(titleResult.updatedStats);
-
-    setCelebration({
-      correct: correctCount,
-      total: totalCount,
-      stars: gameStars,
-      isRewardDisabled: false,
-    });
+    onGameComplete(selectedTopic, gameMode, correctCount, totalCount);
   };
 
   const handleRestartGame = () => {
@@ -524,24 +445,6 @@ export const App: React.FC = () => {
     setActiveExamGrade(grade);
   };
 
-  const handleExamComplete = (result: ExamResult) => {
-    const { results, history } = recordExamAttempt(course, result);
-    setExamResults(results);
-    setExamHistory(history);
-    let updatedStats = stats;
-    if (result.starsEarned > 0) {
-      updatedStats = addEarnedStars(result.starsEarned);
-    }
-
-    // Evaluate Unlocked Titles after exam
-    const titleResult = evaluateUnlockedTitles(updatedStats);
-    if (titleResult.newlyUnlockedTitles.length > 0) {
-      setUnlockedTitleToast(titleResult.newlyUnlockedTitles[0]);
-      sounds.playFanfare();
-      confetti({ particleCount: 90, spread: 90, origin: { y: 0.4 } });
-    }
-    setStats(titleResult.updatedStats);
-  };
 
   const handleHomeClick = () => {
     if (navigateToHome(language)) {

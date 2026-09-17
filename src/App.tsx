@@ -17,8 +17,8 @@ import { PwaInstallPrompt } from './components/PwaInstallPrompt';
 import { AvatarShopModal } from './components/AvatarShopModal';
 import { ProgressStatsModal } from './components/ProgressStatsModal';
 import { TitleSelectModal } from './components/TitleSelectModal';
+import { RewardToastOverlay } from './components/RewardToastOverlay';
 import { trackGameStart, trackLanguageChange } from './utils/analytics';
-import { translations } from './utils/i18n';
 import { useNavigation } from './hooks/useNavigation';
 import { useGameRewards } from './hooks/useGameRewards';
 import { useCloudSync } from './hooks/useCloudSync';
@@ -95,10 +95,8 @@ export const App: React.FC = () => {
   const {
     celebration,
     setCelebration,
-    unlockedTitleToast,
-    setUnlockedTitleToast,
-    bonusRewardToast,
-    setBonusRewardToast,
+    currentToast,
+    dismissToast,
     handleGameComplete: onGameComplete,
     handleExamComplete,
   } = useGameRewards(course, language, stats, setStats, setExamResults, setExamHistory);
@@ -489,55 +487,12 @@ export const App: React.FC = () => {
         }}
       />
 
-      {/* Floating Toast: Newly Unlocked Title */}
-      {unlockedTitleToast && (
-        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 animate-bounce max-w-md w-[92%] p-4 rounded-3xl bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 text-white shadow-2xl border-2 border-white flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-white/30 flex items-center justify-center text-3xl shadow-inner shrink-0">
-              {unlockedTitleToast.icon}
-            </div>
-            <div>
-              <div className="text-xs uppercase tracking-wider font-extrabold text-amber-950/80">
-                {translations[language].titleUnlockedToast}
-              </div>
-              <div className="font-black text-base leading-tight">
-                {unlockedTitleToast.name[language] || unlockedTitleToast.name.ru}
-              </div>
-            </div>
-          </div>
-          <button
-            onClick={() => setUnlockedTitleToast(null)}
-            className="w-8 h-8 rounded-full bg-black/20 hover:bg-black/30 flex items-center justify-center text-white cursor-pointer shrink-0"
-          >
-            ✕
-          </button>
-        </div>
-      )}
-
-      {/* Floating Toast: Bonus Stars (Topic Mastery / Word Milestone) */}
-      {bonusRewardToast && (
-        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 animate-bounce max-w-md w-[92%] p-4 rounded-3xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-2xl border-2 border-white flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-white/30 flex items-center justify-center text-3xl shadow-inner shrink-0">
-              🎁
-            </div>
-            <div>
-              <div className="text-xs uppercase tracking-wider font-extrabold text-emerald-950/80">
-                {bonusRewardToast.message}
-              </div>
-              <div className="font-black text-base leading-tight flex items-center gap-1">
-                <span>+{bonusRewardToast.stars} ⭐ {translations[language].starsAddedToBank}</span>
-              </div>
-            </div>
-          </div>
-          <button
-            onClick={() => setBonusRewardToast(null)}
-            className="w-8 h-8 rounded-full bg-black/20 hover:bg-black/30 flex items-center justify-center text-white cursor-pointer shrink-0"
-          >
-            ✕
-          </button>
-        </div>
-      )}
+      {/* Floating Toast Overlay with Queue Support */}
+      <RewardToastOverlay
+        toast={currentToast}
+        onDismiss={dismissToast}
+        language={language}
+      />
 
       {/* PWA "Add to Home Screen" prompt */}
       <PwaInstallPrompt language={language} />

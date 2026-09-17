@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import confetti from 'canvas-confetti';
-import { Topic, GameMode, Language, LearningCourse, UserStats, ExamResult, PlayerTitle } from '../types';
+import { Topic, GameMode, Language, LearningCourse, UserStats, ExamResult } from '../types';
 import {
   addEarnedStars,
   checkAndClaimTopicMasteryBonus,
@@ -12,17 +12,13 @@ import {
 import { trackGameComplete } from '../utils/analytics';
 import { sounds } from '../utils/soundEffects';
 import { translations } from '../utils/i18n';
+import { RewardToast } from '../components/RewardToastOverlay';
 
 export interface CelebrationState {
   correct: number;
   total: number;
   stars: number;
   isRewardDisabled?: boolean;
-}
-
-export interface BonusRewardToastState {
-  message: string;
-  stars: number;
 }
 
 export function useGameRewards(
@@ -34,22 +30,22 @@ export function useGameRewards(
   setExamHistory: React.Dispatch<React.SetStateAction<ExamResult[]>>
 ) {
   const [celebration, setCelebration] = useState<CelebrationState | null>(null);
-  const [unlockedTitleToast, setUnlockedTitleToast] = useState<PlayerTitle | null>(null);
-  const [bonusRewardToast, setBonusRewardToast] = useState<BonusRewardToastState | null>(null);
+  const [toastQueue, setToastQueue] = useState<RewardToast[]>([]);
 
-  // Auto-dismiss unlocked title toast
-  useEffect(() => {
-    if (!unlockedTitleToast) return;
-    const timer = setTimeout(() => setUnlockedTitleToast(null), 5000);
-    return () => clearTimeout(timer);
-  }, [unlockedTitleToast]);
+  const currentToast = toastQueue[0] || null;
 
-  // Auto-dismiss bonus reward toast
+  const dismissToast = useCallback(() => {
+    setToastQueue((prev) => prev.slice(1));
+  }, []);
+
+  // Auto-dismiss current active toast after 4 seconds
   useEffect(() => {
-    if (!bonusRewardToast) return;
-    const timer = setTimeout(() => setBonusRewardToast(null), 5000);
+    if (!currentToast) return;
+    const timer = setTimeout(() => {
+      dismissToast();
+    }, 4000);
     return () => clearTimeout(timer);
-  }, [bonusRewardToast]);
+  }, [currentToast, dismissToast]);
 
   const handleGameComplete = useCallback(
     (
@@ -82,6 +78,7 @@ export function useGameRewards(
 
       // Add stars to user's piggy bank
       let updatedStats = addEarnedStars(gameStars);
+      const newToasts: RewardToast[] = [];
 
       // Topic Mastery Bonus (+25 ⭐ for instructions, +10 ⭐ for >= 15 words, +5 ⭐ for others)
       const mastery = checkAndClaimTopicMasteryBonus(
@@ -91,7 +88,9 @@ export function useGameRewards(
       );
       if (mastery.claimed) {
         updatedStats = mastery.updatedStats;
-        setBonusRewardToast({
+        newToasts.push({
+          id: `mastery-${selectedTopic.topic_id}`,
+          type: 'bonus',
           message: `${translations[language].topicMasteryBonusToast} (${
             selectedTopic.topic_name[language] || selectedTopic.topic_name.ru
           })`,
@@ -103,7 +102,9 @@ export function useGameRewards(
       const msResult = checkAndClaimWordMilestones(course);
       if (msResult.totalBonusStars > 0) {
         updatedStats = msResult.updatedStats;
-        setBonusRewardToast({
+        newToasts.push({
+          id: `milestone-${Date.now()}`,
+          type: 'bonus',
           message: translations[language].wordMilestoneToast,
           stars: msResult.totalBonusStars,
         });
@@ -112,9 +113,19 @@ export function useGameRewards(
       // Evaluate Unlocked Titles
       const titleResult = evaluateUnlockedTitles(updatedStats);
       if (titleResult.newlyUnlockedTitles.length > 0) {
-        setUnlockedTitleToast(titleResult.newlyUnlockedTitles[0]);
+        titleResult.newlyUnlockedTitles.forEach((title) => {
+          newToasts.push({
+            id: `title-${title.id}`,
+            type: 'title',
+            title,
+          });
+        });
         sounds.playFanfare();
         confetti({ particleCount: 80, spread: 80, origin: { y: 0.4 } });
+      }
+
+      if (newToasts.length > 0) {
+        setToastQueue((prev) => [...prev, ...newToasts]);
       }
 
       setStats(titleResult.updatedStats);
@@ -142,7 +153,12 @@ export function useGameRewards(
       // Evaluate Unlocked Titles after exam
       const titleResult = evaluateUnlockedTitles(updatedStats);
       if (titleResult.newlyUnlockedTitles.length > 0) {
-        setUnlockedTitleToast(titleResult.newlyUnlockedTitles[0]);
+        const newToasts: RewardToast[] = titleResult.newlyUnlockedTitles.map((title) => ({
+          id: `exam-title-${title.id}`,
+          type: 'title',
+          title,
+        }));
+        setToastQueue((prev) => [...prev, ...newToasts]);
         sounds.playFanfare();
         confetti({ particleCount: 90, spread: 90, origin: { y: 0.4 } });
       }
@@ -154,10 +170,8 @@ export function useGameRewards(
   return {
     celebration,
     setCelebration,
-    unlockedTitleToast,
-    setUnlockedTitleToast,
-    bonusRewardToast,
-    setBonusRewardToast,
+    currentToast,
+    dismissToast,
     handleGameComplete,
     handleExamComplete,
   };

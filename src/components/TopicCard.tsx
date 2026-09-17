@@ -11,6 +11,7 @@ interface TopicCardProps {
   progress?: TopicProgress;
   onSelect: (topic: Topic) => void;
   hasNewWords?: boolean;
+  newWordsCount?: number;
 }
 
 const COLOR_MAP: Record<string, { bg: string; border: string; badge: string; shadow: string }> = {
@@ -41,6 +42,7 @@ export const TopicCard: React.FC<TopicCardProps> = ({
   progress,
   onSelect,
   hasNewWords = false,
+  newWordsCount,
 }) => {
   const t = translations[language];
   const colorScheme = COLOR_MAP[topic.color || 'sky'] || COLOR_MAP.sky;
@@ -48,35 +50,43 @@ export const TopicCard: React.FC<TopicCardProps> = ({
   const stars = progress?.stars || 0;
   const totalCount = topic.words.length;
   const topicWordIds = new Set(topic.words.map((w) => w.id));
-  const masteredCount = (progress?.masteredWordIds || []).filter((id) =>
-    topicWordIds.has(id)
-  ).length;
+  const masteredCount =
+    progress?.masteredWordIds?.filter((id) => topicWordIds.has(id)).length || 0;
   const isAllMastered = totalCount > 0 && masteredCount >= totalCount;
+  const isHighlightNewWords = hasNewWords || (newWordsCount !== undefined && newWordsCount > 0);
 
-  const localizedTitle = course === 'lv'
-    ? (topic.topic_name.lv || topic.topic_name.ru || topic.topic_id)
-    : (topic.topic_name[language] || topic.topic_name.en || topic.topic_id);
-  const subtitle = course === 'lv'
-    ? (topic.topic_name.ru || '')
-    : (topic.topic_name.en || '');
+  const localizedTitle =
+    course === 'lv'
+      ? topic.topic_name.lv
+      : language === 'ru'
+      ? topic.topic_name.ru
+      : topic.topic_name.lv;
 
-  const handleClick = () => {
-    sounds.playClick();
-    onSelect(topic);
-  };
+  const subtitle =
+    course === 'lv'
+      ? topic.topic_name.ru
+      : language === 'ru'
+      ? topic.topic_name.en
+      : topic.topic_name.en;
 
   return (
     <button
-      onClick={handleClick}
-      className={`group relative text-left w-full p-4 sm:p-5 rounded-3xl bg-white shadow-lg ${colorScheme.shadow} hover:shadow-xl hover:-translate-y-1 active:translate-y-0.5 transition-all duration-200 focus:outline-none flex flex-col justify-between ${
-        hasNewWords
-          ? 'border-[6px] border-double border-amber-400 hover:border-amber-500 shadow-amber-200/60 ring-2 ring-amber-300/70 ring-offset-2'
-          : `border-4 ${colorScheme.border}`
+      onClick={() => {
+        sounds.playClick();
+        onSelect(topic);
+      }}
+      className={`group relative flex flex-col justify-between p-4 sm:p-5 rounded-3xl transition-all duration-300 cursor-pointer text-left ${
+        isHighlightNewWords
+          ? 'bg-amber-50/40 border-[6px] border-double border-amber-400 hover:border-amber-500 ring-2 ring-amber-300/70 ring-offset-2'
+          : `border-4 ${colorScheme.border} ${colorScheme.bg}`
+      } hover:shadow-xl hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.98] ${
+        isAllMastered ? 'ring-2 ring-emerald-400 ring-offset-2' : ''
       }`}
     >
-      {/* Top row: Emoji, Stars & New Words Badge */}
-      <div className="flex items-start justify-between w-full mb-3 gap-2">
-        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-white to-slate-100 shadow-inner flex items-center justify-center text-2xl sm:text-3xl border-2 border-slate-200/80 group-hover:scale-110 transition-transform shrink-0">
+      {/* Top row: Topic Emoji and Star Progress */}
+      <div className="flex items-start justify-between mb-3 gap-2">
+        {/* Topic Emoji Box */}
+        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
           {topic.emoji || '📖'}
         </div>
 
@@ -98,10 +108,13 @@ export const TopicCard: React.FC<TopicCardProps> = ({
           </div>
 
           {/* New words label */}
-          {hasNewWords && (
+          {isHighlightNewWords && (
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-black bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-sm border border-amber-300 tracking-tight whitespace-nowrap">
               <span>✨</span>
-              <span>{t.newWordsBadge}</span>
+              <span>
+                {t.newWordsBadge}
+                {newWordsCount && newWordsCount > 0 ? ` (+${newWordsCount})` : ''}
+              </span>
             </span>
           )}
         </div>

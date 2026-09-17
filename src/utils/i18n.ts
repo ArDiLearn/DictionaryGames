@@ -1030,6 +1030,22 @@ export function isTopicExtra(topicId: string, selectedGrades: Grade[]): boolean 
 }
 
 /**
+ * Returns the count of new words in an extra topic for the given selected grades.
+ * - Grade 1: 0 (baseline grade, no extra topics are highlighted as new).
+ * - Grade 2 (and Grade 3 not selected): count of words with w.grade === 2.
+ * - Grade 3: count of words with w.grade === 3 ("в 3ем классе слова из 2го не считаются новыми").
+ */
+export function getNewWordsCountForGrades(topic: { words: { grade?: number }[] }, selectedGrades: Grade[]): number {
+  if (selectedGrades.includes(3)) {
+    return topic.words.filter((w) => (w.grade || 1) === 3).length;
+  }
+  if (selectedGrades.includes(2)) {
+    return topic.words.filter((w) => (w.grade || 1) === 2).length;
+  }
+  return 0;
+}
+
+/**
  * Checks if an extra topic contains new words for the given selected grades.
  * - Grade 1: no topics are highlighted (baseline grade).
  * - Grade 2 (and Grade 3 not selected): topics containing Grade 2 words (w.grade === 2) are highlighted.
@@ -1037,13 +1053,7 @@ export function isTopicExtra(topicId: string, selectedGrades: Grade[]): boolean 
  *   only topics containing Grade 3 words (w.grade === 3) are highlighted.
  */
 export function hasNewWordsForGrades(topic: { words: { grade?: number }[] }, selectedGrades: Grade[]): boolean {
-  if (selectedGrades.includes(3)) {
-    return topic.words.some((w) => (w.grade || 1) === 3);
-  }
-  if (selectedGrades.includes(2)) {
-    return topic.words.some((w) => (w.grade || 1) === 2);
-  }
-  return false;
+  return getNewWordsCountForGrades(topic, selectedGrades) > 0;
 }
 
 /**

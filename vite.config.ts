@@ -12,7 +12,7 @@ export default defineConfig({
       manifest: {
         name: 'WordyMind - Английский и Латышский для детей',
         short_name: 'WordyMind',
-        description: 'WordyMind: Изучение английского и латышского языков для 1–3 классов в игровой форме | Angļu un latviešu valodas apguve bērniem',
+        description: 'WordyMind: Изучение английского и латышского языков для 1–4 классов в игровой форме | Angļu un latviešu valodas apguve bērniem',
         theme_color: '#6366f1',
         background_color: '#f0f9ff',
         display: 'standalone',

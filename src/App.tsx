@@ -143,6 +143,11 @@ export const App: React.FC = () => {
     activeExamGrade,
   });
 
+  const currentTopic = useMemo(() => {
+    if (!selectedTopic) return null;
+    return filteredTopics.find((t) => t.topic_id === selectedTopic.topic_id) || selectedTopic;
+  }, [selectedTopic, filteredTopics]);
+
 
 
   useEffect(() => {
@@ -254,15 +259,15 @@ export const App: React.FC = () => {
   };
 
   const handleRecordWordResult = (wordId: string, isCorrect: boolean) => {
-    if (!selectedTopic) return;
+    if (!currentTopic) return;
     // In flashcards mode, no stars or mastery rewards are recorded
     if (gameMode === 'flashcards') return;
 
     const { stars: newStars } = recordWordAttempt(
       wordId,
-      selectedTopic.topic_id,
+      currentTopic.topic_id,
       isCorrect,
-      selectedTopic.words.length,
+      currentTopic.words.length,
       course
     );
     // Reload local progress
@@ -272,7 +277,7 @@ export const App: React.FC = () => {
   };
 
   const handleGameComplete = (correctCount: number, totalCount: number) => {
-    onGameComplete(selectedTopic, gameMode, correctCount, totalCount);
+    onGameComplete(currentTopic, gameMode, correctCount, totalCount);
   };
 
   const handleBackToGames = () => {
@@ -283,8 +288,8 @@ export const App: React.FC = () => {
 
   const handleSelectMode = (mode: GameMode) => {
     selectMode(mode);
-    if (selectedTopic) {
-      trackGameStart(mode, selectedTopic.topic_id);
+    if (currentTopic) {
+      trackGameStart(mode, currentTopic.topic_id);
     }
   };
 
@@ -368,25 +373,25 @@ export const App: React.FC = () => {
         )}
 
         {/* Screen 2: Mode Selector */}
-        {selectedTopic && !gameMode && (
+        {currentTopic && !gameMode && (
           <GameSelector
-            topic={selectedTopic}
+            topic={currentTopic}
             language={language}
             course={course}
-            progress={topicProgress[selectedTopic.topic_id]}
+            progress={topicProgress[currentTopic.topic_id]}
             onSelectMode={handleSelectMode}
             onBack={() => goBack(language)}
           />
         )}
 
         {/* Screen 3: Active Game */}
-        {selectedTopic && gameMode && (
+        {currentTopic && gameMode && (
           <div className="pt-2">
             <Suspense fallback={<GameLoadingFallback />}>
               {gameMode === 'flashcards' && (
                 <FlashcardsGame
-                  key={`${selectedTopic.topic_id}-flashcards-${gameSessionId}`}
-                  topic={selectedTopic}
+                  key={`${currentTopic.topic_id}-flashcards-${gameSessionId}`}
+                  topic={currentTopic}
                   language={language}
                   course={course}
                   onRecordResult={handleRecordWordResult}
@@ -397,8 +402,8 @@ export const App: React.FC = () => {
 
               {gameMode === 'truefalse' && (
                 <TrueFalseGame
-                  key={`${selectedTopic.topic_id}-truefalse-${gameSessionId}`}
-                  topic={selectedTopic}
+                  key={`${currentTopic.topic_id}-truefalse-${gameSessionId}`}
+                  topic={currentTopic}
                   allTopics={filteredTopics}
                   language={language}
                   course={course}
@@ -410,8 +415,8 @@ export const App: React.FC = () => {
 
               {gameMode === 'balloons' && (
                 <BalloonPopGame
-                  key={`${selectedTopic.topic_id}-balloons-${gameSessionId}`}
-                  topic={selectedTopic}
+                  key={`${currentTopic.topic_id}-balloons-${gameSessionId}`}
+                  topic={currentTopic}
                   allTopics={filteredTopics}
                   language={language}
                   course={course}
@@ -423,8 +428,8 @@ export const App: React.FC = () => {
 
               {gameMode === 'builder' && (
                 <WordBuilderGame
-                  key={`${selectedTopic.topic_id}-builder-${gameSessionId}`}
-                  topic={selectedTopic}
+                  key={`${currentTopic.topic_id}-builder-${gameSessionId}`}
+                  topic={currentTopic}
                   language={language}
                   course={course}
                   onRecordResult={handleRecordWordResult}
@@ -435,8 +440,8 @@ export const App: React.FC = () => {
 
               {gameMode === 'match' && (
                 <MatchPairsGame
-                  key={`${selectedTopic.topic_id}-match-${gameSessionId}`}
-                  topic={selectedTopic}
+                  key={`${currentTopic.topic_id}-match-${gameSessionId}`}
+                  topic={currentTopic}
                   language={language}
                   course={course}
                   onRecordResult={handleRecordWordResult}
@@ -447,8 +452,8 @@ export const App: React.FC = () => {
 
               {gameMode === 'audio' && (
                 <AudioQuizGame
-                  key={`${selectedTopic.topic_id}-audio-${gameSessionId}`}
-                  topic={selectedTopic}
+                  key={`${currentTopic.topic_id}-audio-${gameSessionId}`}
+                  topic={currentTopic}
                   allTopics={filteredTopics}
                   language={language}
                   course={course}
@@ -515,7 +520,7 @@ export const App: React.FC = () => {
             language={language}
             course={course}
             stats={stats}
-            topics={topics}
+            topics={filteredTopics}
             topicProgress={topicProgress}
             wordProgress={wordProgress}
             examResults={examResults}

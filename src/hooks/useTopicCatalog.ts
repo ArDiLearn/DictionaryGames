@@ -58,6 +58,19 @@ export function useTopicCatalog({
           const g2Words = topic.words.filter((w) => (w.grade || 1) === 2);
           const g1Words = topic.words.filter((w) => (w.grade || 1) === 1);
           extraWords = [...g2Words, ...g1Words];
+        } else if (selectedGrades.length === 1 && selectedGrades[0] === 3) {
+          // When Grade 3 is selected alone: show Grade 3 words first, then Grade 2, then Grade 1!
+          const g3Words = topic.words.filter((w) => (w.grade || 1) === 3);
+          const g2Words = topic.words.filter((w) => (w.grade || 1) === 2);
+          const g1Words = topic.words.filter((w) => (w.grade || 1) === 1);
+          extraWords = [...g3Words, ...g2Words, ...g1Words];
+        } else if (selectedGrades.length === 1 && selectedGrades[0] === 4) {
+          // When Grade 4 is selected alone: show Grade 4 words first, then 3, then 2, then 1!
+          const g4Words = topic.words.filter((w) => (w.grade || 1) === 4);
+          const g3Words = topic.words.filter((w) => (w.grade || 1) === 3);
+          const g2Words = topic.words.filter((w) => (w.grade || 1) === 2);
+          const g1Words = topic.words.filter((w) => (w.grade || 1) === 1);
+          extraWords = [...g4Words, ...g3Words, ...g2Words, ...g1Words];
         } else if (gradesSet.has(2)) {
           // When multi-grade including Grade 2:
           const g2Words = topic.words.filter((w) => (w.grade || 1) === 2);

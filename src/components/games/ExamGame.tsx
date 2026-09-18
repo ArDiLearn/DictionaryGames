@@ -661,18 +661,11 @@ export const ExamGame: React.FC<ExamGameProps> = ({
               />
             </div>
 
-            {/* Translation text with listen button */}
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <h3 className="text-2xl sm:text-3xl font-black text-slate-800 font-comic">
+            {/* Translation text */}
+            <div className="flex items-center justify-center mb-4">
+              <h3 className="text-2xl sm:text-3xl font-black text-slate-800 font-comic text-center">
                 {currentQuestion.displayTranslation}
               </h3>
-              <button
-                onClick={() => playQuestionAudio(currentQuestion.word)}
-                className="p-1.5 text-indigo-600 hover:bg-indigo-50 rounded-xl transition-colors cursor-pointer"
-                title={t.listen}
-              >
-                <Volume2 className="w-5 h-5" />
-              </button>
             </div>
 
             {/* Selected Letters Slot */}

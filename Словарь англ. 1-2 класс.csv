@@ -396,23 +396,25 @@ middle,vidus,середина,1
 right,"pa labi, pareizs","справа, правильный",1
 then,"tad, pēc tam","затем, потом",1
 ,,,
-Connecting words,Loģika un daudzums,Логика и количество,
-lots,daudz,много,1
-only,tikai,только,1
-other,cits,другой,1
-maybe,varbūt,может быть,1
-too,"arī, pārāk","тоже, слишком",1
-else,"vēl, cits","ещё, кроме",1
-both,"abi, abas","оба, обе",1
-another,"cits, vēl viens","другой, ещё один",1
-yes,jā,да,1
-no,nē,нет,1
-true,"pareizi, taisnība","верно, правда",1
+Order and quantity,Secība un daudzums,Порядок и количество,
 first,pirmais,первый,2
 second,otrais,второй,2
 many,daudzi,много,2
 all,"visi, viss","все, всё",2
+lots,daudz,много,1
+only,tikai,только,1
+other,cits,другой,1
+another,"cits, vēl viens","другой, ещё один",1
+both,"abi, abas","оба, обе",1
+,,,
+Logic and answers,Loģika un atbildes,Логика и ответы,
+yes,jā,да,1
+no,nē,нет,1
+true,"pareizi, taisnība","верно, правда",1
 false,nepareizi,"неверно, ложь",2
+maybe,varbūt,может быть,1
+too,"arī, pārāk","тоже, слишком",1
+else,"vēl, cits","ещё, кроме",1
 very,ļoti,очень,2
 really,patiešām,"действительно, правда",2
 ,,,
@@ -477,22 +479,24 @@ pineapple,ananass,ананас,2
 spinach,spināti,шпинат,2
 potatoes,kartupeļi,картофель,2
 ,,,
-Family +,Ģimene +,Семья +,
+Age and people,Vecums un cilvēki,Возраст и люди,
 baby,zīdainis,младенец,1
 toddler,mazulis,малыш,2
 child,bērns,ребёнок,2
 teenager,pusaudzis,подросток,2
 adult,pieaugušais,взрослый,2
 elderly person,seniors,пожилой человек,2
+people,cilvēki,люди,1
+person,persona,"человек, персона",2
+,,,
+Family and friends,Ģimene un draugi,Семья и друзья,
+family,ģimene,семья,1
+parents,vecāki,родители,2
 boy,zēns,мальчик,1
 girl,meitene,девочка,1
 children,bērni,дети,1
 friend,draugs,друг,1
 dear,"dārgais, mīļais","дорогой, милый",1
-family,ģimene,семья,1
-people,cilvēki,люди,1
-human,cilvēks,человек,2
-person,persona,"человек, персона",2
 ,,,
 Art and games +,Māksla un spēles +,Творчество и игры +,
 start,sākums,"старт, начало",1
@@ -510,25 +514,27 @@ riddle,mīkla,загадка,2
 collage,kolāža,коллаж,2
 materials,materiāli,материалы,2
 ,,,
-Adjectives +,Īpašības vārdi +,Прилагательные +,
-greedy,alkatīgs,жадный,2
+Character and feelings +,Raksturs un sajūtas +,Характер и эмоции +,
 nice,jauks,"милый, приятный",2
-cool,foršs,"классный, крутой",2
-tidy,kārtīgs,аккуратный,2
 honest,godīgs,честный,2
+tidy,kārtīgs,аккуратный,2
+helpful,palīdzīgs,"полезный, отзывчивый",2
+greedy,alkatīgs,жадный,2
+cool,foršs,"классный, крутой",2
+happy,laimīgs,счастливый,1
+tired,noguris,уставший,1
+ok,viss kārtībā,"в порядке, окей",1
+,,,
+Qualities +,Īpašības +,Качества и оценка +,
 bright,spilgts,яркий,2
 perfect,ideāls,"идеальный, отличный",2
 important,svarīgs,важный,2
-helpful,palīdzīgs,"полезный, отзывчивый",2
+creative,radošs,творческий,2
 extra,papildu,дополнительный,2
 favourite,mīļākais,любимый,1
 different,atšķirīgs,разный,1
-ok,viss kārtībā,"в порядке, окей",1
 good,labs,хороший,1
 excellent,lielisks,отличный,1
-happy,laimīgs,счастливый,1
-tired,noguris,уставший,1
-creative,radošs,творческий,2
 ,,,
 Wild animals,Savvaļas dzīvnieki,Дикие животные,
 giraffe,žirafe,жираф,3
@@ -544,6 +550,11 @@ zebra,zebra,зебра,3
 chameleon,hameleons,хамелеон,2
 squirrel,vāvere,белка,2
 bat,sikspārnis,летучая мышь,2
+bear,lācis,медведь,2
+wolf,vilks,волк,2
+fox,lapsa,лиса,2
+hedgehog,ezis,ёж,2
+hare,zaķis,заяц,2
 footprints,pēdu nospiedumi,следы лап,2
 ,,,
 Nature,Daba,Природа,
@@ -579,7 +590,7 @@ your,"tavs, jūsu","твой, ваш",1
 our,mūsu,наш,1
 ,,,
 Other words,Dažādi vārdi,Разные слова,
-body,ķermenis,тело,2
+voice,balss,голос,2
 language,valoda,"язык, речь",2
 country,valsts,страна,1
 wheel,ritenis,колесо,1
@@ -589,7 +600,7 @@ horse,zirgs,лошадь,1
 food,ēdiens,еда,1
 cup,krūzīte,чашка,1
 noise,troksnis,шум,2
-ability,spēja,"умение, способность",2
+sound,skaņa,звук,2
 ,,,
 Birthday,Dzimšanas diena,День рождения,
 board game,galda spēle,настольная игра,3
@@ -704,9 +715,11 @@ present,dāvana,подарок,2
 Circus,Cirks,Цирк и костюмы,
 circus,cirks,цирк,2
 clown,klauns,клоун,2
+acrobat,akrobāts,акробат,2
+magic,burvju triks,"фокус, магия",2
 dress up,pārģērbties,наряжаться,2
 wear,valkāt,носить (одежду),2
-clothes,"drēbes, apģērbs",одежда,2
+costume,tērps,костюм,2
 ,,,
 Positions +,Novietojums +,Расположение +,
 under,zem,под,2

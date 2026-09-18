@@ -682,4 +682,17 @@ export const WORD_IMAGES = {
   "marbles": "🔮",
   "jacks": "🎲",
   "cards": "🃏",
+
+  // Grade 2 Extra additions
+  "costume": "🎭",
+  "acrobat": "🤸",
+  "magic": "🪄",
+  "voice": "🗣️",
+  "sound": "🔊",
+  "bear": "🐻",
+  "wolf": "🐺",
+  "fox": "🦊",
+  "hedgehog": "🦔",
+  "hare": "🐇",
+  "parents": "👨‍👩‍👦",
 };

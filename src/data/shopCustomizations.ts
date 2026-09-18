@@ -72,12 +72,12 @@ export const VICTORY_ANIMATION_ITEMS: VictoryAnimationItem[] = [
   {
     id: 'confetti',
     name: {
-      ru: 'Праздничное конфетти',
-      lv: 'Svētku konfeti',
+      ru: 'Праздничный серпантин',
+      lv: 'Svētku serpentīns',
     },
     desc: {
-      ru: 'Классический разноцветный салют из конфетти',
-      lv: 'Klasisks krāsains konfeti salūts',
+      ru: 'Яркий разноцветный салют с длинными завитками серпантина',
+      lv: 'Krāsains salūts ar vijīgām serpentīna lentām',
     },
     price: 0,
     icon: '🎉',
@@ -102,7 +102,7 @@ export const VICTORY_ANIMATION_ITEMS: VictoryAnimationItem[] = [
       lv: 'Karaliskais salūts',
     },
     desc: {
-      ru: 'Мощный многоуровневый фейерверк со вспышками',
+      ru: 'Мощный многоуровневый фейерверк со вспышками и серпантином',
       lv: 'Spēcīga daudzlīmeņu uguņošana ar uzliesmojumiem',
     },
     price: 60,
@@ -115,8 +115,8 @@ export const VICTORY_ANIMATION_ITEMS: VictoryAnimationItem[] = [
       lv: 'Kosmiskais miglājs',
     },
     desc: {
-      ru: 'Неоновые вихри, сияющие кометы и звёзды',
-      lv: 'Neona virpuļi, mirdzošas komētas un zvaigznes',
+      ru: 'Мерцающее облако звёздной пыльцы и сияющие звёзды',
+      lv: 'Mirdzošs zvaigžņu putekļu mākonis ar spožām zvaigznēm',
     },
     price: 80,
     icon: '🌌',
@@ -128,8 +128,8 @@ export const VICTORY_ANIMATION_ITEMS: VictoryAnimationItem[] = [
       lv: 'Varavīksnes sirdis',
     },
     desc: {
-      ru: 'Россыпь парящих сердечек и радостных искорок',
-      lv: 'Lidojošu sirsniņu un priecīgu dzirksteļu birums',
+      ru: 'Праздничный полёт ярких сердечек и тёплых искорок',
+      lv: 'Krāsainu sirsniņu un siltu dzirksteļu lidojums',
     },
     price: 100,
     icon: '💖',

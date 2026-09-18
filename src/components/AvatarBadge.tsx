@@ -89,10 +89,9 @@ export const AvatarBadge: React.FC<AvatarBadgeProps> = ({
     getCustomAvatarComponent(avatar) ||
     (item ? getCustomAvatarComponent(item.id) || getCustomAvatarComponent(item.emoji) : undefined);
 
-  // Clean emoji display: if mythic, strip trailing sparkle for centered character
-  const displayEmoji = vfx
-    ? (item?.emoji || avatar).replace(/✨$/, '')
-    : avatar || '🦁';
+  // Resolve visual emoji: prefer item.emoji if available, fallback to avatar
+  const rawEmoji = item?.emoji || avatar || '🦁';
+  const displayEmoji = rawEmoji.replace(/✨$/, '');
 
   const isMultiGrapheme =
     typeof Intl !== 'undefined' && (Intl as unknown as { Segmenter?: unknown }).Segmenter

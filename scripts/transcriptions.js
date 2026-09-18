@@ -734,5 +734,30 @@ export const TRANSCRIPTIONS = {
   "live in a group": "[ lɪv ɪn ə ɡruːp ]",
   "sleep in a tree": "[ sliːp ɪn ə triː ]",
   "stop": "[ stɒp ]",
+
+  // Grade 1 Extra – Toy transport
+  "truck": "[ trʌk ]",
+  "helicopter": "[ ˈhelɪkɒptə ]",
+  "bike": "[ baɪk ]",
+  "rocket": "[ ˈrɒkɪt ]",
+
+  // Grade 1 Extra – Toys +
+  "blocks": "[ blɒks ]",
+  "puzzle": "[ ˈpʌzl ]",
+  "spinning top": "[ ˈspɪnɪŋ tɒp ]",
+  "rocking horse": "[ ˈrɒkɪŋ hɔːs ]",
+  "pyramid": "[ ˈpɪrəmɪd ]",
+  "rattle": "[ ˈrætl ]",
+  "rubber duck": "[ ˈrʌbə dʌk ]",
+  "playhouse": "[ ˈpleɪhaʊs ]",
+  "tea set": "[ tiː set ]",
+
+  // Grade 1 Extra – Games and music
+  "drum": "[ drʌm ]",
+  "xylophone": "[ ˈzaɪləfəʊn ]",
+  "microphone": "[ ˈmaɪkrəfəʊn ]",
+  "marbles": "[ ˈmɑːblz ]",
+  "jacks": "[ dʒæks ]",
+  "cards": "[ kɑːdz ]",
 };
 

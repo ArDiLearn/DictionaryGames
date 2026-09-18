@@ -219,6 +219,12 @@ const TOPIC_METADATA = {
   'Wild animal actions': { icon: 'Cat', color: 'amber', emoji: '🦁' },
   'Savvaļas dzīvnieku darbības': { icon: 'Cat', color: 'amber', emoji: '🦁' },
   'Действия диких животных': { icon: 'Cat', color: 'amber', emoji: '🦁' },
+  'Toy transport': { icon: 'Car', color: 'amber', emoji: '🚗' },
+  'Rotaļu transports': { icon: 'Car', color: 'amber', emoji: '🚗' },
+  'Игрушечный транспорт': { icon: 'Car', color: 'amber', emoji: '🚗' },
+  'Games and music': { icon: 'Music', color: 'purple', emoji: '🥁' },
+  'Spēles un mūzika': { icon: 'Music', color: 'purple', emoji: '🥁' },
+  'Игры и музыка': { icon: 'Music', color: 'purple', emoji: '🥁' },
 };
 
 /**

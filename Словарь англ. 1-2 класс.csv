@@ -251,6 +251,38 @@ rectangle,taisnstūris,прямоугольник,1
 oval,ovāls,овал,1
 shapes,formas,фигуры,1
 ,,,
+Toy transport,Rotaļu transports,Игрушечный транспорт,
+car,mašīna,машинка,1
+truck,kravas automašīna,грузовичок,1
+train,vilciens,паровозик,1
+plane,lidmašīna,самолётик,1
+helicopter,helikopters,вертолётик,1
+bus,autobuss,автобусик,1
+bike,velosipēds,велосипед,1
+rocket,raķete,ракета,1
+,,,
+Toys +,Rotaļlietas +,Игрушки +,
+blocks,klucīši,кубики,1
+puzzle,puzle,пазл,1
+spinning top,vilciņš,юла,1
+rocking horse,šūpuļzirdziņš,лошадка-качалка,1
+pyramid,piramīda,пирамидка,1
+rattle,grabulis,погремушка,1
+puppet,lelle,кукла-марионетка,1
+rubber duck,gumijas pīlīte,резиновая уточка,1
+playhouse,rotaļu mājiņa,игровой домик,1
+tea set,tējas servīze,чайный сервиз,1
+,,,
+Games and music,Spēles un mūzika,Игры и музыка,
+drum,bungas,барабан,1
+xylophone,ksilofons,ксилофон,1
+microphone,mikrofons,микрофон,1
+balloon,balons,воздушный шарик,1
+clown,klauns,клоун,1
+marbles,stikla bumbiņas,шарики марблс,1
+jacks,spēles kauliņi,игра в кости,1
+cards,kārtis,"карточки, карты",1
+,,,
 Actions,Darbības,Действия,
 I can,es varu,я умею,1
 I can't,es nevaru,я не умею,1

@@ -657,4 +657,29 @@ export const WORD_IMAGES = {
   "live in a group": "🦁",
   "sleep in a tree": "🌳",
   "stop": "🛑",
+
+  // Grade 1 Extra – Toy transport
+  "truck": "🚚",
+  "helicopter": "🚁",
+  "bike": "🚲",
+  "rocket": "🚀",
+
+  // Grade 1 Extra – Toys +
+  "blocks": "🧱",
+  "puzzle": "🧩",
+  "spinning top": "🪀",
+  "rocking horse": "🎠",
+  "pyramid": "🔺",
+  "rattle": "🪇",
+  "rubber duck": "🦆",
+  "playhouse": "🏠",
+  "tea set": "🫖",
+
+  // Grade 1 Extra – Games and music
+  "drum": "🥁",
+  "xylophone": "🎶",
+  "microphone": "🎤",
+  "marbles": "🔮",
+  "jacks": "🎲",
+  "cards": "🃏",
 };

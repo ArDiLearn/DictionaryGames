@@ -3,6 +3,9 @@ import { Grade } from '../types';
 export const EXTRA_TOPICS: string[] = [
   'days_of_the_week',
   'shapes',
+  'toy_transport',
+  'toys_plus',
+  'games_and_music',
   'actions',
   'food_and_drink_plus',
   'fruit_and_vegetables_plus',
@@ -39,6 +42,9 @@ export const EXTRA_TOPICS: string[] = [
 export const GRADE_1_EXTRA_TOPICS: string[] = [
   'days_of_the_week',
   'shapes',
+  'toy_transport',
+  'toys_plus',
+  'games_and_music',
   'actions',
   'introductions',
   'instructions_actions',
@@ -217,6 +223,11 @@ export const GRADE_3_EXTRA_DUPLICATES = new Set([
   'school',
   'teacher',
   'chocolate',
+  'car',
+  'train',
+  'plane',
+  'bus',
+  'balloon',
 ]);
 
 /**

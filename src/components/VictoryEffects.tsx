@@ -12,6 +12,9 @@ const SATURN_PLANET_PATH = 'M 12,32 A 42,14 -25 1,0 88,68 A 42,14 -25 1,0 12,32 
 // 4. Луна / планета-спутник (64x64)
 const CRESCENT_MOON_PATH = 'M 50 18 A 32 32 0 1 0 82 50 A 25 25 0 1 1 50 18 Z';
 
+// 5. Королевская корона с жемчужинами на пиках и алмазом по центру (38x23)
+const CROWN_PATH = 'M 31,25 L 69,25 L 69,20 L 67,9 A 2.5,2.5 0 1 0 64,8 L 57,15 L 51.5,5 A 3,3 0 1 0 48.5,5 L 43,15 L 36,8 A 2.5,2.5 0 1 0 33,9 L 31,20 Z M 50,15 L 47,19 L 50,23 L 53,19 Z';
+
 function createPathShape(path: string, scale: number, cx: number, cy: number): confetti.Shape {
   const matrix = [scale, 0, 0, scale, -cx * scale, -cy * scale];
   if (typeof window !== 'undefined' && typeof confetti.shapeFromPath === 'function') {
@@ -59,6 +62,14 @@ function getMoonShape(): confetti.Shape {
     cachedMoon = createPathShape(CRESCENT_MOON_PATH, 0.45, 50, 50);
   }
   return cachedMoon;
+}
+
+let cachedCrown: confetti.Shape | null = null;
+function getCrownShape(): confetti.Shape {
+  if (!cachedCrown) {
+    cachedCrown = createPathShape(CROWN_PATH, 0.8, 50, 14);
+  }
+  return cachedCrown;
 }
 
 /**
@@ -506,34 +517,114 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
     }
 
     case 'fireworks': {
-      // Королевский салют: мощные залпы с золотыми искрами и серпантином
+      // Королевский салют: мощные залпы с золотыми КОРОНАМИ, серпантином и звёздами
+      const crown = getCrownShape();
       const serpentine = getSerpentineShape();
-      const fireStage = (x: number, y: number, count: number, colors: string[]) => {
-        confetti({
-          particleCount: count,
-          startVelocity: 38,
-          spread: 360,
-          ticks: 90,
-          origin: { x, y },
-          colors,
-          gravity: 1.05,
-          scalar: 1.15,
-          shapes: ['star', 'circle', serpentine],
-        });
-      };
 
-      fireStage(0.5, 0.4, 60, ['#ef4444', '#facc15', '#3b82f6', '#10b981', '#f97316']);
+      const royalColors = ['#ef4444', '#facc15', '#3b82f6', '#10b981', '#f97316', '#ffd700', '#ffffff'];
+      const crownColors = ['#ffd700', '#f59e0b', '#fbbf24', '#facc15', '#ffffff', '#ef4444'];
 
+      // Залп 1: Центральный взрыв — короны, звёзды и серпантин
+      confetti({
+        particleCount: 55,
+        startVelocity: 38,
+        spread: 360,
+        ticks: 90,
+        origin: { x: 0.5, y: 0.4 },
+        colors: royalColors,
+        gravity: 1.0,
+        scalar: 1.15,
+        shapes: ['star', 'circle', serpentine],
+      });
+
+      confetti({
+        particleCount: 16,
+        startVelocity: 30,
+        spread: 360,
+        ticks: 140,
+        origin: { x: 0.5, y: 0.4 },
+        colors: crownColors,
+        shapes: [crown],
+        scalar: 1.4, // сияющие королевские короны
+        gravity: 0.55,
+        decay: 0.94,
+      });
+
+      // Залп 2 (+300ms): Двойной салют с коронами слева и справа
       timeouts.push(
         window.setTimeout(() => {
-          fireStage(0.25, 0.35, 50, ['#ec4899', '#8b5cf6', '#06b6d4', '#ffd700']);
-          fireStage(0.75, 0.35, 50, ['#f97316', '#eab308', '#22c55e', '#a855f7']);
+          // Слева
+          confetti({
+            particleCount: 45,
+            startVelocity: 35,
+            spread: 360,
+            ticks: 90,
+            origin: { x: 0.25, y: 0.35 },
+            colors: ['#ec4899', '#8b5cf6', '#06b6d4', '#ffd700'],
+            shapes: ['star', serpentine],
+            scalar: 1.1,
+          });
+          confetti({
+            particleCount: 10,
+            startVelocity: 26,
+            spread: 360,
+            ticks: 130,
+            origin: { x: 0.25, y: 0.35 },
+            colors: crownColors,
+            shapes: [crown],
+            scalar: 1.35,
+            gravity: 0.55,
+          });
+
+          // Справа
+          confetti({
+            particleCount: 45,
+            startVelocity: 35,
+            spread: 360,
+            ticks: 90,
+            origin: { x: 0.75, y: 0.35 },
+            colors: ['#f97316', '#eab308', '#22c55e', '#a855f7'],
+            shapes: ['star', serpentine],
+            scalar: 1.1,
+          });
+          confetti({
+            particleCount: 10,
+            startVelocity: 26,
+            spread: 360,
+            ticks: 130,
+            origin: { x: 0.75, y: 0.35 },
+            colors: crownColors,
+            shapes: [crown],
+            scalar: 1.35,
+            gravity: 0.55,
+          });
         }, 300)
       );
 
+      // Залп 3 (+650ms): Королевский гранд-финал — золотой дождь корон и салюта
       timeouts.push(
         window.setTimeout(() => {
-          fireStage(0.5, 0.28, 80, ['#ffd700', '#ff4500', '#00e5ff', '#ff007f', '#ffffff', '#22c55e']);
+          confetti({
+            particleCount: 75,
+            startVelocity: 38,
+            spread: 360,
+            ticks: 110,
+            origin: { x: 0.5, y: 0.28 },
+            colors: ['#ffd700', '#ff4500', '#00e5ff', '#ff007f', '#ffffff', '#22c55e'],
+            shapes: ['star', 'circle', serpentine],
+            scalar: 1.2,
+          });
+          confetti({
+            particleCount: 18,
+            startVelocity: 28,
+            spread: 140,
+            ticks: 150,
+            origin: { x: 0.5, y: 0.28 },
+            colors: crownColors,
+            shapes: [crown],
+            scalar: 1.5,
+            gravity: 0.5,
+          });
         }, 650)
       );
       break;

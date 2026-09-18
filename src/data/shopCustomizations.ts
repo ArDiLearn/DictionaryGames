@@ -102,8 +102,8 @@ export const VICTORY_ANIMATION_ITEMS: VictoryAnimationItem[] = [
       lv: 'Karaliskais salūts',
     },
     desc: {
-      ru: 'Мощный многоуровневый фейерверк со вспышками и серпантином',
-      lv: 'Spēcīga daudzlīmeņu uguņošana ar uzliesmojumiem',
+      ru: 'Мощный праздничный фейерверк с золотыми коронами, звёздами и серпантином',
+      lv: 'Spēcīga svētku uguņošana ar zelta kroņiem, zvaigznēm un serpentīnu',
     },
     price: 60,
     icon: '🎆',

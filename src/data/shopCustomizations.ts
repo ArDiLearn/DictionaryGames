@@ -115,8 +115,8 @@ export const VICTORY_ANIMATION_ITEMS: VictoryAnimationItem[] = [
       lv: 'Kosmiskais miglājs',
     },
     desc: {
-      ru: 'Мерцающее облако звёздной пыльцы и сияющие звёзды',
-      lv: 'Mirdzošs zvaigžņu putekļu mākonis ar spožām zvaigznēm',
+      ru: 'Мерцающая звёздная пыльца, сияющие звёзды и парящие планеты',
+      lv: 'Mirdzoši zvaigžņu putekļi, spožas zvaigznes un planētas',
     },
     price: 80,
     icon: '🌌',

@@ -48,7 +48,7 @@ function createShapeBitmap(
   return 'circle' as confetti.Shape;
 }
 
-// 1. Сатурн: 3D планета с наклонными кольцами (задняя дуга за планетой, передняя перед планетой)
+// 1. Сатурн: 3D планета с наклонными кольцами
 let cachedSaturn: confetti.Shape | null = null;
 function getSaturnShape(): confetti.Shape {
   if (!cachedSaturn) {
@@ -57,70 +57,141 @@ function getSaturnShape(): confetti.Shape {
       const cy = s / 2;
       ctx.save();
       ctx.translate(cx, cy);
-      ctx.rotate(-0.4); // наклон -23 градуса
+      ctx.rotate(-0.35); // наклон -20 градусов
 
       // Задняя дуга кольца (за сферой)
       ctx.beginPath();
-      ctx.ellipse(0, 0, s * 0.44, s * 0.14, 0, Math.PI, Math.PI * 2);
-      ctx.lineWidth = s * 0.08;
+      ctx.ellipse(0, 0, s * 0.45, s * 0.15, 0, Math.PI, Math.PI * 2);
+      ctx.lineWidth = s * 0.09;
       ctx.strokeStyle = '#f59e0b';
+      ctx.stroke();
+
+      // Тонкая внутренняя щель кольца сзади
+      ctx.beginPath();
+      ctx.ellipse(0, 0, s * 0.36, s * 0.12, 0, Math.PI, Math.PI * 2);
+      ctx.lineWidth = s * 0.025;
+      ctx.strokeStyle = '#b45309';
       ctx.stroke();
 
       // Тело планеты (сфера с радиальным 3D градиентом)
       ctx.beginPath();
-      ctx.arc(0, 0, s * 0.22, 0, Math.PI * 2);
-      const grad = ctx.createRadialGradient(-s * 0.06, -s * 0.06, s * 0.02, 0, 0, s * 0.22);
+      ctx.arc(0, 0, s * 0.23, 0, Math.PI * 2);
+      const grad = ctx.createRadialGradient(-s * 0.07, -s * 0.07, s * 0.02, 0, 0, s * 0.23);
       grad.addColorStop(0, '#fef08a');
-      grad.addColorStop(0.5, '#f59e0b');
+      grad.addColorStop(0.45, '#f59e0b');
       grad.addColorStop(1, '#b45309');
       ctx.fillStyle = grad;
       ctx.fill();
 
       // Полосы облаков на планете
       ctx.beginPath();
-      ctx.arc(0, 0, s * 0.22, 0.2, Math.PI - 0.2);
+      ctx.arc(0, 0, s * 0.23, 0.2, Math.PI - 0.2);
       ctx.lineWidth = s * 0.04;
       ctx.strokeStyle = '#d97706';
       ctx.stroke();
 
       // Передняя дуга кольца (перед планетой)
       ctx.beginPath();
-      ctx.ellipse(0, 0, s * 0.44, s * 0.14, 0, 0, Math.PI);
-      ctx.lineWidth = s * 0.08;
+      ctx.ellipse(0, 0, s * 0.45, s * 0.15, 0, 0, Math.PI);
+      ctx.lineWidth = s * 0.09;
       ctx.strokeStyle = '#fbbf24';
       ctx.stroke();
 
+      // Светлый блик на переднем кольце
+      ctx.beginPath();
+      ctx.ellipse(0, 0, s * 0.45, s * 0.15, 0, 0.3, Math.PI * 0.7);
+      ctx.lineWidth = s * 0.035;
+      ctx.strokeStyle = '#fef08a';
+      ctx.stroke();
+
       ctx.restore();
-    }, 48);
+    }, 56);
   }
   return cachedSaturn;
 }
 
-// 2. Королевская корона: золотой обод, 3 зубца, жемчужины на пиках и рубин
+// 2. Золотой месяц: изящный светящийся полумесяц со звёздным сиянием
+let cachedMoon: confetti.Shape | null = null;
+function getMoonShape(): confetti.Shape {
+  if (!cachedMoon) {
+    cachedMoon = createShapeBitmap((ctx, s) => {
+      const cx = s / 2;
+      const cy = s / 2;
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(-0.22); // уютный наклон полумесяца
+
+      // Контур полумесяца
+      ctx.beginPath();
+      ctx.moveTo(s * 0.06, -s * 0.42);
+      // Внешняя дуга (левая спинка месяца)
+      ctx.bezierCurveTo(-s * 0.42, -s * 0.36, -s * 0.42, s * 0.36, s * 0.06, s * 0.42);
+      // Внутренний изгиб (впадина месяца)
+      ctx.bezierCurveTo(-s * 0.18, s * 0.24, -s * 0.18, -s * 0.24, s * 0.06, -s * 0.42);
+      ctx.closePath();
+
+      // Градиент лунного света
+      const grad = ctx.createLinearGradient(-s * 0.35, -s * 0.35, s * 0.06, s * 0.35);
+      grad.addColorStop(0, '#ffffff');
+      grad.addColorStop(0.25, '#fef08a');
+      grad.addColorStop(0.7, '#facc15');
+      grad.addColorStop(1, '#eab308');
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // Деликатная обводка
+      ctx.lineWidth = s * 0.025;
+      ctx.strokeStyle = '#ca8a04';
+      ctx.stroke();
+
+      // Мягкие лунные кратеры
+      ctx.beginPath();
+      ctx.arc(-s * 0.2, -s * 0.07, s * 0.045, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(202, 138, 4, 0.3)';
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(-s * 0.17, s * 0.14, s * 0.035, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(202, 138, 4, 0.3)';
+      ctx.fill();
+
+      // Сияющая искра на верхнем рожке месяца
+      ctx.beginPath();
+      ctx.arc(s * 0.03, -s * 0.38, s * 0.04, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+
+      ctx.restore();
+    }, 56);
+  }
+  return cachedMoon;
+}
+
+// 3. Королевская корона: золотой обод, 3 зубца, жемчужины на пиках и рубин
 let cachedCrown: confetti.Shape | null = null;
 function getCrownShape(): confetti.Shape {
   if (!cachedCrown) {
     cachedCrown = createShapeBitmap((ctx, s) => {
       const cx = s / 2;
-      const rx = s * 0.2;
+      const rx = s * 0.16;
       const ry = s * 0.52;
-      const rw = s * 0.6;
-      const rh = s * 0.14;
+      const rw = s * 0.68;
+      const rh = s * 0.16;
 
       // Обод короны
       ctx.fillStyle = '#d97706';
       ctx.fillRect(rx, ry, rw, rh);
       ctx.fillStyle = '#f59e0b';
-      ctx.fillRect(rx, ry + 1, rw, rh - 2);
+      ctx.fillRect(rx, ry + 1.5, rw, rh - 3);
 
       // Зубцы короны
       ctx.beginPath();
       ctx.moveTo(rx, ry);
-      ctx.lineTo(rx + 2, s * 0.24); // левый пик
-      ctx.lineTo(cx - s * 0.1, ry - s * 0.04); // левая выемка
-      ctx.lineTo(cx, s * 0.14); // центральный высокий пик
-      ctx.lineTo(cx + s * 0.1, ry - s * 0.04); // правая выемка
-      ctx.lineTo(rx + rw - 2, s * 0.24); // правый пик
+      ctx.lineTo(rx + 2, s * 0.22); // левый пик
+      ctx.lineTo(cx - s * 0.12, ry - s * 0.04); // левая выемка
+      ctx.lineTo(cx, s * 0.11); // центральный высокий пик
+      ctx.lineTo(cx + s * 0.12, ry - s * 0.04); // правая выемка
+      ctx.lineTo(rx + rw - 2, s * 0.22); // правый пик
       ctx.lineTo(rx + rw, ry);
       ctx.closePath();
       ctx.fillStyle = '#fbbf24';
@@ -129,36 +200,36 @@ function getCrownShape(): confetti.Shape {
       // Золотистые жемчужины на вершинах зубцов
       ctx.fillStyle = '#fef08a';
       ctx.beginPath();
-      ctx.arc(rx + 2, s * 0.22, s * 0.05, 0, Math.PI * 2);
-      ctx.arc(cx, s * 0.12, s * 0.065, 0, Math.PI * 2);
-      ctx.arc(rx + rw - 2, s * 0.22, s * 0.05, 0, Math.PI * 2);
+      ctx.arc(rx + 2, s * 0.2, s * 0.06, 0, Math.PI * 2);
+      ctx.arc(cx, s * 0.09, s * 0.075, 0, Math.PI * 2);
+      ctx.arc(rx + rw - 2, s * 0.2, s * 0.06, 0, Math.PI * 2);
       ctx.fill();
 
       // Рубин в центре
       ctx.beginPath();
-      ctx.arc(cx, ry + rh / 2, s * 0.045, 0, Math.PI * 2);
+      ctx.arc(cx, ry + rh / 2, s * 0.052, 0, Math.PI * 2);
       ctx.fillStyle = '#ef4444';
       ctx.fill();
-    }, 48);
+    }, 56);
   }
   return cachedCrown;
 }
 
-// 3. Аккуратная волнистая лента серпантина (умеренный размер ~30-35px, без спиралей)
+// 4. Аккуратная волнистая лента серпантина
 let cachedSerpentine: confetti.Shape | null = null;
 function getSerpentineShape(): confetti.Shape {
   if (!cachedSerpentine) {
     cachedSerpentine = createShapeBitmap((ctx, s) => {
       ctx.beginPath();
-      ctx.moveTo(s * 0.15, s * 0.35);
-      ctx.bezierCurveTo(s * 0.35, s * 0.1, s * 0.45, s * 0.65, s * 0.65, s * 0.4);
-      ctx.bezierCurveTo(s * 0.75, s * 0.26, s * 0.82, s * 0.5, s * 0.9, s * 0.4);
-      ctx.lineWidth = s * 0.09; // ~4px толщина ленты
+      ctx.moveTo(s * 0.12, s * 0.42);
+      ctx.bezierCurveTo(s * 0.32, s * 0.1, s * 0.46, s * 0.76, s * 0.68, s * 0.36);
+      ctx.bezierCurveTo(s * 0.78, s * 0.18, s * 0.88, s * 0.52, s * 0.94, s * 0.38);
+      ctx.lineWidth = s * 0.1; // плотная заметная лента
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       ctx.strokeStyle = '#f59e0b';
       ctx.stroke();
-    }, 48);
+    }, 56);
   }
   return cachedSerpentine;
 }
@@ -215,8 +286,9 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
 
   switch (animationId) {
     case 'cosmic_nebula': {
-      // Космическая туманность: сверкающая пыльца + звёздочки + 3D Сатурны
+      // Космическая туманность: сверкающая пыльца + звёздочки + 3D Сатурны + золотой месяц
       const saturn = getSaturnShape();
+      const moon = getMoonShape();
 
       const dustColors = [
         '#00f0ff', // electric cyan
@@ -235,9 +307,9 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
         '#67e8f9', // cyan star
       ];
 
-      // Залп 1: Центральное облако пыльцы, мерцающие звёзды и планеты
+      // Залп 1: Центральное облако пыльцы, звёзды, Сатурны и полумесяцы
       cannon({
-        particleCount: 50,
+        particleCount: 45,
         spread: 360,
         startVelocity: 20,
         origin: { x: 0.5, y: 0.45 },
@@ -250,7 +322,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
       });
 
       cannon({
-        particleCount: 20,
+        particleCount: 18,
         spread: 360,
         startVelocity: 24,
         origin: { x: 0.5, y: 0.45 },
@@ -263,22 +335,34 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
       });
 
       cannon({
-        particleCount: 8,
+        particleCount: 5,
         spread: 360,
         startVelocity: 16,
         origin: { x: 0.5, y: 0.45 },
         shapes: [saturn],
-        scalar: 1.4,
+        scalar: 1.8,
         gravity: 0.3,
         decay: 0.95,
         ticks: 140,
       });
 
-      // Залп 2 (+240ms): Боковые рукава туманности со звёздами и Сатурнами
+      cannon({
+        particleCount: 5,
+        spread: 360,
+        startVelocity: 17,
+        origin: { x: 0.5, y: 0.45 },
+        shapes: [moon],
+        scalar: 1.8,
+        gravity: 0.28,
+        decay: 0.95,
+        ticks: 140,
+      });
+
+      // Залп 2 (+240ms): Боковые рукава туманности с планетами и месяцем
       activeTimeouts.push(
         window.setTimeout(() => {
           cannon({
-            particleCount: 30,
+            particleCount: 26,
             angle: 60,
             spread: 70,
             startVelocity: 26,
@@ -290,7 +374,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             ticks: 120,
           });
           cannon({
-            particleCount: 12,
+            particleCount: 10,
             angle: 60,
             spread: 60,
             startVelocity: 28,
@@ -301,19 +385,30 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             ticks: 120,
           });
           cannon({
-            particleCount: 4,
+            particleCount: 3,
             angle: 60,
             spread: 50,
             startVelocity: 20,
             origin: { x: 0.12, y: 0.65 },
             shapes: [saturn],
-            scalar: 1.4,
+            scalar: 1.75,
             gravity: 0.3,
+            ticks: 130,
+          });
+          cannon({
+            particleCount: 3,
+            angle: 60,
+            spread: 50,
+            startVelocity: 21,
+            origin: { x: 0.12, y: 0.65 },
+            shapes: [moon],
+            scalar: 1.75,
+            gravity: 0.28,
             ticks: 130,
           });
 
           cannon({
-            particleCount: 30,
+            particleCount: 26,
             angle: 120,
             spread: 70,
             startVelocity: 26,
@@ -325,7 +420,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             ticks: 120,
           });
           cannon({
-            particleCount: 12,
+            particleCount: 10,
             angle: 120,
             spread: 60,
             startVelocity: 28,
@@ -336,14 +431,25 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             ticks: 120,
           });
           cannon({
-            particleCount: 4,
+            particleCount: 3,
             angle: 120,
             spread: 50,
             startVelocity: 20,
             origin: { x: 0.88, y: 0.65 },
             shapes: [saturn],
-            scalar: 1.4,
+            scalar: 1.75,
             gravity: 0.3,
+            ticks: 130,
+          });
+          cannon({
+            particleCount: 3,
+            angle: 120,
+            spread: 50,
+            startVelocity: 21,
+            origin: { x: 0.88, y: 0.65 },
+            shapes: [moon],
+            scalar: 1.75,
+            gravity: 0.28,
             ticks: 130,
           });
         }, 240)
@@ -353,7 +459,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
       activeTimeouts.push(
         window.setTimeout(() => {
           cannon({
-            particleCount: 40,
+            particleCount: 35,
             spread: 120,
             startVelocity: 16,
             origin: { x: 0.5, y: 0.22 },
@@ -364,7 +470,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             ticks: 130,
           });
           cannon({
-            particleCount: 15,
+            particleCount: 14,
             spread: 100,
             startVelocity: 18,
             origin: { x: 0.5, y: 0.22 },
@@ -374,13 +480,23 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             ticks: 130,
           });
           cannon({
-            particleCount: 5,
+            particleCount: 3,
             spread: 90,
             startVelocity: 14,
             origin: { x: 0.5, y: 0.22 },
             shapes: [saturn],
-            scalar: 1.45,
+            scalar: 1.85,
             gravity: 0.28,
+            ticks: 140,
+          });
+          cannon({
+            particleCount: 3,
+            spread: 90,
+            startVelocity: 15,
+            origin: { x: 0.5, y: 0.22 },
+            shapes: [moon],
+            scalar: 1.85,
+            gravity: 0.26,
             ticks: 140,
           });
         }, 480)
@@ -390,7 +506,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
 
     case 'confetti':
     default: {
-      // Праздничный серпантин: аккуратные волнистые ленты + конфетти (без спиралей)
+      // Праздничный серпантин: аккуратные волнистые ленты + конфетти
       const serpentine = getSerpentineShape();
       const fiestaColors = ['#f59e0b', '#ec4899', '#38bdf8', '#8b5cf6', '#22c55e', '#f97316'];
 
@@ -402,7 +518,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
         origin: { x: 0.5, y: 0.6 },
         colors: fiestaColors,
         shapes: [serpentine],
-        scalar: 1.15,
+        scalar: 1.5,
         gravity: 0.68,
         ticks: 130,
       });
@@ -428,7 +544,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             origin: { x: 0.08, y: 0.7 },
             colors: fiestaColors,
             shapes: [serpentine],
-            scalar: 1.15,
+            scalar: 1.5,
             gravity: 0.65,
             ticks: 130,
           });
@@ -451,7 +567,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             origin: { x: 0.92, y: 0.7 },
             colors: fiestaColors,
             shapes: [serpentine],
-            scalar: 1.15,
+            scalar: 1.5,
             gravity: 0.65,
             ticks: 130,
           });
@@ -478,7 +594,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             origin: { x: 0.5, y: 0.3 },
             colors: fiestaColors,
             shapes: [serpentine],
-            scalar: 1.15,
+            scalar: 1.55,
             gravity: 0.66,
             ticks: 130,
           });
@@ -602,17 +718,29 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
       const serpentine = getSerpentineShape();
       const royalColors = ['#ef4444', '#facc15', '#3b82f6', '#10b981', '#f97316', '#ffd700', '#ffffff'];
 
-      // Залп 1: Центральный взрыв с коронами
+      // Залп 1: Центральный взрыв с коронами и серпантином
       cannon({
-        particleCount: 40,
+        particleCount: 35,
         startVelocity: 35,
         spread: 360,
         ticks: 90,
         origin: { x: 0.5, y: 0.4 },
         colors: royalColors,
         gravity: 0.95,
-        scalar: 1.1,
-        shapes: ['star', 'circle', serpentine],
+        scalar: 1.0,
+        shapes: ['star', 'circle'],
+      });
+
+      cannon({
+        particleCount: 15,
+        startVelocity: 32,
+        spread: 360,
+        ticks: 110,
+        origin: { x: 0.5, y: 0.4 },
+        colors: royalColors,
+        shapes: [serpentine],
+        scalar: 1.45,
+        gravity: 0.7,
       });
 
       cannon({
@@ -622,7 +750,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
         ticks: 130,
         origin: { x: 0.5, y: 0.4 },
         shapes: [crown],
-        scalar: 1.35,
+        scalar: 1.85,
         gravity: 0.55,
         decay: 0.94,
       });
@@ -630,15 +758,27 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
       // Залп 2 (+250ms): Двойной салют с коронами слева и справа
       activeTimeouts.push(
         window.setTimeout(() => {
+          // Слева
           cannon({
-            particleCount: 30,
+            particleCount: 25,
             startVelocity: 32,
             spread: 360,
             ticks: 85,
             origin: { x: 0.25, y: 0.35 },
             colors: ['#ec4899', '#8b5cf6', '#06b6d4', '#ffd700'],
-            shapes: ['star', serpentine],
-            scalar: 1.05,
+            shapes: ['star'],
+            scalar: 1.0,
+          });
+          cannon({
+            particleCount: 10,
+            startVelocity: 30,
+            spread: 360,
+            ticks: 110,
+            origin: { x: 0.25, y: 0.35 },
+            colors: ['#ec4899', '#8b5cf6', '#06b6d4', '#ffd700'],
+            shapes: [serpentine],
+            scalar: 1.4,
+            gravity: 0.7,
           });
           cannon({
             particleCount: 6,
@@ -647,19 +787,31 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             ticks: 120,
             origin: { x: 0.25, y: 0.35 },
             shapes: [crown],
-            scalar: 1.3,
+            scalar: 1.75,
             gravity: 0.55,
           });
 
+          // Справа
           cannon({
-            particleCount: 30,
+            particleCount: 25,
             startVelocity: 32,
             spread: 360,
             ticks: 85,
             origin: { x: 0.75, y: 0.35 },
             colors: ['#f97316', '#eab308', '#22c55e', '#a855f7'],
-            shapes: ['star', serpentine],
-            scalar: 1.05,
+            shapes: ['star'],
+            scalar: 1.0,
+          });
+          cannon({
+            particleCount: 10,
+            startVelocity: 30,
+            spread: 360,
+            ticks: 110,
+            origin: { x: 0.75, y: 0.35 },
+            colors: ['#f97316', '#eab308', '#22c55e', '#a855f7'],
+            shapes: [serpentine],
+            scalar: 1.4,
+            gravity: 0.7,
           });
           cannon({
             particleCount: 6,
@@ -668,7 +820,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             ticks: 120,
             origin: { x: 0.75, y: 0.35 },
             shapes: [crown],
-            scalar: 1.3,
+            scalar: 1.75,
             gravity: 0.55,
           });
         }, 250)
@@ -678,14 +830,25 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
       activeTimeouts.push(
         window.setTimeout(() => {
           cannon({
-            particleCount: 50,
+            particleCount: 40,
             startVelocity: 36,
             spread: 360,
             ticks: 100,
             origin: { x: 0.5, y: 0.28 },
             colors: ['#ffd700', '#ff4500', '#00e5ff', '#ff007f', '#ffffff', '#22c55e'],
-            shapes: ['star', 'circle', serpentine],
-            scalar: 1.15,
+            shapes: ['star', 'circle'],
+            scalar: 1.05,
+          });
+          cannon({
+            particleCount: 16,
+            startVelocity: 32,
+            spread: 360,
+            ticks: 120,
+            origin: { x: 0.5, y: 0.28 },
+            colors: ['#ffd700', '#ff4500', '#00e5ff', '#ff007f', '#ffffff', '#22c55e'],
+            shapes: [serpentine],
+            scalar: 1.5,
+            gravity: 0.65,
           });
           cannon({
             particleCount: 12,
@@ -694,7 +857,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             ticks: 140,
             origin: { x: 0.5, y: 0.28 },
             shapes: [crown],
-            scalar: 1.4,
+            scalar: 1.9,
             gravity: 0.5,
           });
         }, 550)

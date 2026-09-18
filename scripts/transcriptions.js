@@ -759,5 +759,18 @@ export const TRANSCRIPTIONS = {
   "marbles": "[ ˈmɑːblz ]",
   "jacks": "[ dʒæks ]",
   "cards": "[ kɑːdz ]",
+
+  // Grade 2 Extra additions
+  "costume": "[ ˈkɒstjuːm ]",
+  "acrobat": "[ ˈækrəbæt ]",
+  "magic": "[ ˈmædʒɪk ]",
+  "voice": "[ vɔɪs ]",
+  "sound": "[ saʊnd ]",
+  "bear": "[ beə ]",
+  "wolf": "[ wʊlf ]",
+  "fox": "[ fɒks ]",
+  "hedgehog": "[ ˈhedʒhɒɡ ]",
+  "hare": "[ heə ]",
+  "parents": "[ ˈpeərənts ]",
 };
 

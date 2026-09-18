@@ -225,6 +225,21 @@ const TOPIC_METADATA = {
   'Games and music': { icon: 'Music', color: 'purple', emoji: '🥁' },
   'Spēles un mūzika': { icon: 'Music', color: 'purple', emoji: '🥁' },
   'Игры и музыка': { icon: 'Music', color: 'purple', emoji: '🥁' },
+  'Order and quantity': { icon: 'ListOrdered', color: 'indigo', emoji: '🔢' },
+  'Secība un daudzums': { icon: 'ListOrdered', color: 'indigo', emoji: '🔢' },
+  'Порядок и количество': { icon: 'ListOrdered', color: 'indigo', emoji: '🔢' },
+  'Logic and answers': { icon: 'CheckSquare', color: 'blue', emoji: '💡' },
+  'Loģika un atbildes': { icon: 'CheckSquare', color: 'blue', emoji: '💡' },
+  'Логика и ответы': { icon: 'CheckSquare', color: 'blue', emoji: '💡' },
+  'Family and friends': { icon: 'Heart', color: 'pink', emoji: '👨‍👩‍👧‍👦' },
+  'Ģimene un draugi': { icon: 'Heart', color: 'pink', emoji: '👨‍👩‍👧‍👦' },
+  'Семья и друзья': { icon: 'Heart', color: 'pink', emoji: '👨‍👩‍👧‍👦' },
+  'Character and feelings +': { icon: 'Smile', color: 'amber', emoji: '😊' },
+  'Raksturs un sajūtas +': { icon: 'Smile', color: 'amber', emoji: '😊' },
+  'Характер и эмоции +': { icon: 'Smile', color: 'amber', emoji: '😊' },
+  'Qualities +': { icon: 'Sparkles', color: 'emerald', emoji: '✨' },
+  'Īpašības +': { icon: 'Sparkles', color: 'emerald', emoji: '✨' },
+  'Качества и оценка +': { icon: 'Sparkles', color: 'emerald', emoji: '✨' },
 };
 
 /**

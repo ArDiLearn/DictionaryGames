@@ -3,6 +3,7 @@ import { Topic, Language, TopicProgress, Grade, LearningCourse, ExamResult } fro
 import { TopicCard } from './TopicCard';
 import { ExamCard } from './ExamCard';
 import { FlagIcon } from './FlagIcon';
+import { AvatarBadge } from './AvatarBadge';
 import {
   translations,
   getGradeFilterInfo,
@@ -116,11 +117,11 @@ export const TopicList: React.FC<TopicListProps> = ({
                   onOpenShop();
                 }
               }}
-              className="relative group w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-white/20 hover:bg-white/30 backdrop-blur-md border-2 border-white/40 flex items-center justify-center text-4xl sm:text-5xl shadow-inner transition-transform hover:scale-105 active:scale-95 cursor-pointer shrink-0"
+              className="relative group flex items-center justify-center transition-transform hover:scale-105 active:scale-95 cursor-pointer shrink-0"
               title={t.avatarShopTitle}
             >
-              <span className="select-none leading-none flex items-center justify-center">{avatar}</span>
-              <span className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-7 sm:h-7 bg-amber-400 border-2 border-white rounded-full shadow-md flex items-center justify-center text-xs sm:text-sm pointer-events-none">
+              <AvatarBadge avatar={avatar || '🦁'} size="xl" showStars={true} />
+              <span className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-7 sm:h-7 bg-amber-400 border-2 border-white rounded-full shadow-md flex items-center justify-center text-xs sm:text-sm pointer-events-none z-20">
                 🛍️
               </span>
             </button>

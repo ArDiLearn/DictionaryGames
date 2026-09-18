@@ -12,6 +12,22 @@ interface AvatarBadgeProps {
   animate?: boolean;
 }
 
+const EMOJI_FALLBACKS: Record<string, string> = {
+  pineapple: '🍍',
+  gamer_pineapple: '🍍',
+  king_pineapple: '🍍',
+  cool_pineapple: '🍍',
+  cosmic_pineapple: '🍍',
+  tropical_pineapple: '🍍',
+  disco_pineapple: '🍍',
+  capybara: '🦫',
+  gamer_capybara: '🦫',
+  king_capybara: '🦫',
+  cool_capybara: '🦫',
+  zen_capybara: '🦫',
+  onsen_capybara: '🦫',
+};
+
 const SIZE_MAP: Record<
   AvatarSize,
   {
@@ -91,7 +107,8 @@ export const AvatarBadge: React.FC<AvatarBadgeProps> = ({
 
   // Resolve visual emoji: prefer item.emoji if available, fallback to avatar
   const rawEmoji = item?.emoji || avatar || '🦁';
-  const displayEmoji = rawEmoji.replace(/✨$/, '');
+  const cleanEmoji = rawEmoji.replace(/✨$/, '');
+  const displayEmoji = EMOJI_FALLBACKS[cleanEmoji] || cleanEmoji;
 
   const isMultiGrapheme =
     typeof Intl !== 'undefined' && (Intl as unknown as { Segmenter?: unknown }).Segmenter

@@ -261,12 +261,10 @@ export const App: React.FC = () => {
     onGameComplete(selectedTopic, gameMode, correctCount, totalCount);
   };
 
-  const handleRestartGame = () => {
+  const handleBackToGames = () => {
     setCelebration(null);
     setGameSessionId((prev) => prev + 1);
-    if (gameMode && selectedTopic) {
-      trackGameStart(gameMode, selectedTopic.topic_id);
-    }
+    selectMode(null);
   };
 
   const handleSelectMode = (mode: GameMode) => {
@@ -464,7 +462,7 @@ export const App: React.FC = () => {
             isFirstClear={celebration.isFirstClear}
             isRepeatClear={celebration.isRepeatClear}
             isFailedThreshold={celebration.isFailedThreshold}
-            onRestart={handleRestartGame}
+            onBackToGames={handleBackToGames}
             onHome={handleHomeClick}
           />
         )}

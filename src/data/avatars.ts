@@ -97,6 +97,20 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
     price: 10,
     category: 'simple',
   },
+  {
+    id: 'pineapple',
+    emoji: '🍍',
+    name: { ru: 'Ананасик', lv: 'Ananasiņš' },
+    price: 10,
+    category: 'simple',
+  },
+  {
+    id: 'capybara',
+    emoji: '🦫',
+    name: { ru: 'Капибара', lv: 'Kapibara' },
+    price: 10,
+    category: 'simple',
+  },
 
   // 3. Средние / Vidējie (50 ⭐)
   {
@@ -155,6 +169,20 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
     price: 50,
     category: 'medium',
   },
+  {
+    id: 'tropical_pineapple',
+    emoji: '🍍🍹',
+    name: { ru: 'Тропический ананас', lv: 'Tropiskais ananass' },
+    price: 50,
+    category: 'medium',
+  },
+  {
+    id: 'onsen_capybara',
+    emoji: '🦫🍊',
+    name: { ru: 'Капибара с мандаринкой', lv: 'Kapibara ar mandarīnu' },
+    price: 50,
+    category: 'medium',
+  },
 
   // 4. Уникальные / Unikālie (100 ⭐)
   {
@@ -199,6 +227,20 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
     price: 100,
     category: 'unique',
   },
+  {
+    id: 'king_pineapple',
+    emoji: '🍍👑',
+    name: { ru: 'Король-Ананас', lv: 'Karalis Ananass' },
+    price: 100,
+    category: 'unique',
+  },
+  {
+    id: 'king_capybara',
+    emoji: '🦫👑',
+    name: { ru: 'Король Капибар', lv: 'Kapibaru Karalis' },
+    price: 100,
+    category: 'unique',
+  },
 
   // 5. Легендарные / Leģendārie (150 - 200 ⭐)
   {
@@ -234,6 +276,20 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
     emoji: '🥇',
     name: { ru: 'Абсолютный чемпион', lv: 'Absolūtais čempions' },
     price: 200,
+    category: 'legendary',
+  },
+  {
+    id: 'disco_pineapple',
+    emoji: '🍍🪩',
+    name: { ru: 'Диско-Ананас', lv: 'Disko Ananass' },
+    price: 150,
+    category: 'legendary',
+  },
+  {
+    id: 'cool_capybara',
+    emoji: '🦫🕶️',
+    name: { ru: 'Крутая Капибара', lv: 'Foršā Kapibara' },
+    price: 150,
     category: 'legendary',
   },
 
@@ -341,6 +397,36 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
       sparkles: ['⭐', '☀️', '✨', '🌟'],
       theme: 'solar',
       cardBg: 'bg-gradient-to-b from-amber-500/20 via-yellow-400/15 to-orange-500/10 border-2 border-amber-400',
+    },
+  },
+  {
+    id: 'cosmic_pineapple',
+    emoji: '🍍✨',
+    name: { ru: 'Космо-Ананас Вселенной', lv: 'Visuma Kosmo-Ananass' },
+    price: 1000,
+    category: 'mythic',
+    vfx: {
+      bgGradient: 'bg-gradient-to-br from-amber-600 via-yellow-500 to-emerald-600',
+      borderClass: 'border-yellow-300 ring-2 ring-amber-400 shadow-yellow-500/50',
+      glowClass: 'shadow-lg shadow-amber-500/50',
+      sparkles: ['🍍', '⭐', '✨', '🌟'],
+      theme: 'pineapple',
+      cardBg: 'bg-gradient-to-b from-amber-500/20 via-yellow-400/15 to-emerald-500/10 border-2 border-yellow-400',
+    },
+  },
+  {
+    id: 'zen_capybara',
+    emoji: '🦫✨',
+    name: { ru: 'Дзен-Капибара Бесконечности', lv: 'Bezgalības Dzen-Kapibara' },
+    price: 1000,
+    category: 'mythic',
+    vfx: {
+      bgGradient: 'bg-gradient-to-br from-amber-800 via-orange-600 to-teal-800',
+      borderClass: 'border-orange-300 ring-2 ring-amber-400 shadow-orange-500/50',
+      glowClass: 'shadow-lg shadow-amber-500/50',
+      sparkles: ['🍊', '✨', '🌸', '🦫'],
+      theme: 'capybara',
+      cardBg: 'bg-gradient-to-b from-orange-500/20 via-amber-400/15 to-teal-500/10 border-2 border-orange-400',
     },
   },
 ];

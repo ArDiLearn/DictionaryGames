@@ -88,6 +88,12 @@ export const AvatarBadge: React.FC<AvatarBadgeProps> = ({
     ? (item?.emoji || avatar).replace(/✨$/, '')
     : avatar || '🦁';
 
+  const isMultiGrapheme =
+    typeof Intl !== 'undefined' && (Intl as unknown as { Segmenter?: unknown }).Segmenter
+      ? [...new (Intl as unknown as { Segmenter: new () => { segment: (s: string) => Iterable<unknown> } }).Segmenter().segment(displayEmoji)].length > 1
+      : [...displayEmoji].length > 2;
+  const multiGraphemeStyle = isMultiGrapheme ? 'scale-[0.72] tracking-tighter' : '';
+
   if (vfx) {
     const sparkles = vfx.sparkles || ['✨', '⭐', '✨', '🌟'];
 
@@ -130,7 +136,7 @@ export const AvatarBadge: React.FC<AvatarBadgeProps> = ({
         )}
 
         {/* Center Character Emoji */}
-        <span className={`${config.text} drop-shadow-md z-0 leading-none`}>
+        <span className={`${config.text} ${multiGraphemeStyle} inline-block drop-shadow-md z-0 leading-none transition-transform`}>
           {displayEmoji}
         </span>
       </div>
@@ -142,7 +148,7 @@ export const AvatarBadge: React.FC<AvatarBadgeProps> = ({
     <div
       className={`inline-flex items-center justify-center select-none shrink-0 bg-white border-2 border-amber-300 shadow-sm ${config.container} ${className}`}
     >
-      <span className={`${config.text} leading-none`}>{displayEmoji}</span>
+      <span className={`${config.text} ${multiGraphemeStyle} inline-block leading-none transition-transform`}>{displayEmoji}</span>
     </div>
   );
 };

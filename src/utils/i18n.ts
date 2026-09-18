@@ -173,6 +173,8 @@ export interface Translations {
   starsAddedToBank: string;
   shopNotice: string;
   congratsAvatarPurchased: string;
+  equipNow: string;
+  continueShopping: string;
   flashcardsComplete: string;
   flashcardsFinishedHeadline: string;
   flashcardsNoRewardHint: string;
@@ -442,6 +444,8 @@ export const translations: Record<Language, Translations> = {
     starsAddedToBank: 'в копилку аватаров!',
     shopNotice: 'Играй в игры и учи слова, чтобы пополнять копилку звёздочек и открывать новых героев!',
     congratsAvatarPurchased: 'Ура! Новый аватар разблокирован!',
+    equipNow: 'Надеть сейчас!',
+    continueShopping: 'Отлично',
     flashcardsComplete: 'Карточки пройдены!',
     flashcardsFinishedHeadline: 'Отличная тренировка!',
     flashcardsNoRewardHint: 'В режиме карточек звёзды не начисляются. Играй в игры, чтобы заработать звёзды!',
@@ -709,6 +713,8 @@ export const translations: Record<Language, Translations> = {
     starsAddedToBank: 'avataru krājkasītē!',
     shopNotice: 'Spēlē spēles un mācies vārdus, lai pelnītu zvaigznītes un atbloķētu jaunus varoņus!',
     congratsAvatarPurchased: 'Urā! Jauns avatars atbloķēts!',
+    equipNow: 'Uzvilkt tagad!',
+    continueShopping: 'Labi',
     flashcardsComplete: 'Kartītes pabeigtas!',
     flashcardsFinishedHeadline: 'Lielisks treniņš!',
     flashcardsNoRewardHint: 'Kartīšu režīmā zvaigznes netiek piešķirtas. Spēlē spēles, lai nopelnītu zvaigznes!',

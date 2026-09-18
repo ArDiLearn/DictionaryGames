@@ -130,6 +130,80 @@ class SoundEffects {
       // ignore
     }
   }
+
+  public playUnlockFanfare(isEpic = false) {
+    if (!this.enabled) return;
+    const ctx = this.getContext();
+    if (!ctx) return;
+
+    try {
+      // 1. Triumphant ascending fanfare notes
+      const notes = isEpic
+        ? [523.25, 659.25, 783.99, 1046.5, 1318.51, 1567.98] // C5, E5, G5, C6, E6, G6
+        : [523.25, 659.25, 783.99, 1046.5, 1318.51]; // C5, E5, G5, C6, E6
+
+      notes.forEach((freq, index) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = isEpic ? 'sawtooth' : 'triangle';
+        osc.frequency.value = freq;
+
+        const startTime = ctx.currentTime + index * 0.1;
+        const duration = index === notes.length - 1 ? 0.6 : 0.18;
+
+        gain.gain.setValueAtTime(isEpic ? 0.16 : 0.22, startTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(startTime);
+        osc.stop(startTime + duration);
+      });
+
+      // 2. Harmonious sustained victory chord (C Major)
+      const chord = [523.25, 659.25, 783.99, 1046.5];
+      const chordStart = ctx.currentTime + (notes.length - 1) * 0.1;
+      const chordDuration = isEpic ? 0.9 : 0.6;
+
+      chord.forEach((freq) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.value = freq;
+
+        gain.gain.setValueAtTime(0.12, chordStart);
+        gain.gain.exponentialRampToValueAtTime(0.005, chordStart + chordDuration);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(chordStart);
+        osc.stop(chordStart + chordDuration);
+      });
+
+      // 3. Sparkling magical chimes
+      const chimes = [1760, 2093, 2637, 3135.96, 3520];
+      chimes.forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+
+        const chimeStart = chordStart + 0.05 + i * 0.08;
+        gain.gain.setValueAtTime(0.14, chimeStart);
+        gain.gain.exponentialRampToValueAtTime(0.001, chimeStart + 0.35);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(chimeStart);
+        osc.stop(chimeStart + 0.35);
+      });
+    } catch {
+      // ignore
+    }
+  }
 }
 
 export const sounds = new SoundEffects();

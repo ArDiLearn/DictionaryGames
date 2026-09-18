@@ -29,7 +29,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
   onPurchase,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('all');
-  const [purchasedJustNow, setPurchasedJustNow] = useState<string | null>(null);
+  const [unlockedItem, setUnlockedItem] = useState<AvatarShopItem | null>(null);
 
   const t = translations[language];
   const spentStars = stats.spentStars || 0;
@@ -60,16 +60,40 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
   const handleBuy = (item: AvatarShopItem) => {
     if (starBalance < item.price) return;
 
-    sounds.playCorrect();
-    // Confetti pop
+    // Victory sound!
+    const isEpic = item.category === 'mythic' || item.category === 'legendary' || item.category === 'unique';
+    sounds.playUnlockFanfare(isEpic);
+
+    // Multi-stage victory confetti bursts!
     confetti({
-      particleCount: 50,
-      spread: 70,
-      origin: { y: 0.6 },
+      particleCount: 65,
+      spread: 90,
+      origin: { y: 0.55 },
+      colors: ['#f59e0b', '#fbbf24', '#ec4899', '#8b5cf6', '#3b82f6', '#10b981'],
     });
 
-    setPurchasedJustNow(item.emoji);
-    setTimeout(() => setPurchasedJustNow(null), 2500);
+    setTimeout(() => {
+      confetti({
+        particleCount: 50,
+        angle: 60,
+        spread: 60,
+        origin: { x: 0.05, y: 0.65 },
+        colors: ['#f59e0b', '#fbbf24', '#ec4899', '#8b5cf6'],
+      });
+    }, 180);
+
+    setTimeout(() => {
+      confetti({
+        particleCount: 50,
+        angle: 120,
+        spread: 60,
+        origin: { x: 0.95, y: 0.65 },
+        colors: ['#f59e0b', '#fbbf24', '#ec4899', '#8b5cf6'],
+      });
+    }, 360);
+
+    // Open victory celebration modal for this unlocked hero
+    setUnlockedItem(item);
 
     onPurchase(item.emoji, item.price);
   };
@@ -144,14 +168,6 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
           </div>
         </div>
 
-        {/* Success toast upon purchase */}
-        {purchasedJustNow && (
-          <div className="mx-4 mt-3 px-4 py-2 rounded-2xl bg-emerald-500 text-white font-black text-sm flex items-center justify-center gap-2 shadow-md animate-bounce">
-            <Sparkles className="w-5 h-5 text-yellow-200" />
-            <span>{t.congratsAvatarPurchased}</span>
-            <span className="text-2xl">{purchasedJustNow}</span>
-          </div>
-        )}
 
         {/* Category Filter Tabs */}
         <div className="px-3 sm:px-5 pt-3 pb-2.5 flex flex-wrap items-center gap-1.5 sm:gap-2 bg-slate-50/70 border-b border-slate-200/80">
@@ -320,6 +336,83 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
         <div className="px-5 py-2.5 bg-slate-100 border-t border-slate-200 text-center text-xs text-slate-500 font-medium">
           {t.shopNotice}
         </div>
+
+        {/* Victory Celebration Overlay */}
+        {unlockedItem && (
+          <div className="absolute inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
+            <div className="relative w-full max-w-sm bg-gradient-to-b from-amber-50 via-white to-amber-100 rounded-3xl p-6 sm:p-7 border-4 border-amber-400 shadow-2xl text-center flex flex-col items-center animate-pop overflow-hidden">
+              {/* Background ambient light */}
+              <div className="absolute -top-20 -left-20 w-64 h-64 bg-amber-300 rounded-full blur-3xl opacity-50 pointer-events-none animate-pulse" />
+              <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-purple-300 rounded-full blur-3xl opacity-40 pointer-events-none animate-pulse" />
+
+              {/* Close X */}
+              <button
+                onClick={() => setUnlockedItem(null)}
+                className="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Top banner pill */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/30 border border-amber-500/40 text-amber-950 text-xs font-black uppercase tracking-wider mb-2 shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                <span>{t.congratsAvatarPurchased}</span>
+                <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+              </div>
+
+              {/* Big Avatar Badge with bouncing animation */}
+              <div className="my-3 scale-110 drop-shadow-xl animate-bounce">
+                <AvatarBadge
+                  avatar={unlockedItem.emoji}
+                  size="2xl"
+                  showStars={true}
+                  animate={true}
+                />
+              </div>
+
+              {/* Character name */}
+              <h3 className="text-2xl font-black text-slate-900 mt-1 font-comic">
+                {unlockedItem.name[language] || unlockedItem.name.ru}
+              </h3>
+
+              {/* Category tier badge */}
+              <div className="mt-1 mb-5">
+                <span className="text-xs font-extrabold px-3 py-0.5 rounded-full bg-amber-200 text-amber-900 border border-amber-300 shadow-xs">
+                  {unlockedItem.category === 'mythic'
+                    ? t.tierBadgeMythic
+                    : unlockedItem.category === 'legendary'
+                    ? t.tierBadgeLegendary
+                    : unlockedItem.category === 'unique'
+                    ? t.tierBadgeUnique
+                    : unlockedItem.category === 'medium'
+                    ? t.tierBadgeMedium
+                    : t.tierBadgeSimple}
+                </span>
+              </div>
+
+              {/* Action buttons */}
+              <div className="w-full flex flex-col gap-2">
+                <button
+                  onClick={() => {
+                    handleEquip(unlockedItem);
+                    setUnlockedItem(null);
+                  }}
+                  className="btn-3d w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-black text-base shadow-lg border-2 border-emerald-400 flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <Check className="w-5 h-5 stroke-[3]" />
+                  <span>{t.equipNow}</span>
+                </button>
+
+                <button
+                  onClick={() => setUnlockedItem(null)}
+                  className="py-1.5 text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
+                >
+                  {t.continueShopping}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

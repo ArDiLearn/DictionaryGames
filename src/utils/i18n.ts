@@ -270,7 +270,7 @@ export interface Translations {
 export const translations: Record<Language, Translations> = {
   ru: {
     appTitle: 'WordyMind',
-    appSubtitle: 'Английский для 1–3 классов',
+    appSubtitle: 'Английский для 1–4 классов',
     welcomeGreeting: 'Привет',
     defaultPlayerName: 'Знайка',
     chooseTopic: 'Выбери тему для игры',
@@ -536,7 +536,7 @@ export const translations: Record<Language, Translations> = {
   },
   lv: {
     appTitle: 'WordyMind',
-    appSubtitle: 'Angļu valoda 1.–3. klasei',
+    appSubtitle: 'Angļu valoda 1.–4. klasei',
     welcomeGreeting: 'Sveiks',
     defaultPlayerName: 'Zinītis',
     chooseTopic: 'Izvēlies tēmu spēlei',

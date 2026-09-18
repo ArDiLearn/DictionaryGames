@@ -99,14 +99,14 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
   },
   {
     id: 'pineapple',
-    emoji: '🍍',
+    emoji: 'pineapple',
     name: { ru: 'Ананасик', lv: 'Ananasiņš' },
     price: 10,
     category: 'simple',
   },
   {
     id: 'capybara',
-    emoji: '🦫',
+    emoji: 'capybara',
     name: { ru: 'Капибара', lv: 'Kapibara' },
     price: 10,
     category: 'simple',
@@ -170,16 +170,16 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
     category: 'medium',
   },
   {
-    id: 'tropical_pineapple',
-    emoji: '🍍🍹',
-    name: { ru: 'Тропический ананас', lv: 'Tropiskais ananass' },
+    id: 'gamer_pineapple',
+    emoji: 'gamer_pineapple',
+    name: { ru: 'Ананас-Геймер', lv: 'Geimera Ananass' },
     price: 50,
     category: 'medium',
   },
   {
-    id: 'onsen_capybara',
-    emoji: '🦫🍊',
-    name: { ru: 'Капибара с мандаринкой', lv: 'Kapibara ar mandarīnu' },
+    id: 'gamer_capybara',
+    emoji: 'gamer_capybara',
+    name: { ru: 'Капибара-Геймер', lv: 'Geimera Kapibara' },
     price: 50,
     category: 'medium',
   },
@@ -229,14 +229,14 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
   },
   {
     id: 'king_pineapple',
-    emoji: '🍍👑',
+    emoji: 'king_pineapple',
     name: { ru: 'Король-Ананас', lv: 'Karalis Ananass' },
     price: 100,
     category: 'unique',
   },
   {
     id: 'king_capybara',
-    emoji: '🦫👑',
+    emoji: 'king_capybara',
     name: { ru: 'Король Капибар', lv: 'Kapibaru Karalis' },
     price: 100,
     category: 'unique',
@@ -279,15 +279,15 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
     category: 'legendary',
   },
   {
-    id: 'disco_pineapple',
-    emoji: '🍍🪩',
-    name: { ru: 'Диско-Ананас', lv: 'Disko Ananass' },
+    id: 'cool_pineapple',
+    emoji: 'cool_pineapple',
+    name: { ru: 'Крутой Ананас', lv: 'Foršais Ananass' },
     price: 150,
     category: 'legendary',
   },
   {
     id: 'cool_capybara',
-    emoji: '🦫🕶️',
+    emoji: 'cool_capybara',
     name: { ru: 'Крутая Капибара', lv: 'Foršā Kapibara' },
     price: 150,
     category: 'legendary',
@@ -401,7 +401,7 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
   },
   {
     id: 'cosmic_pineapple',
-    emoji: '🍍✨',
+    emoji: 'cosmic_pineapple',
     name: { ru: 'Космо-Ананас Вселенной', lv: 'Visuma Kosmo-Ananass' },
     price: 1000,
     category: 'mythic',
@@ -416,7 +416,7 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
   },
   {
     id: 'zen_capybara',
-    emoji: '🦫✨',
+    emoji: 'zen_capybara',
     name: { ru: 'Дзен-Капибара Бесконечности', lv: 'Bezgalības Dzen-Kapibara' },
     price: 1000,
     category: 'mythic',
@@ -424,16 +424,33 @@ export const AVATAR_SHOP_ITEMS: AvatarShopItem[] = [
       bgGradient: 'bg-gradient-to-br from-amber-800 via-orange-600 to-teal-800',
       borderClass: 'border-orange-300 ring-2 ring-amber-400 shadow-orange-500/50',
       glowClass: 'shadow-lg shadow-amber-500/50',
-      sparkles: ['🍊', '✨', '🌸', '🦫'],
+      sparkles: ['✨', '🌸', '⭐', '✨'],
       theme: 'capybara',
       cardBg: 'bg-gradient-to-b from-orange-500/20 via-amber-400/15 to-teal-500/10 border-2 border-orange-400',
     },
   },
 ];
 
+export const AVATAR_ALIASES: Record<string, string> = {
+  '🦫': 'capybara',
+  '🦫🍊': 'gamer_capybara',
+  'onsen_capybara': 'gamer_capybara',
+  '🍍': 'pineapple',
+  '🍍🍹': 'gamer_pineapple',
+  'tropical_pineapple': 'gamer_pineapple',
+  '🍍👑': 'king_pineapple',
+  '🦫👑': 'king_capybara',
+  '🍍🪩': 'cool_pineapple',
+  'disco_pineapple': 'cool_pineapple',
+  '🦫🕶️': 'cool_capybara',
+  '🍍✨': 'cosmic_pineapple',
+  '🦫✨': 'zen_capybara',
+};
+
 export function getAvatarShopItem(avatarStr: string): AvatarShopItem | undefined {
   if (!avatarStr) return undefined;
-  return AVATAR_SHOP_ITEMS.find((item) => item.emoji === avatarStr || item.id === avatarStr);
+  const target = AVATAR_ALIASES[avatarStr] || avatarStr;
+  return AVATAR_SHOP_ITEMS.find((item) => item.id === target || item.emoji === target || item.id === avatarStr || item.emoji === avatarStr);
 }
 
 export function getAvatarVFX(avatarStr: string) {

@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import confetti from 'canvas-confetti';
 import { Language, UserStats, AvatarShopItem } from '../types';
-import { AVATAR_SHOP_ITEMS, DEFAULT_UNLOCKED_AVATARS } from '../data/avatars';
+import { AVATAR_SHOP_ITEMS, DEFAULT_UNLOCKED_AVATARS, AVATAR_ALIASES } from '../data/avatars';
 import { translations, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { AvatarBadge } from './AvatarBadge';
@@ -68,15 +68,15 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
       origin: { y: 0.6 },
     });
 
-    setPurchasedJustNow(item.emoji);
+    setPurchasedJustNow(item.id);
     setTimeout(() => setPurchasedJustNow(null), 2500);
 
-    onPurchase(item.emoji, item.price);
+    onPurchase(item.id, item.price);
   };
 
   const handleEquip = (item: AvatarShopItem) => {
     sounds.playClick();
-    onSelectAvatar(item.emoji);
+    onSelectAvatar(item.id);
   };
 
   return (
@@ -197,8 +197,15 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
         {/* Avatar Grid */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
           {filteredItems.map((item) => {
-            const isUnlocked = item.price === 0 || unlockedSet.has(item.emoji);
-            const isEquipped = stats.avatar === item.emoji;
+            const isUnlocked =
+              item.price === 0 ||
+              unlockedSet.has(item.id) ||
+              unlockedSet.has(item.emoji) ||
+              Object.entries(AVATAR_ALIASES).some(([alias, target]) => target === item.id && unlockedSet.has(alias));
+            const isEquipped =
+              stats.avatar === item.id ||
+              stats.avatar === item.emoji ||
+              AVATAR_ALIASES[stats.avatar] === item.id;
             const canAfford = starBalance >= item.price;
             const name = item.name[language] || item.name.ru;
             const isUnique = item.category === 'unique';
@@ -247,12 +254,12 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
                     </span>
                   )}
                   {item.category === 'medium' && (
-                    <span className="text-[10px] font-black text-indigo-900 bg-indigo-100 border border-indigo-200 px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] font-black text-blue-900 bg-blue-100 border border-blue-300 px-2 py-0.5 rounded-full shadow-xs">
                       {t.tierBadgeMedium}
                     </span>
                   )}
                   {item.category === 'simple' && (
-                    <span className="text-[10px] font-black text-emerald-900 bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] font-black text-emerald-900 bg-emerald-100 border border-emerald-300 px-2 py-0.5 rounded-full shadow-xs">
                       {t.tierBadgeSimple}
                     </span>
                   )}
@@ -265,7 +272,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
 
                 {/* Avatar Badge & Preview */}
                 <div className="mb-2 hover:scale-110 transition-transform select-none">
-                  <AvatarBadge avatar={item.emoji} size="xl" showStars={true} animate={isMythic} />
+                  <AvatarBadge avatar={item.id} size="xl" showStars={true} animate={isMythic} />
                 </div>
 
                 {/* Avatar Name */}

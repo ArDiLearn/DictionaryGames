@@ -1,5 +1,6 @@
 import React from 'react';
 import { getAvatarShopItem } from '../data/avatars';
+import { getCustomAvatarComponent } from './CustomAvatars';
 
 export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
@@ -83,6 +84,11 @@ export const AvatarBadge: React.FC<AvatarBadgeProps> = ({
   const vfx = item?.vfx;
   const config = SIZE_MAP[size] || SIZE_MAP.md;
 
+  // Check for custom SVG avatar
+  const CustomAvatar =
+    getCustomAvatarComponent(avatar) ||
+    (item ? getCustomAvatarComponent(item.id) || getCustomAvatarComponent(item.emoji) : undefined);
+
   // Clean emoji display: if mythic, strip trailing sparkle for centered character
   const displayEmoji = vfx
     ? (item?.emoji || avatar).replace(/✨$/, '')
@@ -93,6 +99,25 @@ export const AvatarBadge: React.FC<AvatarBadgeProps> = ({
       ? [...new (Intl as unknown as { Segmenter: new () => { segment: (s: string) => Iterable<unknown> } }).Segmenter().segment(displayEmoji)].length > 1
       : [...displayEmoji].length > 2;
   const multiGraphemeStyle = isMultiGrapheme ? 'scale-[0.72] tracking-tighter' : '';
+
+  const renderContent = (isMythic = false) => {
+    if (CustomAvatar) {
+      return (
+        <div className={`w-full h-full flex items-center justify-center p-0.5 z-0 ${isMythic ? 'drop-shadow-md' : ''}`}>
+          <CustomAvatar className="w-full h-full object-contain" />
+        </div>
+      );
+    }
+    return (
+      <span
+        className={`${config.text} ${multiGraphemeStyle} inline-block ${
+          isMythic ? 'drop-shadow-md' : ''
+        } z-0 leading-none transition-transform`}
+      >
+        {displayEmoji}
+      </span>
+    );
+  };
 
   if (vfx) {
     const sparkles = vfx.sparkles || ['✨', '⭐', '✨', '🌟'];
@@ -135,10 +160,8 @@ export const AvatarBadge: React.FC<AvatarBadgeProps> = ({
           </>
         )}
 
-        {/* Center Character Emoji */}
-        <span className={`${config.text} ${multiGraphemeStyle} inline-block drop-shadow-md z-0 leading-none transition-transform`}>
-          {displayEmoji}
-        </span>
+        {/* Center Character */}
+        {renderContent(true)}
       </div>
     );
   }
@@ -148,7 +171,7 @@ export const AvatarBadge: React.FC<AvatarBadgeProps> = ({
     <div
       className={`inline-flex items-center justify-center select-none shrink-0 bg-white border-2 border-amber-300 shadow-sm ${config.container} ${className}`}
     >
-      <span className={`${config.text} ${multiGraphemeStyle} inline-block leading-none transition-transform`}>{displayEmoji}</span>
+      {renderContent(false)}
     </div>
   );
 };

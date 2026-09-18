@@ -65,6 +65,40 @@ export interface UserStats {
   unlockedAvatars?: string[];
   spentStars?: number;
   totalStarsEarned?: number;
+  equippedVictoryMusic?: string;
+  unlockedVictoryMusic?: string[];
+  equippedVictoryAnimation?: string;
+  unlockedVictoryAnimations?: string[];
+}
+
+export type ShopTab = 'avatars' | 'animations' | 'music';
+
+export interface VictoryMusicItem {
+  id: string;
+  name: {
+    ru: string;
+    lv: string;
+  };
+  desc: {
+    ru: string;
+    lv: string;
+  };
+  price: number;
+  icon: string;
+}
+
+export interface VictoryAnimationItem {
+  id: string;
+  name: {
+    ru: string;
+    lv: string;
+  };
+  desc: {
+    ru: string;
+    lv: string;
+  };
+  price: number;
+  icon: string;
 }
 
 export type AvatarCategory = 'starter' | 'simple' | 'medium' | 'unique' | 'legendary' | 'mythic';

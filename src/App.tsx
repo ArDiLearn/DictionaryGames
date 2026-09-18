@@ -67,6 +67,8 @@ import {
   loadWordProgress,
   recordWordAttempt,
   purchaseAvatar,
+  purchaseVictoryItem,
+  equipVictoryItem,
   loadExamResults,
   loadExamHistory,
   equipTitle,
@@ -237,6 +239,18 @@ export const App: React.FC = () => {
     const newStats = { ...stats, avatar: avatarEmoji };
     setStats(newStats);
     saveLocalStats(newStats);
+  };
+
+  const handlePurchaseVictoryItem = (type: 'animation' | 'music', id: string, price: number) => {
+    const { success, newStats } = purchaseVictoryItem(type, id, price, totalEarnedStars);
+    if (success) {
+      setStats(newStats);
+    }
+  };
+
+  const handleEquipVictoryItem = (type: 'animation' | 'music', id: string) => {
+    const newStats = equipVictoryItem(type, id);
+    setStats(newStats);
   };
 
   const handleRecordWordResult = (wordId: string, isCorrect: boolean) => {
@@ -462,6 +476,8 @@ export const App: React.FC = () => {
             isFirstClear={celebration.isFirstClear}
             isRepeatClear={celebration.isRepeatClear}
             isFailedThreshold={celebration.isFailedThreshold}
+            victoryMusic={stats.equippedVictoryMusic || 'classic'}
+            victoryAnimation={stats.equippedVictoryAnimation || 'confetti'}
             onBackToGames={handleBackToGames}
             onHome={handleHomeClick}
           />
@@ -485,6 +501,10 @@ export const App: React.FC = () => {
             totalStarsEarned={totalEarnedStars}
             onPurchase={handlePurchaseAvatar}
             onSelectAvatar={handleSelectAvatar}
+            onPurchaseAnimation={(id, price) => handlePurchaseVictoryItem('animation', id, price)}
+            onEquipAnimation={(id) => handleEquipVictoryItem('animation', id)}
+            onPurchaseMusic={(id, price) => handlePurchaseVictoryItem('music', id, price)}
+            onEquipMusic={(id) => handleEquipVictoryItem('music', id)}
           />
         )}
 

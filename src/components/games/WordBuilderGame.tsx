@@ -36,6 +36,36 @@ function shuffleArray<T>(array: T[]): T[] {
   return result;
 }
 
+function shuffleTilesEnsuringUnscrambled(tiles: LetterTile[], targetWord: string): LetterTile[] {
+  const targetLower = targetWord.toLowerCase();
+  const uniqueChars = new Set(targetLower.split(''));
+
+  if (targetLower.length <= 1 || uniqueChars.size <= 1) {
+    return [...tiles];
+  }
+
+  let shuffled = shuffleArray(tiles);
+  let attempts = 0;
+
+  while (shuffled.map((t) => t.char).join('') === targetLower && attempts < 30) {
+    shuffled = shuffleArray(tiles);
+    attempts++;
+  }
+
+  if (shuffled.map((t) => t.char).join('') === targetLower) {
+    const result = [...shuffled];
+    for (let i = 0; i < result.length - 1; i++) {
+      if (result[i].char !== result[i + 1].char) {
+        [result[i], result[i + 1]] = [result[i + 1], result[i]];
+        break;
+      }
+    }
+    return result;
+  }
+
+  return shuffled;
+}
+
 export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
   topic,
   language,
@@ -84,8 +114,8 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
       char,
     }));
 
-    // Shuffle tiles
-    setAvailableTiles(shuffleArray(tiles));
+    // Shuffle tiles ensuring they are not in the solved word order
+    setAvailableTiles(shuffleTilesEnsuringUnscrambled(tiles, wordToSpell));
   }, [currentIndex, currentWord, course]);
 
   const handleSelectTile = (tile: LetterTile) => {
@@ -130,7 +160,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
             id: `${char}-${index}-${Math.random()}`,
             char,
           }));
-          setAvailableTiles(resetTiles.sort(() => 0.5 - Math.random()));
+          setAvailableTiles(shuffleTilesEnsuringUnscrambled(resetTiles, wordToSpell));
           setSelectedTiles([]);
         }, 1000);
       }
@@ -153,7 +183,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
       id: `${char}-${index}-${Math.random()}`,
       char,
     }));
-    setAvailableTiles(resetTiles.sort(() => 0.5 - Math.random()));
+    setAvailableTiles(shuffleTilesEnsuringUnscrambled(resetTiles, wordToSpell));
     setSelectedTiles([]);
   };
 

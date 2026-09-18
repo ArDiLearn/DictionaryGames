@@ -237,6 +237,26 @@ export const GRADE_3_EXTRA_DUPLICATES = new Set([
   'plane',
   'bus',
   'balloon',
+  'happy',
+  'tired',
+]);
+
+/**
+ * Words that are taught as Main topics in Grade 4 (school_subjects, crafts, arts_and_crafts_materials, food),
+ * but appear in lower-grade extra topics.
+ * When Grade 4 is selected, these duplicate words are removed from extra topics.
+ */
+export const GRADE_4_EXTRA_DUPLICATES = new Set([
+  ...GRADE_3_EXTRA_DUPLICATES,
+  'art',
+  'music',
+  'card',
+  'box',
+  'puppet',
+  'decorations',
+  'glue',
+  'scissors',
+  'grapes',
 ]);
 
 /**

@@ -13,6 +13,7 @@ import {
   isTopicExtra,
   hasNewWordsForGrades,
   GRADE_3_EXTRA_DUPLICATES,
+  GRADE_4_EXTRA_DUPLICATES,
 } from '../utils/i18n';
 
 interface UseTopicCatalogProps {
@@ -65,10 +66,17 @@ export function useTopicCatalog({
           extraWords = [...g2Words, ...g1Words, ...otherWords];
         }
 
-        // When Grade 3 is active/selected, remove Group B duplicates (park, school, teacher, chocolate) from extra topics!
+        // When Grade 3 is active/selected, remove Group B duplicates (park, school, teacher, chocolate, happy, tired, etc.) from extra topics!
         if (gradesSet.has(3)) {
           extraWords = extraWords.filter(
             (w) => !GRADE_3_EXTRA_DUPLICATES.has(w.en.toLowerCase().trim())
+          );
+        }
+
+        // When Grade 4 is active/selected, remove Grade 4 main duplicates from extra topics!
+        if (gradesSet.has(4)) {
+          extraWords = extraWords.filter(
+            (w) => !GRADE_4_EXTRA_DUPLICATES.has(w.en.toLowerCase().trim())
           );
         }
 

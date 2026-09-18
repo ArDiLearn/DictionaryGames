@@ -3,7 +3,7 @@ import confetti from 'canvas-confetti';
 import { Language } from '../types';
 import { translations } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
-import { RotateCcw, Home, Sparkles } from 'lucide-react';
+import { Gamepad2, Home, Sparkles } from 'lucide-react';
 
 interface CelebrationModalProps {
   language: Language;
@@ -16,7 +16,7 @@ interface CelebrationModalProps {
   isFirstClear?: boolean;
   isRepeatClear?: boolean;
   isFailedThreshold?: boolean;
-  onRestart: () => void;
+  onBackToGames: () => void;
   onHome: () => void;
 }
 
@@ -31,7 +31,7 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
   isFirstClear,
   isRepeatClear,
   isFailedThreshold,
-  onRestart,
+  onBackToGames,
   onHome,
 }) => {
   const t = translations[language];
@@ -182,12 +182,12 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
           <button
             onClick={() => {
               sounds.playClick();
-              onRestart();
+              onBackToGames();
             }}
-            className="btn-3d py-3.5 px-4 rounded-2xl bg-indigo-50 hover:bg-indigo-100 border-3 border-indigo-300 text-indigo-700 font-black text-base shadow-md flex items-center justify-center gap-2"
+            className="btn-3d py-3.5 px-3 sm:px-4 rounded-2xl bg-indigo-50 hover:bg-indigo-100 border-3 border-indigo-300 text-indigo-700 font-black text-sm sm:text-base shadow-md flex items-center justify-center gap-2"
           >
-            <RotateCcw className="w-5 h-5" />
-            <span>{t.restart}</span>
+            <Gamepad2 className="w-5 h-5 flex-shrink-0" />
+            <span className="truncate">{t.backToTopicGames}</span>
           </button>
 
           <button
@@ -195,10 +195,10 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
               sounds.playClick();
               onHome();
             }}
-            className="btn-3d py-3.5 px-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 border-3 border-indigo-700 text-white font-black text-base shadow-md flex items-center justify-center gap-2"
+            className="btn-3d py-3.5 px-3 sm:px-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 border-3 border-indigo-700 text-white font-black text-sm sm:text-base shadow-md flex items-center justify-center gap-2"
           >
-            <Home className="w-5 h-5" />
-            <span>{t.backToTopics}</span>
+            <Home className="w-5 h-5 flex-shrink-0" />
+            <span className="truncate">{t.backToTopics}</span>
           </button>
         </div>
       </div>

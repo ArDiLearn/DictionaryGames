@@ -3,17 +3,14 @@ import confetti from 'canvas-confetti';
 // 1. Сердечко (Material Heart 24x24)
 const HEART_PATH = 'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z';
 
-// 2. Длинная волнистая лента серпантина (135x43, толщина 13px)
-const SERPENTINE_PATH = 'M0,15 C15,0 30,30 45,15 C60,0 75,30 90,15 C105,0 120,30 135,15 L135,28 C120,43 105,13 90,28 C75,43 60,13 45,28 C30,43 15,13 0,28 Z';
+// 2. Аккуратная волнистая лента серпантина (умеренный размер ~30-35px, толщина 4px)
+const SERPENTINE_PATH = 'M0,10 C10,2 20,18 30,10 C40,2 50,18 60,10 L60,14 C50,22 40,6 30,14 C20,22 10,6 0,14 Z';
 
-// 3. Спиральный завиток серпантина (колечко/пружинка 38x42)
-const SPIRAL_CURL_PATH = 'M 8,2 C 22,-4 38,12 34,26 C 30,40 12,42 6,28 C 0,14 18,6 30,12 L 32,20 C 22,14 12,20 14,28 C 16,34 26,34 28,26 C 30,18 20,8 10,13 Z';
+// 3. Сатурн с наклонными кольцами и прозрачным космическим зазором (76x36)
+const SATURN_PLANET_PATH = 'M 12,32 A 42,14 -25 1,0 88,68 A 42,14 -25 1,0 12,32 Z M 26,38 A 27,8 -25 1,1 74,62 A 27,8 -25 1,1 26,38 Z M 50,32 A 18,18 0 1,0 50.01,32 Z';
 
-// 4. Планета Сатурн с орбитальными кольцами (96x44)
-const SATURN_PLANET_PATH = 'M 2 50 C 2 38, 25 32, 42 32 A 22 22 0 0 1 58 32 C 75 32, 98 38, 98 50 C 98 62, 75 68, 58 68 A 22 22 0 0 1 42 68 C 25 68, 2 62, 2 50 Z M 50 28 A 22 22 0 0 0 28 50 A 22 22 0 0 0 50 72 A 22 22 0 0 0 72 50 A 22 22 0 0 0 50 28 Z';
-
-// 5. Полумесяц / спутник (70x70)
-const CRESCENT_MOON_PATH = 'M 50 15 A 35 35 0 1 0 85 50 A 28 28 0 1 1 50 15 Z';
+// 4. Луна / планета-спутник (64x64)
+const CRESCENT_MOON_PATH = 'M 50 18 A 32 32 0 1 0 82 50 A 25 25 0 1 1 50 18 Z';
 
 function createPathShape(path: string, scale: number, cx: number, cy: number): confetti.Shape {
   const matrix = [scale, 0, 0, scale, -cx * scale, -cy * scale];
@@ -35,7 +32,7 @@ function createPathShape(path: string, scale: number, cx: number, cy: number): c
 let cachedHeart: confetti.Shape | null = null;
 function getHeartShape(): confetti.Shape {
   if (!cachedHeart) {
-    cachedHeart = createPathShape(HEART_PATH, 1.5, 12, 12);
+    cachedHeart = createPathShape(HEART_PATH, 1.4, 12, 12);
   }
   return cachedHeart;
 }
@@ -43,23 +40,15 @@ function getHeartShape(): confetti.Shape {
 let cachedSerpentine: confetti.Shape | null = null;
 function getSerpentineShape(): confetti.Shape {
   if (!cachedSerpentine) {
-    cachedSerpentine = createPathShape(SERPENTINE_PATH, 0.55, 67.5, 21.5);
+    cachedSerpentine = createPathShape(SERPENTINE_PATH, 0.38, 30, 10);
   }
   return cachedSerpentine;
-}
-
-let cachedSpiralCurl: confetti.Shape | null = null;
-function getSpiralCurlShape(): confetti.Shape {
-  if (!cachedSpiralCurl) {
-    cachedSpiralCurl = createPathShape(SPIRAL_CURL_PATH, 1.1, 19, 21);
-  }
-  return cachedSpiralCurl;
 }
 
 let cachedSaturn: confetti.Shape | null = null;
 function getSaturnShape(): confetti.Shape {
   if (!cachedSaturn) {
-    cachedSaturn = createPathShape(SATURN_PLANET_PATH, 0.65, 50, 50);
+    cachedSaturn = createPathShape(SATURN_PLANET_PATH, 0.38, 50, 50);
   }
   return cachedSaturn;
 }
@@ -67,7 +56,7 @@ function getSaturnShape(): confetti.Shape {
 let cachedMoon: confetti.Shape | null = null;
 function getMoonShape(): confetti.Shape {
   if (!cachedMoon) {
-    cachedMoon = createPathShape(CRESCENT_MOON_PATH, 0.65, 50, 50);
+    cachedMoon = createPathShape(CRESCENT_MOON_PATH, 0.45, 50, 50);
   }
   return cachedMoon;
 }
@@ -81,7 +70,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
 
   switch (animationId) {
     case 'cosmic_nebula': {
-      // Космическая туманность: облако сверкающей пыльцы + сияющие звёздочки + парящие планеты
+      // Космическая туманность: облако сверкающей пыльцы + сияющие звёздочки + планеты (Сатурн с кольцами и Луна)
       const saturn = getSaturnShape();
       const moon = getMoonShape();
 
@@ -105,18 +94,17 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
       ];
 
       const planetColors = [
-        '#f59e0b', // saturn gold
-        '#fbbf24', // amber ring
+        '#f59e0b', // saturn amber gold
+        '#fbbf24', // luminous ring
         '#06b6d4', // cyan ice planet
-        '#ec4899', // magenta planet
+        '#ec4899', // nebula planet
         '#a855f7', // purple planet
         '#e0e7ff', // silver moon
       ];
 
-      // Залп 1: Центральное облако пыльцы, мерцающие звёзды и выплывающие планеты
-      // 1. Мелкая светящаяся пыльца (густое облако)
+      // Залп 1: Центральное облако пыльцы, мерцающие звёзды и планеты
       confetti({
-        particleCount: 100,
+        particleCount: 110,
         spread: 360,
         startVelocity: 22,
         origin: { x: 0.5, y: 0.45 },
@@ -128,7 +116,6 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
         ticks: 150,
       });
 
-      // 2. Сияющие звёздочки внутри пыльцы
       confetti({
         particleCount: 35,
         spread: 360,
@@ -136,32 +123,31 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
         origin: { x: 0.5, y: 0.45 },
         colors: starColors,
         shapes: ['star'],
-        scalar: 1.4,
+        scalar: 1.35,
         gravity: 0.42,
         decay: 0.94,
         ticks: 140,
       });
 
-      // 3. Парящие планеты (Сатурн с кольцами и спутники)
       confetti({
-        particleCount: 16,
+        particleCount: 14,
         spread: 360,
-        startVelocity: 20,
+        startVelocity: 18,
         origin: { x: 0.5, y: 0.45 },
         colors: planetColors,
         shapes: [saturn, moon],
-        scalar: 1.6, // крупные чёткие планеты
+        scalar: 1.3,
         gravity: 0.32,
         decay: 0.95,
         ticks: 160,
       });
 
-      // Залп 2 (+280ms): Боковые рукава туманности с планетами
+      // Залп 2 (+280ms): Боковые рукава туманности с планетами и звёздами
       timeouts.push(
         window.setTimeout(() => {
-          // Левый сектор
+          // Слева
           confetti({
-            particleCount: 60,
+            particleCount: 65,
             angle: 60,
             spread: 80,
             startVelocity: 28,
@@ -174,14 +160,14 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             ticks: 140,
           });
           confetti({
-            particleCount: 22,
+            particleCount: 20,
             angle: 60,
             spread: 70,
             startVelocity: 30,
             origin: { x: 0.1, y: 0.65 },
             colors: starColors,
             shapes: ['star'],
-            scalar: 1.35,
+            scalar: 1.3,
             gravity: 0.42,
             ticks: 140,
           });
@@ -189,18 +175,18 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             particleCount: 8,
             angle: 60,
             spread: 60,
-            startVelocity: 24,
+            startVelocity: 22,
             origin: { x: 0.1, y: 0.65 },
             colors: planetColors,
             shapes: [saturn, moon],
-            scalar: 1.7,
+            scalar: 1.35,
             gravity: 0.32,
             ticks: 150,
           });
 
-          // Правый сектор
+          // Справа
           confetti({
-            particleCount: 60,
+            particleCount: 65,
             angle: 120,
             spread: 80,
             startVelocity: 28,
@@ -213,14 +199,14 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             ticks: 140,
           });
           confetti({
-            particleCount: 22,
+            particleCount: 20,
             angle: 120,
             spread: 70,
             startVelocity: 30,
             origin: { x: 0.9, y: 0.65 },
             colors: starColors,
             shapes: ['star'],
-            scalar: 1.35,
+            scalar: 1.3,
             gravity: 0.42,
             ticks: 140,
           });
@@ -228,22 +214,22 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             particleCount: 8,
             angle: 120,
             spread: 60,
-            startVelocity: 24,
+            startVelocity: 22,
             origin: { x: 0.9, y: 0.65 },
             colors: planetColors,
             shapes: [saturn, moon],
-            scalar: 1.7,
+            scalar: 1.35,
             gravity: 0.32,
             ticks: 150,
           });
         }, 280)
       );
 
-      // Залп 3 (+600ms): Финальный дождь звёздной пыльцы, звёзд и планет сверху
+      // Залп 3 (+600ms): Мягкий космический дождь звёздной пыльцы, звёзд и планет
       timeouts.push(
         window.setTimeout(() => {
           confetti({
-            particleCount: 75,
+            particleCount: 80,
             spread: 140,
             startVelocity: 18,
             origin: { x: 0.5, y: 0.2 },
@@ -261,7 +247,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             origin: { x: 0.5, y: 0.2 },
             colors: starColors,
             shapes: ['star'],
-            scalar: 1.45,
+            scalar: 1.4,
             gravity: 0.38,
             ticks: 150,
           });
@@ -272,7 +258,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             origin: { x: 0.5, y: 0.2 },
             colors: planetColors,
             shapes: [saturn, moon],
-            scalar: 1.8,
+            scalar: 1.4,
             gravity: 0.3,
             ticks: 170,
           });
@@ -283,9 +269,8 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
 
     case 'confetti':
     default: {
-      // Праздничный серпантин: длинные волнистые ленты + спиральные завитки + конфетти
+      // Праздничный серпантин: умеренные волнистые ленты + конфетти (спирали убраны)
       const serpentine = getSerpentineShape();
-      const spiral = getSpiralCurlShape();
       const fiestaColors = [
         '#f59e0b', // amber gold
         '#ec4899', // bright pink
@@ -297,99 +282,108 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
         '#facc15', // yellow
       ];
 
-      // Залп 1: Центральный фонтан с серпантином и спиральными завитками
+      // Залп 1: Центральный салют с волнистыми лентами и конфетти
       confetti({
-        particleCount: 45,
+        particleCount: 30,
         spread: 90,
-        startVelocity: 34,
-        origin: { x: 0.5, y: 0.6 },
-        colors: fiestaColors,
-        shapes: [serpentine, spiral],
-        scalar: 1.5, // длинные крупные ленты
-        gravity: 0.65,
-        decay: 0.93,
-        ticks: 150,
-      });
-
-      confetti({
-        particleCount: 35,
-        spread: 100,
         startVelocity: 30,
         origin: { x: 0.5, y: 0.6 },
         colors: fiestaColors,
-        shapes: ['square'],
-        scalar: 1.1,
+        shapes: [serpentine],
+        scalar: 1.15, // аккуратный лёгкий серпантин ~30px
+        gravity: 0.7,
+        decay: 0.93,
+        ticks: 140,
       });
 
-      // Залп 2 (+220ms): Боковые пушки выстреливают длинные серпантинные ленты над сценой
+      confetti({
+        particleCount: 50,
+        spread: 100,
+        startVelocity: 32,
+        origin: { x: 0.5, y: 0.6 },
+        colors: fiestaColors,
+        shapes: ['square'],
+        scalar: 1.0,
+      });
+
+      // Залп 2 (+220ms): Боковые пушки запускают ленты серпантина навесом
       timeouts.push(
         window.setTimeout(() => {
           // Пушка слева
           confetti({
-            particleCount: 35,
-            angle: 58,
-            spread: 60,
-            startVelocity: 42,
-            origin: { x: 0.05, y: 0.7 },
+            particleCount: 25,
+            angle: 60,
+            spread: 55,
+            startVelocity: 36,
+            origin: { x: 0.08, y: 0.7 },
             colors: fiestaColors,
-            shapes: [serpentine, spiral],
-            scalar: 1.6,
-            gravity: 0.6,
-            decay: 0.92,
-            ticks: 160,
+            shapes: [serpentine],
+            scalar: 1.2,
+            gravity: 0.65,
+            decay: 0.93,
+            ticks: 150,
           });
           confetti({
-            particleCount: 25,
-            angle: 58,
+            particleCount: 35,
+            angle: 60,
             spread: 55,
-            startVelocity: 38,
-            origin: { x: 0.05, y: 0.7 },
+            startVelocity: 34,
+            origin: { x: 0.08, y: 0.7 },
             colors: fiestaColors,
             shapes: ['square'],
-            scalar: 1.1,
+            scalar: 1.0,
           });
 
           // Пушка справа
           confetti({
-            particleCount: 35,
-            angle: 122,
-            spread: 60,
-            startVelocity: 42,
-            origin: { x: 0.95, y: 0.7 },
+            particleCount: 25,
+            angle: 120,
+            spread: 55,
+            startVelocity: 36,
+            origin: { x: 0.92, y: 0.7 },
             colors: fiestaColors,
-            shapes: [serpentine, spiral],
-            scalar: 1.6,
-            gravity: 0.6,
-            decay: 0.92,
-            ticks: 160,
+            shapes: [serpentine],
+            scalar: 1.2,
+            gravity: 0.65,
+            decay: 0.93,
+            ticks: 150,
           });
           confetti({
-            particleCount: 25,
-            angle: 122,
+            particleCount: 35,
+            angle: 120,
             spread: 55,
-            startVelocity: 38,
-            origin: { x: 0.95, y: 0.7 },
+            startVelocity: 34,
+            origin: { x: 0.92, y: 0.7 },
             colors: fiestaColors,
             shapes: ['square'],
-            scalar: 1.1,
+            scalar: 1.0,
           });
         }, 220)
       );
 
-      // Залп 3 (+500ms): Финальный каскад парящего серпантина сверху
+      // Залп 3 (+500ms): Плавный праздничный дождь из конфетти и серпантина
       timeouts.push(
         window.setTimeout(() => {
           confetti({
-            particleCount: 50,
-            spread: 130,
-            startVelocity: 24,
+            particleCount: 25,
+            spread: 120,
+            startVelocity: 22,
             origin: { x: 0.5, y: 0.3 },
             colors: fiestaColors,
-            shapes: [serpentine, spiral, 'square'],
-            scalar: 1.5,
-            gravity: 0.62,
+            shapes: [serpentine],
+            scalar: 1.15,
+            gravity: 0.68,
             decay: 0.94,
-            ticks: 160,
+            ticks: 150,
+          });
+          confetti({
+            particleCount: 45,
+            spread: 120,
+            startVelocity: 22,
+            origin: { x: 0.5, y: 0.3 },
+            colors: fiestaColors,
+            shapes: ['square'],
+            scalar: 1.0,
           });
         }, 500)
       );
@@ -397,7 +391,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
     }
 
     case 'rainbow_hearts': {
-      // Радужные сердца: настоящие крупные выразительные сердечки
+      // Радужные сердца: настоящие выразительные сердечки
       const heartShape = getHeartShape();
       const heartColors = [
         '#ff1e56', // neon ruby
@@ -410,7 +404,6 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
         '#facc15', // gold
       ];
 
-      // Запуск 1: Пышный центральный фонтан сердечек
       confetti({
         particleCount: 55,
         spread: 100,
@@ -418,13 +411,12 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
         origin: { x: 0.5, y: 0.6 },
         colors: heartColors,
         shapes: [heartShape],
-        scalar: 1.6,
+        scalar: 1.5,
         gravity: 0.65,
         decay: 0.93,
         ticks: 130,
       });
 
-      // Запуск 2 (+220ms): Полёт сердечек навстречу с двух сторон
       timeouts.push(
         window.setTimeout(() => {
           confetti({
@@ -435,7 +427,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             origin: { x: 0.12, y: 0.65 },
             colors: heartColors,
             shapes: [heartShape],
-            scalar: 1.5,
+            scalar: 1.4,
             gravity: 0.6,
             decay: 0.94,
             ticks: 140,
@@ -448,7 +440,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             origin: { x: 0.88, y: 0.65 },
             colors: heartColors,
             shapes: [heartShape],
-            scalar: 1.5,
+            scalar: 1.4,
             gravity: 0.6,
             decay: 0.94,
             ticks: 140,
@@ -456,7 +448,6 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
         }, 220)
       );
 
-      // Запуск 3 (+500ms): Парящие сердечки сверху
       timeouts.push(
         window.setTimeout(() => {
           confetti({
@@ -466,7 +457,7 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
             origin: { x: 0.5, y: 0.35 },
             colors: heartColors,
             shapes: [heartShape],
-            scalar: 1.8,
+            scalar: 1.6,
             gravity: 0.55,
             decay: 0.95,
             ticks: 150,
@@ -515,9 +506,8 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
     }
 
     case 'fireworks': {
-      // Королевский салют: мощные ступенчатые залпы со спиралями серпантина и искрами
+      // Королевский салют: мощные залпы с золотыми искрами и серпантином
       const serpentine = getSerpentineShape();
-      const spiral = getSpiralCurlShape();
       const fireStage = (x: number, y: number, count: number, colors: string[]) => {
         confetti({
           particleCount: count,
@@ -527,8 +517,8 @@ export function triggerVictoryAnimation(animationId: string = 'confetti'): () =>
           origin: { x, y },
           colors,
           gravity: 1.05,
-          scalar: 1.2,
-          shapes: ['star', 'circle', serpentine, spiral],
+          scalar: 1.15,
+          shapes: ['star', 'circle', serpentine],
         });
       };
 

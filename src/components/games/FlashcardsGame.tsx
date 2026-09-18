@@ -4,7 +4,7 @@ import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
 import { WordIllustration } from '../WordIllustration';
-import { Volume2, RotateCw, ArrowLeft, ChevronLeft, ChevronRight, LayoutGrid, X } from 'lucide-react';
+import { Volume2, RotateCw, ArrowLeft, ChevronLeft, ChevronRight, LayoutGrid, X, Gamepad2 } from 'lucide-react';
 
 interface FlashcardsGameProps {
   topic: Topic;
@@ -344,15 +344,19 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
       {/* Action Buttons */}
       <div className="w-full grid grid-cols-2 gap-4 mt-5">
         <button
-          onClick={() => handleNext(false)}
-          className="btn-3d py-4 px-4 rounded-3xl bg-amber-100 hover:bg-amber-200 border-4 border-amber-300 text-amber-800 font-black text-lg sm:text-xl shadow-lg flex items-center justify-center gap-2"
+          onClick={() => {
+            sounds.playClick();
+            onBack();
+          }}
+          className="btn-3d py-4 px-3 sm:px-4 rounded-3xl bg-indigo-50 hover:bg-indigo-100 border-4 border-indigo-200 text-indigo-700 font-black text-base sm:text-lg shadow-lg flex items-center justify-center gap-2 cursor-pointer"
         >
-          <span>{t.needPractice}</span>
+          <Gamepad2 className="w-5 h-5 flex-shrink-0" />
+          <span className="truncate">{t.backToTopicGames}</span>
         </button>
 
         <button
           onClick={() => handleNext(true)}
-          className="btn-3d py-4 px-4 rounded-3xl bg-emerald-400 hover:bg-emerald-500 border-4 border-emerald-600 text-white font-black text-lg sm:text-xl shadow-lg flex items-center justify-center gap-2"
+          className="btn-3d py-4 px-3 sm:px-4 rounded-3xl bg-emerald-400 hover:bg-emerald-500 border-4 border-emerald-600 text-white font-black text-base sm:text-lg shadow-lg flex items-center justify-center gap-2 cursor-pointer"
         >
           <span>{t.iKnow}</span>
         </button>

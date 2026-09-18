@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import confetti from 'canvas-confetti';
 import { Language } from '../types';
 import { translations } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
+import { triggerVictoryAnimation } from './VictoryEffects';
 import { Gamepad2, Home, Sparkles } from 'lucide-react';
 
 interface CelebrationModalProps {
@@ -16,6 +16,8 @@ interface CelebrationModalProps {
   isFirstClear?: boolean;
   isRepeatClear?: boolean;
   isFailedThreshold?: boolean;
+  victoryMusic?: string;
+  victoryAnimation?: string;
   onBackToGames: () => void;
   onHome: () => void;
 }
@@ -31,6 +33,8 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
   isFirstClear,
   isRepeatClear,
   isFailedThreshold,
+  victoryMusic = 'classic',
+  victoryAnimation = 'confetti',
   onBackToGames,
   onHome,
 }) => {
@@ -41,35 +45,17 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
     if (isNoReward) {
       sounds.playCorrect();
     } else {
-      sounds.playFanfare();
+      sounds.playVictoryTheme(victoryMusic);
     }
 
-    // Fire Confetti Cannon only when stars are awarded
+    // Fire Victory Animation only when stars are awarded
     if (stars > 0) {
-      const duration = 2.5 * 1000;
-      const animationEnd = Date.now() + duration;
-
-      const interval: ReturnType<typeof setInterval> = setInterval(() => {
-        const timeLeft = animationEnd - Date.now();
-        if (timeLeft <= 0) {
-          return clearInterval(interval);
-        }
-
-        confetti({
-          particleCount: 40,
-          startVelocity: 30,
-          spread: 360,
-          origin: {
-            x: Math.random(),
-            y: Math.random() * 0.5,
-          },
-          colors: ['#38bdf8', '#6366f1', '#ec4899', '#facc15', '#4ade80'],
-        });
-      }, 300);
-
-      return () => clearInterval(interval);
+      const cleanup = triggerVictoryAnimation(victoryAnimation);
+      return () => {
+        cleanup();
+      };
     }
-  }, [isNoReward, stars]);
+  }, [isNoReward, stars, victoryMusic, victoryAnimation]);
 
   const percentage = Math.round((correctCount / Math.max(1, totalCount)) * 100);
   const headline = isFailedThreshold

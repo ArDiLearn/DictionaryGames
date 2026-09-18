@@ -147,6 +147,10 @@ export function getDefaultStats(): UserStats {
     unlockedAvatars: DEFAULT_UNLOCKED_AVATARS,
     spentStars: 0,
     totalStarsEarned: 0,
+    equippedVictoryMusic: 'classic',
+    unlockedVictoryMusic: ['classic'],
+    equippedVictoryAnimation: 'confetti',
+    unlockedVictoryAnimations: ['confetti'],
   };
 }
 
@@ -212,6 +216,24 @@ export function loadLocalStats(): UserStats {
     }
     if (!stats.playedModes || !Array.isArray(stats.playedModes)) {
       stats.playedModes = [];
+      needsLocalSave = true;
+    }
+
+    // Victory customizations
+    if (!stats.equippedVictoryMusic) {
+      stats.equippedVictoryMusic = 'classic';
+      needsLocalSave = true;
+    }
+    if (!stats.unlockedVictoryMusic || !Array.isArray(stats.unlockedVictoryMusic) || stats.unlockedVictoryMusic.length === 0) {
+      stats.unlockedVictoryMusic = ['classic'];
+      needsLocalSave = true;
+    }
+    if (!stats.equippedVictoryAnimation) {
+      stats.equippedVictoryAnimation = 'confetti';
+      needsLocalSave = true;
+    }
+    if (!stats.unlockedVictoryAnimations || !Array.isArray(stats.unlockedVictoryAnimations) || stats.unlockedVictoryAnimations.length === 0) {
+      stats.unlockedVictoryAnimations = ['confetti'];
       needsLocalSave = true;
     }
 
@@ -306,6 +328,69 @@ export function purchaseAvatar(
 
   saveLocalStats(newStats);
   return { success: true, newStats };
+}
+
+export function purchaseVictoryItem(
+  type: 'animation' | 'music',
+  id: string,
+  price: number,
+  totalStarsEarned: number
+): { success: boolean; newStats: UserStats } {
+  const currentStats = loadLocalStats();
+  const spentStars = currentStats.spentStars || 0;
+  const total = Math.max(currentStats.totalStarsEarned || 0, totalStarsEarned);
+  const availableStars = Math.max(0, total - spentStars);
+
+  if (availableStars < price) {
+    return { success: false, newStats: currentStats };
+  }
+
+  let newStats: UserStats;
+  if (type === 'animation') {
+    const unlocked = new Set(currentStats.unlockedVictoryAnimations || ['confetti']);
+    unlocked.add(id);
+    newStats = {
+      ...currentStats,
+      spentStars: spentStars + price,
+      totalStarsEarned: total,
+      unlockedVictoryAnimations: Array.from(unlocked),
+      equippedVictoryAnimation: id,
+    };
+  } else {
+    const unlocked = new Set(currentStats.unlockedVictoryMusic || ['classic']);
+    unlocked.add(id);
+    newStats = {
+      ...currentStats,
+      spentStars: spentStars + price,
+      totalStarsEarned: total,
+      unlockedVictoryMusic: Array.from(unlocked),
+      equippedVictoryMusic: id,
+    };
+  }
+
+  saveLocalStats(newStats);
+  return { success: true, newStats };
+}
+
+export function equipVictoryItem(
+  type: 'animation' | 'music',
+  id: string
+): UserStats {
+  const currentStats = loadLocalStats();
+  let newStats: UserStats;
+  if (type === 'animation') {
+    newStats = {
+      ...currentStats,
+      equippedVictoryAnimation: id,
+    };
+  } else {
+    newStats = {
+      ...currentStats,
+      equippedVictoryMusic: id,
+    };
+  }
+  saveLocalStats(newStats);
+  return newStats;
 }
 
 export function saveLocalStats(stats: UserStats) {
@@ -614,6 +699,20 @@ export async function mergeWithCloud(): Promise<boolean> {
       ])
     );
 
+    const mergedVictoryMusic = Array.from(
+      new Set([
+        ...(currentStats.unlockedVictoryMusic || ['classic']),
+        ...(cloudStats.unlockedVictoryMusic || []),
+      ])
+    );
+
+    const mergedVictoryAnimations = Array.from(
+      new Set([
+        ...(currentStats.unlockedVictoryAnimations || ['confetti']),
+        ...(cloudStats.unlockedVictoryAnimations || []),
+      ])
+    );
+
     const userLogin = getCurrentUserLogin(user);
 
     const mergedStats: UserStats = {
@@ -635,6 +734,10 @@ export async function mergeWithCloud(): Promise<boolean> {
       claimedMilestoneIds: mergedMilestones,
       playedModes: mergedPlayedModes,
       hasSniperAchieved: Boolean(currentStats.hasSniperAchieved || cloudStats.hasSniperAchieved),
+      equippedVictoryMusic: cloudStats.equippedVictoryMusic || currentStats.equippedVictoryMusic || 'classic',
+      unlockedVictoryMusic: mergedVictoryMusic,
+      equippedVictoryAnimation: cloudStats.equippedVictoryAnimation || currentStats.equippedVictoryAnimation || 'confetti',
+      unlockedVictoryAnimations: mergedVictoryAnimations,
     };
 
     saveLocalStats(mergedStats);

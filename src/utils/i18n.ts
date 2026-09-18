@@ -175,6 +175,14 @@ export interface Translations {
   congratsAvatarPurchased: string;
   equipNow: string;
   continueShopping: string;
+  shopTabAvatars: string;
+  shopTabAnimations: string;
+  shopTabMusic: string;
+  previewEffect: string;
+  stopPreview: string;
+  equippedBadge: string;
+  victoryMusicTitle: string;
+  victoryAnimationTitle: string;
   flashcardsComplete: string;
   flashcardsFinishedHeadline: string;
   flashcardsNoRewardHint: string;
@@ -446,6 +454,14 @@ export const translations: Record<Language, Translations> = {
     congratsAvatarPurchased: 'Ура! Новый аватар разблокирован!',
     equipNow: 'Надеть сейчас!',
     continueShopping: 'Отлично',
+    shopTabAvatars: 'Герои',
+    shopTabAnimations: 'Анимации победы',
+    shopTabMusic: 'Музыка победы',
+    previewEffect: 'Попробовать',
+    stopPreview: 'Стоп',
+    equippedBadge: 'Выбрано',
+    victoryMusicTitle: 'Музыка победы',
+    victoryAnimationTitle: 'Анимация победы',
     flashcardsComplete: 'Карточки пройдены!',
     flashcardsFinishedHeadline: 'Отличная тренировка!',
     flashcardsNoRewardHint: 'В режиме карточек звёзды не начисляются. Играй в игры, чтобы заработать звёзды!',
@@ -715,6 +731,14 @@ export const translations: Record<Language, Translations> = {
     congratsAvatarPurchased: 'Urā! Jauns avatars atbloķēts!',
     equipNow: 'Uzvilkt tagad!',
     continueShopping: 'Labi',
+    shopTabAvatars: 'Varoņi',
+    shopTabAnimations: 'Uzvaras animācijas',
+    shopTabMusic: 'Uzvaras mūzika',
+    previewEffect: 'Izmēģināt',
+    stopPreview: 'Apturēt',
+    equippedBadge: 'Izvēlēts',
+    victoryMusicTitle: 'Uzvaras mūzika',
+    victoryAnimationTitle: 'Uzvaras animācija',
     flashcardsComplete: 'Kartītes pabeigtas!',
     flashcardsFinishedHeadline: 'Lielisks treniņš!',
     flashcardsNoRewardHint: 'Kartīšu režīmā zvaigznes netiek piešķirtas. Spēlē spēles, lai nopelnītu zvaigznes!',

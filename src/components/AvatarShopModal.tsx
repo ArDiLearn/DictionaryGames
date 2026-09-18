@@ -68,15 +68,15 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
       origin: { y: 0.6 },
     });
 
-    setPurchasedJustNow(item.id);
+    setPurchasedJustNow(item.emoji);
     setTimeout(() => setPurchasedJustNow(null), 2500);
 
-    onPurchase(item.id, item.price);
+    onPurchase(item.emoji, item.price);
   };
 
   const handleEquip = (item: AvatarShopItem) => {
     sounds.playClick();
-    onSelectAvatar(item.id);
+    onSelectAvatar(item.emoji);
   };
 
   return (
@@ -272,7 +272,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
 
                 {/* Avatar Badge & Preview */}
                 <div className="mb-2 hover:scale-110 transition-transform select-none">
-                  <AvatarBadge avatar={item.id} size="xl" showStars={true} animate={isMythic} />
+                  <AvatarBadge avatar={item.emoji} size="xl" showStars={true} animate={isMythic} />
                 </div>
 
                 {/* Avatar Name */}

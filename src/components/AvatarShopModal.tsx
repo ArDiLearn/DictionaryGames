@@ -5,7 +5,7 @@ import { AVATAR_SHOP_ITEMS, DEFAULT_UNLOCKED_AVATARS, AVATAR_ALIASES } from '../
 import { VICTORY_ANIMATION_ITEMS, VICTORY_MUSIC_ITEMS } from '../data/shopCustomizations';
 import { translations, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
-import { triggerVictoryAnimation } from './VictoryEffects';
+import { triggerVictoryAnimation, cancelVictoryAnimation } from './VictoryEffects';
 import { AvatarBadge } from './AvatarBadge';
 import { X, Check, Lock, Sparkles, ShoppingBag, Volume2, Play } from 'lucide-react';
 
@@ -42,6 +42,12 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('all');
   const [unlockedItem, setUnlockedItem] = useState<AvatarShopItem | null>(null);
   const [previewingMusicId, setPreviewingMusicId] = useState<string | null>(null);
+
+  React.useEffect(() => {
+    return () => {
+      cancelVictoryAnimation();
+    };
+  }, []);
 
   const t = translations[language];
   const spentStars = stats.spentStars || 0;
@@ -196,6 +202,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
             <button
               onClick={() => {
                 sounds.playClick();
+                cancelVictoryAnimation();
                 onClose();
               }}
               className="w-10 h-10 rounded-2xl bg-amber-950/10 hover:bg-amber-950/20 text-amber-950 flex items-center justify-center transition-colors cursor-pointer"
@@ -248,6 +255,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
           <button
             onClick={() => {
               sounds.playClick();
+              cancelVictoryAnimation();
               setActiveTab('avatars');
             }}
             className={`px-3.5 py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer ${
@@ -262,6 +270,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
           <button
             onClick={() => {
               sounds.playClick();
+              cancelVictoryAnimation();
               setActiveTab('animations');
             }}
             className={`px-3.5 py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer ${
@@ -276,6 +285,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
           <button
             onClick={() => {
               sounds.playClick();
+              cancelVictoryAnimation();
               setActiveTab('music');
             }}
             className={`px-3.5 py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer ${

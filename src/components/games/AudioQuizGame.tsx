@@ -4,6 +4,7 @@ import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
 import { Volume2, ArrowLeft, Headphones } from 'lucide-react';
+import { WordIllustration } from '../WordIllustration';
 
 interface AudioQuizGameProps {
   topic: Topic;
@@ -204,9 +205,24 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
               key={option.id}
               disabled={isAnswered}
               onClick={() => handleSelectOption(option)}
-              className={`btn-3d p-2.5 sm:p-4 rounded-2xl sm:rounded-3xl border-3 sm:border-4 text-base sm:text-xl font-black text-center shadow-md transition-all flex items-center justify-center min-h-[58px] sm:min-h-[72px] leading-snug ${btnStyle}`}
+              className={`btn-3d p-2 sm:p-3.5 rounded-2xl sm:rounded-3xl border-3 sm:border-4 font-black text-center shadow-md transition-all flex flex-col items-center justify-center min-h-[82px] sm:min-h-[100px] cursor-pointer ${btnStyle}`}
             >
-              <span>{translation}</span>
+              <div
+                className={`w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 select-none mb-1 sm:mb-1.5 shadow-inner transition-transform ${
+                  isAnswered && (isCorrect || (isChosen && !isCorrect))
+                    ? 'bg-white/20 border border-white/40'
+                    : 'bg-slate-100/90 border border-slate-200'
+                }`}
+              >
+                <WordIllustration
+                  word={option}
+                  fallbackEmoji={topic.emoji || '📖'}
+                  className="w-7 h-7 sm:w-10 sm:h-10 text-2xl sm:text-3xl"
+                />
+              </div>
+              <span className="text-xs sm:text-base font-black text-center leading-tight font-comic line-clamp-2 px-1">
+                {translation}
+              </span>
             </button>
           );
         })}

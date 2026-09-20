@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import confetti from 'canvas-confetti';
-import { Topic, Word, Grade, Language, LearningCourse, ExamResult, ExamQuestionType } from '../../types';
+import { Topic, Word, Grade, Language, LearningCourse, ExamResult, ExamQuestionType, ExamQuestion } from '../../types';
 import { translations } from '../../utils/i18n';
 import { sounds } from '../../utils/soundEffects';
 import { speakEnglish, speakLatvian, stopSpeech } from '../../utils/speech';
@@ -15,24 +15,6 @@ interface ExamGameProps {
   course: LearningCourse;
   onComplete: (result: ExamResult) => void;
   onBack: () => void;
-}
-
-interface ExamQuestion {
-  id: string;
-  topicId: string;
-  topicEmoji?: string;
-  type: ExamQuestionType;
-  word: Word;
-  // For 'audio' and 'choice' questions:
-  options?: {
-    text: string;
-    word?: Word;
-    isCorrect: boolean;
-  }[];
-  // For 'truefalse' questions:
-  displayWord?: string;
-  displayTranslation?: string;
-  isTrue?: boolean;
 }
 
 interface LetterTile {

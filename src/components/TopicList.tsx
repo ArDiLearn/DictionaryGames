@@ -8,6 +8,10 @@ import {
   translations,
   getGradeFilterInfo,
   getPlayerDisplayName,
+  getMainTopicsSubtitle,
+  getExtraTopicsSubtitle,
+} from '../utils/i18n';
+import {
   isTopicExtra,
   hasNewWordsForGrades,
   getNewWordsCountForGrades,
@@ -15,9 +19,7 @@ import {
   GRADE_2_MAIN_TOPICS,
   GRADE_3_MAIN_TOPICS,
   GRADE_4_MAIN_TOPICS,
-  getMainTopicsSubtitle,
-  getExtraTopicsSubtitle,
-} from '../utils/i18n';
+} from '../data/curriculum';
 import { sounds } from '../utils/soundEffects';
 import { getTitleById } from '../data/titles';
 import { Search, Sparkles, BarChart3 } from 'lucide-react';

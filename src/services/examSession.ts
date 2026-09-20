@@ -1,7 +1,7 @@
-import { Grade, LearningCourse } from '../types';
+import { Grade, LearningCourse, ExamQuestion } from '../types';
 
 export interface ExamSessionData {
-  questions: any[];
+  questions: ExamQuestion[];
   currentIndex: number;
   correctCount: number;
   grade: Grade;
@@ -23,7 +23,7 @@ export function saveExamSession(
   grade: Grade,
   course: LearningCourse,
   data: {
-    questions: any[];
+    questions: ExamQuestion[];
     currentIndex: number;
     correctCount: number;
     grade: Grade;

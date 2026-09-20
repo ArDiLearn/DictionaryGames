@@ -14,7 +14,7 @@ import {
   hasNewWordsForGrades,
   GRADE_3_EXTRA_DUPLICATES,
   GRADE_4_EXTRA_DUPLICATES,
-} from '../utils/i18n';
+} from '../data/curriculum';
 
 interface UseTopicCatalogProps {
   topics: Topic[];

@@ -17,7 +17,7 @@ interface ExamCardProps {
   onOpenStats?: () => void;
 }
 
-export const ExamCard: React.FC<ExamCardProps> = ({
+const _ExamCard: React.FC<ExamCardProps> = ({
   grade,
   availableGrades,
   onSelectGradeTab,
@@ -190,3 +190,5 @@ export const ExamCard: React.FC<ExamCardProps> = ({
     </div>
   );
 };
+
+export const ExamCard = React.memo(_ExamCard);

@@ -89,7 +89,7 @@ const SIZE_MAP: Record<
   },
 };
 
-export const AvatarBadge: React.FC<AvatarBadgeProps> = ({
+const _AvatarBadge: React.FC<AvatarBadgeProps> = ({
   avatar,
   size = 'md',
   className = '',
@@ -191,3 +191,5 @@ export const AvatarBadge: React.FC<AvatarBadgeProps> = ({
     </div>
   );
 };
+
+export const AvatarBadge = React.memo(_AvatarBadge);

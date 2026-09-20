@@ -1,12 +1,13 @@
 import { LearningCourse, UserStats } from '../types';
 import {
   loadWordProgress,
-  saveWordProgress,
+  saveWordProgressRaw,
   loadTopicProgress,
-  saveTopicProgress,
+  saveTopicProgressRaw,
   loadLocalStats,
-  saveLocalStats,
-} from './storage';
+  saveLocalStatsRaw,
+} from './localStorage';
+import { triggerCloudSync } from './cloudSync';
 
 export function recordWordAttempt(
   wordId: string,
@@ -39,7 +40,7 @@ export function recordWordAttempt(
     isLearned,
     lastReviewedAt: new Date().toISOString(),
   };
-  saveWordProgress(words, course);
+  saveWordProgressRaw(words, course);
 
   // Update Topic progress
   const topic = topics[topicId] || {
@@ -80,7 +81,9 @@ export function recordWordAttempt(
   topic.lastPlayedAt = new Date().toISOString();
   topics[topicId] = topic;
 
-  saveTopicProgress(topics, course);
+  saveTopicProgressRaw(topics, course);
+  // One cloud sync after both word and topic progress are written
+  triggerCloudSync();
 
   return { stars: topic.stars, newlyMastered };
 }
@@ -118,7 +121,8 @@ export function checkAndClaimTopicMasteryBonus(
     claimedTopicBonusIds: [...claimedList, topicId],
     totalStarsEarned: (currentStats.totalStarsEarned || 0) + bonusStars,
   };
-  saveLocalStats(updatedStats);
+  saveLocalStatsRaw(updatedStats);
+  triggerCloudSync();
 
   return { claimed: true, bonusStars, updatedStats };
 }
@@ -165,7 +169,8 @@ export function checkAndClaimWordMilestones(course: LearningCourse = 'en'): {
       claimedMilestoneIds: Array.from(claimedIds),
       totalStarsEarned: (currentStats.totalStarsEarned || 0) + totalBonus,
     };
-    saveLocalStats(updatedStats);
+    saveLocalStatsRaw(updatedStats);
+    triggerCloudSync();
     return { claimedMilestones: newlyClaimed, totalBonusStars: totalBonus, updatedStats };
   }
 

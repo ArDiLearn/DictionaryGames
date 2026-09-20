@@ -142,6 +142,24 @@ export interface PlayerTitle {
 
 export type ExamQuestionType = 'audio' | 'choice' | 'truefalse' | 'builder';
 
+export interface ExamQuestion {
+  id: string;
+  topicId: string;
+  topicEmoji?: string;
+  type: ExamQuestionType;
+  word: Word;
+  // For 'audio' and 'choice' questions:
+  options?: {
+    text: string;
+    word?: Word;
+    isCorrect: boolean;
+  }[];
+  // For 'truefalse' questions:
+  displayWord?: string;
+  displayTranslation?: string;
+  isTrue?: boolean;
+}
+
 export interface ExamResult {
   grade: Grade;
   course: LearningCourse;

@@ -35,7 +35,7 @@ const COLOR_MAP: Record<string, { bg: string; border: string; badge: string; sha
   red: { bg: 'bg-red-50', border: 'border-red-200 hover:border-red-400', badge: 'bg-red-500 text-white', shadow: 'shadow-red-100' },
 };
 
-export const TopicCard: React.FC<TopicCardProps> = ({
+const _TopicCard: React.FC<TopicCardProps> = ({
   topic,
   language,
   course = 'en',
@@ -176,3 +176,5 @@ export const TopicCard: React.FC<TopicCardProps> = ({
     </button>
   );
 };
+
+export const TopicCard = React.memo(_TopicCard);

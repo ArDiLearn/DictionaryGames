@@ -1,9 +1,19 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
   base: '/DictionaryGames/',
+  test: {
+    environment: 'node',
+    globals: true,
+    setupFiles: [],
+    coverage: {
+      provider: 'v8',
+      include: ['src/services/progression.ts', 'src/services/titles.ts', 'src/services/examSession.ts'],
+    },
+  },
   plugins: [
     react(),
     VitePWA({

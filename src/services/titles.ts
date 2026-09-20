@@ -2,11 +2,12 @@ import { UserStats, PlayerTitle, Grade, GameMode } from '../types';
 import { DEFAULT_UNLOCKED_TITLES, getTitleById } from '../data/titles';
 import {
   loadLocalStats,
-  saveLocalStats,
+  saveLocalStatsRaw,
   loadExamResults,
   loadWordProgress,
   loadTopicProgress,
-} from './storage';
+} from './localStorage';
+import { triggerCloudSync } from './cloudSync';
 
 export function equipTitle(titleId: string): UserStats {
   const currentStats = loadLocalStats();
@@ -18,7 +19,8 @@ export function equipTitle(titleId: string): UserStats {
     ...currentStats,
     equippedTitleId: titleId,
   };
-  saveLocalStats(newStats);
+  saveLocalStatsRaw(newStats);
+  triggerCloudSync();
   return newStats;
 }
 
@@ -125,7 +127,8 @@ export function evaluateUnlockedTitles(stats?: UserStats): {
       ...currentStats,
       unlockedTitleIds: Array.from(unlockedSet),
     };
-    saveLocalStats(updatedStats);
+    saveLocalStatsRaw(updatedStats);
+    triggerCloudSync();
     return { newlyUnlockedTitles: newlyUnlocked, updatedStats };
   }
 
@@ -144,6 +147,7 @@ export function recordGameModePlayed(
     playedModes: Array.from(played),
     hasSniperAchieved: currentStats.hasSniperAchieved || isFlawless,
   };
-  saveLocalStats(updatedStats);
+  saveLocalStatsRaw(updatedStats);
+  triggerCloudSync();
   return evaluateUnlockedTitles(updatedStats);
 }

@@ -1909,6 +1909,623 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       <text x="50" y="78" textAnchor="middle" fill="#0f172a" fontSize="8" fontWeight="bold" letterSpacing="1">WEEK</text>
     </svg>
   ),
+  // water bottle (обычная бутылка воды с прозрачным голубым корпусом, крышкой-поилкой и уровнем воды)
+  'water bottle': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="90" rx="20" ry="4" fill="#94a3b8" opacity="0.3" />
+      {/* Bottle Base & Body */}
+      <rect x="34" y="36" width="32" height="50" rx="8" fill="#e0f2fe" stroke="#38bdf8" strokeWidth="2.5" />
+      {/* Water Fill Inside */}
+      <path d="M35 52 C40 50, 45 54, 50 52 C55 50, 60 54, 65 52 L65 78 C65 82, 62 85, 58 85 L42 85 C38 85, 35 82, 35 78 Z" fill="#38bdf8" opacity="0.75" />
+      {/* Highlights & Reflection */}
+      <path d="M38 42 L38 80" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" opacity="0.8" />
+      <path d="M42 44 L42 56" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+      {/* Measurement ticks */}
+      <line x1="60" y1="56" x2="63" y2="56" stroke="#0284c7" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="58" y1="64" x2="63" y2="64" stroke="#0284c7" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="60" y1="72" x2="63" y2="72" stroke="#0284c7" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Cute Droplet Logo on bottle */}
+      <path d="M50 62 C50 62, 45 68, 45 71 C45 73.8, 47.2 76, 50 76 C52.8 76, 55 73.8, 55 71 C55 68, 50 62, 50 62 Z" fill="#ffffff" opacity="0.9" />
+      {/* Bottle Shoulder and Neck */}
+      <path d="M36 38 C36 32, 42 28, 44 26 L56 26 C58 28, 64 32, 64 38 Z" fill="#bae6fd" stroke="#38bdf8" strokeWidth="2" />
+      <rect x="44" y="22" width="12" height="6" rx="1.5" fill="#0284c7" />
+      {/* Sports Cap with Flip Spout and Handle Loop */}
+      <rect x="42" y="16" width="16" height="8" rx="3" fill="#0369a1" />
+      <rect x="46" y="11" width="8" height="6" rx="2" fill="#0284c7" />
+      {/* Handle loop */}
+      <path d="M58 19 C66 19, 68 25, 68 28 C68 31, 65 33, 58 31" stroke="#0369a1" strokeWidth="3" strokeLinecap="round" fill="none" />
+      {/* Cap highlight */}
+      <line x1="44" y1="18" x2="56" y2="18" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  ),
+
+  // badge (яркий круглый металлический значок с золотой звездой, булавкой и бликами)
+  'badge': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="88" rx="26" ry="5" fill="#94a3b8" opacity="0.35" />
+      {/* Pin back visible clasp */}
+      <path d="M30 36 L24 28 C22 25, 27 22, 30 25 L38 34" stroke="#64748b" strokeWidth="3" strokeLinecap="round" />
+      <circle cx="25" cy="27" r="2.5" fill="#475569" />
+      {/* Ribbon tails underneath badge */}
+      <path d="M42 66 L34 86 L44 82 L48 68 Z" fill="#dc2626" />
+      <path d="M58 66 L66 86 L56 82 L52 68 Z" fill="#b91c1c" />
+      {/* Badge Outer Rim (Golden metallic border) */}
+      <circle cx="50" cy="48" r="32" fill="#f59e0b" stroke="#d97706" strokeWidth="2" />
+      {/* Badge Enamel Face (Bright Blue) */}
+      <circle cx="50" cy="48" r="28" fill="#2563eb" />
+      {/* Inner decorative dotted ring */}
+      <circle cx="50" cy="48" r="25" stroke="#60a5fa" strokeWidth="1" strokeDasharray="3 3" />
+      {/* Golden Star in Center */}
+      <polygon points="50,28 55,39 67,40 58,48 61,60 50,53 39,60 42,48 33,40 45,39" fill="#fde047" stroke="#eab308" strokeWidth="1.5" strokeLinejoin="round" />
+      <polygon points="50,32 53,40 62,41 55,47 57,56 50,51 43,56 45,47 38,41 47,40" fill="#fef08a" />
+      {/* Curved Glossy Highlight on Dome */}
+      <path d="M26 44 C28 32, 40 24, 56 24 C64 24, 70 28, 72 32 C62 26, 42 28, 26 44 Z" fill="#ffffff" opacity="0.55" />
+      <circle cx="34" cy="34" r="2" fill="#ffffff" opacity="0.8" />
+    </svg>
+  ),
+
+  // puppet (кукла-марионетка на крестовине с нитями, деревянными суставами и одеждой)
+  'puppet': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="94" rx="22" ry="3.5" fill="#94a3b8" opacity="0.3" />
+      {/* Wooden Control Crossbar */}
+      <line x1="28" y1="12" x2="72" y2="16" stroke="#854d0e" strokeWidth="4.5" strokeLinecap="round" />
+      <line x1="50" y1="6" x2="50" y2="22" stroke="#a16207" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="50" cy="14" r="3" fill="#ca8a04" />
+      {/* Strings hanging to limbs and head */}
+      <line x1="32" y1="13" x2="28" y2="52" stroke="#cbd5e1" strokeWidth="1.2" strokeDasharray="2 1" />
+      <line x1="68" y1="16" x2="72" y2="50" stroke="#cbd5e1" strokeWidth="1.2" strokeDasharray="2 1" />
+      <line x1="50" y1="14" x2="50" y2="28" stroke="#e2e8f0" strokeWidth="1.2" />
+      <line x1="38" y1="14" x2="36" y2="72" stroke="#cbd5e1" strokeWidth="1.2" strokeDasharray="2 1" />
+      <line x1="62" y1="15" x2="64" y2="72" stroke="#cbd5e1" strokeWidth="1.2" strokeDasharray="2 1" />
+      {/* Head */}
+      <circle cx="50" cy="34" r="9" fill="#fde68a" stroke="#d97706" strokeWidth="1.5" />
+      {/* Hat */}
+      <path d="M43 28 L50 19 L57 28 Z" fill="#ef4444" stroke="#b91c1c" strokeWidth="1" />
+      <circle cx="50" cy="19" r="2" fill="#fbbf24" />
+      {/* Face: eyes, rosy cheeks, smile, wooden nose */}
+      <circle cx="47" cy="33" r="1.2" fill="#1e293b" />
+      <circle cx="53" cy="33" r="1.2" fill="#1e293b" />
+      <circle cx="45" cy="37" r="1.5" fill="#f87171" opacity="0.6" />
+      <circle cx="55" cy="37" r="1.5" fill="#f87171" opacity="0.6" />
+      <line x1="50" y1="33" x2="50" y2="36" stroke="#b45309" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M48 38 Q50 40 52 38" stroke="#b91c1c" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+      {/* Neck & Torso */}
+      <line x1="50" y1="43" x2="50" y2="46" stroke="#d97706" strokeWidth="2.5" />
+      <path d="M44 46 L56 46 L54 60 L46 60 Z" fill="#3b82f6" stroke="#1d4ed8" strokeWidth="1.5" />
+      {/* Vest / Buttons */}
+      <circle cx="50" cy="50" r="1.2" fill="#fbbf24" />
+      <circle cx="50" cy="55" r="1.2" fill="#fbbf24" />
+      <rect x="45" y="60" width="10" height="7" rx="1" fill="#dc2626" />
+      {/* Left Arm & Wooden Hand */}
+      <path d="M44 47 L34 52 L28 50" stroke="#fde68a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="34" cy="52" r="2" fill="#d97706" />
+      <circle cx="27" cy="50" r="2.5" fill="#fde68a" stroke="#d97706" strokeWidth="1" />
+      {/* Right Arm & Wooden Hand */}
+      <path d="M56 47 L66 49 L72 47" stroke="#fde68a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="66" cy="49" r="2" fill="#d97706" />
+      <circle cx="73" cy="47" r="2.5" fill="#fde68a" stroke="#d97706" strokeWidth="1" />
+      {/* Legs & Shoes with Joints */}
+      <path d="M47 67 L44 76 L36 88" stroke="#fde68a" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="44" cy="76" r="2" fill="#d97706" />
+      <ellipse cx="33" cy="89" rx="4.5" ry="2.5" fill="#78350f" />
+      <path d="M53 67 L56 76 L64 88" stroke="#fde68a" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="56" cy="76" r="2" fill="#d97706" />
+      <ellipse cx="67" cy="89" rx="4.5" ry="2.5" fill="#78350f" />
+    </svg>
+  ),
+
+  // colouring pens (яркая пачка/коробка с набором цветных карандашей разных цветов)
+  'colouring pens': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="90" rx="30" ry="5" fill="#94a3b8" opacity="0.3" />
+      {/* Standing Pencils in fan/row */}
+      {/* 1. Red Pencil */}
+      <rect x="23" y="24" width="7" height="38" fill="#ef4444" rx="1" />
+      <polygon points="23,24 26.5,14 30,24" fill="#fde68a" />
+      <polygon points="25.5,17 26.5,14 27.5,17" fill="#ef4444" />
+      {/* 2. Orange Pencil */}
+      <rect x="31" y="20" width="7" height="42" fill="#f97316" rx="1" />
+      <polygon points="31,20 34.5,10 38,20" fill="#fde68a" />
+      <polygon points="33.5,13 34.5,10 35.5,13" fill="#f97316" />
+      {/* 3. Yellow Pencil */}
+      <rect x="39" y="17" width="7" height="45" fill="#eab308" rx="1" />
+      <polygon points="39,17 42.5,7 46,17" fill="#fde68a" />
+      <polygon points="41.5,10 42.5,7 43.5,10" fill="#ca8a04" />
+      {/* 4. Green Pencil */}
+      <rect x="47" y="16" width="7" height="46" fill="#22c55e" rx="1" />
+      <polygon points="47,16 50.5,6 54,16" fill="#fde68a" />
+      <polygon points="49.5,9 50.5,6 51.5,9" fill="#15803d" />
+      {/* 5. Cyan/Sky Pencil */}
+      <rect x="55" y="18" width="7" height="44" fill="#06b6d4" rx="1" />
+      <polygon points="55,18 58.5,8 62,18" fill="#fde68a" />
+      <polygon points="57.5,11 58.5,8 59.5,11" fill="#0e7490" />
+      {/* 6. Blue Pencil */}
+      <rect x="63" y="21" width="7" height="41" fill="#3b82f6" rx="1" />
+      <polygon points="63,21 66.5,11 70,21" fill="#fde68a" />
+      <polygon points="65.5,14 66.5,11 67.5,14" fill="#1d4ed8" />
+      {/* 7. Purple Pencil */}
+      <rect x="71" y="25" width="7" height="37" fill="#a855f7" rx="1" />
+      <polygon points="71,25 74.5,15 78,25" fill="#fde68a" />
+      <polygon points="73.5,18 74.5,15 75.5,18" fill="#7e22ce" />
+
+      {/* Pencil Box / Packaging */}
+      <path d="M19 50 L19 86 C19 88, 21 90, 24 90 L76 90 C79 90, 81 88, 81 86 L81 50 C81 48, 79 46, 76 46 L62 46 C58 52, 42 52, 38 46 L24 46 C21 46, 19 48, 19 50 Z" fill="#4f46e5" stroke="#3730a3" strokeWidth="2" />
+      {/* Window cut-out on box showing rainbow stripes */}
+      <rect x="26" y="58" width="48" height="18" rx="4" fill="#312e81" />
+      <path d="M29 60 L33 74" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M35 60 L39 74" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M41 60 L45 74" stroke="#eab308" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M47 60 L51 74" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M53 60 L57 74" stroke="#06b6d4" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M59 60 L63 74" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M65 60 L69 74" stroke="#a855f7" strokeWidth="2.5" strokeLinecap="round" />
+      {/* Box brand badge / stars */}
+      <text x="50" y="84" textAnchor="middle" fill="#fde047" fontSize="6" fontWeight="bold" letterSpacing="1">COLOR</text>
+      {/* Box shine */}
+      <path d="M22 52 L22 84" stroke="#818cf8" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  ),
+
+  // xylophone (детский металлофон/ксилофон с разноцветными металлическими пластинами и палочками с шариками)
+  'xylophone': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="88" rx="36" ry="6" fill="#94a3b8" opacity="0.3" />
+      {/* Wooden Trapezoid Frame */}
+      <polygon points="12,72 88,72 82,34 18,34" fill="#d97706" stroke="#92400e" strokeWidth="2.5" strokeLinejoin="round" />
+      <polygon points="16,68 84,68 79,38 21,38" fill="#f59e0b" />
+      {/* Supporting Side Rails */}
+      <rect x="18" y="32" width="64" height="6" rx="2" fill="#78350f" opacity="0.5" />
+      <rect x="12" y="66" width="76" height="6" rx="2" fill="#78350f" opacity="0.5" />
+
+      {/* Rainbow Metal Bars (from longest on left to shortest on right) */}
+      {/* 1. Red Bar */}
+      <rect x="16" y="24" width="8" height="56" rx="3" fill="#ef4444" stroke="#b91c1c" strokeWidth="1" />
+      <circle cx="20" cy="30" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      <circle cx="20" cy="74" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      {/* 2. Orange Bar */}
+      <rect x="26" y="26" width="8" height="52" rx="3" fill="#f97316" stroke="#c2410c" strokeWidth="1" />
+      <circle cx="30" cy="31" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      <circle cx="30" cy="73" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      {/* 3. Yellow Bar */}
+      <rect x="36" y="28" width="8" height="48" rx="3" fill="#eab308" stroke="#a16207" strokeWidth="1" />
+      <circle cx="40" cy="33" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      <circle cx="40" cy="71" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      {/* 4. Green Bar */}
+      <rect x="46" y="30" width="8" height="44" rx="3" fill="#22c55e" stroke="#15803d" strokeWidth="1" />
+      <circle cx="50" cy="35" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      <circle cx="50" cy="69" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      {/* 5. Cyan Bar */}
+      <rect x="56" y="32" width="8" height="40" rx="3" fill="#06b6d4" stroke="#0e7490" strokeWidth="1" />
+      <circle cx="60" cy="37" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      <circle cx="60" cy="67" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      {/* 6. Blue Bar */}
+      <rect x="66" y="34" width="8" height="36" rx="3" fill="#3b82f6" stroke="#1d4ed8" strokeWidth="1" />
+      <circle cx="70" cy="39" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      <circle cx="70" cy="65" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      {/* 7. Purple Bar */}
+      <rect x="76" y="36" width="8" height="32" rx="3" fill="#a855f7" stroke="#7e22ce" strokeWidth="1" />
+      <circle cx="80" cy="41" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      <circle cx="80" cy="63" r="1.5" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+
+      {/* Two Crossed Mallets with Round Ball Tips */}
+      {/* Mallet 1 (Left to Right) */}
+      <line x1="22" y1="84" x2="62" y2="18" stroke="#78350f" strokeWidth="2.5" strokeLinecap="round" />
+      <circle cx="63" cy="17" r="5" fill="#ef4444" stroke="#991b1b" strokeWidth="1" />
+      <circle cx="61.5" cy="15.5" r="1.5" fill="#fca5a5" />
+      {/* Mallet 2 (Right to Left) */}
+      <line x1="78" y1="84" x2="38" y2="18" stroke="#78350f" strokeWidth="2.5" strokeLinecap="round" />
+      <circle cx="37" cy="17" r="5" fill="#ef4444" stroke="#991b1b" strokeWidth="1" />
+      <circle cx="35.5" cy="15.5" r="1.5" fill="#fca5a5" />
+      {/* Sparkles / Musical Notes */}
+      <path d="M84 18 Q88 12 92 16" stroke="#eab308" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="84" cy="19" r="2" fill="#eab308" />
+    </svg>
+  ),
+
+  // marbles (стеклянные шарики марблс со спиральным разноцветным рисунком внутри и глянцевым стеклянным блеском)
+  'marbles': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Shadows */}
+      <ellipse cx="44" cy="84" rx="20" ry="5" fill="#64748b" opacity="0.3" />
+      <ellipse cx="72" cy="78" rx="14" ry="4" fill="#64748b" opacity="0.25" />
+      <ellipse cx="26" cy="74" rx="12" ry="3.5" fill="#64748b" opacity="0.25" />
+
+      {/* Marble 2 (Back Right - Green/Orange) */}
+      <g>
+        <circle cx="70" cy="62" r="18" fill="#e0f2fe" stroke="#38bdf8" strokeWidth="1.5" />
+        <circle cx="70" cy="62" r="18" fill="#0284c7" opacity="0.15" />
+        {/* Swirl inside */}
+        <path d="M60 72 C62 55, 78 52, 78 68 C78 74, 68 76, 64 62" stroke="#22c55e" strokeWidth="4" strokeLinecap="round" fill="none" opacity="0.85" />
+        <path d="M64 70 C65 58, 76 56, 76 66" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+        {/* Glass reflection highlight */}
+        <path d="M58 52 C62 48, 72 48, 78 54" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" opacity="0.8" />
+        <circle cx="74" cy="52" r="1.5" fill="#ffffff" />
+      </g>
+
+      {/* Marble 3 (Back Left - Yellow/Purple) */}
+      <g>
+        <circle cx="28" cy="60" r="15" fill="#e0f2fe" stroke="#38bdf8" strokeWidth="1.5" />
+        <circle cx="28" cy="60" r="15" fill="#a855f7" opacity="0.15" />
+        {/* Swirl inside */}
+        <path d="M20 68 C22 52, 34 50, 34 62 C34 68, 26 70, 24 58" stroke="#eab308" strokeWidth="3.5" strokeLinecap="round" fill="none" opacity="0.85" />
+        <path d="M22 66 C24 55, 32 54, 32 62" stroke="#ec4899" strokeWidth="2" strokeLinecap="round" fill="none" />
+        {/* Glass reflection highlight */}
+        <path d="M19 52 C22 49, 30 49, 34 54" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" opacity="0.8" />
+        <circle cx="31" cy="51" r="1.2" fill="#ffffff" />
+      </g>
+
+      {/* Main Foreground Marble (Large, Blue/Red/Yellow Cat's-Eye Swirl) */}
+      <g>
+        <circle cx="46" cy="56" r="26" fill="#f0f9ff" stroke="#0284c7" strokeWidth="2" />
+        <circle cx="46" cy="56" r="26" fill="#38bdf8" opacity="0.2" />
+        {/* 3D Glass Inner Swirls */}
+        <path d="M30 68 C34 42, 58 38, 62 60 C64 74, 46 80, 38 58 C34 48, 48 42, 54 48" stroke="#ef4444" strokeWidth="5.5" strokeLinecap="round" fill="none" opacity="0.85" />
+        <path d="M34 66 C37 46, 56 42, 60 58 C62 70, 48 76, 41 58" stroke="#3b82f6" strokeWidth="3.5" strokeLinecap="round" fill="none" opacity="0.9" />
+        <path d="M38 64 C40 50, 54 48, 57 58" stroke="#fde047" strokeWidth="2" strokeLinecap="round" fill="none" />
+        {/* Glass Crescent Specular Highlights */}
+        <path d="M30 46 C35 36, 50 34, 60 40" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" opacity="0.9" />
+        <path d="M36 68 C40 76, 54 78, 60 74" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+        <circle cx="56" cy="40" r="2" fill="#ffffff" />
+      </g>
+    </svg>
+  ),
+
+  // blocks (деревянные кубики с цветными буквами A, B, C на гранях)
+  'blocks': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="90" rx="34" ry="6" fill="#94a3b8" opacity="0.35" />
+      {/* Bottom-Left Cube: Letter B (Blue border) */}
+      <g>
+        {/* Top Face */}
+        <polygon points="12,58 34,46 56,58 34,70" fill="#fde68a" stroke="#d97706" strokeWidth="1.5" />
+        {/* Left Face */}
+        <polygon points="12,58 34,70 34,92 12,80" fill="#f59e0b" stroke="#d97706" strokeWidth="1.5" />
+        {/* Right Face */}
+        <polygon points="34,70 56,58 56,80 34,92" fill="#d97706" stroke="#b45309" strokeWidth="1.5" />
+        {/* Letter B on Right Face */}
+        <path d="M39 68 L47 64 C50 62, 53 65, 51 68 C53 71, 50 75, 46 76 L39 79 Z" fill="#2563eb" stroke="#1d4ed8" strokeWidth="1" />
+        <rect x="42" y="69" width="3" height="3" fill="#d97706" />
+        <rect x="42" y="73" width="3" height="3" fill="#d97706" />
+      </g>
+
+      {/* Bottom-Right Cube: Letter C (Green border) */}
+      <g>
+        {/* Top Face */}
+        <polygon points="44,58 66,46 88,58 66,70" fill="#fde68a" stroke="#d97706" strokeWidth="1.5" />
+        {/* Left Face */}
+        <polygon points="44,58 66,70 66,92 44,80" fill="#f59e0b" stroke="#d97706" strokeWidth="1.5" />
+        {/* Right Face */}
+        <polygon points="66,70 88,58 88,80 66,92" fill="#d97706" stroke="#b45309" strokeWidth="1.5" />
+        {/* Letter C on Left Face */}
+        <path d="M60 67 C54 66, 48 70, 50 78 C51 84, 57 85, 62 82" stroke="#16a34a" strokeWidth="3.5" strokeLinecap="round" fill="none" />
+      </g>
+
+      {/* Top Center Cube: Letter A (Red border) */}
+      <g>
+        {/* Top Face */}
+        <polygon points="28,32 50,20 72,32 50,44" fill="#fef08a" stroke="#d97706" strokeWidth="1.5" />
+        {/* Left Face */}
+        <polygon points="28,32 50,44 50,66 28,54" fill="#fbbf24" stroke="#d97706" strokeWidth="1.5" />
+        {/* Right Face */}
+        <polygon points="50,44 72,32 72,54 50,66" fill="#f59e0b" stroke="#d97706" strokeWidth="1.5" />
+        {/* Letter A on Left Face */}
+        <path d="M43 40 L35 56 M43 40 L47 52 M36 50 L46 47" stroke="#dc2626" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Star on Right Face */}
+        <polygon points="60,40 62,45 67,45 63,48 64,53 60,50 56,53 57,48 53,45 58,45" fill="#9333ea" />
+      </g>
+    </svg>
+  ),
+
+  // spinning top (классическая детская юла/волчок с полосатым куполом, остриём и ручкой-помпой)
+  'spinning top': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="91" rx="14" ry="3" fill="#94a3b8" opacity="0.4" />
+      {/* Motion Swirl Lines */}
+      <path d="M16 68 C22 74, 34 76, 44 75" stroke="#93c5fd" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
+      <path d="M84 56 C78 50, 68 48, 58 49" stroke="#93c5fd" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
+      <circle cx="82" cy="44" r="1.5" fill="#f59e0b" />
+      <circle cx="18" cy="60" r="1.5" fill="#f59e0b" />
+
+      {/* Bottom Spinning Metal Tip */}
+      <polygon points="47,82 53,82 50,91" fill="#475569" stroke="#334155" strokeWidth="1" />
+      <circle cx="50" cy="91" r="1.5" fill="#94a3b8" />
+
+      {/* Lower Cone of Top */}
+      <polygon points="20,62 80,62 50,83" fill="#0284c7" stroke="#0369a1" strokeWidth="1.5" />
+      {/* Lower cone stripe */}
+      <polygon points="28,68 72,68 50,83" fill="#38bdf8" />
+
+      {/* Central Wide Saucer Rim */}
+      <ellipse cx="50" cy="62" rx="34" ry="8" fill="#eab308" stroke="#ca8a04" strokeWidth="2" />
+      <ellipse cx="50" cy="62" rx="31" ry="6.5" fill="#facc15" />
+
+      {/* Upper Domed Section (Striped) */}
+      <path d="M18 61 C18 42, 38 32, 50 32 C62 32, 82 42, 82 61 Z" fill="#ef4444" stroke="#b91c1c" strokeWidth="1.5" />
+      {/* Dome Stripes (Yellow, Green, Blue) */}
+      <path d="M26 55 C32 44, 42 38, 50 38 C58 38, 68 44, 74 55 Z" fill="#f59e0b" />
+      <path d="M33 49 C38 42, 44 38, 50 38 C56 38, 62 42, 67 49 Z" fill="#22c55e" />
+      <path d="M40 43 C43 38, 47 36, 50 36 C53 36, 57 38, 60 43 Z" fill="#3b82f6" />
+      {/* Window peep holes with colored dots */}
+      <circle cx="36" cy="56" r="3" fill="#ffffff" />
+      <circle cx="36" cy="56" r="1.5" fill="#ec4899" />
+      <circle cx="50" cy="57" r="3" fill="#ffffff" />
+      <circle cx="50" cy="57" r="1.5" fill="#06b6d4" />
+      <circle cx="64" cy="56" r="3" fill="#ffffff" />
+      <circle cx="64" cy="56" r="1.5" fill="#8b5cf6" />
+
+      {/* Glossy Curved Highlight on Dome */}
+      <path d="M28 50 C34 40, 44 36, 50 36" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" opacity="0.75" />
+
+      {/* Plunger / Handle on Top */}
+      <rect x="48" y="16" width="4" height="17" fill="#94a3b8" stroke="#64748b" strokeWidth="1" rx="1" />
+      {/* Spiral thread on shaft */}
+      <path d="M48 20 L52 22 M48 25 L52 27 M48 30 L52 32" stroke="#475569" strokeWidth="1.2" strokeLinecap="round" />
+      {/* Big Round Knob on Top */}
+      <circle cx="50" cy="14" r="6.5" fill="#dc2626" stroke="#991b1b" strokeWidth="1.5" />
+      <circle cx="48" cy="12" r="2" fill="#fca5a5" />
+    </svg>
+  ),
+
+  // rocking horse (деревянная детская лошадка-качалка с изогнутыми полозьями, гривой и седлом)
+  'rocking horse': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="92" rx="34" ry="4" fill="#94a3b8" opacity="0.3" />
+      {/* Curved Rocker Runners at Bottom */}
+      <path d="M12 80 Q50 95 88 80" stroke="#dc2626" strokeWidth="5.5" strokeLinecap="round" fill="none" />
+      <path d="M14 78 Q50 92 86 78" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" fill="none" />
+      {/* Rocker Crossbars */}
+      <line x1="28" y1="84" x2="34" y2="70" stroke="#b91c1c" strokeWidth="3" strokeLinecap="round" />
+      <line x1="72" y1="84" x2="66" y2="70" stroke="#b91c1c" strokeWidth="3" strokeLinecap="round" />
+      {/* Footrest peg */}
+      <circle cx="50" cy="74" r="3" fill="#f59e0b" stroke="#b45309" strokeWidth="1" />
+
+      {/* Horse Legs */}
+      {/* Back Legs */}
+      <path d="M38 58 L28 78 M42 58 L32 78" stroke="#b45309" strokeWidth="4.5" strokeLinecap="round" />
+      {/* Front Legs */}
+      <path d="M62 58 L72 78 M58 58 L68 78" stroke="#d97706" strokeWidth="4.5" strokeLinecap="round" />
+
+      {/* Horse Body */}
+      <ellipse cx="50" cy="56" rx="18" ry="11" fill="#f59e0b" stroke="#b45309" strokeWidth="2" />
+      {/* Saddle */}
+      <path d="M42 49 C42 46, 58 46, 58 49 C58 56, 42 56, 42 49 Z" fill="#ef4444" stroke="#991b1b" strokeWidth="1.5" />
+      <rect x="47" y="52" width="6" height="7" rx="1" fill="#fde047" />
+
+      {/* Horse Neck & Head */}
+      <path d="M58 54 L68 34 C70 30, 75 28, 80 32 C84 35, 82 42, 74 44 L66 58 Z" fill="#f59e0b" stroke="#b45309" strokeWidth="2" strokeLinejoin="round" />
+      {/* Muzzle & Smile */}
+      <circle cx="78" cy="36" r="1.2" fill="#78350f" />
+      <path d="M76 40 Q74 42 72 40" stroke="#78350f" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      {/* Eye */}
+      <circle cx="72" cy="34" r="2.2" fill="#1e293b" />
+      <circle cx="72.6" cy="33.4" r="0.8" fill="#ffffff" />
+      {/* Ear */}
+      <polygon points="68,26 73,32 66,32" fill="#d97706" stroke="#b45309" strokeWidth="1" />
+
+      {/* Mane (Wood carved ridges) */}
+      <path d="M64 29 C62 31, 60 34, 61 38 C59 40, 58 43, 60 46 C58 48, 57 52, 60 55" stroke="#dc2626" strokeWidth="3" strokeLinecap="round" fill="none" />
+
+      {/* Handle Peg for hands */}
+      <circle cx="68" cy="38" r="3.5" fill="#fde047" stroke="#ca8a04" strokeWidth="1.2" />
+      <line x1="68" y1="38" x2="68" y2="43" stroke="#b45309" strokeWidth="2" />
+
+      {/* Bushy Tail */}
+      <path d="M34 54 C26 56, 22 64, 25 72 C27 64, 30 60, 35 60 Z" fill="#dc2626" stroke="#b91c1c" strokeWidth="1" />
+    </svg>
+  ),
+
+  // pyramid (классическая детская пирамидка: колечки от большего к меньшему на стержне и верхушка-шарик)
+  'pyramid': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="91" rx="30" ry="5" fill="#94a3b8" opacity="0.35" />
+      {/* Base Stand & Vertical Post */}
+      <ellipse cx="50" cy="87" rx="28" ry="6" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="2" />
+      <rect x="47" y="18" width="6" height="70" rx="3" fill="#cbd5e1" />
+
+      {/* Ring 1 (Bottom, Largest - Red) */}
+      <g>
+        <ellipse cx="50" cy="80" rx="26" ry="7.5" fill="#dc2626" stroke="#991b1b" strokeWidth="1.5" />
+        <ellipse cx="50" cy="78" rx="26" ry="7" fill="#ef4444" />
+        <path d="M28 77 C34 74, 66 74, 72 77" stroke="#fca5a5" strokeWidth="2" strokeLinecap="round" opacity="0.75" />
+      </g>
+
+      {/* Ring 2 (Orange) */}
+      <g>
+        <ellipse cx="50" cy="69" rx="22" ry="6.8" fill="#ea580c" stroke="#9a3412" strokeWidth="1.5" />
+        <ellipse cx="50" cy="67" rx="22" ry="6.3" fill="#f97316" />
+        <path d="M32 66 C36 63, 64 63, 68 66" stroke="#fdba74" strokeWidth="2" strokeLinecap="round" opacity="0.75" />
+      </g>
+
+      {/* Ring 3 (Yellow) */}
+      <g>
+        <ellipse cx="50" cy="58" rx="18" ry="6" fill="#ca8a04" stroke="#854d0e" strokeWidth="1.5" />
+        <ellipse cx="50" cy="56" rx="18" ry="5.5" fill="#eab308" />
+        <path d="M35 55 C39 52, 61 52, 65 55" stroke="#fef08a" strokeWidth="1.8" strokeLinecap="round" opacity="0.8" />
+      </g>
+
+      {/* Ring 4 (Green) */}
+      <g>
+        <ellipse cx="50" cy="47" rx="14" ry="5.2" fill="#16a34a" stroke="#166534" strokeWidth="1.5" />
+        <ellipse cx="50" cy="45" rx="14" ry="4.8" fill="#22c55e" />
+        <path d="M39 44 C42 42, 58 42, 61 44" stroke="#86efac" strokeWidth="1.8" strokeLinecap="round" opacity="0.8" />
+      </g>
+
+      {/* Ring 5 (Blue) */}
+      <g>
+        <ellipse cx="50" cy="36" rx="10" ry="4.5" fill="#2563eb" stroke="#1e40af" strokeWidth="1.5" />
+        <ellipse cx="50" cy="34" rx="10" ry="4.2" fill="#3b82f6" />
+        <path d="M43 33 C45 32, 55 32, 57 33" stroke="#93c5fd" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
+      </g>
+
+      {/* Top Cap Ball (Purple) */}
+      <g>
+        <circle cx="50" cy="20" r="7.5" fill="#9333ea" stroke="#6b21a8" strokeWidth="1.5" />
+        <circle cx="48" cy="18" r="2" fill="#e9d5ff" />
+      </g>
+    </svg>
+  ),
+
+  // rubber duck (классическая жёлтая резиновая уточка для купания с оранжевым клювом и пузырьками)
+  'rubber duck': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Water Ripples & Soap Bubbles */}
+      <ellipse cx="48" cy="85" rx="34" ry="6" fill="#38bdf8" opacity="0.3" />
+      <path d="M16 84 Q32 88 48 84 T80 84" stroke="#0ea5e9" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      {/* Soap bubbles */}
+      <circle cx="18" cy="74" r="3.5" fill="#e0f2fe" stroke="#38bdf8" strokeWidth="1" />
+      <circle cx="82" cy="76" r="4.5" fill="#e0f2fe" stroke="#38bdf8" strokeWidth="1" />
+      <circle cx="78" cy="68" r="2.5" fill="#e0f2fe" stroke="#38bdf8" strokeWidth="1" />
+
+      {/* Duck Body */}
+      <path d="M26 78 C20 72, 22 56, 36 54 C40 54, 46 56, 52 56 C62 56, 72 58, 80 64 C84 68, 82 76, 76 80 C68 85, 36 86, 26 78 Z" fill="#facc15" stroke="#ca8a04" strokeWidth="2" strokeLinejoin="round" />
+      {/* Perky Pointed Tail */}
+      <path d="M22 64 C16 54, 26 50, 32 54 Z" fill="#facc15" stroke="#ca8a04" strokeWidth="1.5" />
+
+      {/* Wing */}
+      <path d="M38 64 C42 60, 54 60, 58 65 C60 70, 52 74, 44 74 C38 74, 36 68, 38 64 Z" fill="#eab308" stroke="#ca8a04" strokeWidth="1.5" />
+
+      {/* Duck Head & Neck */}
+      <path d="M52 56 L54 44 C54 34, 62 26, 72 26 C82 26, 88 34, 86 44 C84 52, 76 56, 68 56 Z" fill="#facc15" stroke="#ca8a04" strokeWidth="2" />
+      <circle cx="70" cy="38" r="14" fill="#facc15" />
+
+      {/* Cartoon Friendly Eye */}
+      <circle cx="76" cy="34" r="3.8" fill="#ffffff" stroke="#1e293b" strokeWidth="1" />
+      <circle cx="77" cy="34" r="2" fill="#0f172a" />
+      <circle cx="76.2" cy="33" r="0.8" fill="#ffffff" />
+      <path d="M72 30 Q76 28 80 30" stroke="#713f12" strokeWidth="1.2" strokeLinecap="round" />
+
+      {/* Chubby Orange Duck Bill / Beak */}
+      <path d="M82 38 C88 36, 94 37, 96 40 C96 43, 90 45, 84 45 C81 45, 80 42, 82 38 Z" fill="#f97316" stroke="#c2410c" strokeWidth="1.5" />
+      <path d="M84 41 L94 40" stroke="#9a3412" strokeWidth="1" />
+
+      {/* Cute Head Highlight */}
+      <path d="M64 28 C68 26, 74 26, 78 28" stroke="#fef08a" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  ),
+
+  // tea set (игрушечный чайный сервиз: пузатый заварник с узором, две чашечки на блюдечках)
+  'tea set': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="88" rx="38" ry="6" fill="#94a3b8" opacity="0.3" />
+      {/* 1. Teacup and Saucer on Left */}
+      <g>
+        <ellipse cx="24" cy="82" rx="14" ry="4" fill="#ec4899" stroke="#be185d" strokeWidth="1.2" />
+        <ellipse cx="24" cy="81" rx="12" ry="3" fill="#fbcfe8" />
+        {/* Cup */}
+        <path d="M16 72 L18 80 C18 82, 30 82, 30 80 L32 72 Z" fill="#f472b6" stroke="#be185d" strokeWidth="1.2" />
+        <ellipse cx="24" cy="72" rx="8" ry="2.5" fill="#fbcfe8" stroke="#be185d" strokeWidth="1" />
+        <ellipse cx="24" cy="72" rx="6.5" ry="1.8" fill="#d97706" opacity="0.8" />
+        {/* Handle */}
+        <path d="M31 73 C35 73, 35 79, 30 80" stroke="#be185d" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      </g>
+
+      {/* 2. Main Cute Toy Teapot (Заварник) in Center */}
+      <g>
+        {/* Curved Teapot Handle on Left */}
+        <path d="M42 46 C32 46, 30 64, 42 66" stroke="#ec4899" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <path d="M42 48 C35 48, 34 62, 42 64" stroke="#fbcfe8" strokeWidth="1.5" fill="none" />
+
+        {/* Spout on Right */}
+        <path d="M68 56 C74 54, 78 44, 82 42 C82 46, 76 60, 66 64 Z" fill="#f472b6" stroke="#be185d" strokeWidth="1.5" />
+        <ellipse cx="81.5" cy="42.5" rx="2" ry="1.2" fill="#be185d" />
+
+        {/* Teapot Foot/Base */}
+        <ellipse cx="55" cy="76" rx="12" ry="3" fill="#db2777" />
+
+        {/* Round Chubby Teapot Belly */}
+        <circle cx="55" cy="58" r="18" fill="#f472b6" stroke="#be185d" strokeWidth="2" />
+        <path d="M40 58 C40 68, 70 68, 70 58" fill="#fbcfe8" opacity="0.6" />
+
+        {/* Cute Floral / Heart Pattern on Belly */}
+        <circle cx="55" cy="58" r="4.5" fill="#ffffff" />
+        <circle cx="55" cy="58" r="2.5" fill="#f59e0b" />
+        <circle cx="55" cy="52" r="2" fill="#ffffff" opacity="0.8" />
+        <circle cx="55" cy="64" r="2" fill="#ffffff" opacity="0.8" />
+        <circle cx="49" cy="58" r="2" fill="#ffffff" opacity="0.8" />
+        <circle cx="61" cy="58" r="2" fill="#ffffff" opacity="0.8" />
+
+        {/* Teapot Rim & Domed Lid */}
+        <ellipse cx="55" cy="42" rx="10" ry="3" fill="#db2777" stroke="#be185d" strokeWidth="1" />
+        <path d="M47 42 C47 34, 63 34, 63 42 Z" fill="#f472b6" stroke="#be185d" strokeWidth="1.2" />
+        {/* Lid Knob */}
+        <circle cx="55" cy="33" r="3.5" fill="#fde047" stroke="#ca8a04" strokeWidth="1" />
+        <circle cx="54" cy="32" r="1" fill="#ffffff" />
+      </g>
+
+      {/* 3. Teacup and Saucer on Right */}
+      <g>
+        <ellipse cx="78" cy="82" rx="13" ry="3.8" fill="#06b6d4" stroke="#0e7490" strokeWidth="1.2" />
+        <ellipse cx="78" cy="81" rx="11" ry="2.8" fill="#cffafe" />
+        {/* Cup */}
+        <path d="M71 73 L73 80 C73 82, 83 82, 83 80 L85 73 Z" fill="#22d3ee" stroke="#0e7490" strokeWidth="1.2" />
+        <ellipse cx="78" cy="73" rx="7" ry="2.2" fill="#cffafe" stroke="#0e7490" strokeWidth="1" />
+        <ellipse cx="78" cy="73" rx="5.5" ry="1.5" fill="#d97706" opacity="0.8" />
+        {/* Handle */}
+        <path d="M84 74 C88 74, 88 79, 83 80" stroke="#0e7490" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      </g>
+    </svg>
+  ),
+
+  // bookshop (уютный книжный магазин: витрина с книгами, полосатый навес, вывеска BOOKS и дверь)
+  'bookshop': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="94" rx="44" ry="4" fill="#94a3b8" opacity="0.3" />
+      {/* Building Facade */}
+      <rect x="12" y="16" width="76" height="76" rx="4" fill="#f8fafc" stroke="#64748b" strokeWidth="2" />
+      {/* Brick Texture Accent on Upper Wall */}
+      <rect x="18" y="20" width="8" height="3" rx="1" fill="#cbd5e1" opacity="0.6" />
+      <rect x="74" y="20" width="8" height="3" rx="1" fill="#cbd5e1" opacity="0.6" />
+
+      {/* Signboard above awning */}
+      <rect x="22" y="18" width="56" height="13" rx="3" fill="#1e3a8a" stroke="#172554" strokeWidth="1.5" />
+      <text x="50" y="27.5" textAnchor="middle" fill="#fde047" fontSize="8" fontWeight="900" letterSpacing="1.5">BOOKS</text>
+
+      {/* Striped Store Awning / Canopy */}
+      <g>
+        {/* Awning Slants */}
+        <polygon points="10,36 18,36 15,48 7,48" fill="#ef4444" />
+        <polygon points="18,36 28,36 26,48 15,48" fill="#ffffff" />
+        <polygon points="28,36 38,36 37,48 26,48" fill="#ef4444" />
+        <polygon points="38,36 48,36 48,48 37,48" fill="#ffffff" />
+        <polygon points="48,36 58,36 59,48 48,48" fill="#ef4444" />
+        <polygon points="58,36 68,36 70,48 59,48" fill="#ffffff" />
+        <polygon points="68,36 78,36 81,48 70,48" fill="#ef4444" />
+        <polygon points="78,36 86,36 90,48 81,48" fill="#ffffff" />
+        <polygon points="86,36 90,36 93,48 90,48" fill="#ef4444" />
+        {/* Awning valance scalloped edge */}
+        <line x1="7" y1="48" x2="93" y2="48" stroke="#b91c1c" strokeWidth="1.5" />
+      </g>
+
+      {/* Display Window on Left with Books inside */}
+      <rect x="16" y="52" width="40" height="34" rx="3" fill="#e0f2fe" stroke="#0284c7" strokeWidth="2" />
+      {/* Window Shelf */}
+      <rect x="18" y="70" width="36" height="3" fill="#b45309" />
+      {/* Books on Top Shelf */}
+      <rect x="20" y="58" width="5" height="12" rx="1" fill="#ef4444" />
+      <rect x="26" y="56" width="6" height="14" rx="1" fill="#3b82f6" />
+      <rect x="33" y="60" width="5" height="10" rx="1" fill="#22c55e" />
+      <polygon points="39,70 47,62 49,63 42,70" fill="#f59e0b" />
+      {/* Open Book on Bottom Shelf */}
+      <path d="M22 81 Q28 78 34 81 L34 76 Q28 73 22 76 Z" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      <path d="M34 81 Q40 78 46 81 L46 76 Q40 73 34 76 Z" fill="#f8fafc" stroke="#64748b" strokeWidth="0.8" />
+      {/* Window glass sheen */}
+      <path d="M20 54 L36 54 L18 72 L18 64 Z" fill="#ffffff" opacity="0.5" />
+
+      {/* Shop Entrance Door on Right */}
+      <rect x="62" y="52" width="24" height="40" rx="2" fill="#78350f" stroke="#451a03" strokeWidth="1.5" />
+      {/* Glass Pane on Door */}
+      <rect x="66" y="56" width="16" height="20" rx="2" fill="#bae6fd" stroke="#0284c7" strokeWidth="1" />
+      {/* "OPEN" sign in door window */}
+      <rect x="69" y="62" width="10" height="5" rx="1" fill="#22c55e" />
+      <text x="74" y="66" textAnchor="middle" fill="#ffffff" fontSize="3" fontWeight="bold">OPEN</text>
+      {/* Brass Door Knob */}
+      <circle cx="66" cy="80" r="2" fill="#fde047" stroke="#ca8a04" strokeWidth="0.8" />
+      {/* Welcome Mat */}
+      <rect x="60" y="90" width="28" height="3" rx="1" fill="#475569" />
+    </svg>
+  ),
+
 };
 
 export const RU_ALIASES: Record<string, string> = {
@@ -1962,4 +2579,24 @@ export const RU_ALIASES: Record<string, string> = {
   'рубин': 'ruby',
   'дети': 'children',
   'неделя': 'week',
+  'бутылка для воды': 'water bottle',
+  'значок': 'badge',
+  'кукла-марионетка': 'puppet',
+  'марионетка': 'puppet',
+  'фломастеры': 'colouring pens',
+  'цветные карандаши': 'colouring pens',
+  'ксилофон': 'xylophone',
+  'шарики марблс': 'marbles',
+  'марблс': 'marbles',
+  'кубики': 'blocks',
+  'юла': 'spinning top',
+  'волчок': 'spinning top',
+  'лошадка-качалка': 'rocking horse',
+  'лошадка-качелька': 'rocking horse',
+  'пирамидка': 'pyramid',
+  'резиновая уточка': 'rubber duck',
+  'резиновые желтые уточки': 'rubber duck',
+  'чайный сервиз': 'tea set',
+  'книжный магазин': 'bookshop',
+
 };

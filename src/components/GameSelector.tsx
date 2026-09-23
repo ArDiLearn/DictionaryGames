@@ -1,6 +1,6 @@
 import React from 'react';
 import { Topic, Language, GameMode, TopicProgress, LearningCourse } from '../types';
-import { translations, getWordsPlural } from '../utils/i18n';
+import { translations, getWordsPlural, getGameModeDescriptions } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { ArrowLeft, Play, Layers, SpellCheck, Grid, Headphones, CheckCircle2, Sparkles } from 'lucide-react';
 
@@ -32,11 +32,13 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
   const topicMaxStars = totalCount < 5 ? 0 : totalCount <= 8 ? 2 : 3;
   const starSlots = Array.from({ length: topicMaxStars }, (_, i) => i + 1);
 
+  const modeDescriptions = getGameModeDescriptions(language, course);
+
   const MODES: { id: GameMode; title: string; desc: string; icon: React.ReactNode; color: string; border: string; bg: string }[] = [
     {
       id: 'flashcards',
       title: t.modes.flashcards,
-      desc: t.modeDescriptions.flashcards,
+      desc: modeDescriptions.flashcards,
       icon: <Layers className="w-8 h-8 text-indigo-600" />,
       color: 'text-indigo-600',
       border: 'border-indigo-300 hover:border-indigo-500',
@@ -45,7 +47,7 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
     {
       id: 'builder',
       title: t.modes.builder,
-      desc: t.modeDescriptions.builder,
+      desc: modeDescriptions.builder,
       icon: <SpellCheck className="w-8 h-8 text-amber-600" />,
       color: 'text-amber-600',
       border: 'border-amber-300 hover:border-amber-500',
@@ -54,7 +56,7 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
     {
       id: 'match',
       title: t.modes.match,
-      desc: t.modeDescriptions.match,
+      desc: modeDescriptions.match,
       icon: <Grid className="w-8 h-8 text-sky-600" />,
       color: 'text-sky-600',
       border: 'border-sky-300 hover:border-sky-500',
@@ -63,7 +65,7 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
     {
       id: 'truefalse',
       title: `🚦 ${t.modes.truefalse}`,
-      desc: t.modeDescriptions.truefalse,
+      desc: modeDescriptions.truefalse,
       icon: <CheckCircle2 className="w-8 h-8 text-emerald-600" />,
       color: 'text-emerald-600',
       border: 'border-emerald-300 hover:border-emerald-500',
@@ -72,7 +74,7 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
     {
       id: 'balloons',
       title: `🎈 ${t.modes.balloons}`,
-      desc: t.modeDescriptions.balloons,
+      desc: modeDescriptions.balloons,
       icon: <Sparkles className="w-8 h-8 text-rose-500" />,
       color: 'text-rose-600',
       border: 'border-rose-300 hover:border-rose-500',
@@ -81,7 +83,7 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
     {
       id: 'audio',
       title: t.modes.audio,
-      desc: t.modeDescriptions.audio,
+      desc: modeDescriptions.audio,
       icon: <Headphones className="w-8 h-8 text-purple-600" />,
       color: 'text-purple-600',
       border: 'border-purple-300 hover:border-purple-500',

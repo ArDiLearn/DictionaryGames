@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { Word, Topic, Language, LearningCourse } from '../../types';
 import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
-import { translations } from '../../utils/i18n';
+import { translations, getBalloonPrompt } from '../../utils/i18n';
 import { Volume2, ArrowLeft, Sparkles, Cloud } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -301,7 +301,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
       {/* Target Word Card */}
       <div className="bg-white rounded-3xl border-3 border-indigo-200 p-4 sm:p-5 shadow-md mb-4 text-center relative overflow-hidden">
         <p className="text-xs sm:text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">
-          {t.balloonPrompt}
+          {getBalloonPrompt(language, course)}
         </p>
         <div className="flex items-center justify-center gap-3">
           <h2 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight">

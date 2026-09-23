@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Word, Topic, Language, LearningCourse } from '../../types';
 import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
-import { translations, getWordsPlural } from '../../utils/i18n';
+import { translations, getWordsPlural, getMatchPrompt } from '../../utils/i18n';
 import { ArrowLeft } from 'lucide-react';
 
 interface MatchPairsGameProps {
@@ -228,9 +228,7 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
           {t.modes.match}
         </h2>
         <p className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
-          {course === 'lv'
-            ? (language === 'lv' ? 'Atrodi pārus: latviešu vārds un tulkojums' : 'Найди пары: латышское слово и перевод')
-            : t.matchPrompt}
+          {getMatchPrompt(language, course)}
         </p>
       </div>
 

@@ -45,15 +45,6 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
       bg: 'bg-indigo-50/50 hover:bg-indigo-50',
     },
     {
-      id: 'builder',
-      title: t.modes.builder,
-      desc: modeDescriptions.builder,
-      icon: <SpellCheck className="w-8 h-8 text-amber-600" />,
-      color: 'text-amber-600',
-      border: 'border-amber-300 hover:border-amber-500',
-      bg: 'bg-amber-50/50 hover:bg-amber-50',
-    },
-    {
       id: 'match',
       title: t.modes.match,
       desc: modeDescriptions.match,
@@ -88,6 +79,15 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
       color: 'text-purple-600',
       border: 'border-purple-300 hover:border-purple-500',
       bg: 'bg-purple-50/50 hover:bg-purple-50',
+    },
+    {
+      id: 'builder',
+      title: t.modes.builder,
+      desc: modeDescriptions.builder,
+      icon: <SpellCheck className="w-8 h-8 text-amber-600" />,
+      color: 'text-amber-600',
+      border: 'border-amber-300 hover:border-amber-500',
+      bg: 'bg-amber-50/50 hover:bg-amber-50',
     },
   ];
 

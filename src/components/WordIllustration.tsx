@@ -21,7 +21,8 @@ const KNOWN_SVG_EN_KEYS = new Set([
   'dining room', 'garden', 'root', 'plums', 'triangle', 'circle', 'square', 'rectangle',
   'oval', 'spring', 'summer', 'autumn', 'winter', 'tail', 'beak', 'between', 'next to',
   'in front of', 'behind', 'opposite', 'above', 'classroom', 'class', 'ruby', 'children',
-  'week',
+  'week', 'water bottle', 'badge', 'puppet', 'colouring pens', 'xylophone', 'marbles',
+  'blocks', 'spinning top', 'rocking horse', 'pyramid', 'rubber duck', 'tea set', 'bookshop',
 ]);
 
 const KNOWN_SVG_RU_KEYS = new Set([
@@ -32,6 +33,10 @@ const KNOWN_SVG_RU_KEYS = new Set([
   'кухня', 'столовая', 'сад', 'корень', 'сливы', 'круг', 'квадрат', 'треугольник',
   'прямоугольник', 'овал', 'между', 'рядом с', 'перед', 'позади, за', 'позади', 'за',
   'напротив', 'над', 'классная комната', 'одноклассники', 'рубин', 'дети', 'неделя',
+  'бутылка для воды', 'значок', 'кукла-марионетка', 'марионетка', 'фломастеры',
+  'цветные карандаши', 'ксилофон', 'шарики марблс', 'марблс', 'кубики', 'юла',
+  'волчок', 'лошадка-качалка', 'лошадка-качелька', 'пирамидка', 'резиновая уточка',
+  'резиновые желтые уточки', 'чайный сервиз', 'книжный магазин',
 ]);
 
 export function loadWordSvgs(): Promise<void> {

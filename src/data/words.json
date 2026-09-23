@@ -2258,7 +2258,7 @@
         "lv": "klucīši",
         "ru": "кубики",
         "grade": 1,
-        "image": "🧱",
+        "image": "🔤",
         "transcription": "[ blɒks ]"
       },
       {
@@ -2276,7 +2276,7 @@
         "lv": "vilciņš",
         "ru": "юла",
         "grade": 1,
-        "image": "🪀",
+        "image": "🌀",
         "transcription": "[ ˈspɪnɪŋ tɒp ]"
       },
       {
@@ -2294,7 +2294,7 @@
         "lv": "piramīda",
         "ru": "пирамидка",
         "grade": 1,
-        "image": "🔺",
+        "image": "📐",
         "transcription": "[ ˈpɪrəmɪd ]"
       },
       {
@@ -2312,7 +2312,7 @@
         "lv": "lelle",
         "ru": "кукла-марионетка",
         "grade": 1,
-        "image": "🎎",
+        "image": "🎭",
         "transcription": "[ ˈpʌpɪt ]"
       },
       {
@@ -2321,7 +2321,7 @@
         "lv": "gumijas pīlīte",
         "ru": "резиновая уточка",
         "grade": 1,
-        "image": "🦆",
+        "image": "🐥",
         "transcription": "[ ˈrʌbə dʌk ]"
       },
       {
@@ -2370,7 +2370,7 @@
         "lv": "ksilofons",
         "ru": "ксилофон",
         "grade": 1,
-        "image": "🎶",
+        "image": "🎼",
         "transcription": "[ ˈzaɪləfəʊn ]"
       },
       {
@@ -2397,7 +2397,7 @@
         "lv": "stikla bumbiņas",
         "ru": "шарики марблс",
         "grade": 1,
-        "image": "🔮",
+        "image": "🫧",
         "transcription": "[ ˈmɑːblz ]"
       },
       {
@@ -6422,7 +6422,7 @@
         "lv": "grāmatnīca",
         "ru": "книжный магазин",
         "grade": 3,
-        "image": "📖",
+        "image": "📚",
         "transcription": "[ ˈbʊkʃɒp ]"
       }
     ]
@@ -6798,7 +6798,7 @@
         "lv": "ūdens pudele",
         "ru": "бутылка для воды",
         "grade": 4,
-        "image": "🍶",
+        "image": "🧴",
         "transcription": "[ ˈwɔːtə ˌbɒtl ]"
       }
     ]
@@ -6887,7 +6887,7 @@
         "lv": "nozīmīte",
         "ru": "значок",
         "grade": 4,
-        "image": "📛",
+        "image": "🏅",
         "transcription": "[ bædʒ ]"
       },
       {
@@ -6968,7 +6968,7 @@
         "lv": "lelle",
         "ru": "кукла-марионетка",
         "grade": 4,
-        "image": "🎎",
+        "image": "🎭",
         "transcription": "[ ˈpʌpɪt ]"
       }
     ]
@@ -6990,7 +6990,7 @@
         "lv": "krāsu flomāsteri",
         "ru": "фломастеры",
         "grade": 4,
-        "image": "🖊️",
+        "image": "🖍️",
         "transcription": "[ ˈkʌlərɪŋ penz ]"
       },
       {

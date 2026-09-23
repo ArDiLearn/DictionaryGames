@@ -1,4 +1,4 @@
-import { Language, Grade } from '../types';
+import { Language, Grade, LearningCourse, GameMode } from '../types';
 
 export interface Translations {
   appTitle: string;
@@ -1019,6 +1019,51 @@ export function getExtraTopicsSubtitle(count: number, language: Language = 'lv')
   }
   return `${count} ${getTopicsPlural(count, 'lv')} vārdu krājuma paplašināšanai`;
 }
+
+export function getGameModeDescriptions(
+  language: Language,
+  course: LearningCourse = 'en'
+): Record<GameMode, string> {
+  const isLv = course === 'lv';
+  if (language === 'lv') {
+    return {
+      flashcards: 'Mācies vārdus ar izrunu un tulkojumu',
+      builder: isLv ? 'Saliec latviešu vārdus no burtu klucīšiem' : 'Saliec angļu vārdus no burtu klucīšiem',
+      match: isLv ? 'Savieno latviešu vārdus ar tulkojumu' : 'Savieno angļu vārdus ar tulkojumu',
+      truefalse: 'Luksofors: spied zaļo (Pareizi) vai sarkano (Nepareizi)',
+      balloons: isLv ? 'Pārspried balonu ar pareizo latviešu vārdu' : 'Pārspried balonu ar pareizo angļu vārdu',
+      audio: 'Trenē dzirdi: klausies un uzmini vārdu',
+    };
+  }
+
+  return {
+    flashcards: 'Учи новые слова с озвучкой и переводом',
+    builder: isLv ? 'Составляй латышские слова из букв-кубиков' : 'Составляй английские слова из букв-кубиков',
+    match: isLv ? 'Соединяй латышские слова с переводом' : 'Соединяй английские слова с переводом',
+    truefalse: 'Светофор: нажимай зелёный (Верно) или красный (Неверно)',
+    balloons: isLv ? 'Лопай шарик с правильным латышским словом' : 'Лопай шарик с правильным английским словом',
+    audio: 'Тренируй ушки: слушай произношение и угадывай',
+  };
+}
+
+export function getBalloonPrompt(language: Language, course: LearningCourse = 'en'): string {
+  if (course === 'lv') {
+    return language === 'lv'
+      ? 'Noķer balonu ar pareizo latviešu vārdu!'
+      : 'Поймай шарик с правильным латышским словом!';
+  }
+  return translations[language].balloonPrompt;
+}
+
+export function getMatchPrompt(language: Language, course: LearningCourse = 'en'): string {
+  if (course === 'lv') {
+    return language === 'lv'
+      ? 'Atrodi pārus: latviešu vārds un tulkojums'
+      : 'Найди пары: латышское слово и перевод';
+  }
+  return translations[language].matchPrompt;
+}
+
 
 
 

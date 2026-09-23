@@ -26,10 +26,13 @@ export interface CloudSyncData {
   };
 }
 
+const DEFAULT_SUPABASE_URL = 'https://pxexrgtoaeudqeceqeoq.supabase.co';
+const DEFAULT_SUPABASE_KEY = 'sb_publishable_sKx7Fs12mMWZlC-KXhdk-g_wuRrwMc9';
+
 export function getSupabaseConfig(): { url: string; key: string } {
   return {
-    url: import.meta.env.VITE_SUPABASE_URL || '',
-    key: import.meta.env.VITE_SUPABASE_ANON_KEY || '',
+    url: import.meta.env.VITE_SUPABASE_URL || DEFAULT_SUPABASE_URL,
+    key: import.meta.env.VITE_SUPABASE_ANON_KEY || DEFAULT_SUPABASE_KEY,
   };
 }
 

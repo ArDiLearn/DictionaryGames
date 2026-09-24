@@ -112,3 +112,8 @@ drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created
   after insert on auth.users
   for each row execute procedure public.handle_new_user();
+
+-- 9. Explicit Grants for Supabase Data API (PostgREST / supabase-js)
+grant select on public.profiles, public.topic_progress, public.word_progress to anon;
+grant select, insert, update, delete on public.profiles, public.topic_progress, public.word_progress to authenticated;
+grant select, insert, update, delete on public.profiles, public.topic_progress, public.word_progress to service_role;

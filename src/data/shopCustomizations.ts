@@ -34,8 +34,8 @@ export const VICTORY_MUSIC_ITEMS: VictoryMusicItem[] = [
       lv: '8-Bitu Retro',
     },
     desc: {
-      ru: 'Аркадная мелодия повышения уровня в стиле Game Boy',
-      lv: 'Arkādes līmeņa sasniegšanas melodija Game Boy stilā',
+      ru: 'Аркадная мелодия повышения уровня в стиле ретро-приставок',
+      lv: 'Arkādes līmeņa sasniegšanas melodija retro spēļu konsoles stilā',
     },
     price: 50,
     icon: '👾',

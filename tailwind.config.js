@@ -25,7 +25,7 @@ export default {
         '15': '3.75rem',
       },
       fontFamily: {
-        comic: ['"Comic Sans MS"', '"Chalkboard SE"', '"Comic Neue"', 'cursive', 'sans-serif'],
+        comic: ['"Balsamiq Sans"', '"Comic Sans MS"', '"Chalkboard SE"', '"Comic Neue"', 'cursive', 'sans-serif'],
       },
       keyframes: {
         wiggle: {

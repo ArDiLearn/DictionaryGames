@@ -1,24 +1,32 @@
 // Declare gtag globally on window
 declare global {
   interface Window {
-    dataLayer?: any[];
-    gtag?: (...args: any[]) => void;
+    dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
+    Capacitor?: unknown;
   }
 }
 
+const isAnalyticsEnabled =
+  import.meta.env.VITE_ENABLE_WEB_ANALYTICS === 'true' &&
+  typeof window !== 'undefined' &&
+  !window.Capacitor;
+
 /**
- * Send custom events to Google Analytics 4 (Measurement ID: G-KBDLY3L5TP)
+ * Send custom events only when web analytics is explicitly enabled and not in a native mobile wrapper.
+ * Disabled by default to comply with Google Play Families Policy (COPPA / GDPR-K).
  */
 export function trackEvent(
   eventName: string,
   params?: Record<string, string | number | boolean | undefined | null>
 ) {
+  if (!isAnalyticsEnabled) return;
   try {
     if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
       window.gtag('event', eventName, params);
     }
   } catch (err) {
-    console.warn('GA4 trackEvent error:', err);
+    console.warn('Analytics trackEvent error:', err);
   }
 }
 

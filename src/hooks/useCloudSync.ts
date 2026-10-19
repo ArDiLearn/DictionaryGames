@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { LearningCourse, TopicProgress, WordProgress, UserStats, ExamResult } from '../types';
-import { getCurrentUser, getCurrentUserLogin } from '../services/supabase';
+import { getCurrentUser, getCurrentUserLogin, recordAppActivity } from '../services/supabase';
 import {
   mergeWithCloud,
   loadLocalStats,
@@ -50,10 +50,21 @@ export function useCloudSync({
       const user = await getCurrentUser();
       if (!isMounted) return;
       setIsCloudSynced(!!user);
+
+      const currentStats = loadLocalStats();
+      const userLogin = user ? getCurrentUserLogin(user) : '';
+
+      // Record database activity for both authenticated users and guest devices
+      recordAppActivity({
+        userId: user?.id || null,
+        playerName: userLogin && userLogin !== 'Player' ? userLogin : currentStats.playerName,
+        course,
+        streak: currentStats.streak,
+        avatar: currentStats.avatar,
+      });
+
       if (user) {
-        const userLogin = getCurrentUserLogin(user);
         if (userLogin && userLogin !== 'Player') {
-          const currentStats = loadLocalStats();
           if (
             !currentStats.playerName ||
             currentStats.playerName === 'Знайка' ||

@@ -442,3 +442,81 @@ export async function fetchProgressFromCloud(userId: string): Promise<CloudSyncD
     return null;
   }
 }
+
+const DEVICE_ID_KEY = 'wordymind_device_id';
+
+function getOrCreateDeviceId(): string {
+  try {
+    let deviceId = localStorage.getItem(DEVICE_ID_KEY);
+    if (!deviceId) {
+      deviceId =
+        typeof crypto !== 'undefined' && crypto.randomUUID
+          ? crypto.randomUUID()
+          : `dev_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+      localStorage.setItem(DEVICE_ID_KEY, deviceId);
+    }
+    return deviceId;
+  } catch {
+    return 'unknown_device';
+  }
+}
+
+/**
+ * Records an activity heartbeat in Supabase upon entering the app.
+ * Works for both authenticated users and guest devices, keeping the Supabase
+ * project active and updating session statistics.
+ */
+export async function recordAppActivity(params: {
+  userId?: string | null;
+  playerName?: string;
+  course?: string;
+  streak?: number;
+  avatar?: string;
+}): Promise<void> {
+  const client = getSupabase();
+  if (!client) return;
+
+  const nowIso = new Date().toISOString();
+  const deviceId = getOrCreateDeviceId();
+
+  try {
+    // 1. If authenticated, touch the user's profile row so updated_at is always fresh on login/open
+    if (params.userId) {
+      await client.from('profiles').upsert({
+        id: params.userId,
+        player_name: params.playerName || 'Player',
+        avatar: params.avatar || '🦁',
+        streak: params.streak || 1,
+        updated_at: nowIso,
+      });
+    }
+
+    // 2. Upsert into app_activity table (works for guests and logged-in users alike)
+    const { data: existing, error: selectErr } = await client
+      .from('app_activity')
+      .select('sessions_count')
+      .eq('device_id', deviceId)
+      .maybeSingle();
+
+    if (!selectErr) {
+      const nextCount = (existing?.sessions_count || 0) + 1;
+      await client.from('app_activity').upsert(
+        {
+          device_id: deviceId,
+          user_id: params.userId || null,
+          player_name: params.playerName || 'Guest',
+          course: params.course || 'en',
+          sessions_count: nextCount,
+          last_seen_at: nowIso,
+        },
+        { onConflict: 'device_id' }
+      );
+    } else {
+      // Fallback query to profiles if app_activity table hasn't been created in SQL yet
+      await client.from('profiles').select('id').limit(1);
+    }
+  } catch {
+    // Ignore network / offline errors so game startup is never blocked
+  }
+}
+

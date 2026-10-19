@@ -113,7 +113,33 @@ create trigger on_auth_user_created
   after insert on auth.users
   for each row execute procedure public.handle_new_user();
 
--- 9. Explicit Grants for Supabase Data API (PostgREST / supabase-js)
+-- 9. App Activity / Heartbeat Table (tracks device sessions & prevents Supabase free-tier auto-pause)
+create table if not exists public.app_activity (
+  device_id text primary key,
+  user_id uuid references auth.users on delete set null,
+  player_name text,
+  course text default 'en',
+  sessions_count integer default 1,
+  last_seen_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+alter table public.app_activity enable row level security;
+
+drop policy if exists "Anyone can select app_activity" on public.app_activity;
+create policy "Anyone can select app_activity" on public.app_activity
+  for select using (true);
+
+drop policy if exists "Anyone can insert app_activity" on public.app_activity;
+create policy "Anyone can insert app_activity" on public.app_activity
+  for insert with check (true);
+
+drop policy if exists "Anyone can update app_activity" on public.app_activity;
+create policy "Anyone can update app_activity" on public.app_activity
+  for update using (true) with check (true);
+
+-- 10. Explicit Grants for Supabase Data API (PostgREST / supabase-js)
 grant select on public.profiles, public.topic_progress, public.word_progress to anon;
+grant select, insert, update on public.app_activity to anon, authenticated, service_role;
 grant select, insert, update, delete on public.profiles, public.topic_progress, public.word_progress to authenticated;
 grant select, insert, update, delete on public.profiles, public.topic_progress, public.word_progress to service_role;
+

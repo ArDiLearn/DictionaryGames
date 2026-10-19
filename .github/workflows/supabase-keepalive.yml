@@ -1,0 +1,45 @@
+name: Supabase Keep-Alive
+
+on:
+  schedule:
+    # Runs every 3 days at 08:00 UTC to prevent Supabase free-tier project from pausing due to inactivity
+    - cron: '0 8 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Record keep-alive activity in Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL || 'https://pxexrgtoaeudqeceqeoq.supabase.co' }}
+          SUPABASE_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY || 'sb_publishable_sKx7Fs12mMWZlC-KXhdk-g_wuRrwMc9' }}
+        run: |
+          NOW_ISO=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          echo "Pinging Supabase REST API at $NOW_ISO..."
+
+          # 1. Upsert keepalive row in app_activity table (if created)
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -X POST "${SUPABASE_URL}/rest/v1/app_activity?on_conflict=device_id" \
+            -H "apikey: ${SUPABASE_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_KEY}" \
+            -H "Content-Type: application/json" \
+            -H "Prefer: resolution=merge-duplicates" \
+            -d "{\"device_id\":\"github_actions_keepalive\",\"player_name\":\"System KeepAlive\",\"course\":\"en\",\"last_seen_at\":\"${NOW_ISO}\"}")
+
+          echo "app_activity upsert HTTP status: $HTTP_STATUS"
+
+          # 2. Always query profiles table to guarantee PostgREST read activity
+          READ_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -X GET "${SUPABASE_URL}/rest/v1/profiles?select=id&limit=1" \
+            -H "apikey: ${SUPABASE_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_KEY}")
+
+          echo "profiles read HTTP status: $READ_STATUS"
+
+          if [ "$READ_STATUS" -ge 200 ] && [ "$READ_STATUS" -lt 300 ]; then
+            echo "Supabase keep-alive succeeded."
+          else
+            echo "Supabase keep-alive returned unexpected status: $READ_STATUS"
+            exit 1
+          fi

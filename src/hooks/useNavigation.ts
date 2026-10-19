@@ -28,6 +28,11 @@ export function useNavigation(
     activeExamGradeRef.current = activeExamGrade;
   }, [activeExamGrade]);
 
+  const selectedTopicRef = useRef<Topic | null>(selectedTopic);
+  useEffect(() => {
+    selectedTopicRef.current = selectedTopic;
+  }, [selectedTopic]);
+
   const courseRef = useRef<LearningCourse>(course);
   useEffect(() => {
     courseRef.current = course;
@@ -106,13 +111,15 @@ export function useNavigation(
       }
 
       if (topicParam && topics.length > 0) {
-        const foundTopic = topics.find((t) => t.topic_id === topicParam) || null;
+        const foundTopic =
+          topics.find((t) => t.topic_id === topicParam) ||
+          (selectedTopicRef.current?.topic_id === topicParam ? selectedTopicRef.current : null);
         if (foundTopic) {
           setSelectedTopic(foundTopic);
           setActiveExamGrade(null);
           if (
             modeParam &&
-            ['flashcards', 'truefalse', 'balloons', 'builder', 'match', 'audio'].includes(modeParam)
+            ['flashcards', 'truefalse', 'balloons', 'builder', 'match', 'audio', 'test'].includes(modeParam)
           ) {
             setGameMode(modeParam);
           } else {
@@ -138,6 +145,13 @@ export function useNavigation(
     } else {
       window.location.hash = '';
     }
+  }, []);
+
+  const selectTopicWithMode = useCallback((topic: Topic, mode: GameMode) => {
+    setActiveExamGrade(null);
+    setSelectedTopic(topic);
+    setGameMode(mode);
+    window.location.hash = `topic=${topic.topic_id}&mode=${mode}`;
   }, []);
 
   const selectMode = useCallback(
@@ -242,6 +256,7 @@ export function useNavigation(
     setGameMode,
     setActiveExamGrade,
     selectTopic,
+    selectTopicWithMode,
     selectMode,
     startExam,
     finishExam,

@@ -3,13 +3,15 @@ import { Topic, Language, LearningCourse, WordProgress, Word } from '../../types
 import { translations } from '../../utils/i18n';
 import { sounds } from '../../utils/soundEffects';
 import { speakWord } from '../../utils/speech';
-import { Volume2 } from 'lucide-react';
+import { Volume2, ClipboardCheck, Gamepad2 } from 'lucide-react';
 
 interface PracticeTabProps {
   language: Language;
   course: LearningCourse;
   topics: Topic[];
   wordProgress: Record<string, WordProgress>;
+  onStartMistakesTest?: () => void;
+  onOpenMistakesGames?: () => void;
 }
 
 export const PracticeTab: React.FC<PracticeTabProps> = ({
@@ -17,6 +19,8 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
   course,
   topics,
   wordProgress,
+  onStartMistakesTest,
+  onOpenMistakesGames,
 }) => {
   const t = translations[language];
   const s = t.statsModal;
@@ -41,18 +45,49 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
 
     // Sort by most mistakes descending
     list.sort((a, b) => (b.wp.timesWrong || 0) - (a.wp.timesWrong || 0));
-    return list.slice(0, 15);
+    return list;
   }, [topics, wordProgress]);
 
   return (
     <div className="space-y-4 animate-fade-in">
-      <div className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-3 sm:p-4">
-        <h3 className="text-sm sm:text-base font-black text-amber-950">
-          {s.wordsToPracticeTitle}
-        </h3>
-        <p className="text-xs text-amber-800/80 font-medium mt-0.5">
-          {s.wordsToPracticeSubtitle}
-        </p>
+      <div className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h3 className="text-sm sm:text-base font-black text-amber-950">
+            {s.wordsToPracticeTitle}
+          </h3>
+          <p className="text-xs text-amber-800/80 font-medium mt-0.5">
+            {s.wordsToPracticeSubtitle}
+          </p>
+        </div>
+
+        {wordsToPractice.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2 shrink-0">
+            {onStartMistakesTest && (
+              <button
+                onClick={() => {
+                  sounds.playClick();
+                  onStartMistakesTest();
+                }}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-rose-500 hover:bg-rose-600 active:scale-95 text-white font-black text-xs sm:text-sm shadow-sm transition-all cursor-pointer"
+              >
+                <ClipboardCheck className="w-4 h-4" />
+                <span>{s.startMistakesTestBtn}</span>
+              </button>
+            )}
+            {onOpenMistakesGames && (
+              <button
+                onClick={() => {
+                  sounds.playClick();
+                  onOpenMistakesGames();
+                }}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-amber-100 active:scale-95 border-2 border-amber-300 text-amber-900 font-black text-xs sm:text-sm shadow-xs transition-all cursor-pointer"
+              >
+                <Gamepad2 className="w-4 h-4" />
+                <span>{s.practiceMistakesGamesBtn}</span>
+              </button>
+            )}
+          </div>
+        )}
       </div>
 
       {wordsToPractice.length === 0 ? (

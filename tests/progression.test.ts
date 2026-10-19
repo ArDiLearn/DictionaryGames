@@ -69,6 +69,17 @@ describe('recordWordAttempt', () => {
     expect(result.newlyMastered).toBe(false);
   });
 
+  it('marks previously learned word as not learned when answered wrong, and clears mistake when clearMistake=true', () => {
+    recordWordAttempt('dog', 'animals', true, 10);
+    recordWordAttempt('dog', 'animals', true, 10);
+    // Mistake made later in a game
+    recordWordAttempt('dog', 'animals', false, 10);
+
+    // Fix mistake via Mistakes Test (clearMistake = true)
+    const fixed = recordWordAttempt('dog', 'animals', true, 10, 'en', true);
+    expect(fixed.newlyMastered).toBe(true);
+  });
+
   it('caps topic stars at 2 for 5-8 word topics', () => {
     // Fully master a 6-word topic
     const words = ['w1', 'w2', 'w3', 'w4', 'w5', 'w6'];

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import rawWordsData from './data/words.json';
-import { Topic, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress, LearningCourse, ExamResult } from './types';
+import { Topic, Word, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress, LearningCourse, ExamResult } from './types';
 import { Header } from './components/Header';
 import { TopicList } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
@@ -29,6 +29,9 @@ const MatchPairsGame = React.lazy(() =>
 );
 const AudioQuizGame = React.lazy(() =>
   import('./components/games/AudioQuizGame').then((m) => ({ default: m.AudioQuizGame }))
+);
+const TopicTestGame = React.lazy(() =>
+  import('./components/games/TopicTestGame').then((m) => ({ default: m.TopicTestGame }))
 );
 const ExamGame = React.lazy(() =>
   import('./components/games/ExamGame').then((m) => ({ default: m.ExamGame }))
@@ -78,6 +81,8 @@ import {
 
 import { useTopicCatalog } from './hooks/useTopicCatalog';
 
+const MISTAKES_TOPIC_ID = 'mistakes_review';
+
 export const App: React.FC = () => {
   const topics = rawWordsData as Topic[];
 
@@ -95,10 +100,12 @@ export const App: React.FC = () => {
   );
   const {
     selectedTopic,
+    setSelectedTopic,
     gameMode,
     activeExamGrade,
     isGameActive,
     selectTopic,
+    selectTopicWithMode,
     selectMode,
     startExam,
     navigateToHome,
@@ -143,10 +150,51 @@ export const App: React.FC = () => {
     activeExamGrade,
   });
 
+  const mistakesWords = useMemo(() => {
+    const wordMap = new Map<string, Word>();
+    filteredTopics.forEach((topic) => {
+      topic.words.forEach((w) => {
+        wordMap.set(w.id, w);
+      });
+    });
+
+    const list: { word: Word; timesWrong: number }[] = [];
+    Object.entries(wordProgress).forEach(([wordId, wp]) => {
+      if ((wp.timesWrong || 0) > 0 && !wp.isLearned) {
+        const w = wordMap.get(wordId);
+        if (w) {
+          list.push({ word: w, timesWrong: wp.timesWrong || 0 });
+        }
+      }
+    });
+    list.sort((a, b) => b.timesWrong - a.timesWrong);
+    return list.map((item) => item.word);
+  }, [filteredTopics, wordProgress]);
+
+  const buildMistakesTopic = (wordsList: Word[]): Topic => ({
+    topic_id: MISTAKES_TOPIC_ID,
+    topic_name: {
+      ru: 'Работа над ошибками',
+      lv: 'Kļūdu labošana',
+      en: 'Mistakes Review',
+    },
+    emoji: '🎯',
+    words: wordsList,
+  });
+
   const currentTopic = useMemo(() => {
     if (!selectedTopic) return null;
+    if (selectedTopic.topic_id === MISTAKES_TOPIC_ID) {
+      return gameMode ? selectedTopic : buildMistakesTopic(mistakesWords);
+    }
     return filteredTopics.find((t) => t.topic_id === selectedTopic.topic_id) || selectedTopic;
-  }, [selectedTopic, filteredTopics]);
+  }, [selectedTopic, filteredTopics, gameMode, mistakesWords]);
+
+  useEffect(() => {
+    if (selectedTopic?.topic_id === MISTAKES_TOPIC_ID && !gameMode && mistakesWords.length === 0) {
+      navigateToHome(language);
+    }
+  }, [selectedTopic, gameMode, mistakesWords.length, navigateToHome, language]);
 
 
 
@@ -263,12 +311,28 @@ export const App: React.FC = () => {
     // In flashcards mode, no stars or mastery rewards are recorded
     if (gameMode === 'flashcards') return;
 
+    const isMistakesReview = currentTopic.topic_id === MISTAKES_TOPIC_ID;
+    let targetTopicId = currentTopic.topic_id;
+    let targetTopicWordsCount = currentTopic.words.length;
+
+    if (isMistakesReview) {
+      const wp = wordProgress[wordId];
+      const originalTopic =
+        topics.find((t) => t.topic_id === wp?.topic_id) ||
+        topics.find((t) => t.words.some((w) => w.id === wordId));
+      if (originalTopic) {
+        targetTopicId = originalTopic.topic_id;
+        targetTopicWordsCount = originalTopic.words.length;
+      }
+    }
+
     const { stars: newStars } = recordWordAttempt(
       wordId,
-      currentTopic.topic_id,
+      targetTopicId,
       isCorrect,
-      currentTopic.words.length,
-      course
+      targetTopicWordsCount,
+      course,
+      isMistakesReview
     );
     // Reload local progress
     setTopicProgress(loadTopicProgress(course));
@@ -283,7 +347,30 @@ export const App: React.FC = () => {
   const handleBackToGames = () => {
     setCelebration(null);
     setGameSessionId((prev) => prev + 1);
+    if (selectedTopic?.topic_id === MISTAKES_TOPIC_ID) {
+      if (mistakesWords.length === 0) {
+        navigateToHome(language);
+        return;
+      }
+      setSelectedTopic(buildMistakesTopic(mistakesWords));
+    }
     selectMode(null);
+  };
+
+  const handleStartMistakesTest = () => {
+    if (mistakesWords.length === 0) return;
+    setCelebration(null);
+    setGameSessionId((prev) => prev + 1);
+    const mTopic = buildMistakesTopic(mistakesWords);
+    selectTopicWithMode(mTopic, 'test');
+    trackGameStart('test', MISTAKES_TOPIC_ID);
+  };
+
+  const handleOpenMistakesGames = () => {
+    if (mistakesWords.length === 0) return;
+    setCelebration(null);
+    const mTopic = buildMistakesTopic(mistakesWords);
+    selectTopic(mTopic);
   };
 
   const handleSelectMode = (mode: GameMode) => {
@@ -369,6 +456,9 @@ export const App: React.FC = () => {
             onStartExam={handleStartExam}
             equippedTitleId={stats.equippedTitleId}
             onOpenTitles={() => setIsTitleSelectOpen(true)}
+            mistakesCount={mistakesWords.length}
+            onStartMistakesTest={handleStartMistakesTest}
+            onOpenMistakesGames={handleOpenMistakesGames}
           />
         )}
 
@@ -462,6 +552,19 @@ export const App: React.FC = () => {
                   onBack={() => goBack(language)}
                 />
               )}
+
+              {gameMode === 'test' && (
+                <TopicTestGame
+                  key={`${currentTopic.topic_id}-test-${gameSessionId}`}
+                  topic={currentTopic}
+                  allTopics={filteredTopics}
+                  language={language}
+                  course={course}
+                  onRecordResult={handleRecordWordResult}
+                  onComplete={handleGameComplete}
+                  onBack={() => goBack(language)}
+                />
+              )}
             </Suspense>
           </div>
         )}
@@ -533,6 +636,14 @@ export const App: React.FC = () => {
             onStartExam={(grade) => {
               handleStartExam(grade);
               setIsStatsModalOpen(false);
+            }}
+            onStartMistakesTest={() => {
+              setIsStatsModalOpen(false);
+              handleStartMistakesTest();
+            }}
+            onOpenMistakesGames={() => {
+              setIsStatsModalOpen(false);
+              handleOpenMistakesGames();
             }}
           />
         )}

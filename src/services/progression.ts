@@ -14,7 +14,8 @@ export function recordWordAttempt(
   topicId: string,
   isCorrect: boolean,
   totalWordsInTopic: number,
-  course: LearningCourse = 'en'
+  course: LearningCourse = 'en',
+  clearMistake: boolean = false
 ): { stars: number; newlyMastered: boolean } {
   const words = loadWordProgress(course);
   const topics = loadTopicProgress(course);
@@ -27,9 +28,13 @@ export function recordWordAttempt(
     isLearned: false,
   };
 
-  const timesCorrect = prev.timesCorrect + (isCorrect ? 1 : 0);
-  const timesWrong = prev.timesWrong + (isCorrect ? 0 : 1);
-  const isLearned = timesCorrect >= 2 && timesCorrect > timesWrong;
+  const timesCorrect = clearMistake && isCorrect
+    ? Math.max(2, prev.timesCorrect + 1)
+    : prev.timesCorrect + (isCorrect ? 1 : 0);
+  const timesWrong = clearMistake && isCorrect
+    ? 0
+    : prev.timesWrong + (isCorrect ? 0 : 1);
+  const isLearned = isCorrect && (clearMistake || (timesCorrect >= 2 && timesCorrect > timesWrong));
   const newlyMastered = !prev.isLearned && isLearned;
 
   words[wordId] = {

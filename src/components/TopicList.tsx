@@ -10,6 +10,7 @@ import {
   getPlayerDisplayName,
   getMainTopicsSubtitle,
   getExtraTopicsSubtitle,
+  getWordsPlural,
 } from '../utils/i18n';
 import {
   isTopicExtra,
@@ -22,7 +23,7 @@ import {
 } from '../data/curriculum';
 import { sounds } from '../utils/soundEffects';
 import { getTitleById } from '../data/titles';
-import { Search, Sparkles, BarChart3 } from 'lucide-react';
+import { Search, Sparkles, BarChart3, ClipboardCheck, Gamepad2 } from 'lucide-react';
 
 interface TopicListProps {
   topics: Topic[];
@@ -42,6 +43,9 @@ interface TopicListProps {
   onStartExam?: (grade: Grade) => void;
   equippedTitleId?: string;
   onOpenTitles?: () => void;
+  mistakesCount?: number;
+  onStartMistakesTest?: () => void;
+  onOpenMistakesGames?: () => void;
 }
 
 export const TopicList: React.FC<TopicListProps> = ({
@@ -62,6 +66,9 @@ export const TopicList: React.FC<TopicListProps> = ({
   onStartExam,
   equippedTitleId,
   onOpenTitles,
+  mistakesCount = 0,
+  onStartMistakesTest,
+  onOpenMistakesGames,
 }) => {
   const t = translations[language];
   const [searchQuery, setSearchQuery] = useState('');
@@ -339,6 +346,57 @@ export const TopicList: React.FC<TopicListProps> = ({
           </button>
         )}
       </div>
+
+      {/* Mistakes Review Banner */}
+      {!searchQuery && mistakesCount > 0 && (
+        <div className="mb-6 rounded-3xl bg-gradient-to-r from-rose-500 via-orange-500 to-amber-500 p-4 sm:p-5 text-white shadow-lg border-3 border-rose-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/20 backdrop-blur-xs border-2 border-white/40 flex items-center justify-center text-2xl sm:text-3xl shrink-0 shadow-inner">
+              🎯
+            </div>
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="text-base sm:text-lg font-black tracking-tight">
+                  {t.statsModal.mistakesBannerTitle}
+                </h3>
+                <span className="bg-white/25 text-white text-xs font-black px-2.5 py-0.5 rounded-full border border-white/30">
+                  {mistakesCount} {getWordsPlural(mistakesCount, language)}
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-white/90 font-semibold mt-0.5">
+                {t.statsModal.mistakesBannerSubtitle}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2 shrink-0">
+            {onStartMistakesTest && (
+              <button
+                onClick={() => {
+                  sounds.playClick();
+                  onStartMistakesTest();
+                }}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-white hover:bg-rose-50 active:scale-95 text-rose-600 font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer"
+              >
+                <ClipboardCheck className="w-4 h-4" />
+                <span>{t.statsModal.startMistakesTestBtn}</span>
+              </button>
+            )}
+            {onOpenMistakesGames && (
+              <button
+                onClick={() => {
+                  sounds.playClick();
+                  onOpenMistakesGames();
+                }}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-white/20 hover:bg-white/30 active:scale-95 border-2 border-white/40 text-white font-black text-xs sm:text-sm transition-all cursor-pointer"
+              >
+                <Gamepad2 className="w-4 h-4" />
+                <span>{t.statsModal.practiceMistakesGamesBtn}</span>
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Grid of Topics */}
       <div className="space-y-8">

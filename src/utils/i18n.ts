@@ -61,6 +61,7 @@ export interface Translations {
     truefalse: string;
     balloons: string;
     audio: string;
+    test: string;
   };
   modeDescriptions: {
     flashcards: string;
@@ -69,6 +70,7 @@ export interface Translations {
     truefalse: string;
     balloons: string;
     audio: string;
+    test: string;
   };
   trueBtn: string;
   falseBtn: string;
@@ -217,6 +219,10 @@ export interface Translations {
     wordsToPracticeTitle: string;
     wordsToPracticeSubtitle: string;
     noWordsToPractice: string;
+    startMistakesTestBtn: string;
+    practiceMistakesGamesBtn: string;
+    mistakesBannerTitle: string;
+    mistakesBannerSubtitle: string;
     topicsTitle: string;
     filterAll: string;
     filterCompleted: string;
@@ -341,6 +347,7 @@ export const translations: Record<Language, Translations> = {
       truefalse: 'Правда или ложь?',
       balloons: 'Поймай перевод',
       audio: 'На слух',
+      test: 'Тест по словам',
     },
     modeDescriptions: {
       flashcards: 'Учи новые слова с озвучкой и переводом',
@@ -349,6 +356,7 @@ export const translations: Record<Language, Translations> = {
       truefalse: 'Светофор: нажимай зелёный (Верно) или красный (Неверно)',
       balloons: 'Лопай шарик с правильным английским словом',
       audio: 'Тренируй ушки: слушай произношение и угадывай',
+      test: 'Комплексный тест: проверка слов разными видами заданий',
     },
     trueBtn: 'Верно',
     falseBtn: 'Неверно',
@@ -495,8 +503,12 @@ export const translations: Record<Language, Translations> = {
       wrongAnswers: 'Ошибок',
       accuracyRate: 'Точность',
       wordsToPracticeTitle: 'Слова для повторения',
-      wordsToPracticeSubtitle: 'Слова, в которых случались ошибки — нажми и повтори их произношение!',
+      wordsToPracticeSubtitle: 'Слова, в которых случались ошибки — пройди тест, чтобы исправить их!',
       noWordsToPractice: 'Отлично! Слов для повторения нет — все ответы уверенные и точные!',
+      startMistakesTestBtn: 'Пройти тест по ошибкам',
+      practiceMistakesGamesBtn: 'Тренировать в играх',
+      mistakesBannerTitle: 'Работа над ошибками',
+      mistakesBannerSubtitle: 'Исправь слова, в которых были ошибки или пропуски в играх',
       topicsTitle: 'Прогресс по темам',
       filterAll: 'Все темы',
       filterCompleted: 'Освоены (3 ⭐)',
@@ -619,6 +631,7 @@ export const translations: Record<Language, Translations> = {
       truefalse: 'Patiesība vai meli?',
       balloons: 'Noķer tulkojumu',
       audio: 'Pēc dzirdes',
+      test: 'Vārdu tests',
     },
     modeDescriptions: {
       flashcards: 'Mācies vārdus ar izrunu un tulkojumu',
@@ -627,6 +640,7 @@ export const translations: Record<Language, Translations> = {
       truefalse: 'Luksofors: spied zaļo (Pareizi) vai sarkano (Nepareizi)',
       balloons: 'Pārspried balonu ar pareizo angļu vārdu',
       audio: 'Trenē dzirdi: klausies un uzmini vārdu',
+      test: 'Kompleksais tests: vārdu pārbaude ar dažādiem uzdevumiem',
     },
     trueBtn: 'Pareizi',
     falseBtn: 'Nepareizi',
@@ -773,8 +787,12 @@ export const translations: Record<Language, Translations> = {
       wrongAnswers: 'Kļūdas',
       accuracyRate: 'Precizitāte',
       wordsToPracticeTitle: 'Vārdi atkārtošanai',
-      wordsToPracticeSubtitle: 'Vārdi, kuros bija kļūdas — nospied un noklausies to izrunu!',
+      wordsToPracticeSubtitle: 'Vārdi, kuros bija kļūdas — izpildi testu, lai tās izlabotu!',
       noWordsToPractice: 'Lieliski! Nav vārdu atkārtošanai — visas atbildes ir pārliecinošas!',
+      startMistakesTestBtn: 'Sākt kļūdu testu',
+      practiceMistakesGamesBtn: 'Trenēt spēlēs',
+      mistakesBannerTitle: 'Kļūdu labošana',
+      mistakesBannerSubtitle: 'Izlabo vārdus, kuros gadījās kļūdas vai izlaišanas spēlēs',
       topicsTitle: 'Progress pa tēmām',
       filterAll: 'Visas tēmas',
       filterCompleted: 'Apgūts (3 ⭐)',
@@ -1036,6 +1054,7 @@ export function getGameModeDescriptions(
       truefalse: 'Luksofors: spied zaļo (Pareizi) vai sarkano (Nepareizi)',
       balloons: isLv ? 'Pārspried balonu ar pareizo latviešu vārdu' : 'Pārspried balonu ar pareizo angļu vārdu',
       audio: 'Trenē dzirdi: klausies un uzmini vārdu',
+      test: 'Kompleksais tests: vārdu pārbaude ar dažādiem uzdevumiem',
     };
   }
 
@@ -1046,6 +1065,7 @@ export function getGameModeDescriptions(
     truefalse: 'Светофор: нажимай зелёный (Верно) или красный (Неверно)',
     balloons: isLv ? 'Лопай шарик с правильным латышским словом' : 'Лопай шарик с правильным английским словом',
     audio: 'Тренируй ушки: слушай произношение и угадывай',
+    test: 'Комплексный тест: проверка слов разными видами заданий',
   };
 }
 

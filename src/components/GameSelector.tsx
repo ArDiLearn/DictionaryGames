@@ -2,7 +2,7 @@ import React from 'react';
 import { Topic, Language, GameMode, TopicProgress, LearningCourse } from '../types';
 import { translations, getWordsPlural, getGameModeDescriptions } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
-import { ArrowLeft, Play, Layers, SpellCheck, Grid, Headphones, CheckCircle2, Sparkles } from 'lucide-react';
+import { ArrowLeft, Play, Layers, SpellCheck, Grid, Headphones, CheckCircle2, Sparkles, ClipboardCheck } from 'lucide-react';
 
 interface GameSelectorProps {
   topic: Topic;
@@ -88,6 +88,15 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
       color: 'text-amber-600',
       border: 'border-amber-300 hover:border-amber-500',
       bg: 'bg-amber-50/50 hover:bg-amber-50',
+    },
+    {
+      id: 'test',
+      title: `📝 ${t.modes.test}`,
+      desc: modeDescriptions.test,
+      icon: <ClipboardCheck className="w-8 h-8 text-teal-600" />,
+      color: 'text-teal-700',
+      border: 'border-teal-300 hover:border-teal-500',
+      bg: 'bg-teal-50/50 hover:bg-teal-50',
     },
   ];
 

@@ -31,6 +31,8 @@ export interface ProgressStatsModalProps {
   initialTab?: TabType;
   onSelectTopic?: (topic: Topic) => void;
   onStartExam?: (grade: Grade) => void;
+  onStartMistakesTest?: () => void;
+  onOpenMistakesGames?: () => void;
 }
 
 export type TabType = 'overview' | 'exams' | 'topics' | 'practice' | 'awards';
@@ -49,6 +51,8 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
   initialTab,
   onSelectTopic,
   onStartExam,
+  onStartMistakesTest,
+  onOpenMistakesGames,
 }) => {
   const t = translations[language];
   const s = t.statsModal;
@@ -87,14 +91,15 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
   }, [topics, topicProgress]);
 
   const wordsToPracticeCount = useMemo(() => {
+    const validIds = new Set(topics.flatMap((t) => t.words.map((w) => w.id)));
     let count = 0;
-    for (const wp of Object.values(wordProgress)) {
-      if ((wp.timesWrong || 0) > 0 && !wp.isLearned) {
+    for (const [wordId, wp] of Object.entries(wordProgress)) {
+      if ((wp.timesWrong || 0) > 0 && !wp.isLearned && validIds.has(wordId)) {
         count++;
       }
     }
-    return Math.min(count, 15);
-  }, [wordProgress]);
+    return count;
+  }, [topics, wordProgress]);
 
   const totalMasteredCount = useMemo(() => {
     const set = new Set<string>();
@@ -290,6 +295,8 @@ export const ProgressStatsModal: React.FC<ProgressStatsModalProps> = ({
               course={course}
               topics={topics}
               wordProgress={wordProgress}
+              onStartMistakesTest={onStartMistakesTest}
+              onOpenMistakesGames={onOpenMistakesGames}
             />
           )}
 

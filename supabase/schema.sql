@@ -137,9 +137,33 @@ drop policy if exists "Anyone can update app_activity" on public.app_activity;
 create policy "Anyone can update app_activity" on public.app_activity
   for update using (true) with check (true);
 
--- 10. Explicit Grants for Supabase Data API (PostgREST / supabase-js)
+-- 10. Anonymous First-Party Educational Events Table (Google Play Families / COPPA compliant)
+create table if not exists public.app_events (
+  id bigint generated always as identity primary key,
+  event_name text not null,
+  game_type text,
+  topic_id text,
+  score integer,
+  stars integer,
+  meta text,
+  event_date date default current_date not null,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+alter table public.app_events enable row level security;
+
+drop policy if exists "Anyone can insert app_events" on public.app_events;
+create policy "Anyone can insert app_events" on public.app_events
+  for insert with check (true);
+
+drop policy if exists "Anyone can select app_events" on public.app_events;
+create policy "Anyone can select app_events" on public.app_events
+  for select using (true);
+
+-- 11. Explicit Grants for Supabase Data API (PostgREST / supabase-js)
 grant select on public.profiles, public.topic_progress, public.word_progress to anon;
 grant select, insert, update on public.app_activity to anon, authenticated, service_role;
+grant select, insert on public.app_events to anon, authenticated, service_role;
 grant select, insert, update, delete on public.profiles, public.topic_progress, public.word_progress to authenticated;
 grant select, insert, update, delete on public.profiles, public.topic_progress, public.word_progress to service_role;
 

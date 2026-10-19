@@ -4,7 +4,7 @@ import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
 import { WordIllustration } from '../WordIllustration';
-import { Volume2, ArrowLeft, RotateCcw } from 'lucide-react';
+import { Volume2, ArrowLeft, RotateCcw, SkipForward } from 'lucide-react';
 
 interface WordBuilderGameProps {
   topic: Topic;
@@ -187,6 +187,33 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
     setSelectedTiles([]);
   };
 
+  const handleSkip = () => {
+    if (isChecking || isError || !currentWord) return;
+    sounds.playClick();
+    setIsChecking(true);
+
+    const wordToSpell = getTargetWord(currentWord, course);
+    const solvedTiles: LetterTile[] = wordToSpell
+      .toLowerCase()
+      .split('')
+      .map((char, index) => ({
+        id: `skip-${char}-${index}`,
+        char,
+      }));
+    setAvailableTiles([]);
+    setSelectedTiles(solvedTiles);
+    speakWord(wordToSpell, course);
+    onRecordResult(currentWord.id, false);
+
+    setTimeout(() => {
+      if (currentIndex + 1 < shuffledWords.length) {
+        setCurrentIndex((prev) => prev + 1);
+      } else {
+        onComplete(score, shuffledWords.length);
+      }
+    }, 1400);
+  };
+
   if (!currentWord) return null;
 
   const translation = course === 'lv' ? currentWord.ru : (currentWord[language] || currentWord.ru || currentWord.lv);
@@ -332,16 +359,27 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
         ))}
       </div>
 
-      {/* Reset button */}
-      {selectedTiles.length > 0 && (
+      {/* Bottom Actions: Reset & Skip */}
+      <div className="flex items-center justify-center gap-3">
+        {selectedTiles.length > 0 && !isChecking && (
+          <button
+            onClick={handleReset}
+            className="flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-sm transition-colors cursor-pointer"
+          >
+            <RotateCcw className="w-4 h-4" />
+            <span>{t.clearLetters}</span>
+          </button>
+        )}
+
         <button
-          onClick={handleReset}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-sm transition-colors cursor-pointer"
+          onClick={handleSkip}
+          disabled={isChecking || isError}
+          className="flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-500 hover:text-slate-700 font-bold text-sm shadow-xs transition-all cursor-pointer disabled:opacity-50 disabled:cursor-default"
         >
-          <RotateCcw className="w-4 h-4" />
-          <span>{t.clearLetters}</span>
+          <span>{t.skipRound}</span>
+          <SkipForward className="w-4 h-4" />
         </button>
-      )}
+      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { Word, Topic, Language, LearningCourse } from '../../types';
 import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations, getWordsPlural, getMatchPrompt } from '../../utils/i18n';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, SkipForward } from 'lucide-react';
 
 interface MatchPairsGameProps {
   topic: Topic;
@@ -162,6 +162,24 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
     }
   };
 
+  const handleSkipRound = () => {
+    if (wrongCardIds.length > 0) return;
+    sounds.playClick();
+
+    const unmatchedWordIds = new Set(
+      cards.filter((c) => !c.matched).map((c) => c.wordId)
+    );
+    unmatchedWordIds.forEach((wordId) => {
+      onRecordResult(wordId, false);
+    });
+
+    if (roundOffset + ROUND_SIZE < shuffledWords.length) {
+      setRoundOffset((prev) => prev + ROUND_SIZE);
+    } else {
+      onComplete(totalMatched, shuffledWords.length);
+    }
+  };
+
   const leftCards = cards.filter((c) => c.type === 'target');
   const rightCards = cards.filter((c) => c.type === 'trans');
 
@@ -266,6 +284,16 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
           {rightCards.map((card) => renderCard(card))}
         </div>
       </div>
+
+      {/* Skip button */}
+      <button
+        onClick={handleSkipRound}
+        disabled={wrongCardIds.length > 0 || cards.every((c) => c.matched)}
+        className="mt-5 flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-500 hover:text-slate-700 font-bold text-sm shadow-xs transition-all cursor-pointer disabled:opacity-50 disabled:cursor-default"
+      >
+        <span>{t.skipRound}</span>
+        <SkipForward className="w-4 h-4" />
+      </button>
     </div>
   );
 };

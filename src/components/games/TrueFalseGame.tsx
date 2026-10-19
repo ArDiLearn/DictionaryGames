@@ -3,7 +3,7 @@ import { Word, Topic, Language, LearningCourse } from '../../types';
 import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
-import { Volume2, ArrowLeft, CheckCircle2, XCircle, Sparkles } from 'lucide-react';
+import { Volume2, ArrowLeft, CheckCircle2, XCircle, Sparkles, SkipForward } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface TrueFalseGameProps {
@@ -142,6 +142,18 @@ export const TrueFalseGame: React.FC<TrueFalseGameProps> = ({
     }
   };
 
+  const handleSkip = () => {
+    if (isAnswered || !currentQ) return;
+    sounds.playClick();
+    setUserChoice(null);
+    setIsAnswered(true);
+    onRecordResult(currentQ.word.id, false);
+
+    setTimeout(() => {
+      advanceQuestion(score);
+    }, 1500);
+  };
+
   if (!currentQ) {
     return (
       <div className="text-center py-12">
@@ -252,9 +264,11 @@ export const TrueFalseGame: React.FC<TrueFalseGameProps> = ({
               </div>
             ) : (
               <div className="inline-flex flex-col items-center gap-1 px-4 py-1.5 bg-rose-500 text-white rounded-2xl font-bold text-xs sm:text-sm shadow-md">
-                <div className="flex items-center gap-1">
-                  <span>{t.wrong}</span>
-                </div>
+                {userChoice !== null && (
+                  <div className="flex items-center gap-1">
+                    <span>{t.wrong}</span>
+                  </div>
+                )}
                 <div className="text-[11px] sm:text-xs opacity-95">
                   {currentQ.isTrue
                     ? (language === 'ru' ? 'Это верная пара!' : 'Tas bija pareizi!')
@@ -311,9 +325,20 @@ export const TrueFalseGame: React.FC<TrueFalseGameProps> = ({
         </button>
       </div>
 
-      {/* Round Counter Footer */}
-      <div className="mt-6 text-center text-xs font-bold text-slate-400">
-        {currentIndex + 1} / {questions.length}
+      {/* Round Counter & Skip Footer */}
+      <div className="mt-6 flex items-center justify-between px-2">
+        <span className="text-xs font-bold text-slate-400">
+          {currentIndex + 1} / {questions.length}
+        </span>
+
+        <button
+          onClick={handleSkip}
+          disabled={isAnswered}
+          className="flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-500 hover:text-slate-700 font-bold text-sm shadow-xs transition-all cursor-pointer disabled:opacity-50 disabled:cursor-default"
+        >
+          <span>{t.skipRound}</span>
+          <SkipForward className="w-4 h-4" />
+        </button>
       </div>
     </div>
   );

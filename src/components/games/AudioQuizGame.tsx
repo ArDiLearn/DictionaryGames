@@ -3,7 +3,7 @@ import { Word, Topic, Language, LearningCourse } from '../../types';
 import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations } from '../../utils/i18n';
-import { Volume2, ArrowLeft, Headphones } from 'lucide-react';
+import { Volume2, ArrowLeft, Headphones, SkipForward } from 'lucide-react';
 import { WordIllustration } from '../WordIllustration';
 
 interface AudioQuizGameProps {
@@ -117,6 +117,23 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
     }, 1200);
   };
 
+  const handleSkip = () => {
+    if (isAnswered || !currentWord) return;
+    sounds.playClick();
+    setIsAnswered(true);
+    setSelectedWordId(null);
+    playVoice();
+    onRecordResult(currentWord.id, false);
+
+    setTimeout(() => {
+      if (currentIndex + 1 < shuffledWords.length) {
+        setCurrentIndex((prev) => prev + 1);
+      } else {
+        onComplete(score, shuffledWords.length);
+      }
+    }, 1300);
+  };
+
   if (!currentWord) return null;
 
   return (
@@ -227,6 +244,16 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
           );
         })}
       </div>
+
+      {/* Skip button */}
+      <button
+        onClick={handleSkip}
+        disabled={isAnswered}
+        className="mt-4 flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-500 hover:text-slate-700 font-bold text-sm shadow-xs transition-all cursor-pointer disabled:opacity-50 disabled:cursor-default"
+      >
+        <span>{t.skipRound}</span>
+        <SkipForward className="w-4 h-4" />
+      </button>
     </div>
   );
 };

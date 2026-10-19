@@ -31,6 +31,7 @@ export interface Translations {
   backToTopics: string;
   backToTopicGames: string;
   listen: string;
+  skipRound: string;
   iKnow: string;
   needPractice: string;
   awesome: string;
@@ -310,6 +311,7 @@ export const translations: Record<Language, Translations> = {
     backToTopics: 'К темам',
     backToTopicGames: 'К играм темы',
     listen: 'Послушать',
+    skipRound: 'Пропустить',
     iKnow: 'Я знаю! ⭐',
     needPractice: 'Повторить 🔁',
     awesome: 'Ура! Супер!',
@@ -587,6 +589,7 @@ export const translations: Record<Language, Translations> = {
     backToTopics: 'Uz tēmām',
     backToTopicGames: 'Uz tēmas spēlēm',
     listen: 'Klausīties',
+    skipRound: 'Izlaist',
     iKnow: 'Es zinu! ⭐',
     needPractice: 'Atkārtot 🔁',
     awesome: 'Urrā! Lieliski!',

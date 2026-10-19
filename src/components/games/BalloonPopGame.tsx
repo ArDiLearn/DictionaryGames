@@ -3,7 +3,7 @@ import { Word, Topic, Language, LearningCourse } from '../../types';
 import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
 import { translations, getBalloonPrompt } from '../../utils/i18n';
-import { Volume2, ArrowLeft, Sparkles, Cloud } from 'lucide-react';
+import { Volume2, ArrowLeft, Sparkles, Cloud, SkipForward } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface BalloonPopGameProps {
@@ -251,6 +251,18 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
     speakWord(course === 'lv' ? currentWord.lv : currentWord.en, course);
   };
 
+  const handleSkip = () => {
+    if (roundState !== 'playing' || !currentWord) return;
+    sounds.playClick();
+    setRoundState('missed');
+    onRecordResult(currentWord.id, false);
+    speakWord(course === 'lv' ? currentWord.lv : currentWord.en, course);
+
+    setTimeout(() => {
+      advanceRound(score);
+    }, 1500);
+  };
+
   if (!currentWord) {
     return (
       <div className="text-center py-12 font-bold text-slate-500">
@@ -436,10 +448,17 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
         })}
       </div>
 
-      {/* Footer Info */}
+      {/* Footer Info & Skip */}
       <div className="flex items-center justify-between text-xs font-bold text-slate-400 mt-3 px-2">
         <span>{currentIndex + 1} / {shuffledWords.length}</span>
-        <span>{language === 'ru' ? 'Нажимай на шарик!' : 'Spied uz balona!'}</span>
+        <button
+          onClick={handleSkip}
+          disabled={roundState !== 'playing'}
+          className="flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-500 hover:text-slate-700 font-bold text-sm shadow-xs transition-all cursor-pointer disabled:opacity-50 disabled:cursor-default"
+        >
+          <span>{t.skipRound}</span>
+          <SkipForward className="w-4 h-4" />
+        </button>
       </div>
     </div>
   );

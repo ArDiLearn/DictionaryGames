@@ -5,7 +5,7 @@ import { translations } from '../../utils/i18n';
 import { sounds } from '../../utils/soundEffects';
 import { speakEnglish, speakLatvian, stopSpeech } from '../../utils/speech';
 import { WordIllustration } from '../WordIllustration';
-import { ArrowLeft, Volume2, CheckCircle2, XCircle, RotateCcw, Home, Sparkles } from 'lucide-react';
+import { ArrowLeft, Volume2, CheckCircle2, XCircle, RotateCcw, Home, Sparkles, SkipForward } from 'lucide-react';
 import { saveExamSession, loadExamSession, clearExamSession } from '../../services/examSession';
 
 interface ExamGameProps {
@@ -365,6 +365,21 @@ export const ExamGame: React.FC<ExamGameProps> = ({
     }
     setAvailableTiles(shuffled);
     setSelectedTiles([]);
+  };
+
+  const handleSkipQuestion = () => {
+    if (isAnswered || !currentQuestion) return;
+    sounds.playClick();
+    setIsAnswered(true);
+    setSelectedAnswer(null);
+
+    if (currentQuestion.type === 'builder') {
+      setBuilderStatus('wrong');
+    }
+
+    timerRef.current = setTimeout(() => {
+      advanceQuestion(false);
+    }, 1400);
   };
 
   const advanceQuestion = (lastWasCorrect: boolean) => {
@@ -871,6 +886,18 @@ export const ExamGame: React.FC<ExamGameProps> = ({
             </button>
           </div>
         )}
+
+        {/* Skip Question button */}
+        <div className="mt-6 flex justify-center">
+          <button
+            onClick={handleSkipQuestion}
+            disabled={isAnswered}
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-slate-50 hover:bg-slate-100 border-2 border-slate-200 text-slate-500 hover:text-slate-700 font-bold text-sm transition-all cursor-pointer disabled:opacity-50 disabled:cursor-default"
+          >
+            <span>{t.skipRound}</span>
+            <SkipForward className="w-4 h-4" />
+          </button>
+        </div>
       </div>
     </div>
   );

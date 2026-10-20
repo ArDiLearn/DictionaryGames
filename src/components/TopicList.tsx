@@ -122,12 +122,12 @@ export const TopicList: React.FC<TopicListProps> = ({
       ? 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700'
       : 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700';
 
-  const selectLearningPair = (targetCourse: LearningCourse, targetLang: Language) => {
+  const selectLearningPair = (targetCourse: LearningCourse, targetLang?: Language) => {
     sounds.playClick();
     if (onCourseChange && targetCourse !== course) {
       onCourseChange(targetCourse);
     }
-    if (onLanguageChange && targetLang !== language) {
+    if (targetLang && onLanguageChange && targetLang !== language) {
       onLanguageChange(targetLang);
     }
   };
@@ -281,7 +281,7 @@ export const TopicList: React.FC<TopicListProps> = ({
 
                   {/* Mode 3: Latvian - Russian */}
                   <button
-                    onClick={() => selectLearningPair('lv', 'ru')}
+                    onClick={() => selectLearningPair('lv')}
                     className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
                       course === 'lv'
                         ? 'bg-white text-rose-900 shadow-md scale-105 ring-2 ring-yellow-300'
@@ -292,7 +292,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                     <FlagIcon country="lv" size="xs" />
                     <span>-</span>
                     <FlagIcon country="ru" size="xs" />
-                    <span>Лат–Рус</span>
+                    <span>{language === 'lv' ? 'Latv–Krievu' : 'Лат–Рус'}</span>
                   </button>
                 </div>
               </div>

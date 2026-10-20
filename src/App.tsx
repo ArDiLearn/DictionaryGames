@@ -88,11 +88,7 @@ export const App: React.FC = () => {
 
   // App State
   const [course, setCourse] = useState<LearningCourse>(() => getStoredCourse());
-  const [language, setLanguage] = useState<Language>(() => {
-    const storedCourse = getStoredCourse();
-    if (storedCourse === 'lv') return 'ru';
-    return getStoredLanguage();
-  });
+  const [language, setLanguage] = useState<Language>(() => getStoredLanguage());
   const [selectedGrades, setSelectedGrades] = useState<Grade[]>(getStoredGrades());
   const [stats, setStats] = useState<UserStats>(loadLocalStats());
   const [topicProgress, setTopicProgress] = useState<Record<string, TopicProgress>>(() =>
@@ -225,10 +221,6 @@ export const App: React.FC = () => {
   const handleCourseChange = (newCourse: LearningCourse) => {
     setCourse(newCourse);
     saveStoredCourse(newCourse);
-    if (newCourse === 'lv') {
-      setLanguage('ru');
-      saveStoredLanguage('ru');
-    }
     reloadAllFromLocal(newCourse);
     handleHomeClick();
   };

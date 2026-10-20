@@ -161,42 +161,40 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="hidden md:inline text-xs">{t.statsModal.title}</span>
           </button>
 
-          {/* Interface Language Switcher (LV / RU) - only shown when studying English */}
-          {course === 'en' && (
-            <div
-              className="flex items-center bg-slate-100/90 p-0.5 sm:p-1 rounded-2xl border-2 border-slate-200 shrink-0"
-              title={`${t.interfaceLanguageLabel}: LV / RU`}
+          {/* Interface Language Switcher (LV / RU) */}
+          <div
+            className="flex items-center bg-slate-100/90 p-0.5 sm:p-1 rounded-2xl border-2 border-slate-200 shrink-0"
+            title={`${t.interfaceLanguageLabel}: LV / RU`}
+          >
+            <button
+              onClick={() => {
+                onLanguageChange('lv');
+                sounds.playClick();
+              }}
+              className={`px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                language === 'lv'
+                  ? 'bg-white text-indigo-700 shadow-sm scale-105 font-black'
+                  : 'text-slate-500 hover:text-slate-800'
+              }`}
+              title="Latviešu valoda (interfeiss)"
             >
-              <button
-                onClick={() => {
-                  onLanguageChange('lv');
-                  sounds.playClick();
-                }}
-                className={`px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-                  language === 'lv'
-                    ? 'bg-white text-indigo-700 shadow-sm scale-105 font-black'
-                    : 'text-slate-500 hover:text-slate-800'
-                }`}
-                title="Latviešu valoda (interfeiss)"
-              >
-                LV
-              </button>
-              <button
-                onClick={() => {
-                  onLanguageChange('ru');
-                  sounds.playClick();
-                }}
-                className={`px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-                  language === 'ru'
-                    ? 'bg-white text-indigo-700 shadow-sm scale-105 font-black'
-                    : 'text-slate-500 hover:text-slate-800'
-                }`}
-                title="Русский язык (интерфейс)"
-              >
-                RU
-              </button>
-            </div>
-          )}
+              LV
+            </button>
+            <button
+              onClick={() => {
+                onLanguageChange('ru');
+                sounds.playClick();
+              }}
+              className={`px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                language === 'ru'
+                  ? 'bg-white text-indigo-700 shadow-sm scale-105 font-black'
+                  : 'text-slate-500 hover:text-slate-800'
+              }`}
+              title="Русский язык (интерфейс)"
+            >
+              RU
+            </button>
+          </div>
 
           {/* Sound Toggle */}
           <button

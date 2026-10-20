@@ -503,20 +503,24 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'mum',
           emoji: '👩',
-          secondEmoji: '👦',
+          secondEmoji: '👧',
           isTwoCharacters: true,
           highlightIndex: 0,
+          heightScale: {
+            first: 'tall',
+            second: 'short',
+          },
           hideCaption: true,
         },
         options: [
           'This is my mum.',
+          'This is my sister.',
           'This is my dad.',
-          'This is my brother.',
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Стрелка указывает на маму',
-          lv: 'Bultiņa rāda uz mammu',
+          ru: 'Стрелка указывает на маму (рядом с сестрой)',
+          lv: 'Bultiņa rāda uz mammu (blakus māsai)',
         },
       },
       {
@@ -528,20 +532,24 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'dad',
           emoji: '👨',
-          secondEmoji: '👧',
+          secondEmoji: '👦',
           isTwoCharacters: true,
           highlightIndex: 0,
+          heightScale: {
+            first: 'tall',
+            second: 'short',
+          },
           hideCaption: true,
         },
         options: [
-          'This is my sister.',
+          'This is my brother.',
           'This is my dad.',
-          'This is my grandma.',
+          'This is my mum.',
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Стрелка указывает на папу',
-          lv: 'Bultiņa rāda uz tēti',
+          ru: 'Стрелка указывает на папу (рядом с братом)',
+          lv: 'Bultiņa rāda uz tēti (blakus brālim)',
         },
       },
       {
@@ -553,20 +561,24 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'sister',
           emoji: '👧',
-          secondEmoji: '👦',
+          secondEmoji: '👩',
           isTwoCharacters: true,
           highlightIndex: 0,
+          heightScale: {
+            first: 'short',
+            second: 'tall',
+          },
           hideCaption: true,
         },
         options: [
-          'This is my brother.',
           'This is my mum.',
+          'This is my brother.',
           'This is my sister.',
         ],
         correctIndex: 2,
         hint: {
-          ru: 'Стрелка указывает на сестру',
-          lv: 'Bultiņa rāda uz māsu',
+          ru: 'Стрелка указывает на сестру (рядом с мамой)',
+          lv: 'Bultiņa rāda uz māsu (blakus mammai)',
         },
       },
       {
@@ -578,9 +590,13 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'brother',
           emoji: '👦',
-          secondEmoji: '👧',
+          secondEmoji: '👨',
           isTwoCharacters: true,
           highlightIndex: 0,
+          heightScale: {
+            first: 'short',
+            second: 'tall',
+          },
           hideCaption: true,
         },
         options: [
@@ -590,8 +606,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Стрелка указывает на брата',
-          lv: 'Bultiņa rāda uz brāli',
+          ru: 'Стрелка указывает на брата (рядом с папой)',
+          lv: 'Bultiņa rāda uz brāli (blakus tētim)',
         },
       },
       {
@@ -606,6 +622,10 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
           secondEmoji: '👧',
           isTwoCharacters: true,
           highlightIndex: 0,
+          heightScale: {
+            first: 'tall',
+            second: 'short',
+          },
           hideCaption: true,
         },
         options: [
@@ -615,8 +635,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Стрелка указывает на бабушку',
-          lv: 'Bultiņa rāda uz vecmāmiņu',
+          ru: 'Стрелка указывает на бабушку (рядом с сестрой)',
+          lv: 'Bultiņa rāda uz vecmāmiņu (blakus māsai)',
         },
       },
       {
@@ -631,6 +651,10 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
           secondEmoji: '👦',
           isTwoCharacters: true,
           highlightIndex: 0,
+          heightScale: {
+            first: 'tall',
+            second: 'short',
+          },
           hideCaption: true,
         },
         options: [
@@ -640,8 +664,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 2,
         hint: {
-          ru: 'Стрелка указывает на дедушку',
-          lv: 'Bultiņa rāda uz vectētiņu',
+          ru: 'Стрелка указывает на дедушку (рядом с братом)',
+          lv: 'Bultiņa rāda uz vectētiņu (blakus brālim)',
         },
       },
       {

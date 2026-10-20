@@ -186,7 +186,7 @@ export const TopicList: React.FC<TopicListProps> = ({
 
   const bannerGradient =
     course === 'lv'
-      ? 'bg-gradient-to-r from-[#8C1D2E] via-rose-600 to-amber-600'
+      ? 'bg-gradient-to-r from-[#6A2834] via-[#7E3745] to-[#8D4B46]'
       : course === 'en-lv' || language === 'lv'
       ? 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700'
       : 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700';
@@ -347,7 +347,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                       onClick={() => selectLearningPair('lv')}
                       className={`flex items-center justify-center gap-1.5 md:gap-2 px-2.5 py-1.5 md:px-3.5 md:py-2.5 rounded-xl md:rounded-2xl text-xs md:text-sm font-black transition-all cursor-pointer select-none whitespace-nowrap h-full ${
                         course === 'lv'
-                          ? 'bg-white text-rose-900 shadow-md scale-[1.02] ring-2 ring-yellow-300'
+                          ? 'bg-white text-[#6A2834] shadow-md scale-[1.02] ring-2 ring-yellow-300'
                           : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
                       }`}
                       title="Латышский — Русский (LV → RU)"

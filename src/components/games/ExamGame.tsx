@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import confetti from 'canvas-confetti';
 import { Topic, Word, Grade, Language, LearningCourse, ExamResult, ExamQuestionType, ExamQuestion } from '../../types';
-import { translations } from '../../utils/i18n';
+import {
+  translations,
+  isLatvianTargetCourse,
+  getTargetWordText,
+  getTranslationWordText,
+} from '../../utils/i18n';
 import { sounds } from '../../utils/soundEffects';
 import { speakEnglish, speakLatvian, stopSpeech } from '../../utils/speech';
 import { WordIllustration } from '../WordIllustration';
@@ -23,7 +28,7 @@ interface LetterTile {
 }
 
 function getTargetToSpell(word: Word, course: LearningCourse): string {
-  if (course === 'lv') {
+  if (isLatvianTargetCourse(course)) {
     return (word.lv.split(',')[0] || word.lv).trim();
   }
   return word.en.trim();
@@ -50,9 +55,8 @@ function generateExamQuestions(
   language: Language,
   course: LearningCourse
 ): ExamQuestion[] {
-  const isLatvian = course === 'lv';
-  const getLearnWord = (w: Word) => (isLatvian ? w.lv : w.en);
-  const getTransWord = (w: Word) => (isLatvian ? w.ru : (w[language] || w.ru));
+  const getLearnWord = (w: Word) => getTargetWordText(w, course);
+  const getTransWord = (w: Word) => getTranslationWordText(w, course, language);
 
   // Collect all available words of this grade for distractor pools
   const allGradeWords: Word[] = [];
@@ -198,7 +202,7 @@ export const ExamGame: React.FC<ExamGameProps> = ({
   onBack,
 }) => {
   const t = translations[language];
-  const isLatvian = course === 'lv';
+  const isLatvian = isLatvianTargetCourse(course);
 
   const [sessionData] = useState(() => loadExamSession(grade, course));
 

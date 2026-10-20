@@ -56,7 +56,7 @@ const _TopicCard: React.FC<TopicCardProps> = ({
   const isHighlightNewWords = hasNewWords || (newWordsCount !== undefined && newWordsCount > 0);
 
   const localizedTitle =
-    course === 'lv'
+    course === 'lv' || course === 'lv-en' || course === 'en-lv'
       ? topic.topic_name.lv
       : language === 'ru'
       ? topic.topic_name.ru
@@ -65,7 +65,7 @@ const _TopicCard: React.FC<TopicCardProps> = ({
   const subtitle =
     course === 'lv'
       ? topic.topic_name.ru
-      : language === 'ru'
+      : course === 'lv-en'
       ? topic.topic_name.en
       : topic.topic_name.en;
 

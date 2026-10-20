@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Word, Topic, Language, LearningCourse } from '../../types';
 import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
-import { translations } from '../../utils/i18n';
+import {
+  translations,
+  isLatvianTargetCourse,
+  getTranslationWordText,
+} from '../../utils/i18n';
 import { WordIllustration } from '../WordIllustration';
 import { Volume2, ArrowLeft, RotateCcw, SkipForward } from 'lucide-react';
 
@@ -21,7 +25,7 @@ interface LetterTile {
 }
 
 const getTargetWord = (word: Word, currentCourse: LearningCourse): string => {
-  if (currentCourse === 'lv') {
+  if (isLatvianTargetCourse(currentCourse)) {
     return (word.lv.split(',')[0] || word.lv).trim();
   }
   return word.en;
@@ -216,7 +220,7 @@ export const WordBuilderGame: React.FC<WordBuilderGameProps> = ({
 
   if (!currentWord) return null;
 
-  const translation = course === 'lv' ? currentWord.ru : (currentWord[language] || currentWord.ru || currentWord.lv);
+  const translation = getTranslationWordText(currentWord, course, language);
 
   return (
     <div className="max-w-xl mx-auto px-4 py-4 flex flex-col items-center">

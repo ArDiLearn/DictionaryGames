@@ -2,7 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Word, Topic, Language, LearningCourse } from '../../types';
 import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
-import { translations, getWordsPlural, getMatchPrompt } from '../../utils/i18n';
+import {
+  translations,
+  getWordsPlural,
+  getMatchPrompt,
+  isLatvianTargetCourse,
+  getTargetWordText,
+  getTranslationWordText,
+} from '../../utils/i18n';
 import { ArrowLeft, SkipForward } from 'lucide-react';
 
 interface MatchPairsGameProps {
@@ -61,11 +68,10 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
   useEffect(() => {
     if (currentBatch.length === 0) return;
 
-    const isLatvianCourse = course === 'lv';
     const targetCards: MatchCard[] = currentBatch.map((w) => ({
       id: `target-${w.id}`,
       wordId: w.id,
-      text: isLatvianCourse ? w.lv : w.en,
+      text: getTargetWordText(w, course),
       type: 'target',
       matched: false,
     }));
@@ -73,7 +79,7 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
     const transCards: MatchCard[] = currentBatch.map((w) => ({
       id: `trans-${w.id}`,
       wordId: w.id,
-      text: isLatvianCourse ? w.ru : (w[language] || w.ru || w.lv),
+      text: getTranslationWordText(w, course, language),
       type: 'trans',
       matched: false,
     }));
@@ -83,7 +89,7 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
     setCards([...shuffledTarget, ...shuffledTrans]);
     setSelectedCard(null);
     setWrongCardIds([]);
-  }, [roundOffset, course, shuffledWords]);
+  }, [roundOffset, course, language, shuffledWords]);
 
   const handleCardClick = (card: MatchCard) => {
     if (card.matched || wrongCardIds.length > 0) return;
@@ -117,7 +123,7 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
       sounds.playCorrect();
       const matchedWord = currentBatch.find((w) => w.id === card.wordId);
       if (matchedWord) {
-        const textToSpeak = course === 'lv' ? matchedWord.lv : matchedWord.en;
+        const textToSpeak = getTargetWordText(matchedWord, course);
         speakWord(textToSpeak, course);
         onRecordResult(matchedWord.id, true);
       }
@@ -255,13 +261,15 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
         {/* Left Column: Значение / Слово */}
         <div className="flex flex-col gap-2.5 sm:gap-3">
           <div className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-2xl bg-sky-500 border-2 border-sky-600 text-white text-xs sm:text-sm font-black shadow-sm">
-            <span>{course === 'lv' ? '🇱🇻' : '🇬🇧'}</span>
+            <span>{isLatvianTargetCourse(course) ? '🇱🇻' : '🇬🇧'}</span>
             <span>
-              {course === 'lv'
-                ? 'Vārds (LV)'
+              {isLatvianTargetCourse(course)
+                ? language === 'lv'
+                  ? 'Vārds (LV)'
+                  : 'Слово (LV)'
                 : language === 'lv'
                 ? 'Vārds (EN)'
-                : 'Значение (EN)'}
+                : 'Слово (EN)'}
             </span>
           </div>
           {leftCards.map((card) => renderCard(card))}
@@ -270,12 +278,24 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
         {/* Right Column: Перевод */}
         <div className="flex flex-col gap-2.5 sm:gap-3">
           <div className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-2xl bg-amber-500 border-2 border-amber-600 text-white text-xs sm:text-sm font-black shadow-sm">
-            <span>{course === 'lv' ? '🇷🇺' : language === 'ru' ? '🇷🇺' : '🇱🇻'}</span>
+            <span>
+              {course === 'lv'
+                ? '🇷🇺'
+                : course === 'lv-en'
+                ? '🇬🇧'
+                : course === 'en-lv' || language === 'lv'
+                ? '🇱🇻'
+                : '🇷🇺'}
+            </span>
             <span>
               {course === 'lv'
                 ? language === 'lv'
                   ? 'Tulkojums (RU)'
                   : 'Перевод (RU)'
+                : course === 'lv-en'
+                ? language === 'lv'
+                  ? 'Tulkojums (EN)'
+                  : 'Перевод (EN)'
                 : language === 'lv'
                 ? 'Tulkojums'
                 : 'Перевод'}

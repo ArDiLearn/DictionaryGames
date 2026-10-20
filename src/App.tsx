@@ -221,7 +221,7 @@ export const App: React.FC = () => {
   const handleLanguageChange = (newLang: Language) => {
     setLanguage(newLang);
     saveStoredLanguage(newLang);
-    if (course !== 'lv') {
+    if (course === 'en' || course === 'en-lv') {
       const nextCourse: LearningCourse = newLang === 'lv' ? 'en-lv' : 'en';
       if (nextCourse !== course) {
         setCourse(nextCourse);

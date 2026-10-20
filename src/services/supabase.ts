@@ -14,14 +14,19 @@ export function resolveWordText(wordId: string, topicId?: string, fallbackWord?:
     }
   }
   const isLv = wordId.startsWith('lv:') || (topicId ? topicId.startsWith('lv:') : false);
+  const isLvEn =
+    wordId.startsWith('lv_en:') ||
+    wordId.startsWith('lv-en:') ||
+    (topicId ? topicId.startsWith('lv_en:') || topicId.startsWith('lv-en:') : false);
   const isEnLv =
     wordId.startsWith('en_lv:') ||
     wordId.startsWith('en-lv:') ||
     (topicId ? topicId.startsWith('en_lv:') || topicId.startsWith('en-lv:') : false);
-  const cleanId = wordId.replace(/^(lv:|en_lv:|en-lv:)/, '');
+  const cleanId = wordId.replace(/^(lv:|lv_en:|lv-en:|en_lv:|en-lv:)/, '');
   const entry = wordLookupMap.get(cleanId);
   if (!entry) return fallbackWord || cleanId;
   if (isLv) return `${entry.lv} — ${entry.ru}`;
+  if (isLvEn) return `${entry.lv} — ${entry.en}`;
   if (isEnLv) return `${entry.en} — ${entry.lv}`;
   return `${entry.en} — ${entry.ru}`;
 }
@@ -31,11 +36,13 @@ export interface ExamCloudSyncData {
     en: Record<number, ExamResult>;
     'en-lv'?: Record<number, ExamResult>;
     lv: Record<number, ExamResult>;
+    'lv-en'?: Record<number, ExamResult>;
   };
   history: {
     en: ExamResult[];
     'en-lv'?: ExamResult[];
     lv: ExamResult[];
+    'lv-en'?: ExamResult[];
   };
 }
 
@@ -47,11 +54,13 @@ export interface CloudSyncData {
     en: Record<number, ExamResult>;
     'en-lv'?: Record<number, ExamResult>;
     lv: Record<number, ExamResult>;
+    'lv-en'?: Record<number, ExamResult>;
   };
   examHistory?: {
     en: ExamResult[];
     'en-lv'?: ExamResult[];
     lv: ExamResult[];
+    'lv-en'?: ExamResult[];
   };
 }
 

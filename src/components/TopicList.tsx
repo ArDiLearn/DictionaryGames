@@ -11,6 +11,7 @@ import {
   getMainTopicsSubtitle,
   getExtraTopicsSubtitle,
   getWordsPlural,
+  getCourseActiveLabel,
 } from '../utils/i18n';
 import {
   isTopicExtra,
@@ -118,6 +119,8 @@ export const TopicList: React.FC<TopicListProps> = ({
   const bannerGradient =
     course === 'lv'
       ? 'bg-gradient-to-r from-[#8C1D2E] via-rose-600 to-amber-600'
+      : course === 'lv-en'
+      ? 'bg-gradient-to-r from-[#8C1D2E] via-fuchsia-700 to-indigo-700'
       : course === 'en-lv' || language === 'lv'
       ? 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700'
       : 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700';
@@ -221,24 +224,30 @@ export const TopicList: React.FC<TopicListProps> = ({
             </button>
           </div>
 
-          {/* Right Column: Active Mode Flag Badge on top + 3-Mode Language Direction Switcher below */}
+          {/* Right Column: Active Mode Flag Badge on top + 4-Mode Language Direction Switcher below */}
           {onCourseChange && (
             <div className="flex flex-col items-start lg:items-end gap-2">
               {/* Explicit active language course indicator badge */}
               <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/25 border border-white/35 backdrop-blur-md text-white text-xs sm:text-sm font-black shadow-sm">
                 <FlagIcon
-                  country={course === 'lv' ? 'lv' : 'gb'}
+                  country={course === 'lv' || course === 'lv-en' ? 'lv' : 'gb'}
                   size="sm"
                   className="rounded-xs ring-1 ring-white/60 shrink-0"
                 />
                 <span className="opacity-80">→</span>
                 <FlagIcon
-                  country={course === 'en-lv' || (course !== 'lv' && language === 'lv') ? 'lv' : 'ru'}
+                  country={
+                    course === 'lv-en'
+                      ? 'gb'
+                      : course === 'en-lv' || (course === 'en' && language === 'lv')
+                      ? 'lv'
+                      : 'ru'
+                  }
                   size="sm"
                   className="rounded-xs ring-1 ring-white/60 shrink-0"
                 />
                 <span className="ml-0.5">
-                  {course === 'lv' ? t.currentlyLearningLv : t.currentlyLearningEn}
+                  {getCourseActiveLabel(course, language)}
                 </span>
               </div>
 
@@ -246,11 +255,11 @@ export const TopicList: React.FC<TopicListProps> = ({
                 <span className="text-[10px] font-extrabold uppercase tracking-wider text-white/80 px-1">
                   {t.courseSelectorLabel}:
                 </span>
-                <div className="flex items-center gap-1.5 flex-wrap">
+                <div className="grid grid-cols-2 sm:flex sm:items-center gap-1.5 flex-wrap">
                   {/* Mode 1: English - Russian */}
                   <button
                     onClick={() => selectLearningPair('en', 'ru')}
-                    className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                    className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
                       course === 'en' && language === 'ru'
                         ? 'bg-white text-indigo-900 shadow-md scale-105 ring-2 ring-yellow-300'
                         : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
@@ -266,7 +275,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                   {/* Mode 2: English - Latvian */}
                   <button
                     onClick={() => selectLearningPair('en-lv', 'lv')}
-                    className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                    className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
                       course === 'en-lv' || (course === 'en' && language === 'lv')
                         ? 'bg-white text-teal-900 shadow-md scale-105 ring-2 ring-yellow-300'
                         : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
@@ -282,7 +291,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                   {/* Mode 3: Latvian - Russian */}
                   <button
                     onClick={() => selectLearningPair('lv')}
-                    className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                    className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
                       course === 'lv'
                         ? 'bg-white text-rose-900 shadow-md scale-105 ring-2 ring-yellow-300'
                         : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
@@ -293,6 +302,22 @@ export const TopicList: React.FC<TopicListProps> = ({
                     <span>-</span>
                     <FlagIcon country="ru" size="xs" />
                     <span>{language === 'lv' ? 'Latv–Krievu' : 'Лат–Рус'}</span>
+                  </button>
+
+                  {/* Mode 4: Latvian - English */}
+                  <button
+                    onClick={() => selectLearningPair('lv-en')}
+                    className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                      course === 'lv-en'
+                        ? 'bg-white text-fuchsia-950 shadow-md scale-105 ring-2 ring-yellow-300'
+                        : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
+                    }`}
+                    title="Latviešu — Angļu / Латышский — Английский (LV → EN)"
+                  >
+                    <FlagIcon country="lv" size="xs" />
+                    <span>-</span>
+                    <FlagIcon country="gb" size="xs" />
+                    <span>{language === 'lv' ? 'Latv–Angļu' : 'Лат–Англ'}</span>
                   </button>
                 </div>
               </div>

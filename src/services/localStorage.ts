@@ -61,6 +61,7 @@ export function getItemWithFallback(newKey: string, ...oldKeys: string[]): strin
 function getCourseSuffix(course: LearningCourse = 'en'): string {
   if (course === 'lv') return '_lv';
   if (course === 'en-lv') return '_en_lv';
+  if (course === 'lv-en') return '_lv_en';
   return '';
 }
 
@@ -89,7 +90,7 @@ export function getExamHistoryKey(course: LearningCourse = 'en', legacy: 'none' 
 export function getStoredCourse(): LearningCourse {
   try {
     const c = getItemWithFallback(COURSE_KEY, OLD_COURSE_KEY, LEGACY_COURSE_KEY);
-    if (c === 'lv' || c === 'en-lv' || c === 'en') return c;
+    if (c === 'lv' || c === 'lv-en' || c === 'en-lv' || c === 'en') return c;
   } catch {}
   return 'en';
 }

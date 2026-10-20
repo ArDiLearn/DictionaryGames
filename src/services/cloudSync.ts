@@ -34,10 +34,11 @@ export function triggerCloudSync() {
 
       const stats = loadLocalStats();
 
-      // Gather progress from all 3 courses (EN-RU, EN-LV, LV-RU)
+      // Gather progress from all 4 courses (EN-RU, EN-LV, LV-RU, LV-EN)
       const topicProgEn = loadTopicProgress('en');
       const topicProgEnLv = loadTopicProgress('en-lv');
       const topicProgLv = loadTopicProgress('lv');
+      const topicProgLvEn = loadTopicProgress('lv-en');
       const mergedTopicProg: Record<string, TopicProgress> = { ...topicProgEn };
       for (const [tid, tp] of Object.entries(topicProgEnLv)) {
         mergedTopicProg[`en_lv:${tid}`] = { ...tp, topic_id: `en_lv:${tid}` };
@@ -45,10 +46,14 @@ export function triggerCloudSync() {
       for (const [tid, tp] of Object.entries(topicProgLv)) {
         mergedTopicProg[`lv:${tid}`] = { ...tp, topic_id: `lv:${tid}` };
       }
+      for (const [tid, tp] of Object.entries(topicProgLvEn)) {
+        mergedTopicProg[`lv_en:${tid}`] = { ...tp, topic_id: `lv_en:${tid}` };
+      }
 
       const wordProgEn = loadWordProgress('en');
       const wordProgEnLv = loadWordProgress('en-lv');
       const wordProgLv = loadWordProgress('lv');
+      const wordProgLvEn = loadWordProgress('lv-en');
       const mergedWordProg: Record<string, WordProgress> = { ...wordProgEn };
       for (const [wid, wp] of Object.entries(wordProgEnLv)) {
         mergedWordProg[`en_lv:${wid}`] = { ...wp, word_id: `en_lv:${wid}`, topic_id: `en_lv:${wp.topic_id}` };
@@ -56,18 +61,23 @@ export function triggerCloudSync() {
       for (const [wid, wp] of Object.entries(wordProgLv)) {
         mergedWordProg[`lv:${wid}`] = { ...wp, word_id: `lv:${wid}`, topic_id: `lv:${wp.topic_id}` };
       }
+      for (const [wid, wp] of Object.entries(wordProgLvEn)) {
+        mergedWordProg[`lv_en:${wid}`] = { ...wp, word_id: `lv_en:${wid}`, topic_id: `lv_en:${wp.topic_id}` };
+      }
 
-      // Gather exam results and history from all 3 courses
+      // Gather exam results and history from all 4 courses
       const examResultsEn = loadExamResults('en');
       const examResultsEnLv = loadExamResults('en-lv');
       const examResultsLv = loadExamResults('lv');
+      const examResultsLvEn = loadExamResults('lv-en');
       const examHistoryEn = loadExamHistory('en');
       const examHistoryEnLv = loadExamHistory('en-lv');
       const examHistoryLv = loadExamHistory('lv');
+      const examHistoryLvEn = loadExamHistory('lv-en');
 
       await syncProgressToCloud(user.id, mergedTopicProg, mergedWordProg, stats, {
-        results: { en: examResultsEn, 'en-lv': examResultsEnLv, lv: examResultsLv },
-        history: { en: examHistoryEn, 'en-lv': examHistoryEnLv, lv: examHistoryLv },
+        results: { en: examResultsEn, 'en-lv': examResultsEnLv, lv: examResultsLv, 'lv-en': examResultsLvEn },
+        history: { en: examHistoryEn, 'en-lv': examHistoryEnLv, lv: examHistoryLv, 'lv-en': examHistoryLvEn },
       });
     } catch {
       // ignore offline errors
@@ -85,15 +95,19 @@ export async function mergeWithCloud(): Promise<boolean> {
     const cloudData = await fetchProgressFromCloud(user.id);
     if (!cloudData) return false;
 
-    // 1. Separate EN-RU, EN-LV, and LV-RU topic progress from cloud
+    // 1. Separate EN-RU, EN-LV, LV-RU, and LV-EN topic progress from cloud
     const cloudTopicsEn: Record<string, TopicProgress> = {};
     const cloudTopicsEnLv: Record<string, TopicProgress> = {};
     const cloudTopicsLv: Record<string, TopicProgress> = {};
+    const cloudTopicsLvEn: Record<string, TopicProgress> = {};
 
     for (const [tid, cTopic] of Object.entries(cloudData.topicProgress)) {
       if (tid.startsWith('lv:')) {
         const cleanTid = tid.slice(3);
         cloudTopicsLv[cleanTid] = { ...cTopic, topic_id: cleanTid };
+      } else if (tid.startsWith('lv_en:') || tid.startsWith('lv-en:')) {
+        const cleanTid = tid.slice(6);
+        cloudTopicsLvEn[cleanTid] = { ...cTopic, topic_id: cleanTid };
       } else if (tid.startsWith('en_lv:') || tid.startsWith('en-lv:')) {
         const cleanTid = tid.slice(6);
         cloudTopicsEnLv[cleanTid] = { ...cTopic, topic_id: cleanTid };
@@ -138,16 +152,29 @@ export async function mergeWithCloud(): Promise<boolean> {
     const mergedTopicsLv = mergeTopicMap(loadTopicProgress('lv'), cloudTopicsLv);
     saveTopicProgressRaw(mergedTopicsLv, 'lv');
 
-    // 2. Separate EN-RU, EN-LV, and LV-RU word progress
+    const mergedTopicsLvEn = mergeTopicMap(loadTopicProgress('lv-en'), cloudTopicsLvEn);
+    saveTopicProgressRaw(mergedTopicsLvEn, 'lv-en');
+
+    // 2. Separate EN-RU, EN-LV, LV-RU, and LV-EN word progress
     const cloudWordsEn: Record<string, WordProgress> = {};
     const cloudWordsEnLv: Record<string, WordProgress> = {};
     const cloudWordsLv: Record<string, WordProgress> = {};
+    const cloudWordsLvEn: Record<string, WordProgress> = {};
 
     for (const [wid, cWord] of Object.entries(cloudData.wordProgress)) {
       if (wid.startsWith('lv:') || cWord.topic_id?.startsWith('lv:')) {
         const cleanWid = wid.startsWith('lv:') ? wid.slice(3) : wid;
         const cleanTid = cWord.topic_id?.startsWith('lv:') ? cWord.topic_id.slice(3) : cWord.topic_id;
         cloudWordsLv[cleanWid] = { ...cWord, word_id: cleanWid, topic_id: cleanTid };
+      } else if (
+        wid.startsWith('lv_en:') ||
+        wid.startsWith('lv-en:') ||
+        cWord.topic_id?.startsWith('lv_en:') ||
+        cWord.topic_id?.startsWith('lv-en:')
+      ) {
+        const cleanWid = wid.replace(/^(lv_en:|lv-en:)/, '');
+        const cleanTid = cWord.topic_id ? cWord.topic_id.replace(/^(lv_en:|lv-en:)/, '') : cWord.topic_id;
+        cloudWordsLvEn[cleanWid] = { ...cWord, word_id: cleanWid, topic_id: cleanTid };
       } else if (
         wid.startsWith('en_lv:') ||
         wid.startsWith('en-lv:') ||
@@ -194,6 +221,9 @@ export async function mergeWithCloud(): Promise<boolean> {
     const mergedWordsLv = mergeWordMap(loadWordProgress('lv'), cloudWordsLv);
     saveWordProgressRaw(mergedWordsLv, 'lv');
 
+    const mergedWordsLvEn = mergeWordMap(loadWordProgress('lv-en'), cloudWordsLvEn);
+    saveWordProgressRaw(mergedWordsLvEn, 'lv-en');
+
     // 3. Merge UserStats
     const currentStats = loadLocalStats();
     const cloudStats = cloudData.statsPartial || {};
@@ -201,7 +231,8 @@ export async function mergeWithCloud(): Promise<boolean> {
     const totalStarsSumTopics =
       Object.values(mergedTopicsEn).reduce((s, tp) => s + (tp.stars || 0), 0) +
       Object.values(mergedTopicsEnLv).reduce((s, tp) => s + (tp.stars || 0), 0) +
-      Object.values(mergedTopicsLv).reduce((s, tp) => s + (tp.stars || 0), 0);
+      Object.values(mergedTopicsLv).reduce((s, tp) => s + (tp.stars || 0), 0) +
+      Object.values(mergedTopicsLvEn).reduce((s, tp) => s + (tp.stars || 0), 0);
 
     const mergedTotalStarsEarned = Math.max(
       currentStats.totalStarsEarned || 0,
@@ -293,9 +324,9 @@ export async function mergeWithCloud(): Promise<boolean> {
     saveLocalStatsRaw(mergedStats);
     localStorage.setItem(STATS_KEY, JSON.stringify(mergedStats));
 
-    // 4. Merge Exam Results & History for all 3 courses
+    // 4. Merge Exam Results & History for all 4 courses
     if (cloudData.examResults) {
-      for (const c of ['en', 'en-lv', 'lv'] as LearningCourse[]) {
+      for (const c of ['en', 'en-lv', 'lv', 'lv-en'] as LearningCourse[]) {
         const cloudResults = cloudData.examResults[c] || {};
         if (Object.keys(cloudResults).length > 0) {
           const localResults = loadExamResults(c);
@@ -320,7 +351,7 @@ export async function mergeWithCloud(): Promise<boolean> {
     }
 
     if (cloudData.examHistory) {
-      for (const c of ['en', 'en-lv', 'lv'] as LearningCourse[]) {
+      for (const c of ['en', 'en-lv', 'lv', 'lv-en'] as LearningCourse[]) {
         const cloudHistory = cloudData.examHistory[c] || [];
         if (cloudHistory.length > 0) {
           const localHistory = loadExamHistory(c);

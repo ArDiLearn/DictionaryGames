@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Word, Topic, Language, LearningCourse } from '../../types';
 import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
-import { translations } from '../../utils/i18n';
+import {
+  translations,
+  getTargetWordText,
+  getTranslationWordText,
+} from '../../utils/i18n';
 import { Volume2, ArrowLeft, Headphones, SkipForward } from 'lucide-react';
 import { WordIllustration } from '../WordIllustration';
 
@@ -56,7 +60,7 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
   const playVoice = () => {
     if (!currentWord) return;
     setIsSpeaking(true);
-    const textToSpeak = course === 'lv' ? currentWord.lv : currentWord.en;
+    const textToSpeak = getTargetWordText(currentWord, course);
     speakWord(
       textToSpeak,
       course,
@@ -193,7 +197,7 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
 
         {isAnswered && (
           <div className="mt-2 text-base sm:text-lg font-black text-indigo-600 font-comic animate-pop">
-            {course === 'lv' ? currentWord.lv : currentWord.en}
+            {getTargetWordText(currentWord, course)}
           </div>
         )}
       </div>
@@ -201,7 +205,7 @@ export const AudioQuizGame: React.FC<AudioQuizGameProps> = ({
       {/* 4 Choices in 2x2 Grid (2 columns on all devices so button 4 is always visible without scrolling) */}
       <div className="w-full grid grid-cols-2 gap-2.5 sm:gap-3.5">
         {options.map((option) => {
-          const translation = course === 'lv' ? option.ru : (option[language] || option.ru || option.lv);
+          const translation = getTranslationWordText(option, course, language);
           const isCorrect = option.id === currentWord.id;
           const isChosen = option.id === selectedWordId;
 

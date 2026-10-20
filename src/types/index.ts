@@ -1,5 +1,5 @@
 export type Language = 'ru' | 'lv';
-export type LearningCourse = 'en' | 'en-lv' | 'lv';
+export type LearningCourse = 'en' | 'en-lv' | 'lv' | 'lv-en';
 export type Grade = 1 | 2 | 3 | 4;
 export type GradeFilter = '1' | '2' | '3' | '4' | 'all';
 

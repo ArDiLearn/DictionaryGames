@@ -2,7 +2,13 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { Word, Topic, Language, LearningCourse } from '../../types';
 import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
-import { translations, getBalloonPrompt } from '../../utils/i18n';
+import {
+  translations,
+  getBalloonPrompt,
+  isLatvianTargetCourse,
+  getTargetWordText,
+  getTranslationWordText,
+} from '../../utils/i18n';
 import { Volume2, ArrowLeft, Sparkles, Cloud, SkipForward } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -109,7 +115,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
     const distractor1 = shuffledPool[0] || currentWord;
     const distractor2 = shuffledPool[1] || currentWord;
 
-    const getWordText = (w: Word) => (course === 'lv' ? w.lv : w.en);
+    const getWordText = (w: Word) => getTargetWordText(w, course);
 
     const rawOptions = [
       { id: currentWord.id, text: getWordText(currentWord), isCorrect: true },
@@ -180,7 +186,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
         sounds.playWrong();
         if (currentWord) {
           onRecordResult(currentWord.id, false);
-          speakWord(course === 'lv' ? currentWord.lv : currentWord.en, course);
+          speakWord(getTargetWordText(currentWord, course), course);
         }
 
         setTimeout(() => {
@@ -248,7 +254,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
 
   const playVoice = () => {
     if (!currentWord) return;
-    speakWord(course === 'lv' ? currentWord.lv : currentWord.en, course);
+    speakWord(getTargetWordText(currentWord, course), course);
   };
 
   const handleSkip = () => {
@@ -256,7 +262,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
     sounds.playClick();
     setRoundState('missed');
     onRecordResult(currentWord.id, false);
-    speakWord(course === 'lv' ? currentWord.lv : currentWord.en, course);
+    speakWord(getTargetWordText(currentWord, course), course);
 
     setTimeout(() => {
       advanceRound(score);
@@ -271,7 +277,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
     );
   }
 
-  const targetTranslation = course === 'lv' ? currentWord.ru : (currentWord[language] || currentWord.ru);
+  const targetTranslation = getTranslationWordText(currentWord, course, language);
   const progressPercent = ((currentIndex + 1) / shuffledWords.length) * 100;
 
   return (
@@ -292,7 +298,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
         <div className="flex items-center gap-2 bg-indigo-50 border-2 border-indigo-200 px-3 py-1 rounded-full text-indigo-700 font-bold text-xs sm:text-sm">
           <span>{topic.emoji || '📖'}</span>
           <span className="truncate max-w-[130px] sm:max-w-[170px]">
-            {topic.topic_name[course === 'lv' ? 'lv' : language] || topic.topic_name.lv || topic.topic_name.en}
+            {topic.topic_name[isLatvianTargetCourse(course) ? 'lv' : language] || topic.topic_name.lv || topic.topic_name.en}
           </span>
         </div>
 
@@ -347,7 +353,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
           <div className="absolute inset-0 bg-emerald-500/20 backdrop-blur-[2px] z-30 flex items-center justify-center animate-pop">
             <div className="bg-white/95 px-6 py-3.5 rounded-3xl border-4 border-emerald-400 shadow-2xl flex items-center gap-2 text-emerald-700 font-black text-xl sm:text-2xl">
               <Sparkles className="w-7 h-7 text-amber-400 animate-spin" />
-              <span>{t.correct} {course === 'lv' ? currentWord.lv : currentWord.en}!</span>
+              <span>{t.correct} {getTargetWordText(currentWord, course)}!</span>
             </div>
           </div>
         )}
@@ -359,7 +365,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({
                 {t.balloonMissed}
               </p>
               <p className="text-xl sm:text-2xl font-black text-slate-800">
-                {course === 'lv' ? currentWord.lv : currentWord.en}
+                {getTargetWordText(currentWord, course)}
               </p>
             </div>
           </div>

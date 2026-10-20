@@ -22,11 +22,13 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
   onBack,
 }) => {
   const t = translations[language];
-  const isLatvianCourse = course === 'lv';
+  const isLatvianCourse = course === 'lv' || course === 'lv-en';
   const primaryTitle = isLatvianCourse
     ? topic.topic_name.lv || topic.topic_name.en
+    : course === 'en-lv'
+    ? topic.topic_name.lv || topic.topic_name.en
     : topic.topic_name[language] || topic.topic_name.en || topic.topic_id;
-  const secondaryTitle = isLatvianCourse ? topic.topic_name.ru : topic.topic_name.en;
+  const secondaryTitle = course === 'lv' ? topic.topic_name.ru : topic.topic_name.en;
   const stars = progress?.stars || 0;
   const totalCount = topic.words.length;
   const topicMaxStars = totalCount < 5 ? 0 : totalCount <= 8 ? 2 : 3;

@@ -38,7 +38,8 @@ export function recordWordAttempt(
   const isLearned = isCorrect && (clearMistake || (timesCorrect >= 2 && timesCorrect > timesWrong));
   const newlyMastered = !prev.isLearned && isLearned;
 
-  const coursePrefix = course === 'lv' ? 'lv:' : course === 'en-lv' ? 'en_lv:' : '';
+  const coursePrefix =
+    course === 'lv' ? 'lv:' : course === 'en-lv' ? 'en_lv:' : course === 'lv-en' ? 'lv_en:' : '';
 
   words[wordId] = {
     word_id: wordId,

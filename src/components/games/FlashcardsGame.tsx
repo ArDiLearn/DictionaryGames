@@ -2,7 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Word, Topic, Language, LearningCourse } from '../../types';
 import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
-import { translations } from '../../utils/i18n';
+import {
+  translations,
+  isLatvianTargetCourse,
+  getTargetWordText,
+  getTranslationWordText,
+} from '../../utils/i18n';
 import { WordIllustration } from '../WordIllustration';
 import { Volume2, RotateCw, ArrowLeft, ChevronLeft, ChevronRight, LayoutGrid, X, Gamepad2 } from 'lucide-react';
 
@@ -44,7 +49,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
   const handleSpeak = (wordToSpeak?: Word) => {
     const word = wordToSpeak || currentWord;
     if (!word) return;
-    const textToSpeak = course === 'lv' ? word.lv : word.en;
+    const textToSpeak = getTargetWordText(word, course);
     setIsSpeaking(true);
     speakWord(
       textToSpeak,
@@ -108,9 +113,9 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
 
   if (!currentWord) return null;
 
-  const isLatvianCourse = course === 'lv';
-  const targetText = isLatvianCourse ? currentWord.lv : currentWord.en;
-  const translation = isLatvianCourse ? currentWord.ru : (currentWord[language] || currentWord.ru || currentWord.lv);
+  const isLatvianCourse = isLatvianTargetCourse(course);
+  const targetText = getTargetWordText(currentWord, course);
+  const translation = getTranslationWordText(currentWord, course, language);
 
   return (
     <div className="max-w-xl mx-auto px-4 py-4 flex flex-col items-center">
@@ -163,8 +168,16 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
         <div className="w-full flex justify-between items-center text-slate-400">
           <span className="text-xs font-bold uppercase tracking-wider">
             {isFlipped
-              ? (isLatvianCourse ? '🇷🇺 Русский' : (language === 'ru' ? '🇷🇺 Русский' : '🇱🇻 Latviešu'))
-              : (isLatvianCourse ? '🇱🇻 Latviešu' : '🇬🇧 English')}
+              ? course === 'lv'
+                ? '🇷🇺 Русский'
+                : course === 'lv-en'
+                ? '🇬🇧 English'
+                : course === 'en-lv' || language === 'lv'
+                ? '🇱🇻 Latviešu'
+                : '🇷🇺 Русский'
+              : isLatvianCourse
+              ? '🇱🇻 Latviešu'
+              : '🇬🇧 English'}
           </span>
           <RotateCw className="w-5 h-5 text-indigo-400 group-hover:rotate-180 transition-transform duration-500" />
         </div>
@@ -279,8 +292,8 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
             {topic.words.map((word, index) => {
               const isCurrent = index === currentIndex;
               const isLearned = knownWordIds.has(word.id);
-              const ribbonTarget = isLatvianCourse ? word.lv : word.en;
-              const ribbonTranslation = isLatvianCourse ? word.ru : (word[language] || word.ru || word.lv);
+              const ribbonTarget = getTargetWordText(word, course);
+              const ribbonTranslation = getTranslationWordText(word, course, language);
 
               return (
                 <button
@@ -397,8 +410,8 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
               {topic.words.map((word, index) => {
                 const isCurrent = index === currentIndex;
                 const isLearned = knownWordIds.has(word.id);
-                const gridTarget = isLatvianCourse ? word.lv : word.en;
-                const gridTranslation = isLatvianCourse ? word.ru : (word[language] || word.ru || word.lv);
+                const gridTarget = getTargetWordText(word, course);
+                const gridTranslation = getTranslationWordText(word, course, language);
 
                 return (
                   <button

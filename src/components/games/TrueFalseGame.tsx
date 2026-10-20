@@ -2,7 +2,12 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Word, Topic, Language, LearningCourse } from '../../types';
 import { speakWord } from '../../utils/speech';
 import { sounds } from '../../utils/soundEffects';
-import { translations } from '../../utils/i18n';
+import {
+  translations,
+  isLatvianTargetCourse,
+  getTargetWordText,
+  getTranslationWordText,
+} from '../../utils/i18n';
 import { Volume2, ArrowLeft, CheckCircle2, XCircle, Sparkles, SkipForward } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -37,15 +42,13 @@ export const TrueFalseGame: React.FC<TrueFalseGameProps> = ({
   const questions = useMemo<TFQuestion[]>(() => {
     if (!topic.words || topic.words.length === 0) return [];
 
-    const isLatvianCourse = course === 'lv';
     // Shuffle topic words
     const shuffled = [...topic.words].sort(() => Math.random() - 0.5);
 
     // Other words pool for false distractors
     const allWords = allTopics.flatMap((tp) => tp.words);
 
-    const getTranslation = (w: Word) =>
-      isLatvianCourse ? w.ru : (w[language] || w.ru);
+    const getTranslation = (w: Word) => getTranslationWordText(w, course, language);
 
     return shuffled.map((word, idx) => {
       // Alternate or random with balance
@@ -85,7 +88,7 @@ export const TrueFalseGame: React.FC<TrueFalseGameProps> = ({
   const playVoice = () => {
     if (!currentQ) return;
     setIsSpeaking(true);
-    const textToSpeak = course === 'lv' ? currentQ.word.lv : currentQ.word.en;
+    const textToSpeak = getTargetWordText(currentQ.word, course);
     speakWord(
       textToSpeak,
       course,
@@ -183,7 +186,7 @@ export const TrueFalseGame: React.FC<TrueFalseGameProps> = ({
         <div className="flex items-center gap-2 bg-indigo-50 border-2 border-indigo-200 px-3 py-1 rounded-full text-indigo-700 font-bold text-xs sm:text-sm">
           <span>{topic.emoji || '📖'}</span>
           <span className="truncate max-w-[120px] sm:max-w-[160px]">
-            {topic.topic_name[course === 'lv' ? 'lv' : language] || topic.topic_name.lv || topic.topic_name.en}
+            {topic.topic_name[isLatvianTargetCourse(course) ? 'lv' : language] || topic.topic_name.lv || topic.topic_name.en}
           </span>
         </div>
 
@@ -219,7 +222,7 @@ export const TrueFalseGame: React.FC<TrueFalseGameProps> = ({
         {/* Top Target Word */}
         <div className="flex items-center justify-center gap-3 mb-1">
           <h2 className="text-3xl sm:text-4xl font-black text-indigo-700 tracking-tight font-comic">
-            {course === 'lv' ? currentQ.word.lv : currentQ.word.en}
+            {getTargetWordText(currentQ.word, course)}
           </h2>
 
           <button
@@ -234,7 +237,7 @@ export const TrueFalseGame: React.FC<TrueFalseGameProps> = ({
         </div>
 
         {/* Phonetic Transcription (only English course) */}
-        {course !== 'lv' && currentQ.word.transcription && (
+        {!isLatvianTargetCourse(course) && currentQ.word.transcription && (
           <p className="text-sm font-semibold text-slate-400 tracking-wide font-mono mb-4">
             {currentQ.word.transcription}
           </p>
@@ -272,7 +275,7 @@ export const TrueFalseGame: React.FC<TrueFalseGameProps> = ({
                 <div className="text-[11px] sm:text-xs opacity-95">
                   {currentQ.isTrue
                     ? (language === 'ru' ? 'Это верная пара!' : 'Tas bija pareizi!')
-                    : `${language === 'ru' ? 'Правильно' : 'Pareizi'}: ${course === 'lv' ? currentQ.word.ru : (currentQ.word[language] || currentQ.word.ru)}`}
+                    : `${language === 'ru' ? 'Правильно' : 'Pareizi'}: ${getTranslationWordText(currentQ.word, course, language)}`}
                 </div>
               </div>
             )}

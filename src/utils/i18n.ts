@@ -22,6 +22,8 @@ export interface Translations {
   courseEnglish: string;
   courseLatvian: string;
   courseLatvianSubtitle: string;
+  currentlyLearningEn: string;
+  currentlyLearningLv: string;
   interfaceLanguageLabel: string;
   play: string;
   back: string;
@@ -308,6 +310,8 @@ export const translations: Record<Language, Translations> = {
     courseEnglish: 'Изучение Английского',
     courseLatvian: 'Изучение Латышского',
     courseLatvianSubtitle: 'Латышский язык с переводом на русский',
+    currentlyLearningEn: 'Сейчас ты изучаешь: Английский язык',
+    currentlyLearningLv: 'Сейчас ты изучаешь: Латышский язык',
     interfaceLanguageLabel: 'Язык меню',
     play: 'Играть',
     back: 'Назад',
@@ -592,6 +596,8 @@ export const translations: Record<Language, Translations> = {
     courseEnglish: 'Mācīties angļu',
     courseLatvian: 'Mācīties latviešu',
     courseLatvianSubtitle: 'Latviešu valoda ar tulkojumu krieviski',
+    currentlyLearningEn: 'Tagad tu mācies: Angļu valodu',
+    currentlyLearningLv: 'Tagad tu mācies: Latviešu valodu',
     interfaceLanguageLabel: 'Izvēlnes valoda',
     play: 'Spēlēt',
     back: 'Atpakaļ',

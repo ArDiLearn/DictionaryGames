@@ -109,13 +109,22 @@ export const Header: React.FC<HeaderProps> = ({
               <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
             </div>
             <div className="shrink-0">
-              <div className="flex items-center gap-1">
-                <span className="text-2xl font-black tracking-tight text-indigo-600 font-comic whitespace-nowrap">
+              <div className="flex items-center gap-1.5">
+                <span className="text-xl sm:text-2xl font-black tracking-tight text-indigo-600 font-comic whitespace-nowrap">
                   Wordy<span className="text-pink-500">Mind</span>
                 </span>
+                <span
+                  className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-black border shadow-2xs ${
+                    course === 'lv'
+                      ? 'bg-rose-50 text-rose-800 border-rose-200'
+                      : 'bg-sky-50 text-sky-800 border-sky-200'
+                  }`}
+                >
+                  <FlagIcon country={course === 'en' ? 'gb' : 'lv'} size="xs" />
+                  <span>{course === 'lv' ? 'LV' : 'EN'}</span>
+                </span>
               </div>
-              <p className="text-xs text-slate-400 font-medium -mt-1 hidden md:flex items-center gap-1.5 whitespace-nowrap">
-                <FlagIcon country={course === 'en' ? 'gb' : 'lv'} size="xs" />
+              <p className="text-xs text-slate-400 font-medium -mt-0.5 hidden md:flex items-center gap-1.5 whitespace-nowrap">
                 <span>{course === 'lv' ? t.courseLatvianSubtitle : t.appSubtitle}</span>
               </p>
             </div>

@@ -116,7 +116,13 @@ export const TopicList: React.FC<TopicListProps> = ({
   return (
     <div className="max-w-5xl mx-auto px-4 py-6">
       {/* Welcome Banner */}
-      <div className="relative rounded-3xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-5 sm:p-7 text-white shadow-xl mb-6">
+      <div
+        className={`relative rounded-3xl p-5 sm:p-7 text-white shadow-xl mb-6 transition-colors duration-300 ${
+          course === 'lv'
+            ? 'bg-gradient-to-r from-[#8C1D2E] via-rose-600 to-amber-600'
+            : 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700'
+        }`}
+      >
         <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5 sm:gap-4">
             <button
@@ -135,6 +141,18 @@ export const TopicList: React.FC<TopicListProps> = ({
               </span>
             </button>
             <div className="flex flex-col justify-center">
+              {/* Explicit active language course indicator badge */}
+              <div className="mb-1.5 flex items-center">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/25 border border-white/35 backdrop-blur-md text-white text-xs sm:text-sm font-black shadow-sm">
+                  <FlagIcon
+                    country={course === 'en' ? 'gb' : 'lv'}
+                    size="sm"
+                    className="rounded-xs ring-1 ring-white/60 shrink-0"
+                  />
+                  <span>{course === 'lv' ? t.currentlyLearningLv : t.currentlyLearningEn}</span>
+                </div>
+              </div>
+
               <div className="flex items-center gap-2">
                 <h1 className="text-2xl sm:text-3xl font-black font-comic tracking-tight leading-tight">
                   {t.welcomeGreeting}, {displayName}!

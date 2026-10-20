@@ -251,74 +251,85 @@ export const TopicList: React.FC<TopicListProps> = ({
                 </span>
               </div>
 
-              <div className="flex flex-col gap-1 bg-black/20 backdrop-blur-md p-2 rounded-2xl border border-white/30">
+              <div className="flex flex-col gap-1.5 bg-black/20 backdrop-blur-md p-2.5 rounded-2xl border border-white/30">
                 <span className="text-[10px] font-extrabold uppercase tracking-wider text-white/80 px-1">
                   {t.courseSelectorLabel}:
                 </span>
-                <div className="grid grid-cols-2 sm:flex sm:items-center gap-1.5 flex-wrap">
-                  {/* Mode 1: English - Russian */}
-                  <button
-                    onClick={() => selectLearningPair('en', 'ru')}
-                    className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
-                      course === 'en' && language === 'ru'
-                        ? 'bg-white text-indigo-900 shadow-md scale-105 ring-2 ring-yellow-300'
-                        : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
-                    }`}
-                    title="Английский — Русский (EN → RU)"
-                  >
-                    <FlagIcon country="gb" size="xs" />
-                    <span>-</span>
-                    <FlagIcon country="ru" size="xs" />
-                    <span>Англ–Рус</span>
-                  </button>
+                <div className="flex items-stretch gap-2">
+                  {/* Left Column: English Target Modes (Angļu–Latv on top, Англ–Рус underneath) */}
+                  <div className="flex flex-col gap-1.5">
+                    {/* Mode 1: English - Latvian */}
+                    <button
+                      onClick={() => selectLearningPair('en-lv', 'lv')}
+                      className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                        course === 'en-lv' || (course === 'en' && language === 'lv')
+                          ? 'bg-white text-teal-900 shadow-md scale-[1.03] ring-2 ring-yellow-300'
+                          : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
+                      }`}
+                      title="Angļu — Latviešu / Английский — Латышский (EN → LV)"
+                    >
+                      <FlagIcon country="gb" size="xs" />
+                      <span>-</span>
+                      <FlagIcon country="lv" size="xs" />
+                      <span>Angļu–Latv</span>
+                    </button>
 
-                  {/* Mode 2: English - Latvian */}
-                  <button
-                    onClick={() => selectLearningPair('en-lv', 'lv')}
-                    className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
-                      course === 'en-lv' || (course === 'en' && language === 'lv')
-                        ? 'bg-white text-teal-900 shadow-md scale-105 ring-2 ring-yellow-300'
-                        : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
-                    }`}
-                    title="Angļu — Latviešu / Английский — Латышский (EN → LV)"
-                  >
-                    <FlagIcon country="gb" size="xs" />
-                    <span>-</span>
-                    <FlagIcon country="lv" size="xs" />
-                    <span>Angļu–Latv</span>
-                  </button>
+                    {/* Mode 2: English - Russian (placed directly under Angļu–Latv) */}
+                    <button
+                      onClick={() => selectLearningPair('en', 'ru')}
+                      className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                        course === 'en' && language === 'ru'
+                          ? 'bg-white text-indigo-900 shadow-md scale-[1.03] ring-2 ring-yellow-300'
+                          : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
+                      }`}
+                      title="Английский — Русский (EN → RU)"
+                    >
+                      <FlagIcon country="gb" size="xs" />
+                      <span>-</span>
+                      <FlagIcon country="ru" size="xs" />
+                      <span>Англ–Рус</span>
+                    </button>
+                  </div>
 
-                  {/* Mode 3: Latvian - Russian */}
-                  <button
-                    onClick={() => selectLearningPair('lv')}
-                    className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
-                      course === 'lv'
-                        ? 'bg-white text-rose-900 shadow-md scale-105 ring-2 ring-yellow-300'
-                        : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
-                    }`}
-                    title="Латышский — Русский (LV → RU)"
-                  >
-                    <FlagIcon country="lv" size="xs" />
-                    <span>-</span>
-                    <FlagIcon country="ru" size="xs" />
-                    <span>{language === 'lv' ? 'Latv–Krievu' : 'Лат–Рус'}</span>
-                  </button>
+                  {/* Vertical Divider Line */}
+                  <div className="w-px self-stretch bg-white/35 my-0.5" />
 
-                  {/* Mode 4: Latvian - English */}
-                  <button
-                    onClick={() => selectLearningPair('lv-en')}
-                    className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
-                      course === 'lv-en'
-                        ? 'bg-white text-fuchsia-950 shadow-md scale-105 ring-2 ring-yellow-300'
-                        : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
-                    }`}
-                    title="Latviešu — Angļu / Латышский — Английский (LV → EN)"
-                  >
-                    <FlagIcon country="lv" size="xs" />
-                    <span>-</span>
-                    <FlagIcon country="gb" size="xs" />
-                    <span>{language === 'lv' ? 'Latv–Angļu' : 'Лат–Англ'}</span>
-                  </button>
+                  {/* Right Column: Latvian Target Modes with Лат–Рус separated by a divider line */}
+                  <div className="flex flex-col justify-between gap-1.5">
+                    {/* Mode 3: Latvian - English */}
+                    <button
+                      onClick={() => selectLearningPair('lv-en')}
+                      className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                        course === 'lv-en'
+                          ? 'bg-white text-fuchsia-950 shadow-md scale-[1.03] ring-2 ring-yellow-300'
+                          : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
+                      }`}
+                      title="Latviešu — Angļu / Латышский — Английский (LV → EN)"
+                    >
+                      <FlagIcon country="lv" size="xs" />
+                      <span>-</span>
+                      <FlagIcon country="gb" size="xs" />
+                      <span>{language === 'lv' ? 'Latv–Angļu' : 'Лат–Англ'}</span>
+                    </button>
+
+                    <div className="h-px w-full bg-white/35" />
+
+                    {/* Mode 4: Latvian - Russian (separated by line) */}
+                    <button
+                      onClick={() => selectLearningPair('lv')}
+                      className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                        course === 'lv'
+                          ? 'bg-white text-rose-900 shadow-md scale-[1.03] ring-2 ring-yellow-300'
+                          : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
+                      }`}
+                      title="Латышский — Русский (LV → RU)"
+                    >
+                      <FlagIcon country="lv" size="xs" />
+                      <span>-</span>
+                      <FlagIcon country="ru" size="xs" />
+                      <span>{language === 'lv' ? 'Latv–Krievu' : 'Лат–Рус'}</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

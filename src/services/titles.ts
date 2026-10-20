@@ -33,31 +33,38 @@ export function evaluateUnlockedTitles(stats?: UserStats): {
   const newlyUnlocked: PlayerTitle[] = [];
 
   const examResultsEn = loadExamResults('en');
+  const examResultsEnLv = loadExamResults('en-lv');
   const examResultsLv = loadExamResults('lv');
   const hasPassedGrade = (g: Grade) => {
     return (
       (examResultsEn[g] && examResultsEn[g].scorePercent >= 60) ||
+      (examResultsEnLv[g] && examResultsEnLv[g].scorePercent >= 60) ||
       (examResultsLv[g] && examResultsLv[g].scorePercent >= 60)
     );
   };
   const hasPerfectExam = () => {
     return (
       Object.values(examResultsEn).some((r) => r.scorePercent === 100) ||
+      Object.values(examResultsEnLv).some((r) => r.scorePercent === 100) ||
       Object.values(examResultsLv).some((r) => r.scorePercent === 100)
     );
   };
 
   const wordsEn = loadWordProgress('en');
+  const wordsEnLv = loadWordProgress('en-lv');
   const wordsLv = loadWordProgress('lv');
   const masteredEnCount = Object.values(wordsEn).filter((w) => w.isLearned).length;
+  const masteredEnLvCount = Object.values(wordsEnLv).filter((w) => w.isLearned).length;
   const masteredLvCount = Object.values(wordsLv).filter((w) => w.isLearned).length;
-  const totalMasteredWords = Math.max(masteredEnCount, masteredLvCount);
+  const totalMasteredWords = Math.max(masteredEnCount, masteredEnLvCount, masteredLvCount);
 
   const topicsEn = loadTopicProgress('en');
+  const topicsEnLv = loadTopicProgress('en-lv');
   const topicsLv = loadTopicProgress('lv');
   const isTopicMastered = (topicId: string) => {
     return (
       (topicsEn[topicId] && topicsEn[topicId].stars === 3) ||
+      (topicsEnLv[topicId] && topicsEnLv[topicId].stars === 3) ||
       (topicsLv[topicId] && topicsLv[topicId].stars === 3)
     );
   };

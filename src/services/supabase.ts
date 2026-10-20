@@ -2,31 +2,39 @@ import { createClient, SupabaseClient, User } from '@supabase/supabase-js';
 import { Topic, TopicProgress, WordProgress, UserStats, ExamResult } from '../types';
 import rawWordsData from '../data/words.json';
 
-let wordLookupMap: Map<string, { en: string; lv: string }> | null = null;
+let wordLookupMap: Map<string, { en: string; lv: string; ru: string }> | null = null;
 
 export function resolveWordText(wordId: string, topicId?: string, fallbackWord?: string): string {
   if (!wordLookupMap) {
     wordLookupMap = new Map();
     for (const topic of rawWordsData as Topic[]) {
       for (const w of topic.words) {
-        wordLookupMap.set(w.id, { en: w.en, lv: w.lv });
+        wordLookupMap.set(w.id, { en: w.en, lv: w.lv, ru: w.ru });
       }
     }
   }
   const isLv = wordId.startsWith('lv:') || (topicId ? topicId.startsWith('lv:') : false);
-  const cleanId = wordId.startsWith('lv:') ? wordId.slice(3) : wordId;
+  const isEnLv =
+    wordId.startsWith('en_lv:') ||
+    wordId.startsWith('en-lv:') ||
+    (topicId ? topicId.startsWith('en_lv:') || topicId.startsWith('en-lv:') : false);
+  const cleanId = wordId.replace(/^(lv:|en_lv:|en-lv:)/, '');
   const entry = wordLookupMap.get(cleanId);
   if (!entry) return fallbackWord || cleanId;
-  return isLv ? entry.lv : entry.en;
+  if (isLv) return `${entry.lv} — ${entry.ru}`;
+  if (isEnLv) return `${entry.en} — ${entry.lv}`;
+  return `${entry.en} — ${entry.ru}`;
 }
 
 export interface ExamCloudSyncData {
   results: {
     en: Record<number, ExamResult>;
+    'en-lv'?: Record<number, ExamResult>;
     lv: Record<number, ExamResult>;
   };
   history: {
     en: ExamResult[];
+    'en-lv'?: ExamResult[];
     lv: ExamResult[];
   };
 }
@@ -37,10 +45,12 @@ export interface CloudSyncData {
   statsPartial?: Partial<UserStats>;
   examResults?: {
     en: Record<number, ExamResult>;
+    'en-lv'?: Record<number, ExamResult>;
     lv: Record<number, ExamResult>;
   };
   examHistory?: {
     en: ExamResult[];
+    'en-lv'?: ExamResult[];
     lv: ExamResult[];
   };
 }
@@ -458,10 +468,10 @@ export async function fetchProgressFromCloud(userId: string): Promise<CloudSyncD
     }
 
     const examResults = user?.user_metadata?.exam_results as
-      | { en: Record<number, ExamResult>; lv: Record<number, ExamResult> }
+      | { en: Record<number, ExamResult>; 'en-lv'?: Record<number, ExamResult>; lv: Record<number, ExamResult> }
       | undefined;
     const examHistory = user?.user_metadata?.exam_history as
-      | { en: ExamResult[]; lv: ExamResult[] }
+      | { en: ExamResult[]; 'en-lv'?: ExamResult[]; lv: ExamResult[] }
       | undefined;
 
     return { topicProgress, wordProgress, statsPartial, examResults, examHistory };

@@ -117,13 +117,13 @@ export const Header: React.FC<HeaderProps> = ({
                   className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-black border shadow-2xs ${
                     course === 'lv'
                       ? 'bg-rose-50 text-rose-800 border-rose-200'
-                      : language === 'lv'
+                      : course === 'en-lv' || language === 'lv'
                       ? 'bg-teal-50 text-teal-800 border-teal-200'
                       : 'bg-sky-50 text-sky-800 border-sky-200'
                   }`}
                 >
-                  <FlagIcon country={course === 'en' ? 'gb' : 'lv'} size="xs" />
-                  <span>{course === 'lv' ? 'LV–RU' : language === 'lv' ? 'EN–LV' : 'EN–RU'}</span>
+                  <FlagIcon country={course === 'lv' ? 'lv' : 'gb'} size="xs" />
+                  <span>{course === 'lv' ? 'LV–RU' : course === 'en-lv' || language === 'lv' ? 'EN–LV' : 'EN–RU'}</span>
                 </span>
               </div>
               <p className="text-xs text-slate-400 font-medium -mt-0.5 hidden md:flex items-center gap-1.5 whitespace-nowrap">

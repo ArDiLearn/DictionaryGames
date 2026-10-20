@@ -118,7 +118,7 @@ export const TopicList: React.FC<TopicListProps> = ({
   const bannerGradient =
     course === 'lv'
       ? 'bg-gradient-to-r from-[#8C1D2E] via-rose-600 to-amber-600'
-      : language === 'lv'
+      : course === 'en-lv' || language === 'lv'
       ? 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700'
       : 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700';
 
@@ -227,13 +227,13 @@ export const TopicList: React.FC<TopicListProps> = ({
               {/* Explicit active language course indicator badge */}
               <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/25 border border-white/35 backdrop-blur-md text-white text-xs sm:text-sm font-black shadow-sm">
                 <FlagIcon
-                  country={course === 'en' ? 'gb' : 'lv'}
+                  country={course === 'lv' ? 'lv' : 'gb'}
                   size="sm"
                   className="rounded-xs ring-1 ring-white/60 shrink-0"
                 />
                 <span className="opacity-80">→</span>
                 <FlagIcon
-                  country={course === 'lv' ? 'ru' : language === 'lv' ? 'lv' : 'ru'}
+                  country={course === 'en-lv' || (course !== 'lv' && language === 'lv') ? 'lv' : 'ru'}
                   size="sm"
                   className="rounded-xs ring-1 ring-white/60 shrink-0"
                 />
@@ -265,9 +265,9 @@ export const TopicList: React.FC<TopicListProps> = ({
 
                   {/* Mode 2: English - Latvian */}
                   <button
-                    onClick={() => selectLearningPair('en', 'lv')}
+                    onClick={() => selectLearningPair('en-lv', 'lv')}
                     className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
-                      course === 'en' && language === 'lv'
+                      course === 'en-lv' || (course === 'en' && language === 'lv')
                         ? 'bg-white text-teal-900 shadow-md scale-105 ring-2 ring-yellow-300'
                         : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
                     }`}

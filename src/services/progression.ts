@@ -38,9 +38,11 @@ export function recordWordAttempt(
   const isLearned = isCorrect && (clearMistake || (timesCorrect >= 2 && timesCorrect > timesWrong));
   const newlyMastered = !prev.isLearned && isLearned;
 
+  const coursePrefix = course === 'lv' ? 'lv:' : course === 'en-lv' ? 'en_lv:' : '';
+
   words[wordId] = {
     word_id: wordId,
-    word: resolveWordText(course === 'lv' ? `lv:${wordId}` : wordId, topicId, prev.word),
+    word: resolveWordText(`${coursePrefix}${wordId}`, `${coursePrefix}${topicId}`, prev.word),
     topic_id: topicId,
     timesCorrect,
     timesWrong,

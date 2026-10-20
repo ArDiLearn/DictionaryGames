@@ -87,12 +87,18 @@ export const App: React.FC = () => {
   const topics = rawWordsData as Topic[];
 
   // App State
-  const [course, setCourse] = useState<LearningCourse>(() => getStoredCourse());
+  const initialCourse: LearningCourse = (() => {
+    const storedCourse = getStoredCourse();
+    const storedLang = getStoredLanguage();
+    if (storedCourse === 'en' && storedLang === 'lv') return 'en-lv';
+    return storedCourse;
+  })();
+  const [course, setCourse] = useState<LearningCourse>(initialCourse);
   const [language, setLanguage] = useState<Language>(() => getStoredLanguage());
   const [selectedGrades, setSelectedGrades] = useState<Grade[]>(getStoredGrades());
   const [stats, setStats] = useState<UserStats>(loadLocalStats());
   const [topicProgress, setTopicProgress] = useState<Record<string, TopicProgress>>(() =>
-    loadTopicProgress(getStoredCourse())
+    loadTopicProgress(initialCourse)
   );
   const {
     selectedTopic,
@@ -109,10 +115,10 @@ export const App: React.FC = () => {
   } = useNavigation(topics, course, language);
   const [gameSessionId, setGameSessionId] = useState(0);
   const [examResults, setExamResults] = useState<Record<number, ExamResult>>(() =>
-    loadExamResults(getStoredCourse())
+    loadExamResults(initialCourse)
   );
   const [examHistory, setExamHistory] = useState<ExamResult[]>(() =>
-    loadExamHistory(getStoredCourse())
+    loadExamHistory(initialCourse)
   );
   const [statsInitialTab, setStatsInitialTab] = useState<'overview' | 'exams' | 'topics' | 'practice' | 'awards'>('overview');
   const [isSyncModalOpen, setIsSyncModalOpen] = useState<boolean>(false);
@@ -120,7 +126,7 @@ export const App: React.FC = () => {
   const [isStatsModalOpen, setIsStatsModalOpen] = useState<boolean>(false);
   const [isTitleSelectOpen, setIsTitleSelectOpen] = useState<boolean>(false);
   const [wordProgress, setWordProgress] = useState<Record<string, WordProgress>>(() =>
-    loadWordProgress(getStoredCourse())
+    loadWordProgress(initialCourse)
   );
   const { isCloudSynced, reloadAllFromLocal, handleManualSyncComplete } = useCloudSync({
     course,
@@ -215,12 +221,27 @@ export const App: React.FC = () => {
   const handleLanguageChange = (newLang: Language) => {
     setLanguage(newLang);
     saveStoredLanguage(newLang);
+    if (course !== 'lv') {
+      const nextCourse: LearningCourse = newLang === 'lv' ? 'en-lv' : 'en';
+      if (nextCourse !== course) {
+        setCourse(nextCourse);
+        saveStoredCourse(nextCourse);
+        reloadAllFromLocal(nextCourse);
+      }
+    }
     trackLanguageChange(newLang);
   };
 
   const handleCourseChange = (newCourse: LearningCourse) => {
     setCourse(newCourse);
     saveStoredCourse(newCourse);
+    if (newCourse === 'en-lv' && language !== 'lv') {
+      setLanguage('lv');
+      saveStoredLanguage('lv');
+    } else if (newCourse === 'en' && language !== 'ru') {
+      setLanguage('ru');
+      saveStoredLanguage('ru');
+    }
     reloadAllFromLocal(newCourse);
     handleHomeClick();
   };

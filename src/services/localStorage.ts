@@ -58,24 +58,30 @@ export function getItemWithFallback(newKey: string, ...oldKeys: string[]): strin
   return null;
 }
 
+function getCourseSuffix(course: LearningCourse = 'en'): string {
+  if (course === 'lv') return '_lv';
+  if (course === 'en-lv') return '_en_lv';
+  return '';
+}
+
 function getTopicProgressKey(course: LearningCourse = 'en', legacy: 'none' | 'mindwordy' | 'wordykids' = 'none'): string {
   const base = legacy === 'wordykids' ? LEGACY_TOPIC_PROGRESS_KEY : legacy === 'mindwordy' ? OLD_TOPIC_PROGRESS_KEY : TOPIC_PROGRESS_KEY;
-  return course === 'lv' ? `${base}_lv` : base;
+  return `${base}${getCourseSuffix(course)}`;
 }
 
 function getWordProgressKey(course: LearningCourse = 'en', legacy: 'none' | 'mindwordy' | 'wordykids' = 'none'): string {
   const base = legacy === 'wordykids' ? LEGACY_WORD_PROGRESS_KEY : legacy === 'mindwordy' ? OLD_WORD_PROGRESS_KEY : WORD_PROGRESS_KEY;
-  return course === 'lv' ? `${base}_lv` : base;
+  return `${base}${getCourseSuffix(course)}`;
 }
 
 export function getExamResultsKey(course: LearningCourse = 'en', legacy: 'none' | 'mindwordy' | 'wordykids' = 'none'): string {
   const base = legacy === 'wordykids' ? LEGACY_EXAM_RESULTS_KEY : legacy === 'mindwordy' ? OLD_EXAM_RESULTS_KEY : EXAM_RESULTS_KEY;
-  return course === 'lv' ? `${base}_lv` : base;
+  return `${base}${getCourseSuffix(course)}`;
 }
 
 export function getExamHistoryKey(course: LearningCourse = 'en', legacy: 'none' | 'mindwordy' | 'wordykids' = 'none'): string {
   const base = legacy === 'wordykids' ? LEGACY_EXAM_HISTORY_KEY : legacy === 'mindwordy' ? OLD_EXAM_HISTORY_KEY : EXAM_HISTORY_KEY;
-  return course === 'lv' ? `${base}_lv` : base;
+  return `${base}${getCourseSuffix(course)}`;
 }
 
 // --- Preferences ---
@@ -83,7 +89,7 @@ export function getExamHistoryKey(course: LearningCourse = 'en', legacy: 'none' 
 export function getStoredCourse(): LearningCourse {
   try {
     const c = getItemWithFallback(COURSE_KEY, OLD_COURSE_KEY, LEGACY_COURSE_KEY);
-    if (c === 'lv' || c === 'en') return c;
+    if (c === 'lv' || c === 'en-lv' || c === 'en') return c;
   } catch {}
   return 'en';
 }

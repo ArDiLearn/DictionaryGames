@@ -409,6 +409,7 @@ export const App: React.FC = () => {
 
   const handleSelectGrammarTopic = (topic: GrammarTopic) => {
     setCatalogTab('grammar');
+    setGameSessionId((prev) => prev + 1);
     setActiveGrammarTopic(topic);
   };
 
@@ -477,6 +478,7 @@ export const App: React.FC = () => {
           <div className="pt-2">
             <Suspense fallback={<GameLoadingFallback />}>
               <GrammarGame
+                key={`${activeGrammarTopic.id}-${gameSessionId}`}
                 topic={activeGrammarTopic}
                 language={language}
                 course={course}

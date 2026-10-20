@@ -2350,19 +2350,28 @@ export function getGrammarTopicsForGrades(selectedGrades: Grade[]): GrammarTopic
   return list;
 }
 
-// Helper to get questions for topic, handling mix
+function shuffleArray<T>(array: T[]): T[] {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// Helper to get questions for topic, handling mix and randomizing order
 export function getQuestionsForGrammarTopic(topic: GrammarTopic): GrammarQuestion[] {
   if (topic.id === 'g1_mix') {
     const all = GRADE_1_GRAMMAR_TOPICS
       .filter((t) => t.id !== 'g1_mix')
       .flatMap((t) => t.questions);
-    return [...all].sort(() => Math.random() - 0.5).slice(0, 10);
+    return shuffleArray(all).slice(0, 10);
   }
   if (topic.id === 'g2_mix') {
     const all = GRADE_2_GRAMMAR_TOPICS
       .filter((t) => t.id !== 'g2_mix')
       .flatMap((t) => t.questions);
-    return [...all].sort(() => Math.random() - 0.5).slice(0, 10);
+    return shuffleArray(all).slice(0, 10);
   }
-  return topic.questions;
+  return shuffleArray(topic.questions);
 }

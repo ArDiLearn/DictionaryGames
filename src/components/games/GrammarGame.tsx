@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Volume2, RotateCcw, CheckCircle2 } from 'lucide-react';
 import { GrammarTopic, GrammarQuestion, getQuestionsForGrammarTopic } from '../../data/grammarData';
 import { Language, LearningCourse } from '../../types';
@@ -22,15 +22,24 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
   onComplete,
   onBack,
 }) => {
-  const questions: GrammarQuestion[] = useMemo(() => {
-    return getQuestionsForGrammarTopic(topic);
-  }, [topic]);
+  const [questions, setQuestions] = useState<GrammarQuestion[]>(() =>
+    getQuestionsForGrammarTopic(topic)
+  );
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(null);
   const [isAnswerChecked, setIsAnswerChecked] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
+
+  useEffect(() => {
+    setQuestions(getQuestionsForGrammarTopic(topic));
+    setCurrentIndex(0);
+    setSelectedOptionIndex(null);
+    setIsAnswerChecked(false);
+    setCorrectCount(0);
+    setIsGameOver(false);
+  }, [topic]);
 
   const currentQ = questions[currentIndex];
   const progressPercent = questions.length > 0 ? ((currentIndex + 1) / questions.length) * 100 : 0;
@@ -106,6 +115,7 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
 
   const handleRestart = () => {
     sounds.playClick();
+    setQuestions(getQuestionsForGrammarTopic(topic));
     setCurrentIndex(0);
     setSelectedOptionIndex(null);
     setIsAnswerChecked(false);

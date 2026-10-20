@@ -357,7 +357,6 @@ export async function syncProgressToCloud(
         user_id: userId,
         player_name: stats.playerName,
         word_id: formatCloudWordId(canonicalId, wp.topic_id),
-        word: resolveWordText(canonicalId, wp.topic_id, wp.word),
         topic_id: wp.topic_id,
         times_correct: wp.timesCorrect,
         times_wrong: wp.timesWrong,
@@ -398,8 +397,8 @@ export async function syncProgressToCloud(
         onConflict: 'user_id,word_id',
       });
       if (wordErr) {
-        // Fallback if optional 'word' or 'player_name' columns are not yet added in Supabase schema
-        const legacyWordRows = wordRows.map(({ word: _word, player_name: _pn, ...rest }) => rest);
+        // Fallback if optional 'player_name' column is not yet added in Supabase schema
+        const legacyWordRows = wordRows.map(({ player_name: _pn, ...rest }) => rest);
         const { error: fallbackErr } = await client.from('word_progress').upsert(legacyWordRows, {
           onConflict: 'user_id,word_id',
         });
@@ -478,7 +477,6 @@ export async function fetchProgressFromCloud(userId: string): Promise<CloudSyncD
         const existing = wordProgress[canonicalId];
         wordProgress[canonicalId] = {
           word_id: canonicalId,
-          word: resolveWordText(canonicalId, w.topic_id, w.word),
           topic_id: w.topic_id || existing?.topic_id,
           timesCorrect: Math.max(existing?.timesCorrect || 0, w.times_correct || 0),
           timesWrong: Math.max(existing?.timesWrong || 0, w.times_wrong || 0),

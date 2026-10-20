@@ -200,7 +200,6 @@ export async function mergeWithCloud(): Promise<boolean> {
         } else {
           merged[wid] = {
             word_id: wid,
-            word: cWord.word || merged[wid].word,
             topic_id: cWord.topic_id || merged[wid].topic_id,
             timesCorrect: Math.max(merged[wid].timesCorrect || 0, cWord.timesCorrect || 0),
             timesWrong: Math.max(merged[wid].timesWrong || 0, cWord.timesWrong || 0),

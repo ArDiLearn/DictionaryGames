@@ -3,7 +3,7 @@
 
 alter table public.topic_progress add column if not exists player_name text;
 alter table public.word_progress add column if not exists player_name text;
-alter table public.word_progress add column if not exists word text;
+alter table public.word_progress drop column if exists word;
 
 -- 1. Backfill player_name from public.profiles for all existing rows
 update public.topic_progress tp
@@ -741,12 +741,6 @@ values
 )
 update public.word_progress wp
 set
-  word = case
-    when split_part(wp.word_id, ' — ', 1) like 'lv:%' then d.ru || ' (' || d.lv || ')'
-    when split_part(wp.word_id, ' — ', 1) like 'lv_en:%' or split_part(wp.word_id, ' — ', 1) like 'lv-en:%' then d.ru || ' (' || d.lv || ' — ' || d.en || ')'
-    when split_part(wp.word_id, ' — ', 1) like 'en_lv:%' or split_part(wp.word_id, ' — ', 1) like 'en-lv:%' then d.ru || ' (' || d.en || ' — ' || d.lv || ')'
-    else d.ru || ' (' || d.en || ')'
-  end,
   word_id = case
     when split_part(wp.word_id, ' — ', 1) like 'lv:%' then split_part(wp.word_id, ' — ', 1) || ' — ' || d.ru || ' (' || d.lv || ')'
     when split_part(wp.word_id, ' — ', 1) like 'lv_en:%' or split_part(wp.word_id, ' — ', 1) like 'lv-en:%' then split_part(wp.word_id, ' — ', 1) || ' — ' || d.ru || ' (' || d.lv || ' — ' || d.en || ')'

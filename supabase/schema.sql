@@ -44,7 +44,6 @@ create table if not exists public.word_progress (
   user_id uuid references auth.users on delete cascade not null,
   player_name text,
   word_id text not null,
-  word text,
   topic_id text not null,
   times_correct integer default 0,
   times_wrong integer default 0,
@@ -54,7 +53,7 @@ create table if not exists public.word_progress (
 );
 
 alter table public.word_progress add column if not exists player_name text;
-alter table public.word_progress add column if not exists word text;
+alter table public.word_progress drop column if exists word;
 
 -- 4. Enable Row Level Security (RLS)
 alter table public.profiles enable row level security;

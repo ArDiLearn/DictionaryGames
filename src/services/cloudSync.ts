@@ -370,6 +370,9 @@ export async function mergeWithCloud(): Promise<boolean> {
       }
     }
 
+    // Push merged & Russian-decoded progress back to Supabase
+    triggerCloudSync();
+
     return true;
   } catch (err) {
     console.error('Failed to merge with cloud:', err);

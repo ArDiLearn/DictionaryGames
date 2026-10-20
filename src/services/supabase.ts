@@ -462,8 +462,10 @@ export async function fetchProgressFromCloud(userId: string): Promise<CloudSyncD
 
     const wordProgress: Record<string, WordProgress> = {};
     if (words) {
+      const existingRawIds = new Set(words.map((w) => String(w.word_id)));
       for (const w of words) {
-        const canonicalId = extractCanonicalWordId(w.word_id);
+        const rawId = String(w.word_id);
+        const canonicalId = extractCanonicalWordId(rawId);
         const existing = wordProgress[canonicalId];
         wordProgress[canonicalId] = {
           word_id: canonicalId,
@@ -474,6 +476,19 @@ export async function fetchProgressFromCloud(userId: string): Promise<CloudSyncD
           isLearned: Boolean(existing?.isLearned || w.is_learned),
           lastReviewedAt: w.last_reviewed_at || existing?.lastReviewedAt,
         };
+
+        // Immediately upgrade bare word_id rows in Supabase on read
+        if (!rawId.includes(' — ')) {
+          const upgradedId = formatCloudWordId(canonicalId, w.topic_id);
+          if (upgradedId !== rawId && !existingRawIds.has(upgradedId)) {
+            existingRawIds.add(upgradedId);
+            void client
+              .from('word_progress')
+              .update({ word_id: upgradedId })
+              .eq('user_id', userId)
+              .eq('word_id', rawId);
+          }
+        }
       }
     }
 

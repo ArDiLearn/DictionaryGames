@@ -41,14 +41,16 @@ const FullBodyFigure: React.FC<{
     if (isTall) {
       return (
         <svg viewBox="0 0 60 140" className="w-16 h-36 sm:w-20 sm:h-44 drop-shadow-sm select-none" fill="none">
-          {/* Hair back */}
-          <ellipse cx="30" cy="20" rx="13" ry="12" fill="#78350f" />
-          {/* Head & Ears */}
-          <circle cx="17" cy="22" r="3.5" fill="#fed7aa" />
-          <circle cx="43" cy="22" r="3.5" fill="#fed7aa" />
-          <circle cx="30" cy="22" r="12" fill="#fed7aa" />
-          {/* Boy Hair front */}
-          <path d="M18 19 C22 10 38 10 42 19 C38 15 32 14 26 15 Z" fill="#78350f" />
+          {/* Back Hair */}
+          <ellipse cx="30" cy="18" rx="14" ry="12.5" fill="#5c2406" />
+          {/* Ears */}
+          <circle cx="17" cy="22" r="3.2" fill="#fed7aa" />
+          <circle cx="43" cy="22" r="3.2" fill="#fed7aa" />
+          {/* Face */}
+          <circle cx="30" cy="22" r="11.5" fill="#fed7aa" />
+          {/* Front Hair & Bangs */}
+          <path d="M17 20 C16 10 21 6.5 30 6.5 C39 6.5 44 10 43 20 C41 17.5 38 16 35 17 C32 15 28 15 25 17.5 C22 16 19 17.5 17 20 Z" fill="#78350f" />
+          <path d="M23 9.5 C26 8 33 8 37 9.5" stroke="#9a3412" strokeWidth="1.8" strokeLinecap="round" fill="none" />
           {/* Eyes & smile */}
           <circle cx="26" cy="22" r="1.8" fill="#1e293b" />
           <circle cx="34" cy="22" r="1.8" fill="#1e293b" />
@@ -83,14 +85,16 @@ const FullBodyFigure: React.FC<{
       // Short Boy
       return (
         <svg viewBox="0 0 60 140" className="w-16 h-36 sm:w-20 sm:h-44 drop-shadow-sm select-none" fill="none">
-          {/* Hair back */}
-          <ellipse cx="30" cy="74" rx="12" ry="11" fill="#78350f" />
-          {/* Head & Ears */}
-          <circle cx="18" cy="76" r="3.5" fill="#fed7aa" />
-          <circle cx="42" cy="76" r="3.5" fill="#fed7aa" />
-          <circle cx="30" cy="76" r="11" fill="#fed7aa" />
-          {/* Boy Hair front */}
-          <path d="M19 73 C23 65 37 65 41 73 C37 70 32 69 27 70 Z" fill="#78350f" />
+          {/* Back Hair */}
+          <ellipse cx="30" cy="72" rx="13" ry="11.5" fill="#5c2406" />
+          {/* Ears */}
+          <circle cx="18" cy="76" r="3" fill="#fed7aa" />
+          <circle cx="42" cy="76" r="3" fill="#fed7aa" />
+          {/* Face */}
+          <circle cx="30" cy="76" r="10.5" fill="#fed7aa" />
+          {/* Front Hair & Bangs */}
+          <path d="M18 74 C17 64.5 21 61 30 61 C39 61 43 64.5 42 74 C40 71.5 38 70 34 71 C32 69 28 69 25 71.5 C22 70 20 71.5 18 74 Z" fill="#78350f" />
+          <path d="M23 64 C26 62.5 33 62.5 37 64" stroke="#9a3412" strokeWidth="1.6" strokeLinecap="round" fill="none" />
           {/* Eyes & smile */}
           <circle cx="26" cy="76" r="1.8" fill="#1e293b" />
           <circle cx="34" cy="76" r="1.8" fill="#1e293b" />
@@ -125,17 +129,25 @@ const FullBodyFigure: React.FC<{
   if (isTall) {
     return (
       <svg viewBox="0 0 60 140" className="w-16 h-36 sm:w-20 sm:h-44 drop-shadow-sm select-none" fill="none">
-        {/* Hair Back / Pigtails */}
-        <circle cx="17" cy="20" r="6" fill="#b45309" />
-        <circle cx="43" cy="20" r="6" fill="#b45309" />
-        <path d="M14 22 C10 32 13 40 17 44" stroke="#b45309" strokeWidth="4.5" strokeLinecap="round" fill="none" />
-        <path d="M46 22 C50 32 47 40 43 44" stroke="#b45309" strokeWidth="4.5" strokeLinecap="round" fill="none" />
-        <circle cx="16" cy="24" r="3" fill="#ec4899" />
-        <circle cx="44" cy="24" r="3" fill="#ec4899" />
-        {/* Head */}
-        <circle cx="30" cy="22" r="12" fill="#fed7aa" />
-        {/* Bangs */}
-        <path d="M19 18 C24 13 36 13 41 18 C37 15 33 14 30 14 C27 14 23 15 19 18 Z" fill="#b45309" />
+        {/* Ponytail puffs behind */}
+        <path d="M15 22 C10 24 7 32 10 39 C12 42 16 41 17 37 C18 33 17 26 15 22 Z" fill="#b45309" />
+        <path d="M45 22 C50 24 53 32 50 39 C48 42 44 41 43 37 C42 33 43 26 45 22 Z" fill="#b45309" />
+        {/* Scrunchies */}
+        <ellipse cx="15" cy="24" rx="2.5" ry="3.5" fill="#ec4899" />
+        <ellipse cx="45" cy="24" rx="2.5" ry="3.5" fill="#ec4899" />
+        {/* Back Hair behind neck */}
+        <path d="M18 20 C14 16 14 28 13 36 C17 38 21 34 22 28 C23 32 37 32 38 28 C39 34 43 38 47 36 C46 28 46 16 42 20 Z" fill="#78350f" />
+        {/* Ears */}
+        <circle cx="17" cy="22" r="3.2" fill="#fed7aa" />
+        <circle cx="43" cy="22" r="3.2" fill="#fed7aa" />
+        {/* Face */}
+        <circle cx="30" cy="22" r="11.5" fill="#fed7aa" />
+        {/* Front Hair & Bangs */}
+        <path d="M17 21 C15 10.5 21 6.5 30 6.5 C39 6.5 45 10.5 43 21 C41 18 38 18 34 18 C32 16.5 30 16.5 28 18 C24 18 20 18 17 21 Z" fill="#b45309" />
+        <path d="M23 9.5 C26 8 34 8 37 9.5" stroke="#d97706" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+        {/* Cute Clip */}
+        <circle cx="21" cy="11.5" r="2.2" fill="#fb7185" />
+        <circle cx="21" cy="11.5" r="0.9" fill="#fef08a" />
         {/* Eyes & smile */}
         <circle cx="26" cy="22" r="1.8" fill="#1e293b" />
         <circle cx="34" cy="22" r="1.8" fill="#1e293b" />
@@ -168,17 +180,25 @@ const FullBodyFigure: React.FC<{
     // Short Girl
     return (
       <svg viewBox="0 0 60 140" className="w-16 h-36 sm:w-20 sm:h-44 drop-shadow-sm select-none" fill="none">
-        {/* Hair Back / Pigtails */}
-        <circle cx="18" cy="74" r="5" fill="#b45309" />
-        <circle cx="42" cy="74" r="5" fill="#b45309" />
-        <path d="M15 76 C12 84 14 90 18 93" stroke="#b45309" strokeWidth="4" strokeLinecap="round" fill="none" />
-        <path d="M45 76 C48 84 46 90 42 93" stroke="#b45309" strokeWidth="4" strokeLinecap="round" fill="none" />
-        <circle cx="17" cy="77" r="2.5" fill="#06b6d4" />
-        <circle cx="43" cy="77" r="2.5" fill="#06b6d4" />
-        {/* Head */}
-        <circle cx="30" cy="76" r="11" fill="#fed7aa" />
-        {/* Bangs */}
-        <path d="M20 72 C24 67 36 67 40 72 C37 69 33 68 30 68 C27 68 23 69 20 72 Z" fill="#b45309" />
+        {/* Ponytail puffs behind */}
+        <path d="M16 76 C11 78 8 85 11 91 C13 94 17 93 18 89 C19 86 18 80 16 76 Z" fill="#b45309" />
+        <path d="M44 76 C49 78 52 85 49 91 C47 94 43 93 42 89 C41 86 42 80 44 76 Z" fill="#b45309" />
+        {/* Scrunchies */}
+        <ellipse cx="16" cy="77" rx="2.2" ry="3" fill="#06b6d4" />
+        <ellipse cx="44" cy="77" rx="2.2" ry="3" fill="#06b6d4" />
+        {/* Back Hair behind neck */}
+        <path d="M18 74 C15 70 15 80 14 87 C18 89 21 86 22 81 C23 85 37 85 38 81 C39 86 42 89 46 87 C45 80 45 70 42 74 Z" fill="#78350f" />
+        {/* Ears */}
+        <circle cx="18" cy="76" r="3" fill="#fed7aa" />
+        <circle cx="42" cy="76" r="3" fill="#fed7aa" />
+        {/* Face */}
+        <circle cx="30" cy="76" r="10.5" fill="#fed7aa" />
+        {/* Front Hair & Bangs */}
+        <path d="M18 75 C16 65 21 60.5 30 60.5 C39 60.5 44 65 42 75 C40 72 37 72 34 72 C32 70.5 30 70.5 28 72 C24 72 20 72 18 75 Z" fill="#b45309" />
+        <path d="M23 63.5 C26 62 34 62 37 63.5" stroke="#d97706" strokeWidth="1.6" strokeLinecap="round" fill="none" />
+        {/* Cute Clip */}
+        <circle cx="22" cy="65.5" r="2" fill="#06b6d4" />
+        <circle cx="22" cy="65.5" r="0.8" fill="#ffffff" />
         {/* Eyes & smile */}
         <circle cx="26" cy="76" r="1.8" fill="#1e293b" />
         <circle cx="34" cy="76" r="1.8" fill="#1e293b" />

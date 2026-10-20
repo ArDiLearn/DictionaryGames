@@ -29,6 +29,7 @@ alter table public.profiles add column if not exists claimed_milestone_ids jsonb
 -- 2. Topic Progress Table
 create table if not exists public.topic_progress (
   user_id uuid references auth.users on delete cascade not null,
+  player_name text,
   topic_id text not null,
   stars integer default 0,
   mastered_words jsonb default '[]'::jsonb,
@@ -36,9 +37,12 @@ create table if not exists public.topic_progress (
   primary key (user_id, topic_id)
 );
 
+alter table public.topic_progress add column if not exists player_name text;
+
 -- 3. Word Progress Table
 create table if not exists public.word_progress (
   user_id uuid references auth.users on delete cascade not null,
+  player_name text,
   word_id text not null,
   word text,
   topic_id text not null,
@@ -49,6 +53,7 @@ create table if not exists public.word_progress (
   primary key (user_id, word_id)
 );
 
+alter table public.word_progress add column if not exists player_name text;
 alter table public.word_progress add column if not exists word text;
 
 -- 4. Enable Row Level Security (RLS)
@@ -115,6 +120,51 @@ drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created
   after insert on auth.users
   for each row execute procedure public.handle_new_user();
+
+-- 8b. Auto-populate player_name in topic_progress & word_progress from profiles
+create or replace function public.fill_progress_player_name()
+returns trigger
+language plpgsql
+security definer set search_path = public
+as $$
+begin
+  if new.player_name is null or new.player_name = '' then
+    select p.player_name into new.player_name
+    from public.profiles p
+    where p.id = new.user_id;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists trg_topic_progress_player_name on public.topic_progress;
+create trigger trg_topic_progress_player_name
+  before insert or update on public.topic_progress
+  for each row execute procedure public.fill_progress_player_name();
+
+drop trigger if exists trg_word_progress_player_name on public.word_progress;
+create trigger trg_word_progress_player_name
+  before insert or update on public.word_progress
+  for each row execute procedure public.fill_progress_player_name();
+
+create or replace function public.propagate_profile_player_name()
+returns trigger
+language plpgsql
+security definer set search_path = public
+as $$
+begin
+  if new.player_name is distinct from old.player_name then
+    update public.topic_progress set player_name = new.player_name where user_id = new.id;
+    update public.word_progress set player_name = new.player_name where user_id = new.id;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists trg_profiles_propagate_player_name on public.profiles;
+create trigger trg_profiles_propagate_player_name
+  after update of player_name on public.profiles
+  for each row execute procedure public.propagate_profile_player_name();
 
 -- 9. App Activity / Heartbeat Table (tracks device sessions & prevents Supabase free-tier auto-pause)
 create table if not exists public.app_activity (

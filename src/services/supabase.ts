@@ -324,9 +324,10 @@ export async function syncProgressToCloud(
       // Ignored if optional columns not yet added to SQL schema
     }
 
-    // 3. Batch upsert Topic Progress
+    // 3. Batch upsert Topic Progress (with player_name decoding)
     const topicRows = Object.values(topicProgress).map((tp) => ({
       user_id: userId,
+      player_name: stats.playerName,
       topic_id: tp.topic_id,
       stars: tp.stars,
       mastered_words: tp.masteredWordIds,
@@ -338,15 +339,23 @@ export async function syncProgressToCloud(
         onConflict: 'user_id,topic_id',
       });
       if (topicErr) {
-        console.warn('Error saving topic_progress to Supabase:', topicErr);
+        // Fallback if optional 'player_name' column is not yet added in Supabase schema
+        const legacyTopicRows = topicRows.map(({ player_name: _pn, ...rest }) => rest);
+        const { error: fallbackTopicErr } = await client.from('topic_progress').upsert(legacyTopicRows, {
+          onConflict: 'user_id,topic_id',
+        });
+        if (fallbackTopicErr) {
+          console.warn('Error saving topic_progress to Supabase:', fallbackTopicErr);
+        }
       }
     }
 
-    // 4. Batch upsert Word Progress (with Russian decoding in word_id)
+    // 4. Batch upsert Word Progress (with player_name and Russian decoding in word_id)
     const wordRows = Object.values(wordProgress).map((wp) => {
       const canonicalId = extractCanonicalWordId(wp.word_id);
       return {
         user_id: userId,
+        player_name: stats.playerName,
         word_id: formatCloudWordId(canonicalId, wp.topic_id),
         word: resolveWordText(canonicalId, wp.topic_id, wp.word),
         topic_id: wp.topic_id,
@@ -389,8 +398,8 @@ export async function syncProgressToCloud(
         onConflict: 'user_id,word_id',
       });
       if (wordErr) {
-        // Fallback if optional 'word' column is not yet added in Supabase schema
-        const legacyWordRows = wordRows.map(({ word: _word, ...rest }) => rest);
+        // Fallback if optional 'word' or 'player_name' columns are not yet added in Supabase schema
+        const legacyWordRows = wordRows.map(({ word: _word, player_name: _pn, ...rest }) => rest);
         const { error: fallbackErr } = await client.from('word_progress').upsert(legacyWordRows, {
           onConflict: 'user_id,word_id',
         });

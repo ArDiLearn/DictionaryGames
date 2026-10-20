@@ -1,8 +1,67 @@
--- Instant backfill of Russian decoding for all existing rows in public.word_progress
+-- Instant backfill of player_name and Russian word_id decoding in public.topic_progress & public.word_progress
 -- Run this script once in Supabase -> SQL Editor
 
+alter table public.topic_progress add column if not exists player_name text;
+alter table public.word_progress add column if not exists player_name text;
 alter table public.word_progress add column if not exists word text;
 
+-- 1. Backfill player_name from public.profiles for all existing rows
+update public.topic_progress tp
+set player_name = p.player_name
+from public.profiles p
+where tp.user_id = p.id;
+
+update public.word_progress wp
+set player_name = p.player_name
+from public.profiles p
+where wp.user_id = p.id;
+
+-- 2. Triggers to automatically keep player_name populated on insert/update
+create or replace function public.fill_progress_player_name()
+returns trigger
+language plpgsql
+security definer set search_path = public
+as $$
+begin
+  if new.player_name is null or new.player_name = '' then
+    select p.player_name into new.player_name
+    from public.profiles p
+    where p.id = new.user_id;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists trg_topic_progress_player_name on public.topic_progress;
+create trigger trg_topic_progress_player_name
+  before insert or update on public.topic_progress
+  for each row execute procedure public.fill_progress_player_name();
+
+drop trigger if exists trg_word_progress_player_name on public.word_progress;
+create trigger trg_word_progress_player_name
+  before insert or update on public.word_progress
+  for each row execute procedure public.fill_progress_player_name();
+
+create or replace function public.propagate_profile_player_name()
+returns trigger
+language plpgsql
+security definer set search_path = public
+as $$
+begin
+  if new.player_name is distinct from old.player_name then
+    update public.topic_progress set player_name = new.player_name where user_id = new.id;
+    update public.word_progress set player_name = new.player_name where user_id = new.id;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists trg_profiles_propagate_player_name on public.profiles;
+create trigger trg_profiles_propagate_player_name
+  after update of player_name on public.profiles
+  for each row execute procedure public.propagate_profile_player_name();
+
+-- 3. Backfill Russian decoding for word_id and word in public.word_progress
 with dict(id, ru, en, lv) as (
 values
   ('1', 'один', 'one', 'viens'),

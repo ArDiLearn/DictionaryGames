@@ -983,7 +983,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                   </div>
                 </div>
                 <span className="text-xs font-black bg-emerald-100 text-emerald-900 px-2.5 py-1 rounded-full border border-emerald-300">
-                  1 {language === 'lv' ? 'klase' : 'класс'}
+                  {GRADE_1_GRAMMAR_TOPICS.length} {language === 'lv' ? 'tēmas' : 'тем'}
                 </span>
               </div>
 

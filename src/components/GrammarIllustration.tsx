@@ -426,13 +426,6 @@ export const GrammarIllustration: React.FC<GrammarIllustrationProps> = ({
           )}
         </div>
       )}
-
-      {/* Caption name of item (hidden if hideCaption is true) */}
-      {!imageWord.hideCaption && (imageWord.customLabel || imageWord.en) && (
-        <span className="mt-1 text-xs sm:text-sm font-black text-slate-700 uppercase tracking-wider font-comic">
-          {imageWord.customLabel || imageWord.en}
-        </span>
-      )}
     </div>
   );
 };

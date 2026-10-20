@@ -2359,7 +2359,7 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'there_is_are',
         prompt: 'Look at the living room:',
         audioText: 'There are three cushions.',
-        imageWord: { en: 'cushions', emoji: '🛋️', customLabel: '3 Cushions' },
+        imageWord: { en: 'cushions', emoji: '🛋️', secondEmoji: '🛋️ 🛋️' },
         options: [
           "There's three cushions.",
           'There are three cushions.',
@@ -2377,7 +2377,7 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'there_is_are',
         prompt: 'Look at the bedroom:',
         audioText: "There's a big bed.",
-        imageWord: { en: 'bed', emoji: '🛏️', customLabel: '1 Big Bed' },
+        imageWord: { en: 'bed', emoji: '🛏️' },
         options: [
           "There's a big bed.",
           'There are a big bed.',
@@ -2395,7 +2395,7 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'there_is_are',
         prompt: 'Look at the garden:',
         audioText: 'There are four flowers.',
-        imageWord: { en: 'flowers', emoji: '🌸', secondEmoji: '🌺', customLabel: '4 Flowers' },
+        imageWord: { en: 'flowers', emoji: '🌸 🌸', secondEmoji: '🌺 🌺' },
         options: [
           "There's four flowers.",
           'There are four flowers.',

@@ -1,5 +1,24 @@
 import { createClient, SupabaseClient, User } from '@supabase/supabase-js';
-import { TopicProgress, WordProgress, UserStats, ExamResult } from '../types';
+import { Topic, TopicProgress, WordProgress, UserStats, ExamResult } from '../types';
+import rawWordsData from '../data/words.json';
+
+let wordLookupMap: Map<string, { en: string; lv: string }> | null = null;
+
+export function resolveWordText(wordId: string, topicId?: string, fallbackWord?: string): string {
+  if (!wordLookupMap) {
+    wordLookupMap = new Map();
+    for (const topic of rawWordsData as Topic[]) {
+      for (const w of topic.words) {
+        wordLookupMap.set(w.id, { en: w.en, lv: w.lv });
+      }
+    }
+  }
+  const isLv = wordId.startsWith('lv:') || (topicId ? topicId.startsWith('lv:') : false);
+  const cleanId = wordId.startsWith('lv:') ? wordId.slice(3) : wordId;
+  const entry = wordLookupMap.get(cleanId);
+  if (!entry) return fallbackWord || cleanId;
+  return isLv ? entry.lv : entry.en;
+}
 
 export interface ExamCloudSyncData {
   results: {
@@ -296,6 +315,7 @@ export async function syncProgressToCloud(
     const wordRows = Object.values(wordProgress).map((wp) => ({
       user_id: userId,
       word_id: wp.word_id,
+      word: resolveWordText(wp.word_id, wp.topic_id, wp.word),
       topic_id: wp.topic_id,
       times_correct: wp.timesCorrect,
       times_wrong: wp.timesWrong,
@@ -308,7 +328,14 @@ export async function syncProgressToCloud(
         onConflict: 'user_id,word_id',
       });
       if (wordErr) {
-        console.warn('Error saving word_progress to Supabase:', wordErr);
+        // Fallback if 'word' column is not yet added in Supabase schema
+        const legacyWordRows = wordRows.map(({ word: _word, ...rest }) => rest);
+        const { error: fallbackErr } = await client.from('word_progress').upsert(legacyWordRows, {
+          onConflict: 'user_id,word_id',
+        });
+        if (fallbackErr) {
+          console.warn('Error saving word_progress to Supabase:', fallbackErr);
+        }
       }
     }
 
@@ -377,6 +404,7 @@ export async function fetchProgressFromCloud(userId: string): Promise<CloudSyncD
       for (const w of words) {
         wordProgress[w.word_id] = {
           word_id: w.word_id,
+          word: resolveWordText(w.word_id, w.topic_id, w.word),
           topic_id: w.topic_id,
           timesCorrect: w.times_correct || 0,
           timesWrong: w.times_wrong || 0,

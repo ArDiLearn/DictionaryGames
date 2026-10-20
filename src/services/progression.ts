@@ -8,6 +8,7 @@ import {
   saveLocalStatsRaw,
 } from './localStorage';
 import { triggerCloudSync } from './cloudSync';
+import { resolveWordText } from './supabase';
 
 export function recordWordAttempt(
   wordId: string,
@@ -39,6 +40,7 @@ export function recordWordAttempt(
 
   words[wordId] = {
     word_id: wordId,
+    word: resolveWordText(course === 'lv' ? `lv:${wordId}` : wordId, topicId, prev.word),
     topic_id: topicId,
     timesCorrect,
     timesWrong,

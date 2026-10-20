@@ -40,6 +40,7 @@ export interface TopicProgress {
 
 export interface WordProgress {
   word_id: string;
+  word?: string;
   topic_id: string;
   timesCorrect: number;
   timesWrong: number;

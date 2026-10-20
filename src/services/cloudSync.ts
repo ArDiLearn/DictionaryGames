@@ -159,6 +159,7 @@ export async function mergeWithCloud(): Promise<boolean> {
       } else {
         mergedWordsEn[wid] = {
           word_id: wid,
+          word: cWord.word || mergedWordsEn[wid].word,
           topic_id: cWord.topic_id || mergedWordsEn[wid].topic_id,
           timesCorrect: Math.max(mergedWordsEn[wid].timesCorrect || 0, cWord.timesCorrect || 0),
           timesWrong: Math.max(mergedWordsEn[wid].timesWrong || 0, cWord.timesWrong || 0),
@@ -178,6 +179,7 @@ export async function mergeWithCloud(): Promise<boolean> {
       } else {
         mergedWordsLv[wid] = {
           word_id: wid,
+          word: cWord.word || mergedWordsLv[wid].word,
           topic_id: cWord.topic_id || mergedWordsLv[wid].topic_id,
           timesCorrect: Math.max(mergedWordsLv[wid].timesCorrect || 0, cWord.timesCorrect || 0),
           timesWrong: Math.max(mergedWordsLv[wid].timesWrong || 0, cWord.timesWrong || 0),

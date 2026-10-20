@@ -40,6 +40,7 @@ create table if not exists public.topic_progress (
 create table if not exists public.word_progress (
   user_id uuid references auth.users on delete cascade not null,
   word_id text not null,
+  word text,
   topic_id text not null,
   times_correct integer default 0,
   times_wrong integer default 0,
@@ -47,6 +48,8 @@ create table if not exists public.word_progress (
   last_reviewed_at timestamp with time zone default timezone('utc'::text, now()),
   primary key (user_id, word_id)
 );
+
+alter table public.word_progress add column if not exists word text;
 
 -- 4. Enable Row Level Security (RLS)
 alter table public.profiles enable row level security;

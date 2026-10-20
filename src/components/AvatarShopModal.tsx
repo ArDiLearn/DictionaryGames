@@ -3,7 +3,7 @@ import confetti from 'canvas-confetti';
 import { Language, UserStats, AvatarShopItem, ShopTab, VictoryAnimationItem, VictoryMusicItem } from '../types';
 import { AVATAR_SHOP_ITEMS, DEFAULT_UNLOCKED_AVATARS, AVATAR_ALIASES } from '../data/avatars';
 import { VICTORY_ANIMATION_ITEMS, VICTORY_MUSIC_ITEMS } from '../data/shopCustomizations';
-import { translations, getPlayerDisplayName } from '../utils/i18n';
+import { translations } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { triggerVictoryAnimation, cancelVictoryAnimation } from './VictoryEffects';
 import { AvatarBadge } from './AvatarBadge';

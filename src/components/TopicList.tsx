@@ -207,12 +207,12 @@ export const TopicList: React.FC<TopicListProps> = ({
     <div className="max-w-5xl mx-auto px-4 py-6">
       {/* Welcome Banner */}
       <div
-        className={`relative rounded-3xl p-5 sm:p-7 text-white shadow-xl mb-6 transition-colors duration-300 ${bannerGradient}`}
+        className={`relative rounded-3xl p-3.5 sm:p-6 text-white shadow-xl mb-4 sm:mb-6 transition-colors duration-300 ${bannerGradient}`}
       >
-        <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
+        <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 sm:gap-5">
           {/* Left Column: Avatar + Greeting + Stats Block underneath */}
-          <div className="flex flex-col items-start gap-3.5">
-            <div className="flex items-center gap-3.5 sm:gap-4">
+          <div className="flex flex-col items-start gap-2 sm:gap-3">
+            <div className="flex items-center gap-2.5 sm:gap-4">
               <button
                 onClick={() => {
                   if (onOpenShop) {
@@ -223,40 +223,40 @@ export const TopicList: React.FC<TopicListProps> = ({
                 className="relative group flex items-center justify-center transition-transform hover:scale-105 active:scale-95 cursor-pointer shrink-0"
                 title={t.avatarShopTitle}
               >
-                <AvatarBadge avatar={avatar || '🦁'} size="xl" showStars={true} />
-                <span className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-7 sm:h-7 bg-amber-400 border-2 border-white rounded-full shadow-md flex items-center justify-center text-xs sm:text-sm pointer-events-none z-20">
+                <AvatarBadge avatar={avatar || '🦁'} size="lg" showStars={true} />
+                <span className="absolute -bottom-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-amber-400 border-2 border-white rounded-full shadow-md flex items-center justify-center text-[10px] sm:text-xs pointer-events-none z-20">
                   🛍️
                 </span>
               </button>
               <div className="flex flex-col justify-center">
-                <div className="flex items-center gap-2">
-                  <h1 className="text-2xl sm:text-3xl font-black font-comic tracking-tight leading-tight">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <h1 className="text-xl sm:text-3xl font-black font-comic tracking-tight leading-tight">
                     {t.welcomeGreeting}, {displayName}!
                   </h1>
-                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-300 animate-spin-slow shrink-0" />
+                  <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-yellow-300 animate-spin-slow shrink-0" />
                 </div>
 
                 {/* Equipped Title Badge Button */}
                 {onOpenTitles && (
-                  <div className="mt-1 flex items-center">
+                  <div className="mt-0.5 sm:mt-1 flex items-center">
                     <button
                       onClick={() => {
                         sounds.playClick();
                         onOpenTitles();
                       }}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 hover:bg-white/30 border border-white/40 backdrop-blur-md text-white text-xs sm:text-sm font-black shadow-xs transition-all hover:scale-105 active:scale-95 cursor-pointer group select-none"
+                      className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white/20 hover:bg-white/30 border border-white/40 backdrop-blur-md text-white text-[11px] sm:text-sm font-black shadow-xs transition-all hover:scale-105 active:scale-95 cursor-pointer group select-none"
                       title={t.titlesModalTitle}
                     >
                       <span>{equippedTitle.icon}</span>
                       <span className="underline decoration-dotted decoration-yellow-200/80 underline-offset-2">
                         {equippedTitle.name[language] || equippedTitle.name.ru}
                       </span>
-                      <span className="text-[11px] opacity-80 group-hover:opacity-100 transition-opacity">🎖️</span>
+                      <span className="text-[10px] sm:text-[11px] opacity-80 group-hover:opacity-100 transition-opacity">🎖️</span>
                     </button>
                   </div>
                 )}
 
-                <p className="text-white/90 text-sm sm:text-base font-semibold mt-1 leading-snug">
+                <p className="text-white/90 text-xs sm:text-base font-semibold mt-0.5 sm:mt-1 leading-snug hidden sm:block">
                   {t.chooseTopic}
                 </p>
               </div>
@@ -270,68 +270,49 @@ export const TopicList: React.FC<TopicListProps> = ({
                   onOpenStats();
                 }
               }}
-              className="flex items-center gap-3 bg-white/15 hover:bg-white/25 active:scale-95 transition-all backdrop-blur-md px-4 py-2 rounded-2xl border border-white/25 cursor-pointer text-left group"
+              className="flex items-center gap-2.5 sm:gap-3 bg-white/15 hover:bg-white/25 active:scale-95 transition-all backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl sm:rounded-2xl border border-white/25 cursor-pointer text-left group"
               title={t.progressStatsTitle}
             >
               <div className="text-center">
-                <div className="text-xs text-white/80 font-bold uppercase tracking-wider">
+                <div className="text-[10px] sm:text-xs text-white/80 font-bold uppercase tracking-wider">
                   {t.allTopics}
                 </div>
-                <div className="text-lg sm:text-xl font-black">{topics.length}</div>
+                <div className="text-sm sm:text-xl font-black">{topics.length}</div>
               </div>
-              <div className="w-px h-8 bg-white/30" />
+              <div className="w-px h-6 sm:h-8 bg-white/30" />
               <div className="text-center">
-                <div className="text-xs text-white/80 font-bold uppercase tracking-wider flex items-center justify-center gap-1">
+                <div className="text-[10px] sm:text-xs text-white/80 font-bold uppercase tracking-wider flex items-center justify-center gap-1">
                   <span>{t.learnedCount}</span>
-                  <BarChart3 className="w-3.5 h-3.5 text-yellow-300 group-hover:scale-110 transition-transform" />
+                  <BarChart3 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-yellow-300 group-hover:scale-110 transition-transform" />
                 </div>
-                <div className="text-lg sm:text-xl font-black text-yellow-300">
+                <div className="text-sm sm:text-xl font-black text-yellow-300">
                   {totalMastered} / {totalWords}
                 </div>
               </div>
             </button>
           </div>
 
-          {/* Right Column: Active Mode Flag Badge on top + 4-Mode Language Direction Switcher below */}
+          {/* Right Column: 4-Mode Language Direction Switcher */}
           {onCourseChange && (
-            <div className="flex flex-col items-start lg:items-end gap-2">
-              {/* Explicit active language course indicator badge */}
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/25 border border-white/35 backdrop-blur-md text-white text-xs sm:text-sm font-black shadow-sm">
-                <FlagIcon
-                  country={course === 'lv' || course === 'lv-en' ? 'lv' : 'gb'}
-                  size="sm"
-                  className="rounded-xs ring-1 ring-white/60 shrink-0"
-                />
-                <span className="opacity-80">→</span>
-                <FlagIcon
-                  country={
-                    course === 'lv-en'
-                      ? 'gb'
-                      : course === 'en-lv' || (course === 'en' && language === 'lv')
-                      ? 'lv'
-                      : 'ru'
-                  }
-                  size="sm"
-                  className="rounded-xs ring-1 ring-white/60 shrink-0"
-                />
-                <span className="ml-0.5">
-                  {getCourseActiveLabel(course, language)}
-                </span>
-              </div>
-
-              <div className="flex flex-col gap-1.5 bg-black/20 backdrop-blur-md p-2.5 rounded-2xl border border-white/30">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-white/80 px-1">
-                  {t.courseSelectorLabel}:
-                </span>
-                <div className="flex items-stretch gap-2">
+            <div className="flex flex-col items-start lg:items-end gap-1.5 w-full lg:w-auto">
+              <div className="flex flex-col gap-1 sm:gap-1.5 bg-black/20 backdrop-blur-md p-2 sm:p-2.5 rounded-2xl border border-white/30 w-full lg:w-auto">
+                <div className="flex items-center justify-between px-1">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-white/80">
+                    {t.courseSelectorLabel}:
+                  </span>
+                  <span className="text-[10px] font-bold text-yellow-200">
+                    {getCourseActiveLabel(course, language)}
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 gap-1.5 w-full sm:flex sm:items-stretch sm:gap-2">
                   {/* Left Column: English Target Modes (Angļu–Latv on top, Англ–Рус underneath) */}
-                  <div className="flex flex-col gap-1.5">
+                  <div className="flex flex-col gap-1 sm:gap-1.5">
                     {/* Mode 1: English - Latvian */}
                     <button
                       onClick={() => selectLearningPair('en-lv', 'lv')}
-                      className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                      className={`flex items-center justify-center gap-1 sm:gap-1.5 px-2 py-1.5 sm:px-2.5 sm:py-1.5 rounded-xl text-[11px] sm:text-xs font-black transition-all cursor-pointer select-none whitespace-nowrap ${
                         course === 'en-lv' || (course === 'en' && language === 'lv')
-                          ? 'bg-white text-teal-900 shadow-md scale-[1.03] ring-2 ring-yellow-300'
+                          ? 'bg-white text-teal-900 shadow-md scale-[1.02] ring-2 ring-yellow-300'
                           : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
                       }`}
                       title="Angļu — Latviešu / Английский — Латышский (EN → LV)"
@@ -345,9 +326,9 @@ export const TopicList: React.FC<TopicListProps> = ({
                     {/* Mode 2: English - Russian (placed directly under Angļu–Latv) */}
                     <button
                       onClick={() => selectLearningPair('en', 'ru')}
-                      className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                      className={`flex items-center justify-center gap-1 sm:gap-1.5 px-2 py-1.5 sm:px-2.5 sm:py-1.5 rounded-xl text-[11px] sm:text-xs font-black transition-all cursor-pointer select-none whitespace-nowrap ${
                         course === 'en' && language === 'ru'
-                          ? 'bg-white text-indigo-900 shadow-md scale-[1.03] ring-2 ring-yellow-300'
+                          ? 'bg-white text-indigo-900 shadow-md scale-[1.02] ring-2 ring-yellow-300'
                           : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
                       }`}
                       title="Английский — Русский (EN → RU)"
@@ -359,17 +340,17 @@ export const TopicList: React.FC<TopicListProps> = ({
                     </button>
                   </div>
 
-                  {/* Vertical Divider Line */}
-                  <div className="w-px self-stretch bg-white/35 my-0.5" />
+                  {/* Vertical Divider Line (hidden on very narrow mobile grid) */}
+                  <div className="hidden sm:block w-px self-stretch bg-white/35 my-0.5" />
 
                   {/* Right Column: Latvian Target Modes with Лат–Рус separated by a divider line */}
-                  <div className="flex flex-col justify-between gap-1.5">
+                  <div className="flex flex-col justify-between gap-1 sm:gap-1.5">
                     {/* Mode 3: Latvian - English */}
                     <button
                       onClick={() => selectLearningPair('lv-en')}
-                      className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                      className={`flex items-center justify-center gap-1 sm:gap-1.5 px-2 py-1.5 sm:px-2.5 sm:py-1.5 rounded-xl text-[11px] sm:text-xs font-black transition-all cursor-pointer select-none whitespace-nowrap ${
                         course === 'lv-en'
-                          ? 'bg-white text-fuchsia-950 shadow-md scale-[1.03] ring-2 ring-yellow-300'
+                          ? 'bg-white text-fuchsia-950 shadow-md scale-[1.02] ring-2 ring-yellow-300'
                           : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
                       }`}
                       title="Latviešu — Angļu / Латышский — Английский (LV → EN)"
@@ -380,14 +361,14 @@ export const TopicList: React.FC<TopicListProps> = ({
                       <span>{language === 'lv' ? 'Latv–Angļu' : 'Лат–Англ'}</span>
                     </button>
 
-                    <div className="h-px w-full bg-white/35" />
+                    <div className="hidden sm:block h-px w-full bg-white/35" />
 
-                    {/* Mode 4: Latvian - Russian (separated by line) */}
+                    {/* Mode 4: Latvian - Russian */}
                     <button
                       onClick={() => selectLearningPair('lv')}
-                      className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                      className={`flex items-center justify-center gap-1 sm:gap-1.5 px-2 py-1.5 sm:px-2.5 sm:py-1.5 rounded-xl text-[11px] sm:text-xs font-black transition-all cursor-pointer select-none whitespace-nowrap ${
                         course === 'lv'
-                          ? 'bg-white text-rose-900 shadow-md scale-[1.03] ring-2 ring-yellow-300'
+                          ? 'bg-white text-rose-900 shadow-md scale-[1.02] ring-2 ring-yellow-300'
                           : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
                       }`}
                       title="Латышский — Русский (LV → RU)"

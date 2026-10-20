@@ -940,6 +940,59 @@ export const TopicList: React.FC<TopicListProps> = ({
             </div>
           )}
 
+          {/* Mistakes Review Banner */}
+          {mistakesCount > 0 && (
+            <div
+              className={`mb-6 rounded-3xl p-4 sm:p-5 text-white shadow-lg border-3 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors duration-300 ${mistakesBannerStyle.gradient} ${mistakesBannerStyle.border}`}
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/20 backdrop-blur-xs border-2 border-white/40 flex items-center justify-center text-2xl sm:text-3xl shrink-0 shadow-inner">
+                  🎯
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h3 className="text-base sm:text-lg font-black tracking-tight">
+                      {t.statsModal.mistakesBannerTitle}
+                    </h3>
+                    <span className="bg-white/25 text-white text-xs font-black px-2.5 py-0.5 rounded-full border border-white/30">
+                      {mistakesCount} {getWordsPlural(mistakesCount, language)}
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-white/90 font-semibold mt-0.5">
+                    {t.statsModal.mistakesBannerSubtitle}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 shrink-0">
+                {onStartMistakesTest && (
+                  <button
+                    onClick={() => {
+                      sounds.playClick();
+                      onStartMistakesTest();
+                    }}
+                    className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-white active:scale-95 font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer ${mistakesBannerStyle.btnText}`}
+                  >
+                    <ClipboardCheck className="w-4 h-4" />
+                    <span>{t.statsModal.startMistakesTestBtn}</span>
+                  </button>
+                )}
+                {onOpenMistakesGames && (
+                  <button
+                    onClick={() => {
+                      sounds.playClick();
+                      onOpenMistakesGames();
+                    }}
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-white/20 hover:bg-white/30 active:scale-95 border-2 border-white/40 text-white font-black text-xs sm:text-sm transition-all cursor-pointer"
+                  >
+                    <Gamepad2 className="w-4 h-4" />
+                    <span>{t.statsModal.practiceMistakesGamesBtn}</span>
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* Active Tab Content */}
           {activeTab === 'main' && (
             <div>
@@ -1117,58 +1170,6 @@ export const TopicList: React.FC<TopicListProps> = ({
         </div>
       )}
 
-      {/* Mistakes Review Banner */}
-      {!searchQuery && mistakesCount > 0 && (
-        <div
-          className={`mt-6 rounded-3xl p-4 sm:p-5 text-white shadow-lg border-3 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors duration-300 ${mistakesBannerStyle.gradient} ${mistakesBannerStyle.border}`}
-        >
-          <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/20 backdrop-blur-xs border-2 border-white/40 flex items-center justify-center text-2xl sm:text-3xl shrink-0 shadow-inner">
-              🎯
-            </div>
-            <div>
-              <div className="flex items-center gap-2 flex-wrap">
-                <h3 className="text-base sm:text-lg font-black tracking-tight">
-                  {t.statsModal.mistakesBannerTitle}
-                </h3>
-                <span className="bg-white/25 text-white text-xs font-black px-2.5 py-0.5 rounded-full border border-white/30">
-                  {mistakesCount} {getWordsPlural(mistakesCount, language)}
-                </span>
-              </div>
-              <p className="text-xs sm:text-sm text-white/90 font-semibold mt-0.5">
-                {t.statsModal.mistakesBannerSubtitle}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2 shrink-0">
-            {onStartMistakesTest && (
-              <button
-                onClick={() => {
-                  sounds.playClick();
-                  onStartMistakesTest();
-                }}
-                className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-white active:scale-95 font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer ${mistakesBannerStyle.btnText}`}
-              >
-                <ClipboardCheck className="w-4 h-4" />
-                <span>{t.statsModal.startMistakesTestBtn}</span>
-              </button>
-            )}
-            {onOpenMistakesGames && (
-              <button
-                onClick={() => {
-                  sounds.playClick();
-                  onOpenMistakesGames();
-                }}
-                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-white/20 hover:bg-white/30 active:scale-95 border-2 border-white/40 text-white font-black text-xs sm:text-sm transition-all cursor-pointer"
-              >
-                <Gamepad2 className="w-4 h-4" />
-                <span>{t.statsModal.practiceMistakesGamesBtn}</span>
-              </button>
-            )}
-          </div>
-        </div>
-      )}
 
       {filteredTopics.length === 0 && matchedWords.length === 0 && (
         <div className="text-center py-12 bg-white rounded-3xl border-2 border-slate-200">

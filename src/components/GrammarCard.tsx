@@ -19,7 +19,8 @@ export const GrammarCard: React.FC<GrammarCardProps> = ({
 }) => {
   const title = topic.title[language] || topic.title.ru;
   const description = topic.description[language] || topic.description.ru;
-  const questionCount = topic.id === 'g1_mix' ? 10 : topic.questions.length;
+  const isMix = topic.id.endsWith('_mix');
+  const questionCount = isMix ? 10 : topic.questions.length;
 
   return (
     <button
@@ -37,9 +38,14 @@ export const GrammarCard: React.FC<GrammarCardProps> = ({
           </div>
 
           <div className="flex flex-col items-end gap-1">
-            <span className="text-[11px] font-black bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-300">
-              {questionCount} {language === 'lv' ? 'jaut.' : 'вопр.'}
-            </span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[10px] font-black bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded-md border border-slate-200">
+                {topic.grade} {language === 'lv' ? 'kl.' : 'кл.'}
+              </span>
+              <span className="text-[11px] font-black bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-300">
+                {questionCount} {language === 'lv' ? 'jaut.' : 'вопр.'}
+              </span>
+            </div>
 
             {/* Stars row */}
             <div className="flex items-center gap-0.5 text-sm">

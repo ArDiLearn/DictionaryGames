@@ -9,7 +9,15 @@ export type GrammarCategory =
   | 'have_you_got'
   | 'can'
   | 'likes'
-  | 'colors_and_plurals';
+  | 'colors_and_plurals'
+  | 'meals'
+  | 'do_you_like'
+  | 'we_have_got'
+  | 'can_they'
+  | 'wearing'
+  | 'has_got'
+  | 'prepositions'
+  | 'there_is_are';
 
 export interface GrammarQuestion {
   id: string;
@@ -1241,12 +1249,975 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
 ];
 
 // Helper to get questions for topic, handling mix
+export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
+  {
+    id: 'g2_meals_and_do_you_like',
+    grade: 2,
+    title: {
+      ru: "What do you have for...? & Do you like...?",
+      lv: "What do you have for...? & Do you like...?",
+    },
+    description: {
+      ru: "Приёмы пищи (What do you have for lunch?) и вкусы (Do you like bananas? Yes/No)",
+      lv: "Ēdienreizes (What do you have for lunch?) un patika (Do you like bananas?)",
+    },
+    emoji: '🍝',
+    color: 'orange',
+    questions: [
+      {
+        id: 'g2_m_1',
+        grade: 2,
+        category: 'meals',
+        prompt: 'What do you have for lunch?',
+        audioText: 'What do you have for lunch?',
+        imageWord: { en: 'pasta', emoji: '🍝', customLabel: 'Pasta' },
+        options: [
+          'I have pasta for lunch.',
+          'I have milk for breakfast.',
+          "I don't like pasta.",
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Что у тебя на обед? → У меня паста на обед.',
+          lv: 'Kas tev ir pusdienās? → Man pusdienās ir pasta.',
+        },
+      },
+      {
+        id: 'g2_m_2',
+        grade: 2,
+        category: 'meals',
+        prompt: 'What do you have for breakfast?',
+        audioText: 'What do you have for breakfast?',
+        imageWord: { en: 'cereal', emoji: '🥣', customLabel: 'Cereal' },
+        options: [
+          'I have pasta for lunch.',
+          'I have cereal for breakfast.',
+          'I have soup for dinner.',
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Что у тебя на завтрак? → У меня хлопья на завтрак.',
+          lv: 'Kas tev ir brokastīs? → Man brokastīs ir pārslas.',
+        },
+      },
+      {
+        id: 'g2_m_3',
+        grade: 2,
+        category: 'meals',
+        prompt: 'What do you have for dinner?',
+        audioText: 'What do you have for dinner?',
+        imageWord: { en: 'chicken', emoji: '🍗', customLabel: 'Chicken' },
+        options: [
+          'I have chicken for dinner.',
+          'I have cereal for breakfast.',
+          'I have apples for lunch.',
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Что у тебя на ужин? → У меня курица на ужин.',
+          lv: 'Kas tev ir vakariņās? → Man vakariņās ir vista.',
+        },
+      },
+      {
+        id: 'g2_m_4',
+        grade: 2,
+        category: 'meals',
+        prompt: 'What do you have for breakfast?',
+        audioText: 'What do you have for breakfast?',
+        imageWord: { en: 'toast', emoji: '🍞', secondEmoji: '🥚', customLabel: 'Toast & eggs' },
+        options: [
+          'I have pizza for lunch.',
+          'I have soup for dinner.',
+          'I have toast and eggs for breakfast.',
+        ],
+        correctIndex: 2,
+        hint: {
+          ru: 'Что у тебя на завтрак? → Тост и яйца на завтрак.',
+          lv: 'Kas tev ir brokastīs? → Grauzdiņš un olas brokastīs.',
+        },
+      },
+      {
+        id: 'g2_m_5',
+        grade: 2,
+        category: 'meals',
+        prompt: 'What do you have for lunch?',
+        audioText: 'What do you have for lunch?',
+        imageWord: { en: 'sandwich', emoji: '🥪', customLabel: 'Sandwich' },
+        options: [
+          'I have a sandwich for lunch.',
+          'I have tea for breakfast.',
+          'I have fish for dinner.',
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Что у тебя на обед? → Сэндвич на обед.',
+          lv: 'Kas tev ir pusdienās? → Sviestmaize pusdienās.',
+        },
+      },
+      {
+        id: 'g2_dyl_6',
+        grade: 2,
+        category: 'do_you_like',
+        prompt: 'Do you like bananas?',
+        audioText: 'Do you like bananas?',
+        imageWord: { en: 'bananas', emoji: '🍌' },
+        isNegated: false,
+        badgeType: 'like',
+        options: [
+          'Yes, I do.',
+          "No, I don't.",
+          'Yes, I have.',
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Любишь бананы? (❤️ Да) → Yes, I do.',
+          lv: 'Vai tev garšo banāni? (❤️ Jā) → Yes, I do.',
+        },
+      },
+      {
+        id: 'g2_dyl_7',
+        grade: 2,
+        category: 'do_you_like',
+        prompt: 'Do you like broccoli?',
+        audioText: 'Do you like broccoli?',
+        imageWord: { en: 'broccoli', emoji: '🥦' },
+        isNegated: true,
+        badgeType: 'like',
+        options: [
+          'Yes, I do.',
+          "No, I don't.",
+          "No, I can't.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Любишь брокколи? (❌ Нет) → No, I don\'t.',
+          lv: 'Vai tev garšo brokoli? (❌ Nē) → No, I don\'t.',
+        },
+      },
+      {
+        id: 'g2_dyl_8',
+        grade: 2,
+        category: 'do_you_like',
+        prompt: 'Do you like pizza?',
+        audioText: 'Do you like pizza?',
+        imageWord: { en: 'pizza', emoji: '🍕' },
+        isNegated: false,
+        badgeType: 'like',
+        options: [
+          "No, I don't.",
+          'Yes, I do.',
+          'Yes, I am.',
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Любишь пиццу? (❤️ Да) → Yes, I do.',
+          lv: 'Vai tev garšo pica? (❤️ Jā) → Yes, I do.',
+        },
+      },
+      {
+        id: 'g2_dyl_9',
+        grade: 2,
+        category: 'do_you_like',
+        prompt: 'Do you like mushrooms?',
+        audioText: 'Do you like mushrooms?',
+        imageWord: { en: 'mushrooms', emoji: '🍄' },
+        isNegated: true,
+        badgeType: 'like',
+        options: [
+          'Yes, I do.',
+          "No, I haven't.",
+          "No, I don't.",
+        ],
+        correctIndex: 2,
+        hint: {
+          ru: 'Любишь грибы? (❌ Нет) → No, I don\'t.',
+          lv: 'Vai tev garšo sēnes? (❌ Nē) → No, I don\'t.',
+        },
+      },
+      {
+        id: 'g2_dyl_10',
+        grade: 2,
+        category: 'do_you_like',
+        prompt: 'Do you like milk?',
+        audioText: 'Do you like milk?',
+        imageWord: { en: 'milk', emoji: '🥛' },
+        isNegated: false,
+        badgeType: 'like',
+        options: [
+          'Yes, I do.',
+          "No, I don't.",
+          'Yes, I can.',
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Любишь молоко? (❤️ Да) → Yes, I do.',
+          lv: 'Vai tev garšo piens? (❤️ Jā) → Yes, I do.',
+        },
+      },
+      {
+        id: 'g2_dyl_11',
+        grade: 2,
+        category: 'do_you_like',
+        prompt: 'Do you like onions?',
+        audioText: 'Do you like onions?',
+        imageWord: { en: 'onions', emoji: '🧅' },
+        isNegated: true,
+        badgeType: 'like',
+        options: [
+          'Yes, I do.',
+          "No, I don't.",
+          "No, I'm not.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Любишь лук? (❌ Нет) → No, I don\'t.',
+          lv: 'Vai tev garšo sīpoli? (❌ Nē) → No, I don\'t.',
+        },
+      },
+    ],
+  },
+  {
+    id: 'g2_we_have_got_and_can_they',
+    grade: 2,
+    title: {
+      ru: "We've got & Can you / they...?",
+      lv: "We've got & Can you / they...?",
+    },
+    description: {
+      ru: "Факты о теле и животных (We've got eyes / Horses haven't got wings) и вопросы Can you/they...?",
+      lv: "Fakti (We've got eyes / Horses haven't got wings) un jautājumi Can you/they...?",
+    },
+    emoji: '🐎',
+    color: 'indigo',
+    questions: [
+      {
+        id: 'g2_whg_1',
+        grade: 2,
+        category: 'we_have_got',
+        prompt: 'Choose the correct sentence:',
+        audioText: "We've got eyes.",
+        imageWord: { en: 'eyes', emoji: '👀', customLabel: 'Two eyes' },
+        options: [
+          "We've got eyes.",
+          "We haven't got eyes.",
+          'Horses have got wings.',
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'У нас есть глаза → We\'ve got eyes.',
+          lv: 'Mums ir acis → We\'ve got eyes.',
+        },
+      },
+      {
+        id: 'g2_whg_2',
+        grade: 2,
+        category: 'we_have_got',
+        prompt: 'Choose the correct sentence:',
+        audioText: "Horses haven't got wings.",
+        imageWord: { en: 'horse', emoji: '🐎', customLabel: 'Horses & wings' },
+        isNegated: true,
+        badgeType: 'have',
+        options: [
+          'Horses have got wings.',
+          "Horses haven't got wings.",
+          "We haven't got eyes.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'У лошадей нет крыльев → Horses haven\'t got wings.',
+          lv: 'Zirgiem nav spārnu → Horses haven\'t got wings.',
+        },
+      },
+      {
+        id: 'g2_whg_3',
+        grade: 2,
+        category: 'we_have_got',
+        prompt: 'Choose the correct sentence:',
+        audioText: 'Birds have got wings.',
+        imageWord: { en: 'birds', emoji: '🦜', customLabel: 'Wings' },
+        isNegated: false,
+        badgeType: 'have',
+        options: [
+          "Birds haven't got wings.",
+          'Birds have got wings.',
+          'Fish have got legs.',
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'У птиц есть крылья → Birds have got wings.',
+          lv: 'Putniem ir spārni → Birds have got wings.',
+        },
+      },
+      {
+        id: 'g2_whg_4',
+        grade: 2,
+        category: 'we_have_got',
+        prompt: 'Choose the correct sentence:',
+        audioText: "Fish haven't got legs.",
+        imageWord: { en: 'fish', emoji: '🐟', customLabel: 'Fish & legs' },
+        isNegated: true,
+        badgeType: 'have',
+        options: [
+          'Fish have got legs.',
+          "Fish haven't got legs.",
+          "Frogs haven't got legs.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'У рыб нет ног → Fish haven\'t got legs.',
+          lv: 'Zivīm nav kāju → Fish haven\'t got legs.',
+        },
+      },
+      {
+        id: 'g2_whg_5',
+        grade: 2,
+        category: 'we_have_got',
+        prompt: 'Choose the correct sentence:',
+        audioText: "We've got two ears.",
+        imageWord: { en: 'ears', emoji: '👂', secondEmoji: '👂', customLabel: 'Two ears' },
+        options: [
+          "We've got two ears.",
+          "We haven't got ears.",
+          "Dogs haven't got ears.",
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'У нас два уха → We\'ve got two ears.',
+          lv: 'Mums ir divas ausis → We\'ve got two ears.',
+        },
+      },
+      {
+        id: 'g2_whg_6',
+        grade: 2,
+        category: 'we_have_got',
+        prompt: 'Choose the correct sentence:',
+        audioText: 'Frogs have got four legs.',
+        imageWord: { en: 'frogs', emoji: '🐸', customLabel: 'Four legs' },
+        options: [
+          "Frogs haven't got legs.",
+          'Frogs have got four legs.',
+          'Frogs have got wings.',
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'У лягушек 4 лапки → Frogs have got four legs.',
+          lv: 'Vardēm ir četras kājas → Frogs have got four legs.',
+        },
+      },
+      {
+        id: 'g2_cyt_7',
+        grade: 2,
+        category: 'can_they',
+        prompt: 'Can you swim?',
+        audioText: 'Can you swim?',
+        imageWord: { en: 'swim', emoji: '🏊' },
+        isNegated: false,
+        badgeType: 'can',
+        options: [
+          'Yes, I can.',
+          "No, I can't.",
+          'Yes, they can.',
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Ты умеешь плавать? (✓ Да) → Yes, I can.',
+          lv: 'Vai tu proti peldēt? (✓ Jā) → Yes, I can.',
+        },
+      },
+      {
+        id: 'g2_cyt_8',
+        grade: 2,
+        category: 'can_they',
+        prompt: 'Can you fly?',
+        audioText: 'Can you fly?',
+        imageWord: { en: 'fly', emoji: '🦅' },
+        isNegated: true,
+        badgeType: 'can',
+        options: [
+          'Yes, I can.',
+          "No, I can't.",
+          "No, they can't.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Ты умеешь летать? (❌ Нет) → No, I can\'t.',
+          lv: 'Vai tu proti lidot? (❌ Nē) → No, I can\'t.',
+        },
+      },
+      {
+        id: 'g2_cyt_9',
+        grade: 2,
+        category: 'can_they',
+        prompt: 'Can birds fly?',
+        audioText: 'Can birds fly?',
+        imageWord: { en: 'birds', emoji: '🦜', secondEmoji: '🕊️' },
+        isNegated: false,
+        badgeType: 'can',
+        options: [
+          'Yes, they can.',
+          "No, they can't.",
+          'Yes, I can.',
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Птицы умеют летать? (✓ Да) → Yes, they can.',
+          lv: 'Vai putni prot lidot? (✓ Jā) → Yes, they can.',
+        },
+      },
+      {
+        id: 'g2_cyt_10',
+        grade: 2,
+        category: 'can_they',
+        prompt: 'Can kangaroos jump?',
+        audioText: 'Can kangaroos jump?',
+        imageWord: { en: 'kangaroos', emoji: '🦘' },
+        isNegated: false,
+        badgeType: 'can',
+        options: [
+          "No, they can't.",
+          'Yes, they can.',
+          'Yes, I do.',
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Кенгуру умеют прыгать? (✓ Да) → Yes, they can.',
+          lv: 'Vai ķenguri prot lēkt? (✓ Jā) → Yes, they can.',
+        },
+      },
+      {
+        id: 'g2_cyt_11',
+        grade: 2,
+        category: 'can_they',
+        prompt: 'Can dogs speak English?',
+        audioText: 'Can dogs speak English?',
+        imageWord: { en: 'dogs', emoji: '🐶' },
+        isNegated: true,
+        badgeType: 'can',
+        options: [
+          'Yes, they can.',
+          "No, they can't.",
+          "No, I haven't.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Собаки говорят по-английски? (❌ Нет) → No, they can\'t.',
+          lv: 'Vai suņi runā angliski? (❌ Nē) → No, they can\'t.',
+        },
+      },
+      {
+        id: 'g2_cyt_12',
+        grade: 2,
+        category: 'can_they',
+        prompt: 'Can monkeys climb trees?',
+        audioText: 'Can monkeys climb trees?',
+        imageWord: { en: 'monkeys', emoji: '🐒' },
+        isNegated: false,
+        badgeType: 'can',
+        options: [
+          'Yes, they can.',
+          "No, they can't.",
+          'Yes, I have.',
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Обезьяны лазят по деревьям? (✓ Да) → Yes, they can.',
+          lv: 'Vai pērtiķi prot kāpt kokos? (✓ Jā) → Yes, they can.',
+        },
+      },
+    ],
+  },
+  {
+    id: 'g2_clothes_and_appearance',
+    grade: 2,
+    title: {
+      ru: 'What are you wearing? & Has he/she got...?',
+      lv: 'What are you wearing? & Has he/she got...?',
+    },
+    description: {
+      ru: "Одежда (I'm wearing shorts) и внешность (Has she got curly hair? No, she hasn't)",
+      lv: "Apģērbs (I'm wearing shorts) un izskats (Has she got curly hair?)",
+    },
+    emoji: '🩳',
+    color: 'teal',
+    questions: [
+      {
+        id: 'g2_wear_1',
+        grade: 2,
+        category: 'wearing',
+        prompt: 'What are you wearing?',
+        audioText: 'What are you wearing?',
+        imageWord: { en: 'shorts', emoji: '🩳', customLabel: 'Shorts' },
+        options: [
+          "I'm wearing shorts.",
+          "I'm wearing a dress.",
+          'I have got a ball.',
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Что на тебе надето? → На мне шорты.',
+          lv: 'Kas tev ir mugurā? → Man ir mugurā šorti.',
+        },
+      },
+      {
+        id: 'g2_wear_2',
+        grade: 2,
+        category: 'wearing',
+        prompt: 'What are you wearing?',
+        audioText: 'What are you wearing?',
+        imageWord: { en: 'dress', emoji: '👗', customLabel: 'Dress' },
+        options: [
+          "I'm wearing a jacket.",
+          "I'm wearing a dress.",
+          "I'm wearing trousers.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Что на тебе надето? → На мне платье.',
+          lv: 'Kas tev ir mugurā? → Man ir mugurā kleita.',
+        },
+      },
+      {
+        id: 'g2_wear_3',
+        grade: 2,
+        category: 'wearing',
+        prompt: 'What are you wearing?',
+        audioText: 'What are you wearing?',
+        imageWord: { en: 'jacket', emoji: '🧥', customLabel: 'Jacket' },
+        options: [
+          "I'm wearing shorts.",
+          "I'm wearing a cap.",
+          "I'm wearing a jacket.",
+        ],
+        correctIndex: 2,
+        hint: {
+          ru: 'Что на тебе надето? → На мне куртка.',
+          lv: 'Kas tev ir mugurā? → Man ir mugurā jaka.',
+        },
+      },
+      {
+        id: 'g2_wear_4',
+        grade: 2,
+        category: 'wearing',
+        prompt: 'What are you wearing?',
+        audioText: 'What are you wearing?',
+        imageWord: { en: 't-shirt', emoji: '👕', customLabel: 'T-shirt' },
+        options: [
+          "I'm wearing a T-shirt.",
+          "I'm wearing a skirt.",
+          "I'm wearing a hat.",
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Что на тебе надето? → На мне футболка.',
+          lv: 'Kas tev ir mugurā? → Man ir mugurā T-krekls.',
+        },
+      },
+      {
+        id: 'g2_wear_5',
+        grade: 2,
+        category: 'wearing',
+        prompt: 'What are you wearing?',
+        audioText: 'What are you wearing?',
+        imageWord: { en: 'cap', emoji: '🧢', customLabel: 'Cap' },
+        options: [
+          "I'm wearing boots.",
+          "I'm wearing a cap.",
+          "I'm wearing shorts.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Что на тебе надето? → На мне кепка.',
+          lv: 'Kas tev ir mugurā? → Man ir mugurā cepure.',
+        },
+      },
+      {
+        id: 'g2_app_6',
+        grade: 2,
+        category: 'has_got',
+        prompt: 'Has she got curly hair?',
+        audioText: 'Has she got curly hair?',
+        imageWord: { en: 'straight hair', emoji: '👩', customLabel: 'Straight hair' },
+        options: [
+          'Yes, she has.',
+          "No, she hasn't. She's got straight hair.",
+          'Yes, he has.',
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'У неё кудрявые волосы? → Нет, у неё прямые волосы.',
+          lv: 'Vai viņai ir cirtaini mati? → Nē, viņai ir taisni mati.',
+        },
+      },
+      {
+        id: 'g2_app_7',
+        grade: 2,
+        category: 'has_got',
+        prompt: 'Has he got curly hair?',
+        audioText: 'Has he got curly hair?',
+        imageWord: { en: 'curly hair', emoji: '👦', customLabel: 'Curly hair' },
+        options: [
+          "Yes, he has. He's got curly hair.",
+          "No, he hasn't.",
+          'Yes, she has.',
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'У него кудрявые волосы? → Да, у него кудрявые волосы.',
+          lv: 'Vai viņam ir cirtaini mati? → Jā, viņam ir cirtaini mati.',
+        },
+      },
+      {
+        id: 'g2_app_8',
+        grade: 2,
+        category: 'has_got',
+        prompt: 'Has she got long hair?',
+        audioText: 'Has she got long hair?',
+        imageWord: { en: 'long hair', emoji: '👧', customLabel: 'Long hair' },
+        options: [
+          "No, she hasn't.",
+          "Yes, she has. She's got long hair.",
+          "He's got short hair.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'У неё длинные волосы? → Да, у неё длинные волосы.',
+          lv: 'Vai viņai ir gari mati? → Jā, viņai ir gari mati.',
+        },
+      },
+      {
+        id: 'g2_app_9',
+        grade: 2,
+        category: 'has_got',
+        prompt: 'Has he got glasses?',
+        audioText: 'Has he got glasses?',
+        imageWord: { en: 'glasses', emoji: '👓', customLabel: 'Glasses' },
+        options: [
+          'Yes, he has.',
+          "No, he hasn't.",
+          'Yes, she has.',
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'У него есть очки? → Да, у него есть очки.',
+          lv: 'Vai viņam ir brilles? → Jā, viņam ir.',
+        },
+      },
+      {
+        id: 'g2_app_10',
+        grade: 2,
+        category: 'has_got',
+        prompt: 'Has she got dark hair?',
+        audioText: 'Has she got dark hair?',
+        imageWord: { en: 'blond hair', emoji: '👱‍♀️', customLabel: 'Blond hair' },
+        options: [
+          'Yes, she has.',
+          "No, she hasn't. She's got blond hair.",
+          "She hasn't got hair.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'У неё тёмные волосы? → Нет, у неё светлые волосы.',
+          lv: 'Vai viņai ir tumši mati? → Nē, viņai ir gaiši mati.',
+        },
+      },
+      {
+        id: 'g2_app_11',
+        grade: 2,
+        category: 'has_got',
+        prompt: 'Has he got blue eyes?',
+        audioText: 'Has he got blue eyes?',
+        imageWord: { en: 'green eyes', emoji: '👁️', customLabel: 'Green eyes' },
+        options: [
+          'Yes, he has.',
+          "No, he hasn't. He's got green eyes.",
+          'Yes, they have.',
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'У него голубые глаза? → Нет, у него зелёные глаза.',
+          lv: 'Vai viņam ir zilas acis? → Nē, viņam ir zaļas acis.',
+        },
+      },
+    ],
+  },
+  {
+    id: 'g2_prepositions_and_there_is_are',
+    grade: 2,
+    title: {
+      ru: "Where's the...? & There's / There are",
+      lv: "Where's the...? & There's / There are",
+    },
+    description: {
+      ru: "Предлоги места (It's in / on / under the table) и конструкции There's a kitchen / There are two bathrooms",
+      lv: "Prievārdi (It's in / on / under) un teikumi There is / There are",
+    },
+    emoji: '🏠',
+    color: 'rose',
+    questions: [
+      {
+        id: 'g2_prep_1',
+        grade: 2,
+        category: 'prepositions',
+        prompt: "Where's the book?",
+        audioText: "Where's the book?",
+        imageWord: { en: 'book on table', emoji: '📖', secondEmoji: '🪵', customLabel: 'On the table' },
+        options: [
+          "It's on the table.",
+          "It's in the table.",
+          "It's under the table.",
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Где книга? → Она на столе (on).',
+          lv: 'Kur ir grāmata? → Tā ir uz galda (on).',
+        },
+      },
+      {
+        id: 'g2_prep_2',
+        grade: 2,
+        category: 'prepositions',
+        prompt: "Where's the cat?",
+        audioText: "Where's the cat?",
+        imageWord: { en: 'cat under chair', emoji: '🐱', secondEmoji: '🪑', customLabel: 'Under the chair' },
+        options: [
+          "It's on the chair.",
+          "It's under the chair.",
+          "It's in the chair.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Где кошка? → Она под стулом (under).',
+          lv: 'Kur ir kaķis? → Tas ir zem krēsla (under).',
+        },
+      },
+      {
+        id: 'g2_prep_3',
+        grade: 2,
+        category: 'prepositions',
+        prompt: "Where's the pencil?",
+        audioText: "Where's the pencil?",
+        imageWord: { en: 'pencil in pencil case', emoji: '✏️', secondEmoji: '👝', customLabel: 'In the pencil case' },
+        options: [
+          "It's under the pencil case.",
+          "It's on the pencil case.",
+          "It's in the pencil case.",
+        ],
+        correctIndex: 2,
+        hint: {
+          ru: 'Где карандаш? → Он в пенале (in).',
+          lv: 'Kur ir zīmulis? → Tas ir penālī (in).',
+        },
+      },
+      {
+        id: 'g2_prep_4',
+        grade: 2,
+        category: 'prepositions',
+        prompt: "Where's the ball?",
+        audioText: "Where's the ball?",
+        imageWord: { en: 'ball under bed', emoji: '⚽', secondEmoji: '🛏️', customLabel: 'Under the bed' },
+        options: [
+          "It's on the bed.",
+          "It's under the bed.",
+          "It's in the bed.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Где мяч? → Он под кроватью (under).',
+          lv: 'Kur ir bumba? → Tā ir zem gultas (under).',
+        },
+      },
+      {
+        id: 'g2_prep_5',
+        grade: 2,
+        category: 'prepositions',
+        prompt: "Where's the apple?",
+        audioText: "Where's the apple?",
+        imageWord: { en: 'apple on plate', emoji: '🍎', secondEmoji: '🍽️', customLabel: 'On the plate' },
+        options: [
+          "It's on the plate.",
+          "It's in the plate.",
+          "It's under the plate.",
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Где яблоко? → Оно на тарелке (on).',
+          lv: 'Kur ir ābols? → Tas ir uz šķīvja (on).',
+        },
+      },
+      {
+        id: 'g2_prep_6',
+        grade: 2,
+        category: 'prepositions',
+        prompt: "Where's the ruler?",
+        audioText: "Where's the ruler?",
+        imageWord: { en: 'ruler in bag', emoji: '📏', secondEmoji: '🎒', customLabel: 'In the bag' },
+        options: [
+          "It's under the bag.",
+          "It's in the bag.",
+          "It's on the bag.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Где линейка? → Она в рюкзаке (in).',
+          lv: 'Kur ir lineāls? → Tas ir somā (in).',
+        },
+      },
+      {
+        id: 'g2_t_7',
+        grade: 2,
+        category: 'there_is_are',
+        prompt: 'Look at the house plan:',
+        audioText: "There's a kitchen.",
+        imageWord: { en: 'kitchen', emoji: '🍳', customLabel: '1 Kitchen' },
+        options: [
+          "There's a kitchen.",
+          'There are two kitchens.',
+          "There's two kitchens.",
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Одна кухня (ед. ч.) → There\'s a kitchen.',
+          lv: 'Viena virtuve → There\'s a kitchen.',
+        },
+      },
+      {
+        id: 'g2_t_8',
+        grade: 2,
+        category: 'there_is_are',
+        prompt: 'Look at the house plan:',
+        audioText: 'There are two bathrooms.',
+        imageWord: { en: 'bathrooms', emoji: '🛁', secondEmoji: '🛁', customLabel: '2 Bathrooms' },
+        options: [
+          "There's two bathrooms.",
+          'There are two bathrooms.',
+          "There's a bathroom.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Две ванные комнаты (мн. ч.) → There are two bathrooms.',
+          lv: 'Divas vannasistabas → There are two bathrooms.',
+        },
+      },
+      {
+        id: 'g2_t_9',
+        grade: 2,
+        category: 'there_is_are',
+        prompt: 'Look at the living room:',
+        audioText: 'There are three cushions.',
+        imageWord: { en: 'cushions', emoji: '🛋️', customLabel: '3 Cushions' },
+        options: [
+          "There's three cushions.",
+          'There are three cushions.',
+          "There's a cushion.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Три подушки (мн. ч.) → There are three cushions.',
+          lv: 'Trīs spilveni → There are three cushions.',
+        },
+      },
+      {
+        id: 'g2_t_10',
+        grade: 2,
+        category: 'there_is_are',
+        prompt: 'Look at the bedroom:',
+        audioText: "There's a big bed.",
+        imageWord: { en: 'bed', emoji: '🛏️', customLabel: '1 Big Bed' },
+        options: [
+          "There's a big bed.",
+          'There are a big bed.',
+          'There are three beds.',
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Одна большая кровать → There\'s a big bed.',
+          lv: 'Viena liela gulta → There\'s a big bed.',
+        },
+      },
+      {
+        id: 'g2_t_11',
+        grade: 2,
+        category: 'there_is_are',
+        prompt: 'Look at the garden:',
+        audioText: 'There are four flowers.',
+        imageWord: { en: 'flowers', emoji: '🌸', secondEmoji: '🌺', customLabel: '4 Flowers' },
+        options: [
+          "There's four flowers.",
+          'There are four flowers.',
+          "There's a flower.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Четыре цветка (мн. ч.) → There are four flowers.',
+          lv: 'Četri ziedi → There are four flowers.',
+        },
+      },
+      {
+        id: 'g2_t_12',
+        grade: 2,
+        category: 'there_is_are',
+        prompt: 'Look at the garage:',
+        audioText: "There's a red car.",
+        imageWord: { en: 'car', emoji: '🚗', customLabel: '1 Red Car' },
+        options: [
+          "There's a red car.",
+          'There are a red car.',
+          'There are two cars.',
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Одна красная машина → There\'s a red car.',
+          lv: 'Viena sarkana mašīna → There\'s a red car.',
+        },
+      },
+    ],
+  },
+  {
+    id: 'g2_mix',
+    grade: 2,
+    title: {
+      ru: 'Все задания 2 класса (Микс)',
+      lv: 'Visi 2. klases uzdevumi (Mikss)',
+    },
+    description: {
+      ru: 'Случайные 10 вопросов из всех тем 2 класса',
+      lv: 'Jaukti 10 jautājumi no visām 2. klases tēmām',
+    },
+    emoji: '🎯',
+    color: 'amber',
+    questions: [], // Populated dynamically by getQuestionsForGrammarTopic
+  },
+];
+
+export const ALL_GRAMMAR_TOPICS: GrammarTopic[] = [
+  ...GRADE_1_GRAMMAR_TOPICS,
+  ...GRADE_2_GRAMMAR_TOPICS,
+];
+
+// Helper to get grammar topics based on active grades filter
+export function getGrammarTopicsForGrades(selectedGrades: Grade[]): GrammarTopic[] {
+  const list: GrammarTopic[] = [];
+  if (selectedGrades.includes(1)) {
+    list.push(...GRADE_1_GRAMMAR_TOPICS);
+  }
+  if (selectedGrades.includes(2)) {
+    list.push(...GRADE_2_GRAMMAR_TOPICS);
+  }
+  return list;
+}
+
+// Helper to get questions for topic, handling mix
 export function getQuestionsForGrammarTopic(topic: GrammarTopic): GrammarQuestion[] {
   if (topic.id === 'g1_mix') {
     const all = GRADE_1_GRAMMAR_TOPICS
       .filter((t) => t.id !== 'g1_mix')
       .flatMap((t) => t.questions);
-    // Return shuffled subset of 10
+    return [...all].sort(() => Math.random() - 0.5).slice(0, 10);
+  }
+  if (topic.id === 'g2_mix') {
+    const all = GRADE_2_GRAMMAR_TOPICS
+      .filter((t) => t.id !== 'g2_mix')
+      .flatMap((t) => t.questions);
     return [...all].sort(() => Math.random() - 0.5).slice(0, 10);
   }
   return topic.questions;

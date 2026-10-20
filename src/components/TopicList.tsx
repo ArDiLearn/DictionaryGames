@@ -29,7 +29,7 @@ import {
 import { sounds } from '../utils/soundEffects';
 import { speakWord } from '../utils/speech';
 import { getTitleById } from '../data/titles';
-import { GRADE_1_GRAMMAR_TOPICS, GrammarTopic } from '../data/grammarData';
+import { GrammarTopic, getGrammarTopicsForGrades } from '../data/grammarData';
 import { GrammarCard } from './GrammarCard';
 import { GrammarTopicProgress } from '../services/storage';
 import { Search, Sparkles, BarChart3, ClipboardCheck, Gamepad2, Volume2, ArrowRight } from 'lucide-react';
@@ -199,8 +199,12 @@ export const TopicList: React.FC<TopicListProps> = ({
     onTabChange?.(tab);
   };
 
+  const visibleGrammarTopics = useMemo(() => {
+    return getGrammarTopicsForGrades(selectedGrades);
+  }, [selectedGrades]);
+
   const isGrammarAvailable =
-    course !== 'lv' && selectedGrades.includes(1) && Boolean(onSelectGrammarTopic);
+    course !== 'lv' && visibleGrammarTopics.length > 0 && Boolean(onSelectGrammarTopic);
   const isExtraAvailable = extraTopics.length > 0;
   const isExamAvailable = Boolean(onStartExam) && selectedGrades.length > 0;
 
@@ -213,6 +217,24 @@ export const TopicList: React.FC<TopicListProps> = ({
       handleTabChange('main');
     }
   }, [activeTab, isGrammarAvailable, isExtraAvailable, isExamAvailable]);
+
+  const grammarSubtitle = useMemo(() => {
+    const hasG1 = selectedGrades.includes(1);
+    const hasG2 = selectedGrades.includes(2);
+    if (hasG1 && hasG2) {
+      return language === 'lv'
+        ? '1.–2. klases jautājumi, atbildes un teikumu konstrukcijas'
+        : 'Вопросы, ответы и конструкции предложений для 1–2 классов';
+    }
+    if (hasG2) {
+      return language === 'lv'
+        ? '2. klases jautājumi, atbildes un teikumu konstrukcijas'
+        : 'Вопросы, ответы и конструкции предложений для 2 класса';
+    }
+    return language === 'lv'
+      ? '1. klases jautājumi, atbildes un teikumu konstrukcijas'
+      : 'Вопросы, ответы и конструкции предложений для 1 класса';
+  }, [selectedGrades, language]);
 
   const tabs = useMemo(() => {
     const list: {
@@ -236,7 +258,7 @@ export const TopicList: React.FC<TopicListProps> = ({
         id: 'grammar',
         label: language === 'lv' ? 'Gramatika' : 'Грамматика',
         emoji: '📝',
-        badge: GRADE_1_GRAMMAR_TOPICS.length,
+        badge: visibleGrammarTopics.length,
         activeClass: 'bg-emerald-500 text-white shadow-md shadow-emerald-500/20 border-emerald-400',
       });
     }
@@ -976,19 +998,17 @@ export const TopicList: React.FC<TopicListProps> = ({
                       {language === 'lv' ? 'Gramatika un dialogi' : 'Грамматика и диалоги'}
                     </h2>
                     <p className="text-xs sm:text-sm font-semibold text-slate-500">
-                      {language === 'lv'
-                        ? '1. klases jautājumi, atbildes un teikumu konstrukcijas'
-                        : 'Вопросы, ответы и конструкции предложений для 1 класса'}
+                      {grammarSubtitle}
                     </p>
                   </div>
                 </div>
                 <span className="text-xs font-black bg-emerald-100 text-emerald-900 px-2.5 py-1 rounded-full border border-emerald-300">
-                  {GRADE_1_GRAMMAR_TOPICS.length} {language === 'lv' ? 'tēmas' : 'тем'}
+                  {visibleGrammarTopics.length} {language === 'lv' ? 'tēmas' : 'тем'}
                 </span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-                {GRADE_1_GRAMMAR_TOPICS.map((gTopic) => (
+                {visibleGrammarTopics.map((gTopic) => (
                   <GrammarCard
                     key={gTopic.id}
                     topic={gTopic}

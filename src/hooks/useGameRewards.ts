@@ -11,7 +11,7 @@ import {
   loadTopicProgress,
   saveTopicProgress,
 } from '../services/storage';
-import { trackGameComplete } from '../utils/analytics';
+import { trackGameComplete, trackExamComplete } from '../utils/analytics';
 import { sounds } from '../utils/soundEffects';
 import { translations } from '../utils/i18n';
 import { RewardToast } from '../components/RewardToastOverlay';
@@ -64,7 +64,14 @@ export function useGameRewards(
       if (!selectedTopic) return;
 
       if (gameMode === 'flashcards') {
-        trackGameComplete('flashcards', selectedTopic.topic_id, correctCount, 0);
+        trackGameComplete(
+          'flashcards',
+          selectedTopic.topic_id,
+          correctCount,
+          0,
+          selectedTopic.topic_name.ru,
+          course
+        );
         // Flashcards is a study mode: no reward is granted (no stars added to avatar bank)
         setCelebration({
           correct: correctCount,
@@ -127,7 +134,14 @@ export function useGameRewards(
 
       const isFlawless = correctCount === totalCount && totalCount >= 4;
       if (gameMode) {
-        trackGameComplete(gameMode, selectedTopic.topic_id, correctCount, gameStars);
+        trackGameComplete(
+          gameMode,
+          selectedTopic.topic_id,
+          correctCount,
+          gameStars,
+          selectedTopic.topic_name.ru,
+          course
+        );
         recordGameModePlayed(gameMode, isFlawless);
       }
 
@@ -202,6 +216,13 @@ export function useGameRewards(
 
   const handleExamComplete = useCallback(
     (result: ExamResult) => {
+      trackExamComplete(
+        result.grade,
+        result.scorePercent,
+        result.gradeMark || '-',
+        result.starsEarned,
+        course
+      );
       const { results, history } = recordExamAttempt(course, result);
       setExamResults(results);
       setExamHistory(history);

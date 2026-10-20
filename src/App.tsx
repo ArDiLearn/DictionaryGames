@@ -6,7 +6,7 @@ import { TopicList } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
 import { PwaInstallPrompt } from './components/PwaInstallPrompt';
 import { RewardToastOverlay } from './components/RewardToastOverlay';
-import { trackGameStart, trackLanguageChange } from './utils/analytics';
+import { trackGameStart, trackExamStart, trackLanguageChange } from './utils/analytics';
 import { useNavigation } from './hooks/useNavigation';
 import { useGameRewards } from './hooks/useGameRewards';
 import { useCloudSync } from './hooks/useCloudSync';
@@ -356,7 +356,7 @@ export const App: React.FC = () => {
     setGameSessionId((prev) => prev + 1);
     const mTopic = buildMistakesTopic(mistakesWords);
     selectTopicWithMode(mTopic, 'test');
-    trackGameStart('test', MISTAKES_TOPIC_ID);
+    trackGameStart('test', MISTAKES_TOPIC_ID, 'Работа над ошибками', course);
   };
 
   const handleOpenMistakesGames = () => {
@@ -369,13 +369,14 @@ export const App: React.FC = () => {
   const handleSelectMode = (mode: GameMode) => {
     selectMode(mode);
     if (currentTopic) {
-      trackGameStart(mode, currentTopic.topic_id);
+      trackGameStart(mode, currentTopic.topic_id, currentTopic.topic_name.ru, course);
     }
   };
 
   const handleStartExam = (grade: Grade) => {
     setCelebration(null);
     startExam(grade);
+    trackExamStart(grade, course);
   };
 
 

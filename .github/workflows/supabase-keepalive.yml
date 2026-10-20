@@ -25,7 +25,7 @@ jobs:
             -H "Authorization: Bearer ${SUPABASE_KEY}" \
             -H "Content-Type: application/json" \
             -H "Prefer: resolution=merge-duplicates" \
-            -d "{\"device_id\":\"github_actions_keepalive\",\"player_name\":\"System KeepAlive\",\"course\":\"en\",\"last_seen_at\":\"${NOW_ISO}\"}")
+            -d "{\"device_id\":\"🤖 Система: Авто-пинг Supabase (защита от паузы)\",\"player_name\":\"✅ База активна — GitHub Actions (${NOW_ISO})\",\"course\":\"en\",\"last_seen_at\":\"${NOW_ISO}\"}")
 
           echo "app_activity upsert HTTP status: $HTTP_STATUS"
 

@@ -236,20 +236,52 @@ export const TopicList: React.FC<TopicListProps> = ({
       : 'Вопросы, ответы и конструкции предложений для 1 класса';
   }, [selectedGrades, language]);
 
+  const themeStyles = useMemo(() => {
+    if (course === 'lv') {
+      return {
+        bannerGradient: 'bg-gradient-to-r from-[#3DA373] via-[#2B7A56] to-[#1A543A]',
+        tabContainer: 'bg-emerald-50/80 border-2 border-emerald-200/80',
+        activeTabClass: 'bg-gradient-to-r from-[#3DA373] via-[#2B7A56] to-[#1A543A] text-white shadow-md shadow-emerald-700/25 border-transparent scale-[1.02]',
+        inactiveTabClass: 'bg-white/90 text-slate-700 hover:text-[#1A543A] border-emerald-100 hover:border-[#3DA373]/40 hover:bg-white shadow-2xs',
+        inactiveBadgeClass: 'bg-emerald-50 text-[#1A543A] border border-emerald-200',
+        sectionHeaderBorder: 'border-emerald-200',
+        sectionBadge: 'bg-emerald-100 text-[#1A543A] border-emerald-300',
+      };
+    }
+    if (course === 'en-lv' || language === 'lv') {
+      return {
+        bannerGradient: 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700',
+        tabContainer: 'bg-teal-50/80 border-2 border-teal-200/80',
+        activeTabClass: 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700 text-white shadow-md shadow-teal-600/25 border-transparent scale-[1.02]',
+        inactiveTabClass: 'bg-white/90 text-slate-700 hover:text-teal-700 border-teal-100 hover:border-teal-300 hover:bg-white shadow-2xs',
+        inactiveBadgeClass: 'bg-teal-50 text-teal-800 border border-teal-200',
+        sectionHeaderBorder: 'border-teal-200',
+        sectionBadge: 'bg-teal-100 text-teal-900 border-teal-300',
+      };
+    }
+    return {
+      bannerGradient: 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700',
+      tabContainer: 'bg-sky-50/80 border-2 border-sky-200/80',
+      activeTabClass: 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700 text-white shadow-md shadow-blue-600/25 border-transparent scale-[1.02]',
+      inactiveTabClass: 'bg-white/90 text-slate-700 hover:text-blue-700 border-sky-100 hover:border-blue-300 hover:bg-white shadow-2xs',
+      inactiveBadgeClass: 'bg-sky-50 text-blue-900 border border-sky-200',
+      sectionHeaderBorder: 'border-sky-200',
+      sectionBadge: 'bg-sky-100 text-blue-950 border-sky-300',
+    };
+  }, [course, language]);
+
   const tabs = useMemo(() => {
     const list: {
       id: ContentTab;
       label: string;
       emoji: string;
       badge?: string | number;
-      activeClass: string;
     }[] = [
       {
         id: 'main',
         label: language === 'lv' ? 'Pamatkursa' : 'Основные',
         emoji: '📚',
         badge: mainTopics.length,
-        activeClass: 'bg-amber-500 text-white shadow-md shadow-amber-500/20 border-amber-400',
       },
     ];
 
@@ -259,7 +291,6 @@ export const TopicList: React.FC<TopicListProps> = ({
         label: language === 'lv' ? 'Gramatika' : 'Грамматика',
         emoji: '📝',
         badge: visibleGrammarTopics.length,
-        activeClass: 'bg-emerald-500 text-white shadow-md shadow-emerald-500/20 border-emerald-400',
       });
     }
 
@@ -269,7 +300,6 @@ export const TopicList: React.FC<TopicListProps> = ({
         label: language === 'lv' ? 'Papildus' : 'Дополнительные',
         emoji: '⭐',
         badge: extraTopics.length,
-        activeClass: 'bg-indigo-500 text-white shadow-md shadow-indigo-500/20 border-indigo-400',
       });
     }
 
@@ -293,7 +323,6 @@ export const TopicList: React.FC<TopicListProps> = ({
         label: language === 'lv' ? 'Pārbaudes darbs' : 'Контрольная',
         emoji: '🏆',
         badge: cupBadge ? `${cupBadge} ${res?.gradeMark || ''}`.trim() : undefined,
-        activeClass: 'bg-gradient-to-r from-amber-500 to-rose-500 text-white shadow-md shadow-rose-500/20 border-rose-400',
       });
     }
 
@@ -313,12 +342,7 @@ export const TopicList: React.FC<TopicListProps> = ({
   const displayName = getPlayerDisplayName(playerName, language);
   const equippedTitle = getTitleById(equippedTitleId);
 
-  const bannerGradient =
-    course === 'lv'
-      ? 'bg-gradient-to-r from-[#3DA373] via-[#2B7A56] to-[#1A543A]'
-      : course === 'en-lv' || language === 'lv'
-      ? 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700'
-      : 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700';
+  const bannerGradient = themeStyles.bannerGradient;
 
   const mistakesBannerStyle =
     course === 'lv'
@@ -838,7 +862,7 @@ export const TopicList: React.FC<TopicListProps> = ({
         <div className="space-y-8">
           {mainTopics.length > 0 && (
             <div>
-              <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-amber-200">
+              <div className={`flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 ${themeStyles.sectionHeaderBorder}`}>
                 <div className="flex items-center gap-2.5">
                   <span className="text-2xl">📚</span>
                   <div>
@@ -850,7 +874,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                     </p>
                   </div>
                 </div>
-                <span className="text-xs font-black bg-amber-100 text-amber-900 px-2.5 py-1 rounded-full border border-amber-300">
+                <span className={`text-xs font-black px-2.5 py-1 rounded-full border ${themeStyles.sectionBadge}`}>
                   {mainTopics.length}
                 </span>
               </div>
@@ -911,7 +935,7 @@ export const TopicList: React.FC<TopicListProps> = ({
         <div>
           {/* Tab Navigation */}
           {tabs.length > 1 && (
-            <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 bg-slate-100/90 backdrop-blur-xs rounded-2xl sm:rounded-3xl border-2 border-slate-200/90 mb-6 overflow-x-auto no-scrollbar shadow-inner">
+            <div className={`flex items-center gap-1.5 sm:gap-2 p-1.5 ${themeStyles.tabContainer} backdrop-blur-xs rounded-2xl sm:rounded-3xl mb-6 overflow-x-auto no-scrollbar shadow-inner`}>
               {tabs.map((tab) => {
                 const isActive = activeTab === tab.id;
                 return (
@@ -924,8 +948,8 @@ export const TopicList: React.FC<TopicListProps> = ({
                     }}
                     className={`flex-1 min-w-max px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 transition-all cursor-pointer border-2 select-none active:scale-98 ${
                       isActive
-                        ? `${tab.activeClass} scale-[1.02]`
-                        : 'bg-white/90 text-slate-600 hover:text-slate-900 border-slate-200/80 hover:bg-white hover:border-slate-300 shadow-2xs'
+                        ? themeStyles.activeTabClass
+                        : themeStyles.inactiveTabClass
                     }`}
                   >
                     <span className="text-base sm:text-lg">{tab.emoji}</span>
@@ -934,8 +958,8 @@ export const TopicList: React.FC<TopicListProps> = ({
                       <span
                         className={`text-[10px] sm:text-xs px-2 py-0.5 rounded-full font-black ${
                           isActive
-                            ? 'bg-black/20 text-white'
-                            : 'bg-slate-100 text-slate-600 border border-slate-200'
+                            ? 'bg-black/20 text-white shadow-2xs'
+                            : themeStyles.inactiveBadgeClass
                         }`}
                       >
                         {tab.badge}
@@ -950,7 +974,7 @@ export const TopicList: React.FC<TopicListProps> = ({
           {/* Active Tab Content */}
           {activeTab === 'main' && (
             <div>
-              <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-amber-200">
+              <div className={`flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 ${themeStyles.sectionHeaderBorder}`}>
                 <div className="flex items-center gap-2.5">
                   <span className="text-2xl">📚</span>
                   <div>
@@ -962,7 +986,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                     </p>
                   </div>
                 </div>
-                <span className="text-xs font-black bg-amber-100 text-amber-900 px-2.5 py-1 rounded-full border border-amber-300">
+                <span className={`text-xs font-black px-2.5 py-1 rounded-full border ${themeStyles.sectionBadge}`}>
                   {mainTopics.length}
                 </span>
               </div>
@@ -1013,6 +1037,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                     key={gTopic.id}
                     topic={gTopic}
                     language={language}
+                    course={course}
                     stars={grammarProgress?.[gTopic.id]?.stars || 0}
                     onSelect={onSelectGrammarTopic}
                   />

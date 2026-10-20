@@ -30,6 +30,7 @@ interface TopicListProps {
   language: Language;
   course?: LearningCourse;
   onCourseChange?: (course: LearningCourse) => void;
+  onLanguageChange?: (lang: Language) => void;
   topicProgress: Record<string, TopicProgress>;
   selectedGrades: Grade[];
   onToggleGrade: (grade: Grade) => void;
@@ -53,6 +54,7 @@ export const TopicList: React.FC<TopicListProps> = ({
   language,
   course = 'en',
   onCourseChange,
+  onLanguageChange,
   topicProgress,
   selectedGrades,
   onToggleGrade,
@@ -113,15 +115,28 @@ export const TopicList: React.FC<TopicListProps> = ({
   const displayName = getPlayerDisplayName(playerName, language);
   const equippedTitle = getTitleById(equippedTitleId);
 
+  const bannerGradient =
+    course === 'lv'
+      ? 'bg-gradient-to-r from-[#8C1D2E] via-rose-600 to-amber-600'
+      : language === 'lv'
+      ? 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700'
+      : 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700';
+
+  const selectLearningPair = (targetCourse: LearningCourse, targetLang: Language) => {
+    sounds.playClick();
+    if (onCourseChange && targetCourse !== course) {
+      onCourseChange(targetCourse);
+    }
+    if (onLanguageChange && targetLang !== language) {
+      onLanguageChange(targetLang);
+    }
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-6">
       {/* Welcome Banner */}
       <div
-        className={`relative rounded-3xl p-5 sm:p-7 text-white shadow-xl mb-6 transition-colors duration-300 ${
-          course === 'lv'
-            ? 'bg-gradient-to-r from-[#8C1D2E] via-rose-600 to-amber-600'
-            : 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700'
-        }`}
+        className={`relative rounded-3xl p-5 sm:p-7 text-white shadow-xl mb-6 transition-colors duration-300 ${bannerGradient}`}
       >
         <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5 sm:gap-4">
@@ -143,13 +158,21 @@ export const TopicList: React.FC<TopicListProps> = ({
             <div className="flex flex-col justify-center">
               {/* Explicit active language course indicator badge */}
               <div className="mb-1.5 flex items-center">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/25 border border-white/35 backdrop-blur-md text-white text-xs sm:text-sm font-black shadow-sm">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/25 border border-white/35 backdrop-blur-md text-white text-xs sm:text-sm font-black shadow-sm">
                   <FlagIcon
                     country={course === 'en' ? 'gb' : 'lv'}
                     size="sm"
                     className="rounded-xs ring-1 ring-white/60 shrink-0"
                   />
-                  <span>{course === 'lv' ? t.currentlyLearningLv : t.currentlyLearningEn}</span>
+                  <span className="opacity-80">→</span>
+                  <FlagIcon
+                    country={course === 'lv' ? 'ru' : language === 'lv' ? 'lv' : 'ru'}
+                    size="sm"
+                    className="rounded-xs ring-1 ring-white/60 shrink-0"
+                  />
+                  <span className="ml-0.5">
+                    {course === 'lv' ? t.currentlyLearningLv : t.currentlyLearningEn}
+                  </span>
                 </div>
               </div>
 
@@ -187,39 +210,60 @@ export const TopicList: React.FC<TopicListProps> = ({
           </div>
 
           <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
-            {/* Single Course Toggle Button with Tooltip */}
+            {/* 3-Mode Language Direction Switcher: EN-RU | EN-LV | LV-RU */}
             {onCourseChange && (
-              <div className="relative group">
-                <button
-                  onClick={() => {
-                    const nextCourse = course === 'en' ? 'lv' : 'en';
-                    sounds.playClick();
-                    onCourseChange(nextCourse);
-                  }}
-                  className="flex items-center gap-2.5 bg-white/20 hover:bg-white/30 active:scale-95 transition-all backdrop-blur-md px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl border-2 border-white/40 cursor-pointer text-white shadow-md select-none group/btn"
-                  title={t.courseSwitchHint}
-                >
-                  <FlagIcon
-                    country={course === 'en' ? 'gb' : 'lv'}
-                    size="xl"
-                    className="shadow-md rounded-md ring-1.5 ring-white/50 group-hover/btn:scale-105 transition-transform"
-                  />
-                  <div className="flex flex-col text-left leading-tight">
-                    <span className="text-xs sm:text-sm font-black whitespace-nowrap drop-shadow-sm">
-                      {course === 'en' ? t.courseEnglish : t.courseLatvian}
-                    </span>
-                    <span className="text-[10px] sm:text-[11px] text-yellow-200 font-bold flex items-center gap-1">
-                      <span>🔄</span>
-                      <span>{t.courseSwitchHint}</span>
-                    </span>
-                  </div>
-                </button>
+              <div className="flex flex-col gap-1 bg-black/20 backdrop-blur-md p-2 rounded-2xl border border-white/30">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-white/80 px-1">
+                  {t.courseSelectorLabel}:
+                </span>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  {/* Mode 1: English - Russian */}
+                  <button
+                    onClick={() => selectLearningPair('en', 'ru')}
+                    className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                      course === 'en' && language === 'ru'
+                        ? 'bg-white text-indigo-900 shadow-md scale-105 ring-2 ring-yellow-300'
+                        : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
+                    }`}
+                    title="Английский — Русский (EN → RU)"
+                  >
+                    <FlagIcon country="gb" size="xs" />
+                    <span>-</span>
+                    <FlagIcon country="ru" size="xs" />
+                    <span>Англ–Рус</span>
+                  </button>
 
-                {/* Floating tooltip on hover */}
-                <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900/95 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xl border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-30 flex items-center gap-1.5">
-                  <FlagIcon country={course === 'en' ? 'lv' : 'gb'} size="xs" />
-                  <span>💡</span>
-                  <span>{t.courseSwitchHint}</span>
+                  {/* Mode 2: English - Latvian */}
+                  <button
+                    onClick={() => selectLearningPair('en', 'lv')}
+                    className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                      course === 'en' && language === 'lv'
+                        ? 'bg-white text-teal-900 shadow-md scale-105 ring-2 ring-yellow-300'
+                        : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
+                    }`}
+                    title="Angļu — Latviešu / Английский — Латышский (EN → LV)"
+                  >
+                    <FlagIcon country="gb" size="xs" />
+                    <span>-</span>
+                    <FlagIcon country="lv" size="xs" />
+                    <span>Angļu–Latv</span>
+                  </button>
+
+                  {/* Mode 3: Latvian - Russian */}
+                  <button
+                    onClick={() => selectLearningPair('lv', 'ru')}
+                    className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                      course === 'lv'
+                        ? 'bg-white text-rose-900 shadow-md scale-105 ring-2 ring-yellow-300'
+                        : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
+                    }`}
+                    title="Латышский — Русский (LV → RU)"
+                  >
+                    <FlagIcon country="lv" size="xs" />
+                    <span>-</span>
+                    <FlagIcon country="ru" size="xs" />
+                    <span>Лат–Рус</span>
+                  </button>
                 </div>
               </div>
             )}

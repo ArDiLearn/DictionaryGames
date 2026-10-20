@@ -434,6 +434,7 @@ export const App: React.FC = () => {
             language={language}
             course={course}
             onCourseChange={handleCourseChange}
+            onLanguageChange={handleLanguageChange}
             topicProgress={topicProgress}
             selectedGrades={selectedGrades}
             onToggleGrade={handleToggleGrade}

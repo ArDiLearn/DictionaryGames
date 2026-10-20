@@ -7,7 +7,7 @@ import { translations, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { triggerVictoryAnimation, cancelVictoryAnimation } from './VictoryEffects';
 import { AvatarBadge } from './AvatarBadge';
-import { X, Check, Lock, Sparkles, ShoppingBag, Volume2, Play } from 'lucide-react';
+import { X, Check, Lock, Sparkles, ShoppingBag, Volume2, Play, ChevronDown } from 'lucide-react';
 
 interface AvatarShopModalProps {
   isOpen: boolean;
@@ -173,19 +173,19 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-2xl max-h-[90vh] bg-white rounded-3xl shadow-2xl border-4 border-amber-300 flex flex-col overflow-hidden animate-pop">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
+      <div className="relative w-full max-w-2xl h-[94vh] sm:max-h-[90vh] bg-white rounded-3xl shadow-2xl border-4 border-amber-300 flex flex-col overflow-hidden animate-pop">
         {/* Modal Header */}
-        <div className="px-5 py-4 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 flex items-center justify-between border-b-2 border-amber-300">
-          <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-2xl bg-white/30 backdrop-blur-md flex items-center justify-center text-white shadow-inner">
-              <ShoppingBag className="w-6 h-6 text-amber-950" />
+        <div className="px-4 py-2.5 sm:px-5 sm:py-3.5 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 flex items-center justify-between border-b-2 border-amber-300 shrink-0">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-white/30 backdrop-blur-md flex items-center justify-center text-white shadow-inner">
+              <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-amber-950" />
             </div>
             <div>
-              <h2 className="text-xl sm:text-2xl font-black text-amber-950 font-comic">
+              <h2 className="text-lg sm:text-2xl font-black text-amber-950 font-comic leading-tight">
                 {t.avatarShopTitle}
               </h2>
-              <p className="text-xs text-amber-900 font-semibold hidden sm:block">
+              <p className="text-[11px] sm:text-xs text-amber-900 font-semibold hidden sm:block">
                 {t.avatarShopSubtitle}
               </p>
             </div>
@@ -193,9 +193,9 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
 
           <div className="flex items-center gap-2">
             {/* Star Balance Badge */}
-            <div className="flex items-center gap-1.5 bg-white/95 px-3.5 py-1.5 rounded-2xl shadow-md border-2 border-amber-300">
-              <span className="text-xl">⭐</span>
-              <span className="text-lg font-black text-amber-600">{starBalance}</span>
+            <div className="flex items-center gap-1.5 bg-white/95 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-xl sm:rounded-2xl shadow-md border-2 border-amber-300">
+              <span className="text-base sm:text-xl">⭐</span>
+              <span className="text-base sm:text-lg font-black text-amber-600">{starBalance}</span>
             </div>
 
             {/* Close Button */}
@@ -205,146 +205,105 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
                 cancelVictoryAnimation();
                 onClose();
               }}
-              className="w-10 h-10 rounded-2xl bg-amber-950/10 hover:bg-amber-950/20 text-amber-950 flex items-center justify-center transition-colors cursor-pointer"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-amber-950/10 hover:bg-amber-950/20 text-amber-950 flex items-center justify-center transition-colors cursor-pointer"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
 
-        {/* Player Profile Summary Bar */}
-        <div className="px-5 py-3 bg-amber-50/80 border-b border-amber-200/80 flex items-center justify-between flex-wrap gap-2">
-          <div className="flex items-center gap-3">
-            <AvatarBadge avatar={stats.avatar || '🦁'} size="md" />
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-black text-slate-800 text-sm sm:text-base">
-                  {getPlayerDisplayName(stats.playerName, language)}
-                </span>
-                <span className="text-[10px] bg-emerald-100 text-emerald-800 font-extrabold px-2 py-0.5 rounded-full">
-                  {t.equipped}
-                </span>
-              </div>
-              <div className="text-xs text-slate-500 font-medium">
-                {t.totalEarnedStarsLabel}: <strong className="text-amber-600">⭐ {totalStarsEarned}</strong>
+        {/* Unified Navigation & Filter Bar */}
+        <div className="px-3 sm:px-4 py-2 flex items-center justify-between gap-2 bg-gradient-to-r from-amber-100/70 via-yellow-100/60 to-amber-100/70 border-b border-amber-200 shrink-0 flex-wrap">
+          {/* Section Tabs: Heroes | Animations | Music */}
+          <div className="flex items-center gap-1 sm:gap-1.5">
+            <button
+              onClick={() => {
+                sounds.playClick();
+                cancelVictoryAnimation();
+                setActiveTab('avatars');
+              }}
+              className={`px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1 transition-all cursor-pointer ${
+                activeTab === 'avatars'
+                  ? 'bg-amber-500 text-white shadow-md scale-102'
+                  : 'bg-white text-slate-700 border border-amber-200 hover:bg-amber-50'
+              }`}
+            >
+              <span>🎭</span>
+              <span>{t.shopTabAvatars}</span>
+            </button>
+            <button
+              onClick={() => {
+                sounds.playClick();
+                cancelVictoryAnimation();
+                setActiveTab('animations');
+              }}
+              className={`px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1 transition-all cursor-pointer ${
+                activeTab === 'animations'
+                  ? 'bg-amber-500 text-white shadow-md scale-102'
+                  : 'bg-white text-slate-700 border border-amber-200 hover:bg-amber-50'
+              }`}
+            >
+              <span>✨</span>
+              <span>{t.shopTabAnimations}</span>
+            </button>
+            <button
+              onClick={() => {
+                sounds.playClick();
+                cancelVictoryAnimation();
+                setActiveTab('music');
+              }}
+              className={`px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1 transition-all cursor-pointer ${
+                activeTab === 'music'
+                  ? 'bg-amber-500 text-white shadow-md scale-102'
+                  : 'bg-white text-slate-700 border border-amber-200 hover:bg-amber-50'
+              }`}
+            >
+              <span>🎵</span>
+              <span>{t.shopTabMusic}</span>
+            </button>
+          </div>
+
+          {/* Compact Category Dropdown (for Avatars Tab) */}
+          {activeTab === 'avatars' && (
+            <div className="relative flex items-center ml-auto">
+              <select
+                value={selectedCategory}
+                onChange={(e) => {
+                  sounds.playClick();
+                  setSelectedCategory(e.target.value as CategoryFilter);
+                }}
+                className="appearance-none bg-white hover:bg-amber-50 text-slate-800 font-black text-xs sm:text-sm pl-3 pr-8 py-1.5 rounded-xl border-2 border-amber-300 shadow-xs focus:outline-none focus:ring-2 focus:ring-amber-400 cursor-pointer"
+              >
+                {categories.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.id === 'mythic' ? `✨ ${cat.label}` : cat.label}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute right-2.5 pointer-events-none text-amber-700">
+                <ChevronDown className="w-4 h-4" />
               </div>
             </div>
-          </div>
+          )}
 
-          <div className="text-right">
-            {activeTab === 'avatars' && (
-              <span className="text-xs font-bold text-amber-800 bg-amber-100/80 px-3 py-1 rounded-xl border border-amber-300/60">
-                {unlockedSet.size} / {AVATAR_SHOP_ITEMS.length}
-              </span>
-            )}
-            {activeTab === 'animations' && (
-              <span className="text-xs font-bold text-amber-800 bg-amber-100/80 px-3 py-1 rounded-xl border border-amber-300/60">
-                {unlockedAnimationsSet.size} / {VICTORY_ANIMATION_ITEMS.length}
-              </span>
-            )}
-            {activeTab === 'music' && (
-              <span className="text-xs font-bold text-amber-800 bg-amber-100/80 px-3 py-1 rounded-xl border border-amber-300/60">
-                {unlockedMusicSet.size} / {VICTORY_MUSIC_ITEMS.length}
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Section Tabs: Heroes | Victory Animations | Victory Music */}
-        <div className="px-3 sm:px-5 py-2.5 flex items-center justify-center gap-2 bg-gradient-to-r from-amber-100/70 via-yellow-100/60 to-amber-100/70 border-b border-amber-200">
-          <button
-            onClick={() => {
-              sounds.playClick();
-              cancelVictoryAnimation();
-              setActiveTab('avatars');
-            }}
-            className={`px-3.5 py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer ${
-              activeTab === 'avatars'
-                ? 'bg-amber-500 text-white shadow-md scale-105'
-                : 'bg-white text-slate-700 border border-amber-200 hover:bg-amber-50'
-            }`}
-          >
-            <span>🎭</span>
-            <span>{t.shopTabAvatars}</span>
-          </button>
-          <button
-            onClick={() => {
-              sounds.playClick();
-              cancelVictoryAnimation();
-              setActiveTab('animations');
-            }}
-            className={`px-3.5 py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer ${
-              activeTab === 'animations'
-                ? 'bg-amber-500 text-white shadow-md scale-105'
-                : 'bg-white text-slate-700 border border-amber-200 hover:bg-amber-50'
-            }`}
-          >
-            <span>✨</span>
-            <span>{t.shopTabAnimations}</span>
-          </button>
-          <button
-            onClick={() => {
-              sounds.playClick();
-              cancelVictoryAnimation();
-              setActiveTab('music');
-            }}
-            className={`px-3.5 py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer ${
-              activeTab === 'music'
-                ? 'bg-amber-500 text-white shadow-md scale-105'
-                : 'bg-white text-slate-700 border border-amber-200 hover:bg-amber-50'
-            }`}
-          >
-            <span>🎵</span>
-            <span>{t.shopTabMusic}</span>
-          </button>
+          {/* Counts badge for Animations & Music tabs */}
+          {activeTab === 'animations' && (
+            <span className="text-[11px] sm:text-xs font-bold text-amber-800 bg-amber-200/60 px-2.5 py-1 rounded-xl border border-amber-300/80 ml-auto">
+              {unlockedAnimationsSet.size} / {VICTORY_ANIMATION_ITEMS.length}
+            </span>
+          )}
+          {activeTab === 'music' && (
+            <span className="text-[11px] sm:text-xs font-bold text-amber-800 bg-amber-200/60 px-2.5 py-1 rounded-xl border border-amber-300/80 ml-auto">
+              {unlockedMusicSet.size} / {VICTORY_MUSIC_ITEMS.length}
+            </span>
+          )}
         </div>
 
         {/* Tab 1: Avatars Content */}
         {activeTab === 'avatars' && (
           <>
-            {/* Category Filter Tabs */}
-            <div className="px-3 sm:px-5 pt-3 pb-2.5 flex flex-wrap items-center gap-1.5 sm:gap-2 bg-slate-50/70 border-b border-slate-200/80">
-              {categories.map((cat) => {
-                const isSelected = selectedCategory === cat.id;
-                let activeClasses = 'bg-amber-500 text-white shadow-md scale-105';
-                let inactiveClasses = 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs';
-
-                if (cat.id === 'mythic') {
-                  activeClasses =
-                    'bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 text-white shadow-md scale-105 ring-2 ring-pink-400 font-black';
-                  inactiveClasses =
-                    'bg-purple-50/80 hover:bg-purple-100 text-purple-900 border border-purple-300 shadow-2xs';
-                } else if (cat.id === 'legendary') {
-                  activeClasses =
-                    'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md scale-105 font-black';
-                  inactiveClasses =
-                    'bg-indigo-50/80 hover:bg-indigo-100 text-indigo-900 border border-indigo-200 shadow-2xs';
-                } else if (cat.id === 'unique') {
-                  activeClasses =
-                    'bg-gradient-to-r from-amber-500 to-yellow-500 text-amber-950 shadow-md scale-105 font-black';
-                  inactiveClasses =
-                    'bg-amber-50/80 hover:bg-amber-100 text-amber-900 border border-amber-300 shadow-2xs';
-                }
-
-                return (
-                  <button
-                    key={cat.id}
-                    onClick={() => {
-                      sounds.playClick();
-                      setSelectedCategory(cat.id);
-                    }}
-                    className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black whitespace-nowrap transition-all cursor-pointer ${
-                      isSelected ? activeClasses : inactiveClasses
-                    }`}
-                  >
-                    {cat.id === 'mythic' ? `✨ ${cat.label}` : cat.label}
-                  </button>
-                );
-              })}
-            </div>
-
             {/* Avatar Grid */}
-            <div className="flex-1 overflow-y-auto p-4 sm:p-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="flex-1 overflow-y-auto p-3 sm:p-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-4">
               {filteredItems.map((item) => {
                 const isUnlocked =
                   item.price === 0 ||

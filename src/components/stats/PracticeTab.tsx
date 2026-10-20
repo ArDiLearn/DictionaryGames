@@ -98,13 +98,11 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           {wordsToPractice.map(({ word, topic, wp }) => {
-            const isLatvianCourse = course === 'lv' || course === 'lv-en';
+            const isLatvianCourse = course === 'lv';
             const wordTarget = isLatvianCourse ? word.lv : word.en;
             const wordTranslation =
               course === 'lv'
                 ? word.ru
-                : course === 'lv-en'
-                ? word.en
                 : course === 'en-lv'
                 ? word.lv
                 : word[language] || word.ru;

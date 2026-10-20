@@ -67,19 +67,15 @@ export const Header: React.FC<HeaderProps> = ({
                 className={`inline-flex items-center gap-1 px-1.5 sm:px-2 py-0 sm:py-0.5 mt-0.5 sm:mt-0 rounded-full text-[9px] sm:text-[11px] font-black border shadow-2xs w-fit ${
                   course === 'lv'
                     ? 'bg-rose-50 text-rose-800 border-rose-200'
-                    : course === 'lv-en'
-                    ? 'bg-fuchsia-50 text-fuchsia-800 border-fuchsia-200'
                     : course === 'en-lv' || language === 'lv'
                     ? 'bg-teal-50 text-teal-800 border-teal-200'
                     : 'bg-sky-50 text-sky-800 border-sky-200'
                 }`}
               >
-                <FlagIcon country={course === 'lv' || course === 'lv-en' ? 'lv' : 'gb'} size="xs" />
+                <FlagIcon country={course === 'lv' ? 'lv' : 'gb'} size="xs" />
                 <span>
                   {course === 'lv'
                     ? 'LV–RU'
-                    : course === 'lv-en'
-                    ? 'LV–EN'
                     : course === 'en-lv' || language === 'lv'
                     ? 'EN–LV'
                     : 'EN–RU'}
@@ -88,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             <p className="text-xs text-slate-400 font-medium -mt-0.5 hidden md:flex items-center gap-1.5 whitespace-nowrap">
               <span>
-                {course === 'lv' || course === 'lv-en' ? t.courseLatvianSubtitle : t.appSubtitle}
+                {course === 'lv' ? t.courseLatvianSubtitle : t.appSubtitle}
               </span>
             </p>
           </div>

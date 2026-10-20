@@ -22,7 +22,7 @@ export const GameSelector: React.FC<GameSelectorProps> = ({
   onBack,
 }) => {
   const t = translations[language];
-  const isLatvianCourse = course === 'lv' || course === 'lv-en';
+  const isLatvianCourse = course === 'lv';
   const primaryTitle = isLatvianCourse
     ? topic.topic_name.lv || topic.topic_name.en
     : course === 'en-lv'

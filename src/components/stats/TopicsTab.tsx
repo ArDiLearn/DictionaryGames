@@ -91,7 +91,7 @@ export const TopicsTab: React.FC<TopicsTabProps> = ({
           const total = topic.words.length;
           const percent = total > 0 ? Math.round((mastered / total) * 100) : 0;
           const isCompleted = stars >= 3 || (total > 0 && mastered >= total);
-          const isLatvianCourse = course === 'lv' || course === 'lv-en';
+          const isLatvianCourse = course === 'lv';
           const title =
             isLatvianCourse || course === 'en-lv'
               ? topic.topic_name.lv || topic.topic_name.en

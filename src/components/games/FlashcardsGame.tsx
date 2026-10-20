@@ -170,8 +170,6 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
             {isFlipped
               ? course === 'lv'
                 ? '🇷🇺 Русский'
-                : course === 'lv-en'
-                ? '🇬🇧 English'
                 : course === 'en-lv' || language === 'lv'
                 ? '🇱🇻 Latviešu'
                 : '🇷🇺 Русский'

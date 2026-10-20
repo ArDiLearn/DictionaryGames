@@ -281,8 +281,6 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
             <span>
               {course === 'lv'
                 ? '🇷🇺'
-                : course === 'lv-en'
-                ? '🇬🇧'
                 : course === 'en-lv' || language === 'lv'
                 ? '🇱🇻'
                 : '🇷🇺'}
@@ -292,10 +290,6 @@ export const MatchPairsGame: React.FC<MatchPairsGameProps> = ({
                 ? language === 'lv'
                   ? 'Tulkojums (RU)'
                   : 'Перевод (RU)'
-                : course === 'lv-en'
-                ? language === 'lv'
-                  ? 'Tulkojums (EN)'
-                  : 'Перевод (EN)'
                 : language === 'lv'
                 ? 'Tulkojums'
                 : 'Перевод'}

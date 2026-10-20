@@ -61,7 +61,6 @@ export function getItemWithFallback(newKey: string, ...oldKeys: string[]): strin
 function getCourseSuffix(course: LearningCourse = 'en'): string {
   if (course === 'lv') return '_lv';
   if (course === 'en-lv') return '_en_lv';
-  if (course === 'lv-en') return '_lv_en';
   return '';
 }
 

@@ -224,7 +224,7 @@ export function speakWord(
   onStart?: () => void,
   onEnd?: () => void
 ): boolean {
-  if (course === 'lv' || course === 'lv-en') {
+  if (course === 'lv') {
     return speakLatvian(text, rate, onStart, onEnd);
   }
   return speakEnglish(text, rate, onStart, onEnd);

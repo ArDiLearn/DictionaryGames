@@ -1402,7 +1402,6 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'cats',
           emoji: '🐱',
-          secondEmoji: '🐱',
           customLabel: 'White & Grey Cats',
         },
         options: [
@@ -1448,7 +1447,6 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'balls',
           emoji: '⚽',
-          secondEmoji: '⚽',
           customLabel: 'Red & Green Balls',
         },
         options: [
@@ -1471,7 +1469,6 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'birds',
           emoji: '🦜',
-          secondEmoji: '🦜',
           customLabel: 'Blue & Yellow Birds',
         },
         options: [
@@ -1494,7 +1491,6 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'pencils',
           emoji: '✏️',
-          secondEmoji: '🖍️',
           customLabel: 'Yellow & Red Pencils',
         },
         options: [

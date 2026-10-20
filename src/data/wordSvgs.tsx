@@ -2696,6 +2696,232 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       </text>
     </svg>
   ),
+
+  // Blue boat (vivid royal blue sailboat with white sail)
+  'boat': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      {/* Water Waves */}
+      <path d="M8 82 Q25 77 42 82 T76 82 T96 82" stroke="#60a5fa" strokeWidth="3.5" strokeLinecap="round" fill="none" />
+      <path d="M16 88 Q35 84 54 88 T88 88" stroke="#93c5fd" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      {/* Blue Boat Hull */}
+      <path d="M14 62 L24 82 L76 82 L86 62 Z" fill="#2563eb" />
+      <path d="M14 62 L24 82 L30 82 L20 62 Z" fill="#1d4ed8" />
+      <path d="M14 62 L86 62 L84 66 L16 66 Z" fill="#60a5fa" />
+      {/* Mast */}
+      <rect x="47" y="16" width="5" height="48" rx="2" fill="#78350f" />
+      {/* Main Sail (White) */}
+      <path d="M54 20 L84 58 L54 58 Z" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1.5" />
+      {/* Front Jib Sail (White) */}
+      <path d="M45 26 L20 58 L45 58 Z" fill="#f1f5f9" stroke="#cbd5e1" strokeWidth="1.5" />
+      {/* Little Red Pennant Flag */}
+      <path d="M52 16 L65 21 L52 26 Z" fill="#ef4444" />
+      {/* White Lifebuoy on blue hull */}
+      <circle cx="50" cy="72" r="5.5" fill="#ffffff" stroke="#ef4444" strokeWidth="2" />
+      <circle cx="50" cy="72" r="2.2" fill="#2563eb" />
+    </svg>
+  ),
+
+  // Orange kite (vivid orange diamond kite with bows on tail)
+  'kite': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      {/* Kite Tail & Bows */}
+      <path d="M50 76 C46 86 54 92 62 96" stroke="#94a3b8" strokeWidth="2" strokeDasharray="3 2" fill="none" />
+      <polygon points="46,82 50,84 46,86 54,86 50,84 54,82" fill="#fbbf24" />
+      <polygon points="52,89 56,91 52,93 60,93 56,91 60,89" fill="#ec4899" />
+      {/* Vibrant Orange Diamond Kite Body */}
+      <polygon points="50,8 18,42 50,76" fill="#f97316" />
+      <polygon points="50,8 82,42 50,76" fill="#ea580c" />
+      {/* Cross Spars */}
+      <line x1="50" y1="8" x2="50" y2="76" stroke="#fed7aa" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="18" y1="42" x2="82" y2="42" stroke="#fed7aa" strokeWidth="2.5" strokeLinecap="round" />
+      {/* Center Star Emblem */}
+      <polygon points="50,34 52,40 58,42 52,44 50,50 48,44 42,42 48,40" fill="#fef08a" />
+      {/* Corner Tassels */}
+      <circle cx="18" cy="42" r="2.5" fill="#fbbf24" />
+      <circle cx="82" cy="42" r="2.5" fill="#fbbf24" />
+    </svg>
+  ),
+
+  // White and Grey Cats (two cute kittens side-by-side)
+  'cats': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      {/* White Cat (Left) */}
+      <g id="whiteCat">
+        {/* Tail */}
+        <path d="M15 76 C10 74 8 64 12 58" stroke="#cbd5e1" strokeWidth="4" strokeLinecap="round" fill="none" />
+        {/* Body */}
+        <ellipse cx="28" cy="68" rx="15" ry="17" fill="#ffffff" stroke="#cbd5e1" strokeWidth="2" />
+        {/* Head */}
+        <circle cx="28" cy="42" r="14" fill="#ffffff" stroke="#cbd5e1" strokeWidth="2" />
+        {/* Ears */}
+        <polygon points="17,37 19,23 27,33" fill="#ffffff" stroke="#cbd5e1" strokeWidth="2" />
+        <polygon points="19,34 20,26 25,32" fill="#fbcfe8" />
+        <polygon points="39,37 37,23 29,33" fill="#ffffff" stroke="#cbd5e1" strokeWidth="2" />
+        <polygon points="37,34 36,26 31,32" fill="#fbcfe8" />
+        {/* Eyes & Face */}
+        <circle cx="23" cy="41" r="2" fill="#1e293b" />
+        <circle cx="33" cy="41" r="2" fill="#1e293b" />
+        <circle cx="23.5" cy="40.5" r="0.7" fill="#ffffff" />
+        <circle cx="33.5" cy="40.5" r="0.7" fill="#ffffff" />
+        <polygon points="28,45 26.5,43 29.5,43" fill="#fb7185" />
+        <path d="M26 47 Q28 49 30 47" stroke="#1e293b" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+        {/* Whiskers */}
+        <line x1="14" y1="44" x2="20" y2="44" stroke="#94a3b8" strokeWidth="1.2" strokeLinecap="round" />
+        <line x1="14" y1="47" x2="20" y2="46" stroke="#94a3b8" strokeWidth="1.2" strokeLinecap="round" />
+        <line x1="42" y1="44" x2="36" y2="44" stroke="#94a3b8" strokeWidth="1.2" strokeLinecap="round" />
+        <line x1="42" y1="47" x2="36" y2="46" stroke="#94a3b8" strokeWidth="1.2" strokeLinecap="round" />
+        {/* Pink Collar */}
+        <path d="M20 53 Q28 57 36 53" stroke="#f43f5e" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+        <circle cx="28" cy="56" r="2" fill="#fbbf24" />
+        {/* Paws */}
+        <ellipse cx="23" cy="83" rx="4" ry="2.5" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.5" />
+        <ellipse cx="33" cy="83" rx="4" ry="2.5" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.5" />
+      </g>
+
+      {/* Grey Cat (Right) */}
+      <g id="greyCat">
+        {/* Tail */}
+        <path d="M85 76 C90 74 92 64 88 58" stroke="#475569" strokeWidth="4" strokeLinecap="round" fill="none" />
+        {/* Body */}
+        <ellipse cx="72" cy="68" rx="15" ry="17" fill="#94a3b8" stroke="#475569" strokeWidth="2" />
+        {/* Head */}
+        <circle cx="72" cy="42" r="14" fill="#94a3b8" stroke="#475569" strokeWidth="2" />
+        {/* Ears */}
+        <polygon points="61,37 63,23 71,33" fill="#94a3b8" stroke="#475569" strokeWidth="2" />
+        <polygon points="63,34 64,26 69,32" fill="#fbcfe8" />
+        <polygon points="83,37 81,23 73,33" fill="#94a3b8" stroke="#475569" strokeWidth="2" />
+        <polygon points="81,34 80,26 75,32" fill="#fbcfe8" />
+        {/* Forehead Stripes */}
+        <path d="M72 30 L72 34 M68 31 L69 34 M76 31 L75 34" stroke="#475569" strokeWidth="1.5" strokeLinecap="round" />
+        {/* Eyes & Face */}
+        <circle cx="67" cy="41" r="2" fill="#1e293b" />
+        <circle cx="77" cy="41" r="2" fill="#1e293b" />
+        <circle cx="67.5" cy="40.5" r="0.7" fill="#ffffff" />
+        <circle cx="77.5" cy="40.5" r="0.7" fill="#ffffff" />
+        <polygon points="72,45 70.5,43 73.5,43" fill="#fb7185" />
+        <path d="M70 47 Q72 49 74 47" stroke="#1e293b" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+        {/* Whiskers */}
+        <line x1="58" y1="44" x2="64" y2="44" stroke="#475569" strokeWidth="1.2" strokeLinecap="round" />
+        <line x1="58" y1="47" x2="64" y2="46" stroke="#475569" strokeWidth="1.2" strokeLinecap="round" />
+        <line x1="86" y1="44" x2="80" y2="44" stroke="#475569" strokeWidth="1.2" strokeLinecap="round" />
+        <line x1="86" y1="47" x2="80" y2="46" stroke="#475569" strokeWidth="1.2" strokeLinecap="round" />
+        {/* Blue Collar */}
+        <path d="M64 53 Q72 57 80 53" stroke="#2563eb" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+        <circle cx="72" cy="56" r="2" fill="#fbbf24" />
+        {/* Paws */}
+        <ellipse cx="67" cy="83" rx="4" ry="2.5" fill="#94a3b8" stroke="#475569" strokeWidth="1.5" />
+        <ellipse cx="77" cy="83" rx="4" ry="2.5" fill="#94a3b8" stroke="#475569" strokeWidth="1.5" />
+      </g>
+    </svg>
+  ),
+
+  // Red and Green Balls (two toy balls side-by-side)
+  'balls': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      {/* Red Ball (Left) */}
+      <g id="redBall">
+        <circle cx="30" cy="54" r="22" fill="#ef4444" />
+        {/* Yellow Wave Swirl */}
+        <path d="M10 54 C16 42 44 42 50 54 C44 66 16 66 10 54 Z" fill="#fbbf24" />
+        {/* White Star */}
+        <polygon points="30,47 32,52 37,53 33,56 34,61 30,58 26,61 27,56 23,53 28,52" fill="#ffffff" />
+        {/* Shine */}
+        <ellipse cx="24" cy="42" rx="4" ry="2.5" fill="#ffffff" opacity="0.6" transform="rotate(-30 24 42)" />
+      </g>
+
+      {/* Green Ball (Right) */}
+      <g id="greenBall">
+        <circle cx="70" cy="54" r="22" fill="#22c55e" />
+        {/* White Wave Swirl */}
+        <path d="M50 54 C56 42 84 42 90 54 C84 66 56 66 50 54 Z" fill="#ffffff" />
+        {/* Blue Inner Stripe */}
+        <path d="M52 54 C57 46 83 46 88 54 C83 62 57 62 52 54 Z" fill="#3b82f6" />
+        {/* Shine */}
+        <ellipse cx="64" cy="42" rx="4" ry="2.5" fill="#ffffff" opacity="0.6" transform="rotate(-30 64 42)" />
+      </g>
+    </svg>
+  ),
+
+  // Blue and Yellow Birds (two sweet birds on a branch)
+  'birds': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      {/* Branch */}
+      <path d="M8 78 Q50 74 92 78" stroke="#78350f" strokeWidth="5" strokeLinecap="round" />
+      <path d="M70 77 Q75 72 82 74" stroke="#78350f" strokeWidth="3" strokeLinecap="round" />
+      <ellipse cx="80" cy="72" rx="4" ry="2.5" fill="#22c55e" transform="rotate(-20 80 72)" />
+
+      {/* Blue Bird (Left) */}
+      <g id="blueBird">
+        <line x1="30" y1="64" x2="30" y2="76" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="35" y1="64" x2="35" y2="76" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
+        {/* Crest */}
+        <path d="M34 32 Q36 24 42 26 Q37 31 35 34" fill="#2563eb" />
+        {/* Body */}
+        <circle cx="32" cy="48" r="16" fill="#3b82f6" />
+        {/* Wing */}
+        <ellipse cx="26" cy="53" rx="10" ry="7" fill="#60a5fa" />
+        {/* Eye */}
+        <circle cx="28" cy="46" r="2.2" fill="#1e293b" />
+        <circle cx="28.5" cy="45.5" r="0.8" fill="#ffffff" />
+        {/* Orange Beak */}
+        <polygon points="19,47 11,49 19,52" fill="#f97316" />
+      </g>
+
+      {/* Yellow Bird (Right) */}
+      <g id="yellowBird">
+        <line x1="65" y1="64" x2="65" y2="76" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="70" y1="64" x2="70" y2="76" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
+        {/* Crest */}
+        <path d="M66 32 Q64 24 58 26 Q63 31 65 34" fill="#ca8a04" />
+        {/* Body */}
+        <circle cx="68" cy="48" r="16" fill="#eab308" />
+        {/* Wing */}
+        <ellipse cx="74" cy="53" rx="10" ry="7" fill="#fde047" />
+        {/* Eye */}
+        <circle cx="72" cy="46" r="2.2" fill="#1e293b" />
+        <circle cx="71.5" cy="45.5" r="0.8" fill="#ffffff" />
+        {/* Orange Beak */}
+        <polygon points="81,47 89,49 81,52" fill="#f97316" />
+      </g>
+    </svg>
+  ),
+
+  // Yellow and Red Pencils (two pencils side-by-side)
+  'pencils': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      {/* Yellow Pencil (Left) */}
+      <g id="yellowPencil">
+        {/* Body */}
+        <rect x="22" y="32" width="16" height="52" rx="1" fill="#eab308" />
+        <line x1="27" y1="32" x2="27" y2="84" stroke="#ca8a04" strokeWidth="1.5" />
+        <line x1="33" y1="32" x2="33" y2="84" stroke="#fde047" strokeWidth="1.5" />
+        {/* Wood Tip */}
+        <polygon points="22,32 38,32 30,12" fill="#fed7aa" />
+        {/* Graphite Tip */}
+        <polygon points="27,18 33,18 30,12" fill="#334155" />
+        {/* Ferrule */}
+        <rect x="22" y="76" width="16" height="6" fill="#cbd5e1" />
+        {/* Pink Eraser */}
+        <rect x="22" y="82" width="16" height="6" rx="2" fill="#f43f5e" />
+      </g>
+
+      {/* Red Pencil (Right) */}
+      <g id="redPencil">
+        {/* Body */}
+        <rect x="62" y="32" width="16" height="52" rx="1" fill="#ef4444" />
+        <line x1="67" y1="32" x2="67" y2="84" stroke="#dc2626" strokeWidth="1.5" />
+        <line x1="73" y1="32" x2="73" y2="84" stroke="#f87171" strokeWidth="1.5" />
+        {/* Wood Tip */}
+        <polygon points="62,32 78,32 70,12" fill="#fed7aa" />
+        {/* Red Tip */}
+        <polygon points="67,18 73,18 70,12" fill="#991b1b" />
+        {/* Ferrule */}
+        <rect x="62" y="76" width="16" height="6" fill="#cbd5e1" />
+        {/* White Eraser */}
+        <rect x="62" y="82" width="16" height="6" rx="2" fill="#f1f5f9" />
+      </g>
+    </svg>
+  ),
 };
 
 export const RU_ALIASES: Record<string, string> = {
@@ -2790,4 +3016,20 @@ export const RU_ALIASES: Record<string, string> = {
   'astoņpadsmit': 'eighteen',
   'deviņpadsmit': 'nineteen',
   'divdesmit': 'twenty',
+  // Colors & items aliases
+  'кораблик': 'boat',
+  'лодка': 'boat',
+  'воздушный змей': 'kite',
+  'кошки': 'cats',
+  'коты': 'cats',
+  'мячи': 'balls',
+  'птицы': 'birds',
+  'птички': 'birds',
+  'карандаши': 'pencils',
+  'laiva': 'boat',
+  'pūķis': 'kite',
+  'kaķi': 'cats',
+  'bumbas': 'balls',
+  'putni': 'birds',
+  'zīmuļi': 'pencils',
 };

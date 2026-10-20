@@ -24,6 +24,7 @@ const KNOWN_SVG_EN_KEYS = new Set([
   'week', 'water bottle', 'badge', 'puppet', 'colouring pens', 'xylophone', 'marbles',
   'blocks', 'spinning top', 'rocking horse', 'pyramid', 'rubber duck', 'tea set', 'bookshop',
   'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty',
+  'boat', 'kite', 'cats', 'balls', 'birds', 'pencils',
 ]);
 
 const KNOWN_SVG_RU_KEYS = new Set([

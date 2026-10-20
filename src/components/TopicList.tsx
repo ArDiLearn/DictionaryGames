@@ -246,6 +246,13 @@ export const TopicList: React.FC<TopicListProps> = ({
         inactiveBadgeClass: 'bg-white/90 text-[#1A543A] border border-emerald-300 shadow-2xs',
         sectionHeaderBorder: 'border-emerald-200',
         sectionBadge: 'bg-emerald-100 text-[#1A543A] border-emerald-300',
+        gradeContainer: 'bg-emerald-50/90 border-2 border-emerald-200/90',
+        gradeTitle: 'text-[#1A543A]',
+        gradeSubtitle: 'text-[#2B7A56]',
+        gradeBadge: 'bg-emerald-100 text-[#1A543A] border border-emerald-300',
+        gradeButtonContainer: 'bg-white/90 p-1 rounded-2xl border-2 border-emerald-200 shadow-inner',
+        activeGradeBtn: 'bg-gradient-to-r from-[#3DA373] via-[#2B7A56] to-[#1A543A] text-white shadow-xs scale-105',
+        inactiveGradeBtn: 'bg-emerald-100/90 text-[#1A543A] hover:text-[#103825] hover:bg-emerald-200/90 border border-emerald-300/80 shadow-2xs',
       };
     }
     if (course === 'en-lv' || language === 'lv') {
@@ -257,6 +264,13 @@ export const TopicList: React.FC<TopicListProps> = ({
         inactiveBadgeClass: 'bg-white/90 text-teal-950 border border-teal-300 shadow-2xs',
         sectionHeaderBorder: 'border-teal-200',
         sectionBadge: 'bg-teal-100 text-teal-900 border-teal-300',
+        gradeContainer: 'bg-teal-50/90 border-2 border-teal-200/90',
+        gradeTitle: 'text-teal-950',
+        gradeSubtitle: 'text-teal-700/80',
+        gradeBadge: 'bg-teal-100 text-teal-950 border border-teal-300',
+        gradeButtonContainer: 'bg-white/90 p-1 rounded-2xl border-2 border-teal-200 shadow-inner',
+        activeGradeBtn: 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700 text-white shadow-xs scale-105',
+        inactiveGradeBtn: 'bg-teal-100/90 text-teal-950 hover:text-teal-950 hover:bg-teal-200/90 border border-teal-300/80 shadow-2xs',
       };
     }
     return {
@@ -267,6 +281,13 @@ export const TopicList: React.FC<TopicListProps> = ({
       inactiveBadgeClass: 'bg-white/90 text-blue-900 border border-sky-300 shadow-2xs',
       sectionHeaderBorder: 'border-sky-200',
       sectionBadge: 'bg-sky-100 text-blue-950 border-sky-300',
+      gradeContainer: 'bg-sky-50/90 border-2 border-sky-200/90',
+      gradeTitle: 'text-blue-950',
+      gradeSubtitle: 'text-blue-700/80',
+      gradeBadge: 'bg-sky-100 text-blue-950 border border-sky-300',
+      gradeButtonContainer: 'bg-white/90 p-1 rounded-2xl border-2 border-sky-200 shadow-inner',
+      activeGradeBtn: 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700 text-white shadow-xs scale-105',
+      inactiveGradeBtn: 'bg-sky-100/90 text-blue-950 hover:text-blue-950 hover:bg-sky-200/90 border border-sky-300/80 shadow-2xs',
     };
   }, [course, language]);
 
@@ -721,31 +742,31 @@ export const TopicList: React.FC<TopicListProps> = ({
       {(() => {
         const gradeInfo = getGradeFilterInfo(selectedGrades, language);
         return (
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-6 bg-amber-50/90 border-2 border-amber-200/90 rounded-2xl p-3 sm:px-5 sm:py-3 shadow-sm">
+          <div className={`flex flex-wrap items-center justify-between gap-3 mb-6 ${themeStyles.gradeContainer} rounded-2xl p-3 sm:px-5 sm:py-3 shadow-sm`}>
             <div className="flex items-center gap-2 sm:gap-2.5">
               <span className="text-2xl">🎒</span>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-black text-amber-950 text-sm sm:text-base">
+                  <span className={`font-black ${themeStyles.gradeTitle} text-sm sm:text-base`}>
                     {gradeInfo.notice}
                   </span>
-                  <span className="text-[11px] sm:text-xs bg-amber-200 text-amber-900 font-extrabold px-2 py-0.5 rounded-full">
+                  <span className={`text-[11px] sm:text-xs ${themeStyles.gradeBadge} font-extrabold px-2 py-0.5 rounded-full`}>
                     {gradeInfo.badge}
                   </span>
                 </div>
-                <p className="text-xs text-amber-700/80 font-medium hidden sm:block">
+                <p className={`text-xs ${themeStyles.gradeSubtitle} font-medium hidden sm:block`}>
                   {gradeInfo.subtitle}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-1 sm:gap-1.5 bg-white/90 p-1 rounded-2xl border-2 border-amber-200 shadow-inner flex-wrap">
+            <div className={`flex items-center gap-1 sm:gap-1.5 ${themeStyles.gradeButtonContainer} flex-wrap`}>
               <button
                 onClick={() => onToggleGrade(1)}
                 className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                   selectedGrades.includes(1)
-                    ? 'bg-amber-500 text-white shadow-sm scale-105'
-                    : 'bg-amber-100/80 text-amber-900 hover:text-amber-950 hover:bg-amber-200/90 border border-amber-200/80 shadow-2xs'
+                    ? themeStyles.activeGradeBtn
+                    : themeStyles.inactiveGradeBtn
                 }`}
                 title={selectedGrades.includes(1) ? t.grade1 : t.grade1}
               >
@@ -756,8 +777,8 @@ export const TopicList: React.FC<TopicListProps> = ({
                 onClick={() => onToggleGrade(2)}
                 className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                   selectedGrades.includes(2)
-                    ? 'bg-amber-500 text-white shadow-sm scale-105'
-                    : 'bg-amber-100/80 text-amber-900 hover:text-amber-950 hover:bg-amber-200/90 border border-amber-200/80 shadow-2xs'
+                    ? themeStyles.activeGradeBtn
+                    : themeStyles.inactiveGradeBtn
                 }`}
                 title={selectedGrades.includes(2) ? t.grade2 : t.grade2}
               >
@@ -768,8 +789,8 @@ export const TopicList: React.FC<TopicListProps> = ({
                 onClick={() => onToggleGrade(3)}
                 className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                   selectedGrades.includes(3)
-                    ? 'bg-amber-500 text-white shadow-sm scale-105'
-                    : 'bg-amber-100/80 text-amber-900 hover:text-amber-950 hover:bg-amber-200/90 border border-amber-200/80 shadow-2xs'
+                    ? themeStyles.activeGradeBtn
+                    : themeStyles.inactiveGradeBtn
                 }`}
                 title={selectedGrades.includes(3) ? t.grade3 : t.grade3}
               >
@@ -780,8 +801,8 @@ export const TopicList: React.FC<TopicListProps> = ({
                 onClick={() => onToggleGrade(4)}
                 className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                   selectedGrades.includes(4)
-                    ? 'bg-amber-500 text-white shadow-sm scale-105'
-                    : 'bg-amber-100/80 text-amber-900 hover:text-amber-950 hover:bg-amber-200/90 border border-amber-200/80 shadow-2xs'
+                    ? themeStyles.activeGradeBtn
+                    : themeStyles.inactiveGradeBtn
                 }`}
                 title={selectedGrades.includes(4) ? t.grade4 : t.grade4}
               >
@@ -792,8 +813,8 @@ export const TopicList: React.FC<TopicListProps> = ({
                 onClick={onSelectAllGrades}
                 className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
                   selectedGrades.length === 4
-                    ? 'bg-amber-500 text-white shadow-sm scale-105'
-                    : 'bg-amber-100/80 text-amber-900 hover:text-amber-950 hover:bg-amber-200/90 border border-amber-200/80 shadow-2xs'
+                    ? themeStyles.activeGradeBtn
+                    : themeStyles.inactiveGradeBtn
                 }`}
                 title={t.gradeAll}
               >

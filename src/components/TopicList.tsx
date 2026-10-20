@@ -186,7 +186,7 @@ export const TopicList: React.FC<TopicListProps> = ({
 
   const bannerGradient =
     course === 'lv'
-      ? 'bg-gradient-to-r from-[#9B2847] via-[#853569] to-[#633B7E]'
+      ? 'bg-gradient-to-r from-[#1E5E43] via-[#2E805C] to-[#42A676]'
       : course === 'en-lv' || language === 'lv'
       ? 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700'
       : 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700';
@@ -194,9 +194,9 @@ export const TopicList: React.FC<TopicListProps> = ({
   const mistakesBannerStyle =
     course === 'lv'
       ? {
-          gradient: 'bg-gradient-to-r from-[#9B2847] via-[#853569] to-[#633B7E]',
-          border: 'border-[#F2D1D8]/50',
-          btnText: 'text-[#852E4B] hover:bg-[#FDF2F4]',
+          gradient: 'bg-gradient-to-r from-[#1E5E43] via-[#2E805C] to-[#42A676]',
+          border: 'border-[#A3E7C3]/50',
+          btnText: 'text-[#1E5E43] hover:bg-[#F0FAF5]',
         }
       : course === 'en-lv' || language === 'lv'
       ? {
@@ -366,7 +366,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                       onClick={() => selectLearningPair('lv')}
                       className={`flex items-center justify-center gap-1.5 md:gap-2 px-2.5 py-1.5 md:px-3.5 md:py-2.5 rounded-xl md:rounded-2xl text-xs md:text-sm font-black transition-all cursor-pointer select-none whitespace-nowrap h-full ${
                         course === 'lv'
-                          ? 'bg-white text-[#852E4B] shadow-md scale-[1.02] ring-2 ring-yellow-300'
+                          ? 'bg-white text-[#1E5E43] shadow-md scale-[1.02] ring-2 ring-yellow-300'
                           : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
                       }`}
                       title="Латышский — Русский (LV → RU)"

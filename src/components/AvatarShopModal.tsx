@@ -40,6 +40,7 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<ShopTab>('avatars');
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('all');
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [unlockedItem, setUnlockedItem] = useState<AvatarShopItem | null>(null);
   const [previewingMusicId, setPreviewingMusicId] = useState<string | null>(null);
 
@@ -48,6 +49,23 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
       cancelVictoryAnimation();
     };
   }, []);
+
+  // Close category dropdown on click outside
+  React.useEffect(() => {
+    if (!isCategoryOpen) return;
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('#category-dropdown-container')) {
+        setIsCategoryOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('touchstart', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
+    };
+  }, [isCategoryOpen]);
 
   const t = translations[language];
   const spentStars = stats.spentStars || 0;
@@ -214,17 +232,18 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
 
         {/* Unified Navigation & Filter Bar */}
         <div className="px-3 sm:px-4 py-2 flex items-center justify-between gap-2 bg-gradient-to-r from-amber-100/70 via-yellow-100/60 to-amber-100/70 border-b border-amber-200 shrink-0 flex-wrap">
-          {/* Section Tabs: Heroes | Animations | Music */}
+          {/* Section Tabs: Heroes | Animations | Music (identical sizing & structure) */}
           <div className="flex items-center gap-1 sm:gap-1.5">
             <button
               onClick={() => {
                 sounds.playClick();
                 cancelVictoryAnimation();
+                setIsCategoryOpen(false);
                 setActiveTab('avatars');
               }}
               className={`px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1 transition-all cursor-pointer ${
                 activeTab === 'avatars'
-                  ? 'bg-amber-500 text-white shadow-md scale-102'
+                  ? 'bg-amber-500 text-white shadow-md'
                   : 'bg-white text-slate-700 border border-amber-200 hover:bg-amber-50'
               }`}
             >
@@ -235,11 +254,12 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
               onClick={() => {
                 sounds.playClick();
                 cancelVictoryAnimation();
+                setIsCategoryOpen(false);
                 setActiveTab('animations');
               }}
               className={`px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1 transition-all cursor-pointer ${
                 activeTab === 'animations'
-                  ? 'bg-amber-500 text-white shadow-md scale-102'
+                  ? 'bg-amber-500 text-white shadow-md'
                   : 'bg-white text-slate-700 border border-amber-200 hover:bg-amber-50'
               }`}
             >
@@ -250,11 +270,12 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
               onClick={() => {
                 sounds.playClick();
                 cancelVictoryAnimation();
+                setIsCategoryOpen(false);
                 setActiveTab('music');
               }}
               className={`px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1 transition-all cursor-pointer ${
                 activeTab === 'music'
-                  ? 'bg-amber-500 text-white shadow-md scale-102'
+                  ? 'bg-amber-500 text-white shadow-md'
                   : 'bg-white text-slate-700 border border-amber-200 hover:bg-amber-50'
               }`}
             >
@@ -263,26 +284,52 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
             </button>
           </div>
 
-          {/* Compact Category Dropdown (for Avatars Tab) */}
+          {/* Custom Styled Category Dropdown in Shop Theme (Warm Amber/Yellow, NOT dark OS popup) */}
           {activeTab === 'avatars' && (
-            <div className="relative flex items-center ml-auto">
-              <select
-                value={selectedCategory}
-                onChange={(e) => {
+            <div id="category-dropdown-container" className="relative flex items-center ml-auto">
+              <button
+                type="button"
+                onClick={() => {
                   sounds.playClick();
-                  setSelectedCategory(e.target.value as CategoryFilter);
+                  setIsCategoryOpen((prev) => !prev);
                 }}
-                className="appearance-none bg-white hover:bg-amber-50 text-slate-800 font-black text-xs sm:text-sm pl-3 pr-8 py-1.5 rounded-xl border-2 border-amber-300 shadow-xs focus:outline-none focus:ring-2 focus:ring-amber-400 cursor-pointer"
+                className="bg-white hover:bg-amber-50 active:scale-95 text-slate-800 font-black text-xs sm:text-sm pl-3 pr-2.5 py-1 sm:py-1.5 rounded-xl border-2 border-amber-300 shadow-xs flex items-center gap-1.5 cursor-pointer transition-all"
               >
-                {categories.map((cat) => (
-                  <option key={cat.id} value={cat.id}>
-                    {cat.id === 'mythic' ? `✨ ${cat.label}` : cat.label}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute right-2.5 pointer-events-none text-amber-700">
-                <ChevronDown className="w-4 h-4" />
-              </div>
+                <span>
+                  {selectedCategory === 'mythic'
+                    ? `✨ ${categories.find((c) => c.id === selectedCategory)?.label || t.categoryAll}`
+                    : categories.find((c) => c.id === selectedCategory)?.label || t.categoryAll}
+                </span>
+                <ChevronDown className={`w-3.5 h-3.5 text-amber-700 transition-transform ${isCategoryOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Dropdown Menu Styled in Shop Palette */}
+              {isCategoryOpen && (
+                <div className="absolute top-full right-0 mt-1.5 w-56 sm:w-60 bg-amber-50 rounded-2xl shadow-xl border-2 border-amber-300 p-1.5 z-40 flex flex-col gap-1 animate-pop">
+                  {categories.map((cat) => {
+                    const isSelected = selectedCategory === cat.id;
+                    return (
+                      <button
+                        key={cat.id}
+                        type="button"
+                        onClick={() => {
+                          sounds.playClick();
+                          setSelectedCategory(cat.id);
+                          setIsCategoryOpen(false);
+                        }}
+                        className={`w-full text-left px-3 py-2 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-between cursor-pointer ${
+                          isSelected
+                            ? 'bg-amber-500 text-white shadow-xs'
+                            : 'hover:bg-amber-100/90 text-amber-950'
+                        }`}
+                      >
+                        <span>{cat.id === 'mythic' ? `✨ ${cat.label}` : cat.label}</span>
+                        {isSelected && <Check className="w-3.5 h-3.5 stroke-[3] text-white" />}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           )}
 

@@ -232,8 +232,8 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
 
         {/* Unified Navigation & Filter Bar */}
         <div className="px-3 sm:px-4 py-2 flex items-center justify-between gap-2 bg-gradient-to-r from-amber-100/70 via-yellow-100/60 to-amber-100/70 border-b border-amber-200 shrink-0 flex-wrap">
-          {/* Section Tabs: Heroes | Animations | Music (identical sizing & structure) */}
-          <div className="flex items-center gap-1 sm:gap-1.5">
+          {/* Section Tabs: Heroes | Animations | Music (strictly equal sizing & aligned with dropdown) */}
+          <div className="flex items-center gap-1 sm:gap-1.5 flex-1 min-w-0">
             <button
               onClick={() => {
                 sounds.playClick();
@@ -241,14 +241,14 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
                 setIsCategoryOpen(false);
                 setActiveTab('avatars');
               }}
-              className={`px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1 transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-initial min-w-0 px-2 sm:px-3.5 py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center justify-center gap-1 transition-all cursor-pointer whitespace-nowrap ${
                 activeTab === 'avatars'
                   ? 'bg-amber-500 text-white shadow-md'
                   : 'bg-white text-slate-700 border border-amber-200 hover:bg-amber-50'
               }`}
             >
               <span>🎭</span>
-              <span>{t.shopTabAvatars}</span>
+              <span className="truncate">{t.shopTabAvatars}</span>
             </button>
             <button
               onClick={() => {
@@ -257,14 +257,14 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
                 setIsCategoryOpen(false);
                 setActiveTab('animations');
               }}
-              className={`px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1 transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-initial min-w-0 px-2 sm:px-3.5 py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center justify-center gap-1 transition-all cursor-pointer whitespace-nowrap ${
                 activeTab === 'animations'
                   ? 'bg-amber-500 text-white shadow-md'
                   : 'bg-white text-slate-700 border border-amber-200 hover:bg-amber-50'
               }`}
             >
               <span>✨</span>
-              <span>{t.shopTabAnimations}</span>
+              <span className="truncate">{t.shopTabAnimations}</span>
             </button>
             <button
               onClick={() => {
@@ -273,14 +273,14 @@ export const AvatarShopModal: React.FC<AvatarShopModalProps> = ({
                 setIsCategoryOpen(false);
                 setActiveTab('music');
               }}
-              className={`px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1 transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-initial min-w-0 px-2 sm:px-3.5 py-1.5 rounded-xl font-black text-xs sm:text-sm flex items-center justify-center gap-1 transition-all cursor-pointer whitespace-nowrap ${
                 activeTab === 'music'
                   ? 'bg-amber-500 text-white shadow-md'
                   : 'bg-white text-slate-700 border border-amber-200 hover:bg-amber-50'
               }`}
             >
               <span>🎵</span>
-              <span>{t.shopTabMusic}</span>
+              <span className="truncate">{t.shopTabMusic}</span>
             </button>
           </div>
 

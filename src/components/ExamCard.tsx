@@ -151,7 +151,7 @@ const _ExamCard: React.FC<ExamCardProps> = ({
           )}
         </div>
 
-        {/* Bottom Row: Graduation Cap Icon + Exam Title/Subtitle on left, Ready Badge + Start Button on right */}
+        {/* Bottom Row: Graduation Cap Icon + Exam Title/Subtitle on left, Start Button on right */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5 sm:gap-4">
             <div className="w-14 h-14 sm:w-18 sm:h-18 rounded-2xl bg-gradient-to-tr from-amber-400 to-yellow-300 border-2 border-amber-200 shadow-inner flex items-center justify-center text-3xl sm:text-4xl shrink-0 transition-transform">
@@ -168,30 +168,22 @@ const _ExamCard: React.FC<ExamCardProps> = ({
             </div>
           </div>
 
-          <div className="flex flex-col items-stretch md:items-center gap-1.5 w-full md:w-auto">
-            {!result && (
-              <div className="inline-flex items-center justify-center gap-1.5 bg-amber-100/90 border border-amber-300 px-3 py-1 rounded-xl text-xs font-bold text-amber-900 self-center">
-                <span>💡</span>
-                <span>{t.exam.readyBadge}</span>
-              </div>
+          <button
+            onClick={handleStart}
+            className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl font-black text-sm sm:text-base text-white bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 active:scale-95 shadow-md hover:shadow-lg transition-all cursor-pointer whitespace-nowrap"
+          >
+            {result ? (
+              <>
+                <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span>{t.exam.retryBtn}</span>
+              </>
+            ) : (
+              <>
+                <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
+                <span>{t.exam.startBtn}</span>
+              </>
             )}
-            <button
-              onClick={handleStart}
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl font-black text-sm sm:text-base text-white bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 active:scale-95 shadow-md hover:shadow-lg transition-all cursor-pointer whitespace-nowrap"
-            >
-              {result ? (
-                <>
-                  <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span>{t.exam.retryBtn}</span>
-                </>
-              ) : (
-                <>
-                  <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
-                  <span>{t.exam.startBtn}</span>
-                </>
-              )}
-            </button>
-          </div>
+          </button>
         </div>
       </div>
     </div>

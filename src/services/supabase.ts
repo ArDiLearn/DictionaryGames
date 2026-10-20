@@ -4,6 +4,10 @@ import rawWordsData from '../data/words.json';
 
 let wordLookupMap: Map<string, { en: string; lv: string; ru: string }> | null = null;
 
+export function extractCanonicalWordId(rawWordId: string): string {
+  return String(rawWordId || '').split(' — ')[0].trim();
+}
+
 export function resolveWordText(wordId: string, topicId?: string, fallbackWord?: string): string {
   if (!wordLookupMap) {
     wordLookupMap = new Map();
@@ -13,22 +17,30 @@ export function resolveWordText(wordId: string, topicId?: string, fallbackWord?:
       }
     }
   }
-  const isLv = wordId.startsWith('lv:') || (topicId ? topicId.startsWith('lv:') : false);
+  const canonicalId = extractCanonicalWordId(wordId);
+  const isLv = canonicalId.startsWith('lv:') || (topicId ? topicId.startsWith('lv:') : false);
   const isLvEn =
-    wordId.startsWith('lv_en:') ||
-    wordId.startsWith('lv-en:') ||
+    canonicalId.startsWith('lv_en:') ||
+    canonicalId.startsWith('lv-en:') ||
     (topicId ? topicId.startsWith('lv_en:') || topicId.startsWith('lv-en:') : false);
   const isEnLv =
-    wordId.startsWith('en_lv:') ||
-    wordId.startsWith('en-lv:') ||
+    canonicalId.startsWith('en_lv:') ||
+    canonicalId.startsWith('en-lv:') ||
     (topicId ? topicId.startsWith('en_lv:') || topicId.startsWith('en-lv:') : false);
-  const cleanId = wordId.replace(/^(lv:|lv_en:|lv-en:|en_lv:|en-lv:)/, '');
+  const cleanId = canonicalId.replace(/^(lv:|lv_en:|lv-en:|en_lv:|en-lv:)/, '');
   const entry = wordLookupMap.get(cleanId);
   if (!entry) return fallbackWord || cleanId;
-  if (isLv) return `${entry.lv} — ${entry.ru}`;
-  if (isLvEn) return `${entry.lv} — ${entry.en}`;
-  if (isEnLv) return `${entry.en} — ${entry.lv}`;
-  return `${entry.en} — ${entry.ru}`;
+  if (isLv) return `${entry.ru} (${entry.lv})`;
+  if (isLvEn) return `${entry.ru} (${entry.lv} — ${entry.en})`;
+  if (isEnLv) return `${entry.ru} (${entry.en} — ${entry.lv})`;
+  return `${entry.ru} (${entry.en})`;
+}
+
+export function formatCloudWordId(wordId: string, topicId?: string): string {
+  const canonicalId = extractCanonicalWordId(wordId);
+  const readableRu = resolveWordText(canonicalId, topicId);
+  if (!readableRu || readableRu === canonicalId) return canonicalId;
+  return `${canonicalId} — ${readableRu}`;
 }
 
 export interface ExamCloudSyncData {
@@ -330,24 +342,54 @@ export async function syncProgressToCloud(
       }
     }
 
-    // 4. Batch upsert Word Progress
-    const wordRows = Object.values(wordProgress).map((wp) => ({
-      user_id: userId,
-      word_id: wp.word_id,
-      word: resolveWordText(wp.word_id, wp.topic_id, wp.word),
-      topic_id: wp.topic_id,
-      times_correct: wp.timesCorrect,
-      times_wrong: wp.timesWrong,
-      is_learned: wp.isLearned,
-      last_reviewed_at: wp.lastReviewedAt || new Date().toISOString(),
-    }));
+    // 4. Batch upsert Word Progress (with Russian decoding in word_id)
+    const wordRows = Object.values(wordProgress).map((wp) => {
+      const canonicalId = extractCanonicalWordId(wp.word_id);
+      return {
+        user_id: userId,
+        word_id: formatCloudWordId(canonicalId, wp.topic_id),
+        word: resolveWordText(canonicalId, wp.topic_id, wp.word),
+        topic_id: wp.topic_id,
+        times_correct: wp.timesCorrect,
+        times_wrong: wp.timesWrong,
+        is_learned: wp.isLearned,
+        last_reviewed_at: wp.lastReviewedAt || new Date().toISOString(),
+      };
+    });
 
     if (wordRows.length > 0) {
+      // Upgrade any legacy bare word_id rows (e.g. "1" -> "1 — один (one)") in-place
+      try {
+        const { data: existingRows } = await client
+          .from('word_progress')
+          .select('word_id, topic_id')
+          .eq('user_id', userId);
+        if (existingRows && existingRows.length > 0) {
+          const existingSet = new Set(existingRows.map((r) => String(r.word_id)));
+          for (const row of existingRows) {
+            const rawId = String(row.word_id);
+            if (!rawId.includes(' — ')) {
+              const upgradedId = formatCloudWordId(rawId, row.topic_id);
+              if (upgradedId !== rawId && !existingSet.has(upgradedId)) {
+                await client
+                  .from('word_progress')
+                  .update({ word_id: upgradedId })
+                  .eq('user_id', userId)
+                  .eq('word_id', rawId);
+                existingSet.add(upgradedId);
+              }
+            }
+          }
+        }
+      } catch {
+        // Ignore if offline or unable to inspect existing rows
+      }
+
       const { error: wordErr } = await client.from('word_progress').upsert(wordRows, {
         onConflict: 'user_id,word_id',
       });
       if (wordErr) {
-        // Fallback if 'word' column is not yet added in Supabase schema
+        // Fallback if optional 'word' column is not yet added in Supabase schema
         const legacyWordRows = wordRows.map(({ word: _word, ...rest }) => rest);
         const { error: fallbackErr } = await client.from('word_progress').upsert(legacyWordRows, {
           onConflict: 'user_id,word_id',
@@ -421,14 +463,16 @@ export async function fetchProgressFromCloud(userId: string): Promise<CloudSyncD
     const wordProgress: Record<string, WordProgress> = {};
     if (words) {
       for (const w of words) {
-        wordProgress[w.word_id] = {
-          word_id: w.word_id,
-          word: resolveWordText(w.word_id, w.topic_id, w.word),
-          topic_id: w.topic_id,
-          timesCorrect: w.times_correct || 0,
-          timesWrong: w.times_wrong || 0,
-          isLearned: !!w.is_learned,
-          lastReviewedAt: w.last_reviewed_at,
+        const canonicalId = extractCanonicalWordId(w.word_id);
+        const existing = wordProgress[canonicalId];
+        wordProgress[canonicalId] = {
+          word_id: canonicalId,
+          word: resolveWordText(canonicalId, w.topic_id, w.word),
+          topic_id: w.topic_id || existing?.topic_id,
+          timesCorrect: Math.max(existing?.timesCorrect || 0, w.times_correct || 0),
+          timesWrong: Math.max(existing?.timesWrong || 0, w.times_wrong || 0),
+          isLearned: Boolean(existing?.isLearned || w.is_learned),
+          lastReviewedAt: w.last_reviewed_at || existing?.lastReviewedAt,
         };
       }
     }

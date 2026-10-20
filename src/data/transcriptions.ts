@@ -168,7 +168,7 @@ export const TRANSCRIPTIONS: Record<string, string> = {
   "lion": "[ ˈlaɪən ]",
   "deer": "[ dɪə ]",
 
-  // Food and drink (including Bright Ideas 1 p.52)
+  // Food and drink
   "breakfast": "[ ˈbrekfəst ]",
   "lunch": "[ lʌntʃ ]",
   "dinner": "[ ˈdɪnə ]",

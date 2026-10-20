@@ -51,11 +51,11 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
   const headerStyle =
     course === 'lv'
       ? {
-          card: 'bg-[#FAF0F1] border-2 border-[#E8CFD2]',
-          title: 'text-[#6A2834]',
-          sub: 'text-[#6A2834]/80',
-          btnPrimary: 'bg-[#6A2834] hover:bg-[#57202A] text-white',
-          btnSecondary: 'bg-white hover:bg-[#FAF0F1] border-2 border-[#E8CFD2] text-[#6A2834]',
+          card: 'bg-[#FDF2F4] border-2 border-[#F2D1D8]',
+          title: 'text-[#852E4B]',
+          sub: 'text-[#852E4B]/80',
+          btnPrimary: 'bg-[#852E4B] hover:bg-[#6E223B] text-white',
+          btnSecondary: 'bg-white hover:bg-[#FDF2F4] border-2 border-[#F2D1D8] text-[#852E4B]',
         }
       : course === 'en-lv'
       ? {

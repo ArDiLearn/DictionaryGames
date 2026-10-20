@@ -66,7 +66,7 @@ export const Header: React.FC<HeaderProps> = ({
               <span
                 className={`inline-flex items-center gap-1 px-1.5 sm:px-2 py-0 sm:py-0.5 mt-0.5 sm:mt-0 rounded-full text-[9px] sm:text-[11px] font-black border shadow-2xs w-fit ${
                   course === 'lv'
-                    ? 'bg-[#FAF0F1] text-[#6A2834] border-[#E8CFD2]'
+                    ? 'bg-[#FDF2F4] text-[#852E4B] border-[#F2D1D8]'
                     : course === 'en-lv' || language === 'lv'
                     ? 'bg-teal-50 text-teal-800 border-teal-200'
                     : 'bg-sky-50 text-sky-800 border-sky-200'

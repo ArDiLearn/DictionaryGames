@@ -455,3 +455,39 @@ export function saveExamHistoryRaw(course: LearningCourse = 'en', history: ExamR
     console.error('Failed to save exam history:', err);
   }
 }
+
+// --- Grammar Progress ---
+
+const GRAMMAR_PROGRESS_KEY = 'wordymind_grammar_progress';
+
+export interface GrammarTopicProgress {
+  stars: number;
+  bestScore: number;
+  completedAt: string;
+}
+
+export function loadGrammarProgressRaw(
+  course: LearningCourse = 'en'
+): Record<string, GrammarTopicProgress> {
+  try {
+    const raw = localStorage.getItem(`${GRAMMAR_PROGRESS_KEY}${getCourseSuffix(course)}`);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+export function saveGrammarProgressRaw(
+  progress: Record<string, GrammarTopicProgress>,
+  course: LearningCourse = 'en'
+): void {
+  try {
+    localStorage.setItem(
+      `${GRAMMAR_PROGRESS_KEY}${getCourseSuffix(course)}`,
+      JSON.stringify(progress)
+    );
+  } catch (err) {
+    console.error('Failed to save grammar progress:', err);
+  }
+}
+

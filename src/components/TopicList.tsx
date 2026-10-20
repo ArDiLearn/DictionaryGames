@@ -29,6 +29,9 @@ import {
 import { sounds } from '../utils/soundEffects';
 import { speakWord } from '../utils/speech';
 import { getTitleById } from '../data/titles';
+import { GRADE_1_GRAMMAR_TOPICS, GrammarTopic } from '../data/grammarData';
+import { GrammarCard } from './GrammarCard';
+import { GrammarTopicProgress } from '../services/storage';
 import { Search, Sparkles, BarChart3, ClipboardCheck, Gamepad2, Volume2, ArrowRight } from 'lucide-react';
 
 const normalizeSearchText = (str?: string): string =>
@@ -62,6 +65,8 @@ interface TopicListProps {
   mistakesCount?: number;
   onStartMistakesTest?: () => void;
   onOpenMistakesGames?: () => void;
+  onSelectGrammarTopic?: (topic: GrammarTopic) => void;
+  grammarProgress?: Record<string, GrammarTopicProgress>;
 }
 
 export const TopicList: React.FC<TopicListProps> = ({
@@ -87,6 +92,8 @@ export const TopicList: React.FC<TopicListProps> = ({
   mistakesCount = 0,
   onStartMistakesTest,
   onOpenMistakesGames,
+  onSelectGrammarTopic,
+  grammarProgress,
 }) => {
   const t = translations[language];
   const [searchQuery, setSearchQuery] = useState('');
@@ -767,6 +774,42 @@ export const TopicList: React.FC<TopicListProps> = ({
                   course={course}
                   progress={topicProgress[topic.topic_id]}
                   onSelect={onSelectTopic}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Grammar Section (Grade 1 - hidden in Latvian-Russian course) */}
+        {!searchQuery && course !== 'lv' && selectedGrades.includes(1) && onSelectGrammarTopic && (
+          <div>
+            <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-emerald-200">
+              <div className="flex items-center gap-2.5">
+                <span className="text-2xl">📝</span>
+                <div>
+                  <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
+                    {language === 'lv' ? 'Gramatika un dialogi' : 'Грамматика и диалоги'}
+                  </h2>
+                  <p className="text-xs sm:text-sm font-semibold text-slate-500">
+                    {language === 'lv'
+                      ? '1. klases jautājumi, atbildes un teikumu konstrukcijas'
+                      : 'Вопросы, ответы и конструкции предложений для 1 класса'}
+                  </p>
+                </div>
+              </div>
+              <span className="text-xs font-black bg-emerald-100 text-emerald-900 px-2.5 py-1 rounded-full border border-emerald-300">
+                1 {language === 'lv' ? 'klase' : 'класс'}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+              {GRADE_1_GRAMMAR_TOPICS.map((gTopic) => (
+                <GrammarCard
+                  key={gTopic.id}
+                  topic={gTopic}
+                  language={language}
+                  stars={grammarProgress?.[gTopic.id]?.stars || 0}
+                  onSelect={onSelectGrammarTopic}
                 />
               ))}
             </div>

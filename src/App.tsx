@@ -51,6 +51,9 @@ const ProgressStatsModal = React.lazy(() =>
 const TitleSelectModal = React.lazy(() =>
   import('./components/TitleSelectModal').then((m) => ({ default: m.TitleSelectModal }))
 );
+const GrammarGame = React.lazy(() =>
+  import('./components/games/GrammarGame').then((m) => ({ default: m.GrammarGame }))
+);
 
 const GameLoadingFallback: React.FC = () => (
   <div className="flex flex-col items-center justify-center min-h-[360px] py-16">
@@ -77,7 +80,11 @@ import {
   equipTitle,
   evaluateUnlockedTitles,
   recordDailyActivity,
+  loadGrammarProgress,
+  addEarnedStars,
+  GrammarTopicProgress,
 } from './services/storage';
+import { GrammarTopic } from './data/grammarData';
 
 import { useTopicCatalog } from './hooks/useTopicCatalog';
 
@@ -127,6 +134,10 @@ export const App: React.FC = () => {
   const [isTitleSelectOpen, setIsTitleSelectOpen] = useState<boolean>(false);
   const [wordProgress, setWordProgress] = useState<Record<string, WordProgress>>(() =>
     loadWordProgress(initialCourse)
+  );
+  const [activeGrammarTopic, setActiveGrammarTopic] = useState<GrammarTopic | null>(null);
+  const [grammarProgress, setGrammarProgress] = useState<Record<string, GrammarTopicProgress>>(() =>
+    loadGrammarProgress(initialCourse)
   );
   const { isCloudSynced, reloadAllFromLocal, handleManualSyncComplete } = useCloudSync({
     course,
@@ -243,6 +254,8 @@ export const App: React.FC = () => {
       saveStoredLanguage('ru');
     }
     reloadAllFromLocal(newCourse);
+    setGrammarProgress(loadGrammarProgress(newCourse));
+    setActiveGrammarTopic(null);
     handleHomeClick();
   };
 
@@ -393,7 +406,23 @@ export const App: React.FC = () => {
   };
 
 
+  const handleSelectGrammarTopic = (topic: GrammarTopic) => {
+    setActiveGrammarTopic(topic);
+  };
+
+  const handleGrammarComplete = (topicId: string, earnedStars: number) => {
+    if (earnedStars > 0) {
+      const prevStars = grammarProgress[topicId]?.stars || 0;
+      const starsDiff = Math.max(0, earnedStars - prevStars);
+      if (starsDiff > 0) {
+        setStats(addEarnedStars(starsDiff));
+      }
+    }
+    setGrammarProgress(loadGrammarProgress(course));
+  };
+
   const handleHomeClick = () => {
+    setActiveGrammarTopic(null);
     if (navigateToHome(language)) {
       setCelebration(null);
     }
@@ -418,7 +447,7 @@ export const App: React.FC = () => {
         }}
         onUpdateStats={handleUpdateStats}
         onHomeClick={handleHomeClick}
-        isGameActive={isGameActive}
+        isGameActive={isGameActive || activeGrammarTopic !== null}
       />
 
       {/* Main Content Area */}
@@ -440,8 +469,23 @@ export const App: React.FC = () => {
           </div>
         )}
 
+        {/* Screen: Grammar Game Active */}
+        {activeGrammarTopic !== null && (
+          <div className="pt-2">
+            <Suspense fallback={<GameLoadingFallback />}>
+              <GrammarGame
+                topic={activeGrammarTopic}
+                language={language}
+                course={course}
+                onComplete={handleGrammarComplete}
+                onBack={() => setActiveGrammarTopic(null)}
+              />
+            </Suspense>
+          </div>
+        )}
+
         {/* Screen 1: Topic Catalog */}
-        {!selectedTopic && activeExamGrade === null && (
+        {!selectedTopic && activeExamGrade === null && activeGrammarTopic === null && (
           <TopicList
             topics={filteredTopics}
             allTopics={topics}
@@ -468,6 +512,8 @@ export const App: React.FC = () => {
             mistakesCount={mistakesWords.length}
             onStartMistakesTest={handleStartMistakesTest}
             onOpenMistakesGames={handleOpenMistakesGames}
+            onSelectGrammarTopic={handleSelectGrammarTopic}
+            grammarProgress={grammarProgress}
           />
         )}
 

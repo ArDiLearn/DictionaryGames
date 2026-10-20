@@ -1,0 +1,81 @@
+import React from 'react';
+import { Sparkles } from 'lucide-react';
+import { GrammarTopic } from '../data/grammarData';
+import { Language } from '../types';
+import { sounds } from '../utils/soundEffects';
+
+interface GrammarCardProps {
+  topic: GrammarTopic;
+  language: Language;
+  stars?: number;
+  onSelect: (topic: GrammarTopic) => void;
+}
+
+export const GrammarCard: React.FC<GrammarCardProps> = ({
+  topic,
+  language,
+  stars = 0,
+  onSelect,
+}) => {
+  const title = topic.title[language] || topic.title.ru;
+  const description = topic.description[language] || topic.description.ru;
+  const questionCount = topic.id === 'g1_mix' ? 10 : topic.questions.length;
+
+  return (
+    <button
+      onClick={() => {
+        sounds.playClick();
+        onSelect(topic);
+      }}
+      className="group relative flex flex-col justify-between p-4 sm:p-5 rounded-3xl bg-white border-4 border-emerald-200 hover:border-emerald-400 hover:shadow-xl transition-all duration-300 text-left cursor-pointer active:scale-[0.98] hover:-translate-y-1"
+    >
+      <div>
+        {/* Top bar in card: Emoji icon & Question count / Stars */}
+        <div className="flex items-start justify-between gap-2 mb-3">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-50 border-2 border-emerald-200 flex items-center justify-center text-2xl sm:text-3xl shadow-inner group-hover:scale-105 transition-transform">
+            {topic.emoji}
+          </div>
+
+          <div className="flex flex-col items-end gap-1">
+            <span className="text-[11px] font-black bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-300">
+              {questionCount} {language === 'lv' ? 'jaut.' : 'вопр.'}
+            </span>
+
+            {/* Stars row */}
+            <div className="flex items-center gap-0.5 text-sm">
+              {[1, 2, 3].map((slot) => (
+                <span
+                  key={slot}
+                  className={slot <= stars ? 'text-amber-400' : 'text-slate-200'}
+                >
+                  ★
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Title */}
+        <h3 className="text-base sm:text-lg font-black text-slate-800 tracking-tight leading-snug group-hover:text-emerald-700 transition-colors">
+          {title}
+        </h3>
+
+        {/* Description */}
+        <p className="text-xs text-slate-500 font-semibold mt-1 leading-relaxed">
+          {description}
+        </p>
+      </div>
+
+      {/* Bottom CTA */}
+      <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-black text-emerald-600">
+        <span className="flex items-center gap-1">
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>{language === 'lv' ? 'Sākt uzdevumus' : 'Начать тренировку'}</span>
+        </span>
+        <span className="text-slate-400 group-hover:translate-x-1 transition-transform">
+          →
+        </span>
+      </div>
+    </button>
+  );
+};

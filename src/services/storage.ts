@@ -215,3 +215,12 @@ export function recordExamAttempt(
   triggerCloudSync();
   return { results: updatedResults, history: newHistory };
 }
+
+// --- Business logic: Grammar recording ---
+
+export {
+  loadGrammarProgressRaw as loadGrammarProgress,
+  saveGrammarProgressRaw as saveGrammarProgress,
+  type GrammarTopicProgress,
+} from './localStorage';
+

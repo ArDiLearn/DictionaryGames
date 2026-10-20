@@ -504,7 +504,13 @@ export const TopicList: React.FC<TopicListProps> = ({
             setSearchQuery(e.target.value);
             setShowAllWords(false);
           }}
-          placeholder={t.searchPlaceholder}
+          placeholder={
+            course === 'en-lv' || course === 'lv-en'
+              ? language === 'lv'
+                ? 'Meklēt vārdu (angļu, latv.) vai tēmu...'
+                : 'Поиск слова (англ., латыш.) или темы...'
+              : t.searchPlaceholder
+          }
           className="w-full pl-11 pr-10 py-3 sm:py-3.5 bg-white rounded-2xl border-2 border-slate-200 focus:border-indigo-500 focus:outline-none text-slate-800 placeholder-slate-400 font-semibold shadow-sm transition-colors text-base"
         />
         {searchQuery && (

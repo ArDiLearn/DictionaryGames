@@ -580,7 +580,7 @@ export const translations: Record<Language, Translations> = {
     welcomeGreeting: 'Sveiks',
     defaultPlayerName: 'Zinītis',
     chooseTopic: 'Izvēlies tēmu spēlei',
-    searchPlaceholder: 'Meklēt vārdu (angļu, latv., krievu) vai tēmu...',
+    searchPlaceholder: 'Meklēt vārdu (angļu, latv.) vai tēmu...',
     allTopics: 'Visas tēmas',
     noResultsFound: 'Nekas netika atrasts',
     wordsCount: 'vārdi',

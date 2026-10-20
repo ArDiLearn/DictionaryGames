@@ -116,7 +116,7 @@ const _ExamCard: React.FC<ExamCardProps> = ({
         </div>
 
         <div className="flex flex-wrap sm:flex-nowrap items-center md:items-end gap-3 w-full md:w-auto justify-between md:justify-end">
-          {result && (
+          {result ? (
             <button
               type="button"
               onClick={() => {
@@ -146,6 +146,21 @@ const _ExamCard: React.FC<ExamCardProps> = ({
                 </div>
               </div>
             </button>
+          ) : (
+            onOpenStats && (
+              <button
+                type="button"
+                onClick={() => {
+                  sounds.playClick();
+                  onOpenStats();
+                }}
+                className="inline-flex items-center gap-1.5 bg-white/90 hover:bg-white active:scale-95 border border-amber-300 px-3 py-2 rounded-2xl text-xs font-bold text-amber-900 transition-all cursor-pointer shadow-2xs"
+                title={t.statsModal.examsViewHistory}
+              >
+                <BarChart3 className="w-3.5 h-3.5 text-amber-700" />
+                <span>{t.statsModal.examsStatsBtn}</span>
+              </button>
+            )
           )}
 
           <div className="flex flex-col items-stretch md:items-center gap-1.5 flex-1 md:flex-initial">

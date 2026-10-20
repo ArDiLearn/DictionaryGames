@@ -90,7 +90,7 @@ export function getExamHistoryKey(course: LearningCourse = 'en', legacy: 'none' 
 export function getStoredCourse(): LearningCourse {
   try {
     const c = getItemWithFallback(COURSE_KEY, OLD_COURSE_KEY, LEGACY_COURSE_KEY);
-    if (c === 'lv' || c === 'lv-en' || c === 'en-lv' || c === 'en') return c;
+    if (c === 'lv' || c === 'en-lv' || c === 'en') return c;
   } catch {}
   return 'en';
 }

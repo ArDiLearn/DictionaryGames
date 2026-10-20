@@ -1051,7 +1051,7 @@ export function getGameModeDescriptions(
   language: Language,
   course: LearningCourse = 'en'
 ): Record<GameMode, string> {
-  const isLv = course === 'lv' || course === 'lv-en';
+  const isLv = course === 'lv';
   if (language === 'lv') {
     return {
       flashcards: 'Mācies vārdus ar izrunu un tulkojumu',
@@ -1076,7 +1076,7 @@ export function getGameModeDescriptions(
 }
 
 export function getBalloonPrompt(language: Language, course: LearningCourse = 'en'): string {
-  if (course === 'lv' || course === 'lv-en') {
+  if (course === 'lv') {
     return language === 'lv'
       ? 'Noķer balonu ar pareizo latviešu vārdu!'
       : 'Поймай шарик с правильным латышским словом!';
@@ -1085,7 +1085,7 @@ export function getBalloonPrompt(language: Language, course: LearningCourse = 'e
 }
 
 export function getMatchPrompt(language: Language, course: LearningCourse = 'en'): string {
-  if (course === 'lv' || course === 'lv-en') {
+  if (course === 'lv') {
     return language === 'lv'
       ? 'Atrodi pārus: latviešu vārds un tulkojums'
       : 'Найди пары: латышское слово и перевод';
@@ -1094,7 +1094,7 @@ export function getMatchPrompt(language: Language, course: LearningCourse = 'en'
 }
 
 export function isLatvianTargetCourse(course: LearningCourse = 'en'): boolean {
-  return course === 'lv' || course === 'lv-en';
+  return course === 'lv';
 }
 
 export function getTargetWordText(
@@ -1110,7 +1110,6 @@ export function getTranslationWordText(
   language: Language = 'ru'
 ): string {
   if (course === 'lv') return word.ru;
-  if (course === 'lv-en') return word.en;
   if (course === 'en-lv') return word.lv;
   return word[language] || word.ru || word.lv;
 }
@@ -1118,9 +1117,6 @@ export function getTranslationWordText(
 export function getCourseActiveLabel(course: LearningCourse = 'en', language: Language = 'ru'): string {
   if (course === 'lv') {
     return language === 'lv' ? 'Režīms: Latviešu — Krievu' : 'Режим: Латышский — Русский';
-  }
-  if (course === 'lv-en') {
-    return language === 'lv' ? 'Režīms: Latviešu — Angļu' : 'Режим: Латышский — Английский';
   }
   if (course === 'en-lv' || (course === 'en' && language === 'lv')) {
     return language === 'lv' ? 'Režīms: Angļu — Latviešu' : 'Режим: Английский — Латышский';

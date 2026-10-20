@@ -187,8 +187,6 @@ export const TopicList: React.FC<TopicListProps> = ({
   const bannerGradient =
     course === 'lv'
       ? 'bg-gradient-to-r from-[#8C1D2E] via-rose-600 to-amber-600'
-      : course === 'lv-en'
-      ? 'bg-gradient-to-r from-[#8C1D2E] via-fuchsia-700 to-indigo-700'
       : course === 'en-lv' || language === 'lv'
       ? 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700'
       : 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700';
@@ -343,30 +341,11 @@ export const TopicList: React.FC<TopicListProps> = ({
                   {/* Vertical Divider Line */}
                   <div className="hidden sm:block w-px self-stretch bg-white/35 my-0.5" />
 
-                  {/* Right Column: Latvian Target Modes with Лат–Рус separated by a divider line */}
-                  <div className="flex flex-col justify-between gap-1.5 md:gap-2">
-                    {/* Mode 3: Latvian - English */}
-                    <button
-                      onClick={() => selectLearningPair('lv-en')}
-                      className={`flex items-center justify-center gap-1.5 md:gap-2 px-2.5 py-1.5 md:px-3.5 md:py-2.5 rounded-xl md:rounded-2xl text-xs md:text-sm font-black transition-all cursor-pointer select-none whitespace-nowrap ${
-                        course === 'lv-en'
-                          ? 'bg-white text-fuchsia-950 shadow-md scale-[1.02] ring-2 ring-yellow-300'
-                          : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
-                      }`}
-                      title="Latviešu — Angļu / Латышский — Английский (LV → EN)"
-                    >
-                      <FlagIcon country="lv" size="sm" className="md:w-5 md:h-3.5" />
-                      <span>-</span>
-                      <FlagIcon country="gb" size="sm" className="md:w-5 md:h-3.5" />
-                      <span>{language === 'lv' ? 'Latv–Angļu' : 'Лат–Англ'}</span>
-                    </button>
-
-                    <div className="hidden sm:block h-px w-full bg-white/35" />
-
-                    {/* Mode 4: Latvian - Russian */}
+                  {/* Right Column: Latvian Target Mode (Латышский — Русский) */}
+                  <div className="flex flex-col justify-center">
                     <button
                       onClick={() => selectLearningPair('lv')}
-                      className={`flex items-center justify-center gap-1.5 md:gap-2 px-2.5 py-1.5 md:px-3.5 md:py-2.5 rounded-xl md:rounded-2xl text-xs md:text-sm font-black transition-all cursor-pointer select-none whitespace-nowrap ${
+                      className={`flex items-center justify-center gap-1.5 md:gap-2 px-2.5 py-1.5 md:px-3.5 md:py-2.5 rounded-xl md:rounded-2xl text-xs md:text-sm font-black transition-all cursor-pointer select-none whitespace-nowrap h-full ${
                         course === 'lv'
                           ? 'bg-white text-rose-900 shadow-md scale-[1.02] ring-2 ring-yellow-300'
                           : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
@@ -486,7 +465,7 @@ export const TopicList: React.FC<TopicListProps> = ({
             setShowAllWords(false);
           }}
           placeholder={
-            course === 'en-lv' || course === 'lv-en'
+            course === 'en-lv'
               ? language === 'lv'
                 ? 'Meklēt vārdu (angļu, latv.) vai tēmu...'
                 : 'Поиск слова (англ., латыш.) или темы...'
@@ -537,8 +516,6 @@ export const TopicList: React.FC<TopicListProps> = ({
               const thirdLangText =
                 course === 'lv'
                   ? `🇬🇧 ${word.en}`
-                  : course === 'lv-en'
-                  ? `🇷🇺 ${word.ru}`
                   : course === 'en-lv' || language === 'lv'
                   ? `🇷🇺 ${word.ru}`
                   : `🇱🇻 ${word.lv}`;

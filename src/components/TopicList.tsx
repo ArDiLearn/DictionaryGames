@@ -39,8 +39,7 @@ const normalizeSearchText = (str?: string): string =>
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
-    .replace(/ё/g, 'е')
-type ContentTab = 'main' | 'grammar' | 'extra' | 'exam';
+export type ContentTab = 'main' | 'grammar' | 'extra' | 'exam';
 
 interface TopicListProps {
   topics: Topic[];
@@ -67,6 +66,8 @@ interface TopicListProps {
   onOpenMistakesGames?: () => void;
   onSelectGrammarTopic?: (topic: GrammarTopic) => void;
   grammarProgress?: Record<string, GrammarTopicProgress>;
+  activeTab?: ContentTab;
+  onTabChange?: (tab: ContentTab) => void;
 }
 
 export const TopicList: React.FC<TopicListProps> = ({
@@ -94,6 +95,8 @@ export const TopicList: React.FC<TopicListProps> = ({
   onOpenMistakesGames,
   onSelectGrammarTopic,
   grammarProgress,
+  activeTab: activeTabProp,
+  onTabChange,
 }) => {
   const t = translations[language];
   const [searchQuery, setSearchQuery] = useState('');
@@ -188,7 +191,13 @@ export const TopicList: React.FC<TopicListProps> = ({
     });
   }, [filteredTopics, selectedGrades]);
 
-  const [activeTab, setActiveTab] = useState<ContentTab>('main');
+  const [internalTab, setInternalTab] = useState<ContentTab>(activeTabProp || 'main');
+  const activeTab = activeTabProp !== undefined ? activeTabProp : internalTab;
+
+  const handleTabChange = (tab: ContentTab) => {
+    setInternalTab(tab);
+    onTabChange?.(tab);
+  };
 
   const isGrammarAvailable =
     course !== 'lv' && selectedGrades.includes(1) && Boolean(onSelectGrammarTopic);
@@ -197,11 +206,11 @@ export const TopicList: React.FC<TopicListProps> = ({
 
   useEffect(() => {
     if (activeTab === 'grammar' && !isGrammarAvailable) {
-      setActiveTab('main');
+      handleTabChange('main');
     } else if (activeTab === 'extra' && !isExtraAvailable) {
-      setActiveTab('main');
+      handleTabChange('main');
     } else if (activeTab === 'exam' && !isExamAvailable) {
-      setActiveTab('main');
+      handleTabChange('main');
     }
   }, [activeTab, isGrammarAvailable, isExtraAvailable, isExamAvailable]);
 
@@ -889,7 +898,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                     type="button"
                     onClick={() => {
                       sounds.playClick();
-                      setActiveTab(tab.id);
+                      handleTabChange(tab.id);
                     }}
                     className={`flex-1 min-w-max px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 transition-all cursor-pointer border-2 select-none active:scale-98 ${
                       isActive

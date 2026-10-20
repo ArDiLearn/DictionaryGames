@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import rawWordsData from './data/words.json';
 import { Topic, Word, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress, LearningCourse, ExamResult } from './types';
 import { Header } from './components/Header';
-import { TopicList } from './components/TopicList';
+import { TopicList, ContentTab } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
 import { PwaInstallPrompt } from './components/PwaInstallPrompt';
 import { RewardToastOverlay } from './components/RewardToastOverlay';
@@ -136,6 +136,7 @@ export const App: React.FC = () => {
     loadWordProgress(initialCourse)
   );
   const [activeGrammarTopic, setActiveGrammarTopic] = useState<GrammarTopic | null>(null);
+  const [catalogTab, setCatalogTab] = useState<ContentTab>('main');
   const [grammarProgress, setGrammarProgress] = useState<Record<string, GrammarTopicProgress>>(() =>
     loadGrammarProgress(initialCourse)
   );
@@ -407,6 +408,7 @@ export const App: React.FC = () => {
 
 
   const handleSelectGrammarTopic = (topic: GrammarTopic) => {
+    setCatalogTab('grammar');
     setActiveGrammarTopic(topic);
   };
 
@@ -423,6 +425,7 @@ export const App: React.FC = () => {
 
   const handleHomeClick = () => {
     setActiveGrammarTopic(null);
+    setCatalogTab('main');
     if (navigateToHome(language)) {
       setCelebration(null);
     }
@@ -514,6 +517,8 @@ export const App: React.FC = () => {
             onOpenMistakesGames={handleOpenMistakesGames}
             onSelectGrammarTopic={handleSelectGrammarTopic}
             grammarProgress={grammarProgress}
+            activeTab={catalogTab}
+            onTabChange={setCatalogTab}
           />
         )}
 

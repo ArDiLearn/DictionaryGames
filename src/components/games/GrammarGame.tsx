@@ -185,7 +185,7 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
                 isNegated={currentQ.isNegated}
                 badgeType={currentQ.badgeType}
                 language={language}
-                className="w-48 sm:w-56"
+                className={currentQ.imageWord.isTwoCharacters ? "w-60 sm:w-72" : "w-48 sm:w-56"}
               />
             </div>
           )}

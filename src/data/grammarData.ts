@@ -33,6 +33,13 @@ export interface GrammarQuestion {
     emoji: string;
     secondEmoji?: string;
     customLabel?: string;
+    hideCaption?: boolean;
+    isTwoCharacters?: boolean;
+    highlightIndex?: 0 | 1;
+    heightScale?: {
+      first?: 'tall' | 'short' | 'normal';
+      second?: 'tall' | 'short' | 'normal';
+    };
   };
   // Whether the picture represents negation with a red cross ❌
   isNegated?: boolean;
@@ -489,7 +496,14 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'family',
         prompt: "Who's this?",
         audioText: "Who's this?",
-        imageWord: { en: 'mum', emoji: '👩', customLabel: 'Mum' },
+        imageWord: {
+          en: 'mum',
+          emoji: '👩',
+          secondEmoji: '👦',
+          isTwoCharacters: true,
+          highlightIndex: 0,
+          hideCaption: true,
+        },
         options: [
           'This is my mum.',
           'This is my dad.',
@@ -497,8 +511,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Кто это? → Это моя мама.',
-          lv: 'Kas tas ir? → Šī ir mana mamma.',
+          ru: 'Стрелка указывает на маму → This is my mum.',
+          lv: 'Bultiņa rāda uz mammu → This is my mum.',
         },
       },
       {
@@ -507,7 +521,14 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'family',
         prompt: "Who's this?",
         audioText: "Who's this?",
-        imageWord: { en: 'dad', emoji: '👨', customLabel: 'Dad' },
+        imageWord: {
+          en: 'dad',
+          emoji: '👨',
+          secondEmoji: '👧',
+          isTwoCharacters: true,
+          highlightIndex: 0,
+          hideCaption: true,
+        },
         options: [
           'This is my sister.',
           'This is my dad.',
@@ -515,8 +536,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Кто это? → Это мой папа.',
-          lv: 'Kas tas ir? → Šis ir mans tētis.',
+          ru: 'Стрелка указывает на папу → This is my dad.',
+          lv: 'Bultiņa rāda uz tēti → This is my dad.',
         },
       },
       {
@@ -525,7 +546,14 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'family',
         prompt: "Who's this?",
         audioText: "Who's this?",
-        imageWord: { en: 'sister', emoji: '👧', customLabel: 'Sister' },
+        imageWord: {
+          en: 'sister',
+          emoji: '👧',
+          secondEmoji: '👦',
+          isTwoCharacters: true,
+          highlightIndex: 0,
+          hideCaption: true,
+        },
         options: [
           'This is my brother.',
           'This is my mum.',
@@ -533,8 +561,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 2,
         hint: {
-          ru: 'Кто это? → Это моя сестра.',
-          lv: 'Kas tas ir? → Šī ir mana māsa.',
+          ru: 'Стрелка указывает на сестру → This is my sister.',
+          lv: 'Bultiņa rāda uz māsu → This is my sister.',
         },
       },
       {
@@ -543,7 +571,14 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'family',
         prompt: "Who's this?",
         audioText: "Who's this?",
-        imageWord: { en: 'brother', emoji: '👦', customLabel: 'Brother' },
+        imageWord: {
+          en: 'brother',
+          emoji: '👦',
+          secondEmoji: '👧',
+          isTwoCharacters: true,
+          highlightIndex: 0,
+          hideCaption: true,
+        },
         options: [
           'This is my brother.',
           'This is my dad.',
@@ -551,8 +586,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Кто это? → Это мой брат.',
-          lv: 'Kas tas ir? → Šis ir mans brālis.',
+          ru: 'Стрелка указывает на брата → This is my brother.',
+          lv: 'Bultiņa rāda uz brāli → This is my brother.',
         },
       },
       {
@@ -561,7 +596,14 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'family',
         prompt: "Who's this?",
         audioText: "Who's this?",
-        imageWord: { en: 'grandma', emoji: '👵', customLabel: 'Grandma' },
+        imageWord: {
+          en: 'grandma',
+          emoji: '👵',
+          secondEmoji: '👧',
+          isTwoCharacters: true,
+          highlightIndex: 0,
+          hideCaption: true,
+        },
         options: [
           'This is my mum.',
           'This is my grandma.',
@@ -569,8 +611,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Кто это? → Это моя бабушка.',
-          lv: 'Kas tas ir? → Šī ir mana vecmāmiņa.',
+          ru: 'Стрелка указывает на бабушку → This is my grandma.',
+          lv: 'Bultiņa rāda uz vecmāmiņu → This is my grandma.',
         },
       },
       {
@@ -579,7 +621,14 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'family',
         prompt: "Who's this?",
         audioText: "Who's this?",
-        imageWord: { en: 'grandpa', emoji: '👴', customLabel: 'Grandpa' },
+        imageWord: {
+          en: 'grandpa',
+          emoji: '👴',
+          secondEmoji: '👦',
+          isTwoCharacters: true,
+          highlightIndex: 0,
+          hideCaption: true,
+        },
         options: [
           'This is my brother.',
           'This is my dad.',
@@ -587,17 +636,25 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 2,
         hint: {
-          ru: 'Кто это? → Это мой дедушка.',
-          lv: 'Kas tas ir? → Šis ir mans vectētiņš.',
+          ru: 'Стрелка указывает на дедушку → This is my grandpa.',
+          lv: 'Bultiņa rāda uz vectētiņu → This is my grandpa.',
         },
       },
       {
         id: 'g1_fd_7',
         grade: 1,
         category: 'descriptions',
-        prompt: 'Look at the boy:',
-        audioText: "He's short.",
-        imageWord: { en: 'boy', emoji: '👦', customLabel: 'Short boy 📏' },
+        prompt: 'Look at the picture:',
+        audioText: 'Look at the picture.',
+        imageWord: {
+          en: 'boy',
+          emoji: '👦',
+          secondEmoji: '🧑',
+          isTwoCharacters: true,
+          highlightIndex: 0,
+          heightScale: { first: 'short', second: 'tall' },
+          hideCaption: true,
+        },
         options: [
           "He's short.",
           "She's tall.",
@@ -605,17 +662,25 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Мальчик невысокого роста → He\'s short.',
-          lv: 'Zēns ir maza auguma → He\'s short.',
+          ru: 'Стрелка указывает на мальчика низкого роста → He\'s short.',
+          lv: 'Bultiņa rāda uz zēnu maza auguma → He\'s short.',
         },
       },
       {
         id: 'g1_fd_8',
         grade: 1,
         category: 'descriptions',
-        prompt: 'Look at the girl:',
-        audioText: "She's tall.",
-        imageWord: { en: 'girl', emoji: '👧', customLabel: 'Tall girl 🦒' },
+        prompt: 'Look at the picture:',
+        audioText: 'Look at the picture.',
+        imageWord: {
+          en: 'girl',
+          emoji: '👧',
+          secondEmoji: '👧',
+          isTwoCharacters: true,
+          highlightIndex: 0,
+          heightScale: { first: 'tall', second: 'short' },
+          hideCaption: true,
+        },
         options: [
           "He's short.",
           "She's tall.",
@@ -623,17 +688,25 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Девочка высокого роста → She\'s tall.',
-          lv: 'Meitene ir gara auguma → She\'s tall.',
+          ru: 'Стрелка указывает на девочку высокого роста → She\'s tall.',
+          lv: 'Bultiņa rāda uz meiteni gara auguma → She\'s tall.',
         },
       },
       {
         id: 'g1_fd_9',
         grade: 1,
         category: 'descriptions',
-        prompt: 'Look at the boy:',
-        audioText: "He's tall.",
-        imageWord: { en: 'boy', emoji: '👦', customLabel: 'Tall boy 🦒' },
+        prompt: 'Look at the picture:',
+        audioText: 'Look at the picture.',
+        imageWord: {
+          en: 'boy',
+          emoji: '👦',
+          secondEmoji: '👦',
+          isTwoCharacters: true,
+          highlightIndex: 0,
+          heightScale: { first: 'tall', second: 'short' },
+          hideCaption: true,
+        },
         options: [
           "He's tall.",
           "She's tall.",
@@ -641,17 +714,25 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Мальчик высокого роста → He\'s tall.',
-          lv: 'Zēns ir gara auguma → He\'s tall.',
+          ru: 'Стрелка указывает на мальчика высокого роста → He\'s tall.',
+          lv: 'Bultiņa rāda uz zēnu gara auguma → He\'s tall.',
         },
       },
       {
         id: 'g1_fd_10',
         grade: 1,
         category: 'descriptions',
-        prompt: 'Look at the girl:',
-        audioText: "She's short.",
-        imageWord: { en: 'girl', emoji: '👧', customLabel: 'Short girl 📏' },
+        prompt: 'Look at the picture:',
+        audioText: 'Look at the picture.',
+        imageWord: {
+          en: 'girl',
+          emoji: '👧',
+          secondEmoji: '👩',
+          isTwoCharacters: true,
+          highlightIndex: 0,
+          heightScale: { first: 'short', second: 'tall' },
+          hideCaption: true,
+        },
         options: [
           "He's tall.",
           "She's short.",
@@ -659,17 +740,24 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Девочка невысокого роста → She\'s short.',
-          lv: 'Meitene ir maza auguma → She\'s short.',
+          ru: 'Стрелка указывает на девочку невысокого роста → She\'s short.',
+          lv: 'Bultiņa rāda uz meiteni maza auguma → She\'s short.',
         },
       },
       {
         id: 'g1_fd_11',
         grade: 1,
         category: 'descriptions',
-        prompt: 'Look at the boy:',
-        audioText: "He's young.",
-        imageWord: { en: 'boy', emoji: '🧒', customLabel: 'Young boy 🧒' },
+        prompt: 'Look at the picture:',
+        audioText: 'Look at the picture.',
+        imageWord: {
+          en: 'boy',
+          emoji: '🧒',
+          secondEmoji: '👴',
+          isTwoCharacters: true,
+          highlightIndex: 0,
+          hideCaption: true,
+        },
         options: [
           "He's young.",
           "She's old.",
@@ -677,17 +765,24 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Мальчик юный / молодой → He\'s young.',
-          lv: 'Zēns ir jauns → He\'s young.',
+          ru: 'Стрелка указывает на юного мальчика → He\'s young.',
+          lv: 'Bultiņa rāda uz jauno zēnu → He\'s young.',
         },
       },
       {
         id: 'g1_fd_12',
         grade: 1,
         category: 'descriptions',
-        prompt: 'Look at the woman:',
-        audioText: "She's old.",
-        imageWord: { en: 'woman', emoji: '👵', customLabel: 'Old woman 👵' },
+        prompt: 'Look at the picture:',
+        audioText: 'Look at the picture.',
+        imageWord: {
+          en: 'woman',
+          emoji: '👵',
+          secondEmoji: '👧',
+          isTwoCharacters: true,
+          highlightIndex: 0,
+          hideCaption: true,
+        },
         options: [
           "He's young.",
           "She's old.",
@@ -695,8 +790,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Женщина пожилая → She\'s old.',
-          lv: 'Sieviete ir veca / gados → She\'s old.',
+          ru: 'Стрелка указывает на пожилую женщину → She\'s old.',
+          lv: 'Bultiņa rāda uz vecu sievieti → She\'s old.',
         },
       },
     ],

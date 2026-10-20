@@ -1,9 +1,10 @@
 import React, { useState, useMemo } from 'react';
-import { Topic, Language, TopicProgress, Grade, LearningCourse, ExamResult } from '../types';
+import { Topic, Word, Language, TopicProgress, Grade, LearningCourse, ExamResult } from '../types';
 import { TopicCard } from './TopicCard';
 import { ExamCard } from './ExamCard';
 import { FlagIcon } from './FlagIcon';
 import { AvatarBadge } from './AvatarBadge';
+import { WordIllustration } from './WordIllustration';
 import {
   translations,
   getGradeFilterInfo,
@@ -12,6 +13,9 @@ import {
   getExtraTopicsSubtitle,
   getWordsPlural,
   getCourseActiveLabel,
+  isLatvianTargetCourse,
+  getTargetWordText,
+  getTranslationWordText,
 } from '../utils/i18n';
 import {
   isTopicExtra,
@@ -23,11 +27,21 @@ import {
   GRADE_4_MAIN_TOPICS,
 } from '../data/curriculum';
 import { sounds } from '../utils/soundEffects';
+import { speakWord } from '../utils/speech';
 import { getTitleById } from '../data/titles';
-import { Search, Sparkles, BarChart3, ClipboardCheck, Gamepad2 } from 'lucide-react';
+import { Search, Sparkles, BarChart3, ClipboardCheck, Gamepad2, Volume2, ArrowRight } from 'lucide-react';
+
+const normalizeSearchText = (str?: string): string =>
+  (str || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/ё/g, 'е')
+    .trim();
 
 interface TopicListProps {
   topics: Topic[];
+  allTopics?: Topic[];
   language: Language;
   course?: LearningCourse;
   onCourseChange?: (course: LearningCourse) => void;
@@ -52,6 +66,7 @@ interface TopicListProps {
 
 export const TopicList: React.FC<TopicListProps> = ({
   topics,
+  allTopics,
   language,
   course = 'en',
   onCourseChange,
@@ -75,20 +90,73 @@ export const TopicList: React.FC<TopicListProps> = ({
 }) => {
   const t = translations[language];
   const [searchQuery, setSearchQuery] = useState('');
+  const [showAllWords, setShowAllWords] = useState(false);
   const [examGradeTab, setExamGradeTab] = useState<Grade>(() => selectedGrades[0] || 1);
 
-  const filteredTopics = topics.filter((topic) => {
-    const query = searchQuery.toLowerCase().trim();
-    if (!query) return true;
-    const titleRu = (topic.topic_name.ru || '').toLowerCase();
-    const titleLv = (topic.topic_name.lv || '').toLowerCase();
-    const titleEn = (topic.topic_name.en || '').toLowerCase();
-    return (
-      titleRu.includes(query) ||
-      titleLv.includes(query) ||
-      titleEn.includes(query)
-    );
-  });
+  const normalizedQuery = normalizeSearchText(searchQuery);
+
+  const matchedWords = useMemo(() => {
+    if (!normalizedQuery) return [];
+    const sourceTopics = allTopics && allTopics.length > 0 ? allTopics : topics;
+    const results: { word: Word; topic: Topic; rank: number }[] = [];
+
+    sourceTopics.forEach((topic) => {
+      topic.words.forEach((word) => {
+        const enNorm = normalizeSearchText(word.en);
+        const lvNorm = normalizeSearchText(word.lv);
+        const ruNorm = normalizeSearchText(word.ru);
+
+        const isExact =
+          enNorm === normalizedQuery ||
+          lvNorm === normalizedQuery ||
+          ruNorm === normalizedQuery;
+        const isPrefix =
+          enNorm.startsWith(normalizedQuery) ||
+          lvNorm.startsWith(normalizedQuery) ||
+          ruNorm.startsWith(normalizedQuery);
+        const isSubstring =
+          enNorm.includes(normalizedQuery) ||
+          lvNorm.includes(normalizedQuery) ||
+          ruNorm.includes(normalizedQuery);
+
+        if (isExact || isPrefix || isSubstring) {
+          const rank = isExact ? 0 : isPrefix ? 1 : 2;
+          results.push({ word, topic, rank });
+        }
+      });
+    });
+
+    results.sort((a, b) => a.rank - b.rank);
+    return results;
+  }, [normalizedQuery, allTopics, topics]);
+
+  const filteredTopics = useMemo(() => {
+    if (!normalizedQuery) return topics;
+    return topics.filter((topic) => {
+      const titleRu = normalizeSearchText(topic.topic_name.ru);
+      const titleLv = normalizeSearchText(topic.topic_name.lv);
+      const titleEn = normalizeSearchText(topic.topic_name.en);
+
+      if (
+        titleRu.includes(normalizedQuery) ||
+        titleLv.includes(normalizedQuery) ||
+        titleEn.includes(normalizedQuery)
+      ) {
+        return true;
+      }
+
+      return topic.words.some((w) => {
+        const enNorm = normalizeSearchText(w.en);
+        const lvNorm = normalizeSearchText(w.lv);
+        const ruNorm = normalizeSearchText(w.ru);
+        return (
+          enNorm.includes(normalizedQuery) ||
+          lvNorm.includes(normalizedQuery) ||
+          ruNorm.includes(normalizedQuery)
+        );
+      });
+    });
+  }, [topics, normalizedQuery]);
 
   const totalWords = topics.reduce((acc, t) => acc + t.words.length, 0);
   const visibleWordIds = new Set(topics.flatMap((t) => t.words.map((w) => w.id)));
@@ -432,19 +500,173 @@ export const TopicList: React.FC<TopicListProps> = ({
         <input
           type="text"
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            setShowAllWords(false);
+          }}
           placeholder={t.searchPlaceholder}
-          className="w-full pl-11 pr-4 py-3 sm:py-3.5 bg-white rounded-2xl border-2 border-slate-200 focus:border-indigo-500 focus:outline-none text-slate-800 placeholder-slate-400 font-semibold shadow-sm transition-colors text-base"
+          className="w-full pl-11 pr-10 py-3 sm:py-3.5 bg-white rounded-2xl border-2 border-slate-200 focus:border-indigo-500 focus:outline-none text-slate-800 placeholder-slate-400 font-semibold shadow-sm transition-colors text-base"
         />
         {searchQuery && (
           <button
-            onClick={() => setSearchQuery('')}
-            className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 font-bold text-sm"
+            onClick={() => {
+              setSearchQuery('');
+              setShowAllWords(false);
+            }}
+            className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer"
           >
             ✕
           </button>
         )}
       </div>
+
+      {/* Found Words Dictionary Section */}
+      {normalizedQuery && matchedWords.length > 0 && (
+        <div className="mb-8">
+          <div className="flex items-center justify-between gap-3 mb-3 pb-2 border-b-2 border-sky-200">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">🔎</span>
+              <div>
+                <h2 className="text-base sm:text-lg font-black text-slate-800 tracking-tight">
+                  {language === 'lv' ? 'Atrastie vārdi' : 'Найденные слова'}
+                </h2>
+                <p className="text-xs font-semibold text-slate-500">
+                  {language === 'lv'
+                    ? 'Noklausies izrunu vai atver tēmu'
+                    : 'Послушай произношение или перейди к теме'}
+                </p>
+              </div>
+            </div>
+            <span className="text-xs font-black bg-sky-100 text-sky-900 px-2.5 py-1 rounded-full border border-sky-300">
+              {matchedWords.length} {getWordsPlural(matchedWords.length, language)}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3">
+            {(showAllWords ? matchedWords : matchedWords.slice(0, 12)).map(({ word, topic }) => {
+              const isLatvian = isLatvianTargetCourse(course);
+              const targetText = getTargetWordText(word, course);
+              const translationText = getTranslationWordText(word, course, language);
+              const thirdLangText =
+                course === 'lv'
+                  ? `🇬🇧 ${word.en}`
+                  : course === 'lv-en'
+                  ? `🇷🇺 ${word.ru}`
+                  : course === 'en-lv' || language === 'lv'
+                  ? `🇷🇺 ${word.ru}`
+                  : `🇱🇻 ${word.lv}`;
+              const topicTitle =
+                isLatvian || course === 'en-lv'
+                  ? topic.topic_name.lv || topic.topic_name.ru
+                  : topic.topic_name[language] || topic.topic_name.ru;
+              const wordGrade = (word.grade || 1) as Grade;
+              const isMastered = topicProgress[topic.topic_id]?.masteredWordIds?.includes(word.id);
+
+              return (
+                <div
+                  key={`${topic.topic_id}-${word.id}`}
+                  className="bg-white rounded-2xl border-2 border-slate-200 hover:border-indigo-300 p-3 shadow-xs flex flex-col justify-between gap-2.5 transition-all"
+                >
+                  <div className="flex items-start justify-between gap-2.5">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          sounds.playClick();
+                          speakWord(targetText, course);
+                        }}
+                        className="relative w-12 h-12 rounded-2xl bg-indigo-50 hover:bg-indigo-100 border-2 border-indigo-200 flex items-center justify-center p-1 shrink-0 cursor-pointer group transition-transform active:scale-95"
+                        title={t.listen}
+                      >
+                        <WordIllustration
+                          word={word}
+                          fallbackEmoji={topic.emoji}
+                          className="w-9 h-9 text-2xl"
+                        />
+                        <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform">
+                          <Volume2 className="w-3 h-3" />
+                        </span>
+                      </button>
+
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="font-black text-slate-900 text-base font-comic leading-tight">
+                            {targetText}
+                          </span>
+                          {isMastered && (
+                            <span
+                              className="text-[10px] bg-emerald-100 text-emerald-700 font-black px-1.5 py-0.5 rounded-full border border-emerald-300"
+                              title={language === 'lv' ? 'Apgūts' : 'Выучено'}
+                            >
+                              ✓
+                            </span>
+                          )}
+                        </div>
+                        {!isLatvian && word.transcription && (
+                          <div className="text-[11px] font-mono font-bold text-indigo-500 leading-tight mt-0.5">
+                            {word.transcription}
+                          </div>
+                        )}
+                        <div className="text-sm font-extrabold text-pink-600 leading-snug mt-0.5">
+                          {translationText}
+                        </div>
+                        <div className="text-[11px] font-semibold text-slate-400 truncate mt-0.5">
+                          {thirdLangText}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Topic & Grade Quick Jump Button */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      sounds.playClick();
+                      if (!selectedGrades.includes(wordGrade)) {
+                        onToggleGrade(wordGrade);
+                      }
+                      const targetTopic =
+                        topics.find((tp) => tp.topic_id === topic.topic_id) || topic;
+                      onSelectTopic(targetTopic);
+                    }}
+                    className="w-full flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-xl bg-slate-50 hover:bg-indigo-50 border border-slate-200 hover:border-indigo-200 text-xs font-bold text-slate-600 hover:text-indigo-700 transition-colors cursor-pointer group"
+                  >
+                    <span className="truncate flex items-center gap-1.5">
+                      <span>{topic.emoji || '📚'}</span>
+                      <span className="truncate">{topicTitle}</span>
+                    </span>
+                    <span className="flex items-center gap-1 shrink-0 text-[11px] font-black text-amber-700 bg-amber-100/80 px-1.5 py-0.5 rounded-md">
+                      <span>
+                        {wordGrade} {language === 'lv' ? 'kl.' : 'кл.'}
+                      </span>
+                      <ArrowRight className="w-3 h-3 text-indigo-500 group-hover:translate-x-0.5 transition-transform" />
+                    </span>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          {matchedWords.length > 12 && !showAllWords && (
+            <div className="mt-3 text-center">
+              <button
+                type="button"
+                onClick={() => {
+                  sounds.playClick();
+                  setShowAllWords(true);
+                }}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-white hover:bg-sky-50 border-2 border-sky-200 text-sky-700 font-black text-xs sm:text-sm shadow-xs transition-all cursor-pointer"
+              >
+                <span>
+                  {language === 'lv'
+                    ? `Rādīt visus vārdus (${matchedWords.length})`
+                    : `Показать все слова (${matchedWords.length})`}
+                </span>
+              </button>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Mistakes Review Banner */}
       {!searchQuery && mistakesCount > 0 && (
@@ -606,7 +828,7 @@ export const TopicList: React.FC<TopicListProps> = ({
         )}
       </div>
 
-      {filteredTopics.length === 0 && (
+      {filteredTopics.length === 0 && matchedWords.length === 0 && (
         <div className="text-center py-12 bg-white rounded-3xl border-2 border-slate-200">
           <p className="text-4xl mb-2">🔍</p>
           <p className="text-lg font-bold text-slate-600">

@@ -444,6 +444,7 @@ export const App: React.FC = () => {
         {!selectedTopic && activeExamGrade === null && (
           <TopicList
             topics={filteredTopics}
+            allTopics={topics}
             language={language}
             course={course}
             onCourseChange={handleCourseChange}

@@ -209,14 +209,14 @@ export const TopicList: React.FC<TopicListProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+          <div className="flex items-end gap-2.5 sm:gap-3 flex-wrap">
             {/* 3-Mode Language Direction Switcher: EN-RU | EN-LV | LV-RU */}
             {onCourseChange && (
-              <div className="flex flex-col gap-1 bg-black/20 backdrop-blur-md p-2 rounded-2xl border border-white/30">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-white/80 px-1">
+              <div className="flex flex-col items-start gap-1">
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-white/90 px-1.5 drop-shadow-2xs">
                   {t.courseSelectorLabel}:
                 </span>
-                <div className="flex items-center gap-1.5 flex-wrap">
+                <div className="flex items-center gap-1.5 flex-wrap bg-black/20 backdrop-blur-md p-1.5 sm:p-2 rounded-2xl border border-white/30">
                   {/* Mode 1: English - Russian */}
                   <button
                     onClick={() => selectLearningPair('en', 'ru')}

@@ -115,7 +115,7 @@ const _ExamCard: React.FC<ExamCardProps> = ({
           </div>
         </div>
 
-        <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+        <div className="flex flex-wrap sm:flex-nowrap items-center md:items-end gap-3 w-full md:w-auto justify-between md:justify-end">
           {result ? (
             <button
               type="button"
@@ -147,44 +147,46 @@ const _ExamCard: React.FC<ExamCardProps> = ({
               </div>
             </button>
           ) : (
-            <>
-              {onOpenStats && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    sounds.playClick();
-                    onOpenStats();
-                  }}
-                  className="inline-flex items-center gap-1.5 bg-white/90 hover:bg-white active:scale-95 border border-amber-300 px-3 py-2 rounded-2xl text-xs font-bold text-amber-900 transition-all cursor-pointer shadow-2xs"
-                  title={t.statsModal.examsViewHistory}
-                >
-                  <BarChart3 className="w-3.5 h-3.5 text-amber-700" />
-                  <span>{t.statsModal.examsStatsBtn}</span>
-                </button>
-              )}
-              <div className="hidden lg:flex items-center gap-1.5 bg-amber-100/80 border border-amber-300 px-3 py-1.5 rounded-xl text-xs font-bold text-amber-900">
+            onOpenStats && (
+              <button
+                type="button"
+                onClick={() => {
+                  sounds.playClick();
+                  onOpenStats();
+                }}
+                className="inline-flex items-center gap-1.5 bg-white/90 hover:bg-white active:scale-95 border border-amber-300 px-3 py-2 rounded-2xl text-xs font-bold text-amber-900 transition-all cursor-pointer shadow-2xs"
+                title={t.statsModal.examsViewHistory}
+              >
+                <BarChart3 className="w-3.5 h-3.5 text-amber-700" />
+                <span>{t.statsModal.examsStatsBtn}</span>
+              </button>
+            )
+          )}
+
+          <div className="flex flex-col items-stretch md:items-center gap-1.5 flex-1 md:flex-initial">
+            {!result && (
+              <div className="inline-flex items-center justify-center gap-1.5 bg-amber-100/90 border border-amber-300 px-3 py-1 rounded-xl text-xs font-bold text-amber-900 self-center">
                 <span>💡</span>
                 <span>{t.exam.readyBadge}</span>
               </div>
-            </>
-          )}
-
-          <button
-            onClick={handleStart}
-            className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl font-black text-sm sm:text-base text-white bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 active:scale-95 shadow-md hover:shadow-lg transition-all cursor-pointer whitespace-nowrap"
-          >
-            {result ? (
-              <>
-                <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span>{t.exam.retryBtn}</span>
-              </>
-            ) : (
-              <>
-                <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
-                <span>{t.exam.startBtn}</span>
-              </>
             )}
-          </button>
+            <button
+              onClick={handleStart}
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl font-black text-sm sm:text-base text-white bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 active:scale-95 shadow-md hover:shadow-lg transition-all cursor-pointer whitespace-nowrap"
+            >
+              {result ? (
+                <>
+                  <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span>{t.exam.retryBtn}</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
+                  <span>{t.exam.startBtn}</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </div>

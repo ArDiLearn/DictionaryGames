@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Topic, Word, Language, TopicProgress, Grade, LearningCourse, ExamResult } from '../types';
 import { TopicCard } from './TopicCard';
 import { ExamCard } from './ExamCard';
@@ -40,7 +40,7 @@ const normalizeSearchText = (str?: string): string =>
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/ё/g, 'е')
-    .trim();
+type ContentTab = 'main' | 'grammar' | 'extra' | 'exam';
 
 interface TopicListProps {
   topics: Topic[];
@@ -187,6 +187,97 @@ export const TopicList: React.FC<TopicListProps> = ({
       return 0;
     });
   }, [filteredTopics, selectedGrades]);
+
+  const [activeTab, setActiveTab] = useState<ContentTab>('main');
+
+  const isGrammarAvailable =
+    course !== 'lv' && selectedGrades.includes(1) && Boolean(onSelectGrammarTopic);
+  const isExtraAvailable = extraTopics.length > 0;
+  const isExamAvailable = Boolean(onStartExam) && selectedGrades.length > 0;
+
+  useEffect(() => {
+    if (activeTab === 'grammar' && !isGrammarAvailable) {
+      setActiveTab('main');
+    } else if (activeTab === 'extra' && !isExtraAvailable) {
+      setActiveTab('main');
+    } else if (activeTab === 'exam' && !isExamAvailable) {
+      setActiveTab('main');
+    }
+  }, [activeTab, isGrammarAvailable, isExtraAvailable, isExamAvailable]);
+
+  const tabs = useMemo(() => {
+    const list: {
+      id: ContentTab;
+      label: string;
+      emoji: string;
+      badge?: string | number;
+      activeClass: string;
+    }[] = [
+      {
+        id: 'main',
+        label: language === 'lv' ? 'Pamatkursa' : 'Основные',
+        emoji: '📚',
+        badge: mainTopics.length,
+        activeClass: 'bg-amber-500 text-white shadow-md shadow-amber-500/20 border-amber-400',
+      },
+    ];
+
+    if (isGrammarAvailable) {
+      list.push({
+        id: 'grammar',
+        label: language === 'lv' ? 'Gramatika' : 'Грамматика',
+        emoji: '📝',
+        badge: GRADE_1_GRAMMAR_TOPICS.length,
+        activeClass: 'bg-emerald-500 text-white shadow-md shadow-emerald-500/20 border-emerald-400',
+      });
+    }
+
+    if (isExtraAvailable) {
+      list.push({
+        id: 'extra',
+        label: language === 'lv' ? 'Papildus' : 'Дополнительные',
+        emoji: '⭐',
+        badge: extraTopics.length,
+        activeClass: 'bg-indigo-500 text-white shadow-md shadow-indigo-500/20 border-indigo-400',
+      });
+    }
+
+    if (isExamAvailable) {
+      const activeGrade: Grade = selectedGrades.includes(examGradeTab)
+        ? examGradeTab
+        : selectedGrades[0];
+      const res = examResults ? examResults[activeGrade] : undefined;
+      const cupBadge =
+        res?.cup === 'gold'
+          ? '🏆'
+          : res?.cup === 'silver'
+          ? '🥈'
+          : res?.cup === 'bronze'
+          ? '🥉'
+          : res?.gradeMark
+          ? '⭐'
+          : undefined;
+      list.push({
+        id: 'exam',
+        label: language === 'lv' ? 'Pārbaudes darbs' : 'Контрольная',
+        emoji: '🏆',
+        badge: cupBadge ? `${cupBadge} ${res?.gradeMark || ''}`.trim() : undefined,
+        activeClass: 'bg-gradient-to-r from-amber-500 to-rose-500 text-white shadow-md shadow-rose-500/20 border-rose-400',
+      });
+    }
+
+    return list;
+  }, [
+    language,
+    mainTopics.length,
+    isGrammarAvailable,
+    isExtraAvailable,
+    extraTopics.length,
+    isExamAvailable,
+    selectedGrades,
+    examGradeTab,
+    examResults,
+  ]);
 
   const displayName = getPlayerDisplayName(playerName, language);
   const equippedTitle = getTitleById(equippedTitleId);
@@ -711,44 +802,279 @@ export const TopicList: React.FC<TopicListProps> = ({
         </div>
       )}
 
-      {/* Grid of Topics */}
-      <div className="space-y-8">
-        {/* Main Topics */}
-        {mainTopics.length > 0 && (
-          <div>
-            <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-amber-200">
-              <div className="flex items-center gap-2.5">
-                <span className="text-2xl">📚</span>
-                <div>
-                  <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
-                    {t.mainTopicsTitle}
-                  </h2>
-                  <p className="text-xs sm:text-sm font-semibold text-slate-500">
-                    {getMainTopicsSubtitle(mainTopics.length, language)}
-                  </p>
+      {/* Grid of Topics & Tabs */}
+      {searchQuery ? (
+        <div className="space-y-8">
+          {mainTopics.length > 0 && (
+            <div>
+              <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-amber-200">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-2xl">📚</span>
+                  <div>
+                    <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
+                      {t.mainTopicsTitle}
+                    </h2>
+                    <p className="text-xs sm:text-sm font-semibold text-slate-500">
+                      {getMainTopicsSubtitle(mainTopics.length, language)}
+                    </p>
+                  </div>
                 </div>
+                <span className="text-xs font-black bg-amber-100 text-amber-900 px-2.5 py-1 rounded-full border border-amber-300">
+                  {mainTopics.length}
+                </span>
               </div>
-              <span className="text-xs font-black bg-amber-100 text-amber-900 px-2.5 py-1 rounded-full border border-amber-300">
-                {mainTopics.length}
-              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                {mainTopics.map((topic) => (
+                  <TopicCard
+                    key={topic.topic_id}
+                    topic={topic}
+                    language={language}
+                    course={course}
+                    progress={topicProgress[topic.topic_id]}
+                    onSelect={onSelectTopic}
+                  />
+                ))}
+              </div>
             </div>
+          )}
 
-            {/* Exam Super Card (Variant A with Grade Switcher) */}
-            {!searchQuery && onStartExam && selectedGrades.length > 0 && (() => {
-              const activeGrade: Grade = selectedGrades.includes(examGradeTab)
-                ? examGradeTab
-                : selectedGrades[0];
-              const topicsCount =
-                activeGrade === 1
-                  ? GRADE_1_MAIN_TOPICS.length
-                  : activeGrade === 2
-                  ? GRADE_2_MAIN_TOPICS.length
-                  : activeGrade === 3
-                  ? GRADE_3_MAIN_TOPICS.length
-                  : GRADE_4_MAIN_TOPICS.length;
+          {extraTopics.length > 0 && (
+            <div>
+              <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-indigo-200">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-2xl">⭐</span>
+                  <div>
+                    <h2 className="text-lg sm:text-xl font-black text-indigo-950 tracking-tight">
+                      {t.extraTopicsTitle}
+                    </h2>
+                    <p className="text-xs sm:text-sm font-semibold text-indigo-600/80">
+                      {getExtraTopicsSubtitle(extraTopics.length, language)}
+                    </p>
+                  </div>
+                </div>
+                <span className="text-xs font-black bg-indigo-100 text-indigo-900 px-2.5 py-1 rounded-full border border-indigo-300">
+                  {extraTopics.length}
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                {extraTopics.map((topic) => {
+                  const newCount = getNewWordsCountForGrades(topic, selectedGrades);
+                  return (
+                    <TopicCard
+                      key={topic.topic_id}
+                      topic={topic}
+                      language={language}
+                      course={course}
+                      progress={topicProgress[topic.topic_id]}
+                      onSelect={onSelectTopic}
+                      hasNewWords={newCount > 0}
+                      newWordsCount={newCount}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div>
+          {/* Tab Navigation */}
+          {tabs.length > 1 && (
+            <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 bg-slate-100/90 backdrop-blur-xs rounded-2xl sm:rounded-3xl border-2 border-slate-200/90 mb-6 overflow-x-auto no-scrollbar shadow-inner">
+              {tabs.map((tab) => {
+                const isActive = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => {
+                      sounds.playClick();
+                      setActiveTab(tab.id);
+                    }}
+                    className={`flex-1 min-w-max px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 transition-all cursor-pointer border-2 select-none active:scale-98 ${
+                      isActive
+                        ? `${tab.activeClass} scale-[1.02]`
+                        : 'bg-white/90 text-slate-600 hover:text-slate-900 border-slate-200/80 hover:bg-white hover:border-slate-300 shadow-2xs'
+                    }`}
+                  >
+                    <span className="text-base sm:text-lg">{tab.emoji}</span>
+                    <span>{tab.label}</span>
+                    {tab.badge !== undefined && (
+                      <span
+                        className={`text-[10px] sm:text-xs px-2 py-0.5 rounded-full font-black ${
+                          isActive
+                            ? 'bg-black/20 text-white'
+                            : 'bg-slate-100 text-slate-600 border border-slate-200'
+                        }`}
+                      >
+                        {tab.badge}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          )}
 
-              return (
-                <div className="mb-6">
+          {/* Active Tab Content */}
+          {activeTab === 'main' && (
+            <div>
+              <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-amber-200">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-2xl">📚</span>
+                  <div>
+                    <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
+                      {t.mainTopicsTitle}
+                    </h2>
+                    <p className="text-xs sm:text-sm font-semibold text-slate-500">
+                      {getMainTopicsSubtitle(mainTopics.length, language)}
+                    </p>
+                  </div>
+                </div>
+                <span className="text-xs font-black bg-amber-100 text-amber-900 px-2.5 py-1 rounded-full border border-amber-300">
+                  {mainTopics.length}
+                </span>
+              </div>
+
+              {mainTopics.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                  {mainTopics.map((topic) => (
+                    <TopicCard
+                      key={topic.topic_id}
+                      topic={topic}
+                      language={language}
+                      course={course}
+                      progress={topicProgress[topic.topic_id]}
+                      onSelect={onSelectTopic}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-10 bg-white rounded-3xl border-2 border-slate-200 text-slate-500 font-bold">
+                  {t.noResultsFound}
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeTab === 'grammar' && isGrammarAvailable && onSelectGrammarTopic && (
+            <div>
+              <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-emerald-200">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-2xl">📝</span>
+                  <div>
+                    <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
+                      {language === 'lv' ? 'Gramatika un dialogi' : 'Грамматика и диалоги'}
+                    </h2>
+                    <p className="text-xs sm:text-sm font-semibold text-slate-500">
+                      {language === 'lv'
+                        ? '1. klases jautājumi, atbildes un teikumu konstrukcijas'
+                        : 'Вопросы, ответы и конструкции предложений для 1 класса'}
+                    </p>
+                  </div>
+                </div>
+                <span className="text-xs font-black bg-emerald-100 text-emerald-900 px-2.5 py-1 rounded-full border border-emerald-300">
+                  1 {language === 'lv' ? 'klase' : 'класс'}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                {GRADE_1_GRAMMAR_TOPICS.map((gTopic) => (
+                  <GrammarCard
+                    key={gTopic.id}
+                    topic={gTopic}
+                    language={language}
+                    stars={grammarProgress?.[gTopic.id]?.stars || 0}
+                    onSelect={onSelectGrammarTopic}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'extra' && isExtraAvailable && (
+            <div>
+              <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-indigo-200">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-2xl">⭐</span>
+                  <div>
+                    <h2 className="text-lg sm:text-xl font-black text-indigo-950 tracking-tight">
+                      {t.extraTopicsTitle}
+                    </h2>
+                    <p className="text-xs sm:text-sm font-semibold text-indigo-600/80">
+                      {getExtraTopicsSubtitle(extraTopics.length, language)}
+                    </p>
+                  </div>
+                </div>
+                <span className="text-xs font-black bg-indigo-100 text-indigo-900 px-2.5 py-1 rounded-full border border-indigo-300">
+                  {extraTopics.length}
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                {extraTopics.map((topic) => {
+                  const newCount = getNewWordsCountForGrades(topic, selectedGrades);
+                  return (
+                    <TopicCard
+                      key={topic.topic_id}
+                      topic={topic}
+                      language={language}
+                      course={course}
+                      progress={topicProgress[topic.topic_id]}
+                      onSelect={onSelectTopic}
+                      hasNewWords={newCount > 0}
+                      newWordsCount={newCount}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'exam' && isExamAvailable && onStartExam && (() => {
+            const activeGrade: Grade = selectedGrades.includes(examGradeTab)
+              ? examGradeTab
+              : selectedGrades[0];
+            const topicsCount =
+              activeGrade === 1
+                ? GRADE_1_MAIN_TOPICS.length
+                : activeGrade === 2
+                ? GRADE_2_MAIN_TOPICS.length
+                : activeGrade === 3
+                ? GRADE_3_MAIN_TOPICS.length
+                : GRADE_4_MAIN_TOPICS.length;
+
+            return (
+              <div>
+                <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-amber-300">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-2xl">🏆</span>
+                    <div>
+                      <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
+                        {language === 'lv' ? 'Pārbaudes darbi' : 'Контрольная работа'}
+                      </h2>
+                      <p className="text-xs sm:text-sm font-semibold text-slate-500">
+                        {language === 'lv'
+                          ? 'Pārbaudi savas zināšanas par visām pamatkursa tēmām'
+                          : 'Проверь свои знания по всем основным темам школьного курса'}
+                      </p>
+                    </div>
+                  </div>
+                  {onOpenStats && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        sounds.playClick();
+                        onOpenStats('exams');
+                      }}
+                      className="text-xs font-black text-amber-800 hover:text-amber-950 bg-amber-100 hover:bg-amber-200 px-3 py-1.5 rounded-full border border-amber-300 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                    >
+                      <BarChart3 className="w-3.5 h-3.5 text-amber-700" />
+                      <span>{language === 'lv' ? 'Visi rezultāti' : 'Статистика'}</span>
+                    </button>
+                  )}
+                </div>
+
+                <div className="max-w-2xl mx-auto py-2">
                   <ExamCard
                     key={`exam-grade-${activeGrade}`}
                     grade={activeGrade}
@@ -762,99 +1088,11 @@ export const TopicList: React.FC<TopicListProps> = ({
                     onOpenStats={() => onOpenStats && onOpenStats('exams')}
                   />
                 </div>
-              );
-            })()}
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-              {mainTopics.map((topic) => (
-                <TopicCard
-                  key={topic.topic_id}
-                  topic={topic}
-                  language={language}
-                  course={course}
-                  progress={topicProgress[topic.topic_id]}
-                  onSelect={onSelectTopic}
-                />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Grammar Section (Grade 1 - hidden in Latvian-Russian course) */}
-        {!searchQuery && course !== 'lv' && selectedGrades.includes(1) && onSelectGrammarTopic && (
-          <div>
-            <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-emerald-200">
-              <div className="flex items-center gap-2.5">
-                <span className="text-2xl">📝</span>
-                <div>
-                  <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
-                    {language === 'lv' ? 'Gramatika un dialogi' : 'Грамматика и диалоги'}
-                  </h2>
-                  <p className="text-xs sm:text-sm font-semibold text-slate-500">
-                    {language === 'lv'
-                      ? '1. klases jautājumi, atbildes un teikumu konstrukcijas'
-                      : 'Вопросы, ответы и конструкции предложений для 1 класса'}
-                  </p>
-                </div>
               </div>
-              <span className="text-xs font-black bg-emerald-100 text-emerald-900 px-2.5 py-1 rounded-full border border-emerald-300">
-                1 {language === 'lv' ? 'klase' : 'класс'}
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-              {GRADE_1_GRAMMAR_TOPICS.map((gTopic) => (
-                <GrammarCard
-                  key={gTopic.id}
-                  topic={gTopic}
-                  language={language}
-                  stars={grammarProgress?.[gTopic.id]?.stars || 0}
-                  onSelect={onSelectGrammarTopic}
-                />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Extra Topics */}
-        {extraTopics.length > 0 && (
-          <div>
-            <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 border-indigo-200">
-              <div className="flex items-center gap-2.5">
-                <span className="text-2xl">⭐</span>
-                <div>
-                  <h2 className="text-lg sm:text-xl font-black text-indigo-950 tracking-tight">
-                    {t.extraTopicsTitle}
-                  </h2>
-                  <p className="text-xs sm:text-sm font-semibold text-indigo-600/80">
-                    {getExtraTopicsSubtitle(extraTopics.length, language)}
-                  </p>
-                </div>
-              </div>
-              <span className="text-xs font-black bg-indigo-100 text-indigo-900 px-2.5 py-1 rounded-full border border-indigo-300">
-                {extraTopics.length}
-              </span>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-              {extraTopics.map((topic) => {
-                const newCount = getNewWordsCountForGrades(topic, selectedGrades);
-                return (
-                  <TopicCard
-                    key={topic.topic_id}
-                    topic={topic}
-                    language={language}
-                    course={course}
-                    progress={topicProgress[topic.topic_id]}
-                    onSelect={onSelectTopic}
-                    hasNewWords={newCount > 0}
-                    newWordsCount={newCount}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </div>
+            );
+          })()}
+        </div>
+      )}
 
       {filteredTopics.length === 0 && matchedWords.length === 0 && (
         <div className="text-center py-12 bg-white rounded-3xl border-2 border-slate-200">

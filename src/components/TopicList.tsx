@@ -242,8 +242,8 @@ export const TopicList: React.FC<TopicListProps> = ({
         bannerGradient: 'bg-gradient-to-r from-[#3DA373] via-[#2B7A56] to-[#1A543A]',
         tabContainer: 'bg-emerald-50/80 border-2 border-emerald-200/80',
         activeTabClass: 'bg-gradient-to-r from-[#3DA373] via-[#2B7A56] to-[#1A543A] text-white shadow-md shadow-emerald-700/25 border-transparent scale-[1.02]',
-        inactiveTabClass: 'bg-white/90 text-slate-700 hover:text-[#1A543A] border-emerald-100 hover:border-[#3DA373]/40 hover:bg-white shadow-2xs',
-        inactiveBadgeClass: 'bg-emerald-50 text-[#1A543A] border border-emerald-200',
+        inactiveTabClass: 'bg-emerald-100/90 text-[#1A543A] hover:text-[#103825] hover:bg-emerald-200/90 border-emerald-300/80 hover:border-emerald-500 shadow-2xs',
+        inactiveBadgeClass: 'bg-white/90 text-[#1A543A] border border-emerald-300 shadow-2xs',
         sectionHeaderBorder: 'border-emerald-200',
         sectionBadge: 'bg-emerald-100 text-[#1A543A] border-emerald-300',
       };
@@ -253,8 +253,8 @@ export const TopicList: React.FC<TopicListProps> = ({
         bannerGradient: 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700',
         tabContainer: 'bg-teal-50/80 border-2 border-teal-200/80',
         activeTabClass: 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700 text-white shadow-md shadow-teal-600/25 border-transparent scale-[1.02]',
-        inactiveTabClass: 'bg-white/90 text-slate-700 hover:text-teal-700 border-teal-100 hover:border-teal-300 hover:bg-white shadow-2xs',
-        inactiveBadgeClass: 'bg-teal-50 text-teal-800 border border-teal-200',
+        inactiveTabClass: 'bg-teal-100/90 text-teal-950 hover:text-teal-950 hover:bg-teal-200/90 border-teal-300/80 hover:border-teal-500 shadow-2xs',
+        inactiveBadgeClass: 'bg-white/90 text-teal-950 border border-teal-300 shadow-2xs',
         sectionHeaderBorder: 'border-teal-200',
         sectionBadge: 'bg-teal-100 text-teal-900 border-teal-300',
       };
@@ -263,8 +263,8 @@ export const TopicList: React.FC<TopicListProps> = ({
       bannerGradient: 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700',
       tabContainer: 'bg-sky-50/80 border-2 border-sky-200/80',
       activeTabClass: 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700 text-white shadow-md shadow-blue-600/25 border-transparent scale-[1.02]',
-      inactiveTabClass: 'bg-white/90 text-slate-700 hover:text-blue-700 border-sky-100 hover:border-blue-300 hover:bg-white shadow-2xs',
-      inactiveBadgeClass: 'bg-sky-50 text-blue-900 border border-sky-200',
+      inactiveTabClass: 'bg-sky-100/90 text-blue-950 hover:text-blue-950 hover:bg-sky-200/90 border-sky-300/80 hover:border-blue-400 shadow-2xs',
+      inactiveBadgeClass: 'bg-white/90 text-blue-900 border border-sky-300 shadow-2xs',
       sectionHeaderBorder: 'border-sky-200',
       sectionBadge: 'bg-sky-100 text-blue-950 border-sky-300',
     };
@@ -745,7 +745,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                 className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                   selectedGrades.includes(1)
                     ? 'bg-amber-500 text-white shadow-sm scale-105'
-                    : 'text-amber-800/70 hover:text-amber-950 hover:bg-amber-50'
+                    : 'bg-amber-100/80 text-amber-900 hover:text-amber-950 hover:bg-amber-200/90 border border-amber-200/80 shadow-2xs'
                 }`}
                 title={selectedGrades.includes(1) ? t.grade1 : t.grade1}
               >
@@ -757,7 +757,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                 className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                   selectedGrades.includes(2)
                     ? 'bg-amber-500 text-white shadow-sm scale-105'
-                    : 'text-amber-800/70 hover:text-amber-950 hover:bg-amber-50'
+                    : 'bg-amber-100/80 text-amber-900 hover:text-amber-950 hover:bg-amber-200/90 border border-amber-200/80 shadow-2xs'
                 }`}
                 title={selectedGrades.includes(2) ? t.grade2 : t.grade2}
               >
@@ -769,7 +769,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                 className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                   selectedGrades.includes(3)
                     ? 'bg-amber-500 text-white shadow-sm scale-105'
-                    : 'text-amber-800/70 hover:text-amber-950 hover:bg-amber-50'
+                    : 'bg-amber-100/80 text-amber-900 hover:text-amber-950 hover:bg-amber-200/90 border border-amber-200/80 shadow-2xs'
                 }`}
                 title={selectedGrades.includes(3) ? t.grade3 : t.grade3}
               >
@@ -781,7 +781,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                 className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                   selectedGrades.includes(4)
                     ? 'bg-amber-500 text-white shadow-sm scale-105'
-                    : 'text-amber-800/70 hover:text-amber-950 hover:bg-amber-50'
+                    : 'bg-amber-100/80 text-amber-900 hover:text-amber-950 hover:bg-amber-200/90 border border-amber-200/80 shadow-2xs'
                 }`}
                 title={selectedGrades.includes(4) ? t.grade4 : t.grade4}
               >
@@ -793,7 +793,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                 className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
                   selectedGrades.length === 4
                     ? 'bg-amber-500 text-white shadow-sm scale-105'
-                    : 'text-amber-800/70 hover:text-amber-950 hover:bg-amber-50'
+                    : 'bg-amber-100/80 text-amber-900 hover:text-amber-950 hover:bg-amber-200/90 border border-amber-200/80 shadow-2xs'
                 }`}
                 title={t.gradeAll}
               >

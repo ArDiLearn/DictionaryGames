@@ -79,7 +79,7 @@ const _ExamCard: React.FC<ExamCardProps> = ({
                       className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
                         isTabActive
                           ? 'bg-amber-600 text-white shadow-xs scale-105'
-                          : 'text-amber-900/80 hover:bg-amber-300/60 hover:text-amber-950'
+                          : 'bg-amber-100/90 text-amber-900 hover:bg-amber-200 hover:text-amber-950 border border-amber-300/60 shadow-2xs'
                       }`}
                     >
                       {label}

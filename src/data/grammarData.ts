@@ -1549,7 +1549,7 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: [
           'I have pasta for lunch.',
           'I have milk for breakfast.',
-          "I don't like pasta.",
+          'I have legs for breakfast.',
         ],
         correctIndex: 0,
         hint: {
@@ -1567,7 +1567,7 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: [
           'I have pasta for lunch.',
           'I have eggs for breakfast.',
-          'I have fish for dinner.',
+          'I have legs for breakfast.',
         ],
         correctIndex: 1,
         hint: {
@@ -1584,7 +1584,7 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: { en: 'chicken', emoji: '🍗', customLabel: 'Chicken' },
         options: [
           'I have chicken for dinner.',
-          'I have rice for breakfast.',
+          'I have legs for breakfast.',
           'I have apples for lunch.',
         ],
         correctIndex: 0,
@@ -1602,7 +1602,7 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: { en: 'bread and cheese', emoji: '🍞', secondEmoji: '🧀', customLabel: 'Bread & cheese' },
         options: [
           'I have rice for lunch.',
-          'I have meat for dinner.',
+          'I have legs for breakfast.',
           'I have bread and cheese for breakfast.',
         ],
         correctIndex: 2,
@@ -1620,7 +1620,7 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: { en: 'sandwiches', emoji: '🥪', customLabel: 'Sandwiches' },
         options: [
           'I have sandwiches for lunch.',
-          'I have milk for breakfast.',
+          'I have legs for breakfast.',
           'I have fish for dinner.',
         ],
         correctIndex: 0,

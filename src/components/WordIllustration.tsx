@@ -23,6 +23,7 @@ const KNOWN_SVG_EN_KEYS = new Set([
   'in front of', 'behind', 'opposite', 'above', 'classroom', 'class', 'ruby', 'children',
   'week', 'water bottle', 'badge', 'puppet', 'colouring pens', 'xylophone', 'marbles',
   'blocks', 'spinning top', 'rocking horse', 'pyramid', 'rubber duck', 'tea set', 'bookshop',
+  'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty',
 ]);
 
 const KNOWN_SVG_RU_KEYS = new Set([
@@ -37,6 +38,10 @@ const KNOWN_SVG_RU_KEYS = new Set([
   'цветные карандаши', 'ксилофон', 'шарики марблс', 'марблс', 'кубики', 'юла',
   'волчок', 'лошадка-качалка', 'лошадка-качелька', 'пирамидка', 'резиновая уточка',
   'резиновые желтые уточки', 'чайный сервиз', 'книжный магазин',
+  'одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать',
+  'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать', 'двадцать',
+  'vienpadsmit', 'divpadsmit', 'trīspadsmit', 'četrpadsmit', 'piecpadsmit',
+  'sešpadsmit', 'septiņpadsmit', 'astoņpadsmit', 'deviņpadsmit', 'divdesmit',
 ]);
 
 export function loadWordSvgs(): Promise<void> {
@@ -73,12 +78,14 @@ export const WordIllustration: React.FC<WordIllustrationProps> = ({
 
   const enKey = (word.en || '').toLowerCase().trim();
   const ruKey = (word.ru || '').toLowerCase().trim();
+  const lvKey = (word.lv || '').toLowerCase().trim();
   const ruKeyNormalized = ruKey.replace(/ё/g, 'е');
 
   const mayHaveSvg =
     KNOWN_SVG_EN_KEYS.has(enKey) ||
     KNOWN_SVG_RU_KEYS.has(ruKey) ||
-    KNOWN_SVG_RU_KEYS.has(ruKeyNormalized);
+    KNOWN_SVG_RU_KEYS.has(ruKeyNormalized) ||
+    KNOWN_SVG_RU_KEYS.has(lvKey);
 
   useEffect(() => {
     if (mayHaveSvg && !loadedWordSvgs) {
@@ -90,7 +97,7 @@ export const WordIllustration: React.FC<WordIllustrationProps> = ({
   if (loadedWordSvgs) {
     const targetKey =
       (loadedWordSvgs[enKey] && enKey) ||
-      (loadedRuAliases && (loadedRuAliases[ruKey] || loadedRuAliases[ruKeyNormalized])) ||
+      (loadedRuAliases && (loadedRuAliases[ruKey] || loadedRuAliases[ruKeyNormalized] || loadedRuAliases[lvKey])) ||
       enKey;
     customSvg = loadedWordSvgs[targetKey];
   }

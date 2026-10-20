@@ -2526,6 +2526,176 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
     </svg>
   ),
 
+  // Numbers 11-20 (Single keycap badges matching standard keycap style 🔟)
+  'eleven': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      <defs>
+        <linearGradient id="num11Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#38bdf8" />
+          <stop offset="50%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1d4ed8" />
+        </linearGradient>
+      </defs>
+      <rect x="6" y="6" width="88" height="88" rx="22" fill="url(#num11Grad)" stroke="#60a5fa" strokeWidth="3" />
+      <rect x="10" y="10" width="80" height="40" rx="18" fill="#ffffff" opacity="0.16" />
+      <text x="50" y="68" textAnchor="middle" fill="#ffffff" fontSize="52" fontWeight="900" fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" letterSpacing="-2">
+        11
+      </text>
+    </svg>
+  ),
+
+  'twelve': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      <defs>
+        <linearGradient id="num12Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#38bdf8" />
+          <stop offset="50%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1d4ed8" />
+        </linearGradient>
+      </defs>
+      <rect x="6" y="6" width="88" height="88" rx="22" fill="url(#num12Grad)" stroke="#60a5fa" strokeWidth="3" />
+      <rect x="10" y="10" width="80" height="40" rx="18" fill="#ffffff" opacity="0.16" />
+      <text x="50" y="68" textAnchor="middle" fill="#ffffff" fontSize="52" fontWeight="900" fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" letterSpacing="-2">
+        12
+      </text>
+    </svg>
+  ),
+
+  'thirteen': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      <defs>
+        <linearGradient id="num13Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#38bdf8" />
+          <stop offset="50%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1d4ed8" />
+        </linearGradient>
+      </defs>
+      <rect x="6" y="6" width="88" height="88" rx="22" fill="url(#num13Grad)" stroke="#60a5fa" strokeWidth="3" />
+      <rect x="10" y="10" width="80" height="40" rx="18" fill="#ffffff" opacity="0.16" />
+      <text x="50" y="68" textAnchor="middle" fill="#ffffff" fontSize="52" fontWeight="900" fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" letterSpacing="-2">
+        13
+      </text>
+    </svg>
+  ),
+
+  'fourteen': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      <defs>
+        <linearGradient id="num14Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#38bdf8" />
+          <stop offset="50%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1d4ed8" />
+        </linearGradient>
+      </defs>
+      <rect x="6" y="6" width="88" height="88" rx="22" fill="url(#num14Grad)" stroke="#60a5fa" strokeWidth="3" />
+      <rect x="10" y="10" width="80" height="40" rx="18" fill="#ffffff" opacity="0.16" />
+      <text x="50" y="68" textAnchor="middle" fill="#ffffff" fontSize="52" fontWeight="900" fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" letterSpacing="-2">
+        14
+      </text>
+    </svg>
+  ),
+
+  'fifteen': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      <defs>
+        <linearGradient id="num15Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#38bdf8" />
+          <stop offset="50%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1d4ed8" />
+        </linearGradient>
+      </defs>
+      <rect x="6" y="6" width="88" height="88" rx="22" fill="url(#num15Grad)" stroke="#60a5fa" strokeWidth="3" />
+      <rect x="10" y="10" width="80" height="40" rx="18" fill="#ffffff" opacity="0.16" />
+      <text x="50" y="68" textAnchor="middle" fill="#ffffff" fontSize="52" fontWeight="900" fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" letterSpacing="-2">
+        15
+      </text>
+    </svg>
+  ),
+
+  'sixteen': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      <defs>
+        <linearGradient id="num16Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#38bdf8" />
+          <stop offset="50%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1d4ed8" />
+        </linearGradient>
+      </defs>
+      <rect x="6" y="6" width="88" height="88" rx="22" fill="url(#num16Grad)" stroke="#60a5fa" strokeWidth="3" />
+      <rect x="10" y="10" width="80" height="40" rx="18" fill="#ffffff" opacity="0.16" />
+      <text x="50" y="68" textAnchor="middle" fill="#ffffff" fontSize="52" fontWeight="900" fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" letterSpacing="-2">
+        16
+      </text>
+    </svg>
+  ),
+
+  'seventeen': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      <defs>
+        <linearGradient id="num17Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#38bdf8" />
+          <stop offset="50%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1d4ed8" />
+        </linearGradient>
+      </defs>
+      <rect x="6" y="6" width="88" height="88" rx="22" fill="url(#num17Grad)" stroke="#60a5fa" strokeWidth="3" />
+      <rect x="10" y="10" width="80" height="40" rx="18" fill="#ffffff" opacity="0.16" />
+      <text x="50" y="68" textAnchor="middle" fill="#ffffff" fontSize="52" fontWeight="900" fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" letterSpacing="-2">
+        17
+      </text>
+    </svg>
+  ),
+
+  'eighteen': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      <defs>
+        <linearGradient id="num18Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#38bdf8" />
+          <stop offset="50%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1d4ed8" />
+        </linearGradient>
+      </defs>
+      <rect x="6" y="6" width="88" height="88" rx="22" fill="url(#num18Grad)" stroke="#60a5fa" strokeWidth="3" />
+      <rect x="10" y="10" width="80" height="40" rx="18" fill="#ffffff" opacity="0.16" />
+      <text x="50" y="68" textAnchor="middle" fill="#ffffff" fontSize="52" fontWeight="900" fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" letterSpacing="-2">
+        18
+      </text>
+    </svg>
+  ),
+
+  'nineteen': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      <defs>
+        <linearGradient id="num19Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#38bdf8" />
+          <stop offset="50%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1d4ed8" />
+        </linearGradient>
+      </defs>
+      <rect x="6" y="6" width="88" height="88" rx="22" fill="url(#num19Grad)" stroke="#60a5fa" strokeWidth="3" />
+      <rect x="10" y="10" width="80" height="40" rx="18" fill="#ffffff" opacity="0.16" />
+      <text x="50" y="68" textAnchor="middle" fill="#ffffff" fontSize="52" fontWeight="900" fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" letterSpacing="-2">
+        19
+      </text>
+    </svg>
+  ),
+
+  'twenty': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm select-none" fill="none">
+      <defs>
+        <linearGradient id="num20Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#38bdf8" />
+          <stop offset="50%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1d4ed8" />
+        </linearGradient>
+      </defs>
+      <rect x="6" y="6" width="88" height="88" rx="22" fill="url(#num20Grad)" stroke="#60a5fa" strokeWidth="3" />
+      <rect x="10" y="10" width="80" height="40" rx="18" fill="#ffffff" opacity="0.16" />
+      <text x="50" y="68" textAnchor="middle" fill="#ffffff" fontSize="52" fontWeight="900" fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" letterSpacing="-2">
+        20
+      </text>
+    </svg>
+  ),
 };
 
 export const RU_ALIASES: Record<string, string> = {
@@ -2598,5 +2768,26 @@ export const RU_ALIASES: Record<string, string> = {
   'резиновые желтые уточки': 'rubber duck',
   'чайный сервиз': 'tea set',
   'книжный магазин': 'bookshop',
-
+  // Numbers 11-20 Russian
+  'одиннадцать': 'eleven',
+  'двенадцать': 'twelve',
+  'тринадцать': 'thirteen',
+  'четырнадцать': 'fourteen',
+  'пятнадцать': 'fifteen',
+  'шестнадцать': 'sixteen',
+  'семнадцать': 'seventeen',
+  'восемнадцать': 'eighteen',
+  'девятнадцать': 'nineteen',
+  'двадцать': 'twenty',
+  // Numbers 11-20 Latvian
+  'vienpadsmit': 'eleven',
+  'divpadsmit': 'twelve',
+  'trīspadsmit': 'thirteen',
+  'četrpadsmit': 'fourteen',
+  'piecpadsmit': 'fifteen',
+  'sešpadsmit': 'sixteen',
+  'septiņpadsmit': 'seventeen',
+  'astoņpadsmit': 'eighteen',
+  'deviņpadsmit': 'nineteen',
+  'divdesmit': 'twenty',
 };

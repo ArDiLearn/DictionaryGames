@@ -107,6 +107,7 @@ export function checkAndClaimTopicMasteryBonus(
   const topics = loadTopicProgress(course);
   const topic = topics[topicId];
   const claimedList = currentStats.claimedTopicBonusIds || [];
+  const bonusKey = course === 'en' ? topicId : `${course}:${topicId}`;
 
   const isMastered = Boolean(
     topic &&
@@ -115,7 +116,7 @@ export function checkAndClaimTopicMasteryBonus(
     topic.masteredWordIds.length >= totalWordsInTopic
   );
 
-  if (!topic || !isMastered || claimedList.includes(topicId)) {
+  if (!topic || !isMastered || claimedList.includes(bonusKey)) {
     return { claimed: false, bonusStars: 0, updatedStats: currentStats };
   }
 
@@ -128,7 +129,7 @@ export function checkAndClaimTopicMasteryBonus(
 
   const updatedStats: UserStats = {
     ...currentStats,
-    claimedTopicBonusIds: [...claimedList, topicId],
+    claimedTopicBonusIds: [...claimedList, bonusKey],
     totalStarsEarned: (currentStats.totalStarsEarned || 0) + bonusStars,
   };
   saveLocalStatsRaw(updatedStats);
@@ -166,8 +167,9 @@ export function checkAndClaimWordMilestones(course: LearningCourse = 'en'): {
   let totalBonus = 0;
 
   for (const ms of WORD_MILESTONES) {
-    if (masteredCount >= ms.wordsThreshold && !claimedIds.has(ms.id)) {
-      claimedIds.add(ms.id);
+    const msKey = course === 'en' ? ms.id : `${course}:${ms.id}`;
+    if (masteredCount >= ms.wordsThreshold && !claimedIds.has(msKey)) {
+      claimedIds.add(msKey);
       newlyClaimed.push(ms);
       totalBonus += ms.bonusStars;
     }

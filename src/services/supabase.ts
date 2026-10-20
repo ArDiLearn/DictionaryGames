@@ -477,10 +477,20 @@ export async function fetchProgressFromCloud(userId: string): Promise<CloudSyncD
     }
 
     const examResults = user?.user_metadata?.exam_results as
-      | { en: Record<number, ExamResult>; 'en-lv'?: Record<number, ExamResult>; lv: Record<number, ExamResult> }
+      | {
+          en: Record<number, ExamResult>;
+          'en-lv'?: Record<number, ExamResult>;
+          lv: Record<number, ExamResult>;
+          'lv-en'?: Record<number, ExamResult>;
+        }
       | undefined;
     const examHistory = user?.user_metadata?.exam_history as
-      | { en: ExamResult[]; 'en-lv'?: ExamResult[]; lv: ExamResult[] }
+      | {
+          en: ExamResult[];
+          'en-lv'?: ExamResult[];
+          lv: ExamResult[];
+          'lv-en'?: ExamResult[];
+        }
       | undefined;
 
     return { topicProgress, wordProgress, statsPartial, examResults, examHistory };

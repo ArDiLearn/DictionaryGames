@@ -191,6 +191,25 @@ export const TopicList: React.FC<TopicListProps> = ({
       ? 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700'
       : 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700';
 
+  const mistakesBannerStyle =
+    course === 'lv'
+      ? {
+          gradient: 'bg-gradient-to-r from-[#6A2834] via-[#7E3745] to-[#8D4B46]',
+          border: 'border-[#E8CFD2]/50',
+          btnText: 'text-[#6A2834] hover:bg-[#FAF0F1]',
+        }
+      : course === 'en-lv' || language === 'lv'
+      ? {
+          gradient: 'bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700',
+          border: 'border-teal-200/60',
+          btnText: 'text-teal-700 hover:bg-teal-50',
+        }
+      : {
+          gradient: 'bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-700',
+          border: 'border-sky-200/60',
+          btnText: 'text-indigo-600 hover:bg-sky-50',
+        };
+
   const selectLearningPair = (targetCourse: LearningCourse, targetLang?: Language) => {
     sounds.playClick();
     if (onCourseChange && targetCourse !== course) {
@@ -634,7 +653,9 @@ export const TopicList: React.FC<TopicListProps> = ({
 
       {/* Mistakes Review Banner */}
       {!searchQuery && mistakesCount > 0 && (
-        <div className="mb-6 rounded-3xl bg-gradient-to-r from-rose-500 via-orange-500 to-amber-500 p-4 sm:p-5 text-white shadow-lg border-3 border-rose-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div
+          className={`mb-6 rounded-3xl p-4 sm:p-5 text-white shadow-lg border-3 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors duration-300 ${mistakesBannerStyle.gradient} ${mistakesBannerStyle.border}`}
+        >
           <div className="flex items-center gap-3.5">
             <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/20 backdrop-blur-xs border-2 border-white/40 flex items-center justify-center text-2xl sm:text-3xl shrink-0 shadow-inner">
               🎯
@@ -661,7 +682,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                   sounds.playClick();
                   onStartMistakesTest();
                 }}
-                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-white hover:bg-rose-50 active:scale-95 text-rose-600 font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer"
+                className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-white active:scale-95 font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer ${mistakesBannerStyle.btnText}`}
               >
                 <ClipboardCheck className="w-4 h-4" />
                 <span>{t.statsModal.startMistakesTestBtn}</span>

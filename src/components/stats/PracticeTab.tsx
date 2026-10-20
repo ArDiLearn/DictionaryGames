@@ -48,14 +48,39 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
     return list;
   }, [topics, wordProgress]);
 
+  const headerStyle =
+    course === 'lv'
+      ? {
+          card: 'bg-[#FAF0F1] border-2 border-[#E8CFD2]',
+          title: 'text-[#6A2834]',
+          sub: 'text-[#6A2834]/80',
+          btnPrimary: 'bg-[#6A2834] hover:bg-[#57202A] text-white',
+          btnSecondary: 'bg-white hover:bg-[#FAF0F1] border-2 border-[#E8CFD2] text-[#6A2834]',
+        }
+      : course === 'en-lv'
+      ? {
+          card: 'bg-teal-50 border-2 border-teal-200',
+          title: 'text-teal-950',
+          sub: 'text-teal-800/80',
+          btnPrimary: 'bg-teal-600 hover:bg-teal-700 text-white',
+          btnSecondary: 'bg-white hover:bg-teal-50 border-2 border-teal-300 text-teal-900',
+        }
+      : {
+          card: 'bg-sky-50 border-2 border-sky-200',
+          title: 'text-sky-950',
+          sub: 'text-sky-800/80',
+          btnPrimary: 'bg-indigo-600 hover:bg-indigo-700 text-white',
+          btnSecondary: 'bg-white hover:bg-sky-50 border-2 border-sky-300 text-sky-900',
+        };
+
   return (
     <div className="space-y-4 animate-fade-in">
-      <div className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className={`${headerStyle.card} rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3`}>
         <div>
-          <h3 className="text-sm sm:text-base font-black text-amber-950">
+          <h3 className={`text-sm sm:text-base font-black ${headerStyle.title}`}>
             {s.wordsToPracticeTitle}
           </h3>
-          <p className="text-xs text-amber-800/80 font-medium mt-0.5">
+          <p className={`text-xs ${headerStyle.sub} font-medium mt-0.5`}>
             {s.wordsToPracticeSubtitle}
           </p>
         </div>
@@ -68,7 +93,7 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                   sounds.playClick();
                   onStartMistakesTest();
                 }}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-rose-500 hover:bg-rose-600 active:scale-95 text-white font-black text-xs sm:text-sm shadow-sm transition-all cursor-pointer"
+                className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl active:scale-95 font-black text-xs sm:text-sm shadow-sm transition-all cursor-pointer ${headerStyle.btnPrimary}`}
               >
                 <ClipboardCheck className="w-4 h-4" />
                 <span>{s.startMistakesTestBtn}</span>
@@ -80,7 +105,7 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                   sounds.playClick();
                   onOpenMistakesGames();
                 }}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-amber-100 active:scale-95 border-2 border-amber-300 text-amber-900 font-black text-xs sm:text-sm shadow-xs transition-all cursor-pointer"
+                className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl active:scale-95 font-black text-xs sm:text-sm shadow-xs transition-all cursor-pointer ${headerStyle.btnSecondary}`}
               >
                 <Gamepad2 className="w-4 h-4" />
                 <span>{s.practiceMistakesGamesBtn}</span>

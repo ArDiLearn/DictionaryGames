@@ -277,8 +277,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Карандаш есть → I\'ve got a pencil.',
-          lv: 'Zīmulis ir → I\'ve got a pencil.',
+          ru: 'Карандаш есть (у меня есть)',
+          lv: 'Zīmulis ir (man ir)',
         },
       },
       {
@@ -297,8 +297,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Карандаш перечёркнут (нет) → I haven\'t got a pencil.',
-          lv: 'Zīmulis pārsvītrots (nav) → I haven\'t got a pencil.',
+          ru: 'Карандаш перечёркнут (у меня нет)',
+          lv: 'Zīmulis pārsvītrots (man nav)',
         },
       },
       {
@@ -336,8 +336,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Книга есть → I\'ve got a book.',
-          lv: 'Grāmata ir → I\'ve got a book.',
+          ru: 'Книга есть (у меня есть)',
+          lv: 'Grāmata ir (man ir)',
         },
       },
       {
@@ -356,8 +356,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 2,
         hint: {
-          ru: 'Книги нет → I haven\'t got a book.',
-          lv: 'Grāmatas nav → I haven\'t got a book.',
+          ru: 'Книга перечёркнута (у меня нет)',
+          lv: 'Grāmata pārsvītrota (man nav)',
         },
       },
       {
@@ -395,8 +395,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Машинка есть → I\'ve got a car.',
-          lv: 'Mašīna ir → I\'ve got a car.',
+          ru: 'Машинка есть (у меня есть)',
+          lv: 'Mašīna ir (man ir)',
         },
       },
       {
@@ -415,8 +415,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Машинки нет → I haven\'t got a car.',
-          lv: 'Mašīnas nav → I haven\'t got a car.',
+          ru: 'Машинка перечёркнута (у меня нет)',
+          lv: 'Mašīna pārsvītrota (man nav)',
         },
       },
       {
@@ -454,8 +454,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Мяч есть → I\'ve got a ball.',
-          lv: 'Bumba ir → I\'ve got a ball.',
+          ru: 'Мяч есть (у меня есть)',
+          lv: 'Bumba ir (man ir)',
         },
       },
       {
@@ -474,8 +474,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Мяч перечёркнут (нет) → I haven\'t got a ball.',
-          lv: 'Bumba pārsvītrota (nav) → I haven\'t got a ball.',
+          ru: 'Мяч перечёркнут (у меня нет)',
+          lv: 'Bumba pārsvītrota (man nav)',
         },
       },
     ],
@@ -515,8 +515,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Стрелка указывает на маму → This is my mum.',
-          lv: 'Bultiņa rāda uz mammu → This is my mum.',
+          ru: 'Стрелка указывает на маму',
+          lv: 'Bultiņa rāda uz mammu',
         },
       },
       {
@@ -540,8 +540,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Стрелка указывает на папу → This is my dad.',
-          lv: 'Bultiņa rāda uz tēti → This is my dad.',
+          ru: 'Стрелка указывает на папу',
+          lv: 'Bultiņa rāda uz tēti',
         },
       },
       {
@@ -565,8 +565,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 2,
         hint: {
-          ru: 'Стрелка указывает на сестру → This is my sister.',
-          lv: 'Bultiņa rāda uz māsu → This is my sister.',
+          ru: 'Стрелка указывает на сестру',
+          lv: 'Bultiņa rāda uz māsu',
         },
       },
       {
@@ -590,8 +590,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Стрелка указывает на брата → This is my brother.',
-          lv: 'Bultiņa rāda uz brāli → This is my brother.',
+          ru: 'Стрелка указывает на брата',
+          lv: 'Bultiņa rāda uz brāli',
         },
       },
       {
@@ -615,8 +615,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Стрелка указывает на бабушку → This is my grandma.',
-          lv: 'Bultiņa rāda uz vecmāmiņu → This is my grandma.',
+          ru: 'Стрелка указывает на бабушку',
+          lv: 'Bultiņa rāda uz vecmāmiņu',
         },
       },
       {
@@ -640,8 +640,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 2,
         hint: {
-          ru: 'Стрелка указывает на дедушку → This is my grandpa.',
-          lv: 'Bultiņa rāda uz vectētiņu → This is my grandpa.',
+          ru: 'Стрелка указывает на дедушку',
+          lv: 'Bultiņa rāda uz vectētiņu',
         },
       },
       {
@@ -669,8 +669,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Стрелка указывает на мальчика низкого роста → He\'s short.',
-          lv: 'Bultiņa rāda uz zēnu maza auguma → He\'s short.',
+          ru: 'Стрелка указывает на мальчика низкого роста',
+          lv: 'Bultiņa rāda uz zēnu maza auguma',
         },
       },
       {
@@ -698,8 +698,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Стрелка указывает на девочку высокого роста → She\'s tall.',
-          lv: 'Bultiņa rāda uz meiteni gara auguma → She\'s tall.',
+          ru: 'Стрелка указывает на девочку высокого роста',
+          lv: 'Bultiņa rāda uz meiteni gara auguma',
         },
       },
       {
@@ -727,8 +727,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Стрелка указывает на мальчика высокого роста → He\'s tall.',
-          lv: 'Bultiņa rāda uz zēnu gara auguma → He\'s tall.',
+          ru: 'Стрелка указывает на мальчика высокого роста',
+          lv: 'Bultiņa rāda uz zēnu gara auguma',
         },
       },
       {
@@ -756,8 +756,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Стрелка указывает на девочку невысокого роста → She\'s short.',
-          lv: 'Bultiņa rāda uz meiteni maza auguma → She\'s short.',
+          ru: 'Стрелка указывает на девочку невысокого роста',
+          lv: 'Bultiņa rāda uz meiteni maza auguma',
         },
       },
       {
@@ -781,8 +781,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Стрелка указывает на юного мальчика → He\'s young.',
-          lv: 'Bultiņa rāda uz jauno zēnu → He\'s young.',
+          ru: 'Стрелка указывает на юного мальчика',
+          lv: 'Bultiņa rāda uz jauno zēnu',
         },
       },
       {
@@ -806,8 +806,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Стрелка указывает на пожилую женщину → She\'s old.',
-          lv: 'Bultiņa rāda uz vecu sievieti → She\'s old.',
+          ru: 'Стрелка указывает на пожилую женщину',
+          lv: 'Bultiņa rāda uz vecu sievieti',
         },
       },
     ],
@@ -842,8 +842,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Велосипед есть (✓) → Yes, I have.',
-          lv: 'Velosipēds ir (✓) → Yes, I have.',
+          ru: 'Велосипед есть (✓)',
+          lv: 'Velosipēds ir (✓)',
         },
       },
       {
@@ -862,8 +862,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Воздушного змея нет (❌) → No, I haven\'t.',
-          lv: 'Pūķa nav (❌) → No, I haven\'t.',
+          ru: 'Воздушного змея нет (❌)',
+          lv: 'Pūķa nav (❌)',
         },
       },
       {
@@ -882,8 +882,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Собака есть (✓) → Yes, I have.',
-          lv: 'Suns ir (✓) → Yes, I have.',
+          ru: 'Собака есть (✓)',
+          lv: 'Suns ir (✓)',
         },
       },
       {
@@ -902,8 +902,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Кошки нет (❌) → No, I haven\'t.',
-          lv: 'Kaķa nav (❌) → No, I haven\'t.',
+          ru: 'Кошки нет (❌)',
+          lv: 'Kaķa nav (❌)',
         },
       },
       {
@@ -922,8 +922,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Карандаш есть (✓) → Yes, I have.',
-          lv: 'Zīmulis ir (✓) → Yes, I have.',
+          ru: 'Карандаш есть (✓)',
+          lv: 'Zīmulis ir (✓)',
         },
       },
       {
@@ -942,8 +942,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Куклы нет (❌) → No, I haven\'t.',
-          lv: 'Lelles nav (❌) → No, I haven\'t.',
+          ru: 'Куклы нет (❌)',
+          lv: 'Lelles nav (❌)',
         },
       },
       {
@@ -962,8 +962,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Умею бегать (✓) → I can run.',
-          lv: 'Protu skriet (✓) → I can run.',
+          ru: 'Умею бегать (✓)',
+          lv: 'Protu skriet (✓)',
         },
       },
       {
@@ -982,8 +982,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Не умею кататься на роликах (❌) → I can\'t rollerblade.',
-          lv: 'Neprotu skrituļot (❌) → I can\'t rollerblade.',
+          ru: 'Не умею кататься на роликах (❌)',
+          lv: 'Neprotu skrituļot (❌)',
         },
       },
       {
@@ -1002,8 +1002,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Умею кататься на велосипеде (✓) → I can ride a bike.',
-          lv: 'Protu braukt ar velosipēdu (✓) → I can ride a bike.',
+          ru: 'Умею кататься на велосипеде (✓)',
+          lv: 'Protu braukt ar velosipēdu (✓)',
         },
       },
       {
@@ -1022,8 +1022,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Не умею играть в футбол (❌) → I can\'t play football.',
-          lv: 'Neprotu spēlēt futbolu (❌) → I can\'t play football.',
+          ru: 'Не умею играть в футбол (❌)',
+          lv: 'Neprotu spēlēt futbolu (❌)',
         },
       },
       {
@@ -1042,8 +1042,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Умею ездить на лошади (✓) → I can ride a horse.',
-          lv: 'Protu jāt ar zirgu (✓) → I can ride a horse.',
+          ru: 'Умею ездить на лошади (✓)',
+          lv: 'Protu jāt ar zirgu (✓)',
         },
       },
       {
@@ -1062,8 +1062,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Не умею играть в теннис (❌) → I can\'t play tennis.',
-          lv: 'Neprotu spēlēt tenisu (❌) → I can\'t play tennis.',
+          ru: 'Не умею играть в теннис (❌)',
+          lv: 'Neprotu spēlēt tenisu (❌)',
         },
       },
     ],
@@ -1098,8 +1098,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Люблю котиков (❤️) → I like cats.',
-          lv: 'Man patīk kaķi (❤️) → I like cats.',
+          ru: 'Люблю котиков (❤️)',
+          lv: 'Man patīk kaķi (❤️)',
         },
       },
       {
@@ -1118,8 +1118,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Не люблю собак (❌) → I don\'t like dogs.',
-          lv: 'Man nepatīk suņi (❌) → I don\'t like dogs.',
+          ru: 'Не люблю собак (❌)',
+          lv: 'Man nepatīk suņi (❌)',
         },
       },
       {
@@ -1138,8 +1138,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Люблю кроликов (❤️) → I like rabbits.',
-          lv: 'Man patīk truši (❤️) → I like rabbits.',
+          ru: 'Люблю кроликов (❤️)',
+          lv: 'Man patīk truši (❤️)',
         },
       },
       {
@@ -1158,8 +1158,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Не люблю пауков (❌) → I don\'t like spiders.',
-          lv: 'Man nepatīk zirnekļi (❌) → I don\'t like spiders.',
+          ru: 'Не люблю пауков (❌)',
+          lv: 'Man nepatīk zirnekļi (❌)',
         },
       },
       {
@@ -1178,8 +1178,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Люблю роботов (❤️) → I like robots.',
-          lv: 'Man patīk roboti (❤️) → I like robots.',
+          ru: 'Люблю роботов (❤️)',
+          lv: 'Man patīk roboti (❤️)',
         },
       },
       {
@@ -1198,8 +1198,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Не люблю змей (❌) → I don\'t like snakes.',
-          lv: 'Man nepatīk čūskas (❌) → I don\'t like snakes.',
+          ru: 'Не люблю змей (❌)',
+          lv: 'Man nepatīk čūskas (❌)',
         },
       },
       {
@@ -1216,8 +1216,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: "Какого цвета книга? → It's red. (Красная)",
-          lv: "Kādā krāsā ir grāmata? → It's red. (Sarkana)",
+          ru: 'Какого цвета книга? (красная)',
+          lv: 'Kādā krāsā ir grāmata? (sarkana)',
         },
       },
       {
@@ -1234,8 +1234,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: "Какого цвета утёнок? → It's yellow. (Жёлтый)",
-          lv: "Kādā krāsā ir pīlēns? → It's yellow. (Dzeltens)",
+          ru: 'Какого цвета утёнок? (жёлтый)',
+          lv: 'Kādā krāsā ir pīlēns? (dzeltens)',
         },
       },
       {
@@ -1252,8 +1252,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: "Какого цвета змея? → It's green. (Зелёная)",
-          lv: "Kādā krāsā ir čūska? → It's green. (Zaļa)",
+          ru: 'Какого цвета змея? (зелёная)',
+          lv: 'Kādā krāsā ir čūska? (zaļa)',
         },
       },
       {
@@ -1270,8 +1270,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 2,
         hint: {
-          ru: "Какого цвета кораблик? → It's blue. (Синий)",
-          lv: "Kādā krāsā ir laiva? → It's blue. (Zila)",
+          ru: 'Какого цвета кораблик? (синий)',
+          lv: 'Kādā krāsā ir laiva? (zila)',
         },
       },
       {
@@ -1288,8 +1288,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: "Какого цвета воздушный змей? → It's orange. (Оранжевый)",
-          lv: "Kādā krāsā ir pūķis? → It's orange. (Oranžs)",
+          ru: 'Какого цвета воздушный змей? (оранжевый)',
+          lv: 'Kādā krāsā ir pūķis? (oranžs)',
         },
       },
       {
@@ -1306,8 +1306,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: "Какого цвета кукла? → It's pink. (Розовая)",
-          lv: "Kādā krāsā ir lelle? → It's pink. (Rozā)",
+          ru: 'Какого цвета кукла? (розовая)',
+          lv: 'Kādā krāsā ir lelle? (rozā)',
         },
       },
       {
@@ -1324,8 +1324,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: "Какого цвета мышка? → It's grey. (Серая)",
-          lv: "Kādā krāsā ir pele? → It's grey. (Pelēka)",
+          ru: 'Какого цвета мышка? (серая)',
+          lv: 'Kādā krāsā ir pele? (pelēka)',
         },
       },
       {
@@ -1342,8 +1342,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: "Какого цвета мишка? → It's brown. (Коричневый)",
-          lv: "Kādā krāsā ir lācītis? → It's brown. (Brūns)",
+          ru: 'Какого цвета мишка? (коричневый)',
+          lv: 'Kādā krāsā ir lācītis? (brūns)',
         },
       },
       {
@@ -1365,8 +1365,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Утки зелёного и коричневого цвета → They\'re green and brown.',
-          lv: 'Pīles ir zaļā un brūnā krāsā → They\'re green and brown.',
+          ru: 'Какого цвета утки? (зелёные и коричневые)',
+          lv: 'Kādā krāsā ir pīles? (zaļas un brūnas)',
         },
       },
       {
@@ -1388,8 +1388,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Кошки белого и серого цвета → They\'re white and grey.',
-          lv: 'Kaķi ir baltā un pelēkā krāsā → They\'re white and grey.',
+          ru: 'Какого цвета кошки? (белые и серые)',
+          lv: 'Kādā krāsā ir kaķi? (balti un pelēki)',
         },
       },
       {
@@ -1411,8 +1411,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Коровы чёрного и белого цвета → They\'re black and white.',
-          lv: 'Govis ir melnā un baltā krāsā → They\'re black and white.',
+          ru: 'Какого цвета коровы? (чёрные и белые)',
+          lv: 'Kādā krāsā ir govis? (melnas un baltas)',
         },
       },
       {
@@ -1434,8 +1434,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Мячи красного и зелёного цвета → They\'re red and green.',
-          lv: 'Bumbas ir sarkanā un zaļā krāsā → They\'re red and green.',
+          ru: 'Какого цвета мячи? (красные и зелёные)',
+          lv: 'Kādā krāsā ir bumbas? (sarkanas un zaļas)',
         },
       },
       {
@@ -1457,8 +1457,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Птицы синего и жёлтого цвета → They\'re blue and yellow.',
-          lv: 'Putni ir zilā un dzeltenā krāsā → They\'re blue and yellow.',
+          ru: 'Какого цвета птицы? (синие и жёлтые)',
+          lv: 'Kādā krāsā ir putni? (zili un dzelteni)',
         },
       },
       {
@@ -1480,8 +1480,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Карандаши жёлтого и красного цвета → They\'re yellow and red.',
-          lv: 'Zīmuļi ir dzeltenā un sarkanā krāsā → They\'re yellow and red.',
+          ru: 'Какого цвета карандаши? (жёлтые и красные)',
+          lv: 'Kādā krāsā ir zīmuļi? (dzelteni un sarkani)',
         },
       },
     ],
@@ -1533,8 +1533,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Что у тебя на обед? → У меня паста на обед.',
-          lv: 'Kas tev ir pusdienās? → Man pusdienās ir pasta.',
+          ru: 'Что у тебя на обед? (паста)',
+          lv: 'Kas tev ir pusdienās? (pasta)',
         },
       },
       {
@@ -1543,16 +1543,16 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'meals',
         prompt: 'What do you have for breakfast?',
         audioText: 'What do you have for breakfast?',
-        imageWord: { en: 'cereal', emoji: '🥣', customLabel: 'Cereal' },
+        imageWord: { en: 'eggs', emoji: '🍳', customLabel: 'Eggs' },
         options: [
           'I have pasta for lunch.',
-          'I have cereal for breakfast.',
-          'I have soup for dinner.',
+          'I have eggs for breakfast.',
+          'I have fish for dinner.',
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Что у тебя на завтрак? → У меня хлопья на завтрак.',
-          lv: 'Kas tev ir brokastīs? → Man brokastīs ir pārslas.',
+          ru: 'Что у тебя на завтрак? (яйца)',
+          lv: 'Kas tev ir brokastīs? (olas)',
         },
       },
       {
@@ -1564,13 +1564,13 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: { en: 'chicken', emoji: '🍗', customLabel: 'Chicken' },
         options: [
           'I have chicken for dinner.',
-          'I have cereal for breakfast.',
+          'I have rice for breakfast.',
           'I have apples for lunch.',
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Что у тебя на ужин? → У меня курица на ужин.',
-          lv: 'Kas tev ir vakariņās? → Man vakariņās ir vista.',
+          ru: 'Что у тебя на ужин? (курица)',
+          lv: 'Kas tev ir vakariņās? (vista)',
         },
       },
       {
@@ -1579,16 +1579,16 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'meals',
         prompt: 'What do you have for breakfast?',
         audioText: 'What do you have for breakfast?',
-        imageWord: { en: 'toast', emoji: '🍞', secondEmoji: '🥚', customLabel: 'Toast & eggs' },
+        imageWord: { en: 'bread and cheese', emoji: '🍞', secondEmoji: '🧀', customLabel: 'Bread & cheese' },
         options: [
-          'I have pizza for lunch.',
-          'I have soup for dinner.',
-          'I have toast and eggs for breakfast.',
+          'I have rice for lunch.',
+          'I have meat for dinner.',
+          'I have bread and cheese for breakfast.',
         ],
         correctIndex: 2,
         hint: {
-          ru: 'Что у тебя на завтрак? → Тост и яйца на завтрак.',
-          lv: 'Kas tev ir brokastīs? → Grauzdiņš un olas brokastīs.',
+          ru: 'Что у тебя на завтрак? (хлеб и сыр)',
+          lv: 'Kas tev ir brokastīs? (maize un siers)',
         },
       },
       {
@@ -1597,16 +1597,16 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'meals',
         prompt: 'What do you have for lunch?',
         audioText: 'What do you have for lunch?',
-        imageWord: { en: 'sandwich', emoji: '🥪', customLabel: 'Sandwich' },
+        imageWord: { en: 'sandwiches', emoji: '🥪', customLabel: 'Sandwiches' },
         options: [
-          'I have a sandwich for lunch.',
-          'I have tea for breakfast.',
+          'I have sandwiches for lunch.',
+          'I have milk for breakfast.',
           'I have fish for dinner.',
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Что у тебя на обед? → Сэндвич на обед.',
-          lv: 'Kas tev ir pusdienās? → Sviestmaize pusdienās.',
+          ru: 'Что у тебя на обед? (сэндвичи)',
+          lv: 'Kas tev ir pusdienās? (sviestmaizes)',
         },
       },
       {
@@ -1625,17 +1625,17 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Любишь бананы? (❤️ Да) → Yes, I do.',
-          lv: 'Vai tev garšo banāni? (❤️ Jā) → Yes, I do.',
+          ru: 'Любишь бананы? (Да ❤️)',
+          lv: 'Vai tev garšo banāni? (Jā ❤️)',
         },
       },
       {
         id: 'g2_dyl_7',
         grade: 2,
         category: 'do_you_like',
-        prompt: 'Do you like broccoli?',
-        audioText: 'Do you like broccoli?',
-        imageWord: { en: 'broccoli', emoji: '🥦' },
+        prompt: 'Do you like carrots?',
+        audioText: 'Do you like carrots?',
+        imageWord: { en: 'carrots', emoji: '🥕' },
         isNegated: true,
         badgeType: 'like',
         options: [
@@ -1645,17 +1645,17 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Любишь брокколи? (❌ Нет) → No, I don\'t.',
-          lv: 'Vai tev garšo brokoli? (❌ Nē) → No, I don\'t.',
+          ru: 'Любишь морковь? (Нет ❌)',
+          lv: 'Vai tev garšo burkāni? (Nē ❌)',
         },
       },
       {
         id: 'g2_dyl_8',
         grade: 2,
         category: 'do_you_like',
-        prompt: 'Do you like pizza?',
-        audioText: 'Do you like pizza?',
-        imageWord: { en: 'pizza', emoji: '🍕' },
+        prompt: 'Do you like cheese?',
+        audioText: 'Do you like cheese?',
+        imageWord: { en: 'cheese', emoji: '🧀' },
         isNegated: false,
         badgeType: 'like',
         options: [
@@ -1665,17 +1665,17 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Любишь пиццу? (❤️ Да) → Yes, I do.',
-          lv: 'Vai tev garšo pica? (❤️ Jā) → Yes, I do.',
+          ru: 'Любишь сыр? (Да ❤️)',
+          lv: 'Vai tev garšo siers? (Jā ❤️)',
         },
       },
       {
         id: 'g2_dyl_9',
         grade: 2,
         category: 'do_you_like',
-        prompt: 'Do you like mushrooms?',
-        audioText: 'Do you like mushrooms?',
-        imageWord: { en: 'mushrooms', emoji: '🍄' },
+        prompt: 'Do you like tomatoes?',
+        audioText: 'Do you like tomatoes?',
+        imageWord: { en: 'tomatoes', emoji: '🍅' },
         isNegated: true,
         badgeType: 'like',
         options: [
@@ -1685,8 +1685,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 2,
         hint: {
-          ru: 'Любишь грибы? (❌ Нет) → No, I don\'t.',
-          lv: 'Vai tev garšo sēnes? (❌ Nē) → No, I don\'t.',
+          ru: 'Любишь помидоры? (Нет ❌)',
+          lv: 'Vai tev garšo tomāti? (Nē ❌)',
         },
       },
       {
@@ -1705,17 +1705,17 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Любишь молоко? (❤️ Да) → Yes, I do.',
-          lv: 'Vai tev garšo piens? (❤️ Jā) → Yes, I do.',
+          ru: 'Любишь молоко? (Да ❤️)',
+          lv: 'Vai tev garšo piens? (Jā ❤️)',
         },
       },
       {
         id: 'g2_dyl_11',
         grade: 2,
         category: 'do_you_like',
-        prompt: 'Do you like onions?',
-        audioText: 'Do you like onions?',
-        imageWord: { en: 'onions', emoji: '🧅' },
+        prompt: 'Do you like apples?',
+        audioText: 'Do you like apples?',
+        imageWord: { en: 'apples', emoji: '🍎' },
         isNegated: true,
         badgeType: 'like',
         options: [
@@ -1725,8 +1725,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Любишь лук? (❌ Нет) → No, I don\'t.',
-          lv: 'Vai tev garšo sīpoli? (❌ Nē) → No, I don\'t.',
+          ru: 'Любишь яблоки? (Нет ❌)',
+          lv: 'Vai tev garšo āboli? (Nē ❌)',
         },
       },
     ],
@@ -1759,8 +1759,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'У нас есть глаза → We\'ve got eyes.',
-          lv: 'Mums ir acis → We\'ve got eyes.',
+          ru: 'У нас есть глаза',
+          lv: 'Mums ir acis',
         },
       },
       {
@@ -1779,8 +1779,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'У лошадей нет крыльев → Horses haven\'t got wings.',
-          lv: 'Zirgiem nav spārnu → Horses haven\'t got wings.',
+          ru: 'У лошадей нет крыльев',
+          lv: 'Zirgiem nav spārnu',
         },
       },
       {
@@ -1799,8 +1799,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'У птиц есть крылья → Birds have got wings.',
-          lv: 'Putniem ir spārni → Birds have got wings.',
+          ru: 'У птиц есть крылья',
+          lv: 'Putniem ir spārni',
         },
       },
       {
@@ -1819,8 +1819,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'У рыб нет ног → Fish haven\'t got legs.',
-          lv: 'Zivīm nav kāju → Fish haven\'t got legs.',
+          ru: 'У рыб нет ног',
+          lv: 'Zivīm nav kāju',
         },
       },
       {
@@ -1837,8 +1837,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'У нас два уха → We\'ve got two ears.',
-          lv: 'Mums ir divas ausis → We\'ve got two ears.',
+          ru: 'У нас два уха',
+          lv: 'Mums ir divas ausis',
         },
       },
       {
@@ -1846,17 +1846,17 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         grade: 2,
         category: 'we_have_got',
         prompt: 'Choose the correct sentence:',
-        audioText: 'Frogs have got four legs.',
-        imageWord: { en: 'frogs', emoji: '🐸', customLabel: 'Four legs' },
+        audioText: 'Dogs have got four legs.',
+        imageWord: { en: 'dogs', emoji: '🐶', customLabel: 'Four legs' },
         options: [
-          "Frogs haven't got legs.",
-          'Frogs have got four legs.',
-          'Frogs have got wings.',
+          "Dogs haven't got legs.",
+          'Dogs have got four legs.',
+          'Dogs have got wings.',
         ],
         correctIndex: 1,
         hint: {
-          ru: 'У лягушек 4 лапки → Frogs have got four legs.',
-          lv: 'Vardēm ir četras kājas → Frogs have got four legs.',
+          ru: 'У собак 4 лапы',
+          lv: 'Suņiem ir četras kājas',
         },
       },
       {
@@ -1875,8 +1875,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Ты умеешь плавать? (✓ Да) → Yes, I can.',
-          lv: 'Vai tu proti peldēt? (✓ Jā) → Yes, I can.',
+          ru: 'Ты умеешь плавать? (Да ✓)',
+          lv: 'Vai tu proti peldēt? (Jā ✓)',
         },
       },
       {
@@ -1895,8 +1895,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Ты умеешь летать? (❌ Нет) → No, I can\'t.',
-          lv: 'Vai tu proti lidot? (❌ Nē) → No, I can\'t.',
+          ru: 'Ты умеешь летать? (Нет ❌)',
+          lv: 'Vai tu proti lidot? (Nē ❌)',
         },
       },
       {
@@ -1915,17 +1915,17 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Птицы умеют летать? (✓ Да) → Yes, they can.',
-          lv: 'Vai putni prot lidot? (✓ Jā) → Yes, they can.',
+          ru: 'Птицы умеют летать? (Да ✓)',
+          lv: 'Vai putni prot lidot? (Jā ✓)',
         },
       },
       {
         id: 'g2_cyt_10',
         grade: 2,
         category: 'can_they',
-        prompt: 'Can kangaroos jump?',
-        audioText: 'Can kangaroos jump?',
-        imageWord: { en: 'kangaroos', emoji: '🦘' },
+        prompt: 'Can rabbits jump?',
+        audioText: 'Can rabbits jump?',
+        imageWord: { en: 'rabbits', emoji: '🐰' },
         isNegated: false,
         badgeType: 'can',
         options: [
@@ -1935,16 +1935,16 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Кенгуру умеют прыгать? (✓ Да) → Yes, they can.',
-          lv: 'Vai ķenguri prot lēkt? (✓ Jā) → Yes, they can.',
+          ru: 'Кролики умеют прыгать? (Да ✓)',
+          lv: 'Vai truši prot lēkt? (Jā ✓)',
         },
       },
       {
         id: 'g2_cyt_11',
         grade: 2,
         category: 'can_they',
-        prompt: 'Can dogs speak English?',
-        audioText: 'Can dogs speak English?',
+        prompt: 'Can dogs talk?',
+        audioText: 'Can dogs talk?',
         imageWord: { en: 'dogs', emoji: '🐶' },
         isNegated: true,
         badgeType: 'can',
@@ -1955,17 +1955,17 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Собаки говорят по-английски? (❌ Нет) → No, they can\'t.',
-          lv: 'Vai suņi runā angliski? (❌ Nē) → No, they can\'t.',
+          ru: 'Собаки умеют говорить? (Нет ❌)',
+          lv: 'Vai suņi prot runāt? (Nē ❌)',
         },
       },
       {
         id: 'g2_cyt_12',
         grade: 2,
         category: 'can_they',
-        prompt: 'Can monkeys climb trees?',
-        audioText: 'Can monkeys climb trees?',
-        imageWord: { en: 'monkeys', emoji: '🐒' },
+        prompt: 'Can cats climb trees?',
+        audioText: 'Can cats climb trees?',
+        imageWord: { en: 'cats', emoji: '🐱' },
         isNegated: false,
         badgeType: 'can',
         options: [
@@ -1975,8 +1975,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Обезьяны лазят по деревьям? (✓ Да) → Yes, they can.',
-          lv: 'Vai pērtiķi prot kāpt kokos? (✓ Jā) → Yes, they can.',
+          ru: 'Кошки умеют лазить по деревьям? (Да ✓)',
+          lv: 'Vai kaķi prot kāpt kokos? (Jā ✓)',
         },
       },
     ],
@@ -2009,8 +2009,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Что на тебе надето? → На мне шорты.',
-          lv: 'Kas tev ir mugurā? → Man ir mugurā šorti.',
+          ru: 'Что на тебе надето? (шорты)',
+          lv: 'Kas tev ir mugurā? (šorti)',
         },
       },
       {
@@ -2027,8 +2027,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Что на тебе надето? → На мне платье.',
-          lv: 'Kas tev ir mugurā? → Man ir mugurā kleita.',
+          ru: 'Что на тебе надето? (платье)',
+          lv: 'Kas tev ir mugurā? (kleita)',
         },
       },
       {
@@ -2040,13 +2040,13 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: { en: 'jacket', emoji: '🧥', customLabel: 'Jacket' },
         options: [
           "I'm wearing shorts.",
-          "I'm wearing a cap.",
+          "I'm wearing a hat.",
           "I'm wearing a jacket.",
         ],
         correctIndex: 2,
         hint: {
-          ru: 'Что на тебе надето? → На мне куртка.',
-          lv: 'Kas tev ir mugurā? → Man ir mugurā jaka.',
+          ru: 'Что на тебе надето? (куртка)',
+          lv: 'Kas tev ir mugurā? (jaka)',
         },
       },
       {
@@ -2063,8 +2063,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Что на тебе надето? → На мне футболка.',
-          lv: 'Kas tev ir mugurā? → Man ir mugurā T-krekls.',
+          ru: 'Что на тебе надето? (футболка)',
+          lv: 'Kas tev ir mugurā? (T-krekls)',
         },
       },
       {
@@ -2073,16 +2073,16 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'wearing',
         prompt: 'What are you wearing?',
         audioText: 'What are you wearing?',
-        imageWord: { en: 'cap', emoji: '🧢', customLabel: 'Cap' },
+        imageWord: { en: 'hat', emoji: '👒', customLabel: 'Hat' },
         options: [
-          "I'm wearing boots.",
-          "I'm wearing a cap.",
+          "I'm wearing shoes.",
+          "I'm wearing a hat.",
           "I'm wearing shorts.",
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Что на тебе надето? → На мне кепка.',
-          lv: 'Kas tev ir mugurā? → Man ir mugurā cepure.',
+          ru: 'Что на тебе надето? (шляпа)',
+          lv: 'Kas tev ir mugurā? (cepure)',
         },
       },
       {
@@ -2099,8 +2099,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'У неё кудрявые волосы? → Нет, у неё прямые волосы.',
-          lv: 'Vai viņai ir cirtaini mati? → Nē, viņai ir taisni mati.',
+          ru: 'У неё кудрявые волосы? (Нет, прямые)',
+          lv: 'Vai viņai ir cirtaini mati? (Nē, taisni)',
         },
       },
       {
@@ -2117,8 +2117,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'У него кудрявые волосы? → Да, у него кудрявые волосы.',
-          lv: 'Vai viņam ir cirtaini mati? → Jā, viņam ir cirtaini mati.',
+          ru: 'У него кудрявые волосы? (Да, кудрявые)',
+          lv: 'Vai viņam ir cirtaini mati? (Jā, cirtaini)',
         },
       },
       {
@@ -2135,8 +2135,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'У неё длинные волосы? → Да, у неё длинные волосы.',
-          lv: 'Vai viņai ir gari mati? → Jā, viņai ir gari mati.',
+          ru: 'У неё длинные волосы? (Да, длинные)',
+          lv: 'Vai viņai ir gari mati? (Jā, gari)',
         },
       },
       {
@@ -2153,8 +2153,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'У него есть очки? → Да, у него есть очки.',
-          lv: 'Vai viņam ir brilles? → Jā, viņam ir.',
+          ru: 'У него есть очки? (Да)',
+          lv: 'Vai viņam ir brilles? (Jā)',
         },
       },
       {
@@ -2171,8 +2171,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'У неё тёмные волосы? → Нет, у неё светлые волосы.',
-          lv: 'Vai viņai ir tumši mati? → Nē, viņai ir gaiši mati.',
+          ru: 'У неё тёмные волосы? (Нет, светлые)',
+          lv: 'Vai viņai ir tumši mati? (Nē, gaiši)',
         },
       },
       {
@@ -2189,8 +2189,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'У него голубые глаза? → Нет, у него зелёные глаза.',
-          lv: 'Vai viņam ir zilas acis? → Nē, viņam ir zaļas acis.',
+          ru: 'У него голубые глаза? (Нет, зелёные)',
+          lv: 'Vai viņam ir zilas acis? (Nē, zaļas)',
         },
       },
     ],
@@ -2223,8 +2223,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Где книга? → Она на столе (on).',
-          lv: 'Kur ir grāmata? → Tā ir uz galda (on).',
+          ru: 'Где книга? (на столе)',
+          lv: 'Kur ir grāmata? (uz galda)',
         },
       },
       {
@@ -2241,8 +2241,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Где кошка? → Она под стулом (under).',
-          lv: 'Kur ir kaķis? → Tas ir zem krēsla (under).',
+          ru: 'Где кошка? (под стулом)',
+          lv: 'Kur ir kaķis? (zem krēsla)',
         },
       },
       {
@@ -2259,8 +2259,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 2,
         hint: {
-          ru: 'Где карандаш? → Он в пенале (in).',
-          lv: 'Kur ir zīmulis? → Tas ir penālī (in).',
+          ru: 'Где карандаш? (в пенале)',
+          lv: 'Kur ir zīmulis? (penālī)',
         },
       },
       {
@@ -2277,8 +2277,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Где мяч? → Он под кроватью (under).',
-          lv: 'Kur ir bumba? → Tā ir zem gultas (under).',
+          ru: 'Где мяч? (под кроватью)',
+          lv: 'Kur ir bumba? (zem gultas)',
         },
       },
       {
@@ -2287,16 +2287,16 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'prepositions',
         prompt: "Where's the apple?",
         audioText: "Where's the apple?",
-        imageWord: { en: 'apple on plate', emoji: '🍎', secondEmoji: '🍽️', customLabel: 'On the plate' },
+        imageWord: { en: 'apple on table', emoji: '🍎', secondEmoji: '🪵', customLabel: 'On the table' },
         options: [
-          "It's on the plate.",
-          "It's in the plate.",
-          "It's under the plate.",
+          "It's on the table.",
+          "It's in the table.",
+          "It's under the table.",
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Где яблоко? → Оно на тарелке (on).',
-          lv: 'Kur ir ābols? → Tas ir uz šķīvja (on).',
+          ru: 'Где яблоко? (на столе)',
+          lv: 'Kur ir ābols? (uz galda)',
         },
       },
       {
@@ -2313,44 +2313,44 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Где линейка? → Она в рюкзаке (in).',
-          lv: 'Kur ir lineāls? → Tas ir somā (in).',
+          ru: 'Где линейка? (в рюкзаке)',
+          lv: 'Kur ir lineāls? (somā)',
         },
       },
       {
         id: 'g2_t_7',
         grade: 2,
         category: 'there_is_are',
-        prompt: 'Look at the house plan:',
+        prompt: 'Look at the house:',
         audioText: "There's a kitchen.",
         imageWord: { en: 'kitchen', emoji: '🍳', customLabel: '1 Kitchen' },
         options: [
           "There's a kitchen.",
           'There are two kitchens.',
-          "There's two kitchens.",
+          "There's a plant.",
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Одна кухня (ед. ч.) → There\'s a kitchen.',
-          lv: 'Viena virtuve → There\'s a kitchen.',
+          ru: 'Одна кухня (единственное число)',
+          lv: 'Viena virtuve (vienskaitlis)',
         },
       },
       {
         id: 'g2_t_8',
         grade: 2,
         category: 'there_is_are',
-        prompt: 'Look at the house plan:',
+        prompt: 'Look at the house:',
         audioText: 'There are two bathrooms.',
         imageWord: { en: 'bathrooms', emoji: '🛁', secondEmoji: '🛁', customLabel: '2 Bathrooms' },
         options: [
-          "There's two bathrooms.",
+          "There are two plants.",
           'There are two bathrooms.',
           "There's a bathroom.",
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Две ванные комнаты (мн. ч.) → There are two bathrooms.',
-          lv: 'Divas vannasistabas → There are two bathrooms.',
+          ru: 'Две ванные комнаты (множественное число)',
+          lv: 'Divas vannasistabas (daudzskaitlis)',
         },
       },
       {
@@ -2367,8 +2367,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Три подушки (мн. ч.) → There are three cushions.',
-          lv: 'Trīs spilveni → There are three cushions.',
+          ru: 'Три подушки (множественное число)',
+          lv: 'Trīs spilveni (daudzskaitlis)',
         },
       },
       {
@@ -2385,8 +2385,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Одна большая кровать → There\'s a big bed.',
-          lv: 'Viena liela gulta → There\'s a big bed.',
+          ru: 'Одна большая кровать (единственное число)',
+          lv: 'Viena liela gulta (vienskaitlis)',
         },
       },
       {
@@ -2403,15 +2403,15 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Четыре цветка (мн. ч.) → There are four flowers.',
-          lv: 'Četri ziedi → There are four flowers.',
+          ru: 'Четыре цветка (множественное число)',
+          lv: 'Četri ziedi (daudzskaitlis)',
         },
       },
       {
         id: 'g2_t_12',
         grade: 2,
         category: 'there_is_are',
-        prompt: 'Look at the garage:',
+        prompt: 'Look at the house:',
         audioText: "There's a red car.",
         imageWord: { en: 'car', emoji: '🚗', customLabel: '1 Red Car' },
         options: [
@@ -2421,8 +2421,8 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Одна красная машина → There\'s a red car.',
-          lv: 'Viena sarkana mašīna → There\'s a red car.',
+          ru: 'Одна красная машина (единственное число)',
+          lv: 'Viena sarkana mašīna (vienskaitlis)',
         },
       },
     ],

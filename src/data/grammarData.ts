@@ -36,6 +36,10 @@ export interface GrammarQuestion {
     hideCaption?: boolean;
     isTwoCharacters?: boolean;
     highlightIndex?: 0 | 1;
+    fullBodyHeight?: {
+      first: { gender: 'boy' | 'girl'; height: 'tall' | 'short' };
+      second: { gender: 'boy' | 'girl'; height: 'tall' | 'short' };
+    };
     heightScale?: {
       first?: 'tall' | 'short' | 'normal';
       second?: 'tall' | 'short' | 'normal';
@@ -649,10 +653,13 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'boy',
           emoji: '👦',
-          secondEmoji: '🧑',
+          secondEmoji: '👦',
           isTwoCharacters: true,
           highlightIndex: 0,
-          heightScale: { first: 'short', second: 'tall' },
+          fullBodyHeight: {
+            first: { gender: 'boy', height: 'short' },
+            second: { gender: 'boy', height: 'tall' },
+          },
           hideCaption: true,
         },
         options: [
@@ -678,7 +685,10 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
           secondEmoji: '👧',
           isTwoCharacters: true,
           highlightIndex: 0,
-          heightScale: { first: 'tall', second: 'short' },
+          fullBodyHeight: {
+            first: { gender: 'girl', height: 'tall' },
+            second: { gender: 'girl', height: 'short' },
+          },
           hideCaption: true,
         },
         options: [
@@ -704,7 +714,10 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
           secondEmoji: '👦',
           isTwoCharacters: true,
           highlightIndex: 0,
-          heightScale: { first: 'tall', second: 'short' },
+          fullBodyHeight: {
+            first: { gender: 'boy', height: 'tall' },
+            second: { gender: 'boy', height: 'short' },
+          },
           hideCaption: true,
         },
         options: [
@@ -727,10 +740,13 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'girl',
           emoji: '👧',
-          secondEmoji: '👩',
+          secondEmoji: '👧',
           isTwoCharacters: true,
           highlightIndex: 0,
-          heightScale: { first: 'short', second: 'tall' },
+          fullBodyHeight: {
+            first: { gender: 'girl', height: 'short' },
+            second: { gender: 'girl', height: 'tall' },
+          },
           hideCaption: true,
         },
         options: [

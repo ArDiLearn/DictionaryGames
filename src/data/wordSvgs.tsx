@@ -2972,29 +2972,32 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       {/* Front Legs */}
       <rect x="20" y="58" width="6" height="28" rx="2" fill="#d97706" />
       <rect x="74" y="58" width="6" height="28" rx="2" fill="#d97706" />
-      {/* Wooden Tabletop */}
-      <polygon points="20,56 80,56 84,48 16,48" fill="#b45309" />
-      <polygon points="16,48 84,48 78,40 22,40" fill="#f59e0b" />
-      <line x1="28" y1="44" x2="72" y2="44" stroke="#fbbf24" strokeWidth="1.5" strokeLinecap="round" />
-      {/* Apple resting ON the table */}
+      {/* Wooden Tabletop Surface (top plane) */}
+      <polygon points="16,48 84,48 78,36 22,36" fill="#f59e0b" />
+      <line x1="26" y1="40" x2="74" y2="40" stroke="#fbbf24" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="22" y1="44" x2="78" y2="44" stroke="#fbbf24" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Front edge skirt (thickness) */}
+      <polygon points="16,48 84,48 80,56 20,56" fill="#b45309" />
+
+      {/* Apple resting clearly ON the table surface (base at y=42, well above front edge y=48) */}
       <g transform="translate(50, 42)">
-        {/* Apple cast shadow on table */}
-        <ellipse cx="0" cy="4" rx="10" ry="3.5" fill="#78350f" opacity="0.45" />
-        {/* Apple Body */}
+        {/* Apple cast shadow flat on table surface */}
+        <ellipse cx="0" cy="0.5" rx="8.5" ry="2.6" fill="#78350f" opacity="0.45" />
+        {/* Apple Body - bottom curves stay above y=0 */}
         <path
-          d="M 0 -10 C -6 -16 -16 -12 -14 0 C -12 10 -4 14 0 13 C 4 14 12 10 14 0 C 16 -12 6 -16 0 -10 Z"
+          d="M 0 -11 C -5 -16 -13 -13 -12 -2 C -11 5 -4 0.5 0 0 C 4 0.5 11 5 12 -2 C 13 -13 5 -16 0 -11 Z"
           fill="#dc2626"
         />
-        {/* Apple Highlight */}
+        {/* Apple Shading & Highlights */}
         <path
-          d="M -1 -9 C -5 -14 -13 -10 -11 0 C -9 7 -4 11 0 10 C 2 10 0 6 0 0 C 0 -6 1 -8 -1 -9 Z"
+          d="M -1 -10 C -4 -14 -11 -11 -10 -2 C -9 4 -3 0.5 0 0 C 1 0 0 -2 0 -6 C 0 -9 0.5 -10 -1 -10 Z"
           fill="#ef4444"
         />
-        <ellipse cx="-5" cy="-3" rx="3" ry="5" fill="#f87171" opacity="0.6" transform="rotate(-20 -5 -3)" />
-        {/* Stem */}
-        <path d="M 0 -10 C 1 -15 5 -18 7 -19" stroke="#78350f" strokeWidth="2" strokeLinecap="round" fill="none" />
+        <ellipse cx="-4" cy="-5" rx="2.5" ry="4" fill="#f87171" opacity="0.65" transform="rotate(-20 -4 -5)" />
+        {/* Apple Stem */}
+        <path d="M 0 -11 C 0.8 -15 3.5 -18 5 -19" stroke="#78350f" strokeWidth="1.8" strokeLinecap="round" fill="none" />
         {/* Green Leaf */}
-        <path d="M 1 -14 C 5 -18 11 -18 13 -15 C 13 -11 8 -11 1 -14 Z" fill="#22c55e" />
+        <path d="M 1 -14 C 4 -18 9 -17 11 -14 C 11 -11 6 -11 1 -14 Z" fill="#22c55e" />
       </g>
     </svg>
   ),

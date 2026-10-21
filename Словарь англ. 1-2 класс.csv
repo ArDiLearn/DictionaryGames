@@ -536,16 +536,16 @@ good,labs,хороший,1
 excellent,lielisks,отличный,1
 ,,,
 Wild animals,Savvaļas dzīvnieki,Дикие животные,
-giraffe,žirafe,жираф,3
-elephant,zilonis,слон,3
-crocodile,krokodils,крокодил,3
-hippo,nīlzirgs,бегемот,3
-lion,lauva,лев,3
-monkey,mērkaķis,обезьяна,3
-penguin,pingvīns,пингвин,3
-shark,haizivs,акула,3
-whale,valis,кит,3
-zebra,zebra,зебра,3
+giraffe,žirafe,жираф,4
+elephant,zilonis,слон,4
+crocodile,krokodils,крокодил,4
+hippo,nīlzirgs,бегемот,4
+lion,lauva,лев,4
+monkey,mērkaķis,обезьяна,4
+penguin,pingvīns,пингвин,4
+shark,haizivs,акула,4
+whale,valis,кит,4
+zebra,zebra,зебра,4
 chameleon,hameleons,хамелеон,2
 squirrel,vāvere,белка,2
 bat,sikspārnis,летучая мышь,2
@@ -695,12 +695,12 @@ eat sweets,ēst konfektes,есть сладости,3
 go outdoors,doties ārā,идти на улицу,3
 ,,,
 Wild animal actions,Savvaļas dzīvnieku darbības,Действия диких животных,
-drink water,dzert ūdeni,пить воду,3
-eat grass,ēst zāli,есть траву,3
-hunt animals,medīt dzīvniekus,охотиться на животных,3
-like fruit,mīlēt augļus,любить фрукты,3
-live in a group,dzīvot grupā,жить в группе,3
-sleep in a tree,gulēt kokā,спать на дереве,3
+drink water,dzert ūdeni,пить воду,4
+eat grass,ēst zāli,есть траву,4
+hunt animals,medīt dzīvniekus,охотиться на животных,4
+like fruit,mīlēt augļus,любить фрукты,4
+live in a group,dzīvot grupā,жить в группе,4
+sleep in a tree,gulēt kokā,спать на дереве,4
 ,,,
 Christmas and holidays,Ziemassvētki un svētki,Рождество и праздники,
 Christmas,Ziemassvētki,Рождество,2

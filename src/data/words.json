@@ -4608,7 +4608,7 @@
         "en": "giraffe",
         "lv": "žirafe",
         "ru": "жираф",
-        "grade": 3,
+        "grade": 4,
         "image": "🦒",
         "transcription": "[ dʒəˈrɑːf ]"
       },
@@ -4617,7 +4617,7 @@
         "en": "elephant",
         "lv": "zilonis",
         "ru": "слон",
-        "grade": 3,
+        "grade": 4,
         "image": "🐘",
         "transcription": "[ ˈelɪfənt ]"
       },
@@ -4626,7 +4626,7 @@
         "en": "crocodile",
         "lv": "krokodils",
         "ru": "крокодил",
-        "grade": 3,
+        "grade": 4,
         "image": "🐊",
         "transcription": "[ ˈkrɒkədaɪl ]"
       },
@@ -4635,7 +4635,7 @@
         "en": "hippo",
         "lv": "nīlzirgs",
         "ru": "бегемот",
-        "grade": 3,
+        "grade": 4,
         "image": "🦛",
         "transcription": "[ ˈhɪpəʊ ]"
       },
@@ -4644,7 +4644,7 @@
         "en": "lion",
         "lv": "lauva",
         "ru": "лев",
-        "grade": 3,
+        "grade": 4,
         "image": "🦁",
         "transcription": "[ ˈlaɪən ]"
       },
@@ -4653,7 +4653,7 @@
         "en": "monkey",
         "lv": "mērkaķis",
         "ru": "обезьяна",
-        "grade": 3,
+        "grade": 4,
         "image": "🐒",
         "transcription": "[ ˈmʌŋki ]"
       },
@@ -4662,7 +4662,7 @@
         "en": "penguin",
         "lv": "pingvīns",
         "ru": "пингвин",
-        "grade": 3,
+        "grade": 4,
         "image": "🐧",
         "transcription": "[ ˈpeŋɡwɪn ]"
       },
@@ -4671,7 +4671,7 @@
         "en": "shark",
         "lv": "haizivs",
         "ru": "акула",
-        "grade": 3,
+        "grade": 4,
         "image": "🦈",
         "transcription": "[ ʃɑːk ]"
       },
@@ -4680,7 +4680,7 @@
         "en": "whale",
         "lv": "valis",
         "ru": "кит",
-        "grade": 3,
+        "grade": 4,
         "image": "🐋",
         "transcription": "[ weɪl ]"
       },
@@ -4689,7 +4689,7 @@
         "en": "zebra",
         "lv": "zebra",
         "ru": "зебра",
-        "grade": 3,
+        "grade": 4,
         "image": "🦓",
         "transcription": "[ ˈziːbrə ]"
       },
@@ -5969,7 +5969,7 @@
         "en": "drink water",
         "lv": "dzert ūdeni",
         "ru": "пить воду",
-        "grade": 3,
+        "grade": 4,
         "image": "💧",
         "transcription": "[ drɪŋk ˈwɔːtə ]"
       },
@@ -5978,7 +5978,7 @@
         "en": "eat grass",
         "lv": "ēst zāli",
         "ru": "есть траву",
-        "grade": 3,
+        "grade": 4,
         "image": "🌱",
         "transcription": "[ iːt ɡrɑːs ]"
       },
@@ -5987,7 +5987,7 @@
         "en": "hunt animals",
         "lv": "medīt dzīvniekus",
         "ru": "охотиться на животных",
-        "grade": 3,
+        "grade": 4,
         "image": "🎯",
         "transcription": "[ hʌnt ˈænɪməlz ]"
       },
@@ -5996,7 +5996,7 @@
         "en": "like fruit",
         "lv": "mīlēt augļus",
         "ru": "любить фрукты",
-        "grade": 3,
+        "grade": 4,
         "image": "🍌",
         "transcription": "[ laɪk fruːt ]"
       },
@@ -6005,7 +6005,7 @@
         "en": "live in a group",
         "lv": "dzīvot grupā",
         "ru": "жить в группе",
-        "grade": 3,
+        "grade": 4,
         "image": "🦁",
         "transcription": "[ lɪv ɪn ə ɡruːp ]"
       },
@@ -6014,7 +6014,7 @@
         "en": "sleep in a tree",
         "lv": "gulēt kokā",
         "ru": "спать на дереве",
-        "grade": 3,
+        "grade": 4,
         "image": "🌳",
         "transcription": "[ sliːp ɪn ə triː ]"
       }

@@ -15,6 +15,7 @@ export const EXTRA_TOPICS: string[] = [
   'character_and_feelings_plus',
   'qualities_plus',
   'wild_animals',
+  'wild_animal_actions',
   'nature',
   'garden',
   'building_materials',
@@ -107,8 +108,6 @@ export const GRADE_3_MAIN_TOPICS: string[] = [
   'positions',
   'sports',
   'break_time_activities',
-  'wild_animals',
-  'wild_animal_actions',
 ];
 
 export const GRADE_1_TOPIC_ORDER: string[] = [
@@ -164,6 +163,8 @@ export const GRADE_3_TOPIC_ORDER: string[] = [
 export const GRADE_4_MAIN_TOPICS: string[] = [
   'school_subjects',
   'activities',
+  'wild_animals',
+  'wild_animal_actions',
   'outdoor_things',
   'food',
   'crafts',
@@ -185,9 +186,13 @@ export function isTopicExtra(topicId: string, selectedGrades: Grade[]): boolean 
   if (topicId === 'feelings') {
     return !selectedGrades.includes(3);
   }
-  // wild_animals is extra for Grade 1/2, but main for Grade 3
+  // wild_animals is extra for Grade 1/2/3, but main for Grade 4
   if (topicId === 'wild_animals') {
-    return !selectedGrades.includes(3);
+    return !selectedGrades.includes(4);
+  }
+  // wild_animal_actions is main for Grade 4
+  if (topicId === 'wild_animal_actions') {
+    return !selectedGrades.includes(4);
   }
   return EXTRA_TOPICS.includes(topicId);
 }

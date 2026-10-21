@@ -42,6 +42,10 @@ export function useTopicCatalog({
               if (topic.topic_id === 'feelings' && gradesSet.has(3)) {
                 return g === 1 || g === 3;
               }
+              // For wild_animals when Grade 4 is included, include Grade 2 and 4 words!
+              if (topic.topic_id === 'wild_animals' && gradesSet.has(4)) {
+                return g === 2 || g === 4;
+              }
               return gradesSet.has(g);
             }),
           };

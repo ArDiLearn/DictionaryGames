@@ -878,14 +878,8 @@ export const ExamGame: React.FC<ExamGameProps> = ({
         )}
 
         {currentQuestion.type === 'truefalse' && (
-          <div className="my-6">
-            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-amber-50 border-3 border-amber-200 flex items-center justify-center p-2 shadow-inner mb-4 select-none">
-              <WordIllustration
-                word={currentQuestion.word}
-                fallbackEmoji={currentQuestion.topicEmoji || '📖'}
-              />
-            </div>
-            <div className="inline-flex items-center gap-2 bg-slate-50 border-2 border-slate-200 px-4 py-2 rounded-2xl mb-2">
+          <div className="my-8">
+            <div className="inline-flex items-center gap-2 bg-slate-50 border-2 border-slate-200 px-4 py-2 rounded-2xl mb-3">
               <span className="text-2xl sm:text-3xl font-black text-slate-800 font-comic">
                 {currentQuestion.displayWord}
               </span>

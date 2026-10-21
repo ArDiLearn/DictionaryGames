@@ -23,7 +23,11 @@ export type GrammarCategory =
   | 'feelings_and_pronouns'
   | 'jobs_and_demonstratives'
   | 'town_and_places'
-  | 'present_simple';
+  | 'present_simple'
+  | 'animals_present_simple'
+  | 'present_continuous'
+  | 'whose_and_offers'
+  | 'crafts_and_requests';
 
 export interface GrammarQuestion {
   id: string;
@@ -3440,10 +3444,653 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
   },
 ];
 
+export const GRADE_4_GRAMMAR_TOPICS: GrammarTopic[] = [
+  {
+    id: 'g4_animals_present_simple',
+    grade: 4,
+    title: {
+      ru: 'Животные: Does it...? / Do they...?',
+      lv: 'Dzīvnieki: Does it...? / Do they...?',
+    },
+    description: {
+      ru: 'Does it eat meat? / Do they live in water? / It eats grass',
+      lv: 'Does it eat meat? / Do they live in water? / It eats grass',
+    },
+    emoji: '🦁',
+    color: 'emerald',
+    questions: [
+      {
+        id: 'g4_aps_1',
+        grade: 4,
+        category: 'animals_present_simple',
+        prompt: 'Do dolphins live in water?',
+        audioText: 'Do dolphins live in water?',
+        imageWord: { en: 'dolphin', emoji: '🐬 🌊', customLabel: 'Dolphins in water' },
+        options: ['Yes, they do.', 'Yes, they does.', 'Yes, it does.'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Дельфины (they): Yes, they do',
+          lv: 'Delfīni (they): Yes, they do',
+        },
+      },
+      {
+        id: 'g4_aps_2',
+        grade: 4,
+        category: 'animals_present_simple',
+        prompt: 'Do lions live in water?',
+        audioText: 'Do lions live in water?',
+        imageWord: { en: 'lion', emoji: '🦁 🏞️', customLabel: 'Lions on land' },
+        options: ["No, they doesn't. They live on land.", "No, they don't. They live on land.", "No, they don't. They lives on land."],
+        correctIndex: 1,
+        hint: {
+          ru: "Львы (they): No, they don't. They live on land",
+          lv: "Lauvas (they): No, they don't. They live on land",
+        },
+      },
+      {
+        id: 'g4_aps_3',
+        grade: 4,
+        category: 'animals_present_simple',
+        prompt: 'Does a tiger eat meat?',
+        audioText: 'Does a tiger eat meat?',
+        imageWord: { en: 'tiger', emoji: '🐯 🥩', customLabel: 'Tiger eats meat' },
+        options: ['Yes, it does. It eats meat.', 'Yes, it do. It eat meat.', 'Yes, it does. It eat meat.'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Тигр (it): Yes, it does. It eats meat (с окончанием -s)',
+          lv: 'Tīģeris (it): Yes, it does. It eats meat',
+        },
+      },
+      {
+        id: 'g4_aps_4',
+        grade: 4,
+        category: 'animals_present_simple',
+        prompt: 'Does an elephant eat meat?',
+        audioText: 'Does an elephant eat meat?',
+        imageWord: { en: 'elephant', emoji: '🐘 🌿', customLabel: 'Elephant eats plants' },
+        options: ["No, it doesn't. It eats grass.", "No, it don't. It eat grass.", "No, it doesn't. It doesn't eats meat."],
+        correctIndex: 0,
+        hint: {
+          ru: "Слон не ест мясо: No, it doesn't. It eats grass",
+          lv: "Zilonis neēd gaļu: No, it doesn't. It eats grass",
+        },
+      },
+      {
+        id: 'g4_aps_5',
+        grade: 4,
+        category: 'animals_present_simple',
+        prompt: 'Choose the correct sentence:',
+        audioText: 'Choose the correct sentence.',
+        imageWord: { en: 'zebra', emoji: '🦓 ❌ 🥩' },
+        options: ["A zebra doesn't eat meat.", "A zebra doesn't eats meat.", "A zebra don't eat meat."],
+        correctIndex: 0,
+        hint: {
+          ru: "После doesn't глагол идет БЕЗ окончания -s: doesn't eat",
+          lv: "Pēc doesn't darbības vārds ir BEZ -s: doesn't eat",
+        },
+      },
+      {
+        id: 'g4_aps_6',
+        grade: 4,
+        category: 'animals_present_simple',
+        prompt: 'Choose the correct sentence:',
+        audioText: 'Choose the correct sentence.',
+        imageWord: { en: 'monkey', emoji: '🐒 🍌' },
+        options: ['A monkey likes fruit.', 'A monkey like fruit.', 'A monkey is like fruit.'],
+        correctIndex: 0,
+        hint: {
+          ru: 'В 3-м лице ед. числа (it) глагол с -s: likes',
+          lv: 'Vienskaitļa 3. personā darbības vārdam ir -s: likes',
+        },
+      },
+      {
+        id: 'g4_aps_7',
+        grade: 4,
+        category: 'animals_present_simple',
+        prompt: 'Do penguins fly?',
+        audioText: 'Do penguins fly?',
+        imageWord: { en: 'penguin', emoji: '🐧 ❌ ✈️' },
+        options: ["No, they don't.", "No, they doesn't.", "No, it don't."],
+        correctIndex: 0,
+        hint: {
+          ru: "Пингвины (they): No, they don't",
+          lv: "Pingvīni (they): No, they don't",
+        },
+      },
+      {
+        id: 'g4_aps_8',
+        grade: 4,
+        category: 'animals_present_simple',
+        prompt: 'Does a shark live in water?',
+        audioText: 'Does a shark live in water?',
+        imageWord: { en: 'shark', emoji: '🦈 🌊' },
+        options: ['Yes, it does.', 'Yes, it do.', 'Yes, they does.'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Акула (it): Yes, it does',
+          lv: 'Haizivs (it): Yes, it does',
+        },
+      },
+      {
+        id: 'g4_aps_9',
+        grade: 4,
+        category: 'animals_present_simple',
+        prompt: 'Choose the correct question:',
+        audioText: 'Choose the correct question.',
+        imageWord: { en: 'giraffe', emoji: '🦒 🌳' },
+        options: ['Does a giraffe eat leaves?', 'Do a giraffe eat leaves?', 'Does a giraffe eats leaves?'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Жираф (ед. число): Does a giraffe eat leaves?',
+          lv: 'Žirafe (vienskaitlis): Does a giraffe eat leaves?',
+        },
+      },
+      {
+        id: 'g4_aps_10',
+        grade: 4,
+        category: 'animals_present_simple',
+        prompt: 'Choose the correct question:',
+        audioText: 'Choose the correct question.',
+        imageWord: { en: 'crocodiles', emoji: '🐊 🐊' },
+        options: ['Do crocodiles swim?', 'Does crocodiles swim?', 'Do crocodiles swims?'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Крокодилы (мн. число): Do crocodiles swim?',
+          lv: 'Krokodili (daudzskaitlis): Do crocodiles swim?',
+        },
+      },
+    ],
+  },
+  {
+    id: 'g4_present_continuous',
+    grade: 4,
+    title: {
+      ru: 'Школа и действия (What are you doing?)',
+      lv: 'Skola un darbības (What are you doing?)',
+    },
+    description: {
+      ru: "What are you doing? I'm doing math. / What's she doing? She's singing...",
+      lv: "What are you doing? I'm doing math. / What's she doing? She's singing...",
+    },
+    emoji: '🎨',
+    color: 'sky',
+    questions: [
+      {
+        id: 'g4_pc_1',
+        grade: 4,
+        category: 'present_continuous',
+        prompt: 'What are you doing?',
+        audioText: 'What are you doing?',
+        imageWord: { en: 'math', emoji: '📐 ✏️', customLabel: 'Doing math' },
+        options: ["I'm doing math.", 'I doing math.', "I'm do math."],
+        correctIndex: 0,
+        hint: {
+          ru: "Формула Present Continuous: I'm doing math",
+          lv: "Present Continuous formula: I'm doing math",
+        },
+      },
+      {
+        id: 'g4_pc_2',
+        grade: 4,
+        category: 'present_continuous',
+        prompt: "What's she doing in music?",
+        audioText: "What's she doing in music?",
+        imageWord: { en: 'singing', emoji: '👧 🎤', customLabel: 'Singing a song' },
+        options: ["She's singing a song.", 'She singing a song.', "She's sing a song."],
+        correctIndex: 0,
+        hint: {
+          ru: "Она поёт: She's singing a song",
+          lv: "Viņa dzied: She's singing a song",
+        },
+      },
+      {
+        id: 'g4_pc_3',
+        grade: 4,
+        category: 'present_continuous',
+        prompt: "What's he doing in art?",
+        audioText: "What's he doing in art?",
+        imageWord: { en: 'drawing', emoji: '👦 🎨', customLabel: 'Drawing a picture' },
+        options: ['He drawing a picture.', "He's drawing a picture.", "He's draw a picture."],
+        correctIndex: 1,
+        hint: {
+          ru: "Он рисует: He's drawing a picture",
+          lv: "Viņš zīmē: He's drawing a picture",
+        },
+      },
+      {
+        id: 'g4_pc_4',
+        grade: 4,
+        category: 'present_continuous',
+        prompt: 'What are they doing in PE?',
+        audioText: 'What are they doing in PE?',
+        imageWord: { en: 'running', emoji: '🏃‍♂️ 🏃‍♀️', customLabel: 'Running' },
+        options: ["They're running.", "They's running.", 'They running.'],
+        correctIndex: 0,
+        hint: {
+          ru: "Они бегут: They're running",
+          lv: "Viņi skrien: They're running",
+        },
+      },
+      {
+        id: 'g4_pc_5',
+        grade: 4,
+        category: 'present_continuous',
+        prompt: 'What are you doing in science?',
+        audioText: 'What are you doing in science?',
+        imageWord: { en: 'experiment', emoji: '🔬 🧪' },
+        options: ["We're doing an experiment.", 'We doing an experiment.', "We're do an experiment."],
+        correctIndex: 0,
+        hint: {
+          ru: "Мы проводим опыт: We're doing an experiment",
+          lv: "Mēs veicam eksperimentu: We're doing an experiment",
+        },
+      },
+      {
+        id: 'g4_pc_6',
+        grade: 4,
+        category: 'present_continuous',
+        prompt: 'Choose the correct sentence:',
+        audioText: 'Choose the correct sentence.',
+        imageWord: { en: 'reading', emoji: '📖 😊' },
+        options: ["I'm reading a book.", 'I reading a book.', "I'm read a book."],
+        correctIndex: 0,
+        hint: {
+          ru: "Я читаю книгу: I'm reading a book",
+          lv: "Es lasu grāmatu: I'm reading a book",
+        },
+      },
+      {
+        id: 'g4_pc_7',
+        grade: 4,
+        category: 'present_continuous',
+        prompt: "What's he doing?",
+        audioText: "What's he doing?",
+        imageWord: { en: 'writing', emoji: '✍️ 📝' },
+        options: ["He's writing in his notebook.", 'He writes now.', "He's write in his notebook."],
+        correctIndex: 0,
+        hint: {
+          ru: "Он пишет в тетради: He's writing in his notebook",
+          lv: "Viņš raksta burtnīcā: He's writing in his notebook",
+        },
+      },
+      {
+        id: 'g4_pc_8',
+        grade: 4,
+        category: 'present_continuous',
+        prompt: 'Is she listening to music?',
+        audioText: 'Is she listening to music?',
+        imageWord: { en: 'headphones', emoji: '👧 🎧 ✅' },
+        options: ['Yes, she is.', 'Yes, she does.', 'Yes, she listening.'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Краткий ответ: Yes, she is',
+          lv: 'Īsā atbilde: Yes, she is',
+        },
+      },
+      {
+        id: 'g4_pc_9',
+        grade: 4,
+        category: 'present_continuous',
+        prompt: 'Are you playing computer games?',
+        audioText: 'Are you playing computer games?',
+        imageWord: { en: 'studying', emoji: '📚 ❌ 🎮' },
+        options: ["No, I'm not.", "No, I don't.", 'No, I not.'],
+        correctIndex: 0,
+        hint: {
+          ru: "Отрицательный ответ: No, I'm not",
+          lv: "Nolieguma atbilde: No, I'm not",
+        },
+      },
+      {
+        id: 'g4_pc_10',
+        grade: 4,
+        category: 'present_continuous',
+        prompt: 'Choose the correct question:',
+        audioText: 'Choose the correct question.',
+        imageWord: { en: 'question', emoji: '❓ 👦' },
+        options: ['What is he doing?', 'What he is doing?', 'What does he doing?'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Порядок слов в вопросе: What is he doing?',
+          lv: 'Vārdu kārtība jautājumā: What is he doing?',
+        },
+      },
+    ],
+  },
+  {
+    id: 'g4_whose_would_you_like',
+    grade: 4,
+    title: {
+      ru: 'Чьё это? (Mine/Hers) и Угощения',
+      lv: 'Kura tas ir? (Mine/Hers) un Cienasts',
+    },
+    description: {
+      ru: 'Whose is this...? It is mine/hers / Would you like a drink / some cherries?',
+      lv: 'Whose is this...? It is mine/hers / Would you like a drink / some cherries?',
+    },
+    emoji: '🎁',
+    color: 'amber',
+    questions: [
+      {
+        id: 'g4_ww_1',
+        grade: 4,
+        category: 'whose_and_offers',
+        prompt: 'Whose is this cap?',
+        audioText: 'Whose is this cap?',
+        imageWord: { en: 'my cap', emoji: '🧢 🙋‍♂️', customLabel: 'My cap' },
+        options: ["It's mine.", "It's my.", "It's me."],
+        correctIndex: 0,
+        hint: {
+          ru: 'Без существительного используется mine (Она моя)',
+          lv: 'Bez lietvārda lieto mine (Tā ir mana)',
+        },
+      },
+      {
+        id: 'g4_ww_2',
+        grade: 4,
+        category: 'whose_and_offers',
+        prompt: 'Whose is this bag?',
+        audioText: 'Whose is this bag?',
+        imageWord: { en: 'her bag', emoji: '🎒 👧', customLabel: "Girl's bag" },
+        options: ["It's hers.", "It's her.", "It's she."],
+        correctIndex: 0,
+        hint: {
+          ru: "Она её (без слова bag): It's hers",
+          lv: "Tā ir viņas: It's hers",
+        },
+      },
+      {
+        id: 'g4_ww_3',
+        grade: 4,
+        category: 'whose_and_offers',
+        prompt: 'Whose is this skateboard?',
+        audioText: 'Whose is this skateboard?',
+        imageWord: { en: 'his skateboard', emoji: '🛹 👦', customLabel: "Boy's skateboard" },
+        options: ["It's his.", "It's him.", "It's he."],
+        correctIndex: 0,
+        hint: {
+          ru: "Он его: It's his",
+          lv: "Tas ir viņa: It's his",
+        },
+      },
+      {
+        id: 'g4_ww_4',
+        grade: 4,
+        category: 'whose_and_offers',
+        prompt: 'Whose are these pens?',
+        audioText: 'Whose are these pens?',
+        imageWord: { en: 'our pens', emoji: '🖊️ 🖊️ 👥', customLabel: 'Our pens' },
+        options: ["They're ours.", "They're our.", "They're us."],
+        correctIndex: 0,
+        hint: {
+          ru: "Они наши: They're ours",
+          lv: "Tās ir mūsējās: They're ours",
+        },
+      },
+      {
+        id: 'g4_ww_5',
+        grade: 4,
+        category: 'whose_and_offers',
+        prompt: 'Whose are these books?',
+        audioText: 'Whose are these books?',
+        imageWord: { en: 'their books', emoji: '📚 🧑‍🤝‍🧑', customLabel: 'Their books' },
+        options: ["They're theirs.", "They're their.", "They're them."],
+        correctIndex: 0,
+        hint: {
+          ru: "Они их: They're theirs",
+          lv: "Tās ir viņu: They're theirs",
+        },
+      },
+      {
+        id: 'g4_ww_6',
+        grade: 4,
+        category: 'whose_and_offers',
+        prompt: 'Would you like a drink?',
+        audioText: 'Would you like a drink?',
+        imageWord: { en: 'drink', emoji: '🥤 ✅', customLabel: 'Yes' },
+        options: ['Yes, please.', 'Yes, I like.', 'Yes, thank you.'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Вежливое согласие: Yes, please (Да, пожалуйста)',
+          lv: 'Pieklājīga piekrišana: Yes, please',
+        },
+      },
+      {
+        id: 'g4_ww_7',
+        grade: 4,
+        category: 'whose_and_offers',
+        prompt: 'Would you like a sandwich?',
+        audioText: 'Would you like a sandwich?',
+        imageWord: { en: 'sandwich', emoji: '🥪 ❌', customLabel: 'No' },
+        options: ['No, thank you.', 'No, please.', "No, I don't like."],
+        correctIndex: 0,
+        hint: {
+          ru: 'Вежливый отказ: No, thank you (Нет, спасибо)',
+          lv: 'Pieklājīgs atteikums: No, thank you',
+        },
+      },
+      {
+        id: 'g4_ww_8',
+        grade: 4,
+        category: 'whose_and_offers',
+        prompt: 'Choose the correct sentence:',
+        audioText: 'Choose the correct sentence.',
+        imageWord: { en: 'cherries', emoji: '🍒 🍒', customLabel: 'Cherries' },
+        options: ['Would you like some cherries?', 'Would you like a cherries?', 'Would you like an cherries?'],
+        correctIndex: 0,
+        hint: {
+          ru: 'С множественным числом используется some: some cherries',
+          lv: 'Ar daudzskaitli lieto some: some cherries',
+        },
+      },
+      {
+        id: 'g4_ww_9',
+        grade: 4,
+        category: 'whose_and_offers',
+        prompt: 'Choose the correct sentence:',
+        audioText: 'Choose the correct sentence.',
+        imageWord: { en: 'apple', emoji: '🍎', customLabel: '1 Apple' },
+        options: ['Would you like an apple?', 'Would you like some apple?', 'Would you like a apple?'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Перед гласной буквой: an apple',
+          lv: 'Pirms patskaņa: an apple',
+        },
+      },
+      {
+        id: 'g4_ww_10',
+        grade: 4,
+        category: 'whose_and_offers',
+        prompt: 'Choose the correct sentence:',
+        audioText: 'Choose the correct sentence.',
+        imageWord: { en: 'water', emoji: '💧', customLabel: 'Water' },
+        options: ['Would you like some water?', 'Would you like a water?', 'Would you like an water?'],
+        correctIndex: 0,
+        hint: {
+          ru: 'С водой (неисчисляемое) используется some: some water',
+          lv: 'Ar ūdeni lieto some: some water',
+        },
+      },
+    ],
+  },
+  {
+    id: 'g4_crafts_requests',
+    grade: 4,
+    title: {
+      ru: 'Творчество: Like -ing и Просьбы',
+      lv: 'Radošums: Like -ing un Lūgumi',
+    },
+    description: {
+      ru: 'Do you like making masks? / Can you pass me that glue / those scissors?',
+      lv: 'Do you like making masks? / Can you pass me that glue / those scissors?',
+    },
+    emoji: '✂️',
+    color: 'purple',
+    questions: [
+      {
+        id: 'g4_cr_1',
+        grade: 4,
+        category: 'crafts_and_requests',
+        prompt: 'Do you like making masks?',
+        audioText: 'Do you like making masks?',
+        imageWord: { en: 'masks', emoji: '🎭 ✅' },
+        options: ['Yes, I do. I like making masks.', 'Yes, I like make masks.', 'Yes, I am.'],
+        correctIndex: 0,
+        hint: {
+          ru: 'После like используется -ing: like making masks',
+          lv: 'Pēc like lieto -ing: like making masks',
+        },
+      },
+      {
+        id: 'g4_cr_2',
+        grade: 4,
+        category: 'crafts_and_requests',
+        prompt: 'Do you like making cards?',
+        audioText: 'Do you like making cards?',
+        imageWord: { en: 'cards', emoji: '💌 ❌' },
+        options: ["No, I don't. I don't like making cards.", "No, I not. I don't like make cards.", "No, I doesn't."],
+        correctIndex: 0,
+        hint: {
+          ru: "Отрицание: No, I don't. I don't like making cards",
+          lv: "Noliegums: No, I don't. I don't like making cards",
+        },
+      },
+      {
+        id: 'g4_cr_3',
+        grade: 4,
+        category: 'crafts_and_requests',
+        prompt: 'Choose the correct sentence:',
+        audioText: 'Choose the correct sentence.',
+        imageWord: { en: 'drawing', emoji: '🖍️ 😊' },
+        options: ['I like drawing pictures.', 'I like draw pictures.', 'I like to drawing pictures.'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Мне нравится рисовать: I like drawing pictures',
+          lv: 'Man patīk zīmēt: I like drawing pictures',
+        },
+      },
+      {
+        id: 'g4_cr_4',
+        grade: 4,
+        category: 'crafts_and_requests',
+        prompt: 'Choose the correct sentence:',
+        audioText: 'Choose the correct sentence.',
+        imageWord: { en: 'origami', emoji: '🦢 ❌' },
+        options: ["He doesn't like folding paper.", "He don't like folding paper.", "He doesn't likes folding paper."],
+        correctIndex: 0,
+        hint: {
+          ru: "С he используется doesn't: He doesn't like folding paper",
+          lv: "Ar he lieto doesn't: He doesn't like folding paper",
+        },
+      },
+      {
+        id: 'g4_cr_5',
+        grade: 4,
+        category: 'crafts_and_requests',
+        prompt: 'Can you pass me ... glue, please?',
+        audioText: 'Can you pass me, blank, glue, please?',
+        imageWord: { en: 'glue', emoji: '🧴 ➡️', customLabel: 'Glue' },
+        options: ['that', 'those', 'these'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Клей (ед. число / вещество вдали): that glue',
+          lv: 'Līme (vienskaitlis tālumā): that glue',
+        },
+      },
+      {
+        id: 'g4_cr_6',
+        grade: 4,
+        category: 'crafts_and_requests',
+        prompt: 'Can you pass me ... scissors, please?',
+        audioText: 'Can you pass me, blank, scissors, please?',
+        imageWord: { en: 'scissors', emoji: '✂️ ➡️', customLabel: 'Scissors' },
+        options: ['those', 'that', 'this'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Ножницы (scissors) в английском всегда во МНОЖЕСТВЕННОМ числе: those scissors',
+          lv: 'Šķēres (scissors) angļu valodā vienmēr ir DAUDZSKAITLIS: those scissors',
+        },
+      },
+      {
+        id: 'g4_cr_7',
+        grade: 4,
+        category: 'crafts_and_requests',
+        prompt: 'Can you pass me that ruler, please?',
+        audioText: 'Can you pass me that ruler, please?',
+        imageWord: { en: 'ruler', emoji: '📏 🤝' },
+        options: ['Here you are.', 'Here are you.', 'There is you.'],
+        correctIndex: 0,
+        hint: {
+          ru: '«Вот, пожалуйста / держи»: Here you are',
+          lv: '«Lūdzu, ņem»: Here you are',
+        },
+      },
+      {
+        id: 'g4_cr_8',
+        grade: 4,
+        category: 'crafts_and_requests',
+        prompt: 'Can you pass me ... brushes, please?',
+        audioText: 'Can you pass me, blank, brushes, please?',
+        imageWord: { en: 'brushes', emoji: '🖌️ 🖌️ ➡️', customLabel: 'Brushes' },
+        options: ['those', 'that', 'this'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Кисточки (мн. число): those brushes',
+          lv: 'Otiņas (daudzskaitlis): those brushes',
+        },
+      },
+      {
+        id: 'g4_cr_9',
+        grade: 4,
+        category: 'crafts_and_requests',
+        prompt: 'Choose the correct sentence:',
+        audioText: 'Choose the correct sentence.',
+        imageWord: { en: 'paint', emoji: '🎨 ➡️' },
+        options: ['Can you pass me that paint, please?', 'Can you pass me those paint, please?', 'Can you pass me these paint, please?'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Краска (ед. число): that paint',
+          lv: 'Krāsa (vienskaitlis): that paint',
+        },
+      },
+      {
+        id: 'g4_cr_10',
+        grade: 4,
+        category: 'crafts_and_requests',
+        prompt: 'Do you like painting?',
+        audioText: 'Do you like painting?',
+        imageWord: { en: 'painting', emoji: '🖼️ ✅' },
+        options: ['Yes, I do.', 'Yes, I like.', 'Yes, I am.'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Краткий ответ: Yes, I do',
+          lv: 'Īsā atbilde: Yes, I do',
+        },
+      },
+    ],
+  },
+  {
+    id: 'g4_mix',
+    grade: 4,
+    title: {
+      ru: 'Все задания 4 класса (Микс)',
+      lv: 'Visi 4. klases uzdevumi (Mikss)',
+    },
+    description: {
+      ru: 'Случайные 10 вопросов из всех тем 4 класса',
+      lv: 'Jaukti 10 jautājumi no visām 4. klases tēmām',
+    },
+    emoji: '🎯',
+    color: 'rose',
+    questions: [], // Populated dynamically by getQuestionsForGrammarTopic
+  },
+];
+
 export const ALL_GRAMMAR_TOPICS: GrammarTopic[] = [
   ...GRADE_1_GRAMMAR_TOPICS,
   ...GRADE_2_GRAMMAR_TOPICS,
   ...GRADE_3_GRAMMAR_TOPICS,
+  ...GRADE_4_GRAMMAR_TOPICS,
 ];
 
 // Helper to get grammar topics based on active grades filter
@@ -3457,6 +4104,9 @@ export function getGrammarTopicsForGrades(selectedGrades: Grade[]): GrammarTopic
   }
   if (selectedGrades.includes(3)) {
     list.push(...GRADE_3_GRAMMAR_TOPICS);
+  }
+  if (selectedGrades.includes(4)) {
+    list.push(...GRADE_4_GRAMMAR_TOPICS);
   }
   return list;
 }
@@ -3487,6 +4137,12 @@ export function getQuestionsForGrammarTopic(topic: GrammarTopic): GrammarQuestio
   if (topic.id === 'g3_mix') {
     const all = GRADE_3_GRAMMAR_TOPICS
       .filter((t) => t.id !== 'g3_mix' && t.id !== 'g3_alphabet')
+      .flatMap((t) => t.questions);
+    return shuffleArray(all).slice(0, 10);
+  }
+  if (topic.id === 'g4_mix') {
+    const all = GRADE_4_GRAMMAR_TOPICS
+      .filter((t) => t.id !== 'g4_mix')
       .flatMap((t) => t.questions);
     return shuffleArray(all).slice(0, 10);
   }

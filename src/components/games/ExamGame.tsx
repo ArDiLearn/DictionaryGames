@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import confetti from 'canvas-confetti';
-import { Topic, Word, Grade, Language, LearningCourse, ExamResult, ExamQuestionType, ExamQuestion } from '../../types';
+import { Topic, Word, Grade, Language, LearningCourse, ExamResult, ExamQuestion, VocabExamQuestion, GrammarExamQuestion } from '../../types';
 import {
   translations,
   isLatvianTargetCourse,
@@ -10,6 +10,8 @@ import {
 import { sounds } from '../../utils/soundEffects';
 import { speakEnglish, speakLatvian, stopSpeech } from '../../utils/speech';
 import { WordIllustration } from '../WordIllustration';
+import { GrammarIllustration } from '../GrammarIllustration';
+import { getGrammarTopicsForGrades, GrammarQuestion } from '../../data/grammarData';
 import { ArrowLeft, Volume2, CheckCircle2, XCircle, RotateCcw, Home, Sparkles, SkipForward } from 'lucide-react';
 import { saveExamSession, loadExamSession, clearExamSession } from '../../services/examSession';
 
@@ -112,8 +114,13 @@ function generateExamQuestions(
   // Shuffle selected items so questions from different topics are nicely distributed
   const shuffledItems = shuffle(selectedItems);
 
-  const questionTypes: ExamQuestionType[] = ['audio', 'choice', 'truefalse', 'builder'];
-  const questions: ExamQuestion[] = [];
+  const questionTypes: ('audio' | 'choice' | 'truefalse' | 'builder')[] = [
+    'audio',
+    'choice',
+    'truefalse',
+    'builder',
+  ];
+  const questions: VocabExamQuestion[] = [];
 
   shuffledItems.forEach((item, index) => {
     const chosenWord = item.word;
@@ -190,7 +197,85 @@ function generateExamQuestions(
     }
   });
 
-  return questions;
+  const vocabQuestions = questions;
+
+  const grammarQuestions: GrammarExamQuestion[] = [];
+  if (course !== 'lv') {
+    const grammarTopics = getGrammarTopicsForGrades([grade]).filter(
+      (t) => !t.id.endsWith('_mix') && t.id !== 'g3_alphabet'
+    );
+    if (grammarTopics.length > 0) {
+      const targetGrammarCount = grade === 2 ? 7 : 6;
+      const pools = grammarTopics.map((gt) => ({
+        topicId: gt.id,
+        topicEmoji: gt.emoji,
+        questions: shuffle([...gt.questions]),
+      }));
+
+      const selectedGrammar: { q: GrammarQuestion; topicEmoji: string }[] = [];
+      const usedIds = new Set<string>();
+      while (selectedGrammar.length < targetGrammarCount) {
+        let added = 0;
+        for (const pool of pools) {
+          if (selectedGrammar.length >= targetGrammarCount) break;
+          const q = pool.questions.find((x) => !usedIds.has(x.id));
+          if (q) {
+            usedIds.add(q.id);
+            selectedGrammar.push({ q, topicEmoji: pool.topicEmoji });
+            added++;
+          }
+        }
+        if (added === 0) break;
+      }
+
+      selectedGrammar.forEach((item, idx) => {
+        const gq = item.q;
+        const options = gq.options.map((opt, optIdx) => ({
+          text: opt,
+          isCorrect: optIdx === gq.correctIndex,
+        }));
+        grammarQuestions.push({
+          id: `exam-grammar-${gq.id}-${idx}`,
+          topicId: gq.category,
+          topicEmoji: item.topicEmoji,
+          type: 'grammar',
+          options,
+          grammarData: {
+            prompt: gq.prompt,
+            audioText: gq.audioText,
+            imageWord: gq.imageWord,
+            isNegated: gq.isNegated,
+            badgeType: gq.badgeType,
+            options: gq.options,
+            correctIndex: gq.correctIndex,
+            hint: gq.hint,
+          },
+        });
+      });
+    }
+  }
+
+  if (grammarQuestions.length === 0) {
+    return vocabQuestions;
+  }
+
+  const finalQuestions: ExamQuestion[] = [];
+  const shuffledGrammar = shuffle(grammarQuestions);
+  let gIdx = 0;
+  const step = Math.max(1, Math.floor(vocabQuestions.length / (shuffledGrammar.length + 1)));
+
+  vocabQuestions.forEach((vq, i) => {
+    finalQuestions.push(vq);
+    if ((i + 1) % step === 0 && gIdx < shuffledGrammar.length) {
+      finalQuestions.push(shuffledGrammar[gIdx++]);
+    }
+  });
+
+  while (gIdx < shuffledGrammar.length) {
+    finalQuestions.push(shuffledGrammar[gIdx++]);
+  }
+
+  return finalQuestions;
 }
 
 export const ExamGame: React.FC<ExamGameProps> = ({
@@ -238,7 +323,8 @@ export const ExamGame: React.FC<ExamGameProps> = ({
   const currentQuestion = questions[currentIndex];
   const totalQuestions = questions.length;
 
-  const playQuestionAudio = (word: Word) => {
+  const playQuestionAudio = (word?: Word) => {
+    if (!word) return;
     stopSpeech();
     if (isLatvian) {
       speakLatvian(word.lv);
@@ -247,16 +333,21 @@ export const ExamGame: React.FC<ExamGameProps> = ({
     }
   };
 
-  // Auto-play speech on audio questions or prepare letters for builder questions
+  // Auto-play speech on audio/grammar questions or prepare letters for builder questions
   useEffect(() => {
     if (!currentQuestion || isFinished) return;
 
-    if (currentQuestion.type === 'audio') {
+    if (currentQuestion.type === 'audio' && currentQuestion.word) {
       const timeout = setTimeout(() => {
         playQuestionAudio(currentQuestion.word);
       }, 350);
       return () => clearTimeout(timeout);
-    } else if (currentQuestion.type === 'builder') {
+    } else if (currentQuestion.type === 'grammar' && currentQuestion.grammarData?.audioText) {
+      const timeout = setTimeout(() => {
+        speakEnglish(currentQuestion.grammarData!.audioText);
+      }, 350);
+      return () => clearTimeout(timeout);
+    } else if (currentQuestion.type === 'builder' && currentQuestion.word) {
       const targetWord = getTargetToSpell(currentQuestion.word, course);
       const chars = targetWord.toLowerCase().split('');
       const tiles: LetterTile[] = chars.map((char, index) => ({
@@ -580,7 +671,9 @@ export const ExamGame: React.FC<ExamGameProps> = ({
 
   if (!currentQuestion) return null;
 
-  const targetLearnWord = isLatvian ? currentQuestion.word.lv : currentQuestion.word.en;
+  const targetLearnWord = currentQuestion.type !== 'grammar'
+    ? (isLatvian ? currentQuestion.word.lv : currentQuestion.word.en)
+    : '';
   const progressPercent = Math.round(((currentIndex + 1) / totalQuestions) * 100);
 
   return (
@@ -647,6 +740,12 @@ export const ExamGame: React.FC<ExamGameProps> = ({
             <>
               <span>🔤</span>
               <span>{t.exam.promptBuilder}</span>
+            </>
+          )}
+          {currentQuestion.type === 'grammar' && (
+            <>
+              <span>💬</span>
+              <span>{t.exam.promptGrammar}</span>
             </>
           )}
         </div>
@@ -804,8 +903,102 @@ export const ExamGame: React.FC<ExamGameProps> = ({
           </div>
         )}
 
+        {/* Grammar Question Display */}
+        {currentQuestion.type === 'grammar' && currentQuestion.grammarData && (
+          <div className="my-4">
+            {currentQuestion.grammarData.imageWord && (
+              <div className="flex justify-center mb-4 select-none">
+                <GrammarIllustration
+                  imageWord={currentQuestion.grammarData.imageWord}
+                  isNegated={currentQuestion.grammarData.isNegated}
+                  badgeType={currentQuestion.grammarData.badgeType}
+                  language={language}
+                  className={
+                    currentQuestion.grammarData.imageWord.isTwoCharacters
+                      ? 'w-64 sm:w-80'
+                      : 'w-48 sm:w-56'
+                  }
+                />
+              </div>
+            )}
+            <div className="flex items-center justify-center gap-2.5 mb-2 max-w-xl mx-auto">
+              <h3 className="text-xl sm:text-2xl font-black text-slate-800 font-comic tracking-tight leading-snug">
+                {currentQuestion.grammarData.prompt}
+              </h3>
+              {currentQuestion.grammarData.audioText && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    sounds.playClick();
+                    speakEnglish(currentQuestion.grammarData!.audioText);
+                  }}
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-indigo-50 hover:bg-indigo-100 active:scale-95 border-2 border-indigo-300 text-indigo-600 flex items-center justify-center shrink-0 transition-transform cursor-pointer shadow-xs"
+                  title={t.listen}
+                >
+                  <Volume2 className="w-5 h-5 stroke-[2.2]" />
+                </button>
+              )}
+            </div>
+            {currentQuestion.grammarData.hint && (
+              <p className="text-xs sm:text-sm font-semibold text-slate-500 mb-2 font-comic">
+                {currentQuestion.grammarData.hint[language] || currentQuestion.grammarData.hint.ru}
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* Answer Options for 'grammar' in vertical list */}
+        {currentQuestion.type === 'grammar' && currentQuestion.options && (
+          <div className="w-full flex flex-col gap-3 max-w-xl mx-auto text-left mt-3">
+            {currentQuestion.options.map((option, idx) => {
+              const letter = String.fromCharCode(65 + idx);
+              const isSelected = selectedAnswer === option.text;
+              let btnStyle =
+                'bg-white border-slate-200 hover:border-amber-400 text-slate-800 hover:bg-amber-50/50';
+
+              if (isAnswered) {
+                if (option.isCorrect) {
+                  btnStyle = 'bg-emerald-500 border-emerald-600 text-white shadow-lg scale-102';
+                } else if (isSelected) {
+                  btnStyle = 'bg-rose-500 border-rose-600 text-white shadow-md animate-shake';
+                } else {
+                  btnStyle = 'bg-slate-100 border-slate-200 text-slate-400 opacity-60';
+                }
+              }
+
+              return (
+                <button
+                  key={`${option.text}-${idx}`}
+                  disabled={isAnswered}
+                  onClick={() => handleSelectChoice(option)}
+                  className={`relative p-3.5 sm:p-4 rounded-2xl border-3 font-black text-sm sm:text-lg font-comic shadow-sm transition-all cursor-pointer flex items-center justify-between gap-3 min-h-[3.75rem] ${btnStyle}`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`w-8 h-8 rounded-xl flex items-center justify-center text-xs sm:text-sm font-black shrink-0 ${
+                        isAnswered && (option.isCorrect || isSelected)
+                          ? 'bg-white/20 text-white'
+                          : 'bg-amber-100 text-amber-900'
+                      }`}
+                    >
+                      {letter}
+                    </span>
+                    <span className="leading-snug">{option.text}</span>
+                  </div>
+                  {isAnswered && option.isCorrect && (
+                    <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-white shrink-0 ml-2" />
+                  )}
+                  {isAnswered && isSelected && !option.isCorrect && (
+                    <XCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white shrink-0 ml-2" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
         {/* Answer Options for 'audio' and 'choice' in 2x2 grid */}
-        {currentQuestion.options && (
+        {currentQuestion.type !== 'grammar' && currentQuestion.options && (
           <div className="grid grid-cols-2 gap-2.5 sm:gap-4 mt-4 sm:mt-6">
             {currentQuestion.options.map((option, idx) => {
               const isSelected = selectedAnswer === option.text;

@@ -1,4 +1,4 @@
-import { Grade } from '../types';
+import { Grade, LearningCourse } from '../types';
 
 export const EXTRA_TOPICS: string[] = [
   'days_of_the_week',
@@ -265,22 +265,30 @@ export const GRADE_4_EXTRA_DUPLICATES = new Set([
 ]);
 
 /**
- * Returns ~65% of words from the main curriculum topics for the given grade:
- * - Grade 1: 97 words in main topics -> ~65% is 63 words
- * - Grade 2: 64 words in main topics -> ~65% is 42 words
- * - Grade 3: 76 words in main topics -> ~65% is 49 words
+ * Returns total questions count for the given grade exam:
+ * - Vocabulary questions (~65% of main curriculum words):
+ *   Grade 1: 97 words -> 63 questions
+ *   Grade 2: 65 words -> 42 questions
+ *   Grade 3: 82 words -> 53 questions
+ *   Grade 4: 64 words -> 42 questions
+ * - For English courses (course !== 'lv'), includes representative grammar questions:
+ *   Grade 1: 63 + 6 = 69
+ *   Grade 2: 42 + 7 = 49
+ *   Grade 3: 53 + 6 = 59
+ *   Grade 4: 42 + 6 = 48
  */
-export function getExamWordsCountForGrade(grade: Grade): number {
+export function getExamWordsCountForGrade(grade: Grade, course?: LearningCourse): number {
+  const isLv = course === 'lv';
   switch (grade) {
     case 1:
-      return 63;
+      return isLv ? 63 : 69;
     case 2:
-      return 42;
+      return isLv ? 42 : 49;
     case 3:
-      return 49;
+      return isLv ? 53 : 59;
     case 4:
-      return 31;
+      return isLv ? 42 : 48;
     default:
-      return 31;
+      return isLv ? 42 : 48;
   }
 }

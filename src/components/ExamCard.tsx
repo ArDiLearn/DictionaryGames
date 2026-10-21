@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grade, Language, LearningCourse, ExamResult } from '../types';
-import { translations, formatWordsCount, getTopicsPlural, getExamWordsCountForGrade } from '../utils/i18n';
+import { translations, formatWordsCount, getTopicsPlural } from '../utils/i18n';
+import { getExamWordsCountForGrade } from '../data/curriculum';
 import { sounds } from '../utils/soundEffects';
 import { Play, RotateCcw, BarChart3 } from 'lucide-react';
 
@@ -22,6 +23,7 @@ const _ExamCard: React.FC<ExamCardProps> = ({
   availableGrades,
   onSelectGradeTab,
   language,
+  course,
   topicsCount,
   wordsCount,
   result,
@@ -95,7 +97,7 @@ const _ExamCard: React.FC<ExamCardProps> = ({
 
             <span className="text-xs font-bold text-amber-800 bg-amber-100/90 px-2.5 py-1 rounded-full border border-amber-200">
               {(() => {
-                const effectiveWords = wordsCount || getExamWordsCountForGrade(grade);
+                const effectiveWords = wordsCount || getExamWordsCountForGrade(grade, course);
                 const topicsText = `${topicsCount} ${getTopicsPlural(topicsCount, language)}`;
                 const wordsText = formatWordsCount(effectiveWords, language);
                 return `${topicsText} · ${wordsText}`;

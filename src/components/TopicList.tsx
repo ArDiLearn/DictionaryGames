@@ -1154,7 +1154,7 @@ export const TopicList: React.FC<TopicListProps> = ({
             const activeGrade: Grade = selectedGrades.includes(examGradeTab)
               ? examGradeTab
               : selectedGrades[0];
-            const topicsCount =
+            const baseTopicsCount =
               activeGrade === 1
                 ? GRADE_1_MAIN_TOPICS.length
                 : activeGrade === 2
@@ -1162,6 +1162,13 @@ export const TopicList: React.FC<TopicListProps> = ({
                 : activeGrade === 3
                 ? GRADE_3_MAIN_TOPICS.length
                 : GRADE_4_MAIN_TOPICS.length;
+            const grammarCount =
+              course !== 'lv'
+                ? getGrammarTopicsForGrades([activeGrade]).filter(
+                    (t) => !t.id.endsWith('_mix') && t.id !== 'g3_alphabet'
+                  ).length
+                : 0;
+            const topicsCount = baseTopicsCount + grammarCount;
 
             return (
               <div>

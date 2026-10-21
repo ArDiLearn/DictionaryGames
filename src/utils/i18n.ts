@@ -272,6 +272,7 @@ export interface Translations {
     promptChoice: string;
     promptTrueFalse: string;
     promptBuilder: string;
+    promptGrammar: string;
     gradeMark5: string;
     gradeMark4: string;
     gradeMark3: string;
@@ -550,7 +551,7 @@ export const translations: Record<Language, Translations> = {
     },
     exam: {
       cardTitle: 'Контрольная работа',
-      cardSubtitle: 'Проверка знаний по всем основным темам',
+      cardSubtitle: 'Проверка знаний по словам и грамматике',
       readyBadge: 'Проверь свои знания! 🎓',
       bestScoreLabel: 'Лучший результат',
       startBtn: 'Начать контрольную',
@@ -560,6 +561,7 @@ export const translations: Record<Language, Translations> = {
       promptChoice: 'Как переводится это слово?',
       promptTrueFalse: 'Верно ли указан перевод?',
       promptBuilder: 'Собери слово из букв',
+      promptGrammar: 'Грамматика и фразы',
       gradeMark5: 'Отлично! 5+',
       gradeMark4: 'Хорошо! 4',
       gradeMark3: 'Зачёт! 3',
@@ -836,7 +838,7 @@ export const translations: Record<Language, Translations> = {
     },
     exam: {
       cardTitle: 'Pārbaudes darbs',
-      cardSubtitle: 'Zināšanu pārbaude visās pamatkursa tēmās',
+      cardSubtitle: 'Pārbaudes darbs par vārdiem un gramatiku',
       readyBadge: 'Pārbaudi savas zināšanas! 🎓',
       bestScoreLabel: 'Labākais rezultāts',
       startBtn: 'Sākt pārbaudes darbu',
@@ -846,6 +848,7 @@ export const translations: Record<Language, Translations> = {
       promptChoice: 'Kā tulko šo vārdu?',
       promptTrueFalse: 'Vai tulkojums ir pareizs?',
       promptBuilder: 'Saliec vārdu no burtiem',
+      promptGrammar: 'Gramatika un frāzes',
       gradeMark5: 'Teicami! 5+',
       gradeMark4: 'Labi! 4',
       gradeMark3: 'Ieskaitīts! 3',

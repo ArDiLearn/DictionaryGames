@@ -140,13 +140,43 @@ export interface PlayerTitle {
   category: TitleCategory;
 }
 
-export type ExamQuestionType = 'audio' | 'choice' | 'truefalse' | 'builder';
+export type ExamQuestionType = 'audio' | 'choice' | 'truefalse' | 'builder' | 'grammar';
 
-export interface ExamQuestion {
+export interface ExamGrammarData {
+  prompt: string;
+  audioText: string;
+  imageWord?: {
+    en: string;
+    emoji: string;
+    secondEmoji?: string;
+    customLabel?: string;
+    hideCaption?: boolean;
+    isTwoCharacters?: boolean;
+    highlightIndex?: 0 | 1;
+    fullBodyHeight?: {
+      first: { gender: 'boy' | 'girl'; height: 'tall' | 'short' };
+      second: { gender: 'boy' | 'girl'; height: 'tall' | 'short' };
+    };
+    heightScale?: {
+      first?: 'tall' | 'short' | 'normal';
+      second?: 'tall' | 'short' | 'normal';
+    };
+  };
+  isNegated?: boolean;
+  badgeType?: 'have' | 'can' | 'like' | 'none';
+  options: string[];
+  correctIndex: number;
+  hint?: {
+    ru: string;
+    lv: string;
+  };
+}
+
+export interface VocabExamQuestion {
   id: string;
   topicId: string;
   topicEmoji?: string;
-  type: ExamQuestionType;
+  type: 'audio' | 'choice' | 'truefalse' | 'builder';
   word: Word;
   // For 'audio' and 'choice' questions:
   options?: {
@@ -158,7 +188,27 @@ export interface ExamQuestion {
   displayWord?: string;
   displayTranslation?: string;
   isTrue?: boolean;
+  grammarData?: never;
 }
+
+export interface GrammarExamQuestion {
+  id: string;
+  topicId: string;
+  topicEmoji?: string;
+  type: 'grammar';
+  word?: never;
+  options?: {
+    text: string;
+    word?: Word;
+    isCorrect: boolean;
+  }[];
+  displayWord?: never;
+  displayTranslation?: never;
+  isTrue?: never;
+  grammarData: ExamGrammarData;
+}
+
+export type ExamQuestion = VocabExamQuestion | GrammarExamQuestion;
 
 export interface ExamResult {
   grade: Grade;

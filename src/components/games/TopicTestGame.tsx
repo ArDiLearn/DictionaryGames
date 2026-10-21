@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Topic, Word, Language, LearningCourse, ExamQuestionType, ExamQuestion } from '../../types';
+import { Topic, Word, Language, LearningCourse, VocabExamQuestion } from '../../types';
 import {
   translations,
   isLatvianTargetCourse,
@@ -53,7 +53,7 @@ function generateTestQuestions(
   allTopics: Topic[],
   language: Language,
   course: LearningCourse
-): ExamQuestion[] {
+): VocabExamQuestion[] {
   const getLearnWord = (w: Word) => getTargetWordText(w, course);
   const getTransWord = (w: Word) => getTranslationWordText(w, course, language);
 
@@ -63,8 +63,8 @@ function generateTestQuestions(
   ];
 
   const shuffledWords = shuffle(topic.words || []);
-  const questionTypes: ExamQuestionType[] = ['choice', 'audio', 'truefalse', 'builder'];
-  const questions: ExamQuestion[] = [];
+  const questionTypes: ('choice' | 'audio' | 'truefalse' | 'builder')[] = ['choice', 'audio', 'truefalse', 'builder'];
+  const questions: VocabExamQuestion[] = [];
 
   shuffledWords.forEach((chosenWord, index) => {
     let qType = questionTypes[index % questionTypes.length];
@@ -160,7 +160,7 @@ export const TopicTestGame: React.FC<TopicTestGameProps> = ({
   const t = translations[language];
   const isLatvian = isLatvianTargetCourse(course);
 
-  const [questions] = useState<ExamQuestion[]>(() =>
+  const [questions] = useState<VocabExamQuestion[]>(() =>
     generateTestQuestions(topic, allTopics, language, course)
   );
   const [currentIndex, setCurrentIndex] = useState(0);

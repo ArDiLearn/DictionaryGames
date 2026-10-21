@@ -56,7 +56,7 @@ export const ALPHABET_LETTERS: AlphabetLetter[] = [
     letter: 'E',
     display: 'Ee',
     transcription: '[ iː ]',
-    tts: 'ee',
+    tts: 'E.',
     example: { en: 'elephant', ru: 'слон', lv: 'zilonis', emoji: '🐘' },
     color: { bg: 'bg-emerald-50', border: 'border-emerald-300 hover:border-emerald-400', text: 'text-emerald-700', badge: 'bg-emerald-100 text-emerald-800 border-emerald-200' },
   },

@@ -2922,6 +2922,400 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       </g>
     </svg>
   ),
+  // Preposition scenes & grammar illustrations
+  'book on table': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground shadow */}
+      <ellipse cx="50" cy="86" rx="36" ry="6" fill="#cbd5e1" opacity="0.6" />
+      {/* 4 Wooden Legs */}
+      <rect x="26" y="56" width="5" height="26" rx="2" fill="#92400e" />
+      <rect x="70" y="56" width="5" height="26" rx="2" fill="#92400e" />
+      {/* Apron */}
+      <polygon points="24,54 76,54 74,60 26,60" fill="#b45309" />
+      {/* Front Legs */}
+      <rect x="20" y="58" width="6" height="28" rx="2" fill="#d97706" />
+      <rect x="74" y="58" width="6" height="28" rx="2" fill="#d97706" />
+      {/* Wooden Tabletop */}
+      <polygon points="20,56 80,56 84,48 16,48" fill="#b45309" />
+      <polygon points="16,48 84,48 78,40 22,40" fill="#f59e0b" />
+      <line x1="28" y1="44" x2="72" y2="44" stroke="#fbbf24" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Book on the table */}
+      <g transform="translate(32, 24)">
+        {/* Shadow under book */}
+        <ellipse cx="18" cy="21" rx="16" ry="3" fill="#78350f" opacity="0.4" />
+        {/* Book spine & cover */}
+        <polygon points="2,18 16,21 34,16 20,13" fill="#1e40af" />
+        <polygon points="2,16 16,19 34,14 20,11" fill="#2563eb" />
+        <polygon points="2,14 16,17 34,12 20,9" fill="#3b82f6" />
+        {/* Pages thickness */}
+        <polygon points="2,16 2,18 16,21 16,19" fill="#f8fafc" />
+        <polygon points="16,19 16,21 34,16 34,14" fill="#e2e8f0" />
+        {/* Top cover details */}
+        <polygon points="4,13 16,16 32,11 20,8" fill="#60a5fa" />
+        {/* Gold star on cover */}
+        <circle cx="18" cy="12" r="2.5" fill="#fef08a" />
+        {/* Red bookmark ribbon */}
+        <path d="M 16 18 Q 15 23 17 25 L 19 23 L 18 20" fill="#ef4444" />
+      </g>
+    </svg>
+  ),
+
+  'apple on table': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground shadow */}
+      <ellipse cx="50" cy="86" rx="36" ry="6" fill="#cbd5e1" opacity="0.6" />
+      {/* 4 Wooden Legs */}
+      <rect x="26" y="56" width="5" height="26" rx="2" fill="#92400e" />
+      <rect x="70" y="56" width="5" height="26" rx="2" fill="#92400e" />
+      {/* Apron */}
+      <polygon points="24,54 76,54 74,60 26,60" fill="#b45309" />
+      {/* Front Legs */}
+      <rect x="20" y="58" width="6" height="28" rx="2" fill="#d97706" />
+      <rect x="74" y="58" width="6" height="28" rx="2" fill="#d97706" />
+      {/* Wooden Tabletop */}
+      <polygon points="20,56 80,56 84,48 16,48" fill="#b45309" />
+      <polygon points="16,48 84,48 78,40 22,40" fill="#f59e0b" />
+      <line x1="28" y1="44" x2="72" y2="44" stroke="#fbbf24" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Apple resting ON the table */}
+      <g transform="translate(50, 42)">
+        {/* Apple cast shadow on table */}
+        <ellipse cx="0" cy="4" rx="10" ry="3.5" fill="#78350f" opacity="0.45" />
+        {/* Apple Body */}
+        <path
+          d="M 0 -10 C -6 -16 -16 -12 -14 0 C -12 10 -4 14 0 13 C 4 14 12 10 14 0 C 16 -12 6 -16 0 -10 Z"
+          fill="#dc2626"
+        />
+        {/* Apple Highlight */}
+        <path
+          d="M -1 -9 C -5 -14 -13 -10 -11 0 C -9 7 -4 11 0 10 C 2 10 0 6 0 0 C 0 -6 1 -8 -1 -9 Z"
+          fill="#ef4444"
+        />
+        <ellipse cx="-5" cy="-3" rx="3" ry="5" fill="#f87171" opacity="0.6" transform="rotate(-20 -5 -3)" />
+        {/* Stem */}
+        <path d="M 0 -10 C 1 -15 5 -18 7 -19" stroke="#78350f" strokeWidth="2" strokeLinecap="round" fill="none" />
+        {/* Green Leaf */}
+        <path d="M 1 -14 C 5 -18 11 -18 13 -15 C 13 -11 8 -11 1 -14 Z" fill="#22c55e" />
+      </g>
+    </svg>
+  ),
+
+  'cat under chair': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Floor shadow */}
+      <ellipse cx="50" cy="88" rx="34" ry="5" fill="#cbd5e1" opacity="0.6" />
+      {/* Chair Backrest */}
+      <rect x="28" y="14" width="5" height="42" rx="2.5" fill="#b45309" />
+      <rect x="67" y="14" width="5" height="42" rx="2.5" fill="#b45309" />
+      {/* Horizontal Slats */}
+      <rect x="29" y="18" width="42" height="6" rx="2" fill="#d97706" />
+      <rect x="29" y="28" width="42" height="5" rx="2" fill="#f59e0b" />
+      <rect x="29" y="37" width="42" height="5" rx="2" fill="#d97706" />
+      {/* Chair Seat */}
+      <polygon points="22,54 78,54 84,48 16,48" fill="#b45309" />
+      <polygon points="16,48 84,48 78,44 22,44" fill="#f59e0b" />
+      {/* Back Legs */}
+      <rect x="26" y="54" width="5" height="32" rx="2" fill="#92400e" />
+      <rect x="69" y="54" width="5" height="32" rx="2" fill="#92400e" />
+      {/* THE CAT SITTING UNDER THE CHAIR */}
+      <g id="cuteCatUnder">
+        {/* Cat shadow */}
+        <ellipse cx="50" cy="87" rx="14" ry="3.5" fill="#475569" opacity="0.35" />
+        {/* Tail */}
+        <path d="M 60 84 Q 68 85 70 80 Q 72 74 67 72" stroke="#ea580c" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        {/* Cat Body */}
+        <ellipse cx="50" cy="78" rx="13" ry="9" fill="#f97316" />
+        <ellipse cx="49" cy="79" rx="8" ry="6" fill="#fed7aa" />
+        {/* Cat Head */}
+        <circle cx="48" cy="67" r="9" fill="#f97316" />
+        {/* Ears */}
+        <polygon points="41,63 41,55 47,60" fill="#ea580c" />
+        <polygon points="42,62 42,57 46,60" fill="#fecdd3" />
+        <polygon points="55,63 55,55 49,60" fill="#ea580c" />
+        <polygon points="54,62 54,57 50,60" fill="#fecdd3" />
+        {/* Cheeks and Muzzle */}
+        <ellipse cx="48" cy="70" rx="5" ry="3.5" fill="#ffffff" />
+        {/* Eyes (smiling friendly curves) */}
+        <path d="M 43 66 Q 45 64 47 66" stroke="#431407" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+        <path d="M 49 66 Q 51 64 53 66" stroke="#431407" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+        {/* Nose & Mouth */}
+        <polygon points="47,69 49,69 48,70.5" fill="#f43f5e" />
+        <path d="M 47 71 Q 48 72 49 71" stroke="#431407" strokeWidth="1" strokeLinecap="round" fill="none" />
+        {/* Whiskers */}
+        <line x1="39" y1="69" x2="44" y2="70" stroke="#78350f" strokeWidth="0.8" />
+        <line x1="39" y1="72" x2="44" y2="71" stroke="#78350f" strokeWidth="0.8" />
+        <line x1="52" y1="70" x2="57" y2="69" stroke="#78350f" strokeWidth="0.8" />
+        <line x1="52" y1="71" x2="57" y2="72" stroke="#78350f" strokeWidth="0.8" />
+        {/* Front Paws */}
+        <ellipse cx="44" cy="85" rx="3.5" ry="2.5" fill="#fed7aa" />
+        <ellipse cx="52" cy="85" rx="3.5" ry="2.5" fill="#fed7aa" />
+      </g>
+      {/* Front Legs of Chair (in front of cat) */}
+      <rect x="20" y="54" width="5.5" height="34" rx="2" fill="#d97706" />
+      <rect x="74" y="54" width="5.5" height="34" rx="2" fill="#d97706" />
+      {/* Bottom Crossbar */}
+      <rect x="22" y="74" width="56" height="3" rx="1" fill="#b45309" opacity="0.8" />
+    </svg>
+  ),
+
+  'ball under bed': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground Shadow under bed */}
+      <ellipse cx="50" cy="88" rx="44" ry="5" fill="#cbd5e1" opacity="0.6" />
+      {/* Headboard (Left) */}
+      <rect x="8" y="30" width="7" height="56" rx="3" fill="#b45309" />
+      <circle cx="11.5" cy="28" r="4.5" fill="#d97706" />
+      <rect x="14" y="36" width="3" height="36" rx="1.5" fill="#d97706" />
+      {/* Footboard (Right) */}
+      <rect x="85" y="44" width="7" height="42" rx="3" fill="#b45309" />
+      <circle cx="88.5" cy="42" r="4" fill="#d97706" />
+      {/* Bed Base / Frame */}
+      <rect x="12" y="58" width="76" height="8" rx="2" fill="#92400e" />
+      {/* Bed Legs */}
+      <rect x="12" y="66" width="6" height="20" rx="2" fill="#78350f" />
+      <rect x="82" y="66" width="6" height="20" rx="2" fill="#78350f" />
+      {/* Mattress */}
+      <rect x="14" y="52" width="72" height="8" rx="2" fill="#f8fafc" />
+      {/* Fluffy Pillow */}
+      <rect x="16" y="44" width="16" height="9" rx="4" fill="#ffffff" stroke="#e2e8f0" strokeWidth="1" />
+      {/* Cozy Blue Blanket */}
+      <path d="M 28 50 L 84 50 L 84 60 L 28 60 Z" fill="#3b82f6" />
+      <path d="M 28 50 Q 56 52 84 50 L 84 56 Q 56 58 28 56 Z" fill="#60a5fa" />
+      <line x1="28" y1="56" x2="84" y2="56" stroke="#93c5fd" strokeWidth="1.5" strokeDasharray="3 3" />
+      {/* THE SOCCER BALL UNDER THE BED (UNDER THE FRAME!) */}
+      <g transform="translate(48, 77)">
+        {/* Ball Shadow on floor */}
+        <ellipse cx="0" cy="8" rx="9" ry="2.5" fill="#64748b" opacity="0.5" />
+        {/* Ball Body */}
+        <circle cx="0" cy="0" r="8" fill="#ffffff" stroke="#334155" strokeWidth="1" />
+        {/* Classic Soccer Pentagons */}
+        <polygon points="0,-2 -3,-1 -2,2 2,2 3,-1" fill="#0f172a" />
+        <polygon points="0,-8 -2,-5 2,-5" fill="#0f172a" />
+        <polygon points="-7,-4 -5,-2 -7,0" fill="#0f172a" />
+        <polygon points="7,-4 5,-2 7,0" fill="#0f172a" />
+        <polygon points="-5,5 -3,3 -5,7" fill="#0f172a" />
+        <polygon points="5,5 3,3 5,7" fill="#0f172a" />
+        <line x1="0" y1="-2" x2="0" y2="-5" stroke="#334155" strokeWidth="0.8" />
+        <line x1="-3" y1="-1" x2="-5" y2="-2" stroke="#334155" strokeWidth="0.8" />
+        <line x1="3" y1="-1" x2="5" y2="-2" stroke="#334155" strokeWidth="0.8" />
+        <line x1="-2" y1="2" x2="-3" y2="3" stroke="#334155" strokeWidth="0.8" />
+        <line x1="2" y1="2" x2="3" y2="3" stroke="#334155" strokeWidth="0.8" />
+      </g>
+    </svg>
+  ),
+
+  'pencil in pencil case': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground Shadow */}
+      <ellipse cx="50" cy="85" rx="36" ry="6" fill="#cbd5e1" opacity="0.6" />
+      {/* Back Wall of Pencil Case (Interior) */}
+      <rect x="14" y="44" width="72" height="34" rx="10" fill="#0891b2" />
+      <rect x="16" y="46" width="68" height="16" rx="6" fill="#155e75" />
+      {/* PENCIL INSIDE AND PEEKING OUT OF THE CASE */}
+      <g transform="translate(46, 42) rotate(-35)">
+        {/* Shadow inside */}
+        <rect x="-4" y="-8" width="8" height="42" fill="#0e7490" opacity="0.3" />
+        {/* Yellow Pencil Body */}
+        <rect x="-4" y="-12" width="8" height="42" fill="#f59e0b" />
+        <line x1="-1.5" y1="-12" x2="-1.5" y2="30" stroke="#fbbf24" strokeWidth="1" />
+        <line x1="1.5" y1="-12" x2="1.5" y2="30" stroke="#d97706" strokeWidth="1" />
+        {/* Wood collar */}
+        <polygon points="-4,-12 4,-12 0,-24" fill="#fed7aa" />
+        {/* Graphite tip */}
+        <polygon points="-1.5,-19 1.5,-19 0,-24" fill="#334155" />
+        {/* Ferrule */}
+        <rect x="-4" y="30" width="8" height="4" fill="#cbd5e1" />
+        {/* Pink Eraser */}
+        <rect x="-4" y="34" width="8" height="6" rx="2" fill="#f43f5e" />
+      </g>
+      {/* A second small blue crayon peeking next to it */}
+      <g transform="translate(62, 46) rotate(-22)">
+        <rect x="-3" y="-6" width="6" height="30" fill="#3b82f6" />
+        <polygon points="-3,-6 3,-6 0,-14" fill="#fed7aa" />
+        <polygon points="-1,-11 1,-11 0,-14" fill="#1d4ed8" />
+      </g>
+      {/* Front Wall of Pencil Case */}
+      <path d="M 14 54 C 14 50 18 48 24 48 L 76 48 C 82 48 86 50 86 54 L 86 70 C 86 76 80 80 74 80 L 26 80 C 20 80 14 76 14 70 Z" fill="#06b6d4" />
+      {/* Front Pocket / Stitching */}
+      <path d="M 16 54 L 84 54" stroke="#67e8f9" strokeWidth="1.5" strokeDasharray="3 2" />
+      {/* Zipper Teeth Along Edge */}
+      <line x1="16" y1="48" x2="84" y2="48" stroke="#94a3b8" strokeWidth="2.5" strokeDasharray="2 2" />
+      {/* Zipper Pull Tab */}
+      <circle cx="82" cy="48" r="3.5" fill="#f59e0b" />
+      <rect x="80" y="48" width="4" height="8" rx="1.5" fill="#d97706" />
+    </svg>
+  ),
+
+  'ruler in bag': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground Shadow */}
+      <ellipse cx="50" cy="88" rx="34" ry="5" fill="#cbd5e1" opacity="0.6" />
+      {/* Backpack Straps (Behind) */}
+      <path d="M 32 38 C 22 42 16 64 22 76" stroke="#1d4ed8" strokeWidth="6" strokeLinecap="round" fill="none" />
+      <path d="M 68 38 C 78 42 84 64 78 76" stroke="#1d4ed8" strokeWidth="6" strokeLinecap="round" fill="none" />
+      {/* Backpack Top Loop */}
+      <path d="M 42 32 C 42 22 58 22 58 32" stroke="#1e40af" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+      {/* Backpack Main Body Interior Back */}
+      <path d="M 24 46 C 24 34 34 30 50 30 C 66 30 76 34 76 46 L 76 80 C 76 86 70 88 50 88 C 30 88 24 86 24 80 Z" fill="#1e3a8a" />
+      {/* RULER STICKING OUT OF THE OPEN BAG */}
+      <g transform="translate(44, 12)">
+        {/* Yellow Ruler Body */}
+        <rect x="0" y="0" width="14" height="46" rx="2" fill="#fde047" stroke="#ca8a04" strokeWidth="1" />
+        <rect x="2" y="2" width="10" height="42" fill="#fef08a" />
+        {/* Centimeter Tick Marks */}
+        <line x1="0" y1="4" x2="5" y2="4" stroke="#713f12" strokeWidth="1" />
+        <line x1="0" y1="8" x2="3.5" y2="8" stroke="#713f12" strokeWidth="0.8" />
+        <line x1="0" y1="12" x2="5" y2="12" stroke="#713f12" strokeWidth="1" />
+        <line x1="0" y1="16" x2="3.5" y2="16" stroke="#713f12" strokeWidth="0.8" />
+        <line x1="0" y1="20" x2="5" y2="20" stroke="#713f12" strokeWidth="1" />
+        <line x1="0" y1="24" x2="3.5" y2="24" stroke="#713f12" strokeWidth="0.8" />
+        <line x1="0" y1="28" x2="5" y2="28" stroke="#713f12" strokeWidth="1" />
+        <line x1="0" y1="32" x2="3.5" y2="32" stroke="#713f12" strokeWidth="0.8" />
+        <line x1="0" y1="36" x2="5" y2="36" stroke="#713f12" strokeWidth="1" />
+        <line x1="0" y1="40" x2="3.5" y2="40" stroke="#713f12" strokeWidth="0.8" />
+        {/* Numbers 1, 2, 3 */}
+        <circle cx="9" cy="12" r="1.5" fill="#713f12" />
+        <circle cx="9" cy="20" r="1.5" fill="#713f12" />
+        <circle cx="9" cy="28" r="1.5" fill="#713f12" />
+      </g>
+      {/* Backpack Main Front Body */}
+      <path d="M 24 50 C 24 42 34 38 50 38 C 66 38 76 42 76 50 L 76 80 C 76 86 70 88 50 88 C 30 88 24 86 24 80 Z" fill="#2563eb" />
+      {/* Curved Zipper Edge */}
+      <path d="M 24 50 C 32 44 68 44 76 50" stroke="#94a3b8" strokeWidth="3" strokeDasharray="3 2" fill="none" />
+      {/* Front Zippered Pocket */}
+      <rect x="32" y="62" width="36" height="20" rx="5" fill="#3b82f6" stroke="#1d4ed8" strokeWidth="1.5" />
+      <line x1="36" y1="67" x2="64" y2="67" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="2 1.5" />
+      <circle cx="62" cy="67" r="2.5" fill="#f59e0b" />
+    </svg>
+  ),
+
+  'green eyes': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Background Soft Glow */}
+      <ellipse cx="50" cy="50" rx="46" ry="32" fill="#ecfdf5" opacity="0.7" />
+      {/* Left Eyebrow */}
+      <path d="M 18 34 Q 30 26 42 33" stroke="#475569" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+      {/* Right Eyebrow */}
+      <path d="M 58 33 Q 70 26 82 34" stroke="#475569" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+      {/* LEFT EYE */}
+      <g id="leftGreenEye">
+        {/* Eye White (Sclera) */}
+        <path d="M 14 54 C 18 40 40 40 44 54 C 40 68 18 68 14 54 Z" fill="#ffffff" stroke="#94a3b8" strokeWidth="2" />
+        {/* Vibrant Emerald Iris Outer Ring */}
+        <circle cx="29" cy="54" r="11" fill="#047857" />
+        {/* Bright Green Iris Body */}
+        <circle cx="29" cy="54" r="9.5" fill="#10b981" />
+        {/* Vivid Light Green Accent */}
+        <circle cx="29" cy="54" r="7" fill="#34d399" />
+        {/* Pupil */}
+        <circle cx="29" cy="54" r="5" fill="#0f172a" />
+        {/* Sparkling Catchlight / Highlights */}
+        <circle cx="26" cy="50.5" r="3.2" fill="#ffffff" />
+        <circle cx="32" cy="56.5" r="1.5" fill="#ffffff" />
+        {/* Eyelid shadow */}
+        <path d="M 16 50 C 22 42 36 42 42 50" stroke="#047857" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.3" />
+      </g>
+      {/* RIGHT EYE */}
+      <g id="rightGreenEye">
+        {/* Eye White (Sclera) */}
+        <path d="M 56 54 C 60 40 82 40 86 54 C 82 68 60 68 56 54 Z" fill="#ffffff" stroke="#94a3b8" strokeWidth="2" />
+        {/* Vibrant Emerald Iris Outer Ring */}
+        <circle cx="71" cy="54" r="11" fill="#047857" />
+        {/* Bright Green Iris Body */}
+        <circle cx="71" cy="54" r="9.5" fill="#10b981" />
+        {/* Vivid Light Green Accent */}
+        <circle cx="71" cy="54" r="7" fill="#34d399" />
+        {/* Pupil */}
+        <circle cx="71" cy="54" r="5" fill="#0f172a" />
+        {/* Sparkling Catchlight / Highlights */}
+        <circle cx="68" cy="50.5" r="3.2" fill="#ffffff" />
+        <circle cx="74" cy="56.5" r="1.5" fill="#ffffff" />
+        {/* Eyelid shadow */}
+        <path d="M 58 50 C 64 42 78 42 84 50" stroke="#047857" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.3" />
+      </g>
+      {/* Subtle cute nose hint between eyes */}
+      <path d="M 48 58 Q 50 61 52 58" stroke="#cbd5e1" strokeWidth="2" strokeLinecap="round" fill="none" />
+    </svg>
+  ),
+
+  'red car': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground Shadow */}
+      <ellipse cx="50" cy="84" rx="38" ry="6" fill="#cbd5e1" opacity="0.6" />
+      {/* Car Body (Lower) */}
+      <path d="M 12 68 C 12 60 16 56 26 56 L 76 56 C 86 56 90 62 90 70 L 88 74 C 88 77 84 78 78 78 L 22 78 C 16 78 12 75 12 68 Z" fill="#dc2626" />
+      {/* Gloss Highlight on side */}
+      <path d="M 16 64 L 86 64 L 84 70 L 16 70 Z" fill="#ef4444" opacity="0.9" />
+      {/* Cabin / Roof */}
+      <path d="M 26 56 L 36 38 C 38 35 42 34 46 34 L 68 34 C 73 34 76 37 78 42 L 84 56 Z" fill="#ef4444" />
+      {/* Windows */}
+      {/* Front Windshield */}
+      <polygon points="69,38 78,54 82,54 74,38" fill="#bae6fd" />
+      {/* Front Door Window */}
+      <polygon points="54,38 54,54 75,54 67,38" fill="#e0f2fe" />
+      {/* Rear Door Window */}
+      <polygon points="38,40 38,54 51,54 51,38 43,38" fill="#e0f2fe" />
+      {/* Window Pillar */}
+      <rect x="51" y="36" width="3" height="18" fill="#dc2626" />
+      {/* Window shine glare */}
+      <line x1="45" y1="40" x2="42" y2="52" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
+      <line x1="62" y1="40" x2="59" y2="52" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
+      {/* Front Headlight (Yellow Glow) */}
+      <path d="M 86 64 C 89 64 91 66 91 69 L 85 70 Z" fill="#fef08a" stroke="#eab308" strokeWidth="1" />
+      {/* Rear Taillight */}
+      <path d="M 12 64 C 11 66 11 68 12 70 L 14 70 Z" fill="#991b1b" />
+      {/* Wheels */}
+      {/* Left Wheel */}
+      <circle cx="28" cy="76" r="10" fill="#1e293b" />
+      <circle cx="28" cy="76" r="6" fill="#94a3b8" />
+      <circle cx="28" cy="76" r="3" fill="#cbd5e1" />
+      {/* Right Wheel */}
+      <circle cx="74" cy="76" r="10" fill="#1e293b" />
+      <circle cx="74" cy="76" r="6" fill="#94a3b8" />
+      <circle cx="74" cy="76" r="3" fill="#cbd5e1" />
+      {/* Door Handle */}
+      <rect x="46" y="59" width="5" height="1.8" rx="0.9" fill="#94a3b8" />
+    </svg>
+  ),
+
+  'car': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground Shadow */}
+      <ellipse cx="50" cy="84" rx="38" ry="6" fill="#cbd5e1" opacity="0.6" />
+      {/* Car Body (Lower) */}
+      <path d="M 12 68 C 12 60 16 56 26 56 L 76 56 C 86 56 90 62 90 70 L 88 74 C 88 77 84 78 78 78 L 22 78 C 16 78 12 75 12 68 Z" fill="#dc2626" />
+      {/* Gloss Highlight on side */}
+      <path d="M 16 64 L 86 64 L 84 70 L 16 70 Z" fill="#ef4444" opacity="0.9" />
+      {/* Cabin / Roof */}
+      <path d="M 26 56 L 36 38 C 38 35 42 34 46 34 L 68 34 C 73 34 76 37 78 42 L 84 56 Z" fill="#ef4444" />
+      {/* Windows */}
+      {/* Front Windshield */}
+      <polygon points="69,38 78,54 82,54 74,38" fill="#bae6fd" />
+      {/* Front Door Window */}
+      <polygon points="54,38 54,54 75,54 67,38" fill="#e0f2fe" />
+      {/* Rear Door Window */}
+      <polygon points="38,40 38,54 51,54 51,38 43,38" fill="#e0f2fe" />
+      {/* Window Pillar */}
+      <rect x="51" y="36" width="3" height="18" fill="#dc2626" />
+      {/* Window shine glare */}
+      <line x1="45" y1="40" x2="42" y2="52" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
+      <line x1="62" y1="40" x2="59" y2="52" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
+      {/* Front Headlight (Yellow Glow) */}
+      <path d="M 86 64 C 89 64 91 66 91 69 L 85 70 Z" fill="#fef08a" stroke="#eab308" strokeWidth="1" />
+      {/* Rear Taillight */}
+      <path d="M 12 64 C 11 66 11 68 12 70 L 14 70 Z" fill="#991b1b" />
+      {/* Wheels */}
+      {/* Left Wheel */}
+      <circle cx="28" cy="76" r="10" fill="#1e293b" />
+      <circle cx="28" cy="76" r="6" fill="#94a3b8" />
+      <circle cx="28" cy="76" r="3" fill="#cbd5e1" />
+      {/* Right Wheel */}
+      <circle cx="74" cy="76" r="10" fill="#1e293b" />
+      <circle cx="74" cy="76" r="6" fill="#94a3b8" />
+      <circle cx="74" cy="76" r="3" fill="#cbd5e1" />
+      {/* Door Handle */}
+      <rect x="46" y="59" width="5" height="1.8" rx="0.9" fill="#94a3b8" />
+    </svg>
+  ),
 };
 
 export const RU_ALIASES: Record<string, string> = {
@@ -3032,4 +3426,19 @@ export const RU_ALIASES: Record<string, string> = {
   'bumbas': 'balls',
   'putni': 'birds',
   'zīmuļi': 'pencils',
+  // Prepositions & appearance
+  'книга на столе': 'book on table',
+  'яблоко на столе': 'apple on table',
+  'кошка под стулом': 'cat under chair',
+  'кот под стулом': 'cat under chair',
+  'мяч под кроватью': 'ball under bed',
+  'карандаш в пенале': 'pencil in pencil case',
+  'линейка в рюкзаке': 'ruler in bag',
+  'зеленые глаза': 'green eyes',
+  'зелёные глаза': 'green eyes',
+  'красная машина': 'red car',
+  'красная машинка': 'red car',
+  'машина': 'car',
+  'машинка': 'car',
+  'mašīna': 'car',
 };

@@ -25,6 +25,7 @@ const KNOWN_SVG_EN_KEYS = new Set([
   'blocks', 'spinning top', 'rocking horse', 'pyramid', 'rubber duck', 'tea set', 'bookshop',
   'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty',
   'boat', 'kite', 'cats', 'balls', 'birds', 'pencils',
+  'book on table', 'apple on table', 'cat under chair', 'ball under bed', 'pencil in pencil case', 'ruler in bag', 'green eyes', 'red car', 'car',
 ]);
 
 const KNOWN_SVG_RU_KEYS = new Set([
@@ -43,6 +44,9 @@ const KNOWN_SVG_RU_KEYS = new Set([
   'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать', 'двадцать',
   'vienpadsmit', 'divpadsmit', 'trīspadsmit', 'četrpadsmit', 'piecpadsmit',
   'sešpadsmit', 'septiņpadsmit', 'astoņpadsmit', 'deviņpadsmit', 'divdesmit',
+  'книга на столе', 'яблоко на столе', 'кошка под стулом', 'кот под стулом',
+  'мяч под кроватью', 'карандаш в пенале', 'линейка в рюкзаке',
+  'зеленые глаза', 'зелёные глаза', 'красная машина', 'красная машинка', 'машина', 'машинка',
 ]);
 
 export function loadWordSvgs(): Promise<void> {

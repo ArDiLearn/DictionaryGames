@@ -32,7 +32,7 @@ import { getTitleById } from '../data/titles';
 import { GrammarTopic, getGrammarTopicsForGrades, GRADE_3_GRAMMAR_TOPICS } from '../data/grammarData';
 import { GrammarCard } from './GrammarCard';
 import { GrammarTopicProgress } from '../services/storage';
-import { Search, Sparkles, BarChart3, ClipboardCheck, Gamepad2, Volume2, ArrowRight } from 'lucide-react';
+import { Search, Sparkles, BarChart3, ClipboardCheck, Gamepad2, Volume2, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const normalizeSearchText = (str?: string): string =>
   (str || '')
@@ -200,7 +200,7 @@ export const TopicList: React.FC<TopicListProps> = ({
   };
 
   const visibleGrammarTopics = useMemo(() => {
-    return getGrammarTopicsForGrades(selectedGrades);
+    return getGrammarTopicsForGrades(selectedGrades).filter((t) => t.id !== 'g3_alphabet');
   }, [selectedGrades]);
 
   const isGrammarAvailable =
@@ -221,6 +221,23 @@ export const TopicList: React.FC<TopicListProps> = ({
   const grammarSubtitle = useMemo(() => {
     const hasG1 = selectedGrades.includes(1);
     const hasG2 = selectedGrades.includes(2);
+    const hasG3 = selectedGrades.includes(3);
+    const hasG4 = selectedGrades.includes(4);
+    if (hasG3 && hasG4) {
+      return language === 'lv'
+        ? '3.–4. klases gramatika, frāzes un teikumu konstrukcijas'
+        : 'Грамматика, фразы и конструкции предложений для 3–4 классов';
+    }
+    if (hasG4) {
+      return language === 'lv'
+        ? '4. klases gramatika, frāzes un teikumu konstrukcijas'
+        : 'Грамматика, фразы и конструкции предложений для 4 класса';
+    }
+    if (hasG3) {
+      return language === 'lv'
+        ? '3. klases gramatika, frāzes un teikumu konstrukcijas'
+        : 'Грамматика, фразы и конструкции предложений для 3 класса';
+    }
     if (hasG1 && hasG2) {
       return language === 'lv'
         ? '1.–2. klases jautājumi, atbildes un teikumu konstrukcijas'
@@ -302,7 +319,7 @@ export const TopicList: React.FC<TopicListProps> = ({
         id: 'main',
         label: language === 'lv' ? 'Pamatkursa' : 'Основные',
         emoji: '📚',
-        badge: mainTopics.length,
+        badge: mainTopics.length + (selectedGrades.includes(3) && course !== 'lv' ? 1 : 0),
       },
     ];
 
@@ -997,86 +1014,129 @@ export const TopicList: React.FC<TopicListProps> = ({
           )}
 
           {/* Active Tab Content */}
-          {activeTab === 'main' && (
-            <div>
-              <div className={`flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 ${themeStyles.sectionHeaderBorder}`}>
-                <div className="flex items-center gap-2.5">
-                  <span className="text-2xl">📚</span>
-                  <div>
-                    <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
-                      {t.mainTopicsTitle}
-                    </h2>
-                    <p className="text-xs sm:text-sm font-semibold text-slate-500">
-                      {getMainTopicsSubtitle(mainTopics.length, language)}
-                    </p>
-                  </div>
-                </div>
-                <span className={`text-xs font-black px-2.5 py-1 rounded-full border ${themeStyles.sectionBadge}`}>
-                  {mainTopics.length}
-                </span>
-              </div>
+          {activeTab === 'main' && (() => {
+            const hasAlphabetInMain = selectedGrades.includes(3) && course !== 'lv';
+            const totalMainTopicsCount = mainTopics.length + (hasAlphabetInMain ? 1 : 0);
 
-              {/* Grade 3 Alphabet Quick Banner */}
-              {selectedGrades.includes(3) && course !== 'lv' && onSelectGrammarTopic && (
-                <div className="mb-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl p-4 sm:p-5 text-white flex flex-col sm:flex-row items-center justify-between gap-3 shadow-md hover:shadow-lg transition-all border-3 border-indigo-300/40">
-                  <div className="flex items-center gap-3.5 text-center sm:text-left">
-                    <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center text-2xl shrink-0 shadow-inner">
-                      🔤
-                    </div>
+            return (
+              <div>
+                <div className={`flex items-center justify-between gap-3 mb-4 pb-2 border-b-2 ${themeStyles.sectionHeaderBorder}`}>
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-2xl">📚</span>
                     <div>
-                      <div className="flex items-center justify-center sm:justify-start gap-2">
-                        <h3 className="text-base sm:text-lg font-black tracking-tight">
-                          {language === 'lv' ? 'Angļu alfabēts (A–Z)' : 'Английский алфавит (A–Z)'}
-                        </h3>
-                        <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-yellow-300 text-slate-900 shadow-2xs">
-                          {language === 'lv' ? 'Jaunums' : 'Новое'}
-                        </span>
-                      </div>
-                      <p className="text-xs sm:text-sm font-semibold text-white/90">
-                        {language === 'lv'
-                          ? 'Klausies visu 26 burtu pareizu izrunu un trenējies!'
-                          : 'Слушай правильное произношение всех 26 букв и тренируйся!'}
+                      <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
+                        {t.mainTopicsTitle}
+                      </h2>
+                      <p className="text-xs sm:text-sm font-semibold text-slate-500">
+                        {getMainTopicsSubtitle(totalMainTopicsCount, language)}
                       </p>
                     </div>
                   </div>
+                  <span className={`text-xs font-black px-2.5 py-1 rounded-full border ${themeStyles.sectionBadge}`}>
+                    {totalMainTopicsCount}
+                  </span>
+                </div>
 
-                  <button
-                    onClick={() => {
-                      sounds.playClick();
-                      const alphabetTopic =
-                        visibleGrammarTopics.find((t) => t.id === 'g3_alphabet') ||
-                        GRADE_3_GRAMMAR_TOPICS[0];
-                      if (alphabetTopic) {
-                        onSelectGrammarTopic(alphabetTopic);
-                      }
-                    }}
-                    className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl bg-white text-indigo-700 font-black text-xs sm:text-sm shadow-md hover:bg-yellow-200 hover:text-indigo-900 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
-                  >
-                    {language === 'lv' ? 'Atvērt alfabētu' : 'Открыть азбуку'} →
-                  </button>
-                </div>
-              )}
+                {totalMainTopicsCount > 0 ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                    {/* Grade 3 Alphabet as a first-class card in Main Topics */}
+                    {hasAlphabetInMain && onSelectGrammarTopic && (
+                      <div
+                        onClick={() => {
+                          sounds.playClick();
+                          const alphabetTopic = GRADE_3_GRAMMAR_TOPICS.find((t) => t.id === 'g3_alphabet');
+                          if (alphabetTopic) {
+                            onSelectGrammarTopic(alphabetTopic);
+                          }
+                        }}
+                        className="relative flex flex-col justify-between p-4 sm:p-5 rounded-3xl border-3 border-indigo-300 hover:border-indigo-400 bg-gradient-to-br from-indigo-50/95 via-purple-50/90 to-pink-50/90 shadow-md hover:shadow-xl shadow-indigo-100/70 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer select-none group"
+                      >
+                        {/* Top Row: Icon + Stars */}
+                        <div className="flex items-start justify-between gap-3 mb-3">
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-500 border-2 border-indigo-200 shadow-inner flex items-center justify-center text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">
+                            <span>🔤</span>
+                          </div>
+                          <div className="flex items-center gap-1 bg-white/90 px-2.5 py-1 rounded-full border border-indigo-200 shadow-2xs">
+                            {Array.from({ length: 3 }).map((_, i) => (
+                              <span
+                                key={i}
+                                className={`text-sm ${
+                                  i < (grammarProgress?.['g3_alphabet']?.stars || 0)
+                                    ? 'opacity-100 scale-110'
+                                    : 'opacity-25 grayscale'
+                                }`}
+                              >
+                                ⭐
+                              </span>
+                            ))}
+                          </div>
+                        </div>
 
-              {mainTopics.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-                  {mainTopics.map((topic) => (
-                    <TopicCard
-                      key={topic.topic_id}
-                      topic={topic}
-                      language={language}
-                      course={course}
-                      progress={topicProgress[topic.topic_id]}
-                      onSelect={onSelectTopic}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-10 bg-white rounded-3xl border-2 border-slate-200 text-slate-500 font-bold">
-                  {t.noResultsFound}
-                </div>
-              )}
-            </div>
-          )}
+                        {/* Center: Title & Subtitle */}
+                        <div className="mb-4">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h3 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight leading-tight group-hover:text-indigo-950 transition-colors">
+                              {language === 'lv' ? 'Angļu alfabēts' : 'Английский алфавит'}
+                            </h3>
+                            <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 border border-indigo-300">
+                              A–Z
+                            </span>
+                          </div>
+                          <p className="text-xs sm:text-sm font-semibold text-slate-500 line-clamp-2">
+                            {language === 'lv'
+                              ? '26 burti, izruna un interaktīvs treniņš'
+                              : '26 букв, правильное произношение и викторина'}
+                          </p>
+                        </div>
+
+                        {/* Bottom row: Status and progress */}
+                        <div className="w-full pt-2 border-t-2 border-indigo-200/60">
+                          <div className="flex items-center justify-between text-xs font-bold text-slate-500 mb-1.5">
+                            <span className="text-indigo-700 font-extrabold">
+                              {language === 'lv' ? '26 burti · 12 uzdevumi' : '26 букв · 12 заданий'}
+                            </span>
+                            {(grammarProgress?.['g3_alphabet']?.stars || 0) >= 3 ? (
+                              <span className="flex items-center gap-1 text-emerald-600 font-extrabold">
+                                <CheckCircle2 className="w-3.5 h-3.5" />
+                                {language === 'lv' ? 'Apgūts' : 'Освоено'}
+                              </span>
+                            ) : (
+                              <span>
+                                {grammarProgress?.['g3_alphabet']?.stars || 0}/3 {language === 'lv' ? 'zvaigznes' : 'звёзды'}
+                              </span>
+                            )}
+                          </div>
+                          <div className="w-full h-2.5 bg-white/80 rounded-full overflow-hidden border border-indigo-200/80">
+                            <div
+                              className="h-full bg-gradient-to-r from-indigo-400 to-purple-600 rounded-full transition-all duration-500"
+                              style={{
+                                width: `${Math.round(((grammarProgress?.['g3_alphabet']?.stars || 0) / 3) * 100)}%`,
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {mainTopics.map((topic) => (
+                      <TopicCard
+                        key={topic.topic_id}
+                        topic={topic}
+                        language={language}
+                        course={course}
+                        progress={topicProgress[topic.topic_id]}
+                        onSelect={onSelectTopic}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-10 bg-white rounded-3xl border-2 border-slate-200 text-slate-500 font-bold">
+                    {t.noResultsFound}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
 
           {activeTab === 'grammar' && isGrammarAvailable && onSelectGrammarTopic && (
             <div>

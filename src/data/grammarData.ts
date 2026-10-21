@@ -113,8 +113,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Как тебя зовут? → Меня зовут Анна.',
-          lv: 'Kā tevi sauc? → Mani sauc Anna.',
+          ru: 'Вопрос «Как тебя зовут?»: выбери вариант с именем',
+          lv: 'Jautājums «Kā tevi sauc?»: izvēlies atbildi ar vārdu',
         },
       },
       {
@@ -130,8 +130,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Как дела? → Всё хорошо, спасибо.',
-          lv: 'Kā tev klājas? → Labi, paldies.',
+          ru: 'Вопрос «Как дела?»: вежливый ответ о самочувствии',
+          lv: 'Jautājums «Kā tev klājas?»: pieklājīga atbilde',
         },
       },
       {
@@ -147,8 +147,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Сколько тебе лет? → Мне семь лет.',
-          lv: 'Cik tev ir gadu? → Man ir septiņi gadi.',
+          ru: 'Вопрос «Сколько тебе лет?»: ответь о возрасте',
+          lv: 'Jautājums «Cik tev ir gadu?»: atbilde par vecumu',
         },
       },
       {
@@ -164,8 +164,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Как тебя зовут? → Меня зовут Бен.',
-          lv: 'Kā tevi sauc? → Mani sauc Bens.',
+          ru: 'Вопрос «Как тебя зовут?»: назови имя',
+          lv: 'Jautājums «Kā tevi sauc?»: nosauc vārdu',
         },
       },
       {
@@ -181,8 +181,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Как поживаешь? → Хорошо, спасибо!',
-          lv: 'Kā iet? → Labi, paldies!',
+          ru: 'Вопрос «Как поживаешь?»: ответ о настроении',
+          lv: 'Jautājums «Kā iet?»: atbilde par pašsajūtu',
         },
       },
       {
@@ -198,8 +198,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Сколько тебе лет? → Мне восемь.',
-          lv: 'Cik tev ir gadu? → Man ir astoņi gadi.',
+          ru: 'Вопрос «Сколько тебе лет?»: выбери возраст',
+          lv: 'Jautājums «Cik tev ir gadu?»: izvēlies vecumu',
         },
       },
       {
@@ -215,8 +215,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 2,
         hint: {
-          ru: 'Сколько тебе лет? → Мне шесть.',
-          lv: 'Cik tev ir gadu? → Man ir seši gadi.',
+          ru: 'Вопрос «Сколько тебе лет?»: выбери вариант с возрастом',
+          lv: 'Jautājums «Cik tev ir gadu?»: izvēlies atbildi par vecumu',
         },
       },
       {
@@ -232,8 +232,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Как тебя зовут? → Меня зовут Лео.',
-          lv: 'Kā tevi sauc? → Mani sauc Leo.',
+          ru: 'Вопрос «Как тебя зовут?»: выбери ответ с именем',
+          lv: 'Jautājums «Kā tevi sauc?»: izvēlies atbildi ar vārdu',
         },
       },
     ],
@@ -2498,8 +2498,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['A', 'E', 'I'],
         correctIndex: 0,
         hint: {
-          ru: 'Звучит буква A [eɪ]',
-          lv: 'Skan burts A [eɪ]',
+          ru: 'Слушай внимательно первую букву английского алфавита',
+          lv: 'Klausies uzmanīgi angļu alfabēta pirmo burtu',
         },
       },
       {
@@ -2511,8 +2511,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['I', 'E', 'A'],
         correctIndex: 1,
         hint: {
-          ru: 'Звучит буква E [iː]',
-          lv: 'Skan burts E [iː]',
+          ru: 'Не перепутай звучание английской E со звуком русской И',
+          lv: 'Nejauc angļu E skanējumu ar citiem burtiem',
         },
       },
       {
@@ -2524,8 +2524,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['A', 'Y', 'I'],
         correctIndex: 2,
         hint: {
-          ru: 'Звучит буква I [aɪ]',
-          lv: 'Skan burts I [aɪ]',
+          ru: 'Эта буква произносится как английское слово «eye» (глаз)',
+          lv: 'Šis burts skan tieši kā vārds «eye» (acs)',
         },
       },
       {
@@ -2537,8 +2537,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['G', 'J', 'C'],
         correctIndex: 0,
         hint: {
-          ru: 'Звучит буква G [dʒiː]',
-          lv: 'Skan burts G [dʒiː]',
+          ru: 'Вспомни: в алфавите эта буква идёт перед H',
+          lv: 'Atceries: alfabētā šis burts ir pirms H',
         },
       },
       {
@@ -2550,8 +2550,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['G', 'J', 'Y'],
         correctIndex: 1,
         hint: {
-          ru: 'Звучит буква J [dʒeɪ]',
-          lv: 'Skan burts J [dʒeɪ]',
+          ru: 'Обрати внимание на окончание звука: [eɪ]',
+          lv: 'Pievērs uzmanību skaņas beigām: [eɪ]',
         },
       },
       {
@@ -2563,8 +2563,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['H', 'A', '8'],
         correctIndex: 0,
         hint: {
-          ru: 'Звучит буква H [eɪtʃ]',
-          lv: 'Skan burts H [eɪtʃ]',
+          ru: 'Вспомни название буквы перед буквой I',
+          lv: 'Atceries burta nosaukumu pirms I',
         },
       },
       {
@@ -2576,8 +2576,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['Q', 'O', 'U'],
         correctIndex: 0,
         hint: {
-          ru: 'Звучит буква Q [kjuː]',
-          lv: 'Skan burts Q [kjuː]',
+          ru: 'Круглая буква с хвостиком после буквы P',
+          lv: 'Apaļš burts ar astīti pēc burta P',
         },
       },
       {
@@ -2589,8 +2589,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['M', 'V', 'W'],
         correctIndex: 2,
         hint: {
-          ru: 'Звучит буква W [ˈdʌbljuː]',
-          lv: 'Skan burts W [ˈdʌbljuː]',
+          ru: 'Название этой буквы буквально означает «двойная U»',
+          lv: 'Šī burta nosaukums burtiski nozīmē «dubultā U»',
         },
       },
       {
@@ -2602,8 +2602,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['D', 'E', 'F'],
         correctIndex: 0,
         hint: {
-          ru: 'После C идет буква D',
-          lv: 'Pēc C seko burts D',
+          ru: 'Вспомни алфавитную песенку: A, B, C, ...',
+          lv: 'Atceries alfabēta dziesmiņu: A, B, C, ...',
         },
       },
       {
@@ -2615,8 +2615,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['N', 'L', 'O'],
         correctIndex: 1,
         hint: {
-          ru: 'Пропущена буква L: J, K, L, M',
-          lv: 'Iztrūkst burts L: J, K, L, M',
+          ru: 'Какая буква стоит в алфавите между K и M?',
+          lv: 'Kurš burts alfabētā atrodas starp K un M?',
         },
       },
       {
@@ -2628,8 +2628,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['W', 'V', 'Z'],
         correctIndex: 2,
         hint: {
-          ru: 'Последняя буква алфавита — Z',
-          lv: 'Pēdējais alfabēta burts ir Z',
+          ru: 'Какая буква самая последняя в английском алфавите?',
+          lv: 'Kurš burts ir pats pēdējais angļu alfabētā?',
         },
       },
       {
@@ -2641,8 +2641,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['cat', 'apple', 'dog'],
         correctIndex: 1,
         hint: {
-          ru: 'apple начинается на первую букву A',
-          lv: 'apple sākas ar pirmo burtu A',
+          ru: 'Сравни первые буквы каждого слова по алфавиту',
+          lv: 'Salīdzini katra vārda pirmo burtu pēc alfabēta',
         },
       },
     ],
@@ -2671,8 +2671,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ["It's in September.", "It's on September.", "It's at September."],
         correctIndex: 0,
         hint: {
-          ru: 'С месяцами используется предлог in (in September)',
-          lv: 'Ar mēnešiem lieto prievārdu in (in September)',
+          ru: 'С названиями месяцев используется предлог in',
+          lv: 'Ar mēnešu nosaukumiem lieto prievārdu in',
         },
       },
       {
@@ -2685,8 +2685,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ["It in May.", "It's in May.", "It's at May."],
         correctIndex: 1,
         hint: {
-          ru: "Правильно: It's in May",
-          lv: "Pareizi: It's in May",
+          ru: "Не забудь форму глагола to be (It is → It's) и предлог in",
+          lv: "Neaizmirsti saīsinājumu (It is → It's) un prievārdu in",
         },
       },
       {
@@ -2699,8 +2699,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ["Where's your birthday?", "When's your birthday?", "Who's your birthday?"],
         correctIndex: 1,
         hint: {
-          ru: 'Когда день рождения? — When is your birthday?',
-          lv: 'Kad ir tava dzimšanas diena? — When is your birthday?',
+          ru: 'Вспомни вопросительное слово для времени: «Когда?»',
+          lv: 'Atceries jautājuma vārdu laikam: «Kad?»',
         },
       },
       {
@@ -2713,8 +2713,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ["It's spring.", "It spring.", "They are spring."],
         correctIndex: 0,
         hint: {
-          ru: 'Какое твоё любимое время года? — It is spring (весна)',
-          lv: 'Kurš ir tavs mīļākais gadalaiks? — It is spring (pavasaris)',
+          ru: 'Ответь про время года с помощью конструкции It is / It\'s',
+          lv: 'Atbildi par gadalaiku ar konstrukciju It is / It\'s',
         },
       },
       {
@@ -2727,8 +2727,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ["I favourite summer.", "It's summer.", "Is summer."],
         correctIndex: 1,
         hint: {
-          ru: 'Моё любимое время года — лето (It is summer)',
-          lv: 'Mīļākais gadalaiks ir vasara (It is summer)',
+          ru: 'В ответе используется безличное предложение: It\'s...',
+          lv: 'Atbildē lieto konstrukciju: It\'s...',
         },
       },
       {
@@ -2741,8 +2741,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ["It's winter.", "It's on winter.", "He's winter."],
         correctIndex: 0,
         hint: {
-          ru: 'Зима — It is winter',
-          lv: 'Ziema — It is winter',
+          ru: 'Назови сезон без лишнего предлога',
+          lv: 'Nosauc gadalaiku bez lieka prievārda',
         },
       },
       {
@@ -2755,8 +2755,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['K - A - T', 'C - A - T', 'C - E - T'],
         correctIndex: 1,
         hint: {
-          ru: 'Кот пишется: C - A - T',
-          lv: 'Kaķis rakstās: C - A - T',
+          ru: 'Произнеси слово cat по буквам',
+          lv: 'Nosauc vārdu cat pa burtiem',
         },
       },
       {
@@ -2769,8 +2769,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['D - O - G', 'B - O - G', 'D - A - G'],
         correctIndex: 0,
         hint: {
-          ru: 'Собака пишется: D - O - G',
-          lv: 'Suns rakstās: D - O - G',
+          ru: 'Вспомни первую и последнюю букву слова dog',
+          lv: 'Atceries vārda dog pirmo un pēdējo burtu',
         },
       },
       {
@@ -2783,8 +2783,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['B - U - K', 'B - O - O - K', 'D - O - O - K'],
         correctIndex: 1,
         hint: {
-          ru: 'Книга пишется: B - O - O - K',
-          lv: 'Grāmata rakstās: B - O - O - K',
+          ru: 'Вспомни, как пишется слово book',
+          lv: 'Atceries, kā rakstās vārds book',
         },
       },
       {
@@ -2797,8 +2797,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['My birthday is in autumn.', 'My birthday is on autumn.', 'My birthday in autumn.'],
         correctIndex: 0,
         hint: {
-          ru: 'Мой день рождения осенью (in autumn)',
-          lv: 'Mana dzimšanas diena ir rudenī (in autumn)',
+          ru: 'С временами года используется предлог in',
+          lv: 'Ar gadalaikiem lieto prievārdu in',
         },
       },
     ],
@@ -2823,12 +2823,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'feelings_and_pronouns',
         prompt: 'Look at the boy and choose:',
         audioText: 'Look at the boy and choose.',
-        imageWord: { en: 'camera', emoji: '👦 📷', customLabel: "Boy's camera" },
+        imageWord: { en: 'camera', emoji: '👦 📷', customLabel: 'Camera' },
         options: ['This is his camera.', 'This is her camera.', 'This is he camera.'],
         correctIndex: 0,
         hint: {
-          ru: 'Для мальчика используется his (его фотоаппарат)',
-          lv: 'Zēnam lieto his (viņa fotoaparāts)',
+          ru: 'Вспомни: для мальчика используется his, для девочки — her',
+          lv: 'Atceries: zēnam lieto his, meitenei — her',
         },
       },
       {
@@ -2837,12 +2837,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'feelings_and_pronouns',
         prompt: 'Look at the girl and choose:',
         audioText: 'Look at the girl and choose.',
-        imageWord: { en: 'necklace', emoji: '👧 📿', customLabel: "Girl's necklace" },
+        imageWord: { en: 'necklace', emoji: '👧 📿', customLabel: 'Necklace' },
         options: ['This is his necklace.', 'This is her necklace.', 'This is she necklace.'],
         correctIndex: 1,
         hint: {
-          ru: 'Для девочки используется her (её ожерелье)',
-          lv: 'Meitenei lieto her (viņas kaklarota)',
+          ru: 'Посмотри на картинку: это вещь девочки (her) или мальчика (his)?',
+          lv: 'Paskaties attēlā: tā ir meitenes (her) vai zēna (his) lieta?',
         },
       },
       {
@@ -2851,12 +2851,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'feelings_and_pronouns',
         prompt: 'Look at the boy and choose:',
         audioText: 'Look at the boy and choose.',
-        imageWord: { en: 'kite', emoji: '👦 🪁', customLabel: "Boy's kite" },
+        imageWord: { en: 'kite', emoji: '👦 🪁', customLabel: 'Kite' },
         options: ['This is his kite.', 'This is her kite.', 'This is my kite.'],
         correctIndex: 0,
         hint: {
-          ru: 'Его воздушный змей — This is his kite',
-          lv: 'Viņa pūķis — This is his kite',
+          ru: 'Чей это воздушный змей? Обрати внимание на мальчика',
+          lv: 'Kura pūķis tas ir? Pievērs uzmanību zēnam',
         },
       },
       {
@@ -2865,12 +2865,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'feelings_and_pronouns',
         prompt: 'Look at the girl and choose:',
         audioText: 'Look at the girl and choose.',
-        imageWord: { en: 'watch', emoji: '👧 ⌚', customLabel: "Girl's watch" },
+        imageWord: { en: 'watch', emoji: '👧 ⌚', customLabel: 'Watch' },
         options: ['This is his watch.', 'This is her watch.', 'This is its watch.'],
         correctIndex: 1,
         hint: {
-          ru: 'Её часы — This is her watch',
-          lv: 'Viņas pulkstenis — This is her watch',
+          ru: 'Чьи это часы? Обрати внимание на девочку',
+          lv: 'Kura pulkstenis tas ir? Pievērs uzmanību meitenei',
         },
       },
       {
@@ -2883,8 +2883,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['Yes, I am.', 'Yes, I is.', 'Yes, I do.'],
         correctIndex: 0,
         hint: {
-          ru: 'Ты устал? — Да (Yes, I am)',
-          lv: 'Vai tu esi noguris? — Jā (Yes, I am)',
+          ru: 'Вопрос «Ты устал?»: ответь утвердительно от первого лица (I)',
+          lv: 'Jautājums «Vai tu esi noguris?»: atbildi apstiprinoši pirmajā personā (I)',
         },
       },
       {
@@ -2897,8 +2897,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['No, I not.', "No, I'm not.", "No, I don't."],
         correctIndex: 1,
         hint: {
-          ru: "Отрицательный ответ: No, I'm not",
-          lv: "Nolieguma atbilde: No, I'm not",
+          ru: 'Вопрос «Ты устал?»: ответь отрицательно от своего имени',
+          lv: 'Jautājums «Vai tu esi noguris?»: atbildi noliedzoši savā vārdā',
         },
       },
       {
@@ -2911,8 +2911,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['Yes, he is.', 'Yes, he does.', 'Yes, he are.'],
         correctIndex: 0,
         hint: {
-          ru: 'Он голоден? — Да (Yes, he is)',
-          lv: 'Vai viņš ir izsalcis? — Jā (Yes, he is)',
+          ru: 'Вопрос про мальчика (he): выбери правильный утвердительный ответ',
+          lv: 'Jautājums par zēnu (he): izvēlies apstiprinošu atbildi',
         },
       },
       {
@@ -2925,8 +2925,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['No, he not.', "No, he isn't.", "No, he doesn't."],
         correctIndex: 1,
         hint: {
-          ru: "Отрицание с he: No, he isn't",
-          lv: "Noliegums ar he: No, he isn't",
+          ru: 'Вопрос про мальчика (he): выбери правильный отрицательный ответ',
+          lv: 'Jautājums par zēnu (he): izvēlies noliedzošu atbildi',
         },
       },
       {
@@ -2939,8 +2939,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['Yes, she is.', "Yes, she's.", 'Yes, she does.'],
         correctIndex: 0,
         hint: {
-          ru: 'Она счастлива? — Да (Yes, she is — без сокращения в конце)',
-          lv: 'Vai viņa ir priecīga? — Jā (Yes, she is)',
+          ru: 'В кратком утвердительном ответе слова не сокращаются в конце',
+          lv: 'Īsā apstiprinājuma atbildē vārdus beigās nesaīsina',
         },
       },
       {
@@ -2953,8 +2953,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ["No, she isn't.", "No, she don't.", "No, she aren't."],
         correctIndex: 0,
         hint: {
-          ru: "Отрицание: No, she isn't",
-          lv: "Noliegums: No, she isn't",
+          ru: 'Вопрос про девочку (she): выбери отрицательный ответ с глаголом is',
+          lv: 'Jautājums par meiteni (she): izvēlies nolieguma atbildi ar is',
         },
       },
     ],
@@ -2979,12 +2979,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'jobs_and_demonstratives',
         prompt: 'Is he a teacher?',
         audioText: 'Is he a teacher?',
-        imageWord: { en: 'cook', emoji: '👨‍🍳', customLabel: 'Cook' },
+        imageWord: { en: 'cook', emoji: '👨‍🍳' },
         options: ["No, he isn't. He's a cook.", 'Yes, he is a cook.', 'No, he not a cook.'],
         correctIndex: 0,
         hint: {
-          ru: "Он учитель? — Нет, он повар (No, he isn't. He's a cook)",
-          lv: "Vai viņš ir skolotājs? — Nē, viņš ir pavārs",
+          ru: 'Посмотри на профессию на картинке и выбери правильный ответ',
+          lv: 'Paskaties uz profesiju attēlā un izvēlies pareizo atbildi',
         },
       },
       {
@@ -2993,12 +2993,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'jobs_and_demonstratives',
         prompt: 'Is she a doctor?',
         audioText: 'Is she a doctor?',
-        imageWord: { en: 'doctor', emoji: '👩‍⚕️', customLabel: 'Doctor' },
+        imageWord: { en: 'doctor', emoji: '👩‍⚕️' },
         options: ['Yes, she does.', 'Yes, she is.', 'Yes, she is doctor.'],
         correctIndex: 1,
         hint: {
-          ru: 'Она врач? — Да (Yes, she is)',
-          lv: 'Vai viņa ir ārste? — Jā (Yes, she is)',
+          ru: 'Посмотри на картинку: это врач? Дай утвердительный ответ',
+          lv: 'Paskaties attēlā: vai tā ir ārste? Dod apstiprinošu atbildi',
         },
       },
       {
@@ -3007,12 +3007,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'jobs_and_demonstratives',
         prompt: 'Look at the picture and choose:',
         audioText: 'Look at the picture and choose.',
-        imageWord: { en: 'pilot', emoji: '👨‍✈️', customLabel: 'Pilot' },
+        imageWord: { en: 'pilot', emoji: '👨‍✈️' },
         options: ["He's a pilot.", "He's pilot.", 'He a pilot.'],
         correctIndex: 0,
         hint: {
-          ru: 'С профессиями нужен артикль a: He is a pilot',
-          lv: 'Ar profesijām vajag artikulu a: He is a pilot',
+          ru: 'С названиями профессий в единственном числе нужен артикль a',
+          lv: 'Ar profesiju nosaukumiem vienskaitlī vajag artikulu a',
         },
       },
       {
@@ -3021,68 +3021,68 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'jobs_and_demonstratives',
         prompt: 'Look at the picture and choose:',
         audioText: 'Look at the picture and choose.',
-        imageWord: { en: 'farmer', emoji: '👩‍🌾', customLabel: 'Farmer' },
+        imageWord: { en: 'farmer', emoji: '👩‍🌾' },
         options: ["She's a farmer.", "She's farmer.", 'She are a farmer.'],
         correctIndex: 0,
         hint: {
-          ru: 'Она фермер — She is a farmer',
-          lv: 'Viņa ir lauksaimniece — She is a farmer',
+          ru: 'На картинке женщина: обрати внимание на местоимение',
+          lv: 'Attēlā ir sieviete: pievērs uzmanību vietniekvārdam',
         },
       },
       {
         id: 'g3_jt_5',
         grade: 3,
         category: 'jobs_and_demonstratives',
-        prompt: 'Look at the picture (1 train):',
-        audioText: 'Look at the picture.',
-        imageWord: { en: 'train', emoji: '🚂', customLabel: '1 Train' },
+        prompt: 'Look at the picture and choose:',
+        audioText: 'Look at the picture and choose.',
+        imageWord: { en: 'train', emoji: '🚂' },
         options: ['These are my trains.', 'This is my train.', 'This are my train.'],
         correctIndex: 1,
         hint: {
-          ru: 'Один поезд (ед. число) — This is my train',
-          lv: 'Viens vilciens (vienskaitlis) — This is my train',
+          ru: 'Один предмет или несколько? Вспомни: This is или These are?',
+          lv: 'Viens priekšmets vai vairāki? Atceries: This is vai These are?',
         },
       },
       {
         id: 'g3_jt_6',
         grade: 3,
         category: 'jobs_and_demonstratives',
-        prompt: 'Look at the picture (3 cars):',
-        audioText: 'Look at the picture.',
-        imageWord: { en: 'cars', emoji: '🚗 🚗 🚗', customLabel: '3 Cars' },
+        prompt: 'Look at the picture and choose:',
+        audioText: 'Look at the picture and choose.',
+        imageWord: { en: 'cars', emoji: '🚗 🚗 🚗' },
         options: ['This is my cars.', 'These are my cars.', 'These is my cars.'],
         correctIndex: 1,
         hint: {
-          ru: 'Несколько машин (мн. число) — These are my cars',
-          lv: 'Vairākas mašīnas (daudzskaitlis) — These are my cars',
+          ru: 'Обрати внимание: один предмет или несколько?',
+          lv: 'Pievērs uzmanību: viens priekšmets vai vairāki?',
         },
       },
       {
         id: 'g3_jt_7',
         grade: 3,
         category: 'jobs_and_demonstratives',
-        prompt: 'Look at the picture (1 book):',
-        audioText: 'Look at the picture.',
-        imageWord: { en: 'book', emoji: '📖', customLabel: '1 Book' },
+        prompt: 'Look at the picture and choose:',
+        audioText: 'Look at the picture and choose.',
+        imageWord: { en: 'book', emoji: '📖' },
         options: ['This is my book.', 'These are my book.', 'This are my book.'],
         correctIndex: 0,
         hint: {
-          ru: 'Одна книга — This is my book',
-          lv: 'Viena grāmata — This is my book',
+          ru: 'Один предмет или много предметов?',
+          lv: 'Viens priekšmets vai daudz priekšmetu?',
         },
       },
       {
         id: 'g3_jt_8',
         grade: 3,
         category: 'jobs_and_demonstratives',
-        prompt: 'Look at the picture (pencils):',
-        audioText: 'Look at the picture.',
-        imageWord: { en: 'pencils', emoji: '✏️ ✏️ ✏️', customLabel: 'Pencils' },
+        prompt: 'Look at the picture and choose:',
+        audioText: 'Look at the picture and choose.',
+        imageWord: { en: 'pencils', emoji: '✏️ ✏️ ✏️' },
         options: ['This is my pencils.', 'These are my pencils.', 'These is my pencil.'],
         correctIndex: 1,
         hint: {
-          ru: 'Карандаши (мн. ч.) — These are my pencils',
-          lv: 'Zīmuļi (daudzskaitlis) — These are my pencils',
+          ru: 'Для множественного числа используется указательное слово These',
+          lv: 'Daudzskaitlim lieto norādāmo vārdu These',
         },
       },
       {
@@ -3095,8 +3095,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ["He's a firefighter.", 'He a firefighter.', 'He are a firefighter.'],
         correctIndex: 0,
         hint: {
-          ru: 'Он пожарный: He is a firefighter',
-          lv: 'Viņš ir ugunsdzēsējs: He is a firefighter',
+          ru: "Не забудь форму глагола to be (He's = He is)",
+          lv: "Neaizmirsti to be formu (He's = He is)",
         },
       },
       {
@@ -3105,12 +3105,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'jobs_and_demonstratives',
         prompt: 'Choose the correct sentence:',
         audioText: 'Choose the correct sentence.',
-        imageWord: { en: 'balls', emoji: '⚽ ⚽', customLabel: '2 Balls' },
+        imageWord: { en: 'balls', emoji: '⚽ ⚽' },
         options: ['This is my balls.', 'These are my balls.', 'These are my ball.'],
         correctIndex: 1,
         hint: {
-          ru: 'Два мяча — These are my balls',
-          lv: 'Divas bumbas — These are my balls',
+          ru: 'Для нескольких предметов используется форма множественного числа',
+          lv: 'Vairākiem priekšmetiem lieto daudzskaitļa formu',
         },
       },
     ],
@@ -3135,12 +3135,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'town_and_places',
         prompt: 'Is there a park in your town?',
         audioText: 'Is there a park in your town?',
-        imageWord: { en: 'park', emoji: '🌳 🏞️', customLabel: 'Park (Yes)' },
+        imageWord: { en: 'park', emoji: '🌳 🏞️', customLabel: 'Park' },
         options: ['Yes, there is.', 'Yes, there are.', 'Yes, it is.'],
         correctIndex: 0,
         hint: {
-          ru: 'Один парк (ед. число): Yes, there is',
-          lv: 'Viens parks (vienskaitlis): Yes, there is',
+          ru: 'Вопрос в единственном числе: Is there a...? Дай утвердительный ответ',
+          lv: 'Jautājums vienskaitlī: Is there a...? Dod apstiprinošu atbildi',
         },
       },
       {
@@ -3149,12 +3149,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'town_and_places',
         prompt: 'Is there a cinema?',
         audioText: 'Is there a cinema?',
-        imageWord: { en: 'no cinema', emoji: '❌ 🎬', customLabel: 'No Cinema' },
+        imageWord: { en: 'cinema', emoji: '❌ 🎬', customLabel: 'Cinema' },
         options: ["No, there aren't.", "No, there isn't.", "No, it isn't."],
         correctIndex: 1,
         hint: {
-          ru: "Отрицание в ед. числе: No, there isn't",
-          lv: "Noliegums vienskaitlī: No, there isn't",
+          ru: "Вопрос в единственном числе: выбери отрицание с isn't",
+          lv: "Jautājums vienskaitlī: izvēlies noliegumu ar isn't",
         },
       },
       {
@@ -3163,12 +3163,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'town_and_places',
         prompt: 'Are there any shops?',
         audioText: 'Are there any shops?',
-        imageWord: { en: 'shops', emoji: '🏬 🛍️', customLabel: 'Shops (Yes)' },
+        imageWord: { en: 'shops', emoji: '🏬 🛍️', customLabel: 'Shops' },
         options: ['Yes, there is.', 'Yes, there are.', 'Yes, they are.'],
         correctIndex: 1,
         hint: {
-          ru: 'Магазины (мн. число): Yes, there are',
-          lv: 'Veikali (daudzskaitlis): Yes, there are',
+          ru: 'Вопрос во множественном числе: Are there...? Дай утвердительный ответ',
+          lv: 'Jautājums daudzskaitlī: Are there...? Dod apstiprinošu atbildi',
         },
       },
       {
@@ -3177,12 +3177,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'town_and_places',
         prompt: 'Are there any museums?',
         audioText: 'Are there any museums?',
-        imageWord: { en: 'no museums', emoji: '❌ 🏛️', customLabel: 'No Museums' },
+        imageWord: { en: 'museums', emoji: '❌ 🏛️', customLabel: 'Museums' },
         options: ["No, there aren't.", "No, there isn't.", 'No, there not.'],
         correctIndex: 0,
         hint: {
-          ru: "Отрицание во мн. числе: No, there aren't",
-          lv: "Noliegums daudzskaitlī: No, there aren't",
+          ru: "Вопрос во множественном числе: выбери отрицание с aren't",
+          lv: "Jautājums daudzskaitlī: izvēlies noliegumu ar aren't",
         },
       },
       {
@@ -3191,12 +3191,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'town_and_places',
         prompt: "Where's the park?",
         audioText: "Where's the park?",
-        imageWord: { en: 'next to', emoji: '🏊 🏞️', customLabel: 'Swimming pool next to Park' },
+        imageWord: { en: 'next to', emoji: '🏊 🏞️', customLabel: 'Park & Pool' },
         options: ["It's next to the swimming pool.", "It's on the swimming pool.", 'It next to swimming pool.'],
         correctIndex: 0,
         hint: {
-          ru: 'Рядом с бассейном: It is next to the swimming pool',
-          lv: 'Blakus peldbaseinam: It is next to the swimming pool',
+          ru: 'Вспомни предлог «рядом с»: next to',
+          lv: 'Atceries prievārdu «blakus»: next to',
         },
       },
       {
@@ -3205,12 +3205,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'town_and_places',
         prompt: "Where's the library?",
         audioText: "Where's the library?",
-        imageWord: { en: 'opposite', emoji: '📚 ↔️ 🏥', customLabel: 'Library opposite Hospital' },
+        imageWord: { en: 'opposite', emoji: '📚 ↔️ 🏥', customLabel: 'Library & Hospital' },
         options: ["It's opposite the hospital.", "It's under the hospital.", "It's in hospital."],
         correctIndex: 0,
         hint: {
-          ru: 'Напротив больницы: It is opposite the hospital',
-          lv: 'Pretim slimnīcai: It is opposite the hospital',
+          ru: 'Вспомни предлог «напротив»: opposite',
+          lv: 'Atceries prievārdu «pretim»: opposite',
         },
       },
       {
@@ -3219,12 +3219,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'town_and_places',
         prompt: "Where's the cinema?",
         audioText: "Where's the cinema?",
-        imageWord: { en: 'between', emoji: '🏬 🎬 ☕', customLabel: 'Cinema between Shop & Cafe' },
+        imageWord: { en: 'between', emoji: '🏬 🎬 ☕', customLabel: 'Cinema' },
         options: ["It's between the shop and the cafe.", "It's next the shop.", "It's behind to cafe."],
         correctIndex: 0,
         hint: {
-          ru: 'Между магазином и кафе: between ... and ...',
-          lv: 'Starp veikalu un kafejnīcu: between ... and ...',
+          ru: 'Вспомни предлог «между двумя объектами»: between ... and ...',
+          lv: 'Atceries prievārdu «starp diviem objektiem»: between ... and ...',
         },
       },
       {
@@ -3237,8 +3237,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['Is there a castle?', 'Are there a castle?', 'Is there any castle?'],
         correctIndex: 0,
         hint: {
-          ru: 'Один замок: Is there a castle?',
-          lv: 'Viena pils: Is there a castle?',
+          ru: 'Один замок: в вопросе используется Is there a...?',
+          lv: 'Viens priekšmets: jautājumā lieto Is there a...?',
         },
       },
       {
@@ -3251,8 +3251,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['Is there any restaurants?', 'Are there any restaurants?', 'Are there a restaurants?'],
         correctIndex: 1,
         hint: {
-          ru: 'Множественное число: Are there any restaurants?',
-          lv: 'Daudzskaitlis: Are there any restaurants?',
+          ru: 'Множественное число: в вопросе используется Are there any...?',
+          lv: 'Daudzskaitlis: jautājumā lieto Are there any...?',
         },
       },
       {
@@ -3261,12 +3261,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'town_and_places',
         prompt: "Where's the station?",
         audioText: "Where's the station?",
-        imageWord: { en: 'station', emoji: '🚉 🌳', customLabel: 'Station behind the trees' },
+        imageWord: { en: 'station', emoji: '🚉 🌳', customLabel: 'Station' },
         options: ["It's behind the park.", "It's in the park.", "It's between park."],
         correctIndex: 0,
         hint: {
-          ru: 'Позади парка: It is behind the park',
-          lv: 'Aiz parka: It is behind the park',
+          ru: 'Вспомни предлог «позади / за»: behind',
+          lv: 'Atceries prievārdu «aiz»: behind',
         },
       },
     ],
@@ -3291,12 +3291,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'present_simple',
         prompt: 'Look at the picture and choose:',
         audioText: 'Look at the picture and choose.',
-        imageWord: { en: 'badminton', emoji: '🏸 ✅', customLabel: 'Play badminton' },
+        imageWord: { en: 'badminton', emoji: '🏸 ✅', customLabel: 'Badminton' },
         options: ['I play badminton.', 'I do play badminton.', 'I goes badminton.'],
         correctIndex: 0,
         hint: {
-          ru: 'Я играю в бадминтон: I play badminton',
-          lv: 'Es spēlēju badmintonu: I play badminton',
+          ru: 'Со спортивными играми (badminton, football) используется глагол play',
+          lv: 'Ar sporta spēlēm (badmintons, futbols) lieto darbības vārdu play',
         },
       },
       {
@@ -3305,12 +3305,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'present_simple',
         prompt: 'Look at the picture and choose:',
         audioText: 'Look at the picture and choose.',
-        imageWord: { en: 'rowing', emoji: '🚣 ❌', customLabel: "Don't go rowing" },
+        imageWord: { en: 'rowing', emoji: '🚣 ❌', customLabel: 'Rowing' },
         options: ["I don't go rowing.", 'I not go rowing.', 'I no go rowing.'],
         correctIndex: 0,
         hint: {
-          ru: "Отрицание в Present Simple: I don't go rowing",
-          lv: "Noliegums Present Simple: I don't go rowing",
+          ru: "С местоимением I для отрицания используется don't",
+          lv: "Ar vietniekvārdu I noliegumam lieto don't",
         },
       },
       {
@@ -3319,12 +3319,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'present_simple',
         prompt: 'Look at the picture and choose:',
         audioText: 'Look at the picture and choose.',
-        imageWord: { en: 'gymnastics', emoji: '🤸 ✅', customLabel: 'Do gymnastics' },
+        imageWord: { en: 'gymnastics', emoji: '🤸 ✅', customLabel: 'Gymnastics' },
         options: ['I play gymnastics.', 'I do gymnastics.', 'I go gymnastics.'],
         correctIndex: 1,
         hint: {
-          ru: 'С гимнастикой используется глагол do: I do gymnastics',
-          lv: 'Ar vingrošanu lieto do: I do gymnastics',
+          ru: 'С гимнастикой и упражнениями используется глагол do',
+          lv: 'Ar vingrošanu lieto darbības vārdu do',
         },
       },
       {
@@ -3333,12 +3333,12 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         category: 'present_simple',
         prompt: 'Look at the picture and choose:',
         audioText: 'Look at the picture and choose.',
-        imageWord: { en: 'swimming', emoji: '🏊 ✅', customLabel: 'Go swimming' },
+        imageWord: { en: 'swimming', emoji: '🏊 ✅', customLabel: 'Swimming' },
         options: ['I do swimming.', 'I go swimming.', 'I play swimming.'],
         correctIndex: 1,
         hint: {
-          ru: 'С плаванием на -ing используется go: I go swimming',
-          lv: 'Ar peldēšanu lieto go: I go swimming',
+          ru: 'С активностями на -ing (swimming) используется глагол go',
+          lv: 'Ar aktivitātēm ar galotni -ing lieto darbības vārdu go',
         },
       },
       {
@@ -3351,8 +3351,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['Yes, I do.', 'Yes, I drink.', 'Yes, I am.'],
         correctIndex: 0,
         hint: {
-          ru: 'Ты пьёшь молоко? — Да (Yes, I do)',
-          lv: 'Vai tu dzer pienu? — Jā (Yes, I do)',
+          ru: 'Вопрос с Do you...? Дай краткий утвердительный ответ',
+          lv: 'Jautājums ar Do you...? Dod īsu apstiprinājumu',
         },
       },
       {
@@ -3365,8 +3365,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ["No, I don't.", 'No, I not.', "No, I'm not."],
         correctIndex: 0,
         hint: {
-          ru: "Отрицание с Do: No, I don't",
-          lv: "Noliegums ar Do: No, I don't",
+          ru: 'Вопрос с Do you...? Выбери краткий отрицательный ответ',
+          lv: 'Jautājums ar Do you...? Izvēlies īsu noliegumu',
         },
       },
       {
@@ -3379,8 +3379,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['Yes, I do.', 'Yes, I eat.', 'Yes, I does.'],
         correctIndex: 0,
         hint: {
-          ru: 'Ты ешь фрукты? — Да (Yes, I do)',
-          lv: 'Vai tu ēd augļus? — Jā (Yes, I do)',
+          ru: 'Подтверди действие с помощью вспомогательного глагола do',
+          lv: 'Apstiprini darbību ar palīgdarbības vārdu do',
         },
       },
       {
@@ -3393,8 +3393,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ["No, I don't.", "No, I doesn't.", 'No, I am not.'],
         correctIndex: 0,
         hint: {
-          ru: "Отрицательный ответ: No, I don't",
-          lv: "Noliegums: No, I don't",
+          ru: "Отрицательный ответ на вопрос Do you...?",
+          lv: "Nolieguma atbilde uz jautājumu Do you...?",
         },
       },
       {
@@ -3407,8 +3407,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['I do exercise every day.', 'I play exercise every day.', 'I does exercise every day.'],
         correctIndex: 0,
         hint: {
-          ru: 'Делать упражнения: do exercise',
-          lv: 'Vingrot: do exercise',
+          ru: 'Выбери правильный глагол для фразы «делать упражнения»',
+          lv: 'Izvēlies pareizo darbības vārdu frāzei «vingrot»',
         },
       },
       {
@@ -3421,8 +3421,8 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ["I don't play baseball.", "I don't go baseball.", 'I not play baseball.'],
         correctIndex: 0,
         hint: {
-          ru: "С бейсболом: I don't play baseball",
-          lv: "Ar beisbolu: I don't play baseball",
+          ru: "Спортивная игра с мячом: вспомни глагол play и отрицание don't",
+          lv: "Sporta spēle ar bumbu: atceries play un don't",
         },
       },
     ],
@@ -3567,8 +3567,8 @@ export const GRADE_4_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['Yes, it does.', 'Yes, it do.', 'Yes, they does.'],
         correctIndex: 0,
         hint: {
-          ru: 'Акула (it): Yes, it does',
-          lv: 'Haizivs (it): Yes, it does',
+          ru: 'Акула (it): выбери краткий утвердительный ответ с does',
+          lv: 'Haizivs (it): izvēlies īsu apstiprinājumu ar does',
         },
       },
       {
@@ -3581,8 +3581,8 @@ export const GRADE_4_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['Does a giraffe eat leaves?', 'Do a giraffe eat leaves?', 'Does a giraffe eats leaves?'],
         correctIndex: 0,
         hint: {
-          ru: 'Жираф (ед. число): Does a giraffe eat leaves?',
-          lv: 'Žirafe (vienskaitlis): Does a giraffe eat leaves?',
+          ru: 'Животное в единственном числе (it): вопрос начинается с Does',
+          lv: 'Dzīvnieks vienskaitlī (it): jautājums sākas ar Does',
         },
       },
       {
@@ -3595,8 +3595,8 @@ export const GRADE_4_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['Do crocodiles swim?', 'Does crocodiles swim?', 'Do crocodiles swims?'],
         correctIndex: 0,
         hint: {
-          ru: 'Крокодилы (мн. число): Do crocodiles swim?',
-          lv: 'Krokodili (daudzskaitlis): Do crocodiles swim?',
+          ru: 'Животные во множественном числе (they): вопрос начинается с Do',
+          lv: 'Dzīvnieki daudzskaitlī (they): jautājums sākas ar Do',
         },
       },
     ],
@@ -3737,8 +3737,8 @@ export const GRADE_4_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ["No, I'm not.", "No, I don't.", 'No, I not.'],
         correctIndex: 0,
         hint: {
-          ru: "Отрицательный ответ: No, I'm not",
-          lv: "Nolieguma atbilde: No, I'm not",
+          ru: "Отрицательный ответ в Present Continuous: с формой глагола to be (am not)",
+          lv: "Nolieguma atbilde Present Continuous: ar am not",
         },
       },
       {
@@ -3751,8 +3751,8 @@ export const GRADE_4_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['What is he doing?', 'What he is doing?', 'What does he doing?'],
         correctIndex: 0,
         hint: {
-          ru: 'Порядок слов в вопросе: What is he doing?',
-          lv: 'Vārdu kārtība jautājumā: What is he doing?',
+          ru: 'В вопросе вспомогательный глагол is ставится перед подлежащим he',
+          lv: 'Jautājumā palīgdarbības vārds is iet pirms he',
         },
       },
     ],
@@ -3993,8 +3993,8 @@ export const GRADE_4_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['that', 'those', 'these'],
         correctIndex: 0,
         hint: {
-          ru: 'Клей (ед. число / вещество вдали): that glue',
-          lv: 'Līme (vienskaitlis tālumā): that glue',
+          ru: 'Клей (вещество / ед. число): вспомни указательное слово для ед. числа',
+          lv: 'Līme (vienskaitlis): atceries norādāmo vārdu vienskaitlim',
         },
       },
       {
@@ -4007,8 +4007,8 @@ export const GRADE_4_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['those', 'that', 'this'],
         correctIndex: 0,
         hint: {
-          ru: 'Ножницы (scissors) в английском всегда во МНОЖЕСТВЕННОМ числе: those scissors',
-          lv: 'Šķēres (scissors) angļu valodā vienmēr ir DAUDZSKAITLIS: those scissors',
+          ru: 'Ножницы (scissors) в английском всегда во множественном числе',
+          lv: 'Šķēres (scissors) angļu valodā vienmēr ir daudzskaitlis',
         },
       },
       {
@@ -4021,8 +4021,8 @@ export const GRADE_4_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['Here you are.', 'Here are you.', 'There is you.'],
         correctIndex: 0,
         hint: {
-          ru: '«Вот, пожалуйста / держи»: Here you are',
-          lv: '«Lūdzu, ņem»: Here you are',
+          ru: 'Вспомни устойчивую вежливую фразу при передаче предмета',
+          lv: 'Atceries pieklājīgu frāzi, kad kaut ko padod',
         },
       },
       {
@@ -4035,8 +4035,8 @@ export const GRADE_4_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['those', 'that', 'this'],
         correctIndex: 0,
         hint: {
-          ru: 'Кисточки (мн. число): those brushes',
-          lv: 'Otiņas (daudzskaitlis): those brushes',
+          ru: 'Кисточки (brushes) во множественном числе: выбери слово для мн. числа',
+          lv: 'Otiņas (brushes) ir daudzskaitlī: izvēlies vārdu daudzskaitlim',
         },
       },
       {
@@ -4049,8 +4049,8 @@ export const GRADE_4_GRAMMAR_TOPICS: GrammarTopic[] = [
         options: ['Can you pass me that paint, please?', 'Can you pass me those paint, please?', 'Can you pass me these paint, please?'],
         correctIndex: 0,
         hint: {
-          ru: 'Краска (ед. число): that paint',
-          lv: 'Krāsa (vienskaitlis): that paint',
+          ru: 'Краска (ед. число): выбери правильное указательное слово',
+          lv: 'Krāsa (vienskaitlis): izvēlies pareizo norādāmo vārdu',
         },
       },
       {

@@ -939,11 +939,6 @@ export const ExamGame: React.FC<ExamGameProps> = ({
                 </button>
               )}
             </div>
-            {currentQuestion.grammarData.hint && (
-              <p className="text-xs sm:text-sm font-semibold text-slate-500 mb-2 font-comic">
-                {currentQuestion.grammarData.hint[language] || currentQuestion.grammarData.hint.ru}
-              </p>
-            )}
           </div>
         )}
 

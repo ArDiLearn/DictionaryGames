@@ -2485,7 +2485,7 @@ export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
         grade: 3,
         category: 'alphabet',
         prompt: 'Listen and choose the letter you hear:',
-        audioText: 'ay',
+        audioText: 'A.',
         options: ['A', 'E', 'I'],
         correctIndex: 0,
         hint: {

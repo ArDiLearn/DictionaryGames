@@ -24,7 +24,7 @@ export const ALPHABET_LETTERS: AlphabetLetter[] = [
     letter: 'A',
     display: 'Aa',
     transcription: '[ eɪ ]',
-    tts: 'ay',
+    tts: 'A.',
     example: { en: 'apple', ru: 'яблоко', lv: 'ābols', emoji: '🍎' },
     color: { bg: 'bg-rose-50', border: 'border-rose-300 hover:border-rose-400', text: 'text-rose-700', badge: 'bg-rose-100 text-rose-800 border-rose-200' },
   },
@@ -64,7 +64,7 @@ export const ALPHABET_LETTERS: AlphabetLetter[] = [
     letter: 'F',
     display: 'Ff',
     transcription: '[ ef ]',
-    tts: 'ef',
+    tts: 'eff',
     example: { en: 'fish', ru: 'рыба', lv: 'zivs', emoji: '🐟' },
     color: { bg: 'bg-teal-50', border: 'border-teal-300 hover:border-teal-400', text: 'text-teal-700', badge: 'bg-teal-100 text-teal-800 border-teal-200' },
   },
@@ -160,7 +160,7 @@ export const ALPHABET_LETTERS: AlphabetLetter[] = [
     letter: 'R',
     display: 'Rr',
     transcription: '[ ɑː ]',
-    tts: 'ar',
+    tts: 'are',
     example: { en: 'rabbit', ru: 'кролик', lv: 'trusis', emoji: '🐰' },
     color: { bg: 'bg-rose-50', border: 'border-rose-300 hover:border-rose-400', text: 'text-rose-700', badge: 'bg-rose-100 text-rose-800 border-rose-200' },
   },
@@ -241,9 +241,10 @@ export function speakLetter(
   onEnd?: () => void
 ): boolean {
   stopSpeech();
+  const baseTts = letterObj.tts.trim();
   const textToSpeak = withWord
-    ? `${letterObj.tts}. ${letterObj.example.en}.`
-    : letterObj.tts;
+    ? `${baseTts.replace(/\.+$/, '')}. ${letterObj.example.en}.`
+    : (baseTts.endsWith('.') ? baseTts : `${baseTts}.`);
   return speakEnglish(textToSpeak, rate, onStart, onEnd);
 }
 

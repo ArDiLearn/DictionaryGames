@@ -15,7 +15,7 @@ import { ALPHABET_LETTERS, AlphabetLetter, speakLetter, speakLetterWord } from '
 import { GrammarTopic, GrammarQuestion, getQuestionsForGrammarTopic } from '../data/grammarData';
 import { Language, LearningCourse } from '../types';
 import { sounds } from '../utils/soundEffects';
-import { stopSpeech } from '../utils/speech';
+import { stopSpeech, speakEnglish } from '../utils/speech';
 import { saveGrammarProgress } from '../services/storage';
 
 interface AlphabetBoardProps {
@@ -158,17 +158,18 @@ export const AlphabetBoard: React.FC<AlphabetBoardProps> = ({
   const handleSpeakQuestion = () => {
     sounds.playClick();
     if (currentQ?.audioText) {
-      speakLetter(
-        {
-          letter: currentQ.audioText,
-          display: currentQ.audioText,
-          transcription: '',
-          tts: currentQ.audioText,
-          example: { en: '', ru: '', lv: '', emoji: '' },
-          color: { bg: '', border: '', text: '', badge: '' },
-        },
-        speechRate
+      stopSpeech();
+      const cleanTarget = currentQ.audioText.trim().replace(/\.+$/, '');
+      const foundLetter = ALPHABET_LETTERS.find(
+        (l) =>
+          l.letter.toLowerCase() === cleanTarget.toLowerCase() ||
+          l.tts.toLowerCase().replace(/\.+$/, '') === cleanTarget.toLowerCase()
       );
+      if (foundLetter) {
+        speakLetter(foundLetter, speechRate);
+      } else {
+        speakEnglish(currentQ.audioText, speechRate);
+      }
     }
   };
 

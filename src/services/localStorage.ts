@@ -379,7 +379,7 @@ export function saveWordProgressRaw(progress: Record<string, WordProgress>, cour
 
 // --- Exam Results I/O ---
 
-export function loadExamResults(course: LearningCourse = 'en'): Record<number, ExamResult> {
+export function loadExamResults(course: LearningCourse = 'en'): Record<string | number, ExamResult> {
   try {
     const raw = getItemWithFallback(
       getExamResultsKey(course, 'none'),
@@ -396,10 +396,11 @@ export function loadExamResults(course: LearningCourse = 'en'): Record<number, E
 export function saveExamResultRaw(
   course: LearningCourse = 'en',
   result: ExamResult
-): Record<number, ExamResult> {
+): Record<string | number, ExamResult> {
   try {
-    const current = loadExamResults(course);
-    const existing = current[result.grade];
+    const current = loadExamResults(course) as Record<string | number, ExamResult>;
+    const examKey = result.examKey || (result.part && result.part !== 'final' ? `${result.grade}_${result.part}` : `${result.grade}`);
+    const existing = current[examKey] || (result.part === 'final' ? current[result.grade] : undefined);
     // Keep best result: higher score percent, or same score with higher stars
     const shouldUpdate =
       !existing ||
@@ -407,7 +408,11 @@ export function saveExamResultRaw(
       (result.scorePercent === existing.scorePercent && result.starsEarned > (existing.starsEarned || 0));
 
     if (shouldUpdate) {
-      current[result.grade] = result;
+      current[examKey] = result;
+      if (result.part === 'final' || !result.part) {
+        current[result.grade] = result;
+        current[`${result.grade}_final`] = result;
+      }
       const key = getExamResultsKey(course);
       localStorage.setItem(key, JSON.stringify(current));
     }

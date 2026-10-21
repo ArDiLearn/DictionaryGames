@@ -210,8 +210,12 @@ export interface GrammarExamQuestion {
 
 export type ExamQuestion = VocabExamQuestion | GrammarExamQuestion;
 
+export type ExamPart = 'part1' | 'part2' | 'final';
+
 export interface ExamResult {
   grade: Grade;
+  part?: ExamPart;
+  examKey?: string;
   course: LearningCourse;
   scorePercent: number;
   gradeMark: '5+' | '4' | '3' | null;

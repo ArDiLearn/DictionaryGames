@@ -60,7 +60,7 @@ export function saveExamHistory(course: LearningCourse = 'en', history: ExamResu
   saveExamHistoryRaw(course, history);
 }
 
-export function saveExamResult(course: LearningCourse = 'en', result: ExamResult): Record<number, ExamResult> {
+export function saveExamResult(course: LearningCourse = 'en', result: ExamResult): Record<string | number, ExamResult> {
   return saveExamResultRaw(course, result);
 }
 
@@ -205,7 +205,7 @@ export function recordExamAttempt(
   course: LearningCourse = 'en',
   result: ExamResult
 ): {
-  results: Record<number, ExamResult>;
+  results: Record<string | number, ExamResult>;
   history: ExamResult[];
 } {
   const updatedResults = saveExamResultRaw(course, result);

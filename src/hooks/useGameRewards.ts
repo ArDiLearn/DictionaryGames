@@ -33,7 +33,7 @@ export function useGameRewards(
   language: Language,
   stats: UserStats,
   setStats: (updater: UserStats | ((prev: UserStats) => UserStats)) => void,
-  setExamResults: React.Dispatch<React.SetStateAction<Record<number, ExamResult>>>,
+  setExamResults: React.Dispatch<React.SetStateAction<Record<string | number, ExamResult>>>,
   setExamHistory: React.Dispatch<React.SetStateAction<ExamResult[]>>
 ) {
   const [celebration, setCelebration] = useState<CelebrationState | null>(null);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import rawWordsData from './data/words.json';
-import { Topic, Word, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress, LearningCourse, ExamResult } from './types';
+import { Topic, Word, Language, GameMode, TopicProgress, UserStats, Grade, WordProgress, LearningCourse, ExamResult, ExamPart } from './types';
 import { Header } from './components/Header';
 import { TopicList, ContentTab } from './components/TopicList';
 import { GameSelector } from './components/GameSelector';
@@ -112,6 +112,7 @@ export const App: React.FC = () => {
     setSelectedTopic,
     gameMode,
     activeExamGrade,
+    activeExamPart,
     isGameActive,
     selectTopic,
     selectTopicWithMode,
@@ -121,7 +122,7 @@ export const App: React.FC = () => {
     goBack,
   } = useNavigation(topics, course, language);
   const [gameSessionId, setGameSessionId] = useState(0);
-  const [examResults, setExamResults] = useState<Record<number, ExamResult>>(() =>
+  const [examResults, setExamResults] = useState<Record<string | number, ExamResult>>(() =>
     loadExamResults(initialCourse)
   );
   const [examHistory, setExamHistory] = useState<ExamResult[]>(() =>
@@ -158,7 +159,7 @@ export const App: React.FC = () => {
     handleExamComplete,
   } = useGameRewards(course, language, stats, setStats, setExamResults, setExamHistory);
 
-  const { filteredTopics, examTopics } = useTopicCatalog({
+  const { filteredTopics } = useTopicCatalog({
     topics,
     selectedGrades,
     activeExamGrade,
@@ -400,9 +401,9 @@ export const App: React.FC = () => {
     }
   };
 
-  const handleStartExam = (grade: Grade) => {
+  const handleStartExam = (grade: Grade, part: ExamPart = 'final') => {
     setCelebration(null);
-    startExam(grade);
+    startExam(grade, part);
     trackExamStart(grade, course);
   };
 
@@ -461,9 +462,10 @@ export const App: React.FC = () => {
           <div className="pt-2">
             <Suspense fallback={<GameLoadingFallback />}>
               <ExamGame
-                key={`exam-${activeExamGrade}-${course}`}
+                key={`exam-${activeExamGrade}-${activeExamPart}-${course}`}
                 grade={activeExamGrade}
-                topics={examTopics}
+                part={activeExamPart}
+                topics={topics}
                 language={language}
                 course={course}
                 onComplete={handleExamComplete}
@@ -695,8 +697,8 @@ export const App: React.FC = () => {
               selectTopic(t);
               setIsStatsModalOpen(false);
             }}
-            onStartExam={(grade) => {
-              handleStartExam(grade);
+            onStartExam={(grade, part) => {
+              handleStartExam(grade, part);
               setIsStatsModalOpen(false);
             }}
             onStartMistakesTest={() => {

@@ -1,7 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Topic, Word, Language, TopicProgress, Grade, LearningCourse, ExamResult } from '../types';
+import { Topic, Word, Language, TopicProgress, Grade, LearningCourse, ExamResult, ExamPart } from '../types';
 import { TopicCard } from './TopicCard';
 import { ExamCard } from './ExamCard';
+import { getExamsForGrade } from '../data/exams';
 import { FlagIcon } from './FlagIcon';
 import { AvatarBadge } from './AvatarBadge';
 import { WordIllustration } from './WordIllustration';
@@ -21,10 +22,6 @@ import {
   isTopicExtra,
   hasNewWordsForGrades,
   getNewWordsCountForGrades,
-  GRADE_1_MAIN_TOPICS,
-  GRADE_2_MAIN_TOPICS,
-  GRADE_3_MAIN_TOPICS,
-  GRADE_4_MAIN_TOPICS,
 } from '../data/curriculum';
 import { sounds } from '../utils/soundEffects';
 import { speakWord } from '../utils/speech';
@@ -57,8 +54,8 @@ interface TopicListProps {
   avatar: string;
   onOpenShop?: () => void;
   onOpenStats?: (initialTab?: 'overview' | 'exams' | 'topics' | 'practice' | 'awards') => void;
-  examResults?: Record<number, ExamResult>;
-  onStartExam?: (grade: Grade) => void;
+  examResults?: Record<string | number, ExamResult>;
+  onStartExam?: (grade: Grade, part?: ExamPart) => void;
   equippedTitleId?: string;
   onOpenTitles?: () => void;
   mistakesCount?: number;
@@ -1214,21 +1211,10 @@ export const TopicList: React.FC<TopicListProps> = ({
             const activeGrade: Grade = selectedGrades.includes(examGradeTab)
               ? examGradeTab
               : selectedGrades[0];
-            const baseTopicsCount =
-              activeGrade === 1
-                ? GRADE_1_MAIN_TOPICS.length
-                : activeGrade === 2
-                ? GRADE_2_MAIN_TOPICS.length
-                : activeGrade === 3
-                ? GRADE_3_MAIN_TOPICS.length
-                : GRADE_4_MAIN_TOPICS.length;
-            const grammarCount =
-              course !== 'lv'
-                ? getGrammarTopicsForGrades([activeGrade]).filter(
-                    (t) => !t.id.endsWith('_mix') && t.id !== 'g3_alphabet'
-                  ).length
-                : 0;
-            const topicsCount = baseTopicsCount + grammarCount;
+            const exams = getExamsForGrade(activeGrade);
+            const part1Def = exams.find((e) => e.part === 'part1');
+            const part2Def = exams.find((e) => e.part === 'part2');
+            const finalDef = exams.find((e) => e.part === 'final');
 
             return (
               <div>
@@ -1237,12 +1223,12 @@ export const TopicList: React.FC<TopicListProps> = ({
                     <span className="text-2xl">🏆</span>
                     <div>
                       <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
-                        {language === 'lv' ? 'Pārbaudes darbi' : 'Контрольная работа'}
+                        {language === 'lv' ? 'Pārbaudes darbi' : 'Контрольные работы'}
                       </h2>
                       <p className="text-xs sm:text-sm font-semibold text-slate-500">
                         {language === 'lv'
-                          ? 'Pārbaudi savas zināšanas par visām pamatkursa tēmām'
-                          : 'Проверь свои знания по всем основным темам школьного курса'}
+                          ? 'Pārbaudi savas zināšanas pa semestriem un gada noslēguma darbā'
+                          : 'Проверь свои знания по полугодиям и в итоговой контрольной'}
                       </p>
                     </div>
                   </div>
@@ -1261,19 +1247,78 @@ export const TopicList: React.FC<TopicListProps> = ({
                   )}
                 </div>
 
-                <div className="max-w-2xl mx-auto py-2">
-                  <ExamCard
-                    key={`exam-grade-${activeGrade}`}
-                    grade={activeGrade}
-                    availableGrades={selectedGrades.length > 1 ? selectedGrades : undefined}
-                    onSelectGradeTab={(g) => setExamGradeTab(g)}
-                    language={language}
-                    course={course}
-                    topicsCount={topicsCount}
-                    result={examResults ? examResults[activeGrade] : undefined}
-                    onStart={onStartExam}
-                    onOpenStats={() => onOpenStats && onOpenStats('exams')}
-                  />
+                <div className="max-w-4xl mx-auto py-2">
+                  {/* Grade Tabs selector if multiple grades are selected */}
+                  {selectedGrades.length > 1 && (
+                    <div className="flex items-center gap-1.5 bg-amber-100/90 p-1.5 rounded-2xl border border-amber-300 shadow-inner mb-5">
+                      {selectedGrades.map((g) => {
+                        const isTabActive = g === activeGrade;
+                        const label = language === 'ru' ? `${g} класс` : `${g}. klase`;
+                        return (
+                          <button
+                            key={g}
+                            type="button"
+                            onClick={() => {
+                              sounds.playClick();
+                              setExamGradeTab(g);
+                            }}
+                            className={`flex-1 py-1.5 px-3 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer text-center ${
+                              isTabActive
+                                ? 'bg-amber-600 text-white shadow-xs scale-102'
+                                : 'bg-white/80 text-amber-900 hover:bg-white hover:text-amber-950 border border-amber-200/60 shadow-2xs'
+                            }`}
+                          >
+                            {label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {/* 1 and 2 Semesters in a 2-column grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 mb-4 sm:mb-5">
+                    {part1Def && (
+                      <ExamCard
+                        key={part1Def.id}
+                        examDef={part1Def}
+                        grade={activeGrade}
+                        part="part1"
+                        language={language}
+                        course={course}
+                        result={examResults?.[part1Def.id]}
+                        onStart={onStartExam}
+                        onOpenStats={() => onOpenStats && onOpenStats('exams')}
+                      />
+                    )}
+                    {part2Def && (
+                      <ExamCard
+                        key={part2Def.id}
+                        examDef={part2Def}
+                        grade={activeGrade}
+                        part="part2"
+                        language={language}
+                        course={course}
+                        result={examResults?.[part2Def.id]}
+                        onStart={onStartExam}
+                        onOpenStats={() => onOpenStats && onOpenStats('exams')}
+                      />
+                    )}
+                  </div>
+
+                  {/* Full Year Final Exam */}
+                  {finalDef && (
+                    <ExamCard
+                      key={finalDef.id}
+                      examDef={finalDef}
+                      grade={activeGrade}
+                      part="final"
+                      language={language}
+                      course={course}
+                      result={examResults?.[finalDef.id] || examResults?.[activeGrade]}
+                      onStart={onStartExam}
+                      onOpenStats={() => onOpenStats && onOpenStats('exams')}
+                    />
+                  )}
                 </div>
               </div>
             );

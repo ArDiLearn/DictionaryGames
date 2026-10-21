@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import confetti from 'canvas-confetti';
-import { Topic, Word, Grade, Language, LearningCourse, ExamResult, ExamQuestion, VocabExamQuestion, GrammarExamQuestion } from '../../types';
+import { Topic, Word, Grade, Language, LearningCourse, ExamResult, ExamQuestion, VocabExamQuestion, GrammarExamQuestion, ExamPart } from '../../types';
 import {
   translations,
   isLatvianTargetCourse,
@@ -11,12 +11,20 @@ import { sounds } from '../../utils/soundEffects';
 import { speakEnglish, speakLatvian, stopSpeech } from '../../utils/speech';
 import { WordIllustration } from '../WordIllustration';
 import { GrammarIllustration } from '../GrammarIllustration';
-import { getGrammarTopicsForGrades, GrammarQuestion } from '../../data/grammarData';
+import {
+  GrammarQuestion,
+  GRADE_1_GRAMMAR_TOPICS,
+  GRADE_2_GRAMMAR_TOPICS,
+  GRADE_3_GRAMMAR_TOPICS,
+  GRADE_4_GRAMMAR_TOPICS,
+} from '../../data/grammarData';
+import { ExamDefinition, getExamDefinition } from '../../data/exams';
 import { ArrowLeft, Volume2, CheckCircle2, XCircle, RotateCcw, Home, Sparkles, SkipForward } from 'lucide-react';
 import { saveExamSession, loadExamSession, clearExamSession } from '../../services/examSession';
 
 interface ExamGameProps {
   grade: Grade;
+  part?: ExamPart;
   topics: Topic[];
   language: Language;
   course: LearningCourse;
@@ -55,41 +63,43 @@ function generateExamQuestions(
   topics: Topic[],
   grade: Grade,
   language: Language,
-  course: LearningCourse
+  course: LearningCourse,
+  examDef: ExamDefinition
 ): ExamQuestion[] {
   const getLearnWord = (w: Word) => getTargetWordText(w, course);
   const getTransWord = (w: Word) => getTranslationWordText(w, course, language);
 
-  // Collect all available words of this grade for distractor pools
-  const allGradeWords: Word[] = [];
-  topics.forEach((t) => {
+  // Filter topics strictly to the exam's vocabulary topics
+  const examTopics = topics.filter((t) => examDef.vocabTopicIds.includes(t.topic_id));
+
+  // Collect all available words of this exam for distractor pools
+  const allExamWords: Word[] = [];
+  examTopics.forEach((t) => {
     t.words.forEach((w) => {
-      if ((w.grade || 1) === grade) {
-        allGradeWords.push(w);
-      }
+      allExamWords.push(w);
     });
   });
 
-  // Target: approximately 65% of all words in the main curriculum topics of this grade
-  // Grade 1 (97 words) -> 63 words; Grade 2 (64 words) -> 42 words; Grade 3 (76 words) -> 49 words
-  const targetCount = Math.min(
-    Math.round(allGradeWords.length * 0.65),
-    allGradeWords.length
-  );
+  // Target vocabulary questions count
+  const targetCount =
+    course === 'lv'
+      ? examDef.targetVocabCount + Math.round(examDef.targetGrammarCount / 2)
+      : examDef.targetVocabCount;
 
   // Prepare topic pools: copy and shuffle words per topic
-  const topicPools = topics
+  const topicPools = examTopics
     .map((topic) => {
-      const words = topic.words.filter((w) => (w.grade || 1) === grade);
+      const gradeWords = topic.words.filter((w) => (w.grade || 1) === grade);
+      const effectiveWords = gradeWords.length > 0 ? gradeWords : topic.words;
       return {
         topicId: topic.topic_id,
         topicEmoji: topic.emoji,
-        words: shuffle(words.length > 0 ? words : topic.words),
+        words: shuffle(effectiveWords),
       };
     })
     .filter((tp) => tp.words.length > 0);
 
-  // Select 40 words round-robin across topics
+  // Select targetCount words round-robin across topics
   const selectedItems: { word: Word; topicId: string; topicEmoji?: string }[] = [];
   const usedWordIds = new Set<string>();
 
@@ -146,7 +156,7 @@ function generateExamQuestions(
 
       if (!isTrue) {
         // Find a different word's translation
-        const otherWords = allGradeWords.filter(
+        const otherWords = allExamWords.filter(
           (w) => getTransWord(w).toLowerCase() !== displayTrans.toLowerCase()
         );
         if (otherWords.length > 0) {
@@ -167,7 +177,7 @@ function generateExamQuestions(
     } else {
       // 'audio' or 'choice'
       const correctText = getTransWord(chosenWord);
-      const otherWords = allGradeWords.filter(
+      const otherWords = allExamWords.filter(
         (w) => getTransWord(w).toLowerCase() !== correctText.toLowerCase()
       );
       const shuffledOthers = shuffle(otherWords);
@@ -200,13 +210,20 @@ function generateExamQuestions(
   const vocabQuestions = questions;
 
   const grammarQuestions: GrammarExamQuestion[] = [];
-  if (course !== 'lv') {
-    const grammarTopics = getGrammarTopicsForGrades([grade]).filter(
-      (t) => !t.id.endsWith('_mix') && t.id !== 'g3_alphabet'
+  if (course !== 'lv' && examDef.grammarTopicIds.length > 0) {
+    const allAvailableGrammarTopics = [
+      ...GRADE_1_GRAMMAR_TOPICS,
+      ...GRADE_2_GRAMMAR_TOPICS,
+      ...GRADE_3_GRAMMAR_TOPICS,
+      ...GRADE_4_GRAMMAR_TOPICS,
+    ];
+    const targetGrammarTopics = allAvailableGrammarTopics.filter((t) =>
+      examDef.grammarTopicIds.includes(t.id)
     );
-    if (grammarTopics.length > 0) {
-      const targetGrammarCount = grade === 2 ? 7 : 6;
-      const pools = grammarTopics.map((gt) => ({
+
+    if (targetGrammarTopics.length > 0) {
+      const targetGrammarCount = examDef.targetGrammarCount;
+      const pools = targetGrammarTopics.map((gt) => ({
         topicId: gt.id,
         topicEmoji: gt.emoji,
         questions: shuffle([...gt.questions]),
@@ -280,6 +297,7 @@ function generateExamQuestions(
 
 export const ExamGame: React.FC<ExamGameProps> = ({
   grade,
+  part = 'final',
   topics,
   language,
   course,
@@ -288,11 +306,12 @@ export const ExamGame: React.FC<ExamGameProps> = ({
 }) => {
   const t = translations[language];
   const isLatvian = isLatvianTargetCourse(course);
+  const examDef = getExamDefinition(grade, part);
 
-  const [sessionData] = useState(() => loadExamSession(grade, course));
+  const [sessionData] = useState(() => loadExamSession(grade, course, part));
 
   const [questions, setQuestions] = useState<ExamQuestion[]>(() =>
-    sessionData?.questions || generateExamQuestions(topics, grade, language, course)
+    sessionData?.questions || generateExamQuestions(topics, grade, language, course, examDef)
   );
   const [currentIndex, setCurrentIndex] = useState<number>(sessionData?.currentIndex || 0);
   const [correctCount, setCorrectCount] = useState<number>(sessionData?.correctCount || 0);
@@ -305,15 +324,21 @@ export const ExamGame: React.FC<ExamGameProps> = ({
   // Automatically save exam progress to persistent storage so tab unload or refresh never loses progress
   useEffect(() => {
     if (!isFinished && questions.length > 0) {
-      saveExamSession(grade, course, {
-        questions,
-        currentIndex,
-        correctCount,
+      saveExamSession(
         grade,
         course,
-      });
+        {
+          questions,
+          currentIndex,
+          correctCount,
+          grade,
+          part,
+          course,
+        },
+        part
+      );
     }
-  }, [questions, currentIndex, correctCount, isFinished, grade, course]);
+  }, [questions, currentIndex, correctCount, isFinished, grade, course, part]);
 
   // States for 'builder' question type
   const [availableTiles, setAvailableTiles] = useState<LetterTile[]>([]);
@@ -531,6 +556,8 @@ export const ExamGame: React.FC<ExamGameProps> = ({
 
     const result: ExamResult = {
       grade,
+      part,
+      examKey: `${grade}_${part}`,
       course,
       scorePercent: percent,
       gradeMark: mark,
@@ -555,15 +582,15 @@ export const ExamGame: React.FC<ExamGameProps> = ({
       sounds.playClick();
     }
 
-    clearExamSession(grade, course);
+    clearExamSession(grade, course, part);
 
     onComplete(result);
   };
 
   const handleRestart = () => {
     sounds.playClick();
-    clearExamSession(grade, course);
-    const newQuestions = generateExamQuestions(topics, grade, language, course);
+    clearExamSession(grade, course, part);
+    const newQuestions = generateExamQuestions(topics, grade, language, course, examDef);
     setQuestions(newQuestions);
     setCurrentIndex(0);
     setCorrectCount(0);
@@ -691,7 +718,7 @@ export const ExamGame: React.FC<ExamGameProps> = ({
         <div className="flex items-center gap-2 bg-amber-100/80 border border-amber-300 px-3.5 py-1.5 rounded-2xl">
           <span className="text-lg">🎓</span>
           <span className="font-black text-amber-950 text-xs sm:text-sm">
-            {t.exam.cardTitle}: {gradeName}
+            {examDef.title[language]} · {examDef.badge[language]}
           </span>
         </div>
       </div>

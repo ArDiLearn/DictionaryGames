@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Language, Grade, ExamResult } from '../../types';
+import { Language, Grade, ExamResult, ExamPart } from '../../types';
 import { translations } from '../../utils/i18n';
 import { sounds } from '../../utils/soundEffects';
 import {
@@ -13,9 +13,9 @@ import {
 
 interface ExamsTabProps {
   language: Language;
-  examResults?: Record<number, ExamResult>;
+  examResults?: Record<string | number, ExamResult>;
   examHistory?: ExamResult[];
-  onStartExam?: (grade: Grade) => void;
+  onStartExam?: (grade: Grade, part?: ExamPart) => void;
   onClose: () => void;
 }
 

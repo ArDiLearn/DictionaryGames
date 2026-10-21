@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Topic, GameMode, Grade, Language, LearningCourse } from '../types';
+import { Topic, GameMode, Grade, Language, LearningCourse, ExamPart } from '../types';
 import { getStoredCourse, findFirstActiveExamGrade, hasInProgressExamSession } from '../services/storage';
 
 export type Screen = 'catalog' | 'mode_select' | 'game' | 'exam';
 
-function getInitialExamGrade(): Grade | null {
+function getInitialExamState(): { grade: Grade; part: ExamPart } | null {
   try {
     const storedCourse = getStoredCourse();
     return findFirstActiveExamGrade(storedCourse);
@@ -17,9 +17,11 @@ export function useNavigation(
   course: LearningCourse = 'en',
   language: Language = 'ru'
 ) {
+  const initialExam = getInitialExamState();
   const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
   const [gameMode, setGameMode] = useState<GameMode | null>(null);
-  const [activeExamGrade, setActiveExamGrade] = useState<Grade | null>(getInitialExamGrade);
+  const [activeExamGrade, setActiveExamGrade] = useState<Grade | null>(initialExam?.grade || null);
+  const [activeExamPart, setActiveExamPart] = useState<ExamPart>(initialExam?.part || 'final');
 
   const isGameActive = activeExamGrade !== null || gameMode !== null;
 
@@ -27,6 +29,11 @@ export function useNavigation(
   useEffect(() => {
     activeExamGradeRef.current = activeExamGrade;
   }, [activeExamGrade]);
+
+  const activeExamPartRef = useRef<ExamPart>(activeExamPart);
+  useEffect(() => {
+    activeExamPartRef.current = activeExamPart;
+  }, [activeExamPart]);
 
   const selectedTopicRef = useRef<Topic | null>(selectedTopic);
   useEffect(() => {
@@ -73,7 +80,8 @@ export function useNavigation(
           // Check if the user has an unfinished exam with progress
           const hasInProgressExam = hasInProgressExamSession(
             activeExamGradeRef.current,
-            courseRef.current
+            courseRef.current,
+            activeExamPartRef.current
           );
 
           if (hasInProgressExam) {
@@ -83,7 +91,8 @@ export function useNavigation(
                 : 'Iziet no pārbaudes darba? Progress tiks saglabāts, varēsiet turpināt vēlāk.';
             if (!window.confirm(confirmText)) {
               // Revert back to exam hash
-              window.location.hash = `exam=${activeExamGradeRef.current}`;
+              const p = activeExamPartRef.current;
+              window.location.hash = p === 'final' ? `exam=${activeExamGradeRef.current}` : `exam=${activeExamGradeRef.current}_${p}`;
               return;
             }
           }
@@ -94,6 +103,7 @@ export function useNavigation(
         setSelectedTopic(null);
         setGameMode(null);
         setActiveExamGrade(null);
+        setActiveExamPart('final');
         return;
       }
 
@@ -101,9 +111,12 @@ export function useNavigation(
       const modeParam = params.get('mode') as GameMode | null;
 
       if (examParam) {
-        const g = parseInt(examParam, 10) as Grade;
+        const parts = examParam.split('_');
+        const g = parseInt(parts[0], 10) as Grade;
+        const p = (parts[1] as ExamPart) || 'final';
         if ([1, 2, 3, 4].includes(g)) {
           setActiveExamGrade(g);
+          setActiveExamPart(p);
           setSelectedTopic(null);
           setGameMode(null);
           return;
@@ -168,23 +181,25 @@ export function useNavigation(
     [selectedTopic]
   );
 
-  const startExam = useCallback((grade: Grade) => {
+  const startExam = useCallback((grade: Grade, part: ExamPart = 'final') => {
     setSelectedTopic(null);
     setGameMode(null);
     setActiveExamGrade(grade);
-    window.location.hash = `exam=${grade}`;
+    setActiveExamPart(part);
+    window.location.hash = part === 'final' ? `exam=${grade}` : `exam=${grade}_${part}`;
   }, []);
 
   const finishExam = useCallback(() => {
     skipNextHashConfirmRef.current = true;
     setActiveExamGrade(null);
+    setActiveExamPart('final');
     window.location.hash = '';
   }, []);
 
   const navigateToHome = useCallback(
     (lang: Language = language): boolean => {
       if (activeExamGrade !== null) {
-        const hasInProgressExam = hasInProgressExamSession(activeExamGrade, course);
+        const hasInProgressExam = hasInProgressExamSession(activeExamGrade, course, activeExamPart);
 
         if (hasInProgressExam) {
           const confirmText =
@@ -200,12 +215,13 @@ export function useNavigation(
       setSelectedTopic(null);
       setGameMode(null);
       setActiveExamGrade(null);
+      setActiveExamPart('final');
       if (window.location.hash) {
         window.location.hash = '';
       }
       return true;
     },
-    [activeExamGrade, course, language]
+    [activeExamGrade, activeExamPart, course, language]
   );
 
   const goBack = useCallback(
@@ -251,10 +267,12 @@ export function useNavigation(
     selectedTopic,
     gameMode,
     activeExamGrade,
+    activeExamPart,
     isGameActive,
     setSelectedTopic,
     setGameMode,
     setActiveExamGrade,
+    setActiveExamPart,
     selectTopic,
     selectTopicWithMode,
     selectMode,

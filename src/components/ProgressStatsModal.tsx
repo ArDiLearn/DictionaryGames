@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Topic, Language, UserStats, TopicProgress, WordProgress, LearningCourse, Grade, ExamResult } from '../types';
+import { Topic, Language, UserStats, TopicProgress, WordProgress, LearningCourse, Grade, ExamResult, ExamPart } from '../types';
 import { translations, getPlayerDisplayName } from '../utils/i18n';
 import { sounds } from '../utils/soundEffects';
 import { AvatarBadge } from './AvatarBadge';
@@ -26,11 +26,11 @@ export interface ProgressStatsModalProps {
   topics: Topic[];
   topicProgress: Record<string, TopicProgress>;
   wordProgress: Record<string, WordProgress>;
-  examResults?: Record<number, ExamResult>;
+  examResults?: Record<string | number, ExamResult>;
   examHistory?: ExamResult[];
   initialTab?: TabType;
   onSelectTopic?: (topic: Topic) => void;
-  onStartExam?: (grade: Grade) => void;
+  onStartExam?: (grade: Grade, part?: ExamPart) => void;
   onStartMistakesTest?: () => void;
   onOpenMistakesGames?: () => void;
 }

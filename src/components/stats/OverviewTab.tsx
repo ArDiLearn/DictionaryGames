@@ -18,7 +18,7 @@ interface OverviewTabProps {
   topics: Topic[];
   topicProgress: Record<string, TopicProgress>;
   wordProgress: Record<string, WordProgress>;
-  examResults?: Record<number, ExamResult>;
+  examResults?: Record<string | number, ExamResult>;
   examHistory?: ExamResult[];
   onSwitchToExams: () => void;
 }

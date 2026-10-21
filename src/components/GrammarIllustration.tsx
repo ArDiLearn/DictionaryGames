@@ -290,10 +290,10 @@ export const GrammarIllustration: React.FC<GrammarIllustrationProps> = ({
   };
 
   const borderBgStyle = hasNegation
-    ? 'bg-rose-50/70 border-3 border-rose-300 shadow-rose-100'
+    ? 'bg-rose-50/85 border-4 border-rose-300 shadow-rose-100/70'
     : showBadge
-    ? 'bg-emerald-50/70 border-3 border-emerald-300 shadow-emerald-100'
-    : 'bg-indigo-50/60 border-3 border-indigo-200 shadow-indigo-100';
+    ? 'bg-emerald-50/85 border-4 border-emerald-300 shadow-emerald-100/70'
+    : 'bg-amber-50/85 border-4 border-amber-200 shadow-amber-100/70';
 
   const isFirstHighlighted = (imageWord.highlightIndex ?? 0) === 0;
   const isSecondHighlighted = imageWord.highlightIndex === 1;
@@ -335,7 +335,7 @@ export const GrammarIllustration: React.FC<GrammarIllustrationProps> = ({
           <div
             className={`relative flex flex-col items-center justify-end pb-3 transition-all duration-300 ${
               isFirstHighlighted
-                ? 'p-2 rounded-2xl bg-white/95 border-3 border-indigo-500 shadow-lg ring-4 ring-indigo-200/90 ring-offset-1 z-10 scale-105'
+                ? 'p-2 rounded-2xl bg-white/95 border-4 border-indigo-500 shadow-lg ring-4 ring-indigo-200/90 ring-offset-1 z-10 scale-105'
                 : 'p-2 rounded-2xl bg-white/80 border-2 border-slate-200 shadow-xs opacity-100 scale-100'
             }`}
           >
@@ -356,7 +356,7 @@ export const GrammarIllustration: React.FC<GrammarIllustrationProps> = ({
           <div
             className={`relative flex flex-col items-center justify-end pb-3 transition-all duration-300 ${
               isSecondHighlighted
-                ? 'p-2 rounded-2xl bg-white/95 border-3 border-indigo-500 shadow-lg ring-4 ring-indigo-200/90 ring-offset-1 z-10 scale-105'
+                ? 'p-2 rounded-2xl bg-white/95 border-4 border-indigo-500 shadow-lg ring-4 ring-indigo-200/90 ring-offset-1 z-10 scale-105'
                 : 'p-2 rounded-2xl bg-white/80 border-2 border-slate-200 shadow-xs opacity-100 scale-100'
             }`}
           >
@@ -380,7 +380,7 @@ export const GrammarIllustration: React.FC<GrammarIllustrationProps> = ({
           <div
             className={`relative flex flex-col items-center justify-end transition-all duration-300 ${
               isFirstHighlighted
-                ? 'p-2 sm:p-2.5 rounded-2xl bg-white/95 border-3 border-indigo-500 shadow-lg ring-4 ring-indigo-200/90 ring-offset-2 scale-105 z-10'
+                ? 'p-2 sm:p-2.5 rounded-2xl bg-white/95 border-4 border-indigo-500 shadow-lg ring-4 ring-indigo-200/90 ring-offset-2 scale-105 z-10'
                 : 'p-2 sm:p-2.5 rounded-2xl bg-white/90 border-2 border-slate-200 shadow-xs opacity-100 scale-100'
             }`}
           >
@@ -400,7 +400,7 @@ export const GrammarIllustration: React.FC<GrammarIllustrationProps> = ({
           <div
             className={`relative flex flex-col items-center justify-end transition-all duration-300 ${
               isSecondHighlighted
-                ? 'p-2 sm:p-2.5 rounded-2xl bg-white/95 border-3 border-indigo-500 shadow-lg ring-4 ring-indigo-200/90 ring-offset-2 scale-105 z-10'
+                ? 'p-2 sm:p-2.5 rounded-2xl bg-white/95 border-4 border-indigo-500 shadow-lg ring-4 ring-indigo-200/90 ring-offset-2 scale-105 z-10'
                 : 'p-2 sm:p-2.5 rounded-2xl bg-white/90 border-2 border-slate-200 shadow-xs opacity-100 scale-100'
             }`}
           >

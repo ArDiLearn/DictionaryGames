@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Volume2, RotateCcw, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Volume2, RotateCcw, CheckCircle2, XCircle } from 'lucide-react';
 import { GrammarTopic, GrammarQuestion, getQuestionsForGrammarTopic } from '../../data/grammarData';
 import { Language, LearningCourse } from '../../types';
 import { sounds } from '../../utils/soundEffects';
@@ -176,56 +176,58 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
 
       {/* Game Content */}
       {!isGameOver ? (
-        <div className="w-full flex flex-col items-center animate-fadeIn">
+        <div className="w-full bg-white rounded-3xl border-4 border-indigo-200 shadow-xl p-5 sm:p-7 text-center relative overflow-hidden animate-fadeIn">
+          {/* Question Type Banner */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 text-indigo-900 text-xs font-black uppercase tracking-wider mb-5 border border-indigo-200 shadow-2xs">
+            <span>📝</span>
+            <span>
+              {t.questionNum} {currentIndex + 1} / {questions.length}
+            </span>
+          </div>
+
           {/* Illustration if present */}
           {currentQ.imageWord && (
-            <div className="mb-5">
+            <div className="flex justify-center mb-5 select-none">
               <GrammarIllustration
                 imageWord={currentQ.imageWord}
                 isNegated={currentQ.isNegated}
                 badgeType={currentQ.badgeType}
                 language={language}
-                className={currentQ.imageWord.isTwoCharacters ? "w-60 sm:w-72" : "w-48 sm:w-56"}
+                className={currentQ.imageWord.isTwoCharacters ? 'w-64 sm:w-80' : 'w-48 sm:w-56'}
               />
             </div>
           )}
 
-          {/* Question Prompt Card */}
-          <div className="w-full bg-white rounded-3xl p-5 sm:p-6 border-4 border-indigo-200 shadow-xl flex items-center justify-between gap-4 mb-6">
-            <div className="flex flex-col">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-900 text-[11px] font-black uppercase tracking-wider border border-indigo-200 w-fit mb-1.5">
-                <span>📝</span>
-                <span>{t.questionNum} {currentIndex + 1}</span>
-              </span>
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 font-comic tracking-tight">
-                {currentQ.prompt}
-              </h2>
-              {currentQ.hint && (
-                <p className="text-xs text-slate-500 font-semibold mt-1">
-                  {currentQ.hint[language] || currentQ.hint.ru}
-                </p>
-              )}
-            </div>
-
-            {/* Manual Speaker Button (No Autoplay) */}
+          {/* Prompt heading & Speaker Button */}
+          <div className="flex items-center justify-center gap-2.5 mb-2 max-w-xl mx-auto">
+            <h2 className="text-xl sm:text-2xl font-black text-slate-800 font-comic tracking-tight leading-snug">
+              {currentQ.prompt}
+            </h2>
             <button
               onClick={handleSpeakPrompt}
-              className="btn-3d w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-indigo-50 hover:bg-indigo-100 active:scale-95 border-2 border-indigo-300 text-indigo-600 flex items-center justify-center shrink-0 transition-transform cursor-pointer shadow-sm"
+              className="btn-3d w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-indigo-50 hover:bg-indigo-100 active:scale-95 border-2 border-indigo-300 text-indigo-600 flex items-center justify-center shrink-0 transition-transform cursor-pointer shadow-xs"
               title={t.listen}
             >
-              <Volume2 className="w-6 h-6 stroke-[2.2]" />
+              <Volume2 className="w-5 h-5 stroke-[2.2]" />
             </button>
           </div>
 
+          {/* Hint / Translation */}
+          {currentQ.hint && (
+            <p className="text-xs sm:text-sm font-semibold text-slate-500 mb-6 font-comic">
+              {currentQ.hint[language] || currentQ.hint.ru}
+            </p>
+          )}
+
           {/* Options List */}
-          <div className="w-full flex flex-col gap-3">
+          <div className="w-full flex flex-col gap-3 max-w-xl mx-auto text-left">
             {currentQ.options.map((opt, idx) => {
               const letter = String.fromCharCode(65 + idx); // A, B, C
               const isSelected = selectedOptionIndex === idx;
               const isCorrect = idx === currentQ.correctIndex;
 
               let btnStyle =
-                'bg-white border-3 sm:border-4 border-slate-200 text-slate-800 hover:border-indigo-400 hover:bg-indigo-50/40 shadow-sm';
+                'bg-white border-3 sm:border-4 border-slate-200 hover:border-amber-400 text-slate-800 hover:bg-amber-50/40 shadow-sm';
 
               if (isAnswerChecked) {
                 if (isCorrect) {
@@ -242,9 +244,9 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
                   key={idx}
                   onClick={() => handleSelectOption(idx)}
                   disabled={isAnswerChecked}
-                  className={`btn-3d w-full p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl flex items-center justify-between gap-3 text-left font-black text-base sm:text-lg font-comic transition-all cursor-pointer active:scale-[0.98] select-none ${btnStyle}`}
+                  className={`btn-3d relative w-full p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl flex items-center justify-between gap-3 font-black text-base sm:text-lg font-comic transition-all cursor-pointer active:scale-[0.98] select-none ${btnStyle}`}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
+                  <div className="flex items-center gap-3 min-w-0 pr-2">
                     <span
                       className={`w-8 h-8 rounded-xl flex items-center justify-center text-sm font-black shrink-0 border ${
                         isAnswerChecked && (isCorrect || isSelected)
@@ -254,20 +256,29 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
                     >
                       {letter}
                     </span>
-                    <span className="truncate">{opt}</span>
+                    <span className="leading-snug break-words">{opt}</span>
                   </div>
 
-                  {/* Manual Option Speaker Button */}
-                  <div
-                    onClick={(e) => handleSpeakOption(e, opt)}
-                    className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-transform hover:scale-110 active:scale-95 cursor-pointer border ${
-                      isAnswerChecked && (isCorrect || isSelected)
-                        ? 'bg-white/20 text-white border-white/30'
-                        : 'bg-slate-100 hover:bg-indigo-100 text-indigo-600 border-slate-200'
-                    }`}
-                    title={t.listen}
-                  >
-                    <Volume2 className="w-4 h-4" />
+                  <div className="flex items-center gap-2 shrink-0">
+                    {isAnswerChecked && isCorrect && (
+                      <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-white shrink-0 animate-pop" />
+                    )}
+                    {isAnswerChecked && isSelected && !isCorrect && (
+                      <XCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white shrink-0 animate-pop" />
+                    )}
+
+                    {/* Manual Option Speaker Button */}
+                    <div
+                      onClick={(e) => handleSpeakOption(e, opt)}
+                      className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-transform hover:scale-110 active:scale-95 cursor-pointer border ${
+                        isAnswerChecked && (isCorrect || isSelected)
+                          ? 'bg-white/20 text-white border-white/30'
+                          : 'bg-slate-100 hover:bg-indigo-100 text-indigo-600 border-slate-200'
+                      }`}
+                      title={t.listen}
+                    >
+                      <Volume2 className="w-4 h-4" />
+                    </div>
                   </div>
                 </button>
               );

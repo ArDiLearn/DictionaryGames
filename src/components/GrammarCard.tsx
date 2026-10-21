@@ -118,7 +118,11 @@ const _GrammarCard: React.FC<GrammarCardProps> = ({
       <div className="w-full pt-2 border-t-2 border-slate-200/60">
         <div className="flex items-center justify-between text-xs font-bold text-slate-500 mb-1.5">
           <span>
-            {questionCount} {getQuestionsPlural(questionCount, language)}
+            {topic.id === 'g3_alphabet'
+              ? language === 'lv'
+                ? 'Alfabēts + 12 uzdevumi'
+                : 'Азбука + 12 заданий'
+              : `${questionCount} ${getQuestionsPlural(questionCount, language)}`}
           </span>
           {isAllMastered ? (
             <span className="flex items-center gap-1 text-emerald-600 font-extrabold">

@@ -17,7 +17,8 @@ export type GrammarCategory =
   | 'wearing'
   | 'has_got'
   | 'prepositions'
-  | 'there_is_are';
+  | 'there_is_are'
+  | 'alphabet';
 
 export interface GrammarQuestion {
   id: string;
@@ -2464,9 +2465,185 @@ export const GRADE_2_GRAMMAR_TOPICS: GrammarTopic[] = [
   },
 ];
 
+export const GRADE_3_GRAMMAR_TOPICS: GrammarTopic[] = [
+  {
+    id: 'g3_alphabet',
+    grade: 3,
+    title: {
+      ru: 'Английский алфавит',
+      lv: 'Angļu alfabēts',
+    },
+    description: {
+      ru: 'Интерактивная азбука (A-Z) и тренировка произношения',
+      lv: 'Interaktīvs alfabēts (A-Z) un izrunas treniņš',
+    },
+    emoji: '🔤',
+    color: 'indigo',
+    questions: [
+      {
+        id: 'g3_alph_1',
+        grade: 3,
+        category: 'alphabet',
+        prompt: 'Listen and choose the letter you hear:',
+        audioText: 'ay',
+        options: ['A', 'E', 'I'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Звучит буква A [eɪ]',
+          lv: 'Skan burts A [eɪ]',
+        },
+      },
+      {
+        id: 'g3_alph_2',
+        grade: 3,
+        category: 'alphabet',
+        prompt: 'Listen and choose the letter you hear:',
+        audioText: 'ee',
+        options: ['I', 'E', 'A'],
+        correctIndex: 1,
+        hint: {
+          ru: 'Звучит буква E [iː]',
+          lv: 'Skan burts E [iː]',
+        },
+      },
+      {
+        id: 'g3_alph_3',
+        grade: 3,
+        category: 'alphabet',
+        prompt: 'Listen and choose the letter you hear:',
+        audioText: 'eye',
+        options: ['A', 'Y', 'I'],
+        correctIndex: 2,
+        hint: {
+          ru: 'Звучит буква I [aɪ]',
+          lv: 'Skan burts I [aɪ]',
+        },
+      },
+      {
+        id: 'g3_alph_4',
+        grade: 3,
+        category: 'alphabet',
+        prompt: 'Listen and choose the letter you hear:',
+        audioText: 'jee',
+        options: ['G', 'J', 'C'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Звучит буква G [dʒiː]',
+          lv: 'Skan burts G [dʒiː]',
+        },
+      },
+      {
+        id: 'g3_alph_5',
+        grade: 3,
+        category: 'alphabet',
+        prompt: 'Listen and choose the letter you hear:',
+        audioText: 'jay',
+        options: ['G', 'J', 'Y'],
+        correctIndex: 1,
+        hint: {
+          ru: 'Звучит буква J [dʒeɪ]',
+          lv: 'Skan burts J [dʒeɪ]',
+        },
+      },
+      {
+        id: 'g3_alph_6',
+        grade: 3,
+        category: 'alphabet',
+        prompt: 'Listen and choose the letter you hear:',
+        audioText: 'aitch',
+        options: ['H', 'A', '8'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Звучит буква H [eɪtʃ]',
+          lv: 'Skan burts H [eɪtʃ]',
+        },
+      },
+      {
+        id: 'g3_alph_7',
+        grade: 3,
+        category: 'alphabet',
+        prompt: 'Listen and choose the letter you hear:',
+        audioText: 'cue',
+        options: ['Q', 'O', 'U'],
+        correctIndex: 0,
+        hint: {
+          ru: 'Звучит буква Q [kjuː]',
+          lv: 'Skan burts Q [kjuː]',
+        },
+      },
+      {
+        id: 'g3_alph_8',
+        grade: 3,
+        category: 'alphabet',
+        prompt: 'Listen and choose the letter you hear:',
+        audioText: 'double you',
+        options: ['M', 'V', 'W'],
+        correctIndex: 2,
+        hint: {
+          ru: 'Звучит буква W [ˈdʌbljuː]',
+          lv: 'Skan burts W [ˈdʌbljuː]',
+        },
+      },
+      {
+        id: 'g3_alph_9',
+        grade: 3,
+        category: 'alphabet',
+        prompt: 'What letter comes next? A, B, C, ...',
+        audioText: 'What letter comes next? A, B, C.',
+        options: ['D', 'E', 'F'],
+        correctIndex: 0,
+        hint: {
+          ru: 'После C идет буква D',
+          lv: 'Pēc C seko burts D',
+        },
+      },
+      {
+        id: 'g3_alph_10',
+        grade: 3,
+        category: 'alphabet',
+        prompt: 'What letter is missing? J, K, __, M',
+        audioText: 'What letter is missing? J, K, blank, M.',
+        options: ['N', 'L', 'O'],
+        correctIndex: 1,
+        hint: {
+          ru: 'Пропущена буква L: J, K, L, M',
+          lv: 'Iztrūkst burts L: J, K, L, M',
+        },
+      },
+      {
+        id: 'g3_alph_11',
+        grade: 3,
+        category: 'alphabet',
+        prompt: 'What letter comes next? X, Y, ...',
+        audioText: 'What letter comes next? X, Y.',
+        options: ['W', 'V', 'Z'],
+        correctIndex: 2,
+        hint: {
+          ru: 'Последняя буква алфавита — Z',
+          lv: 'Pēdējais alfabēta burts ir Z',
+        },
+      },
+      {
+        id: 'g3_alph_12',
+        grade: 3,
+        category: 'alphabet',
+        prompt: 'Which word comes first in alphabetical order?',
+        audioText: 'Which word comes first in alphabetical order?',
+        options: ['cat', 'apple', 'dog'],
+        correctIndex: 1,
+        hint: {
+          ru: 'apple начинается на первую букву A',
+          lv: 'apple sākas ar pirmo burtu A',
+        },
+      },
+    ],
+  },
+];
+
 export const ALL_GRAMMAR_TOPICS: GrammarTopic[] = [
   ...GRADE_1_GRAMMAR_TOPICS,
   ...GRADE_2_GRAMMAR_TOPICS,
+  ...GRADE_3_GRAMMAR_TOPICS,
 ];
 
 // Helper to get grammar topics based on active grades filter
@@ -2477,6 +2654,9 @@ export function getGrammarTopicsForGrades(selectedGrades: Grade[]): GrammarTopic
   }
   if (selectedGrades.includes(2)) {
     list.push(...GRADE_2_GRAMMAR_TOPICS);
+  }
+  if (selectedGrades.includes(3)) {
+    list.push(...GRADE_3_GRAMMAR_TOPICS);
   }
   return list;
 }

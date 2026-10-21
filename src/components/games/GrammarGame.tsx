@@ -6,6 +6,7 @@ import { sounds } from '../../utils/soundEffects';
 import { speakWord } from '../../utils/speech';
 import { GrammarIllustration } from '../GrammarIllustration';
 import { saveGrammarProgress } from '../../services/storage';
+import { AlphabetBoard } from '../AlphabetBoard';
 
 interface GrammarGameProps {
   topic: GrammarTopic;
@@ -134,6 +135,18 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
     playAgain: language === 'lv' ? 'Spēlēt vēlreiz' : 'Попробовать снова',
     allTopics: language === 'lv' ? 'Uz sarakstu' : 'К списку тем',
   };
+
+  if (topic.id === 'g3_alphabet') {
+    return (
+      <AlphabetBoard
+        topic={topic}
+        language={language}
+        course={course}
+        onBack={onBack}
+        onComplete={onComplete}
+      />
+    );
+  }
 
   if (!currentQ && !isGameOver) return null;
 

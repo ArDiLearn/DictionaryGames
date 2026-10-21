@@ -29,7 +29,7 @@ import {
 import { sounds } from '../utils/soundEffects';
 import { speakWord } from '../utils/speech';
 import { getTitleById } from '../data/titles';
-import { GrammarTopic, getGrammarTopicsForGrades } from '../data/grammarData';
+import { GrammarTopic, getGrammarTopicsForGrades, GRADE_3_GRAMMAR_TOPICS } from '../data/grammarData';
 import { GrammarCard } from './GrammarCard';
 import { GrammarTopicProgress } from '../services/storage';
 import { Search, Sparkles, BarChart3, ClipboardCheck, Gamepad2, Volume2, ArrowRight } from 'lucide-react';
@@ -1015,6 +1015,47 @@ export const TopicList: React.FC<TopicListProps> = ({
                   {mainTopics.length}
                 </span>
               </div>
+
+              {/* Grade 3 Alphabet Quick Banner */}
+              {selectedGrades.includes(3) && course !== 'lv' && onSelectGrammarTopic && (
+                <div className="mb-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl p-4 sm:p-5 text-white flex flex-col sm:flex-row items-center justify-between gap-3 shadow-md hover:shadow-lg transition-all border-3 border-indigo-300/40">
+                  <div className="flex items-center gap-3.5 text-center sm:text-left">
+                    <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center text-2xl shrink-0 shadow-inner">
+                      🔤
+                    </div>
+                    <div>
+                      <div className="flex items-center justify-center sm:justify-start gap-2">
+                        <h3 className="text-base sm:text-lg font-black tracking-tight">
+                          {language === 'lv' ? 'Angļu alfabēts (A–Z)' : 'Английский алфавит (A–Z)'}
+                        </h3>
+                        <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-yellow-300 text-slate-900 shadow-2xs">
+                          {language === 'lv' ? 'Jaunums' : 'Новое'}
+                        </span>
+                      </div>
+                      <p className="text-xs sm:text-sm font-semibold text-white/90">
+                        {language === 'lv'
+                          ? 'Klausies visu 26 burtu pareizu izrunu un trenējies!'
+                          : 'Слушай правильное произношение всех 26 букв и тренируйся!'}
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      sounds.playClick();
+                      const alphabetTopic =
+                        visibleGrammarTopics.find((t) => t.id === 'g3_alphabet') ||
+                        GRADE_3_GRAMMAR_TOPICS[0];
+                      if (alphabetTopic) {
+                        onSelectGrammarTopic(alphabetTopic);
+                      }
+                    }}
+                    className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl bg-white text-indigo-700 font-black text-xs sm:text-sm shadow-md hover:bg-yellow-200 hover:text-indigo-900 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
+                  >
+                    {language === 'lv' ? 'Atvērt alfabētu' : 'Открыть азбуку'} →
+                  </button>
+                </div>
+              )}
 
               {mainTopics.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">

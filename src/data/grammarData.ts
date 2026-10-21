@@ -242,12 +242,12 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
     id: 'g1_have_got_and_this',
     grade: 1,
     title: {
-      ru: "I've got / I haven't got & What's this?",
-      lv: "I've got / I haven't got & What's this?",
+      ru: "What's this? / What colour is it? & I've got...",
+      lv: "What's this? / What colour is it? & I've got...",
     },
     description: {
-      ru: 'Что это? У меня есть / У меня нет предмета',
-      lv: 'Kas tas ir? Man ir / Man nav priekšmeta',
+      ru: 'Что это? Какого цвета? У меня есть / У меня нет',
+      lv: 'Kas tas ir? Kādā krāsā? Man ir / Man nav',
     },
     emoji: '✏️',
     color: 'sky',
@@ -486,6 +486,150 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         hint: {
           ru: 'Мяч перечёркнут (у меня нет)',
           lv: 'Bumba pārsvītrota (man nav)',
+        },
+      },
+      {
+        id: 'g1_wc_1',
+        grade: 1,
+        category: 'what_is_this',
+        prompt: 'What colour is it?',
+        audioText: 'What colour is it?',
+        imageWord: { en: 'book', emoji: '📕' },
+        options: [
+          "It's red.",
+          "It's blue.",
+          "It's yellow.",
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Какого цвета книга?',
+          lv: 'Kādā krāsā ir grāmata?',
+        },
+      },
+      {
+        id: 'g1_wc_2',
+        grade: 1,
+        category: 'what_is_this',
+        prompt: 'What colour is it?',
+        audioText: 'What colour is it?',
+        imageWord: { en: 'duck', emoji: '🐥' },
+        options: [
+          "It's green.",
+          "It's yellow.",
+          "It's pink.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Какого цвета утёнок?',
+          lv: 'Kādā krāsā ir pīlēns?',
+        },
+      },
+      {
+        id: 'g1_wc_3',
+        grade: 1,
+        category: 'what_is_this',
+        prompt: 'What colour is it?',
+        audioText: 'What colour is it?',
+        imageWord: { en: 'snake', emoji: '🐍' },
+        options: [
+          "It's green.",
+          "It's purple.",
+          "It's brown.",
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Какого цвета змея?',
+          lv: 'Kādā krāsā ir čūska?',
+        },
+      },
+      {
+        id: 'g1_wc_4',
+        grade: 1,
+        category: 'what_is_this',
+        prompt: 'What colour is it?',
+        audioText: 'What colour is it?',
+        imageWord: { en: 'boat', emoji: '⛵' },
+        options: [
+          "It's red.",
+          "It's white.",
+          "It's blue.",
+        ],
+        correctIndex: 2,
+        hint: {
+          ru: 'Какого цвета кораблик?',
+          lv: 'Kādā krāsā ir laiva?',
+        },
+      },
+      {
+        id: 'g1_wc_5',
+        grade: 1,
+        category: 'what_is_this',
+        prompt: 'What colour is it?',
+        audioText: 'What colour is it?',
+        imageWord: { en: 'kite', emoji: '🪁' },
+        options: [
+          "It's orange.",
+          "It's black.",
+          "It's green.",
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Какого цвета воздушный змей?',
+          lv: 'Kādā krāsā ir pūķis?',
+        },
+      },
+      {
+        id: 'g1_wc_6',
+        grade: 1,
+        category: 'what_is_this',
+        prompt: 'What colour is it?',
+        audioText: 'What colour is it?',
+        imageWord: { en: 'doll', emoji: '🪆' },
+        options: [
+          "It's brown.",
+          "It's pink.",
+          "It's grey.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Какого цвета кукла?',
+          lv: 'Kādā krāsā ir lelle?',
+        },
+      },
+      {
+        id: 'g1_wc_7',
+        grade: 1,
+        category: 'what_is_this',
+        prompt: 'What colour is it?',
+        audioText: 'What colour is it?',
+        imageWord: { en: 'mouse', emoji: '🐁' },
+        options: [
+          "It's yellow.",
+          "It's grey.",
+          "It's red.",
+        ],
+        correctIndex: 1,
+        hint: {
+          ru: 'Какого цвета мышка?',
+          lv: 'Kādā krāsā ir pele?',
+        },
+      },
+      {
+        id: 'g1_wc_8',
+        grade: 1,
+        category: 'what_is_this',
+        prompt: 'What colour is it?',
+        audioText: 'What colour is it?',
+        imageWord: { en: 'teddy', emoji: '🧸' },
+        options: [
+          "It's brown.",
+          "It's purple.",
+          "It's black.",
+        ],
+        correctIndex: 0,
+        hint: {
+          ru: 'Какого цвета мишка?',
+          lv: 'Kādā krāsā ir lācītis?',
         },
       },
     ],
@@ -1106,12 +1250,12 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
     id: 'g1_likes_and_colors',
     grade: 1,
     title: {
-      ru: "I like / don't like & What colour is it? / They're...",
-      lv: "I like / don't like & What colour is it? / They're...",
+      ru: "I like / don't like & They're...",
+      lv: "I like / don't like & They're...",
     },
     description: {
-      ru: "Предпочтения (I like / don't like) и цвета (What colour is it? / They're green and brown)",
-      lv: "Patika (I like / don't like) un krāsas (What colour is it? / They're green and brown)",
+      ru: "Предпочтения (I like / don't like) и множественное число (They're green and brown)",
+      lv: "Patika (I like / don't like) un daudzskaitlis (They're green and brown)",
     },
     emoji: '🎨',
     color: 'teal',
@@ -1237,150 +1381,6 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         },
       },
       {
-        id: 'g1_wc_1',
-        grade: 1,
-        category: 'colors_and_plurals',
-        prompt: 'What colour is it?',
-        audioText: 'What colour is it?',
-        imageWord: { en: 'book', emoji: '📕', customLabel: 'Book' },
-        options: [
-          "It's red.",
-          "It's blue.",
-          "It's yellow.",
-        ],
-        correctIndex: 0,
-        hint: {
-          ru: 'Какого цвета книга? (красная)',
-          lv: 'Kādā krāsā ir grāmata? (sarkana)',
-        },
-      },
-      {
-        id: 'g1_wc_2',
-        grade: 1,
-        category: 'colors_and_plurals',
-        prompt: 'What colour is it?',
-        audioText: 'What colour is it?',
-        imageWord: { en: 'duck', emoji: '🐥', customLabel: 'Duck' },
-        options: [
-          "It's green.",
-          "It's yellow.",
-          "It's pink.",
-        ],
-        correctIndex: 1,
-        hint: {
-          ru: 'Какого цвета утёнок? (жёлтый)',
-          lv: 'Kādā krāsā ir pīlēns? (dzeltens)',
-        },
-      },
-      {
-        id: 'g1_wc_3',
-        grade: 1,
-        category: 'colors_and_plurals',
-        prompt: 'What colour is it?',
-        audioText: 'What colour is it?',
-        imageWord: { en: 'snake', emoji: '🐍', customLabel: 'Snake' },
-        options: [
-          "It's green.",
-          "It's purple.",
-          "It's brown.",
-        ],
-        correctIndex: 0,
-        hint: {
-          ru: 'Какого цвета змея? (зелёная)',
-          lv: 'Kādā krāsā ir čūska? (zaļa)',
-        },
-      },
-      {
-        id: 'g1_wc_4',
-        grade: 1,
-        category: 'colors_and_plurals',
-        prompt: 'What colour is it?',
-        audioText: 'What colour is it?',
-        imageWord: { en: 'boat', emoji: '⛵', customLabel: 'Boat' },
-        options: [
-          "It's red.",
-          "It's white.",
-          "It's blue.",
-        ],
-        correctIndex: 2,
-        hint: {
-          ru: 'Какого цвета кораблик? (синий)',
-          lv: 'Kādā krāsā ir laiva? (zila)',
-        },
-      },
-      {
-        id: 'g1_wc_5',
-        grade: 1,
-        category: 'colors_and_plurals',
-        prompt: 'What colour is it?',
-        audioText: 'What colour is it?',
-        imageWord: { en: 'kite', emoji: '🪁', customLabel: 'Kite' },
-        options: [
-          "It's orange.",
-          "It's black.",
-          "It's green.",
-        ],
-        correctIndex: 0,
-        hint: {
-          ru: 'Какого цвета воздушный змей? (оранжевый)',
-          lv: 'Kādā krāsā ir pūķis? (oranžs)',
-        },
-      },
-      {
-        id: 'g1_wc_6',
-        grade: 1,
-        category: 'colors_and_plurals',
-        prompt: 'What colour is it?',
-        audioText: 'What colour is it?',
-        imageWord: { en: 'doll', emoji: '🪆', customLabel: 'Doll' },
-        options: [
-          "It's brown.",
-          "It's pink.",
-          "It's grey.",
-        ],
-        correctIndex: 1,
-        hint: {
-          ru: 'Какого цвета кукла? (розовая)',
-          lv: 'Kādā krāsā ir lelle? (rozā)',
-        },
-      },
-      {
-        id: 'g1_wc_7',
-        grade: 1,
-        category: 'colors_and_plurals',
-        prompt: 'What colour is it?',
-        audioText: 'What colour is it?',
-        imageWord: { en: 'mouse', emoji: '🐁', customLabel: 'Mouse' },
-        options: [
-          "It's yellow.",
-          "It's grey.",
-          "It's red.",
-        ],
-        correctIndex: 1,
-        hint: {
-          ru: 'Какого цвета мышка? (серая)',
-          lv: 'Kādā krāsā ir pele? (pelēka)',
-        },
-      },
-      {
-        id: 'g1_wc_8',
-        grade: 1,
-        category: 'colors_and_plurals',
-        prompt: 'What colour is it?',
-        audioText: 'What colour is it?',
-        imageWord: { en: 'teddy', emoji: '🧸', customLabel: 'Teddy' },
-        options: [
-          "It's brown.",
-          "It's purple.",
-          "It's black.",
-        ],
-        correctIndex: 0,
-        hint: {
-          ru: 'Какого цвета мишка? (коричневый)',
-          lv: 'Kādā krāsā ir lācītis? (brūns)',
-        },
-      },
-      {
         id: 'g1_col_7',
         grade: 1,
         category: 'colors_and_plurals',
@@ -1390,7 +1390,6 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
           en: 'ducks',
           emoji: '🦆',
           secondEmoji: '🦆',
-          customLabel: 'Green & Brown Ducks',
         },
         options: [
           "They're green and brown.",
@@ -1399,8 +1398,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Какого цвета утки? (зелёные и коричневые)',
-          lv: 'Kādā krāsā ir pīles? (zaļas un brūnas)',
+          ru: 'Какого цвета утки?',
+          lv: 'Kādā krāsā ir pīles?',
         },
       },
       {
@@ -1412,7 +1411,6 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'cats',
           emoji: '🐱',
-          customLabel: 'White & Grey Cats',
         },
         options: [
           "They're pink and blue.",
@@ -1421,8 +1419,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Какого цвета кошки? (белые и серые)',
-          lv: 'Kādā krāsā ir kaķi? (balti un pelēki)',
+          ru: 'Какого цвета кошки?',
+          lv: 'Kādā krāsā ir kaķi?',
         },
       },
       {
@@ -1435,7 +1433,6 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
           en: 'cows',
           emoji: '🐮',
           secondEmoji: '🐮',
-          customLabel: 'Black & White Cows',
         },
         options: [
           "They're black and white.",
@@ -1444,8 +1441,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Какого цвета коровы? (чёрные и белые)',
-          lv: 'Kādā krāsā ir govis? (melnas un baltas)',
+          ru: 'Какого цвета коровы?',
+          lv: 'Kādā krāsā ir govis?',
         },
       },
       {
@@ -1457,7 +1454,6 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'balls',
           emoji: '⚽',
-          customLabel: 'Red & Green Balls',
         },
         options: [
           "They're blue and yellow.",
@@ -1466,8 +1462,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Какого цвета мячи? (красные и зелёные)',
-          lv: 'Kādā krāsā ir bumbas? (sarkanas un zaļas)',
+          ru: 'Какого цвета мячи?',
+          lv: 'Kādā krāsā ir bumbas?',
         },
       },
       {
@@ -1479,7 +1475,6 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'birds',
           emoji: '🦜',
-          customLabel: 'Blue & Yellow Birds',
         },
         options: [
           "They're blue and yellow.",
@@ -1488,8 +1483,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 0,
         hint: {
-          ru: 'Какого цвета птицы? (синие и жёлтые)',
-          lv: 'Kādā krāsā ir putni? (zili un dzelteni)',
+          ru: 'Какого цвета птицы?',
+          lv: 'Kādā krāsā ir putni?',
         },
       },
       {
@@ -1501,7 +1496,6 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         imageWord: {
           en: 'pencils',
           emoji: '✏️',
-          customLabel: 'Yellow & Red Pencils',
         },
         options: [
           "They're green and white.",
@@ -1510,8 +1504,8 @@ export const GRADE_1_GRAMMAR_TOPICS: GrammarTopic[] = [
         ],
         correctIndex: 1,
         hint: {
-          ru: 'Какого цвета карандаши? (жёлтые и красные)',
-          lv: 'Kādā krāsā ir zīmuļi? (dzelteni un sarkani)',
+          ru: 'Какого цвета карандаши?',
+          lv: 'Kādā krāsā ir zīmuļi?',
         },
       },
     ],

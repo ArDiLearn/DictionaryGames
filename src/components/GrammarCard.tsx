@@ -29,7 +29,7 @@ export const GrammarCard: React.FC<GrammarCardProps> = ({
   const theme = isEnLv
     ? {
         bg: 'bg-teal-50/60',
-        border: 'border-3 border-teal-200/90 hover:border-cyan-500',
+        border: 'border-4 border-teal-300 hover:border-cyan-500',
         hoverShadow: 'hover:shadow-xl hover:shadow-cyan-500/15 shadow-xs',
         emojiBg: 'bg-white/90 border-2 border-teal-200/90 group-hover:border-teal-400',
         badge: 'bg-teal-100/90 text-teal-900 border border-teal-300',
@@ -38,7 +38,7 @@ export const GrammarCard: React.FC<GrammarCardProps> = ({
       }
     : {
         bg: 'bg-sky-50/50',
-        border: 'border-3 border-sky-200/90 hover:border-indigo-400',
+        border: 'border-4 border-sky-300 hover:border-indigo-400',
         hoverShadow: 'hover:shadow-xl hover:shadow-indigo-500/15 shadow-xs',
         emojiBg: 'bg-white/90 border-2 border-sky-200/90 group-hover:border-sky-400',
         badge: 'bg-sky-100/90 text-indigo-900 border border-sky-300',

@@ -20,6 +20,9 @@ export default {
           softBg: "#f8fafc"
         }
       },
+      borderWidth: {
+        '3': '3px',
+      },
       spacing: {
         '13': '3.25rem',
         '15': '3.75rem',

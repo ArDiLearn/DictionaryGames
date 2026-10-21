@@ -16,24 +16,24 @@ interface TopicCardProps {
 
 
 const COLOR_MAP: Record<string, { bg: string; border: string; shadow: string; bar: string }> = {
-  indigo: { bg: 'bg-indigo-50/80', border: 'border-indigo-200/90 hover:border-indigo-400', shadow: 'shadow-indigo-100/70', bar: 'bg-gradient-to-r from-indigo-400 to-indigo-600' },
-  purple: { bg: 'bg-purple-50/80', border: 'border-purple-200/90 hover:border-purple-400', shadow: 'shadow-purple-100/70', bar: 'bg-gradient-to-r from-purple-400 to-purple-600' },
-  sky: { bg: 'bg-sky-50/80', border: 'border-sky-200/90 hover:border-sky-400', shadow: 'shadow-sky-100/70', bar: 'bg-gradient-to-r from-sky-400 to-blue-600' },
-  amber: { bg: 'bg-amber-50/90', border: 'border-amber-200/90 hover:border-amber-400', shadow: 'shadow-amber-100/70', bar: 'bg-gradient-to-r from-amber-400 to-orange-500' },
-  pink: { bg: 'bg-pink-50/80', border: 'border-pink-200/90 hover:border-pink-400', shadow: 'shadow-pink-100/70', bar: 'bg-gradient-to-r from-pink-400 to-rose-500' },
-  emerald: { bg: 'bg-emerald-50/80', border: 'border-emerald-200/90 hover:border-emerald-400', shadow: 'shadow-emerald-100/70', bar: 'bg-gradient-to-r from-emerald-400 to-teal-600' },
-  orange: { bg: 'bg-orange-50/90', border: 'border-orange-200/90 hover:border-orange-400', shadow: 'shadow-orange-100/70', bar: 'bg-gradient-to-r from-orange-400 to-amber-500' },
-  blue: { bg: 'bg-blue-50/80', border: 'border-blue-200/90 hover:border-blue-400', shadow: 'shadow-blue-100/70', bar: 'bg-gradient-to-r from-blue-400 to-indigo-600' },
-  teal: { bg: 'bg-teal-50/80', border: 'border-teal-200/90 hover:border-teal-400', shadow: 'shadow-teal-100/70', bar: 'bg-gradient-to-r from-teal-400 to-cyan-600' },
-  lime: { bg: 'bg-lime-50/80', border: 'border-lime-200/90 hover:border-lime-400', shadow: 'shadow-lime-100/70', bar: 'bg-gradient-to-r from-lime-400 to-emerald-500' },
-  yellow: { bg: 'bg-yellow-50/90', border: 'border-yellow-200/90 hover:border-yellow-400', shadow: 'shadow-yellow-100/70', bar: 'bg-gradient-to-r from-yellow-400 to-amber-500' },
-  rose: { bg: 'bg-rose-50/80', border: 'border-rose-200/90 hover:border-rose-400', shadow: 'shadow-rose-100/70', bar: 'bg-gradient-to-r from-rose-400 to-pink-500' },
-  green: { bg: 'bg-green-50/80', border: 'border-green-200/90 hover:border-green-400', shadow: 'shadow-green-100/70', bar: 'bg-gradient-to-r from-green-400 to-emerald-600' },
-  violet: { bg: 'bg-violet-50/80', border: 'border-violet-200/90 hover:border-violet-400', shadow: 'shadow-violet-100/70', bar: 'bg-gradient-to-r from-violet-400 to-purple-600' },
-  cyan: { bg: 'bg-cyan-50/80', border: 'border-cyan-200/90 hover:border-cyan-400', shadow: 'shadow-cyan-100/70', bar: 'bg-gradient-to-r from-cyan-400 to-teal-500' },
-  fuchsia: { bg: 'bg-fuchsia-50/80', border: 'border-fuchsia-200/90 hover:border-fuchsia-400', shadow: 'shadow-fuchsia-100/70', bar: 'bg-gradient-to-r from-fuchsia-400 to-pink-600' },
-  stone: { bg: 'bg-stone-50/90', border: 'border-stone-200/90 hover:border-stone-400', shadow: 'shadow-stone-100/70', bar: 'bg-gradient-to-r from-stone-400 to-amber-600' },
-  red: { bg: 'bg-red-50/80', border: 'border-red-200/90 hover:border-red-400', shadow: 'shadow-red-100/70', bar: 'bg-gradient-to-r from-red-400 to-rose-600' },
+  indigo: { bg: 'bg-indigo-50/85', border: 'border-indigo-300 hover:border-indigo-400', shadow: 'shadow-indigo-100/70', bar: 'bg-gradient-to-r from-indigo-400 to-indigo-600' },
+  purple: { bg: 'bg-purple-50/85', border: 'border-purple-300 hover:border-purple-400', shadow: 'shadow-purple-100/70', bar: 'bg-gradient-to-r from-purple-400 to-purple-600' },
+  sky: { bg: 'bg-sky-50/85', border: 'border-sky-300 hover:border-sky-400', shadow: 'shadow-sky-100/70', bar: 'bg-gradient-to-r from-sky-400 to-blue-600' },
+  amber: { bg: 'bg-amber-50/90', border: 'border-amber-300 hover:border-amber-400', shadow: 'shadow-amber-100/70', bar: 'bg-gradient-to-r from-amber-400 to-orange-500' },
+  pink: { bg: 'bg-pink-50/85', border: 'border-pink-300 hover:border-pink-400', shadow: 'shadow-pink-100/70', bar: 'bg-gradient-to-r from-pink-400 to-rose-500' },
+  emerald: { bg: 'bg-emerald-50/85', border: 'border-emerald-300 hover:border-emerald-400', shadow: 'shadow-emerald-100/70', bar: 'bg-gradient-to-r from-emerald-400 to-teal-600' },
+  orange: { bg: 'bg-orange-50/90', border: 'border-orange-300 hover:border-orange-400', shadow: 'shadow-orange-100/70', bar: 'bg-gradient-to-r from-orange-400 to-amber-500' },
+  blue: { bg: 'bg-blue-50/85', border: 'border-blue-300 hover:border-blue-400', shadow: 'shadow-blue-100/70', bar: 'bg-gradient-to-r from-blue-400 to-indigo-600' },
+  teal: { bg: 'bg-teal-50/85', border: 'border-teal-300 hover:border-teal-400', shadow: 'shadow-teal-100/70', bar: 'bg-gradient-to-r from-teal-400 to-cyan-600' },
+  lime: { bg: 'bg-lime-50/85', border: 'border-lime-300 hover:border-lime-400', shadow: 'shadow-lime-100/70', bar: 'bg-gradient-to-r from-lime-400 to-emerald-500' },
+  yellow: { bg: 'bg-yellow-50/90', border: 'border-yellow-300 hover:border-yellow-400', shadow: 'shadow-yellow-100/70', bar: 'bg-gradient-to-r from-yellow-400 to-amber-500' },
+  rose: { bg: 'bg-rose-50/85', border: 'border-rose-300 hover:border-rose-400', shadow: 'shadow-rose-100/70', bar: 'bg-gradient-to-r from-rose-400 to-pink-500' },
+  green: { bg: 'bg-green-50/85', border: 'border-green-300 hover:border-green-400', shadow: 'shadow-green-100/70', bar: 'bg-gradient-to-r from-green-400 to-emerald-600' },
+  violet: { bg: 'bg-violet-50/85', border: 'border-violet-300 hover:border-violet-400', shadow: 'shadow-violet-100/70', bar: 'bg-gradient-to-r from-violet-400 to-purple-600' },
+  cyan: { bg: 'bg-cyan-50/85', border: 'border-cyan-300 hover:border-cyan-400', shadow: 'shadow-cyan-100/70', bar: 'bg-gradient-to-r from-cyan-400 to-teal-500' },
+  fuchsia: { bg: 'bg-fuchsia-50/85', border: 'border-fuchsia-300 hover:border-fuchsia-400', shadow: 'shadow-fuchsia-100/70', bar: 'bg-gradient-to-r from-fuchsia-400 to-pink-600' },
+  stone: { bg: 'bg-stone-50/90', border: 'border-stone-300 hover:border-stone-400', shadow: 'shadow-stone-100/70', bar: 'bg-gradient-to-r from-stone-400 to-amber-600' },
+  red: { bg: 'bg-red-50/85', border: 'border-red-300 hover:border-red-400', shadow: 'shadow-red-100/70', bar: 'bg-gradient-to-r from-red-400 to-rose-600' },
 };
 
 const _TopicCard: React.FC<TopicCardProps> = ({
@@ -77,10 +77,10 @@ const _TopicCard: React.FC<TopicCardProps> = ({
         sounds.playClick();
         onSelect(topic);
       }}
-      className={`group relative flex flex-col justify-between p-4 sm:p-5 rounded-3xl transition-all duration-300 cursor-pointer text-left ${
+      className={`group relative flex flex-col justify-between p-4 sm:p-5 rounded-3xl transition-all duration-300 cursor-pointer text-left ${colorScheme.bg} border-4 ${colorScheme.border} ${
         isHighlightNewWords
-          ? 'bg-amber-50/90 border-[5px] border-double border-amber-400 hover:border-amber-500 ring-2 ring-amber-300/70 ring-offset-2'
-          : `${colorScheme.bg} border-3 ${colorScheme.border}`
+          ? 'ring-3 ring-amber-400/90 ring-offset-2'
+          : ''
       } hover:shadow-xl hover:${colorScheme.shadow} hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.98] ${
         isAllMastered ? 'ring-2 ring-emerald-400 ring-offset-2' : ''
       }`}

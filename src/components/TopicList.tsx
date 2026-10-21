@@ -902,11 +902,12 @@ export const TopicList: React.FC<TopicListProps> = ({
         </div>
       ) : (
         <div>
-          {/* Tab Navigation */}
+          {/* Tab Navigation (2 rows on mobile/Android, 1 row on tablet/desktop) */}
           {tabs.length > 1 && (
-            <div className={`flex items-center gap-1.5 sm:gap-2 p-1.5 ${themeStyles.tabContainer} backdrop-blur-xs rounded-2xl sm:rounded-3xl mb-6 overflow-x-auto no-scrollbar shadow-inner`}>
-              {tabs.map((tab) => {
+            <div className={`grid grid-cols-2 sm:flex sm:items-center gap-1.5 sm:gap-2 p-1.5 ${themeStyles.tabContainer} backdrop-blur-xs rounded-2xl sm:rounded-3xl mb-6 shadow-inner`}>
+              {tabs.map((tab, idx) => {
                 const isActive = activeTab === tab.id;
+                const isLastOdd = tabs.length % 2 === 1 && idx === tabs.length - 1;
                 return (
                   <button
                     key={tab.id}
@@ -915,17 +916,19 @@ export const TopicList: React.FC<TopicListProps> = ({
                       sounds.playClick();
                       handleTabChange(tab.id);
                     }}
-                    className={`flex-1 min-w-max px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 transition-all cursor-pointer border-2 select-none active:scale-98 ${
+                    className={`flex-1 w-full sm:w-auto ${
+                      isLastOdd ? 'col-span-2 sm:col-span-1' : ''
+                    } px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 transition-all cursor-pointer border-2 select-none active:scale-98 ${
                       isActive
                         ? themeStyles.activeTabClass
                         : themeStyles.inactiveTabClass
                     }`}
                   >
-                    <span className="text-base sm:text-lg">{tab.emoji}</span>
-                    <span>{tab.label}</span>
+                    <span className="text-base sm:text-lg shrink-0">{tab.emoji}</span>
+                    <span className="truncate">{tab.label}</span>
                     {tab.badge !== undefined && (
                       <span
-                        className={`text-[10px] sm:text-xs px-2 py-0.5 rounded-full font-black ${
+                        className={`shrink-0 text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full font-black ${
                           isActive
                             ? 'bg-black/20 text-white shadow-2xs'
                             : themeStyles.inactiveBadgeClass

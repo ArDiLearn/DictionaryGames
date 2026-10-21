@@ -146,14 +146,14 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
             sounds.playClick();
             onBack();
           }}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-white border-2 border-slate-200 text-slate-700 font-bold text-sm shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-2xl bg-white border-2 border-amber-200/80 text-slate-700 font-black text-sm shadow-xs hover:bg-amber-50/50 transition-all active:scale-95 cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>{t.back}</span>
         </button>
 
         {/* Topic Title pill */}
-        <div className="flex items-center gap-1.5 px-3 py-1 bg-white rounded-full border-2 border-slate-200 text-xs sm:text-sm font-black text-slate-700 shadow-2xs">
+        <div className="flex items-center gap-2 px-3.5 py-1.5 bg-white rounded-full border-2 border-amber-200/80 text-xs sm:text-sm font-black text-slate-800 shadow-2xs">
           <span>{topic.emoji}</span>
           <span className="truncate max-w-[180px] sm:max-w-[280px]">
             {topic.title[language] || topic.title.ru}
@@ -161,15 +161,15 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
         </div>
 
         {/* Question Counter */}
-        <div className="text-xs sm:text-sm font-black text-slate-500 bg-white px-2.5 py-1 rounded-xl border border-slate-200">
+        <div className="text-xs sm:text-sm font-black text-slate-600 bg-white px-3 py-1.5 rounded-2xl border-2 border-amber-200/80 shadow-2xs">
           {currentIndex + 1} / {questions.length}
         </div>
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full bg-slate-200 rounded-full h-2.5 mb-6 overflow-hidden">
+      <div className="w-full bg-white/80 rounded-full h-3 border border-slate-200/80 mb-6 overflow-hidden p-0.5 shadow-inner">
         <div
-          className="bg-gradient-to-r from-emerald-500 to-teal-500 h-2.5 rounded-full transition-all duration-300"
+          className="bg-gradient-to-r from-emerald-400 via-teal-500 to-indigo-500 h-full rounded-full transition-all duration-300"
           style={{ width: `${progressPercent}%` }}
         />
       </div>
@@ -191,16 +191,17 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
           )}
 
           {/* Question Prompt Card */}
-          <div className="w-full bg-white rounded-3xl p-4 sm:p-5 border-3 border-indigo-100 shadow-md flex items-center justify-between gap-3 mb-6">
+          <div className="w-full bg-white rounded-3xl p-5 sm:p-6 border-4 border-indigo-200 shadow-xl flex items-center justify-between gap-4 mb-6">
             <div className="flex flex-col">
-              <span className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-slate-400">
-                {t.questionNum} {currentIndex + 1}
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-900 text-[11px] font-black uppercase tracking-wider border border-indigo-200 w-fit mb-1.5">
+                <span>📝</span>
+                <span>{t.questionNum} {currentIndex + 1}</span>
               </span>
-              <h2 className="text-lg sm:text-2xl font-black text-slate-900 font-comic tracking-tight mt-0.5">
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 font-comic tracking-tight">
                 {currentQ.prompt}
               </h2>
               {currentQ.hint && (
-                <p className="text-xs text-slate-400 font-semibold mt-1">
+                <p className="text-xs text-slate-500 font-semibold mt-1">
                   {currentQ.hint[language] || currentQ.hint.ru}
                 </p>
               )}
@@ -209,7 +210,7 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
             {/* Manual Speaker Button (No Autoplay) */}
             <button
               onClick={handleSpeakPrompt}
-              className="w-12 h-12 rounded-2xl bg-indigo-50 hover:bg-indigo-100 active:scale-95 border-2 border-indigo-200 text-indigo-600 flex items-center justify-center shrink-0 transition-transform cursor-pointer shadow-xs"
+              className="btn-3d w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-indigo-50 hover:bg-indigo-100 active:scale-95 border-2 border-indigo-300 text-indigo-600 flex items-center justify-center shrink-0 transition-transform cursor-pointer shadow-sm"
               title={t.listen}
             >
               <Volume2 className="w-6 h-6 stroke-[2.2]" />
@@ -224,15 +225,15 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
               const isCorrect = idx === currentQ.correctIndex;
 
               let btnStyle =
-                'bg-white border-3 border-slate-200 text-slate-800 hover:border-indigo-300 hover:bg-indigo-50/30';
+                'bg-white border-3 sm:border-4 border-slate-200 text-slate-800 hover:border-indigo-400 hover:bg-indigo-50/40 shadow-sm';
 
               if (isAnswerChecked) {
                 if (isCorrect) {
-                  btnStyle = 'bg-emerald-500 border-3 border-emerald-600 text-white shadow-md animate-pop';
+                  btnStyle = 'bg-emerald-500 border-3 sm:border-4 border-emerald-600 text-white shadow-md animate-pop';
                 } else if (isSelected) {
-                  btnStyle = 'bg-rose-500 border-3 border-rose-600 text-white shadow-md animate-shake';
+                  btnStyle = 'bg-rose-500 border-3 sm:border-4 border-rose-600 text-white shadow-md animate-shake';
                 } else {
-                  btnStyle = 'bg-slate-50 border-3 border-slate-200 text-slate-400 opacity-60';
+                  btnStyle = 'bg-slate-50 border-3 sm:border-4 border-slate-200 text-slate-400 opacity-60';
                 }
               }
 
@@ -241,16 +242,14 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
                   key={idx}
                   onClick={() => handleSelectOption(idx)}
                   disabled={isAnswerChecked}
-                  className={`w-full p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl flex items-center justify-between gap-3 text-left font-black text-base sm:text-lg font-comic transition-all cursor-pointer shadow-xs active:scale-[0.98] select-none ${btnStyle}`}
+                  className={`btn-3d w-full p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl flex items-center justify-between gap-3 text-left font-black text-base sm:text-lg font-comic transition-all cursor-pointer active:scale-[0.98] select-none ${btnStyle}`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <span
-                      className={`w-8 h-8 rounded-xl flex items-center justify-center text-sm font-black shrink-0 ${
-                        isAnswerChecked && isCorrect
-                          ? 'bg-white/25 text-white'
-                          : isAnswerChecked && isSelected
-                          ? 'bg-white/25 text-white'
-                          : 'bg-slate-100 text-slate-600'
+                      className={`w-8 h-8 rounded-xl flex items-center justify-center text-sm font-black shrink-0 border ${
+                        isAnswerChecked && (isCorrect || isSelected)
+                          ? 'bg-white/25 text-white border-white/30'
+                          : 'bg-slate-100 text-slate-700 border-slate-200'
                       }`}
                     >
                       {letter}
@@ -261,10 +260,10 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
                   {/* Manual Option Speaker Button */}
                   <div
                     onClick={(e) => handleSpeakOption(e, opt)}
-                    className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-transform hover:scale-110 active:scale-95 cursor-pointer ${
+                    className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-transform hover:scale-110 active:scale-95 cursor-pointer border ${
                       isAnswerChecked && (isCorrect || isSelected)
-                        ? 'bg-white/20 text-white'
-                        : 'bg-slate-100 hover:bg-indigo-100 text-indigo-600'
+                        ? 'bg-white/20 text-white border-white/30'
+                        : 'bg-slate-100 hover:bg-indigo-100 text-indigo-600 border-slate-200'
                     }`}
                     title={t.listen}
                   >
@@ -277,7 +276,7 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
         </div>
       ) : (
         /* Results Screen */
-        <div className="w-full bg-white rounded-3xl p-6 sm:p-8 border-3 border-emerald-100 shadow-xl flex flex-col items-center text-center animate-pop">
+        <div className="w-full bg-white rounded-3xl p-6 sm:p-8 border-4 border-emerald-200 shadow-xl flex flex-col items-center text-center animate-pop">
           <div className="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4 text-4xl shadow-inner">
             🎉
           </div>
@@ -317,14 +316,14 @@ export const GrammarGame: React.FC<GrammarGameProps> = ({
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
             <button
               onClick={handleRestart}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm shadow-md transition-all cursor-pointer active:scale-95"
+              className="btn-3d w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm sm:text-base shadow-md transition-all cursor-pointer active:scale-95"
             >
               <RotateCcw className="w-4 h-4" />
               <span>{t.playAgain}</span>
             </button>
             <button
               onClick={onBack}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-black text-sm transition-all cursor-pointer"
+              className="btn-3d w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white hover:bg-slate-50 text-slate-700 font-black text-sm sm:text-base shadow-sm border-2 border-slate-200 transition-all cursor-pointer active:scale-95"
             >
               <CheckCircle2 className="w-4 h-4" />
               <span>{t.allTopics}</span>

@@ -3316,6 +3316,76 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       <rect x="46" y="59" width="5" height="1.8" rx="0.9" fill="#94a3b8" />
     </svg>
   ),
+
+  'pictures': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Wall Shadow under frames */}
+      <rect x="8" y="24" width="38" height="48" rx="4" fill="#64748b" opacity="0.15" />
+      <rect x="54" y="24" width="38" height="48" rx="4" fill="#64748b" opacity="0.15" />
+
+      {/* Picture 1 (Left - Sunny hills landscape) */}
+      <g id="pictureLeft">
+        {/* Hanging string & nail */}
+        <line x1="26" y1="14" x2="16" y2="22" stroke="#94a3b8" strokeWidth="1.2" />
+        <line x1="26" y1="14" x2="36" y2="22" stroke="#94a3b8" strokeWidth="1.2" />
+        <circle cx="26" cy="14" r="1.8" fill="#475569" />
+        {/* Wooden Frame */}
+        <rect x="8" y="22" width="36" height="46" rx="3" fill="#b45309" stroke="#78350f" strokeWidth="1.5" />
+        <rect x="12" y="26" width="28" height="38" rx="1.5" fill="#fefce8" />
+        {/* Landscape Painting Inside */}
+        <g clipPath="url(#picClip1)">
+          <defs>
+            <clipPath id="picClip1">
+              <rect x="12" y="26" width="28" height="38" rx="1.5" />
+            </clipPath>
+          </defs>
+          {/* Sky */}
+          <rect x="12" y="26" width="28" height="24" fill="#bae6fd" />
+          {/* Sun */}
+          <circle cx="32" cy="34" r="4.5" fill="#facc15" />
+          {/* Rolling Green Hills */}
+          <ellipse cx="18" cy="52" rx="14" ry="10" fill="#22c55e" />
+          <ellipse cx="32" cy="54" rx="16" ry="11" fill="#16a34a" />
+          {/* Cute Tree */}
+          <rect x="23" y="44" width="2" height="6" fill="#78350f" />
+          <circle cx="24" cy="42" r="4.5" fill="#15803d" />
+        </g>
+        {/* Inner frame bevel highlight */}
+        <rect x="12" y="26" width="28" height="38" stroke="#d97706" strokeWidth="0.8" fill="none" opacity="0.4" />
+      </g>
+
+      {/* Picture 2 (Right - Sailboat on the sea) */}
+      <g id="pictureRight">
+        {/* Hanging string & nail */}
+        <line x1="72" y1="14" x2="62" y2="22" stroke="#94a3b8" strokeWidth="1.2" />
+        <line x1="72" y1="14" x2="82" y2="22" stroke="#94a3b8" strokeWidth="1.2" />
+        <circle cx="72" cy="14" r="1.8" fill="#475569" />
+        {/* Wooden Frame */}
+        <rect x="54" y="22" width="36" height="46" rx="3" fill="#b45309" stroke="#78350f" strokeWidth="1.5" />
+        <rect x="58" y="26" width="28" height="38" rx="1.5" fill="#fefce8" />
+        {/* Seascape Painting Inside */}
+        <g clipPath="url(#picClip2)">
+          <defs>
+            <clipPath id="picClip2">
+              <rect x="58" y="26" width="28" height="38" rx="1.5" />
+            </clipPath>
+          </defs>
+          {/* Sunset Sky */}
+          <rect x="58" y="26" width="28" height="22" fill="#fed7aa" />
+          <circle cx="66" cy="38" r="4" fill="#fb923c" />
+          {/* Blue Sea */}
+          <rect x="58" y="44" width="28" height="20" fill="#0284c7" />
+          <path d="M 58 44 Q 65 42 72 44 Q 79 46 86 44 L 86 64 L 58 64 Z" fill="#0369a1" />
+          {/* Sailboat */}
+          <polygon points="69,45 77,45 75,48 71,48" fill="#ffffff" />
+          <polygon points="73,38 73,44 77,44" fill="#ef4444" />
+          <polygon points="73,39 73,44 70,44" fill="#ffffff" />
+        </g>
+        {/* Inner frame bevel highlight */}
+        <rect x="58" y="26" width="28" height="38" stroke="#d97706" strokeWidth="0.8" fill="none" opacity="0.4" />
+      </g>
+    </svg>
+  ),
 };
 
 export const RU_ALIASES: Record<string, string> = {
@@ -3441,4 +3511,7 @@ export const RU_ALIASES: Record<string, string> = {
   'машина': 'car',
   'машинка': 'car',
   'mašīna': 'car',
+  'картины': 'pictures',
+  'картинки': 'pictures',
+  'attēli': 'pictures',
 };

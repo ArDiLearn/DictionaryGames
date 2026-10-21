@@ -28,18 +28,20 @@ export const GrammarCard: React.FC<GrammarCardProps> = ({
 
   const theme = isEnLv
     ? {
+        bg: 'bg-teal-50/60',
         border: 'border-3 border-teal-200/90 hover:border-cyan-500',
-        hoverShadow: 'hover:shadow-xl hover:shadow-cyan-500/15 shadow-sm',
-        emojiBg: 'bg-gradient-to-br from-teal-50 to-cyan-50/70 border-2 border-teal-200',
-        badge: 'bg-teal-100 text-teal-900 border border-teal-300',
+        hoverShadow: 'hover:shadow-xl hover:shadow-cyan-500/15 shadow-xs',
+        emojiBg: 'bg-white/90 border-2 border-teal-200/90 group-hover:border-teal-400',
+        badge: 'bg-teal-100/90 text-teal-900 border border-teal-300',
         titleHover: 'group-hover:text-teal-700',
         ctaText: 'text-teal-700',
       }
     : {
-        border: 'border-3 border-sky-200/90 hover:border-indigo-500',
-        hoverShadow: 'hover:shadow-xl hover:shadow-indigo-500/15 shadow-sm',
-        emojiBg: 'bg-gradient-to-br from-sky-50 to-indigo-50/70 border-2 border-sky-200/80',
-        badge: 'bg-sky-100 text-indigo-900 border border-sky-300',
+        bg: 'bg-sky-50/50',
+        border: 'border-3 border-sky-200/90 hover:border-indigo-400',
+        hoverShadow: 'hover:shadow-xl hover:shadow-indigo-500/15 shadow-xs',
+        emojiBg: 'bg-white/90 border-2 border-sky-200/90 group-hover:border-sky-400',
+        badge: 'bg-sky-100/90 text-indigo-900 border border-sky-300',
         titleHover: 'group-hover:text-indigo-700',
         ctaText: 'text-indigo-600',
       };
@@ -50,7 +52,7 @@ export const GrammarCard: React.FC<GrammarCardProps> = ({
         sounds.playClick();
         onSelect(topic);
       }}
-      className={`group relative flex flex-col justify-between p-4 sm:p-5 rounded-3xl bg-white ${theme.border} ${theme.hoverShadow} transition-all duration-300 text-left cursor-pointer active:scale-[0.98] hover:-translate-y-1`}
+      className={`group relative flex flex-col justify-between p-4 sm:p-5 rounded-3xl ${theme.bg} ${theme.border} ${theme.hoverShadow} transition-all duration-300 text-left cursor-pointer active:scale-[0.98] hover:-translate-y-1`}
     >
       <div>
         {/* Top bar in card: Emoji icon & Question count / Stars */}

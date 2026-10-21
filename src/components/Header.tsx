@@ -47,7 +47,7 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="bg-white/90 backdrop-blur-md sticky top-0 z-40 shadow-sm border-b-2 border-indigo-100 px-2 sm:px-6 py-1.5 sm:py-2 w-full">
+    <header className="bg-[#FAF6EE]/90 backdrop-blur-md sticky top-0 z-40 shadow-xs border-b-2 border-amber-200/60 px-2 sm:px-6 py-1.5 sm:py-2 w-full">
       <div className="max-w-5xl mx-auto w-full flex items-center justify-between gap-1.5 sm:gap-4">
         {/* Logo and Home Button */}
         <button

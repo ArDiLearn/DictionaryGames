@@ -577,7 +577,7 @@ export const TopicList: React.FC<TopicListProps> = ({
                 : 'Поиск слова (англ., латыш.) или темы...'
               : t.searchPlaceholder
           }
-          className="w-full pl-11 pr-10 py-3 sm:py-3.5 bg-white rounded-2xl border-2 border-slate-200 focus:border-indigo-500 focus:outline-none text-slate-800 placeholder-slate-400 font-semibold shadow-sm transition-colors text-base"
+          className="w-full pl-11 pr-10 py-3 sm:py-3.5 bg-white/95 rounded-2xl border-2 border-amber-200/90 focus:border-amber-400 focus:outline-none text-slate-800 placeholder-slate-400 font-semibold shadow-xs transition-colors text-base"
         />
         {searchQuery && (
           <button

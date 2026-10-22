@@ -32,7 +32,7 @@ const KNOWN_SVG_EN_KEYS = new Set([
   'bottle', 'food', 'vegetable', 'toddler', 'on', 'under', 'front', 'out', 'over there', 'next', 'before', 'traffic lights', 'invitation', 'uniform', 'bridge', 'medal', 'trophy',
   'pet shop', 'toy shop', 'supermarket', 'markets', 'transport', 'cultures', 'international', 'driver', 'market', 'culture',
   'campfire', 'tent', 'savannah', 'vocabulary', 'tape',
-  'path', 'woods', 'string', 'dictionary', 'goldfish',
+  'path', 'woods', 'string', 'dictionary', 'goldfish', 'wind',
 ]);
 
 const KNOWN_SVG_RU_KEYS = new Set([
@@ -64,6 +64,7 @@ const KNOWN_SVG_RU_KEYS = new Set([
   'костёр', 'костер', 'ugunskurs', 'палатка', 'telts', 'саванна', 'savanna', 'словарик', 'словарный запас', 'vārdu krājums', 'скотч', 'клейкая лента', 'līmlente',
   'тропинка', 'taka', 'лесок', 'роща', 'веревочка', 'верёвочка', 'шпагат', 'aukla', 'словарь', 'vārdnīca',
   'золотая рыбка', 'zelta zivtiņa',
+  'ветер', 'vējš',
 ]);
 
 export function loadWordSvgs(): Promise<void> {

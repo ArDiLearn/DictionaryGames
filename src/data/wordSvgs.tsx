@@ -5336,6 +5336,46 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       <path d="M 23 52 Q 25 55 27 53" stroke="#9a3412" strokeWidth="1.2" strokeLinecap="round" fill="none" />
     </svg>
   ),
+  'wind': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Sky / Windy Atmosphere */}
+      <rect x="6" y="8" width="88" height="84" rx="6" fill="#e0f2fe" stroke="#7dd3fc" strokeWidth="1.5" />
+      {/* Rolling hill on ground leaning to the right */}
+      <path d="M 6 78 Q 44 70 94 76 L 94 92 L 6 92 Z" fill="#86efac" />
+      <path d="M 6 84 Q 50 80 94 84 L 94 92 L 6 92 Z" fill="#4ade80" />
+      {/* Blown grass tufts bending strongly to the right */}
+      <path d="M 14 84 Q 22 82 26 80 M 34 85 Q 42 83 48 81 M 68 85 Q 76 83 82 82 M 84 86 Q 90 84 94 83" stroke="#16a34a" strokeWidth="1.5" strokeLinecap="round" />
+      {/* TREE 1: Main Tree strongly bent to the right */}
+      <g>
+        {/* Bent Trunk */}
+        <path d="M 36 84 C 36 72, 40 60, 52 50 C 49 52, 43 62, 42 84 Z" fill="#78350f" stroke="#451a03" strokeWidth="1" />
+        {/* Branches stretching rightward */}
+        <path d="M 48 54 Q 60 50 68 46" stroke="#451a03" strokeWidth="2" strokeLinecap="round" />
+        <path d="M 44 60 Q 56 56 64 54" stroke="#451a03" strokeWidth="1.8" strokeLinecap="round" />
+        {/* Foliage Canopy blown & distorted horizontally to the right */}
+        <ellipse cx="62" cy="46" rx="20" ry="12" fill="#16a34a" transform="rotate(12 62 46)" />
+        <ellipse cx="68" cy="44" rx="16" ry="10" fill="#22c55e" transform="rotate(15 68 44)" />
+        <ellipse cx="56" cy="48" rx="14" ry="11" fill="#15803d" transform="rotate(10 56 48)" />
+        <ellipse cx="74" cy="43" rx="10" ry="7" fill="#4ade80" transform="rotate(18 74 43)" />
+      </g>
+      {/* TREE 2: Smaller background sapling bending */}
+      <g opacity="0.85">
+        <path d="M 22 84 C 22 74, 25 66, 33 60 C 31 62, 27 70, 26 84 Z" fill="#92400e" />
+        <ellipse cx="36" cy="58" rx="10" ry="6" fill="#15803d" transform="rotate(15 36 58)" />
+        <ellipse cx="40" cy="57" rx="8" ry="5" fill="#22c55e" transform="rotate(20 40 57)" />
+      </g>
+      {/* Swirling Dynamic Wind Gusts Overhead */}
+      <path d="M 12 22 Q 44 20 62 26 Q 74 30 76 36 Q 76 42 70 42 Q 64 42 66 35 Q 68 30 76 30" stroke="#0284c7" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+      <path d="M 18 34 Q 48 30 74 36 Q 84 38 88 44 Q 90 48 85 50 Q 80 50 82 44" stroke="#38bdf8" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+      <path d="M 10 46 Q 30 42 48 45" stroke="#bae6fd" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      <path d="M 72 38 Q 84 36 94 38" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      {/* Leaves blown away off the trees in the wind */}
+      <path d="M 80 32 Q 83 28 86 31 Q 84 34 80 32 Z" fill="#22c55e" stroke="#15803d" strokeWidth="0.5" />
+      <path d="M 88 40 Q 92 37 94 40 Q 91 43 88 40 Z" fill="#4ade80" stroke="#15803d" strokeWidth="0.5" />
+      <path d="M 78 52 Q 81 49 84 52 Q 82 54 78 52 Z" fill="#16a34a" stroke="#15803d" strokeWidth="0.5" />
+      <path d="M 86 48 Q 90 46 91 49 Q 88 51 86 48 Z" fill="#22c55e" stroke="#15803d" strokeWidth="0.5" />
+    </svg>
+  ),
 };
 
 export const RU_ALIASES: Record<string, string> = {
@@ -5630,4 +5670,7 @@ export const RU_ALIASES: Record<string, string> = {
   'золотая рыбка': 'goldfish',
   'zelta zivtiņa': 'goldfish',
   'zelta zivtina': 'goldfish',
+  'ветер': 'wind',
+  'vējš': 'wind',
+  'vejs': 'wind',
 };

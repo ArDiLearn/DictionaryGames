@@ -4560,6 +4560,475 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       <polygon points="74,14 75,16 78,17 75,18 74,20 73,18 70,17 73,16" fill="#fde047" />
     </svg>
   ),
+  'pet shop': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground shadow */}
+      <ellipse cx="50" cy="94" rx="44" ry="4" fill="#94a3b8" opacity="0.3" />
+      {/* Storefront facade */}
+      <rect x="12" y="14" width="76" height="78" rx="4" fill="#f0fdf4" stroke="#059669" strokeWidth="2" />
+      {/* Upper cornice */}
+      <rect x="10" y="12" width="80" height="5" rx="2" fill="#047857" />
+      {/* Signboard */}
+      <rect x="16" y="19" width="68" height="15" rx="3" fill="#0d9488" stroke="#0f766e" strokeWidth="1.5" />
+      {/* Paw emblem and text */}
+      <circle cx="24" cy="26.5" r="3" fill="#fef08a" />
+      <circle cx="21" cy="23" r="1.3" fill="#fef08a" />
+      <circle cx="24" cy="21.5" r="1.3" fill="#fef08a" />
+      <circle cx="27" cy="23" r="1.3" fill="#fef08a" />
+      <text x="54" y="29.5" textAnchor="middle" fill="#ffffff" fontSize="7.5" fontWeight="900" letterSpacing="1">PET SHOP</text>
+      {/* Striped Awning */}
+      <polygon points="10,36 18,36 15,48 7,48" fill="#10b981" />
+      <polygon points="18,36 28,36 26,48 15,48" fill="#ffffff" />
+      <polygon points="28,36 38,36 37,48 26,48" fill="#10b981" />
+      <polygon points="38,36 48,36 48,48 37,48" fill="#ffffff" />
+      <polygon points="48,36 58,36 59,48 48,48" fill="#10b981" />
+      <polygon points="58,36 68,36 70,48 59,48" fill="#ffffff" />
+      <polygon points="68,36 78,36 81,48 70,48" fill="#10b981" />
+      <polygon points="78,36 86,36 90,48 81,48" fill="#ffffff" />
+      <polygon points="86,36 90,36 93,48 90,48" fill="#10b981" />
+      <line x1="7" y1="48" x2="93" y2="48" stroke="#047857" strokeWidth="1.5" />
+      {/* Display Window */}
+      <rect x="16" y="52" width="42" height="36" rx="3" fill="#e0f2fe" stroke="#0284c7" strokeWidth="1.8" />
+      {/* Puppy in window */}
+      <circle cx="28" cy="73" r="8" fill="#f59e0b" />
+      <ellipse cx="21" cy="70" rx="2.5" ry="5" fill="#d97706" transform="rotate(-15 21 70)" />
+      <ellipse cx="35" cy="70" rx="2.5" ry="5" fill="#d97706" transform="rotate(15 35 70)" />
+      <circle cx="25.5" cy="72" r="1.1" fill="#1e293b" />
+      <circle cx="30.5" cy="72" r="1.1" fill="#1e293b" />
+      <ellipse cx="28" cy="75" rx="2.2" ry="1.5" fill="#ffffff" />
+      <polygon points="27,74 29,74 28,75.5" fill="#1e293b" />
+      {/* Kitten next to puppy */}
+      <circle cx="46" cy="75" r="6.5" fill="#94a3b8" />
+      <polygon points="41,70 43,65 46,69" fill="#94a3b8" />
+      <polygon points="46,69 49,65 51,70" fill="#94a3b8" />
+      <circle cx="44" cy="74.5" r="0.9" fill="#1e293b" />
+      <circle cx="48" cy="74.5" r="0.9" fill="#1e293b" />
+      <polygon points="45.5,76 46.5,76 46,76.8" fill="#f43f5e" />
+      {/* Fish bowl on upper shelf */}
+      <rect x="18" y="61" width="38" height="2" fill="#bae6fd" />
+      <circle cx="45" cy="57" r="4" fill="#38bdf8" opacity="0.7" stroke="#0284c7" strokeWidth="0.8" />
+      <ellipse cx="45" cy="57" rx="2" ry="1" fill="#f97316" />
+      {/* Door */}
+      <rect x="64" y="52" width="22" height="40" rx="2" fill="#047857" stroke="#064e3b" strokeWidth="1.5" />
+      <rect x="67" y="56" width="16" height="20" rx="1.5" fill="#bae6fd" stroke="#0284c7" strokeWidth="1" />
+      <rect x="70" y="62" width="10" height="5" rx="1" fill="#22c55e" />
+      <circle cx="68" cy="76" r="1.5" fill="#facc15" />
+    </svg>
+  ),
+  'toy shop': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground shadow */}
+      <ellipse cx="50" cy="94" rx="44" ry="4" fill="#94a3b8" opacity="0.3" />
+      {/* Storefront facade */}
+      <rect x="12" y="14" width="76" height="78" rx="4" fill="#fffbeb" stroke="#f59e0b" strokeWidth="2" />
+      {/* Upper cornice */}
+      <rect x="10" y="12" width="80" height="5" rx="2" fill="#d97706" />
+      {/* Signboard with toy theme */}
+      <rect x="16" y="19" width="68" height="15" rx="3" fill="#ef4444" stroke="#b91c1c" strokeWidth="1.5" />
+      {/* Toy rocket emblem */}
+      <polygon points="21,29 25,21 29,29" fill="#facc15" />
+      <rect x="23" y="27" width="4" height="3" fill="#3b82f6" />
+      <text x="55" y="29.5" textAnchor="middle" fill="#ffffff" fontSize="8" fontWeight="900" letterSpacing="1.5">TOY SHOP</text>
+      {/* Striped Awning (Red & Yellow) */}
+      <polygon points="10,36 18,36 15,48 7,48" fill="#ef4444" />
+      <polygon points="18,36 28,36 26,48 15,48" fill="#facc15" />
+      <polygon points="28,36 38,36 37,48 26,48" fill="#ef4444" />
+      <polygon points="38,36 48,36 48,48 37,48" fill="#facc15" />
+      <polygon points="48,36 58,36 59,48 48,48" fill="#ef4444" />
+      <polygon points="58,36 68,36 70,48 59,48" fill="#facc15" />
+      <polygon points="68,36 78,36 81,48 70,48" fill="#ef4444" />
+      <polygon points="78,36 86,36 90,48 81,48" fill="#facc15" />
+      <polygon points="86,36 90,36 93,48 90,48" fill="#ef4444" />
+      <line x1="7" y1="48" x2="93" y2="48" stroke="#b91c1c" strokeWidth="1.5" />
+      {/* Display Window */}
+      <rect x="16" y="52" width="42" height="36" rx="3" fill="#e0f2fe" stroke="#0284c7" strokeWidth="1.8" />
+      {/* Teddy Bear in window */}
+      <circle cx="28" cy="73" r="8" fill="#b45309" />
+      <circle cx="22" cy="66" r="3" fill="#92400e" />
+      <circle cx="34" cy="66" r="3" fill="#92400e" />
+      <circle cx="25.5" cy="71.5" r="1" fill="#1e293b" />
+      <circle cx="30.5" cy="71.5" r="1" fill="#1e293b" />
+      <ellipse cx="28" cy="75" rx="2.5" ry="1.8" fill="#fef3c7" />
+      <polygon points="27,74.5 29,74.5 28,75.5" fill="#1e293b" />
+      <polygon points="28,78 25,76 25,80" fill="#ef4444" />
+      <polygon points="28,78 31,76 31,80" fill="#ef4444" />
+      {/* Toy Rocket in window */}
+      <path d="M 46 62 Q 49 55 50 54 Q 51 55 54 62 L 53 74 L 47 74 Z" fill="#3b82f6" />
+      <polygon points="46,59 50,54 54,59" fill="#ef4444" />
+      <polygon points="45,71 42,75 47,74" fill="#ef4444" />
+      <polygon points="55,71 58,75 53,74" fill="#ef4444" />
+      <circle cx="50" cy="63" r="1.8" fill="#ffffff" stroke="#1d4ed8" strokeWidth="0.8" />
+      {/* ABC blocks below */}
+      <rect x="38" y="78" width="8" height="8" rx="1" fill="#facc15" stroke="#ca8a04" strokeWidth="0.8" />
+      <text x="42" y="84" textAnchor="middle" fontSize="6" fontWeight="bold" fill="#78350f">A</text>
+      <rect x="47" y="80" width="8" height="8" rx="1" fill="#22c55e" stroke="#15803d" strokeWidth="0.8" />
+      <text x="51" y="86" textAnchor="middle" fontSize="6" fontWeight="bold" fill="#ffffff">B</text>
+      {/* Door */}
+      <rect x="64" y="52" width="22" height="40" rx="2" fill="#2563eb" stroke="#1d4ed8" strokeWidth="1.5" />
+      <rect x="67" y="56" width="16" height="20" rx="1.5" fill="#bae6fd" stroke="#0284c7" strokeWidth="1" />
+      <rect x="70" y="62" width="10" height="5" rx="1" fill="#22c55e" />
+      <circle cx="68" cy="76" r="1.5" fill="#facc15" />
+    </svg>
+  ),
+  'supermarket': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground shadow */}
+      <ellipse cx="50" cy="94" rx="44" ry="4" fill="#94a3b8" opacity="0.3" />
+      {/* Modern Supermarket Building in background */}
+      <rect x="8" y="10" width="84" height="50" rx="3" fill="#f1f5f9" stroke="#64748b" strokeWidth="1.5" />
+      {/* Roof trim */}
+      <rect x="6" y="8" width="88" height="6" rx="2" fill="#16a34a" />
+      {/* Big Signboard */}
+      <rect x="14" y="16" width="72" height="14" rx="2.5" fill="#15803d" stroke="#166534" strokeWidth="1" />
+      <text x="50" y="26" textAnchor="middle" fill="#ffffff" fontSize="7" fontWeight="900" letterSpacing="1">SUPERMARKET</text>
+      {/* Store Glass Windows with illuminated shelves inside */}
+      <rect x="12" y="32" width="30" height="26" rx="2" fill="#dbeafe" stroke="#3b82f6" strokeWidth="1" />
+      {/* Shelves visible inside */}
+      <line x1="14" y1="40" x2="40" y2="40" stroke="#93c5fd" strokeWidth="1" />
+      <line x1="14" y1="48" x2="40" y2="48" stroke="#93c5fd" strokeWidth="1" />
+      <rect x="16" y="36" width="4" height="4" fill="#ef4444" rx="0.5" />
+      <rect x="22" y="36" width="4" height="4" fill="#facc15" rx="0.5" />
+      <rect x="28" y="36" width="5" height="4" fill="#22c55e" rx="0.5" />
+      <rect x="18" y="44" width="4" height="4" fill="#3b82f6" rx="0.5" />
+      <rect x="24" y="44" width="5" height="4" fill="#f97316" rx="0.5" />
+      <rect x="31" y="44" width="4" height="4" fill="#a855f7" rx="0.5" />
+      {/* Automatic Glass Sliding Doors in center-right */}
+      <rect x="46" y="32" width="42" height="26" rx="2" fill="#e0f2fe" stroke="#3b82f6" strokeWidth="1" />
+      <line x1="67" y1="32" x2="67" y2="58" stroke="#3b82f6" strokeWidth="1.2" />
+      <rect x="63" y="42" width="2" height="8" rx="1" fill="#64748b" />
+      <rect x="69" y="42" width="2" height="8" rx="1" fill="#64748b" />
+      {/* Foreground: Shopping Cart full of groceries */}
+      {/* Baguette & Veggies sticking out */}
+      <path d="M 40 45 L 30 28 C 29 26 32 24 34 26 L 46 44 Z" fill="#d97706" stroke="#92400e" strokeWidth="0.8" />
+      <line x1="33" y1="31" x2="35" y2="33" stroke="#fef3c7" strokeWidth="1" />
+      <line x1="36" y1="36" x2="38" y2="38" stroke="#fef3c7" strokeWidth="1" />
+      {/* Carrot with greens */}
+      <polygon points="50,44 56,36 53,34" fill="#f97316" />
+      <path d="M 54 35 Q 56 28 60 27 M 55 35 Q 59 31 63 32" stroke="#22c55e" strokeWidth="1.2" strokeLinecap="round" />
+      {/* Milk carton */}
+      <rect x="58" y="40" width="8" height="15" rx="1.5" fill="#f8fafc" stroke="#38bdf8" strokeWidth="1" />
+      <rect x="60" y="37" width="4" height="3" fill="#38bdf8" />
+      {/* Red apple */}
+      <circle cx="48" cy="50" r="4.5" fill="#ef4444" stroke="#b91c1c" strokeWidth="0.8" />
+      {/* Shopping Cart Metal Wire Basket */}
+      <polygon points="34,50 74,50 68,75 42,75" fill="#f8fafc" fillOpacity="0.4" stroke="#475569" strokeWidth="1.5" />
+      {/* Grid lines on cart */}
+      <line x1="36" y1="56" x2="72" y2="56" stroke="#64748b" strokeWidth="1" />
+      <line x1="39" y1="63" x2="70" y2="63" stroke="#64748b" strokeWidth="1" />
+      <line x1="41" y1="70" x2="69" y2="70" stroke="#64748b" strokeWidth="1" />
+      <line x1="44" y1="50" x2="48" y2="75" stroke="#64748b" strokeWidth="1" />
+      <line x1="54" y1="50" x2="55" y2="75" stroke="#64748b" strokeWidth="1" />
+      <line x1="64" y1="50" x2="62" y2="75" stroke="#64748b" strokeWidth="1" />
+      {/* Cart Handle */}
+      <path d="M 34 50 L 26 48 L 24 53" stroke="#dc2626" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Cart Chassis */}
+      <path d="M 42 75 L 42 84 L 66 84 L 68 75" stroke="#475569" strokeWidth="2" strokeLinejoin="round" />
+      {/* Wheels */}
+      <circle cx="42" cy="87" r="4" fill="#334155" />
+      <circle cx="42" cy="87" r="1.5" fill="#cbd5e1" />
+      <circle cx="66" cy="87" r="4" fill="#334155" />
+      <circle cx="66" cy="87" r="1.5" fill="#cbd5e1" />
+    </svg>
+  ),
+  'markets': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground shadow */}
+      <ellipse cx="50" cy="94" rx="44" ry="4" fill="#94a3b8" opacity="0.3" />
+      {/* Festive bunting flags across top */}
+      <path d="M 8 16 Q 50 26 92 16" stroke="#94a3b8" strokeWidth="1" fill="none" />
+      <polygon points="16,18 22,28 28,20" fill="#ef4444" />
+      <polygon points="32,21 38,31 44,23" fill="#facc15" />
+      <polygon points="48,23 54,32 60,23" fill="#3b82f6" />
+      <polygon points="64,22 70,31 76,20" fill="#10b981" />
+      <polygon points="80,19 86,28 91,17" fill="#ec4899" />
+      {/* LEFT STALL (Fruit) */}
+      <polygon points="8,32 16,32 14,46 6,46" fill="#ef4444" />
+      <polygon points="16,32 24,32 22,46 14,46" fill="#ffffff" />
+      <polygon points="24,32 32,32 30,46 22,46" fill="#ef4444" />
+      <polygon points="32,32 40,32 38,46 30,46" fill="#ffffff" />
+      <polygon points="40,32 48,32 46,46 38,46" fill="#ef4444" />
+      <line x1="6" y1="46" x2="46" y2="46" stroke="#b91c1c" strokeWidth="1.5" />
+      <rect x="8" y="46" width="2.5" height="38" fill="#78350f" />
+      <rect x="44" y="46" width="2.5" height="38" fill="#78350f" />
+      {/* Merchant 1 */}
+      <circle cx="26" cy="46" r="5" fill="#fcd34d" />
+      <rect x="23" y="44" width="6" height="2" fill="#78350f" rx="0.5" />
+      <path d="M 20 51 C 20 48 32 48 32 51 L 32 64 L 20 64 Z" fill="#0284c7" />
+      <circle cx="34" cy="52" r="2" fill="#fcd34d" />
+      {/* Counter */}
+      <rect x="6" y="62" width="42" height="26" rx="2" fill="#b45309" stroke="#78350f" strokeWidth="1.2" />
+      <line x1="6" y1="70" x2="48" y2="70" stroke="#78350f" strokeWidth="1" />
+      <line x1="6" y1="78" x2="48" y2="78" stroke="#78350f" strokeWidth="1" />
+      {/* Fruit crates */}
+      <rect x="8" y="60" width="16" height="10" rx="1" fill="#fef3c7" stroke="#b45309" strokeWidth="0.8" />
+      <circle cx="12" cy="62" r="2.5" fill="#ef4444" />
+      <circle cx="16" cy="62" r="2.5" fill="#ef4444" />
+      <circle cx="20" cy="62" r="2.5" fill="#ef4444" />
+      <rect x="26" y="60" width="18" height="10" rx="1" fill="#fef3c7" stroke="#b45309" strokeWidth="0.8" />
+      <circle cx="30" cy="62" r="2.5" fill="#facc15" />
+      <circle cx="35" cy="62" r="2.5" fill="#facc15" />
+      <circle cx="40" cy="62" r="2.5" fill="#facc15" />
+      {/* RIGHT STALL (Vegetables) */}
+      <polygon points="52,32 60,32 58,46 50,46" fill="#16a34a" />
+      <polygon points="60,32 68,32 66,46 58,46" fill="#ffffff" />
+      <polygon points="68,32 76,32 74,46 66,46" fill="#16a34a" />
+      <polygon points="76,32 84,32 82,46 74,46" fill="#ffffff" />
+      <polygon points="84,32 92,32 90,46 82,46" fill="#16a34a" />
+      <line x1="50" y1="46" x2="90" y2="46" stroke="#15803d" strokeWidth="1.5" />
+      <rect x="52" y="46" width="2.5" height="38" fill="#78350f" />
+      <rect x="88" y="46" width="2.5" height="38" fill="#78350f" />
+      {/* Merchant 2 */}
+      <circle cx="70" cy="46" r="5" fill="#fcd34d" />
+      <path d="M 64 51 C 64 48 76 48 76 51 L 76 64 L 64 64 Z" fill="#ea580c" />
+      {/* Counter */}
+      <rect x="50" y="62" width="42" height="26" rx="2" fill="#92400e" stroke="#78350f" strokeWidth="1.2" />
+      <line x1="50" y1="70" x2="92" y2="70" stroke="#78350f" strokeWidth="1" />
+      <line x1="50" y1="78" x2="92" y2="78" stroke="#78350f" strokeWidth="1" />
+      {/* Veggie crates */}
+      <rect x="53" y="60" width="17" height="10" rx="1" fill="#fef3c7" stroke="#b45309" strokeWidth="0.8" />
+      <polygon points="56,64 59,58 61,58" fill="#f97316" />
+      <polygon points="61,64 64,58 66,58" fill="#f97316" />
+      <rect x="73" y="60" width="16" height="10" rx="1" fill="#fef3c7" stroke="#b45309" strokeWidth="0.8" />
+      <circle cx="77" cy="62" r="2.8" fill="#22c55e" />
+      <circle cx="83" cy="62" r="2.8" fill="#7e22ce" />
+    </svg>
+  ),
+  'transport': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Sky background */}
+      <rect x="6" y="8" width="88" height="84" rx="6" fill="#e0f2fe" stroke="#38bdf8" strokeWidth="1.5" />
+      {/* Fluffy clouds */}
+      <path d="M 14 26 Q 18 20 25 22 Q 30 18 36 22 Q 42 22 44 26 Z" fill="#ffffff" opacity="0.9" />
+      <path d="M 68 18 Q 72 14 78 15 Q 82 12 87 15 Q 92 16 92 20 Z" fill="#ffffff" opacity="0.9" />
+      {/* Airplane soaring in sky */}
+      <g>
+        <path d="M 28 22 Q 44 20 54 18 Q 58 17 62 18 Q 66 19 62 21 Q 52 23 42 26 Z" fill="#f8fafc" stroke="#0284c7" strokeWidth="0.8" />
+        <polygon points="42,21 34,10 40,10 48,20" fill="#0284c7" />
+        <polygon points="40,24 35,32 39,32 46,23" fill="#0369a1" />
+        <polygon points="30,22 26,14 30,14 34,22" fill="#ef4444" />
+        <line x1="12" y1="24" x2="26" y2="22" stroke="#ffffff" strokeWidth="2" strokeDasharray="3 2" opacity="0.8" />
+      </g>
+      {/* Train on railway in middle */}
+      <rect x="6" y="44" width="88" height="3" fill="#94a3b8" />
+      <path d="M 12 43 L 56 43 Q 66 43 72 40 L 70 34 Q 62 33 50 33 L 12 33 Z" fill="#2563eb" stroke="#1d4ed8" strokeWidth="1" />
+      <path d="M 12 38 L 52 38 Q 62 38 68 36 L 66 38" stroke="#ffffff" strokeWidth="1.5" fill="none" />
+      <rect x="16" y="34" width="7" height="3" rx="0.5" fill="#bae6fd" />
+      <rect x="26" y="34" width="7" height="3" rx="0.5" fill="#bae6fd" />
+      <rect x="36" y="34" width="7" height="3" rx="0.5" fill="#bae6fd" />
+      <polygon points="56,34 64,35 60,37 54,37" fill="#bae6fd" />
+      <circle cx="20" cy="44" r="2.5" fill="#1e293b" />
+      <circle cx="32" cy="44" r="2.5" fill="#1e293b" />
+      <circle cx="48" cy="44" r="2.5" fill="#1e293b" />
+      <circle cx="60" cy="44" r="2.5" fill="#1e293b" />
+      {/* Road & City Bus / Car on bottom */}
+      <rect x="6" y="52" width="88" height="40" fill="#334155" />
+      <line x1="6" y1="72" x2="94" y2="72" stroke="#facc15" strokeWidth="1.5" strokeDasharray="6 4" />
+      {/* City Bus */}
+      <rect x="12" y="55" width="44" height="15" rx="2" fill="#f59e0b" stroke="#d97706" strokeWidth="1" />
+      <rect x="16" y="57" width="7" height="5" rx="0.5" fill="#bae6fd" />
+      <rect x="25" y="57" width="7" height="5" rx="0.5" fill="#bae6fd" />
+      <rect x="34" y="57" width="7" height="5" rx="0.5" fill="#bae6fd" />
+      <rect x="45" y="57" width="8" height="8" rx="0.5" fill="#bae6fd" />
+      <circle cx="20" cy="70" r="3" fill="#1e293b" />
+      <circle cx="20" cy="70" r="1.2" fill="#94a3b8" />
+      <circle cx="46" cy="70" r="3" fill="#1e293b" />
+      <circle cx="46" cy="70" r="1.2" fill="#94a3b8" />
+      {/* Red Car */}
+      <path d="M 52 82 C 52 79 55 77 60 77 L 84 77 C 88 77 91 80 91 83 L 90 85 C 90 87 88 88 84 88 L 56 88 C 53 88 52 86 52 82 Z" fill="#dc2626" />
+      <path d="M 60 77 L 65 73 C 67 72 70 72 74 72 L 78 72 C 81 72 82 74 84 77 Z" fill="#ef4444" />
+      <polygon points="65,74 71,74 71,77 62,77" fill="#e0f2fe" />
+      <polygon points="73,74 78,74 81,77 73,77" fill="#e0f2fe" />
+      <circle cx="60" cy="87" r="3.2" fill="#1e293b" />
+      <circle cx="60" cy="87" r="1.2" fill="#cbd5e1" />
+      <circle cx="82" cy="87" r="3.2" fill="#1e293b" />
+      <circle cx="82" cy="87" r="1.2" fill="#cbd5e1" />
+      <circle cx="89" cy="82" r="1.2" fill="#fef08a" />
+    </svg>
+  ),
+  'cultures': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Background circle */}
+      <circle cx="50" cy="50" r="46" fill="#fef9c3" stroke="#fde047" strokeWidth="1.5" />
+      {/* Festive sparkles */}
+      <polygon points="20,16 23,20 18,22" fill="#ef4444" />
+      <polygon points="80,18 84,21 80,25" fill="#3b82f6" />
+      <circle cx="50" cy="14" r="2" fill="#10b981" />
+      <polygon points="32,12 34,16 38,15 35,18 36,22 32,20 29,22 30,18 27,15 31,16" fill="#f59e0b" />
+      <polygon points="68,12 70,16 74,15 71,18 72,22 68,20 65,22 66,18 63,15 67,16" fill="#f59e0b" />
+      {/* Ground arc */}
+      <path d="M 6 82 Q 50 76 94 82 L 94 96 L 6 96 Z" fill="#fde68a" />
+      {/* Person 1 (Sombrero & Serape) */}
+      <g>
+        <polygon points="10,64 26,64 30,90 8,90" fill="#dc2626" />
+        <rect x="8" y="72" width="20" height="3" fill="#facc15" />
+        <rect x="9" y="78" width="18" height="3" fill="#16a34a" />
+        <line x1="8" y1="90" x2="30" y2="90" stroke="#facc15" strokeWidth="1" strokeDasharray="1.5 1.5" />
+        <circle cx="18" cy="52" r="6" fill="#d97706" />
+        <circle cx="16" cy="52" r="0.8" fill="#1e293b" />
+        <circle cx="20" cy="52" r="0.8" fill="#1e293b" />
+        <path d="M 16 55 Q 18 57 20 55" stroke="#1e293b" strokeWidth="0.8" fill="none" />
+        <ellipse cx="18" cy="46" rx="14" ry="4" fill="#f59e0b" stroke="#b45309" strokeWidth="1" />
+        <path d="M 14 46 Q 18 36 22 46 Z" fill="#d97706" stroke="#b45309" strokeWidth="1" />
+        <line x1="6" y1="46" x2="30" y2="46" stroke="#dc2626" strokeWidth="1" />
+      </g>
+      {/* Person 2 (East Asian Kimono) */}
+      <g>
+        <path d="M 32 64 L 48 64 L 50 92 L 30 92 Z" fill="#ec4899" />
+        <polygon points="35,64 40,74 45,64" fill="#ffffff" />
+        <rect x="31" y="74" width="18" height="6" fill="#facc15" stroke="#ca8a04" strokeWidth="0.8" />
+        <circle cx="40" cy="52" r="6" fill="#fde68a" />
+        <path d="M 33 50 C 33 43 47 43 47 50 C 47 53 33 53 33 50 Z" fill="#1e293b" />
+        <circle cx="40" cy="42" r="3.5" fill="#1e293b" />
+        <circle cx="45" cy="44" r="2" fill="#ef4444" />
+        <path d="M 37 51 Q 39 51 40 52" stroke="#1e293b" strokeWidth="0.8" fill="none" />
+        <path d="M 41 52 Q 42 51 44 51" stroke="#1e293b" strokeWidth="0.8" fill="none" />
+        <path d="M 38 55 Q 40 57 42 55" stroke="#1e293b" strokeWidth="0.8" fill="none" />
+      </g>
+      {/* Person 3 (African Kente pattern) */}
+      <g>
+        <path d="M 52 64 L 68 64 L 70 92 L 50 92 Z" fill="#eab308" />
+        <polygon points="53,68 57,64 61,68 65,64 67,68" fill="#16a34a" />
+        <polygon points="51,76 55,80 59,76 63,80 67,76" fill="#dc2626" />
+        <polygon points="51,84 55,88 59,84 63,88 67,84" fill="#1e293b" />
+        <circle cx="60" cy="52" r="6" fill="#78350f" />
+        <path d="M 53 49 C 53 43 67 43 67 49 Z" fill="#eab308" />
+        <line x1="53" y1="48" x2="67" y2="48" stroke="#16a34a" strokeWidth="1" />
+        <circle cx="58" cy="52" r="0.8" fill="#ffffff" />
+        <circle cx="58" cy="52" r="0.5" fill="#000000" />
+        <circle cx="62" cy="52" r="0.8" fill="#ffffff" />
+        <circle cx="62" cy="52" r="0.5" fill="#000000" />
+        <path d="M 58 55 Q 60 57 62 55" stroke="#ffffff" strokeWidth="0.8" fill="none" />
+      </g>
+      {/* Person 4 (European Folk Dress) */}
+      <g>
+        <path d="M 72 64 L 88 64 L 92 92 L 68 92 Z" fill="#2563eb" />
+        <polygon points="76,64 80,72 84,64" fill="#ffffff" />
+        <path d="M 78 66 L 82 66" stroke="#ef4444" strokeWidth="1" />
+        <circle cx="80" cy="52" r="6" fill="#fed7aa" />
+        <path d="M 73 50 C 73 44 87 44 87 50" fill="#fde047" stroke="#ca8a04" strokeWidth="0.5" />
+        <path d="M 74 53 L 73 66" stroke="#fde047" strokeWidth="2" strokeLinecap="round" />
+        <path d="M 86 53 L 87 66" stroke="#fde047" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="75" cy="46" r="1.8" fill="#ef4444" />
+        <circle cx="78" cy="44.5" r="1.8" fill="#3b82f6" />
+        <circle cx="82" cy="44.5" r="1.8" fill="#facc15" />
+        <circle cx="85" cy="46" r="1.8" fill="#ef4444" />
+        <circle cx="78" cy="52" r="0.8" fill="#1e293b" />
+        <circle cx="82" cy="52" r="0.8" fill="#1e293b" />
+        <path d="M 78 55 Q 80 57 82 55" stroke="#1e293b" strokeWidth="0.8" fill="none" />
+      </g>
+    </svg>
+  ),
+  'international': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Glow aura */}
+      <circle cx="50" cy="52" r="44" fill="#f0f9ff" />
+      {/* Rainbow bridge arc */}
+      <path d="M 12 50 C 12 18, 88 18, 88 50" stroke="#f43f5e" strokeWidth="1.5" strokeOpacity="0.7" fill="none" />
+      <path d="M 14 50 C 14 20, 86 20, 86 50" stroke="#facc15" strokeWidth="1.5" strokeOpacity="0.7" fill="none" />
+      <path d="M 16 50 C 16 22, 84 22, 84 50" stroke="#38bdf8" strokeWidth="1.5" strokeOpacity="0.7" fill="none" />
+      {/* Central Globe */}
+      <circle cx="50" cy="52" r="26" fill="#0284c7" stroke="#0369a1" strokeWidth="1.5" />
+      <path d="M 40 38 Q 48 34 56 36 Q 64 40 62 46 Q 58 48 60 56 Q 56 64 50 68 Q 46 62 48 54 Q 42 50 40 44 Z" fill="#22c55e" />
+      <path d="M 30 42 Q 36 40 38 46 Q 34 54 36 62 Q 32 60 30 52 Z" fill="#22c55e" />
+      <ellipse cx="50" cy="52" rx="14" ry="26" stroke="#38bdf8" strokeWidth="0.8" fill="none" opacity="0.5" />
+      <line x1="24" y1="52" x2="76" y2="52" stroke="#38bdf8" strokeWidth="0.8" opacity="0.5" />
+      {/* Top Child */}
+      <g>
+        <circle cx="50" cy="18" r="4.5" fill="#fcd34d" />
+        <path d="M 46 17 C 46 13 54 13 54 17 Z" fill="#78350f" />
+        <circle cx="48.5" cy="18.5" r="0.6" fill="#1e293b" />
+        <circle cx="51.5" cy="18.5" r="0.6" fill="#1e293b" />
+        <path d="M 46 22.5 L 54 22.5 L 55 30 L 45 30 Z" fill="#ef4444" />
+        <line x1="46" y1="24" x2="36" y2="28" stroke="#fcd34d" strokeWidth="2" strokeLinecap="round" />
+        <line x1="54" y1="24" x2="64" y2="28" stroke="#fcd34d" strokeWidth="2" strokeLinecap="round" />
+      </g>
+      {/* Left Child */}
+      <g>
+        <circle cx="18" cy="46" r="4.5" fill="#fed7aa" />
+        <path d="M 14 44 C 14 40 22 40 22 44 Z" fill="#facc15" />
+        <circle cx="17" cy="46" r="0.6" fill="#1e293b" />
+        <circle cx="19.5" cy="46" r="0.6" fill="#1e293b" />
+        <path d="M 14 50.5 L 22 50.5 L 23 58 L 13 58 Z" fill="#2563eb" />
+        <line x1="18" y1="36" x2="36" y2="28" stroke="#fed7aa" strokeWidth="2" strokeLinecap="round" />
+        <line x1="18" y1="58" x2="24" y2="70" stroke="#fed7aa" strokeWidth="2" strokeLinecap="round" />
+      </g>
+      {/* Right Child */}
+      <g>
+        <circle cx="82" cy="46" r="4.5" fill="#78350f" />
+        <path d="M 78 44 C 78 40 86 40 86 44 Z" fill="#1e293b" />
+        <circle cx="80.5" cy="46" r="0.6" fill="#ffffff" />
+        <circle cx="83" cy="46" r="0.6" fill="#ffffff" />
+        <path d="M 78 50.5 L 86 50.5 L 87 58 L 77 58 Z" fill="#10b981" />
+        <line x1="82" y1="36" x2="64" y2="28" stroke="#78350f" strokeWidth="2" strokeLinecap="round" />
+        <line x1="82" y1="58" x2="76" y2="70" stroke="#78350f" strokeWidth="2" strokeLinecap="round" />
+      </g>
+      {/* Bottom Child */}
+      <g>
+        <circle cx="50" cy="85" r="4.5" fill="#d97706" />
+        <path d="M 46 83 C 46 79 54 79 54 83 Z" fill="#1e293b" />
+        <circle cx="48.5" cy="85.5" r="0.6" fill="#1e293b" />
+        <circle cx="51.5" cy="85.5" r="0.6" fill="#1e293b" />
+        <path d="M 46 89.5 L 54 89.5 L 55 96 L 45 96 Z" fill="#f59e0b" />
+        <line x1="46" y1="91" x2="24" y2="70" stroke="#d97706" strokeWidth="2" strokeLinecap="round" />
+        <line x1="54" y1="91" x2="76" y2="70" stroke="#d97706" strokeWidth="2" strokeLinecap="round" />
+      </g>
+      {/* Peace Sparkles */}
+      <polygon points="50,4 51,7 54,8 51,9 50,12 49,9 46,8 49,7" fill="#facc15" />
+      <polygon points="12,28 13,30 15,31 13,32 12,34 11,32 9,31 11,30" fill="#facc15" />
+      <polygon points="88,28 89,30 91,31 89,32 88,34 87,32 85,31 87,30" fill="#facc15" />
+    </svg>
+  ),
+  'driver': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Ground shadow */}
+      <ellipse cx="50" cy="92" rx="44" ry="4" fill="#94a3b8" opacity="0.3" />
+      {/* Road asphalt on bottom */}
+      <rect x="6" y="86" width="88" height="8" rx="2" fill="#475569" />
+      <line x1="6" y1="90" x2="94" y2="90" stroke="#facc15" strokeWidth="1" strokeDasharray="5 4" />
+      {/* CAR on Right */}
+      <g>
+        <ellipse cx="64" cy="87" rx="28" ry="4" fill="#334155" opacity="0.5" />
+        <path d="M 38 72 C 38 67 42 64 50 64 L 84 64 C 92 64 96 68 96 74 L 94 77 C 94 80 90 81 86 81 L 44 81 C 40 81 38 78 38 72 Z" fill="#2563eb" stroke="#1d4ed8" strokeWidth="1.2" />
+        <path d="M 48 64 L 56 50 C 58 47 62 46 66 46 L 78 46 C 82 46 85 49 87 53 L 91 64 Z" fill="#3b82f6" stroke="#1d4ed8" strokeWidth="1" />
+        <polygon points="78,49 85,61 88,61 82,49" fill="#bae6fd" />
+        <polygon points="66,49 66,61 81,61 76,49" fill="#e0f2fe" />
+        <polygon points="56,51 56,61 64,61 64,49 60,49" fill="#e0f2fe" />
+        <line x1="64" y1="48" x2="64" y2="62" stroke="#2563eb" strokeWidth="1.5" />
+        <line x1="72" y1="51" x2="70" y2="59" stroke="#ffffff" strokeWidth="1.2" strokeLinecap="round" opacity="0.8" />
+        <path d="M 93 69 C 95 69 96 71 96 73 L 92 74 Z" fill="#fef08a" stroke="#eab308" strokeWidth="0.8" />
+        <rect x="62" y="67" width="4" height="1.5" rx="0.7" fill="#cbd5e1" />
+        <circle cx="50" cy="80" r="7.5" fill="#1e293b" />
+        <circle cx="50" cy="80" r="4.5" fill="#94a3b8" />
+        <circle cx="50" cy="80" r="2" fill="#cbd5e1" />
+        <circle cx="82" cy="80" r="7.5" fill="#1e293b" />
+        <circle cx="82" cy="80" r="4.5" fill="#94a3b8" />
+        <circle cx="82" cy="80" r="2" fill="#cbd5e1" />
+      </g>
+      {/* DRIVER PERSON Standing Proudly Next to Car on Left */}
+      <g>
+        <ellipse cx="19" cy="88" rx="3.5" ry="2" fill="#0f172a" />
+        <ellipse cx="27" cy="88" rx="3.5" ry="2" fill="#0f172a" />
+        <line x1="20" y1="72" x2="19" y2="87" stroke="#1e293b" strokeWidth="4" strokeLinecap="round" />
+        <line x1="26" y1="72" x2="27" y2="87" stroke="#1e293b" strokeWidth="4" strokeLinecap="round" />
+        <path d="M 15 48 C 15 44 31 44 31 48 L 30 73 L 16 73 Z" fill="#1e3a8a" stroke="#172554" strokeWidth="1" />
+        <polygon points="21,46 25,46 23,54" fill="#ffffff" />
+        <polygon points="22.5,49 23.5,49 24,57 23,59 22,57" fill="#0f172a" />
+        <circle cx="23" cy="62" r="1.1" fill="#facc15" />
+        <circle cx="23" cy="67" r="1.1" fill="#facc15" />
+        <path d="M 16 48 L 10 58 L 16 63" stroke="#1e3a8a" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <circle cx="16" cy="63" r="1.8" fill="#fcd34d" />
+        <path d="M 30 48 L 36 44 L 38 38" stroke="#1e3a8a" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <circle cx="38" cy="36" r="2.2" fill="#fcd34d" />
+        <circle cx="23" cy="36" r="6.5" fill="#fcd34d" />
+        <circle cx="21" cy="36" r="0.8" fill="#1e293b" />
+        <circle cx="25" cy="36" r="0.8" fill="#1e293b" />
+        <path d="M 21.5 39.5 Q 23 41.5 24.5 39.5" stroke="#1e293b" strokeWidth="0.8" fill="none" />
+        <path d="M 16 33 C 16 27 30 27 30 33 Z" fill="#1e3a8a" stroke="#172554" strokeWidth="1" />
+        <circle cx="23" cy="30" r="1.2" fill="#facc15" />
+        <path d="M 16 33 Q 23 35 30 33 L 31 34 Q 23 37 15 34 Z" fill="#0f172a" />
+      </g>
+    </svg>
+  ),
 };
 
 export const RU_ALIASES: Record<string, string> = {
@@ -4790,4 +5259,31 @@ export const RU_ALIASES: Record<string, string> = {
   'medala': 'medal',
   'кубок': 'trophy',
   'kauss': 'trophy',
+  'зоомагазин': 'pet shop',
+  'zooveikals': 'pet shop',
+  'магазин игрушек': 'toy shop',
+  'rotaļlietu veikals': 'toy shop',
+  'rotallietu veikals': 'toy shop',
+  'супермаркет': 'supermarket',
+  'lielveikals': 'supermarket',
+  'рынки, ярмарки': 'markets',
+  'рынки': 'markets',
+  'ярмарки': 'markets',
+  'рынок': 'markets',
+  'market': 'markets',
+  'tirgi': 'markets',
+  'tirgus': 'markets',
+  'транспорт': 'transport',
+  'transports': 'transport',
+  'культуры, традиции': 'cultures',
+  'культуры': 'cultures',
+  'традиции': 'cultures',
+  'culture': 'cultures',
+  'kultūras': 'cultures',
+  'kulturas': 'cultures',
+  'международный': 'international',
+  'starptautisks': 'international',
+  'водитель': 'driver',
+  'vadītājs': 'driver',
+  'vaditajs': 'driver',
 };

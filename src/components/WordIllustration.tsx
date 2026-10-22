@@ -30,6 +30,7 @@ const KNOWN_SVG_EN_KEYS = new Set([
   'christmas', 'costume', 'dress up', 'clothes', 'pocket', 'button', 'garage', 'balcony',
   'light', 'messy', 'flat', 'room', 'fast', 'important', 'stick', 'chips', 'fork',
   'bottle', 'food', 'vegetable', 'toddler', 'on', 'under', 'front', 'out', 'over there', 'next', 'before', 'traffic lights', 'invitation', 'uniform', 'bridge', 'medal', 'trophy',
+  'pet shop', 'toy shop', 'supermarket', 'markets', 'transport', 'cultures', 'international', 'driver', 'market', 'culture',
 ]);
 
 const KNOWN_SVG_RU_KEYS = new Set([
@@ -57,6 +58,7 @@ const KNOWN_SVG_RU_KEYS = new Set([
   'свет', 'неубранный', 'квартира', 'комната', 'быстрый', 'важный', 'палочка', 'чипсы',
   'вилка', 'бутылка', 'еда', 'овощ', 'малыш',
   'на', 'под', 'спереди', 'снаружи', 'вон там', 'следующий', 'до', 'светофор', 'приглашение', 'форма', 'мост', 'медаль', 'кубок',
+  'зоомагазин', 'zooveikals', 'магазин игрушек', 'rotaļlietu veikals', 'супермаркет', 'lielveikals', 'рынки', 'ярмарки', 'рынки, ярмарки', 'рынок', 'tirgi', 'транспорт', 'transports', 'культуры', 'культуры, традиции', 'традиции', 'kultūras', 'международный', 'starptautisks', 'водитель', 'vadītājs',
 ]);
 
 export function loadWordSvgs(): Promise<void> {

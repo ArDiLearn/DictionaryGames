@@ -51,7 +51,8 @@ export const EXTRA_TOPICS: string[] = [
   'school_materials',
   'school_and_lessons',
   'pronouns',
-  'other_words',
+  'weather_and_sky',
+  'sounds_and_voice',
 ];
 
 export const GRADE_1_EXTRA_TOPICS: string[] = [
@@ -156,7 +157,8 @@ export const GRADE_2_TOPIC_ORDER: string[] = [
   'nature',
   'building_materials',
   'art_and_games_plus',
-  'other_words',
+  'sounds_and_voice',
+  'weather_and_sky',
   // Extra topics without new Grade 2 words
   'days_of_the_week',
   'shapes',

@@ -140,10 +140,10 @@ bird,putns,птица,1
 Pets +,Mājas mīluļi +,Питомцы +,
 puppy,kucēns,щенок,1
 kitten,kaķēns,котёнок,1
+parrot,papagailis,попугай,1
+goldfish,zelta zivtiņa,золотая рыбка,1
 frog,varde,лягушка,1
 little,mazs,маленький,1
-noisy,trokšņains,шумный,1
-quiet,kluss,тихий,1
 horse,zirgs,лошадь,1
 ,,,
 Farm animals,Lauku sētas dzīvnieki,Фермерские животные,
@@ -269,6 +269,7 @@ helicopter,helikopters,вертолётик,1
 bus,autobuss,автобусик,1
 bike,velosipēds,велосипед,1
 rocket,raķete,ракета,1
+wheel,ritenis,колесо,1
 ,,,
 Toys +,Rotaļlietas +,Игрушки +,
 blocks,klucīši,кубики,1
@@ -444,7 +445,6 @@ scissors,šķēres,ножницы,1
 shelf,plaukts,полка,1
 folder,mape,папка,1
 chalk,krīts,мел,1
-desk partner,sola biedrs,сосед по парте,1
 ,,,
 School and lessons,Skola un stundas,Школа и уроки,
 teacher,skolotājs,учитель,1
@@ -457,6 +457,7 @@ task,uzdevums,задание,1
 group,grupa,группа,1
 school,skola,школа,1
 activity,nodarbe,занятие,1
+desk partner,sola biedrs,сосед по парте,1
 ,,,
 Garden,Dārzs,Сад,
 grass,zāle,трава,2
@@ -540,7 +541,6 @@ craft,rokdarbi,"поделка, ремесло",1
 music,mūzika,музыка,1
 game,spēle,игра,1
 card,kartīte,"открытка, карточка",1
-party,ballīte,"праздник, вечеринка",1
 fun,jautrība,"веселье, забава",1
 story,stāsts,"рассказ, история",1
 chant,ritmiska dziesmiņa,"речёвка, песенка",1
@@ -603,19 +603,23 @@ dangerous,bīstams,опасный,2
 ,,,
 Nature,Daba,Природа,
 land,zeme,"суша, земля",1
+ground,zeme,земля,2
+forest,mežs,лес,2
+jungle,džungļi,джунгли,2
+sea,jūra,море,2
+animal,dzīvnieks,животное,1
+deer,briedis,олень,1
+,,,
+Weather and sky,Laikapstākļi un debesis,Погода и небо,
+weather,laikapstākļi,погода,3
 sun,saule,солнце,1
 moon,mēness,луна,1
 rainbow,varavīksne,радуга,1
-animal,dzīvnieks,животное,1
-deer,briedis,олень,1
-home,mājas,дом,1
-park,parks,парк,1
-playground,rotaļlaukums,детская площадка,1
-farm,ferma,ферма,1
-jungle,džungļi,джунгли,2
-forest,mežs,лес,2
-sea,jūra,море,2
-ground,zeme,земля,2
+sky,debesis,небо,1
+cloud,mākonis,облако,1
+rain,lietus,дождь,1
+wind,vējš,ветер,2
+star,zvaigzne,звезда,1
 ,,,
 Pronouns,Vietniekvārdi,Местоимения,
 I'm,es esmu,я,1
@@ -633,14 +637,15 @@ here,šeit,здесь,1
 your,"tavs, jūsu","твой, ваш",1
 our,mūsu,наш,1
 ,,,
-Other words,Dažādi vārdi,Разные слова,
-voice,balss,голос,2
-language,valoda,"язык, речь",2
-country,valsts,страна,1
-wheel,ritenis,колесо,1
-ruby,rubīns,рубин,1
-noise,troksnis,шум,2
+Sounds and voice,Skaņas un balss,Звуки и голос,
 sound,skaņa,звук,2
+voice,balss,голос,2
+noise,troksnis,шум,2
+noisy,trokšņains,шумный,1
+quiet,kluss,тихий,1
+loud,skaļš,громкий,2
+whisper,čukstēt,"шептать, шёпот",2
+silence,klusums,тишина,2
 ,,,
 Birthday,Dzimšanas diena,День рождения,
 board game,galda spēle,настольная игра,3
@@ -781,6 +786,7 @@ before,pirms,"до, перед",2
 next,nākamais,"следующий, дальше",2
 ,,,
 At home +,Mājās +,Дом и интерьер,
+home,mājas,дом,1
 house,māja,"дом, здание",2
 flat,dzīvoklis,квартира,2
 room,istaba,комната,2
@@ -804,6 +810,10 @@ markets,tirgi,"рынки, ярмарки",2
 transport,transports,транспорт,2
 cultures,kultūras,"культуры, традиции",2
 international,starptautisks,международный,2
+country,valsts,страна,1
+language,valoda,"язык, речь",2
+farm,ferma,ферма,1
+playground,rotaļlaukums,детская площадка,1
 pet shop,zooveikals,зоомагазин,3
 toy shop,rotaļlietu veikals,магазин игрушек,3
 bookshop,grāmatnīca,книжный магазин,3
@@ -835,12 +845,12 @@ year,gads,год,2
 every,katrs,каждый,2
 ,,,
 Celebrations +,Svētki +,Праздники +,
+party,ballīte,"праздник, вечеринка",1
 candle,svece,свеча,3
 invitation,ielūgums,приглашение,3
 celebrate,svinēt,праздновать,3
 gift,dāvana,подарок,3
 wish,vēlēšanās,желание,3
-weather,laikapstākļi,погода,3
 ,,,
 Emotions +,Emocijas +,Эмоции +,
 scared,nobijies,испуганный,3
@@ -953,3 +963,4 @@ glass,stikls,стекло,4
 metal,metāls,металл,4
 tape,līmlente,"клейкая лента, скотч",4
 string,aukla,"верёвочка, шпагат",4
+ruby,rubīns,рубин,1

@@ -839,4 +839,20 @@ export const WORD_IMAGES = {
   "metal": "🔩",
   "tape": "🩹",
   "string": "🧵",
+
+  // Sounds and voice
+  "loud": "📢",
+  "whisper": "🤫",
+  "silence": "🔕",
+
+  // Weather and sky
+  "rain": "🌧️",
+  "wind": "💨",
+  "cloud": "☁️",
+  "sky": "🌤️",
+  "star": "⭐",
+
+  // Pets +
+  "parrot": "🦜",
+  "goldfish": "🐟",
 };

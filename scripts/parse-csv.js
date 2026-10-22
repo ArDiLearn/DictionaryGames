@@ -272,6 +272,12 @@ const TOPIC_METADATA = {
   'Craft materials +': { icon: 'Palette', color: 'purple', emoji: '🧶' },
   'Radošie materiāli +': { icon: 'Palette', color: 'purple', emoji: '🧶' },
   'Материалы для творчества +': { icon: 'Palette', color: 'purple', emoji: '🧶' },
+  'Weather and sky': { icon: 'CloudSun', color: 'sky', emoji: '⛅' },
+  'Laikapstākļi un debesis': { icon: 'CloudSun', color: 'sky', emoji: '⛅' },
+  'Погода и небо': { icon: 'CloudSun', color: 'sky', emoji: '⛅' },
+  'Sounds and voice': { icon: 'Volume2', color: 'violet', emoji: '🔊' },
+  'Skaņas un balss': { icon: 'Volume2', color: 'violet', emoji: '🔊' },
+  'Звуки и голос': { icon: 'Volume2', color: 'violet', emoji: '🔊' },
 };
 
 /**

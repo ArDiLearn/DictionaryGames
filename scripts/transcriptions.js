@@ -915,4 +915,20 @@ export const TRANSCRIPTIONS = {
   "metal": "[ ˈmetl ]",
   "tape": "[ teɪp ]",
   "string": "[ strɪŋ ]",
+
+  // Sounds and voice
+  "loud": "[ laʊd ]",
+  "whisper": "[ ˈwɪspə ]",
+  "silence": "[ ˈsaɪləns ]",
+
+  // Weather and sky
+  "rain": "[ reɪn ]",
+  "wind": "[ wɪnd ]",
+  "cloud": "[ klaʊd ]",
+  "sky": "[ skaɪ ]",
+  "star": "[ stɑː ]",
+
+  // Pets +
+  "parrot": "[ ˈpærət ]",
+  "goldfish": "[ ˈɡəʊldfɪʃ ]",
 };

@@ -3417,6 +3417,33 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       <circle cx="73" cy="35" r="4" fill="#4ade80" />
     </svg>
   ),
+  'shapes': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-md" fill="none">
+      {/* Red Circle (top-left) */}
+      <circle cx="32" cy="32" r="20" fill="#ef4444" stroke="#b91c1c" strokeWidth="2.5" />
+      <circle cx="28" cy="28" r="6" fill="#fca5a5" opacity="0.6" />
+
+      {/* Blue Triangle (top-right) */}
+      <polygon points="72,12 92,48 52,48" fill="#3b82f6" stroke="#1d4ed8" strokeWidth="2.5" />
+      <polygon points="72,20 84,44 60,44" fill="#93c5fd" opacity="0.5" />
+
+      {/* Green Square (bottom-left) */}
+      <rect x="14" y="56" width="34" height="34" rx="5" fill="#10b981" stroke="#047857" strokeWidth="2.5" />
+      <rect x="18" y="60" width="12" height="12" rx="2" fill="#6ee7b7" opacity="0.6" />
+
+      {/* Purple Star / Diamond (bottom-right) */}
+      <polygon points="74,54 86,72 74,90 62,72" fill="#8b5cf6" stroke="#6d28d9" strokeWidth="2.5" />
+      <polygon points="74,60 81,72 74,84 67,72" fill="#c4b5fd" opacity="0.6" />
+
+      {/* Yellow Star in the center */}
+      <polygon
+        points="50,40 53,46 59,47 55,51 56,57 50,54 44,57 45,51 41,47 47,46"
+        fill="#facc15"
+        stroke="#ca8a04"
+        strokeWidth="1.5"
+      />
+    </svg>
+  ),
   'hug': (
     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
       {/* Heart background for warm friendly hug */}

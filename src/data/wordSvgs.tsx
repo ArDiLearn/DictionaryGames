@@ -5179,6 +5179,128 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       <line x1="48" y1="18" x2="76" y2="18" stroke="#ffffff" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
     </svg>
   ),
+  'path': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Sky / Horizon */}
+      <rect x="6" y="8" width="88" height="84" rx="6" fill="#e0f2fe" stroke="#38bdf8" strokeWidth="1.5" />
+      {/* Distant Hills */}
+      <path d="M 6 42 Q 32 30 56 38 Q 78 44 94 36 L 94 92 L 6 92 Z" fill="#86efac" />
+      <path d="M 6 54 Q 38 46 68 52 Q 84 56 94 50 L 94 92 L 6 92 Z" fill="#4ade80" />
+      {/* Winding Dirt Path */}
+      <path d="M 38 92 C 40 76, 68 74, 62 60 C 58 50, 48 46, 52 36 L 58 36 C 54 44, 64 48, 68 58 C 74 72, 48 76, 46 92 Z" fill="#fde68a" stroke="#d97706" strokeWidth="1.2" />
+      {/* Small Stepping Stones / Pebbles on Path */}
+      <ellipse cx="42" cy="84" rx="2.5" ry="1.5" fill="#ca8a04" opacity="0.6" />
+      <ellipse cx="56" cy="74" rx="2.8" ry="1.8" fill="#ca8a04" opacity="0.6" />
+      <ellipse cx="58" cy="62" rx="2.2" ry="1.4" fill="#ca8a04" opacity="0.6" />
+      <ellipse cx="52" cy="48" rx="1.8" ry="1.2" fill="#ca8a04" opacity="0.6" />
+      <ellipse cx="55" cy="39" rx="1.4" ry="1" fill="#ca8a04" opacity="0.6" />
+      {/* Footprint tracks on the path */}
+      <ellipse cx="43" cy="80" rx="1.2" ry="2" fill="#b45309" opacity="0.5" transform="rotate(15 43 80)" />
+      <ellipse cx="49" cy="76" rx="1.2" ry="2" fill="#b45309" opacity="0.5" transform="rotate(25 49 76)" />
+      <ellipse cx="61" cy="68" rx="1.2" ry="2" fill="#b45309" opacity="0.5" transform="rotate(-10 61 68)" />
+      <ellipse cx="56" cy="56" rx="1" ry="1.8" fill="#b45309" opacity="0.5" transform="rotate(-15 56 56)" />
+      {/* Wooden Trail Marker Signpost on Left */}
+      <rect x="22" y="56" width="3" height="22" fill="#78350f" rx="0.5" />
+      <polygon points="14,54 28,54 33,58 28,62 14,62" fill="#b45309" stroke="#78350f" strokeWidth="0.8" />
+      <line x1="17" y1="58" x2="26" y2="58" stroke="#fef3c7" strokeWidth="1.2" strokeLinecap="round" />
+      {/* Wildflowers along edge of path */}
+      <circle cx="34" cy="76" r="2" fill="#ef4444" />
+      <circle cx="34" cy="76" r="0.8" fill="#fef08a" />
+      <circle cx="68" cy="82" r="2.2" fill="#3b82f6" />
+      <circle cx="68" cy="82" r="0.9" fill="#ffffff" />
+      <circle cx="74" cy="64" r="1.8" fill="#ec4899" />
+      <circle cx="74" cy="64" r="0.7" fill="#fef08a" />
+      <circle cx="46" cy="52" r="1.6" fill="#facc15" />
+      <circle cx="46" cy="52" r="0.6" fill="#ffffff" />
+    </svg>
+  ),
+  'woods': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Sky / Background */}
+      <rect x="6" y="8" width="88" height="84" rx="6" fill="#f0fdf4" stroke="#86efac" strokeWidth="1.5" />
+      {/* Distant soft hill */}
+      <path d="M 6 60 Q 50 48 94 60 L 94 92 L 6 92 Z" fill="#bbf7d0" opacity="0.6" />
+      <path d="M 6 72 Q 40 64 94 70 L 94 92 L 6 92 Z" fill="#86efac" />
+      {/* TREE 1: Background Pine (Center-Right) */}
+      <rect x="64" y="44" width="3.5" height="24" fill="#78350f" />
+      <polygon points="66,22 55,38 77,38" fill="#15803d" />
+      <polygon points="66,32 52,48 80,48" fill="#166534" />
+      {/* TREE 2: Left Evergreen Fir / Pine */}
+      <rect x="23" y="52" width="4" height="28" fill="#78350f" rx="1" />
+      <polygon points="25,24 14,40 36,40" fill="#16a34a" />
+      <polygon points="25,34 11,50 39,50" fill="#15803d" />
+      <polygon points="25,44 8,62 42,62" fill="#166534" />
+      {/* TREE 3: Center Lush Deciduous Oak (Big & Friendly) */}
+      <path d="M 43 56 L 43 82 L 53 82 L 53 56 Z" fill="#854d0e" stroke="#713f12" strokeWidth="1" />
+      <path d="M 43 82 Q 38 85 36 86 M 53 82 Q 58 85 60 86" stroke="#713f12" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="48" cy="40" r="18" fill="#16a34a" />
+      <circle cx="36" cy="44" r="14" fill="#22c55e" />
+      <circle cx="60" cy="44" r="14" fill="#22c55e" />
+      <circle cx="48" cy="32" r="14" fill="#4ade80" />
+      <circle cx="42" cy="36" r="6" fill="#86efac" opacity="0.6" />
+      {/* TREE 4: Right Birch / Light Tree */}
+      <rect x="76" y="52" width="3.5" height="28" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="0.8" />
+      <line x1="76" y1="58" x2="78" y2="58" stroke="#334155" strokeWidth="1" />
+      <line x1="77" y1="64" x2="80" y2="64" stroke="#334155" strokeWidth="1" />
+      <line x1="76" y1="72" x2="78" y2="72" stroke="#334155" strokeWidth="1" />
+      <circle cx="78" cy="44" r="12" fill="#22c55e" />
+      <circle cx="78" cy="38" r="9" fill="#4ade80" />
+      {/* Forest Ground details: Mushroom & Grass */}
+      <rect x="33" y="83" width="2" height="4" fill="#f8fafc" rx="0.5" />
+      <path d="M 30 83 C 30 79 38 79 38 83 Z" fill="#ef4444" />
+      <circle cx="32.5" cy="81" r="0.6" fill="#ffffff" />
+      <circle cx="35.5" cy="81" r="0.6" fill="#ffffff" />
+      <path d="M 54 84 L 56 79 L 58 84 M 57 84 L 60 78 L 62 84" stroke="#16a34a" strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M 16 84 L 18 80 L 20 84" stroke="#16a34a" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  ),
+  'string': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="86" rx="36" ry="5" fill="#94a3b8" opacity="0.3" />
+      {/* Coiled Bundle / Hank of Craft Twine */}
+      <path d="M 28 32 C 18 42, 18 64, 28 72 C 34 78, 44 76, 50 68 C 56 76, 66 78, 72 72 C 82 64, 82 42, 72 32 C 66 26, 56 28, 50 36 C 44 28, 34 26, 28 32 Z" fill="#fde68a" stroke="#ca8a04" strokeWidth="2" />
+      <path d="M 32 36 C 24 44, 24 62, 32 68 C 36 72, 44 70, 48 64 C 52 70, 60 72, 64 68 C 72 62, 72 44, 64 36 C 60 32, 52 34, 48 40 C 44 34, 36 32, 32 36 Z" stroke="#d97706" strokeWidth="2.5" fill="none" />
+      <path d="M 36 40 C 30 46, 30 58, 36 64 C 40 66, 44 64, 47 60 C 50 64, 54 66, 58 64 C 64 58, 64 46, 58 40 C 54 36, 50 38, 47 42 C 44 38, 40 36, 36 40 Z" stroke="#ca8a04" strokeWidth="2" fill="none" />
+      <path d="M 26 48 C 22 52, 22 58, 26 62" stroke="#b45309" strokeWidth="1.8" fill="none" />
+      <path d="M 74 48 C 78 52, 78 58, 74 62" stroke="#b45309" strokeWidth="1.8" fill="none" />
+      {/* Center wrapping band */}
+      <rect x="42" y="44" width="16" height="16" rx="3" fill="#b45309" stroke="#78350f" strokeWidth="1.2" />
+      <line x1="42" y1="48" x2="58" y2="48" stroke="#d97706" strokeWidth="1.2" />
+      <line x1="42" y1="52" x2="58" y2="52" stroke="#fde68a" strokeWidth="1.2" />
+      <line x1="42" y1="56" x2="58" y2="56" stroke="#d97706" strokeWidth="1.2" />
+      {/* Trailing loose string tail */}
+      <path d="M 54 60 Q 64 68 62 82 Q 60 88 74 86 Q 84 84 86 78" stroke="#ca8a04" strokeWidth="3" strokeLinecap="round" fill="none" />
+      <path d="M 54 60 Q 64 68 62 82 Q 60 88 74 86 Q 84 84 86 78" stroke="#fef3c7" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      <circle cx="74" cy="86" r="2.8" fill="#b45309" />
+      <line x1="86" y1="78" x2="90" y2="76" stroke="#ca8a04" strokeWidth="1.2" strokeLinecap="round" />
+      <line x1="86" y1="78" x2="89" y2="80" stroke="#ca8a04" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  ),
+  'dictionary': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="90" rx="38" ry="4" fill="#94a3b8" opacity="0.4" />
+      {/* Thick hardcover dictionary book (Burgundy) */}
+      <rect x="18" y="16" width="62" height="68" rx="4" fill="#881337" stroke="#4c0519" strokeWidth="1.5" />
+      {/* Book spine on left with embossed ribs */}
+      <rect x="18" y="16" width="9" height="68" rx="2" fill="#9f1239" />
+      <line x1="18" y1="28" x2="27" y2="28" stroke="#facc15" strokeWidth="1" />
+      <line x1="18" y1="34" x2="27" y2="34" stroke="#facc15" strokeWidth="1" />
+      <line x1="18" y1="66" x2="27" y2="66" stroke="#facc15" strokeWidth="1" />
+      <line x1="18" y1="72" x2="27" y2="72" stroke="#facc15" strokeWidth="1" />
+      {/* Gold embossed decorative border on cover */}
+      <rect x="30" y="22" width="46" height="56" rx="2" stroke="#facc15" strokeWidth="1" strokeDasharray="3 2" fill="none" />
+      {/* Golden Book Title */}
+      <text x="53" y="38" textAnchor="middle" fill="#facc15" fontSize="5.5" fontWeight="900" letterSpacing="0.8">DICTIONARY</text>
+      {/* A - Z emblem in center */}
+      <rect x="40" y="44" width="26" height="14" rx="2" fill="#4c0519" stroke="#facc15" strokeWidth="1" />
+      <text x="53" y="54" textAnchor="middle" fill="#ffffff" fontSize="7" fontWeight="black" letterSpacing="1">A – Z</text>
+      {/* Page edges block on bottom and right */}
+      <rect x="76" y="20" width="6" height="60" fill="#fef08a" stroke="#ca8a04" strokeWidth="0.8" />
+      <line x1="78" y1="20" x2="78" y2="80" stroke="#ca8a04" strokeWidth="0.5" strokeDasharray="2 2" />
+      {/* Gold silk ribbon bookmark hanging out at bottom */}
+      <path d="M 50 78 L 50 94 L 54 90 L 58 94 L 58 78 Z" fill="#eab308" stroke="#ca8a04" strokeWidth="0.8" />
+    </svg>
+  ),
 };
 
 export const RU_ALIASES: Record<string, string> = {
@@ -5453,4 +5575,21 @@ export const RU_ALIASES: Record<string, string> = {
   'клейкая лента, скотч': 'tape',
   'līmlente': 'tape',
   'limlente': 'tape',
+  'тропинка': 'path',
+  'тропинка, дорожка': 'path',
+  'дорожка': 'path',
+  'taka': 'path',
+  'лесок': 'woods',
+  'роща': 'woods',
+  'лесок, роща': 'woods',
+  'веревочка': 'string',
+  'верёвочка': 'string',
+  'шпагат': 'string',
+  'верёвочка, шпагат': 'string',
+  'aukla': 'string',
+  'словарь': 'dictionary',
+  'vārdnīca': 'dictionary',
+  'vardnica': 'dictionary',
+  'словарь (книга от a до z)': 'dictionary',
+  'словарь (книга от а до я)': 'dictionary',
 };

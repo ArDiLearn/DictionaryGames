@@ -20,6 +20,14 @@ const WORD_NOTES: Record<string, { ru: string; lv: string }> = {
     ru: '💡 Универсально: и для того, что считаем (яблоки), и для того, что нет (вода, время)',
     lv: '💡 Universāli: der gan saskaitāmam (āboli), gan nesaskaitāmam (ūdens, laiks)',
   },
+  dictionary: {
+    ru: '💡 Книга-справочник со словами по алфавиту от A до Z с толкованиями и переводами',
+    lv: '💡 Grāmata vai rokasgrāmata ar vārdiem alfabēta secībā no A līdz Z un to tulkojumu',
+  },
+  vocabulary: {
+    ru: '💡 Словарный запас в памяти (сколько слов ты знаешь) или список новых слов к уроку',
+    lv: '💡 Vārdu krājums atmiņā (cik vārdu tu zini) vai jauno vārdu saraksts konkrētai stundai',
+  },
 };
 
 interface FlashcardsGameProps {

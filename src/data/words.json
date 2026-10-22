@@ -7960,7 +7960,7 @@
         "id": "764",
         "en": "vocabulary",
         "lv": "vārdu krājums",
-        "ru": "словарный запас, словарик",
+        "ru": "словарный запас (слова к уроку)",
         "grade": 4,
         "image": "📖",
         "transcription": "[ vəˈkæbjələri ]"
@@ -8005,7 +8005,7 @@
         "id": "769",
         "en": "dictionary",
         "lv": "vārdnīca",
-        "ru": "словарь",
+        "ru": "словарь (книга от A до Z)",
         "grade": 4,
         "image": "📕",
         "transcription": "[ ˈdɪkʃənri ]"

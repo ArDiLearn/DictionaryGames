@@ -32,6 +32,7 @@ const KNOWN_SVG_EN_KEYS = new Set([
   'bottle', 'food', 'vegetable', 'toddler', 'on', 'under', 'front', 'out', 'over there', 'next', 'before', 'traffic lights', 'invitation', 'uniform', 'bridge', 'medal', 'trophy',
   'pet shop', 'toy shop', 'supermarket', 'markets', 'transport', 'cultures', 'international', 'driver', 'market', 'culture',
   'campfire', 'tent', 'savannah', 'vocabulary', 'tape',
+  'path', 'woods', 'string', 'dictionary',
 ]);
 
 const KNOWN_SVG_RU_KEYS = new Set([
@@ -61,6 +62,7 @@ const KNOWN_SVG_RU_KEYS = new Set([
   'на', 'под', 'спереди', 'снаружи', 'вон там', 'следующий', 'до', 'светофор', 'приглашение', 'форма', 'мост', 'медаль', 'кубок',
   'зоомагазин', 'zooveikals', 'магазин игрушек', 'rotaļlietu veikals', 'супермаркет', 'lielveikals', 'рынки', 'ярмарки', 'рынки, ярмарки', 'рынок', 'tirgi', 'транспорт', 'transports', 'культуры', 'культуры, традиции', 'традиции', 'kultūras', 'международный', 'starptautisks', 'водитель', 'vadītājs',
   'костёр', 'костер', 'ugunskurs', 'палатка', 'telts', 'саванна', 'savanna', 'словарик', 'словарный запас', 'vārdu krājums', 'скотч', 'клейкая лента', 'līmlente',
+  'тропинка', 'taka', 'лесок', 'роща', 'веревочка', 'верёвочка', 'шпагат', 'aukla', 'словарь', 'vārdnīca',
 ]);
 
 export function loadWordSvgs(): Promise<void> {

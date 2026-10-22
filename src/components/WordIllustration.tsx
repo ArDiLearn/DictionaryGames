@@ -29,7 +29,7 @@ const KNOWN_SVG_EN_KEYS = new Set([
   'floor', 'fur', 'roof', 'fridge', 'claws', 'shelf', 'friend', 'hug', 'shapes',
   'christmas', 'costume', 'dress up', 'clothes', 'pocket', 'button', 'garage', 'balcony',
   'light', 'messy', 'flat', 'room', 'fast', 'important', 'stick', 'chips', 'fork',
-  'bottle', 'food', 'vegetable', 'baby', 'on', 'under', 'front', 'out', 'over there', 'next', 'before',
+  'bottle', 'food', 'vegetable', 'toddler', 'on', 'under', 'front', 'out', 'over there', 'next', 'before',
 ]);
 
 const KNOWN_SVG_RU_KEYS = new Set([
@@ -55,7 +55,7 @@ const KNOWN_SVG_RU_KEYS = new Set([
   'пол', 'шерсть', 'крыша', 'холодильник', 'когти', 'полка', 'друг', 'обнимать', 'объятия', 'фигуры',
   'рождество', 'костюм', 'наряжаться', 'одежда', 'карман', 'пуговица', 'гараж', 'балкон',
   'свет', 'неубранный', 'квартира', 'комната', 'быстрый', 'важный', 'палочка', 'чипсы',
-  'вилка', 'бутылка', 'еда', 'овощ', 'малыш', 'младенец',
+  'вилка', 'бутылка', 'еда', 'овощ', 'малыш',
   'на', 'под', 'спереди', 'снаружи', 'вон там', 'следующий', 'до',
 ]);
 

@@ -4106,7 +4106,7 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       </g>
     </svg>
   ),
-  'baby': (
+  'toddler': (
     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
       {/* Soft floor shadow under baby hands, knees, and feet */}
       <ellipse cx="27" cy="91" rx="8" ry="2.5" fill="#0f172a" opacity="0.12" />
@@ -4650,10 +4650,8 @@ export const RU_ALIASES: Record<string, string> = {
   'овощ': 'vegetable',
   'dārzenis': 'vegetable',
   'darzenis': 'vegetable',
-  'малыш': 'baby',
-  'младенец': 'baby',
-  'zīdainis': 'baby',
-  'zidainis': 'baby',
+  'малыш': 'toddler',
+  'mazulis': 'toddler',
   // Positions +
   'на': 'on',
   'uz': 'on',

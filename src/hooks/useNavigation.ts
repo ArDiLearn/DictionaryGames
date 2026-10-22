@@ -227,13 +227,13 @@ export function useNavigation(
   const goBack = useCallback(
     (lang: Language = language): boolean => {
       skipNextHashConfirmRef.current = true;
-      if (window.history.length > 1 && window.location.hash) {
-        window.history.back();
-        return true;
-      }
-      // Fallback if opened without history steps
+      // If inside an active game mode of a topic, always cleanly exit back to topic games list
       if (gameMode && selectedTopic) {
         selectMode(null);
+        return true;
+      }
+      if (window.history.length > 1 && window.location.hash) {
+        window.history.back();
         return true;
       }
       if (selectedTopic) {

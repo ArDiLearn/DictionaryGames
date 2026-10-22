@@ -109,7 +109,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-white border-2 border-slate-200 text-slate-700 font-bold text-sm shadow-sm hover:bg-slate-50 transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>{t.back}</span>
+          <span>{t.backToTopicGames}</span>
         </button>
 
         <div className="flex items-center gap-2">
@@ -306,9 +306,10 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
           onClick={handlePrevWord}
           disabled={currentIndex === 0}
           className="btn-3d py-3.5 px-3 rounded-3xl bg-white hover:bg-slate-50 border-4 border-slate-200 text-slate-700 font-black text-sm sm:text-base shadow-md disabled:opacity-40 disabled:pointer-events-none flex items-center justify-center gap-1.5 cursor-pointer"
+          title={language === 'ru' ? 'Предыдущее слово' : 'Iepriekšējais vārds'}
         >
           <ChevronLeft className="w-5 h-5" />
-          <span>{language === 'ru' ? 'Назад' : 'Atpakaļ'}</span>
+          <span>{language === 'ru' ? 'Пред.' : 'Iepr.'}</span>
         </button>
 
         <button
@@ -325,8 +326,9 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
         <button
           onClick={handleNextWord}
           className="btn-3d py-3.5 px-3 rounded-3xl bg-emerald-500 hover:bg-emerald-600 border-4 border-emerald-600 text-white font-black text-sm sm:text-base shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
+          title={language === 'ru' ? 'Следующее слово' : 'Nākamais vārds'}
         >
-          <span>{currentIndex + 1 >= topic.words.length ? (language === 'ru' ? 'Готово!' : 'Gatavs!') : (language === 'ru' ? 'Дальше' : 'Tālāk')}</span>
+          <span>{currentIndex + 1 >= topic.words.length ? (language === 'ru' ? 'Готово!' : 'Gatavs!') : (language === 'ru' ? 'След.' : 'Nāk.')}</span>
           <ChevronRight className="w-5 h-5" />
         </button>
       </div>

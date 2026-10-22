@@ -416,7 +416,7 @@ export const WORD_IMAGES = {
   "favourite": "⭐",
   "follow": "👣",
   "food": "🥪",
-  "friend": "🫂",
+  "friend": "👫",
   "from": "📤",
   "fun": "🎉",
   "game": "🎲",
@@ -712,7 +712,7 @@ export const WORD_IMAGES = {
   "lose": "📉",
 
   // Grade 1 Additions - School materials
-  "shelf": "🪵",
+  "shelf": "🗄️",
   "folder": "📁",
   "chalk": "🖍️",
   "desk partner": "🧑‍🤝‍🧑",
@@ -723,5 +723,5 @@ export const WORD_IMAGES = {
   "together": "🤝",
   "help": "🤲",
   "smile": "😊",
-  "hug": "🫂",
+  "hug": "🤗",
 };

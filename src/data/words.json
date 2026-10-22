@@ -1254,6 +1254,15 @@
         "grade": 1,
         "image": "🤫",
         "transcription": "[ ˈkwaɪət ]"
+      },
+      {
+        "id": "122",
+        "en": "horse",
+        "lv": "zirgs",
+        "ru": "лошадь",
+        "grade": 1,
+        "image": "🐴",
+        "transcription": "[ hɔːs ]"
       }
     ]
   },
@@ -1269,7 +1278,7 @@
     "emoji": "🐮",
     "words": [
       {
-        "id": "122",
+        "id": "123",
         "en": "cow",
         "lv": "govs",
         "ru": "корова",
@@ -1278,7 +1287,7 @@
         "transcription": "[ kaʊ ]"
       },
       {
-        "id": "123",
+        "id": "124",
         "en": "chicken",
         "lv": "vista",
         "ru": "курица",
@@ -1287,7 +1296,7 @@
         "transcription": "[ ˈtʃɪkɪn ]"
       },
       {
-        "id": "124",
+        "id": "125",
         "en": "donkey",
         "lv": "ēzelis",
         "ru": "осёл",
@@ -1296,7 +1305,7 @@
         "transcription": "[ ˈdɒŋki ]"
       },
       {
-        "id": "125",
+        "id": "126",
         "en": "duck",
         "lv": "pīle",
         "ru": "утка",
@@ -1305,7 +1314,7 @@
         "transcription": "[ dʌk ]"
       },
       {
-        "id": "126",
+        "id": "127",
         "en": "goat",
         "lv": "kaza",
         "ru": "коза",
@@ -1314,22 +1323,13 @@
         "transcription": "[ ɡəʊt ]"
       },
       {
-        "id": "127",
+        "id": "128",
         "en": "sheep",
         "lv": "aita",
         "ru": "овца",
         "grade": 1,
         "image": "🐑",
         "transcription": "[ ʃiːp ]"
-      },
-      {
-        "id": "128",
-        "en": "horse",
-        "lv": "zirgs",
-        "ru": "лошадь",
-        "grade": 1,
-        "image": "🐴",
-        "transcription": "[ hɔːs ]"
       }
     ]
   },
@@ -3804,7 +3804,7 @@
         "lv": "plaukts",
         "ru": "полка",
         "grade": 1,
-        "image": "🪵",
+        "image": "🗄️",
         "transcription": "[ ʃelf ]"
       },
       {
@@ -4408,7 +4408,7 @@
         "lv": "draugs",
         "ru": "друг",
         "grade": 1,
-        "image": "🫂",
+        "image": "👫",
         "transcription": "[ frend ]"
       },
       {
@@ -4471,7 +4471,7 @@
         "lv": "apskaut",
         "ru": "обнимать",
         "grade": 1,
-        "image": "🫂",
+        "image": "🤗",
         "transcription": "[ hʌɡ ]"
       }
     ]

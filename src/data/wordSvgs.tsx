@@ -3389,6 +3389,84 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       </g>
     </svg>
   ),
+  'shelf': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Wall Shelf with brackets */}
+      {/* Wooden shelf board */}
+      <rect x="12" y="52" width="76" height="10" rx="2" fill="#b45309" />
+      <rect x="14" y="53" width="72" height="4" rx="1" fill="#d97706" opacity="0.8" />
+      {/* Metal brackets underneath */}
+      <path d="M 24 62 L 24 78 L 30 78 L 30 68 L 40 68 L 40 62 Z" fill="#475569" />
+      <polygon points="28,68 28,74 34,68" fill="#334155" />
+      <path d="M 70 62 L 70 78 L 76 78 L 76 68 L 86 68 L 86 62 Z" fill="#475569" />
+      <polygon points="74,68 74,74 80,68" fill="#334155" />
+      {/* Books on the shelf */}
+      {/* Book 1 (blue) */}
+      <rect x="22" y="28" width="9" height="24" rx="1.5" fill="#2563eb" />
+      <rect x="24" y="30" width="5" height="20" fill="#3b82f6" />
+      {/* Book 2 (red, leaning) */}
+      <g transform="translate(35, 30) rotate(12)">
+        <rect x="0" y="0" width="8" height="22" rx="1.5" fill="#ef4444" />
+        <rect x="2" y="2" width="4" height="18" fill="#f87171" />
+      </g>
+      {/* Small potted plant */}
+      <path d="M 64 42 L 74 42 L 72 52 L 66 52 Z" fill="#ea580c" />
+      {/* Plant leaves */}
+      <circle cx="69" cy="38" r="5" fill="#22c55e" />
+      <circle cx="65" cy="35" r="4" fill="#16a34a" />
+      <circle cx="73" cy="35" r="4" fill="#4ade80" />
+    </svg>
+  ),
+  'hug': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Heart background for warm friendly hug */}
+      <path d="M 50 26 C 44 14, 26 14, 26 30 C 26 44, 42 56, 50 64 C 58 56, 74 44, 74 30 C 74 14, 56 14, 50 26 Z" fill="#fecdd3" opacity="0.6" />
+      {/* Person Left (orange) */}
+      <circle cx="38" cy="38" r="11" fill="#fb923c" />
+      <path d="M 24 68 C 24 53, 34 50, 42 50 C 47 50, 52 52, 54 56 C 48 60, 44 68, 44 76 L 24 76 Z" fill="#f97316" />
+      {/* Person Right (blue) hugging left */}
+      <circle cx="62" cy="38" r="11" fill="#60a5fa" />
+      <path d="M 76 68 C 76 53, 66 50, 58 50 C 53 50, 48 52, 46 56 C 52 60, 56 68, 56 76 L 76 76 Z" fill="#3b82f6" />
+      {/* Arms wrapped around each other */}
+      {/* Blue arm around orange body */}
+      <path d="M 60 54 C 54 54, 38 56, 32 64 C 30 67, 33 70, 36 68 C 42 63, 50 60, 58 60 Z" fill="#2563eb" />
+      {/* Orange arm around blue body */}
+      <path d="M 40 54 C 46 54, 62 56, 68 64 C 70 67, 67 70, 64 68 C 58 63, 50 60, 42 60 Z" fill="#ea580c" />
+      {/* Little warm smile sparkles */}
+      <circle cx="50" cy="18" r="2" fill="#e11d48" />
+    </svg>
+  ),
+  'friend': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Two best friends side by side with arm over shoulder */}
+      {/* Friend 1 - Left (purple sweater) */}
+      <circle cx="36" cy="32" r="12" fill="#fbcfe8" />
+      {/* Hair 1 */}
+      <path d="M 24 30 C 24 20, 48 20, 48 30 C 44 26, 28 26, 24 30 Z" fill="#78350f" />
+      {/* Smile 1 */}
+      <path d="M 33 36 Q 36 40 39 36" stroke="#9d174d" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      <circle cx="32" cy="32" r="1.5" fill="#475569" />
+      <circle cx="40" cy="32" r="1.5" fill="#475569" />
+      {/* Body 1 */}
+      <rect x="23" y="46" width="26" height="32" rx="6" fill="#8b5cf6" />
+
+      {/* Friend 2 - Right (teal sweater) */}
+      <circle cx="64" cy="32" r="12" fill="#fed7aa" />
+      {/* Hair 2 */}
+      <path d="M 52 28 C 52 18, 76 18, 76 28 C 72 24, 56 24, 52 28 Z" fill="#b45309" />
+      {/* Smile 2 */}
+      <path d="M 61 36 Q 64 40 67 36" stroke="#c2410c" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      <circle cx="60" cy="32" r="1.5" fill="#475569" />
+      <circle cx="68" cy="32" r="1.5" fill="#475569" />
+      {/* Body 2 */}
+      <rect x="51" y="46" width="26" height="32" rx="6" fill="#06b6d4" />
+
+      {/* Arm around shoulder connecting them */}
+      <path d="M 46 50 C 49 46, 53 46, 56 50 L 53 58 C 51 55, 48 55, 46 56 Z" fill="#7c3aed" />
+      {/* Friendly little heart between heads */}
+      <path d="M 50 20 C 47 16, 42 17, 42 21 C 42 25, 50 29, 50 31 C 50 29, 58 25, 58 21 C 58 17, 53 16, 50 20 Z" fill="#ec4899" />
+    </svg>
+  ),
 };
 
 export const RU_ALIASES: Record<string, string> = {

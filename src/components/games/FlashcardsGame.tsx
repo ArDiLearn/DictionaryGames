@@ -42,8 +42,18 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
     if (currentWord) {
       setViewedWordIds((prev) => new Set([...prev, currentWord.id]));
       onRecordResult(currentWord.id, true);
+      // Automatically pronounce word when entering the card
+      const textToSpeak = getTargetWordText(currentWord, course);
+      setIsSpeaking(true);
+      speakWord(
+        textToSpeak,
+        course,
+        0.85,
+        () => setIsSpeaking(true),
+        () => setIsSpeaking(false)
+      );
     }
-  }, [currentIndex, currentWord]);
+  }, [currentIndex, currentWord, course]);
 
   useEffect(() => {
     if (wordBtnRefs.current[currentIndex]) {
@@ -159,10 +169,20 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
           <span className="text-xs font-bold uppercase tracking-wider">
             {isLatvianCourse ? '🇱🇻 Latviešu' : '🇬🇧 English'} → {language === 'lv' ? '🇱🇻 Latviešu' : '🇷🇺 Русский'}
           </span>
-          <span className="text-xs font-bold text-indigo-400 flex items-center gap-1">
-            <Volume2 className="w-4 h-4" />
-            <span>{language === 'ru' ? 'Нажми для озвучки' : 'Pieskaries, lai noklausītos'}</span>
-          </span>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleSpeak();
+            }}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-indigo-100 hover:bg-indigo-200 border-2 border-indigo-300 text-indigo-700 font-bold text-xs sm:text-sm shadow-sm transition-all hover:scale-105 active:scale-95 cursor-pointer ${
+              isSpeaking ? 'ring-3 ring-indigo-400 animate-pulse bg-indigo-200' : ''
+            }`}
+            title={language === 'ru' ? 'Послушать произношение' : 'Noklausīties izrunu'}
+          >
+            <Volume2 className={`w-4 h-4 sm:w-5 sm:h-5 text-indigo-600 ${isSpeaking ? 'animate-bounce' : ''}`} />
+            <span>{t.listen}</span>
+          </button>
         </div>
 
         {/* Word Display */}
@@ -192,22 +212,6 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
               {translation}
             </h3>
           </div>
-        </div>
-
-        {/* Audio Button */}
-        <div className="w-full flex justify-center pb-1">
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              handleSpeak();
-            }}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-indigo-50 border-2 border-indigo-200 text-indigo-700 font-black shadow-sm transition-all hover:scale-105 active:scale-95 cursor-pointer ${
-              isSpeaking ? 'ring-4 ring-indigo-300 animate-pulse' : ''
-            }`}
-          >
-            <Volume2 className="w-6 h-6 text-indigo-600" />
-            <span>{t.listen}</span>
-          </button>
         </div>
       </div>
 

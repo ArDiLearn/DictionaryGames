@@ -418,7 +418,11 @@ export const App: React.FC = () => {
 
 
   const handleSelectGrammarTopic = (topic: GrammarTopic) => {
-    setCatalogTab('grammar');
+    if (topic.id === 'g3_alphabet') {
+      setCatalogTab('main');
+    } else {
+      setCatalogTab('grammar');
+    }
     setGameSessionId((prev) => prev + 1);
     setActiveGrammarTopic(topic);
   };
@@ -499,7 +503,12 @@ export const App: React.FC = () => {
                 language={language}
                 course={course}
                 onComplete={handleGrammarComplete}
-                onBack={() => setActiveGrammarTopic(null)}
+                onBack={() => {
+                  if (activeGrammarTopic.id === 'g3_alphabet') {
+                    setCatalogTab('main');
+                  }
+                  setActiveGrammarTopic(null);
+                }}
               />
             </Suspense>
           </div>

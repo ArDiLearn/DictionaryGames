@@ -7,6 +7,7 @@ import { GameSelector } from './components/GameSelector';
 import { PwaInstallPrompt } from './components/PwaInstallPrompt';
 import { RewardToastOverlay } from './components/RewardToastOverlay';
 import { trackGameStart, trackExamStart, trackLanguageChange } from './utils/analytics';
+import { isTopicExtra } from './utils/i18n';
 import { useNavigation } from './hooks/useNavigation';
 import { useGameRewards } from './hooks/useGameRewards';
 import { useCloudSync } from './hooks/useCloudSync';
@@ -210,6 +211,14 @@ export const App: React.FC = () => {
       navigateToHome(language);
     }
   }, [selectedTopic, gameMode, mistakesWords.length, navigateToHome, language]);
+
+  // Keep catalogTab synchronized with the selected topic (extra vs main)
+  useEffect(() => {
+    if (selectedTopic && selectedTopic.topic_id !== MISTAKES_TOPIC_ID) {
+      const isExtra = isTopicExtra(selectedTopic.topic_id, selectedGrades);
+      setCatalogTab(isExtra ? 'extra' : 'main');
+    }
+  }, [selectedTopic, selectedGrades]);
 
 
 

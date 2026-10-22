@@ -854,5 +854,5 @@ export const WORD_IMAGES = {
 
   // Pets +
   "parrot": "🦜",
-  "goldfish": "🐟",
+  "goldfish": "🐠",
 };

@@ -5301,6 +5301,41 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       <path d="M 50 78 L 50 94 L 54 90 L 58 94 L 58 78 Z" fill="#eab308" stroke="#ca8a04" strokeWidth="0.8" />
     </svg>
   ),
+  'goldfish': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Air bubbles rising */}
+      <circle cx="26" cy="36" r="2.5" fill="#e0f2fe" stroke="#38bdf8" strokeWidth="0.8" opacity="0.8" />
+      <circle cx="20" cy="26" r="1.8" fill="#e0f2fe" stroke="#38bdf8" strokeWidth="0.8" opacity="0.8" />
+      <circle cx="22" cy="16" r="1.2" fill="#e0f2fe" stroke="#38bdf8" strokeWidth="0.8" opacity="0.8" />
+      {/* Caudal Tail Fin (Flowing, Fan-shaped, Shimmering Golden-Orange) */}
+      <path d="M 62 50 C 72 40, 84 28, 92 34 C 95 38, 90 48, 76 50 Z" fill="#f59e0b" stroke="#d97706" strokeWidth="1" opacity="0.9" />
+      <path d="M 64 50 Q 78 36 90 35" stroke="#fef08a" strokeWidth="1" fill="none" opacity="0.8" />
+      <path d="M 62 52 C 74 54, 88 68, 92 64 C 94 60, 88 52, 74 52 Z" fill="#ea580c" stroke="#c2410c" strokeWidth="1" opacity="0.9" />
+      <path d="M 64 52 Q 80 62 90 63" stroke="#fef08a" strokeWidth="1" fill="none" opacity="0.8" />
+      {/* Dorsal Fin on Top */}
+      <path d="M 40 36 C 46 22, 58 24, 60 38 Z" fill="#f59e0b" stroke="#d97706" strokeWidth="1" />
+      <path d="M 44 34 Q 50 26 56 36" stroke="#fef08a" strokeWidth="1" fill="none" opacity="0.8" />
+      {/* Ventral Fin on Bottom */}
+      <path d="M 44 64 C 48 76, 56 74, 58 64 Z" fill="#ea580c" stroke="#c2410c" strokeWidth="1" />
+      {/* Main Fish Body (Round Golden-Orange Body) */}
+      <ellipse cx="44" cy="50" rx="22" ry="15" fill="#f97316" stroke="#ea580c" strokeWidth="1.5" />
+      {/* Golden Belly Highlight */}
+      <path d="M 28 52 C 34 62, 54 62, 60 52 C 54 58, 34 58, 28 52 Z" fill="#fde047" />
+      {/* Scale Shimmer Accents */}
+      <path d="M 40 44 Q 44 48 40 52" stroke="#fef08a" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.8" />
+      <path d="M 46 41 Q 50 45 46 49" stroke="#fef08a" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.8" />
+      <path d="M 46 49 Q 50 53 46 57" stroke="#fef08a" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.8" />
+      <path d="M 52 44 Q 56 48 52 52" stroke="#fef08a" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.8" />
+      {/* Pectoral Fin on Front Body */}
+      <path d="M 38 52 C 40 60, 48 62, 46 54 Z" fill="#fde047" stroke="#d97706" strokeWidth="1" />
+      {/* Cute Fish Eye */}
+      <circle cx="31" cy="46" r="4.5" fill="#ffffff" stroke="#ea580c" strokeWidth="0.8" />
+      <circle cx="30" cy="46" r="2.8" fill="#1e293b" />
+      <circle cx="29" cy="45" r="1.1" fill="#ffffff" />
+      {/* Smiling Mouth */}
+      <path d="M 23 52 Q 25 55 27 53" stroke="#9a3412" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+    </svg>
+  ),
 };
 
 export const RU_ALIASES: Record<string, string> = {
@@ -5592,4 +5627,7 @@ export const RU_ALIASES: Record<string, string> = {
   'vardnica': 'dictionary',
   'словарь (книга от a до z)': 'dictionary',
   'словарь (книга от а до я)': 'dictionary',
+  'золотая рыбка': 'goldfish',
+  'zelta zivtiņa': 'goldfish',
+  'zelta zivtina': 'goldfish',
 };

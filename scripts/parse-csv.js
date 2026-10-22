@@ -260,6 +260,18 @@ const TOPIC_METADATA = {
   'Профессии +': { icon: 'Briefcase', color: 'indigo', emoji: '👨‍🚒' },
   'Sports +': { icon: 'Trophy', color: 'green', emoji: '🏅' },
   'Спорт +': { icon: 'Trophy', color: 'green', emoji: '🏅' },
+  'Habitats +': { icon: 'Globe', color: 'emerald', emoji: '🌍' },
+  'Dzīvotnes +': { icon: 'Globe', color: 'emerald', emoji: '🌍' },
+  'Среда обитания +': { icon: 'Globe', color: 'emerald', emoji: '🌍' },
+  'School life +': { icon: 'BookOpen', color: 'blue', emoji: '📖' },
+  'Skolas dzīve +': { icon: 'BookOpen', color: 'blue', emoji: '📖' },
+  'Школьная жизнь +': { icon: 'BookOpen', color: 'blue', emoji: '📖' },
+  'Camping +': { icon: 'Compass', color: 'amber', emoji: '⛺' },
+  'Pārgājiens +': { icon: 'Compass', color: 'amber', emoji: '⛺' },
+  'Поход и лагерь +': { icon: 'Compass', color: 'amber', emoji: '⛺' },
+  'Craft materials +': { icon: 'Palette', color: 'purple', emoji: '🧶' },
+  'Radošie materiāli +': { icon: 'Palette', color: 'purple', emoji: '🧶' },
+  'Материалы для творчества +': { icon: 'Palette', color: 'purple', emoji: '🧶' },
 };
 
 /**

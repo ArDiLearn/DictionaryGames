@@ -879,4 +879,40 @@ export const TRANSCRIPTIONS = {
   "winner": "[ ˈwɪnə ]",
   "medal": "[ ˈmedl ]",
   "trophy": "[ ˈtrəʊfi ]",
+
+  // Grade 4 Extra - Habitats +
+  "ocean": "[ ˈəʊʃn ]",
+  "desert": "[ ˈdezət ]",
+  "island": "[ ˈaɪlənd ]",
+  "savannah": "[ səˈvænə ]",
+  "river": "[ ˈrɪvə ]",
+  "mountain": "[ ˈmaʊntən ]",
+  "wild": "[ waɪld ]",
+
+  // Grade 4 Extra - School life +
+  "vocabulary": "[ vəˈkæbjələri ]",
+  "unit": "[ ˈjuːnɪt ]",
+  "homework": "[ ˈhəʊmwɜːk ]",
+  "project": "[ ˈprɒdʒekt ]",
+  "timetable": "[ ˈtaɪmteɪbl ]",
+  "dictionary": "[ ˈdɪkʃənri ]",
+  "easy": "[ ˈiːzi ]",
+  "difficult": "[ ˈdɪfɪkəlt ]",
+
+  // Grade 4 Extra - Camping +
+  "tent": "[ tent ]",
+  "campfire": "[ ˈkæmpfaɪə ]",
+  "compass": "[ ˈkʌmpəs ]",
+  "torch": "[ tɔːtʃ ]",
+  "path": "[ pɑːθ ]",
+  "woods": "[ wʊdz ]",
+
+  // Grade 4 Extra - Craft materials +
+  "cardboard": "[ ˈkɑːdbɔːd ]",
+  "wool": "[ wʊl ]",
+  "plastic": "[ ˈplæstɪk ]",
+  "glass": "[ ɡlɑːs ]",
+  "metal": "[ ˈmetl ]",
+  "tape": "[ teɪp ]",
+  "string": "[ strɪŋ ]",
 };

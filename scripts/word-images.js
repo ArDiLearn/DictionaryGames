@@ -803,4 +803,40 @@ export const WORD_IMAGES = {
   "winner": "🥇",
   "medal": "🏅",
   "trophy": "🏆",
+
+  // Grade 4 Extra - Habitats +
+  "ocean": "🌊",
+  "desert": "🏜️",
+  "island": "🏝️",
+  "savannah": "🌾",
+  "river": "🏞️",
+  "mountain": "🏔️",
+  "wild": "🦁",
+
+  // Grade 4 Extra - School life +
+  "vocabulary": "📖",
+  "unit": "📑",
+  "homework": "📝",
+  "project": "📊",
+  "timetable": "🗓️",
+  "dictionary": "📕",
+  "easy": "🟢",
+  "difficult": "🧩",
+
+  // Grade 4 Extra - Camping +
+  "tent": "⛺",
+  "campfire": "🔥",
+  "compass": "🧭",
+  "torch": "🔦",
+  "path": "🥾",
+  "woods": "🌲",
+
+  // Grade 4 Extra - Craft materials +
+  "cardboard": "📦",
+  "wool": "🧶",
+  "plastic": "🧴",
+  "glass": "🥛",
+  "metal": "🔩",
+  "tape": "🩹",
+  "string": "🧵",
 };

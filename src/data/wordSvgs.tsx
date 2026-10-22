@@ -5029,6 +5029,156 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       </g>
     </svg>
   ),
+  'campfire': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="88" rx="36" ry="6" fill="#1e293b" opacity="0.4" />
+      {/* Circle of stones */}
+      <ellipse cx="26" cy="86" rx="6" ry="4" fill="#64748b" stroke="#334155" strokeWidth="1" />
+      <ellipse cx="40" cy="89" rx="7" ry="4" fill="#475569" stroke="#334155" strokeWidth="1" />
+      <ellipse cx="60" cy="89" rx="7" ry="4" fill="#64748b" stroke="#334155" strokeWidth="1" />
+      <ellipse cx="74" cy="86" rx="6" ry="4" fill="#475569" stroke="#334155" strokeWidth="1" />
+      <ellipse cx="32" cy="83" rx="5" ry="3" fill="#334155" />
+      <ellipse cx="68" cy="83" rx="5" ry="3" fill="#334155" />
+      {/* Crossed wooden logs */}
+      <path d="M 22 84 L 78 72 L 76 66 L 20 78 Z" fill="#78350f" stroke="#451a03" strokeWidth="1" />
+      <ellipse cx="21" cy="81" rx="3" ry="2" fill="#d97706" />
+      <path d="M 78 84 L 22 72 L 24 66 L 80 78 Z" fill="#92400e" stroke="#451a03" strokeWidth="1" />
+      <ellipse cx="79" cy="81" rx="3" ry="2" fill="#d97706" />
+      {/* Glowing coal base */}
+      <ellipse cx="50" cy="78" rx="14" ry="4" fill="#f97316" />
+      {/* Outer red flame */}
+      <path d="M 50 20 C 38 36 28 54 34 74 C 38 78 46 80 50 80 C 54 80 62 78 66 74 C 72 54 62 36 50 20 Z" fill="#ef4444" />
+      {/* Orange flame layer */}
+      <path d="M 50 32 C 42 44 34 56 40 72 C 43 75 48 76 50 76 C 52 76 57 75 60 72 C 66 56 58 44 50 32 Z" fill="#f97316" />
+      {/* Yellow core flame */}
+      <path d="M 50 44 C 45 52 40 60 44 70 C 46 72 49 73 50 73 C 51 73 54 72 56 70 C 60 60 55 52 50 44 Z" fill="#facc15" />
+      {/* White hot flame spark */}
+      <path d="M 50 56 C 48 60 46 64 48 68 C 49 69 50 69.5 50 69.5 C 50 69.5 51 69 52 68 C 54 64 52 60 50 56 Z" fill="#ffffff" />
+      {/* Sparks */}
+      <circle cx="50" cy="14" r="1.5" fill="#facc15" />
+      <circle cx="38" cy="22" r="1.2" fill="#f97316" />
+      <circle cx="62" cy="18" r="1.2" fill="#facc15" />
+      <circle cx="56" cy="10" r="0.9" fill="#ef4444" />
+    </svg>
+  ),
+  'tent': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="88" rx="42" ry="5" fill="#1e293b" opacity="0.3" />
+      {/* Grass patch */}
+      <path d="M 8 86 Q 50 82 92 86 L 92 94 L 8 94 Z" fill="#86efac" opacity="0.5" />
+      {/* Ridgepole & Peg lines */}
+      <line x1="50" y1="24" x2="14" y2="84" stroke="#94a3b8" strokeWidth="1" strokeDasharray="3 2" />
+      <line x1="50" y1="24" x2="86" y2="84" stroke="#94a3b8" strokeWidth="1" strokeDasharray="3 2" />
+      <rect x="12" y="83" width="3" height="5" rx="0.5" fill="#64748b" />
+      <rect x="85" y="83" width="3" height="5" rx="0.5" fill="#64748b" />
+      {/* Tent Main Body */}
+      <polygon points="50,24 22,82 78,82" fill="#0284c7" stroke="#0369a1" strokeWidth="1.5" />
+      {/* Left Front Flap */}
+      <polygon points="50,24 22,82 44,82" fill="#38bdf8" />
+      {/* Right Front Flap */}
+      <polygon points="50,24 78,82 56,82" fill="#0284c7" />
+      {/* Inside Tent (Dark Entrance) */}
+      <polygon points="50,24 44,82 56,82" fill="#0f172a" />
+      {/* Sleeping pad inside glow */}
+      <polygon points="46,82 54,82 52,78 48,78" fill="#facc15" />
+      {/* Tent Flap tie folds */}
+      <path d="M 44 82 Q 40 60 50 24" stroke="#0284c7" strokeWidth="1.5" fill="none" />
+      <path d="M 56 82 Q 60 60 50 24" stroke="#0369a1" strokeWidth="1.5" fill="none" />
+      {/* Peak tip */}
+      <circle cx="50" cy="24" r="2" fill="#facc15" />
+      {/* Warm lantern hanging outside */}
+      <line x1="50" y1="24" x2="50" y2="36" stroke="#ca8a04" strokeWidth="1" />
+      <rect x="47" y="36" width="6" height="8" rx="1" fill="#fde047" stroke="#ca8a04" strokeWidth="0.8" />
+      <circle cx="50" cy="40" r="1.5" fill="#ffffff" />
+    </svg>
+  ),
+  'savannah': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Sky sunset circle */}
+      <circle cx="50" cy="50" r="46" fill="#fef08a" stroke="#f59e0b" strokeWidth="1.5" />
+      <path d="M 4 50 C 4 75 25 96 50 96 C 75 96 96 75 96 50 Z" fill="#ea580c" opacity="0.3" />
+      {/* Big golden setting sun */}
+      <circle cx="50" cy="44" r="18" fill="#f97316" />
+      <circle cx="50" cy="44" r="14" fill="#fde047" />
+      {/* Rolling ground plains */}
+      <path d="M 4 68 Q 30 62 60 66 Q 80 69 96 64 L 96 96 L 4 96 Z" fill="#b45309" />
+      <path d="M 4 76 Q 40 70 70 75 Q 85 78 96 74 L 96 96 L 4 96 Z" fill="#78350f" />
+      {/* Iconic Acacia Umbrella Tree Silhouette */}
+      <g fill="#451a03">
+        <path d="M 32 80 L 33 60 Q 34 52 38 48 L 44 42" stroke="#451a03" strokeWidth="3" strokeLinecap="round" />
+        <path d="M 33 60 Q 30 52 24 46 L 18 42" stroke="#451a03" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M 34 54 Q 38 48 46 48 L 52 46" stroke="#451a03" strokeWidth="2" strokeLinecap="round" />
+        <ellipse cx="20" cy="42" rx="8" ry="2.2" />
+        <ellipse cx="32" cy="38" rx="12" ry="2.8" />
+        <ellipse cx="46" cy="42" rx="10" ry="2.5" />
+        <ellipse cx="54" cy="46" rx="6" ry="2" />
+      </g>
+      {/* Giraffe silhouette in distance on right */}
+      <g fill="#451a03">
+        <path d="M 76 74 L 76 66 L 78 52 L 80 50 L 82 52 L 80 55 L 78 66 L 80 74 Z" />
+        <line x1="77" y1="74" x2="77" y2="84" stroke="#451a03" strokeWidth="1.2" />
+        <line x1="79" y1="74" x2="79" y2="84" stroke="#451a03" strokeWidth="1.2" />
+        <line x1="80" y1="50" x2="80" y2="48" stroke="#451a03" strokeWidth="0.8" />
+      </g>
+      {/* Tall savannah grass reeds */}
+      <path d="M 10 82 Q 12 74 14 76 M 12 82 Q 15 72 18 75 M 62 82 Q 64 74 66 76" stroke="#d97706" strokeWidth="1.2" />
+    </svg>
+  ),
+  'vocabulary': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="90" rx="38" ry="4" fill="#94a3b8" opacity="0.4" />
+      {/* Vocabulary book cover (Blue) */}
+      <rect x="18" y="16" width="60" height="70" rx="4" fill="#1e40af" stroke="#172554" strokeWidth="1.5" />
+      {/* Book spine on left */}
+      <rect x="18" y="16" width="7" height="70" rx="2" fill="#1d4ed8" />
+      {/* White Pages Block */}
+      <rect x="25" y="19" width="50" height="64" rx="2" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1" />
+      {/* Alphabet index tabs along right edge */}
+      <rect x="73" y="24" width="8" height="6" rx="1.5" fill="#ef4444" />
+      <text x="77" y="28.5" textAnchor="middle" fontSize="4.5" fontWeight="bold" fill="#ffffff">A</text>
+      <rect x="73" y="32" width="8" height="6" rx="1.5" fill="#f59e0b" />
+      <text x="77" y="36.5" textAnchor="middle" fontSize="4.5" fontWeight="bold" fill="#ffffff">B</text>
+      <rect x="73" y="40" width="8" height="6" rx="1.5" fill="#10b981" />
+      <text x="77" y="44.5" textAnchor="middle" fontSize="4.5" fontWeight="bold" fill="#ffffff">C</text>
+      <rect x="73" y="48" width="8" height="6" rx="1.5" fill="#3b82f6" />
+      <text x="77" y="52.5" textAnchor="middle" fontSize="4.5" fontWeight="bold" fill="#ffffff">D</text>
+      {/* Header bar on page */}
+      <rect x="28" y="23" width="42" height="6" rx="1" fill="#dbeafe" />
+      <text x="49" y="27.5" textAnchor="middle" fontSize="4.5" fontWeight="bold" fill="#1e40af">WORD LIST</text>
+      {/* Word list entry rows with star */}
+      <polygon points="31,35 32,37 34,37 32.5,38 33,40 31,39 29,40 29.5,38 28,37 30,37" fill="#facc15" />
+      <line x1="36" y1="37" x2="68" y2="37" stroke="#334155" strokeWidth="1.5" strokeLinecap="round" />
+      <polygon points="31,45 32,47 34,47 32.5,48 33,50 31,49 29,50 29.5,48 28,47 30,47" fill="#facc15" />
+      <line x1="36" y1="47" x2="64" y2="47" stroke="#64748b" strokeWidth="1.5" strokeLinecap="round" />
+      <polygon points="31,55 32,57 34,57 32.5,58 33,60 31,59 29,60 29.5,58 28,57 30,57" fill="#facc15" />
+      <line x1="36" y1="57" x2="66" y2="57" stroke="#64748b" strokeWidth="1.5" strokeLinecap="round" />
+      <polygon points="31,65 32,67 34,67 32.5,68 33,70 31,69 29,70 29.5,68 28,67 30,67" fill="#facc15" />
+      <line x1="36" y1="67" x2="60" y2="67" stroke="#64748b" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Highlighter pen */}
+      <rect x="52" y="72" width="22" height="5" rx="1.5" fill="#facc15" stroke="#ca8a04" strokeWidth="0.8" transform="rotate(-15 52 72)" />
+      <polygon points="46,75 51,73 50,77" fill="#38bdf8" />
+    </svg>
+  ),
+  'tape': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="88" rx="36" ry="5" fill="#94a3b8" opacity="0.3" />
+      {/* Tape Roll Spool outer ring */}
+      <circle cx="44" cy="50" r="34" fill="#fef08a" stroke="#ca8a04" strokeWidth="2" />
+      {/* Inner roll layer */}
+      <circle cx="44" cy="50" r="26" fill="#facc15" stroke="#ca8a04" strokeWidth="1" />
+      {/* Plastic Core */}
+      <circle cx="44" cy="50" r="16" fill="#38bdf8" stroke="#0284c7" strokeWidth="1.5" />
+      {/* Center hole through spool */}
+      <circle cx="44" cy="50" r="10" fill="#f8fafc" stroke="#64748b" strokeWidth="1" />
+      {/* Strip of sticky tape peeling off roll to the right */}
+      <path d="M 44 16 L 82 16 C 88 16 90 22 84 26 L 68 26 C 60 26 56 22 44 22 Z" fill="#fef08a" fillOpacity="0.8" stroke="#ca8a04" strokeWidth="1.5" />
+      {/* Serrated cut edge */}
+      <polygon points="84,16 82,19 84,22 82,25 84,26 81,26 79,23 81,20 79,16" fill="#ca8a04" />
+      {/* Gloss reflection shine */}
+      <path d="M 24 30 C 34 20 54 20 64 30" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" opacity="0.8" fill="none" />
+      <line x1="48" y1="18" x2="76" y2="18" stroke="#ffffff" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
+    </svg>
+  ),
 };
 
 export const RU_ALIASES: Record<string, string> = {
@@ -5286,4 +5436,21 @@ export const RU_ALIASES: Record<string, string> = {
   'водитель': 'driver',
   'vadītājs': 'driver',
   'vaditajs': 'driver',
+  'костёр': 'campfire',
+  'костер': 'campfire',
+  'ugunskurs': 'campfire',
+  'палатка': 'tent',
+  'telts': 'tent',
+  'саванна': 'savannah',
+  'savanna': 'savannah',
+  'словарик': 'vocabulary',
+  'словарный запас': 'vocabulary',
+  'словарный запас, словарик': 'vocabulary',
+  'vārdu krājums': 'vocabulary',
+  'vardu krajums': 'vocabulary',
+  'скотч': 'tape',
+  'клейкая лента': 'tape',
+  'клейкая лента, скотч': 'tape',
+  'līmlente': 'tape',
+  'limlente': 'tape',
 };

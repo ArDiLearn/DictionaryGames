@@ -7868,5 +7868,309 @@
         "transcription": "[ ˈsɪzəz ]"
       }
     ]
+  },
+  {
+    "topic_id": "habitats_plus",
+    "topic_name": {
+      "ru": "Среда обитания +",
+      "lv": "Dzīvotnes +",
+      "en": "Habitats +"
+    },
+    "icon": "Globe",
+    "color": "emerald",
+    "emoji": "🌍",
+    "words": [
+      {
+        "id": "757",
+        "en": "ocean",
+        "lv": "okeāns",
+        "ru": "океан",
+        "grade": 4,
+        "image": "🌊",
+        "transcription": "[ ˈəʊʃn ]"
+      },
+      {
+        "id": "758",
+        "en": "desert",
+        "lv": "tuksnesis",
+        "ru": "пустыня",
+        "grade": 4,
+        "image": "🏜️",
+        "transcription": "[ ˈdezət ]"
+      },
+      {
+        "id": "759",
+        "en": "island",
+        "lv": "sala",
+        "ru": "остров",
+        "grade": 4,
+        "image": "🏝️",
+        "transcription": "[ ˈaɪlənd ]"
+      },
+      {
+        "id": "760",
+        "en": "savannah",
+        "lv": "savanna",
+        "ru": "саванна",
+        "grade": 4,
+        "image": "🌾",
+        "transcription": "[ səˈvænə ]"
+      },
+      {
+        "id": "761",
+        "en": "river",
+        "lv": "upe",
+        "ru": "река",
+        "grade": 4,
+        "image": "🏞️",
+        "transcription": "[ ˈrɪvə ]"
+      },
+      {
+        "id": "762",
+        "en": "mountain",
+        "lv": "kalns",
+        "ru": "гора",
+        "grade": 4,
+        "image": "🏔️",
+        "transcription": "[ ˈmaʊntən ]"
+      },
+      {
+        "id": "763",
+        "en": "wild",
+        "lv": "savvaļas",
+        "ru": "дикий",
+        "grade": 4,
+        "image": "🦁",
+        "transcription": "[ waɪld ]"
+      }
+    ]
+  },
+  {
+    "topic_id": "school_life_plus",
+    "topic_name": {
+      "ru": "Школьная жизнь +",
+      "lv": "Skolas dzīve +",
+      "en": "School life +"
+    },
+    "icon": "BookOpen",
+    "color": "blue",
+    "emoji": "📖",
+    "words": [
+      {
+        "id": "764",
+        "en": "vocabulary",
+        "lv": "vārdu krājums",
+        "ru": "словарный запас, словарик",
+        "grade": 4,
+        "image": "📖",
+        "transcription": "[ vəˈkæbjələri ]"
+      },
+      {
+        "id": "765",
+        "en": "unit",
+        "lv": "nodaļa",
+        "ru": "раздел, тема",
+        "grade": 4,
+        "image": "📑",
+        "transcription": "[ ˈjuːnɪt ]"
+      },
+      {
+        "id": "766",
+        "en": "homework",
+        "lv": "mājasdarbs",
+        "ru": "домашнее задание",
+        "grade": 4,
+        "image": "📝",
+        "transcription": "[ ˈhəʊmwɜːk ]"
+      },
+      {
+        "id": "767",
+        "en": "project",
+        "lv": "projekts",
+        "ru": "проект",
+        "grade": 4,
+        "image": "📊",
+        "transcription": "[ ˈprɒdʒekt ]"
+      },
+      {
+        "id": "768",
+        "en": "timetable",
+        "lv": "stundu saraksts",
+        "ru": "расписание уроков",
+        "grade": 4,
+        "image": "🗓️",
+        "transcription": "[ ˈtaɪmteɪbl ]"
+      },
+      {
+        "id": "769",
+        "en": "dictionary",
+        "lv": "vārdnīca",
+        "ru": "словарь",
+        "grade": 4,
+        "image": "📕",
+        "transcription": "[ ˈdɪkʃənri ]"
+      },
+      {
+        "id": "770",
+        "en": "easy",
+        "lv": "viegls",
+        "ru": "лёгкий, простой",
+        "grade": 4,
+        "image": "🟢",
+        "transcription": "[ ˈiːzi ]"
+      },
+      {
+        "id": "771",
+        "en": "difficult",
+        "lv": "grūts",
+        "ru": "трудный, сложный",
+        "grade": 4,
+        "image": "🧩",
+        "transcription": "[ ˈdɪfɪkəlt ]"
+      }
+    ]
+  },
+  {
+    "topic_id": "camping_plus",
+    "topic_name": {
+      "ru": "Поход и лагерь +",
+      "lv": "Pārgājiens +",
+      "en": "Camping +"
+    },
+    "icon": "Compass",
+    "color": "amber",
+    "emoji": "⛺",
+    "words": [
+      {
+        "id": "772",
+        "en": "tent",
+        "lv": "telts",
+        "ru": "палатка",
+        "grade": 4,
+        "image": "⛺",
+        "transcription": "[ tent ]"
+      },
+      {
+        "id": "773",
+        "en": "campfire",
+        "lv": "ugunskurs",
+        "ru": "костёр",
+        "grade": 4,
+        "image": "🔥",
+        "transcription": "[ ˈkæmpfaɪə ]"
+      },
+      {
+        "id": "774",
+        "en": "compass",
+        "lv": "kompass",
+        "ru": "компас",
+        "grade": 4,
+        "image": "🧭",
+        "transcription": "[ ˈkʌmpəs ]"
+      },
+      {
+        "id": "775",
+        "en": "torch",
+        "lv": "lukturītis",
+        "ru": "фонарик",
+        "grade": 4,
+        "image": "🔦",
+        "transcription": "[ tɔːtʃ ]"
+      },
+      {
+        "id": "776",
+        "en": "path",
+        "lv": "taka",
+        "ru": "тропинка, дорожка",
+        "grade": 4,
+        "image": "🥾",
+        "transcription": "[ pɑːθ ]"
+      },
+      {
+        "id": "777",
+        "en": "woods",
+        "lv": "mežs",
+        "ru": "лесок, роща",
+        "grade": 4,
+        "image": "🌲",
+        "transcription": "[ wʊdz ]"
+      }
+    ]
+  },
+  {
+    "topic_id": "craft_materials_plus",
+    "topic_name": {
+      "ru": "Материалы для творчества +",
+      "lv": "Radošie materiāli +",
+      "en": "Craft materials +"
+    },
+    "icon": "Palette",
+    "color": "purple",
+    "emoji": "🧶",
+    "words": [
+      {
+        "id": "778",
+        "en": "cardboard",
+        "lv": "kartons",
+        "ru": "картон",
+        "grade": 4,
+        "image": "📦",
+        "transcription": "[ ˈkɑːdbɔːd ]"
+      },
+      {
+        "id": "779",
+        "en": "wool",
+        "lv": "vilna",
+        "ru": "шерсть, пряжа",
+        "grade": 4,
+        "image": "🧶",
+        "transcription": "[ wʊl ]"
+      },
+      {
+        "id": "780",
+        "en": "plastic",
+        "lv": "plastmasa",
+        "ru": "пластик, пластмасса",
+        "grade": 4,
+        "image": "🧴",
+        "transcription": "[ ˈplæstɪk ]"
+      },
+      {
+        "id": "781",
+        "en": "glass",
+        "lv": "stikls",
+        "ru": "стекло",
+        "grade": 4,
+        "image": "🥛",
+        "transcription": "[ ɡlɑːs ]"
+      },
+      {
+        "id": "782",
+        "en": "metal",
+        "lv": "metāls",
+        "ru": "металл",
+        "grade": 4,
+        "image": "🔩",
+        "transcription": "[ ˈmetl ]"
+      },
+      {
+        "id": "783",
+        "en": "tape",
+        "lv": "līmlente",
+        "ru": "клейкая лента, скотч",
+        "grade": 4,
+        "image": "🩹",
+        "transcription": "[ teɪp ]"
+      },
+      {
+        "id": "784",
+        "en": "string",
+        "lv": "aukla",
+        "ru": "верёвочка, шпагат",
+        "grade": 4,
+        "image": "🧵",
+        "transcription": "[ strɪŋ ]"
+      }
+    ]
   }
 ]

@@ -3524,28 +3524,7 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       <line x1="16" y1="70" x2="48" y2="70" stroke="#fef3c7" strokeWidth="0.6" opacity="0.4" />
     </svg>
   ),
-  'fur': (
-    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
-      {/* Soft circular warm fur badge */}
-      <circle cx="50" cy="50" r="38" fill="#d97706" />
-      <circle cx="50" cy="50" r="35" fill="#f59e0b" />
-      {/* Inner fluffy soft fur texture */}
-      <circle cx="50" cy="50" r="28" fill="#fbbf24" />
-      {/* Fur tufts / hair strands */}
-      <path d="M 50 16 Q 48 24 50 30 Q 52 24 50 16 Z" fill="#92400e" />
-      <path d="M 32 24 Q 35 32 40 36 Q 36 29 32 24 Z" fill="#92400e" />
-      <path d="M 68 24 Q 65 32 60 36 Q 64 29 68 24 Z" fill="#92400e" />
-      <path d="M 20 42 Q 28 44 34 42 Q 27 40 20 42 Z" fill="#92400e" />
-      <path d="M 80 42 Q 72 44 66 42 Q 73 40 80 42 Z" fill="#92400e" />
-      <path d="M 24 64 Q 32 62 38 56 Q 30 58 24 64 Z" fill="#92400e" />
-      <path d="M 76 64 Q 68 62 62 56 Q 70 58 76 64 Z" fill="#92400e" />
-      <path d="M 50 84 Q 48 76 50 70 Q 52 76 50 84 Z" fill="#92400e" />
-      <path d="M 36 78 Q 40 70 42 66 Q 38 72 36 78 Z" fill="#92400e" />
-      <path d="M 64 78 Q 60 70 58 66 Q 62 72 64 78 Z" fill="#92400e" />
-      {/* Fluffy center tuft */}
-      <path d="M 46 44 C 44 36, 56 36, 54 44 C 58 48, 52 56, 50 56 C 48 56, 42 48, 46 44 Z" fill="#fef3c7" />
-    </svg>
-  ),
+
   'roof': (
     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
       {/* Chimney on the roof */}
@@ -3613,6 +3592,721 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       {/* Toe 4 (Right) */}
       <ellipse cx="74" cy="46" rx="7" ry="8" fill="#fb923c" stroke="#ea580c" strokeWidth="1.5" />
       <path d="M 77 40 Q 80 24 84 18 Q 75 24 72 38 Z" fill="#ffffff" stroke="#475569" strokeWidth="1.5" />
+    </svg>
+  ),
+  'fur': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Warm soft background */}
+      <circle cx="50" cy="50" r="42" fill="#fef3c7" opacity="0.6" />
+      {/* Ginger kitten / fox curled up displaying its lush fur coat */}
+      <ellipse cx="50" cy="54" rx="34" ry="26" fill="#b45309" />
+      <ellipse cx="50" cy="54" rx="32" ry="24" fill="#d97706" />
+      {/* Dense layers of fluffy fur strands and tufts */}
+      <path d="M 22 52 C 26 44, 38 42, 46 44 C 42 46, 30 48, 22 52 Z" fill="#f59e0b" />
+      <path d="M 32 40 C 40 34, 56 34, 66 40 C 60 42, 44 42, 32 40 Z" fill="#fbbf24" />
+      <path d="M 54 42 C 64 44, 76 46, 78 54 C 72 50, 60 48, 54 42 Z" fill="#f59e0b" />
+      <path d="M 36 50 C 44 48, 52 48, 58 52 C 54 54, 46 54, 36 50 Z" fill="#fef3c7" />
+      <path d="M 38 56 C 46 54, 56 54, 64 58 C 58 60, 48 60, 38 56 Z" fill="#fef3c7" />
+      <path d="M 30 62 C 40 60, 52 60, 60 64 C 52 66, 40 66, 30 62 Z" fill="#fde68a" />
+      {/* Individual fine silky fur hairs radiating out */}
+      <path d="M 20 48 Q 14 44 12 40" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M 22 42 Q 18 36 16 32" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M 26 36 Q 24 28 24 22" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M 78 48 Q 84 44 88 40" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M 76 42 Q 82 36 84 32" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M 72 36 Q 76 28 76 22" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Fluffy tail wrapping around */}
+      <path d="M 24 64 C 20 72, 32 82, 48 82 C 64 82, 78 76, 80 66 C 72 74, 56 78, 44 76 C 34 74, 26 70, 24 64 Z" fill="#ea580c" stroke="#b45309" strokeWidth="1.2" />
+      <path d="M 44 78 C 52 78, 62 76, 72 72" stroke="#fde68a" strokeWidth="2.5" strokeLinecap="round" />
+      {/* Magnifying lens showing super-fluffy soft fur texture in zoom */}
+      <g transform="translate(48, 14)">
+        <circle cx="20" cy="20" r="14" fill="#ffffff" stroke="#0284c7" strokeWidth="2.5" />
+        <clipPath id="furLensClip">
+          <circle cx="20" cy="20" r="12.5" />
+        </clipPath>
+        <g clipPath="url(#furLensClip)">
+          <rect x="6" y="6" width="28" height="28" fill="#f59e0b" />
+          <path d="M 10 32 Q 16 18 20 10" stroke="#9a3412" strokeWidth="1.8" strokeLinecap="round" />
+          <path d="M 14 34 Q 20 20 24 12" stroke="#fef08a" strokeWidth="2" strokeLinecap="round" />
+          <path d="M 18 34 Q 24 22 28 14" stroke="#d97706" strokeWidth="1.8" strokeLinecap="round" />
+          <path d="M 22 34 Q 27 24 32 16" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" />
+        </g>
+        <line x1="30" y1="30" x2="42" y2="42" stroke="#0284c7" strokeWidth="3.5" strokeLinecap="round" />
+      </g>
+    </svg>
+  ),
+  'christmas': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <circle cx="50" cy="50" r="44" fill="#f0fdf4" />
+      <rect x="45" y="70" width="10" height="15" rx="2" fill="#78350f" />
+      <polygon points="50,18 24,44 36,44 18,65 82,65 64,44 76,44" fill="#15803d" />
+      <polygon points="50,18 27,42 38,42 22,63 78,63 62,42 73,42" fill="#16a34a" />
+      <polygon points="50,22 34,40 42,40 28,58 72,58 58,40 66,40" fill="#22c55e" opacity="0.6" />
+      <polygon points="50,10 52,15 58,16 54,20 55,26 50,23 45,26 46,20 42,16 48,15" fill="#facc15" stroke="#ca8a04" strokeWidth="1" />
+      <path d="M 32 38 Q 44 44 56 36 Q 64 42 70 38" stroke="#fef08a" strokeWidth="1.5" strokeDasharray="1.5 2" fill="none" />
+      <path d="M 24 56 Q 40 64 60 54 Q 70 60 78 56" stroke="#fef08a" strokeWidth="1.5" strokeDasharray="1.5 2" fill="none" />
+      <circle cx="36" cy="36" r="3.5" fill="#ef4444" />
+      <circle cx="35" cy="35" r="1" fill="#ffffff" opacity="0.8" />
+      <circle cx="62" cy="34" r="3" fill="#3b82f6" />
+      <circle cx="61" cy="33" r="1" fill="#ffffff" opacity="0.8" />
+      <circle cx="30" cy="52" r="3.5" fill="#eab308" />
+      <circle cx="50" cy="46" r="4" fill="#ef4444" />
+      <circle cx="49" cy="45" r="1.2" fill="#ffffff" opacity="0.8" />
+      <circle cx="68" cy="50" r="3.5" fill="#ec4899" />
+      <circle cx="44" cy="60" r="3.5" fill="#3b82f6" />
+      <rect x="22" y="70" width="18" height="18" rx="2" fill="#ef4444" stroke="#b91c1c" strokeWidth="1" />
+      <rect x="29" y="70" width="4" height="18" fill="#facc15" />
+      <rect x="22" y="77" width="18" height="4" fill="#facc15" />
+      <path d="M 28 70 C 26 66 31 66 31 70 C 31 66 36 66 34 70" stroke="#facc15" strokeWidth="1.8" fill="none" />
+      <rect x="60" y="68" width="20" height="20" rx="2" fill="#3b82f6" stroke="#1d4ed8" strokeWidth="1" />
+      <rect x="68" y="68" width="4" height="20" fill="#4ade80" />
+      <rect x="60" y="76" width="20" height="4" fill="#4ade80" />
+      <path d="M 68 68 C 66 64 70 64 70 68 C 70 64 74 64 72 68" stroke="#4ade80" strokeWidth="1.8" fill="none" />
+      <circle cx="16" cy="24" r="1.5" fill="#facc15" />
+      <circle cx="84" cy="28" r="1.5" fill="#facc15" />
+      <circle cx="80" cy="18" r="1" fill="#60a5fa" />
+    </svg>
+  ),
+  'costume': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <path d="M 50 16 C 50 12, 56 12, 56 16 C 56 19, 50 20, 50 24" stroke="#d97706" strokeWidth="2" strokeLinecap="round" fill="none" />
+      <path d="M 24 34 L 50 24 L 76 34" stroke="#b45309" strokeWidth="3" strokeLinecap="round" />
+      <path d="M 32 30 C 20 45, 14 68, 16 86 C 30 84, 40 85, 50 86 C 60 85, 70 84, 84 86 C 86 68, 80 45, 68 30 Z" fill="#7c3aed" stroke="#5b21b6" strokeWidth="1.5" />
+      <path d="M 28 32 C 22 55, 20 72, 22 83" stroke="#a78bfa" strokeWidth="1.5" opacity="0.6" fill="none" />
+      <path d="M 32 32 L 68 32 L 64 72 L 36 72 Z" fill="#2563eb" stroke="#1d4ed8" strokeWidth="1.5" />
+      <rect x="34" y="62" width="32" height="6" fill="#eab308" />
+      <circle cx="50" cy="65" r="4.5" fill="#facc15" stroke="#ca8a04" strokeWidth="1" />
+      <polygon points="50,40 52,44 57,45 53,48 54,53 50,50 46,53 47,48 43,45 48,44" fill="#facc15" stroke="#ca8a04" strokeWidth="0.8" />
+      <path d="M 36 18 C 42 16, 46 22, 50 19 C 54 22, 58 16, 64 18 C 66 24, 60 28, 50 26 C 40 28, 34 24, 36 18 Z" fill="#f59e0b" stroke="#d97706" strokeWidth="1.2" />
+      <ellipse cx="43" cy="21" rx="3" ry="2" fill="#ffffff" />
+      <ellipse cx="57" cy="21" rx="3" ry="2" fill="#ffffff" />
+      <polygon points="82,22 84,26 88,27 85,30 86,34 82,32 78,34 79,30 76,27 80,26" fill="#facc15" />
+      <polygon points="18,36 19,39 22,40 20,42 20,45 18,43 16,45 16,42 14,40 17,39" fill="#facc15" />
+    </svg>
+  ),
+  'dress up': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="8" y1="88" x2="92" y2="88" stroke="#e2e8f0" strokeWidth="2" strokeDasharray="3 3" />
+      <rect x="62" y="16" width="28" height="68" rx="14" fill="#f1f5f9" stroke="#b45309" strokeWidth="2.5" />
+      <rect x="65" y="19" width="22" height="62" rx="11" fill="#e0f2fe" />
+      <line x1="68" y1="28" x2="84" y2="44" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" opacity="0.7" />
+      <line x1="72" y1="26" x2="84" y2="38" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" opacity="0.7" />
+      <path d="M 28 44 C 18 52, 16 68, 14 78 C 24 78, 32 76, 38 72 Z" fill="#ef4444" opacity="0.9" />
+      <rect x="30" y="66" width="5" height="18" fill="#1e293b" />
+      <rect x="38" y="66" width="5" height="18" fill="#1e293b" />
+      <ellipse cx="31" cy="84" rx="4.5" ry="3" fill="#3b82f6" />
+      <ellipse cx="42" cy="84" rx="4.5" ry="3" fill="#3b82f6" />
+      <rect x="27" y="44" width="18" height="24" rx="3" fill="#3b82f6" />
+      <rect x="27" y="58" width="18" height="4" fill="#facc15" />
+      <circle cx="36" cy="34" r="9" fill="#fed7aa" />
+      <circle cx="39" cy="33" r="1.2" fill="#0f172a" />
+      <path d="M 38 37 Q 41 39 43 36" stroke="#c2410c" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      <path d="M 23 29 C 30 26, 42 26, 49 29 C 45 28, 43 14, 34 12 C 32 18, 27 28, 23 29 Z" fill="#7c3aed" stroke="#5b21b6" strokeWidth="1.2" />
+      <polygon points="34,12 38,10 37,15" fill="#facc15" />
+      <path d="M 38 48 L 52 40" stroke="#fed7aa" strokeWidth="3" strokeLinecap="round" />
+      <line x1="50" y1="42" x2="58" y2="34" stroke="#d97706" strokeWidth="2" strokeLinecap="round" />
+      <polygon points="59,32 60,35 63,35 61,37 62,40 59,38 56,40 57,37 55,35 58,35" fill="#facc15" stroke="#ca8a04" strokeWidth="0.8" />
+      <circle cx="54" cy="24" r="1.5" fill="#facc15" />
+      <circle cx="48" cy="18" r="1.2" fill="#38bdf8" />
+    </svg>
+  ),
+  'clothes': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="8" y1="88" x2="92" y2="88" stroke="#e2e8f0" strokeWidth="2" strokeDasharray="3 3" />
+      <g>
+        <path d="M 25 18 C 25 14, 30 14, 30 18 C 30 20, 25 21, 25 24" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+        <path d="M 14 30 L 25 24 L 36 30" stroke="#b45309" strokeWidth="2" strokeLinecap="round" />
+        <path d="M 20 28 L 30 28 L 34 44 L 40 72 L 10 72 L 16 44 Z" fill="#ec4899" stroke="#be185d" strokeWidth="1.2" />
+        <circle cx="25" cy="36" r="1.5" fill="#ffffff" />
+        <circle cx="25" cy="44" r="1.5" fill="#ffffff" />
+        <circle cx="18" cy="62" r="1.2" fill="#fbcfe8" />
+        <circle cx="26" cy="58" r="1.2" fill="#fbcfe8" />
+        <circle cx="33" cy="64" r="1.2" fill="#fbcfe8" />
+      </g>
+      <g transform="translate(44, 24)">
+        <rect x="4" y="8" width="38" height="24" rx="3" fill="#facc15" stroke="#ca8a04" strokeWidth="1.2" />
+        <path d="M 17 8 Q 23 14 29 8" stroke="#ca8a04" strokeWidth="1.5" fill="#fef08a" />
+        <line x1="4" y1="14" x2="12" y2="14" stroke="#ca8a04" strokeWidth="1" />
+        <line x1="34" y1="14" x2="42" y2="14" stroke="#ca8a04" strokeWidth="1" />
+      </g>
+      <g transform="translate(42, 54)">
+        <rect x="4" y="0" width="44" height="26" rx="3" fill="#2563eb" stroke="#1d4ed8" strokeWidth="1.2" />
+        <line x1="4" y1="6" x2="48" y2="6" stroke="#fbbf24" strokeWidth="1" strokeDasharray="2 1" />
+        <path d="M 12 6 Q 20 18 30 6" stroke="#fbbf24" strokeWidth="1" strokeDasharray="2 1" fill="none" />
+        <rect x="24" y="2" width="3" height="4" fill="#1e40af" />
+        <line x1="4" y1="18" x2="48" y2="18" stroke="#1d4ed8" strokeWidth="1.5" />
+      </g>
+      <g transform="translate(14, 76)">
+        <path d="M 2 8 C 2 4, 8 4, 12 4 L 18 4 C 22 2, 28 2, 30 6 L 30 11 L 2 11 Z" fill="#10b981" />
+        <rect x="0" y="10" width="32" height="3" rx="1.5" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.8" />
+        <line x1="12" y1="4" x2="18" y2="8" stroke="#ffffff" strokeWidth="1.2" />
+      </g>
+    </svg>
+  ),
+  'pocket': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <rect x="10" y="10" width="80" height="80" rx="6" fill="#1e40af" />
+      <line x1="12" y1="20" x2="88" y2="20" stroke="#1d4ed8" strokeWidth="0.8" />
+      <line x1="12" y1="35" x2="88" y2="35" stroke="#1d4ed8" strokeWidth="0.8" />
+      <line x1="12" y1="50" x2="88" y2="50" stroke="#1d4ed8" strokeWidth="0.8" />
+      <line x1="12" y1="65" x2="88" y2="65" stroke="#1d4ed8" strokeWidth="0.8" />
+      <rect x="52" y="16" width="8" height="24" rx="2" fill="#ef4444" transform="rotate(12 52 16)" />
+      <rect x="52" y="22" width="8" height="4" fill="#ffffff" transform="rotate(12 52 16)" />
+      <rect x="36" y="18" width="6" height="22" rx="1" fill="#facc15" transform="rotate(-8 36 18)" />
+      <path d="M 22 34 L 78 34 L 78 64 C 78 78, 62 86, 50 88 C 38 86, 22 78, 22 64 Z" fill="#2563eb" stroke="#1d4ed8" strokeWidth="1.5" />
+      <path d="M 25 37 L 75 37 L 75 63 C 75 75, 60 82, 50 84 C 40 82, 25 75, 25 63 Z" stroke="#fbbf24" strokeWidth="1.2" strokeDasharray="3 2" fill="none" />
+      <path d="M 27 39 L 73 39 L 73 62 C 73 73, 59 79, 50 81 C 41 79, 27 73, 27 62 Z" stroke="#fbbf24" strokeWidth="1.2" strokeDasharray="3 2" fill="none" />
+      <path d="M 32 46 Q 42 54 50 49 Q 58 54 68 46" stroke="#fbbf24" strokeWidth="1.2" strokeDasharray="2.5 1.5" fill="none" />
+      <circle cx="23" cy="35" r="2.5" fill="#d97706" stroke="#78350f" strokeWidth="0.6" />
+      <circle cx="23" cy="35" r="1" fill="#fde68a" />
+      <circle cx="77" cy="35" r="2.5" fill="#d97706" stroke="#78350f" strokeWidth="0.6" />
+      <circle cx="77" cy="35" r="1" fill="#fde68a" />
+    </svg>
+  ),
+  'button': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <circle cx="50" cy="53" r="38" fill="#0e7490" opacity="0.25" />
+      <circle cx="50" cy="50" r="38" fill="#0891b2" stroke="#0e7490" strokeWidth="2.5" />
+      <circle cx="50" cy="50" r="34" fill="#06b6d4" />
+      <path d="M 24 32 C 32 20, 68 20, 76 32" stroke="#67e8f9" strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.8" />
+      <circle cx="50" cy="50" r="22" fill="#0891b2" stroke="#155e75" strokeWidth="1.8" />
+      <circle cx="41" cy="41" r="4.5" fill="#164e63" />
+      <circle cx="59" cy="41" r="4.5" fill="#164e63" />
+      <circle cx="41" cy="59" r="4.5" fill="#164e63" />
+      <circle cx="59" cy="59" r="4.5" fill="#164e63" />
+      <circle cx="41" cy="41" r="3" fill="#0f172a" />
+      <circle cx="59" cy="41" r="3" fill="#0f172a" />
+      <circle cx="41" cy="59" r="3" fill="#0f172a" />
+      <circle cx="59" cy="59" r="3" fill="#0f172a" />
+      <line x1="41" y1="41" x2="59" y2="59" stroke="#fef08a" strokeWidth="3" strokeLinecap="round" />
+      <line x1="59" y1="41" x2="41" y2="59" stroke="#fef08a" strokeWidth="3" strokeLinecap="round" />
+      <line x1="41" y1="41" x2="59" y2="59" stroke="#ffffff" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  ),
+  'garage': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="6" y1="90" x2="94" y2="90" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="3 3" />
+      <polygon points="18,90 82,90 76,78 24,78" fill="#94a3b8" opacity="0.4" />
+      <rect x="14" y="32" width="72" height="52" fill="#f1f5f9" stroke="#64748b" strokeWidth="2" rx="2" />
+      <polygon points="50,12 8,32 92,32" fill="#334155" stroke="#1e293b" strokeWidth="2" strokeLinejoin="round" />
+      <polygon points="50,16 16,32 84,32" fill="#475569" />
+      <line x1="14" y1="46" x2="22" y2="46" stroke="#cbd5e1" strokeWidth="1" />
+      <line x1="14" y1="62" x2="22" y2="62" stroke="#cbd5e1" strokeWidth="1" />
+      <line x1="78" y1="46" x2="86" y2="46" stroke="#cbd5e1" strokeWidth="1" />
+      <line x1="78" y1="62" x2="86" y2="62" stroke="#cbd5e1" strokeWidth="1" />
+      <rect x="22" y="38" width="56" height="46" fill="#1e293b" stroke="#475569" strokeWidth="1.5" />
+      <rect x="23" y="39" width="54" height="20" fill="#cbd5e1" />
+      <line x1="23" y1="44" x2="77" y2="44" stroke="#64748b" strokeWidth="1.2" />
+      <line x1="23" y1="49" x2="77" y2="49" stroke="#64748b" strokeWidth="1.2" />
+      <line x1="23" y1="54" x2="77" y2="54" stroke="#64748b" strokeWidth="1.2" />
+      <line x1="23" y1="59" x2="77" y2="59" stroke="#475569" strokeWidth="1.5" />
+      <path d="M 33 64 L 67 64 L 63 56 L 37 56 Z" fill="#38bdf8" stroke="#1e40af" strokeWidth="1" />
+      <rect x="28" y="64" width="44" height="16" rx="4" fill="#ef4444" stroke="#b91c1c" strokeWidth="1.2" />
+      <circle cx="34" cy="71" r="3.5" fill="#fef08a" stroke="#ca8a04" strokeWidth="0.8" />
+      <circle cx="66" cy="71" r="3.5" fill="#fef08a" stroke="#ca8a04" strokeWidth="0.8" />
+      <rect x="42" y="69" width="16" height="5" rx="1" fill="#334155" />
+      <rect x="30" y="78" width="40" height="4" rx="2" fill="#cbd5e1" />
+      <rect x="27" y="76" width="5" height="8" rx="1" fill="#0f172a" />
+      <rect x="68" y="76" width="5" height="8" rx="1" fill="#0f172a" />
+    </svg>
+  ),
+  'balcony': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <rect x="12" y="10" width="76" height="80" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="1.5" />
+      <rect x="28" y="16" width="44" height="48" rx="2" fill="#e0f2fe" stroke="#64748b" strokeWidth="1.8" />
+      <line x1="50" y1="16" x2="50" y2="64" stroke="#64748b" strokeWidth="1.5" />
+      <line x1="28" y1="36" x2="72" y2="36" stroke="#64748b" strokeWidth="1" />
+      <line x1="32" y1="20" x2="44" y2="32" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
+      <line x1="54" y1="20" x2="66" y2="32" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
+      <path d="M 29 17 Q 35 34 31 52 L 29 52 Z" fill="#fca5a5" opacity="0.7" />
+      <path d="M 71 17 Q 65 34 69 52 L 71 52 Z" fill="#fca5a5" opacity="0.7" />
+      <rect x="18" y="64" width="64" height="7" rx="2" fill="#cbd5e1" stroke="#475569" strokeWidth="1.2" />
+      <rect x="20" y="48" width="60" height="16" fill="none" stroke="#334155" strokeWidth="1.8" rx="1" />
+      <line x1="26" y1="48" x2="26" y2="64" stroke="#334155" strokeWidth="1.4" />
+      <line x1="34" y1="48" x2="34" y2="64" stroke="#334155" strokeWidth="1.4" />
+      <line x1="42" y1="48" x2="42" y2="64" stroke="#334155" strokeWidth="1.4" />
+      <line x1="50" y1="48" x2="50" y2="64" stroke="#334155" strokeWidth="1.4" />
+      <line x1="58" y1="48" x2="58" y2="64" stroke="#334155" strokeWidth="1.4" />
+      <line x1="66" y1="48" x2="66" y2="64" stroke="#334155" strokeWidth="1.4" />
+      <line x1="74" y1="48" x2="74" y2="64" stroke="#334155" strokeWidth="1.4" />
+      <rect x="28" y="56" width="44" height="9" rx="2" fill="#b45309" stroke="#78350f" strokeWidth="1" />
+      <circle cx="34" cy="54" r="3" fill="#15803d" />
+      <circle cx="42" cy="54" r="3.5" fill="#ec4899" />
+      <circle cx="50" cy="54" r="3" fill="#ef4444" />
+      <circle cx="58" cy="54" r="3.5" fill="#facc15" />
+      <circle cx="66" cy="54" r="3.5" fill="#ec4899" />
+    </svg>
+  ),
+  'light': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="10" y1="10" x2="90" y2="10" stroke="#cbd5e1" strokeWidth="2" />
+      <line x1="50" y1="10" x2="50" y2="28" stroke="#334155" strokeWidth="2" />
+      <path d="M 40 28 L 60 28 L 68 40 L 32 40 Z" fill="#0f172a" stroke="#334155" strokeWidth="1.5" />
+      <circle cx="50" cy="42" r="5" fill="#fef08a" stroke="#f59e0b" strokeWidth="1.2" />
+      <polygon points="46,43 54,43 88,88 12,88" fill="#fef08a" opacity="0.45" />
+      <polygon points="48,43 52,43 76,88 24,88" fill="#fef9c3" opacity="0.5" />
+      <line x1="50" y1="46" x2="50" y2="86" stroke="#facc15" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.7" />
+      <line x1="48" y1="46" x2="28" y2="86" stroke="#facc15" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.6" />
+      <line x1="52" y1="46" x2="72" y2="86" stroke="#facc15" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.6" />
+      <ellipse cx="50" cy="88" rx="36" ry="6" fill="#fef08a" opacity="0.7" />
+      <line x1="8" y1="90" x2="92" y2="90" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="3 3" />
+      <polygon points="50,56 51,59 54,60 51,61 50,64 49,61 46,60 49,59" fill="#f59e0b" />
+      <polygon points="34,68 35,70 37,71 35,72 34,74 33,72 31,71 33,70" fill="#f59e0b" />
+      <polygon points="66,66 67,68 69,69 67,70 66,72 65,70 63,69 65,68" fill="#f59e0b" />
+    </svg>
+  ),
+  'messy': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <rect x="8" y="10" width="84" height="50" fill="#f8fafc" />
+      <rect x="8" y="60" width="84" height="30" fill="#fde68a" opacity="0.5" />
+      <line x1="8" y1="60" x2="92" y2="60" stroke="#cbd5e1" strokeWidth="2" />
+      <g transform="rotate(-15 30 25)">
+        <rect x="20" y="18" width="22" height="16" fill="#ffffff" stroke="#b45309" strokeWidth="1.5" />
+        <circle cx="31" cy="26" r="4" fill="#f59e0b" />
+      </g>
+      <g transform="translate(56, 32)">
+        <rect x="6" y="8" width="4" height="28" fill="#b45309" />
+        <rect x="22" y="8" width="4" height="28" fill="#b45309" />
+        <rect x="4" y="24" width="24" height="4" fill="#d97706" />
+        <path d="M 8 22 C 8 32, 2 36, 4 42" stroke="#ef4444" strokeWidth="3" strokeLinecap="round" fill="none" />
+        <path d="M 8 26 L 6 26" stroke="#ffffff" strokeWidth="1.2" />
+        <path d="M 6 32 L 4 32" stroke="#ffffff" strokeWidth="1.2" />
+        <path d="M 2 12 Q 14 6 26 14 Q 22 24 12 22 Z" fill="#7c3aed" opacity="0.9" />
+      </g>
+      <path d="M 16 68 Q 24 64 30 70 Q 28 78 20 76 Q 14 74 16 68 Z" fill="#ef4444" stroke="#b91c1c" strokeWidth="1" />
+      <polygon points="34,76 42,70 50,76 48,82 42,78 36,82" fill="#ffffff" stroke="#1e293b" strokeWidth="1" />
+      <rect x="24" y="80" width="14" height="6" rx="2" fill="#3b82f6" transform="rotate(25 24 80)" />
+      <rect x="58" y="74" width="8" height="8" rx="1" fill="#10b981" stroke="#047857" strokeWidth="0.8" />
+      <rect x="68" y="78" width="7" height="7" rx="1" fill="#f59e0b" stroke="#b45309" strokeWidth="0.8" transform="rotate(18 68 78)" />
+      <circle cx="78" cy="68" r="6" fill="#ec4899" stroke="#be185d" strokeWidth="1" />
+      <path d="M 74 68 Q 78 64 82 68" stroke="#ffffff" strokeWidth="1.2" fill="none" />
+      <path d="M 48 64 Q 54 62 56 68" stroke="#10b981" strokeWidth="3" strokeLinecap="round" fill="none" />
+    </svg>
+  ),
+  'flat': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <rect x="8" y="10" width="84" height="80" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="1.5" />
+      <rect x="8" y="82" width="84" height="8" fill="#d97706" />
+      <line x1="8" y1="82" x2="92" y2="82" stroke="#b45309" strokeWidth="1.5" />
+      <rect x="26" y="18" width="48" height="64" rx="2" fill="#78350f" stroke="#451a03" strokeWidth="2" />
+      <rect x="28" y="20" width="44" height="62" rx="1" fill="#b45309" />
+      <rect x="33" y="26" width="34" height="22" rx="2" fill="#92400e" stroke="#78350f" strokeWidth="1.2" />
+      <rect x="33" y="52" width="34" height="26" rx="2" fill="#92400e" stroke="#78350f" strokeWidth="1.2" />
+      <rect x="42" y="32" width="16" height="10" rx="2" fill="#facc15" stroke="#ca8a04" strokeWidth="1" />
+      <text x="50" y="40" textAnchor="middle" fontSize="7" fontWeight="bold" fill="#78350f" fontFamily="sans-serif">12</text>
+      <circle cx="50" cy="29" r="1.8" fill="#facc15" stroke="#78350f" strokeWidth="0.8" />
+      <rect x="64" y="55" width="2.5" height="7" rx="1" fill="#facc15" stroke="#ca8a04" strokeWidth="0.6" />
+      <circle cx="65" cy="56" r="2.2" fill="#fde68a" stroke="#ca8a04" strokeWidth="0.8" />
+      <line x1="65" y1="56" x2="59" y2="56" stroke="#facc15" strokeWidth="2" strokeLinecap="round" />
+      <rect x="76" y="44" width="7" height="10" rx="2" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1" />
+      <circle cx="79.5" cy="49" r="2" fill="#3b82f6" />
+      <rect x="30" y="80" width="40" height="7" rx="2" fill="#0f172a" opacity="0.85" />
+      <rect x="32" y="81" width="36" height="5" rx="1" fill="#334155" />
+    </svg>
+  ),
+  'room': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <polygon points="10,12 50,24 50,68 10,64" fill="#f0f9ff" stroke="#e0f2fe" strokeWidth="1" />
+      <polygon points="50,24 90,12 90,64 50,68" fill="#e0f2fe" stroke="#bae6fd" strokeWidth="1" />
+      <polygon points="10,64 50,68 90,64 74,90 26,90" fill="#d97706" />
+      <polygon points="10,64 50,68 90,64 74,90 26,90" fill="#f59e0b" opacity="0.3" />
+      <polygon points="18,24 38,29 38,48 18,44" fill="#38bdf8" stroke="#ffffff" strokeWidth="1.5" />
+      <polygon points="18,34 38,39 38,40 18,35" fill="#ffffff" opacity="0.7" />
+      <polygon points="28,26.5 28,46 29,46 29,26.5" fill="#ffffff" opacity="0.7" />
+      <rect x="44" y="42" width="40" height="26" rx="2" fill="#b45309" stroke="#78350f" strokeWidth="1" />
+      <rect x="42" y="48" width="42" height="18" rx="2" fill="#ffffff" />
+      <ellipse cx="50" cy="47" rx="6" ry="3.5" fill="#f1f5f9" stroke="#cbd5e1" strokeWidth="0.8" />
+      <rect x="54" y="48" width="30" height="18" rx="2" fill="#ec4899" stroke="#be185d" strokeWidth="1" />
+      <line x1="64" y1="48" x2="64" y2="66" stroke="#fbcfe8" strokeWidth="1.5" />
+      <line x1="74" y1="48" x2="74" y2="66" stroke="#fbcfe8" strokeWidth="1.5" />
+      <rect x="36" y="52" width="10" height="15" rx="1" fill="#78350f" />
+      <rect x="37" y="54" width="8" height="4" fill="#92400e" />
+      <polygon points="38,48 44,48 46,52 36,52" fill="#fef08a" stroke="#f59e0b" strokeWidth="0.8" />
+      <ellipse cx="44" cy="78" rx="16" ry="6" fill="#3b82f6" opacity="0.8" />
+      <ellipse cx="44" cy="78" rx="12" ry="4" fill="#60a5fa" />
+    </svg>
+  ),
+  'fast': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="6" y1="88" x2="94" y2="88" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="3 3" />
+      <line x1="6" y1="28" x2="42" y2="28" stroke="#38bdf8" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="12" y1="38" x2="46" y2="38" stroke="#0284c7" strokeWidth="3" strokeLinecap="round" />
+      <line x1="4" y1="50" x2="36" y2="50" stroke="#38bdf8" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="10" y1="62" x2="44" y2="62" stroke="#0284c7" strokeWidth="3" strokeLinecap="round" />
+      <line x1="8" y1="74" x2="38" y2="74" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="28" cy="84" r="4.5" fill="#e2e8f0" opacity="0.8" />
+      <circle cx="22" cy="82" r="3.5" fill="#e2e8f0" opacity="0.6" />
+      <circle cx="16" cy="85" r="2.5" fill="#cbd5e1" opacity="0.5" />
+      <g transform="translate(18, 2)">
+        <path d="M 38 52 L 24 64 L 14 62" stroke="#2563eb" strokeWidth="5.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <ellipse cx="12" cy="62" rx="4.5" ry="2.5" fill="#ef4444" transform="rotate(-15 12 62)" />
+        <path d="M 44 52 L 56 66 L 50 82" stroke="#1d4ed8" strokeWidth="5.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <ellipse cx="50" cy="84" rx="5" ry="3" fill="#ef4444" />
+        <path d="M 34 52 L 48 34" stroke="#f97316" strokeWidth="10" strokeLinecap="round" />
+        <line x1="36" y1="50" x2="48" y2="34" stroke="#ffffff" strokeWidth="2" />
+        <path d="M 42 36 L 26 44 L 20 38" stroke="#fed7aa" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <path d="M 46 36 L 60 38 L 68 28" stroke="#fed7aa" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <circle cx="56" cy="24" r="8" fill="#fed7aa" />
+        <path d="M 48 20 C 46 12, 58 14, 62 20 C 58 18, 52 18, 48 20 Z" fill="#b45309" />
+        <path d="M 48 22 C 40 20, 42 16, 46 16" stroke="#b45309" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="59" cy="23" r="1.2" fill="#0f172a" />
+        <path d="M 58 27 Q 61 28 63 26" stroke="#c2410c" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      </g>
+    </svg>
+  ),
+  'important': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <circle cx="50" cy="50" r="42" fill="#fef08a" opacity="0.4" />
+      <path d="M 36 62 L 30 88 L 42 82 L 48 88 L 46 66" fill="#1e40af" stroke="#1d4ed8" strokeWidth="1" />
+      <path d="M 64 62 L 70 88 L 58 82 L 52 88 L 54 66" fill="#1e40af" stroke="#1d4ed8" strokeWidth="1" />
+      <line x1="33" y1="84" x2="43" y2="76" stroke="#facc15" strokeWidth="1.2" />
+      <line x1="67" y1="84" x2="57" y2="76" stroke="#facc15" strokeWidth="1.2" />
+      <path d="M 50 14 C 68 14, 82 20, 82 42 C 82 64, 62 76, 50 82 C 38 76, 18 64, 18 42 C 18 20, 32 14, 50 14 Z" fill="#eab308" stroke="#ca8a04" strokeWidth="2" />
+      <path d="M 50 18 C 65 18, 77 24, 77 42 C 77 61, 60 72, 50 77 C 40 72, 23 61, 23 42 C 23 24, 35 18, 50 18 Z" fill="#facc15" />
+      <circle cx="50" cy="46" r="20" fill="#ef4444" stroke="#b91c1c" strokeWidth="2" />
+      <rect x="47" y="33" width="6" height="17" rx="3" fill="#ffffff" />
+      <circle cx="50" cy="57" r="3.2" fill="#ffffff" />
+      <polygon points="50,22 51,25 54,26 51,27 50,30 49,27 46,26 49,25" fill="#ca8a04" />
+      <circle cx="28" cy="40" r="1.8" fill="#ca8a04" />
+      <circle cx="72" cy="40" r="1.8" fill="#ca8a04" />
+    </svg>
+  ),
+  'stick': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="8" y1="84" x2="92" y2="84" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="3 3" />
+      <ellipse cx="50" cy="80" rx="36" ry="3.5" fill="#0f172a" opacity="0.12" />
+      <path d="M 46 62 Q 54 48 64 42" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
+      <path d="M 46 62 Q 54 48 64 42" stroke="#92400e" strokeWidth="3" strokeLinecap="round" />
+      <path d="M 16 76 Q 36 68 56 64 Q 74 60 84 48" stroke="#78350f" strokeWidth="7" strokeLinecap="round" />
+      <path d="M 16 76 Q 36 68 56 64 Q 74 60 84 48" stroke="#92400e" strokeWidth="5" strokeLinecap="round" />
+      <path d="M 24 74 Q 38 68 52 64" stroke="#b45309" strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M 58 63 Q 70 60 78 52" stroke="#b45309" strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M 64 42 C 68 34, 76 34, 76 42 C 76 50, 68 50, 64 42 Z" fill="#22c55e" stroke="#15803d" strokeWidth="1" />
+      <line x1="64" y1="42" x2="74" y2="42" stroke="#15803d" strokeWidth="0.8" />
+      <path d="M 60 46 C 62 38, 54 34, 52 40 C 50 46, 56 48, 60 46 Z" fill="#4ade80" stroke="#16a34a" strokeWidth="0.8" />
+      <path d="M 84 48 C 88 40, 94 42, 92 50 C 90 56, 84 54, 84 48 Z" fill="#22c55e" stroke="#15803d" strokeWidth="1" />
+    </svg>
+  ),
+  'chips': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <path d="M 18 52 C 18 80, 82 80, 82 52 Z" fill="#3b82f6" stroke="#1d4ed8" strokeWidth="2.5" />
+      <ellipse cx="50" cy="52" rx="32" ry="9" fill="#1e40af" />
+      <ellipse cx="50" cy="52" rx="30" ry="7.5" fill="#f59e0b" />
+      <ellipse cx="36" cy="50" rx="10" ry="6" fill="#facc15" stroke="#ca8a04" strokeWidth="1" transform="rotate(-20 36 50)" />
+      <ellipse cx="64" cy="50" rx="10" ry="6" fill="#facc15" stroke="#ca8a04" strokeWidth="1" transform="rotate(25 64 50)" />
+      <ellipse cx="50" cy="46" rx="12" ry="7" fill="#fbbf24" stroke="#ca8a04" strokeWidth="1" />
+      <path d="M 42 45 Q 50 43 58 45" stroke="#d97706" strokeWidth="1" fill="none" />
+      <path d="M 43 48 Q 50 46 57 48" stroke="#d97706" strokeWidth="1" fill="none" />
+      <path d="M 32 42 Q 42 36 52 40 Q 42 48 32 42 Z" fill="#fde047" stroke="#ca8a04" strokeWidth="1.2" />
+      <path d="M 48 38 Q 60 34 68 42 Q 58 46 48 38 Z" fill="#facc15" stroke="#ca8a04" strokeWidth="1.2" />
+      <g transform="translate(36, 16) rotate(15)">
+        <path d="M 0 8 Q 12 0 24 6 Q 16 16 0 8 Z" fill="#fde047" stroke="#ca8a04" strokeWidth="1.2" />
+        <path d="M 4 8 Q 12 3 20 7" stroke="#d97706" strokeWidth="0.8" fill="none" />
+        <path d="M 3 10 Q 11 6 18 10" stroke="#d97706" strokeWidth="0.8" fill="none" />
+      </g>
+      <polygon points="26,26 27,29 30,30 27,31 26,34 25,31 22,30 25,29" fill="#facc15" />
+      <polygon points="76,24 77,26 80,27 77,28 76,30 75,28 72,27 75,26" fill="#facc15" />
+      <circle cx="50" cy="22" r="1" fill="#ffffff" />
+    </svg>
+  ),
+  'fork': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <g transform="translate(50, 50) rotate(-25) translate(-50, -50)">
+        <rect x="51" y="44" width="4" height="46" rx="2" fill="#0f172a" opacity="0.12" />
+        <path d="M 47 44 L 46 86 C 46 89, 54 89, 54 86 L 53 44 Z" fill="#cbd5e1" stroke="#94a3b8" strokeWidth="1.5" />
+        <line x1="49" y1="46" x2="48" y2="85" stroke="#ffffff" strokeWidth="1.2" opacity="0.8" />
+        <path d="M 45 38 L 47 44 L 53 44 L 55 38 Z" fill="#94a3b8" />
+        <path d="M 37 26 C 37 36, 63 36, 63 26 Z" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1.5" />
+        <path d="M 37 12 C 37 10, 40 10, 40 12 L 40 28 L 37 28 Z" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="1" />
+        <path d="M 44 10 C 44 8, 47 8, 47 10 L 47 28 L 44 28 Z" fill="#ffffff" stroke="#94a3b8" strokeWidth="1" />
+        <path d="M 53 10 C 53 8, 56 8, 56 10 L 56 28 L 53 28 Z" fill="#ffffff" stroke="#94a3b8" strokeWidth="1" />
+        <path d="M 60 12 C 60 10, 63 10, 63 12 L 63 28 L 60 28 Z" fill="#cbd5e1" stroke="#94a3b8" strokeWidth="1" />
+        <line x1="38" y1="20" x2="62" y2="20" stroke="#ffffff" strokeWidth="1.5" opacity="0.8" />
+      </g>
+    </svg>
+  ),
+  'bottle': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="88" rx="18" ry="4" fill="#0f172a" opacity="0.14" />
+      <path d="M 43 20 L 43 28 C 34 34, 32 44, 32 54 L 32 82 C 32 86, 36 88, 50 88 C 64 88, 68 86, 68 82 L 68 54 C 68 44, 66 34, 57 28 L 57 20 Z" fill="#e0f2fe" stroke="#38bdf8" strokeWidth="1.8" />
+      <path d="M 33 46 C 38 48, 46 44, 50 46 C 54 48, 62 44, 67 46 L 67 82 C 67 85, 63 87, 50 87 C 37 87, 33 85, 33 82 Z" fill="#0ea5e9" opacity="0.75" />
+      <rect x="32" y="52" width="36" height="18" fill="#ffffff" stroke="#0284c7" strokeWidth="1" />
+      <path d="M 32 64 Q 41 60 50 64 Q 59 68 68 64" stroke="#38bdf8" strokeWidth="1.5" fill="none" />
+      <path d="M 50 56 C 47 60, 46 62, 46 64 C 46 66, 48 68, 50 68 C 52 68, 54 66, 54 64 C 54 62, 53 60, 50 56 Z" fill="#0284c7" />
+      <circle cx="42" cy="74" r="1.5" fill="#ffffff" opacity="0.8" />
+      <circle cx="56" cy="78" r="1.2" fill="#ffffff" opacity="0.8" />
+      <circle cx="48" cy="82" r="1" fill="#ffffff" opacity="0.8" />
+      <rect x="42" y="16" width="16" height="5" rx="1.5" fill="#0284c7" stroke="#0369a1" strokeWidth="1" />
+      <line x1="42" y1="18" x2="58" y2="18" stroke="#38bdf8" strokeWidth="0.8" />
+      <rect x="44" y="11" width="12" height="6" rx="1.5" fill="#0284c7" stroke="#0369a1" strokeWidth="1" />
+      <line x1="47" y1="11" x2="47" y2="17" stroke="#38bdf8" strokeWidth="0.8" />
+      <line x1="50" y1="11" x2="50" y2="17" stroke="#38bdf8" strokeWidth="0.8" />
+      <line x1="53" y1="11" x2="53" y2="17" stroke="#38bdf8" strokeWidth="0.8" />
+      <path d="M 36 34 L 36 82" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" opacity="0.8" />
+    </svg>
+  ),
+  'food': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="76" rx="42" ry="15" fill="#fef3c7" stroke="#fde68a" strokeWidth="1.5" />
+      <g transform="translate(14, 36) rotate(-28)">
+        <rect x="0" y="0" width="38" height="12" rx="6" fill="#d97706" stroke="#b45309" strokeWidth="1.2" />
+        <line x1="8" y1="2" x2="12" y2="10" stroke="#fef3c7" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="16" y1="2" x2="20" y2="10" stroke="#fef3c7" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="24" y1="2" x2="28" y2="10" stroke="#fef3c7" strokeWidth="1.5" strokeLinecap="round" />
+      </g>
+      <g transform="translate(36, 52)">
+        <polygon points="14,4 34,14 14,24 0,16" fill="#facc15" stroke="#ca8a04" strokeWidth="1.2" />
+        <polygon points="14,24 34,14 34,22 14,32" fill="#eab308" stroke="#ca8a04" strokeWidth="1.2" />
+        <polygon points="0,16 14,24 14,32 0,24" fill="#f59e0b" stroke="#ca8a04" strokeWidth="1.2" />
+        <circle cx="10" cy="18" r="2" fill="#ca8a04" />
+        <circle cx="22" cy="14" r="2.5" fill="#ca8a04" />
+        <circle cx="24" cy="22" r="2" fill="#ca8a04" />
+      </g>
+      <g transform="translate(64, 46)">
+        <circle cx="12" cy="16" r="11" fill="#ef4444" stroke="#b91c1c" strokeWidth="1.2" />
+        <path d="M 10 5 C 10 2, 13 0, 14 0" stroke="#78350f" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+        <path d="M 14 1 C 18 0, 20 4, 17 6 Z" fill="#22c55e" />
+        <circle cx="8" cy="12" r="2" fill="#fca5a5" opacity="0.8" />
+      </g>
+      <g transform="translate(22, 66)">
+        <ellipse cx="14" cy="10" rx="14" ry="7" fill="#ffffff" stroke="#e2e8f0" strokeWidth="1" />
+        <circle cx="14" cy="9" r="4.5" fill="#f59e0b" stroke="#d97706" strokeWidth="0.8" />
+        <circle cx="12" cy="7.5" r="1.2" fill="#ffffff" opacity="0.8" />
+      </g>
+    </svg>
+  ),
+  'vegetable': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="80" rx="40" ry="10" fill="#0f172a" opacity="0.1" />
+      <g transform="translate(18, 32) rotate(-18)">
+        <path d="M 14 12 C 10 24, 6 38, 14 48 C 22 56, 34 52, 34 40 C 34 28, 24 16, 18 12 Z" fill="#7c3aed" stroke="#5b21b6" strokeWidth="1.5" />
+        <path d="M 14 12 L 18 4" stroke="#15803d" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M 10 14 C 14 14, 18 10, 22 14 C 18 18, 14 18, 10 14 Z" fill="#22c55e" />
+        <path d="M 18 24 Q 22 36 22 44" stroke="#a78bfa" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+      </g>
+      <g transform="translate(56, 36)">
+        <path d="M 12 28 L 10 44 C 10 46, 22 46, 22 44 L 20 28 Z" fill="#86efac" stroke="#16a34a" strokeWidth="1.2" />
+        <circle cx="10" cy="24" r="8" fill="#15803d" />
+        <circle cx="22" cy="24" r="8" fill="#15803d" />
+        <circle cx="16" cy="16" r="9" fill="#16a34a" />
+        <circle cx="16" cy="20" r="7" fill="#22c55e" opacity="0.7" />
+      </g>
+      <g transform="translate(38, 48)">
+        <circle cx="14" cy="16" r="14" fill="#ef4444" stroke="#b91c1c" strokeWidth="1.5" />
+        <polygon points="14,4 16,1 17,5 21,3 19,6 23,7 19,9 21,12 17,10 15,14 13,10 9,12 11,9 7,7 11,6 9,3 13,5" fill="#22c55e" />
+        <circle cx="9" cy="11" r="2.5" fill="#fca5a5" opacity="0.8" />
+      </g>
+      <g transform="translate(18, 58) rotate(32)">
+        <path d="M 4 8 C -2 2, 2 -4, 4 4" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" fill="none" />
+        <path d="M 4 8 C 4 0, 10 -2, 6 4" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" fill="none" />
+        <polygon points="4,8 10,8 6,42" fill="#ea580c" stroke="#c2410c" strokeWidth="1.2" />
+        <line x1="5" y1="14" x2="8" y2="14" stroke="#fed7aa" strokeWidth="1" strokeLinecap="round" />
+        <line x1="5" y1="22" x2="8" y2="22" stroke="#fed7aa" strokeWidth="1" strokeLinecap="round" />
+        <line x1="5" y1="30" x2="7" y2="30" stroke="#fed7aa" strokeWidth="1" strokeLinecap="round" />
+      </g>
+    </svg>
+  ),
+  'baby': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="6" y1="86" x2="94" y2="86" stroke="#fbcfe8" strokeWidth="2.5" strokeDasharray="3 3" />
+      <ellipse cx="26" cy="80" rx="7" ry="5" fill="#fed7aa" />
+      <path d="M 26 80 Q 22 70 30 64" stroke="#fed7aa" strokeWidth="6" strokeLinecap="round" fill="none" />
+      <path d="M 28 62 C 24 50, 48 50, 48 62 C 48 72, 28 72, 28 62 Z" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.5" />
+      <path d="M 40 50 C 40 44, 60 44, 60 54 L 46 62 Z" fill="#2dd4bf" stroke="#0d9488" strokeWidth="1.2" />
+      <path d="M 36 68 Q 42 76 46 80" stroke="#fed7aa" strokeWidth="6" strokeLinecap="round" fill="none" />
+      <ellipse cx="46" cy="81" rx="4" ry="3" fill="#fed7aa" />
+      <path d="M 58 54 L 64 74 L 66 84" stroke="#fed7aa" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <circle cx="66" cy="84" r="3.5" fill="#fed7aa" />
+      <path d="M 54 54 L 56 70 L 52 82" stroke="#fed7aa" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.85" />
+      <circle cx="68" cy="40" r="13" fill="#fed7aa" />
+      <circle cx="63" cy="44" r="3" fill="#fca5a5" opacity="0.7" />
+      <circle cx="75" cy="44" r="3" fill="#fca5a5" opacity="0.7" />
+      <circle cx="66" cy="38" r="2" fill="#0f172a" />
+      <circle cx="65.2" cy="37.2" r="0.7" fill="#ffffff" />
+      <circle cx="74" cy="38" r="2" fill="#0f172a" />
+      <circle cx="73.2" cy="37.2" r="0.7" fill="#ffffff" />
+      <path d="M 68 45 Q 70 48 72 45" stroke="#c2410c" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      <path d="M 68 27 Q 66 22 71 22 Q 73 24 70 27" stroke="#b45309" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+    </svg>
+  ),
+  'on': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="8" y1="88" x2="92" y2="88" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      <g>
+        <ellipse cx="50" cy="88" rx="26" ry="5" fill="#475569" opacity="0.2" />
+        <polygon points="26,52 38,42 74,42 62,52" fill="#cbd5e1" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+        <polygon points="62,52 74,42 74,74 62,84" fill="#64748b" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+        <rect x="26" y="52" width="36" height="32" rx="2" fill="#94a3b8" stroke="#475569" strokeWidth="1.5" />
+        <line x1="28" y1="54" x2="60" y2="54" stroke="#f1f5f9" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
+      </g>
+      <path d="M 50 14 L 50 28 M 46 24 L 50 28 L 54 24" stroke="#f59e0b" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      <g transform="translate(50, 18) scale(0.9)">
+        <ellipse cx="0" cy="31" rx="8" ry="2.5" fill="#475569" opacity="0.4" />
+        <rect x="-5" y="14" width="4" height="16" rx="2" fill="#2563eb" />
+        <rect x="1" y="14" width="4" height="16" rx="2" fill="#2563eb" />
+        <ellipse cx="-3" cy="29" rx="3.5" ry="2" fill="#0f172a" />
+        <ellipse cx="3" cy="29" rx="3.5" ry="2" fill="#0f172a" />
+        <path d="M -7 2 L 7 2 L 6 15 L -6 15 Z" fill="#f97316" stroke="#ea580c" strokeWidth="0.8" />
+        <path d="M -7 4 L -12 -2" stroke="#fed7aa" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M 7 4 L 12 -2" stroke="#fed7aa" strokeWidth="2.5" strokeLinecap="round" />
+        <circle cx="0" cy="-6" r="7" fill="#fed7aa" />
+        <path d="M -6 -8 C -4 -13, 4 -13, 6 -8 C 4 -10, -4 -10, -6 -8 Z" fill="#b45309" />
+        <circle cx="-2" cy="-6" r="0.9" fill="#0f172a" />
+        <circle cx="2" cy="-6" r="0.9" fill="#0f172a" />
+        <path d="M -2 -3 Q 0 -1 2 -3" stroke="#c2410c" strokeWidth="0.9" strokeLinecap="round" fill="none" />
+      </g>
+    </svg>
+  ),
+  'under': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="8" y1="88" x2="92" y2="88" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      <rect x="26" y="44" width="4" height="38" fill="#475569" />
+      <rect x="70" y="36" width="4" height="42" fill="#334155" />
+      <g transform="translate(48, 54) scale(0.9)">
+        <ellipse cx="0" cy="30" rx="9" ry="3" fill="#0f172a" opacity="0.2" />
+        <path d="M -8 26 Q 0 31 8 26" stroke="#2563eb" strokeWidth="6" strokeLinecap="round" fill="none" />
+        <ellipse cx="-8" cy="27" rx="3" ry="2" fill="#0f172a" />
+        <ellipse cx="8" cy="27" rx="3" ry="2" fill="#0f172a" />
+        <rect x="-6" y="11" width="12" height="14" rx="2" fill="#f97316" stroke="#ea580c" strokeWidth="0.8" />
+        <path d="M -6 14 L -9 20" stroke="#fed7aa" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M 6 14 L 9 20" stroke="#fed7aa" strokeWidth="2.5" strokeLinecap="round" />
+        <circle cx="0" cy="3" r="7" fill="#fed7aa" />
+        <path d="M -6 1 C -4 -4, 4 -4, 6 1 C 4 -2, -4 -2, -6 1 Z" fill="#b45309" />
+        <circle cx="-2" cy="3" r="0.9" fill="#0f172a" />
+        <circle cx="2" cy="3" r="0.9" fill="#0f172a" />
+        <path d="M -2 6 Q 0 8 2 6" stroke="#c2410c" strokeWidth="0.9" strokeLinecap="round" fill="none" />
+      </g>
+      <polygon points="18,44 32,32 82,32 68,44" fill="#cbd5e1" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+      <polygon points="68,44 82,32 82,38 68,50" fill="#64748b" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+      <rect x="18" y="44" width="50" height="6" fill="#94a3b8" stroke="#475569" strokeWidth="1.5" />
+      <rect x="20" y="50" width="5" height="36" fill="#64748b" stroke="#475569" strokeWidth="1.2" />
+      <rect x="63" y="50" width="5" height="36" fill="#475569" stroke="#334155" strokeWidth="1.2" />
+      <path d="M 12 70 Q 24 74 34 72" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" fill="none" />
+      <path d="M 30 68 L 35 72 L 31 76" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    </svg>
+  ),
+  'front': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="8" y1="88" x2="92" y2="88" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      <g>
+        <ellipse cx="50" cy="88" rx="26" ry="5" fill="#475569" opacity="0.2" />
+        <polygon points="28,48 40,36 78,36 66,48" fill="#cbd5e1" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+        <polygon points="66,48 78,36 78,72 66,84" fill="#64748b" stroke="#475569" strokeWidth="1.5" strokeLinejoin="round" />
+        <rect x="28" y="48" width="38" height="36" rx="2" fill="#facc15" stroke="#ca8a04" strokeWidth="2" />
+        <rect x="31" y="51" width="32" height="30" rx="1" fill="#fef08a" opacity="0.6" stroke="#eab308" strokeWidth="1.2" strokeDasharray="3 2" />
+        <text x="47" y="69" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#78350f" fontFamily="sans-serif">FRONT</text>
+      </g>
+      <path d="M 47 20 L 47 38 M 43 34 L 47 38 L 51 34" stroke="#ea580c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <g transform="translate(18, 54) scale(0.8)">
+        <ellipse cx="0" cy="38" rx="7" ry="2.5" fill="#0f172a" opacity="0.16" />
+        <rect x="-5" y="18" width="4" height="18" rx="2" fill="#2563eb" />
+        <rect x="1" y="18" width="4" height="18" rx="2" fill="#2563eb" />
+        <path d="M -7 4 L 7 4 L 6 19 L -6 19 Z" fill="#f97316" stroke="#ea580c" strokeWidth="0.8" />
+        <path d="M 6 8 L 14 12" stroke="#fed7aa" strokeWidth="2.5" strokeLinecap="round" />
+        <circle cx="0" cy="-4" r="6.5" fill="#fed7aa" />
+        <path d="M -5 -6 C -3 -10, 3 -10, 5 -6 Z" fill="#b45309" />
+      </g>
+    </svg>
+  ),
+  'out': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="8" y1="88" x2="92" y2="88" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      <g transform="translate(18, 48)">
+        <ellipse cx="20" cy="38" rx="18" ry="4" fill="#475569" opacity="0.2" />
+        <polygon points="0,16 12,4 36,4 24,16" fill="#78350f" opacity="0.5" />
+        <polygon points="0,16 12,4 6,0 -4,10" fill="#d97706" stroke="#b45309" strokeWidth="1" />
+        <polygon points="36,4 24,16 30,22 42,8" fill="#d97706" stroke="#b45309" strokeWidth="1" />
+        <rect x="0" y="16" width="24" height="22" rx="1" fill="#b45309" stroke="#78350f" strokeWidth="1.2" />
+        <polygon points="24,16 36,4 36,26 24,38" fill="#92400e" stroke="#78350f" strokeWidth="1.2" />
+      </g>
+      <path d="M 34 54 Q 48 24 68 46" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" fill="none" />
+      <path d="M 64 42 L 68 46 L 69 40" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <g transform="translate(74, 46) scale(0.95)">
+        <ellipse cx="0" cy="40" rx="9" ry="3" fill="#0f172a" opacity="0.2" />
+        <path d="M -6 18 L -8 36" stroke="#2563eb" strokeWidth="4.5" strokeLinecap="round" />
+        <path d="M 2 18 L 6 36" stroke="#2563eb" strokeWidth="4.5" strokeLinecap="round" />
+        <ellipse cx="-8" cy="37" rx="3.5" ry="2" fill="#0f172a" />
+        <ellipse cx="6" cy="37" rx="3.5" ry="2" fill="#0f172a" />
+        <rect x="-6" y="4" width="12" height="15" rx="2" fill="#f97316" stroke="#ea580c" strokeWidth="0.8" />
+        <path d="M -6 8 L -12 2" stroke="#fed7aa" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M 6 8 L 12 2" stroke="#fed7aa" strokeWidth="2.5" strokeLinecap="round" />
+        <circle cx="0" cy="-4" r="7" fill="#fed7aa" />
+        <path d="M -6 -6 C -4 -11, 4 -11, 6 -6 Z" fill="#b45309" />
+        <circle cx="-2" cy="-4" r="0.9" fill="#0f172a" />
+        <circle cx="2" cy="-4" r="0.9" fill="#0f172a" />
+        <path d="M -2 -1 Q 0 1 2 -1" stroke="#c2410c" strokeWidth="0.9" strokeLinecap="round" fill="none" />
+      </g>
+    </svg>
+  ),
+  'over there': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="6" y1="88" x2="94" y2="88" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      <g transform="translate(24, 48) scale(0.95)">
+        <ellipse cx="0" cy="40" rx="8" ry="2.5" fill="#0f172a" opacity="0.16" />
+        <rect x="-5" y="18" width="4" height="20" rx="2" fill="#2563eb" />
+        <rect x="1" y="18" width="4" height="20" rx="2" fill="#2563eb" />
+        <ellipse cx="-3" cy="38" rx="3.5" ry="2" fill="#0f172a" />
+        <ellipse cx="3" cy="38" rx="3.5" ry="2" fill="#0f172a" />
+        <rect x="-6" y="4" width="12" height="15" rx="2" fill="#f97316" stroke="#ea580c" strokeWidth="0.8" />
+        <path d="M 5 8 L 22 4" stroke="#fed7aa" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="0" cy="-4" r="7" fill="#fed7aa" />
+        <path d="M -6 -6 C -4 -11, 4 -11, 6 -6 Z" fill="#b45309" />
+        <circle cx="3" cy="-4" r="1" fill="#0f172a" />
+        <path d="M 2 -1 Q 4 0 5 -2" stroke="#c2410c" strokeWidth="0.9" strokeLinecap="round" fill="none" />
+      </g>
+      <path d="M 46 50 Q 62 36 78 52" stroke="#f59e0b" strokeWidth="2" strokeDasharray="3 3" fill="none" />
+      <path d="M 74 48 L 79 53 L 73 55" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <g transform="translate(74, 52)">
+        <ellipse cx="10" cy="34" rx="14" ry="4" fill="#cbd5e1" opacity="0.6" />
+        <path d="M 0 34 Q 10 26 20 34 Z" fill="#10b981" />
+        <line x1="10" y1="12" x2="10" y2="34" stroke="#475569" strokeWidth="1.8" />
+        <polygon points="10,12 24,17 10,22" fill="#ef4444" stroke="#b91c1c" strokeWidth="0.8" />
+      </g>
+    </svg>
+  ),
+  'next': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="6" y1="88" x2="94" y2="88" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      <g transform="translate(14, 58) scale(0.65)">
+        <polygon points="0,20 16,6 44,6 28,20" fill="#cbd5e1" stroke="#64748b" strokeWidth="1.5" />
+        <polygon points="28,20 44,6 44,30 28,44" fill="#94a3b8" stroke="#64748b" strokeWidth="1.5" />
+        <rect x="0" y="20" width="28" height="24" fill="#cbd5e1" stroke="#64748b" strokeWidth="1.5" />
+        <text x="14" y="36" textAnchor="middle" fontSize="12" fill="#64748b" fontWeight="bold">1</text>
+      </g>
+      <g transform="translate(40, 52) scale(0.75)">
+        <polygon points="0,20 16,6 44,6 28,20" fill="#cbd5e1" stroke="#475569" strokeWidth="1.5" />
+        <polygon points="28,20 44,6 44,30 28,44" fill="#64748b" stroke="#475569" strokeWidth="1.5" />
+        <rect x="0" y="20" width="28" height="24" fill="#94a3b8" stroke="#475569" strokeWidth="1.5" />
+        <text x="14" y="36" textAnchor="middle" fontSize="12" fill="#1e293b" fontWeight="bold">2</text>
+      </g>
+      <path d="M 52 46 Q 64 28 74 44" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M 68 42 L 74 45 L 75 38" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <g transform="translate(68, 44) scale(0.85)">
+        <polygon points="0,20 16,6 44,6 28,20" fill="#fde047" stroke="#ca8a04" strokeWidth="2" />
+        <polygon points="28,20 44,6 44,30 28,44" fill="#eab308" stroke="#ca8a04" strokeWidth="2" />
+        <rect x="0" y="20" width="28" height="24" fill="#facc15" stroke="#ca8a04" strokeWidth="2" />
+        <text x="14" y="36" textAnchor="middle" fontSize="12" fill="#78350f" fontWeight="bold">3</text>
+      </g>
+      <polygon points="80,24 82,28 86,29 83,32 84,36 80,34 76,36 77,32 74,29 78,28" fill="#facc15" stroke="#ca8a04" strokeWidth="0.8" />
+    </svg>
+  ),
+  'before': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <line x1="6" y1="88" x2="94" y2="88" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+      <g transform="translate(18, 46) scale(0.85)">
+        <polygon points="0,20 16,6 44,6 28,20" fill="#fde047" stroke="#ca8a04" strokeWidth="2" />
+        <polygon points="28,20 44,6 44,30 28,44" fill="#eab308" stroke="#ca8a04" strokeWidth="2" />
+        <rect x="0" y="20" width="28" height="24" fill="#facc15" stroke="#ca8a04" strokeWidth="2" />
+        <text x="14" y="36" textAnchor="middle" fontSize="11" fill="#78350f" fontWeight="bold">1</text>
+      </g>
+      <g transform="translate(56, 46) scale(0.85)">
+        <polygon points="0,20 16,6 44,6 28,20" fill="#cbd5e1" stroke="#475569" strokeWidth="1.5" />
+        <polygon points="28,20 44,6 44,30 28,44" fill="#64748b" stroke="#475569" strokeWidth="1.5" />
+        <rect x="0" y="20" width="28" height="24" fill="#94a3b8" stroke="#475569" strokeWidth="1.5" />
+        <text x="14" y="36" textAnchor="middle" fontSize="11" fill="#1e293b" fontWeight="bold">2</text>
+      </g>
+      <path d="M 64 36 Q 48 20 34 34" stroke="#ea580c" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M 40 32 L 34 35 L 36 28" stroke="#ea580c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
     </svg>
   ),
 };
@@ -3743,4 +4437,93 @@ export const RU_ALIASES: Record<string, string> = {
   'картины': 'pictures',
   'картинки': 'pictures',
   'attēli': 'pictures',
+  // User-requested SVGs aliases
+  'рождество': 'christmas',
+  'ziemassvētki': 'christmas',
+  'ziemassvetki': 'christmas',
+  'костюм': 'costume',
+  'tērps': 'costume',
+  'terps': 'costume',
+  'наряжаться': 'dress up',
+  'pārģērbties': 'dress up',
+  'pargerbties': 'dress up',
+  'одежда': 'clothes',
+  'drēbes': 'clothes',
+  'drebes': 'clothes',
+  'apģērbs': 'clothes',
+  'apgerbs': 'clothes',
+  'карман': 'pocket',
+  'kabata': 'pocket',
+  'пуговица': 'button',
+  'poga': 'button',
+  'гараж': 'garage',
+  'garāža': 'garage',
+  'garaza': 'garage',
+  'балкон': 'balcony',
+  'balkons': 'balcony',
+  'свет': 'light',
+  'gaisma': 'light',
+  'неубранный': 'messy',
+  'nekārtīgs': 'messy',
+  'nekartigs': 'messy',
+  'квартира': 'flat',
+  'dzīvoklis': 'flat',
+  'dzivoklis': 'flat',
+  'комната': 'room',
+  'istaba': 'room',
+  'шерсть': 'fur',
+  'мех': 'fur',
+  'spalva': 'fur',
+  'быстрый': 'fast',
+  'ātrs': 'fast',
+  'atrs': 'fast',
+  'важный': 'important',
+  'svarīgs': 'important',
+  'svarigs': 'important',
+  'палочка': 'stick',
+  'веточка': 'stick',
+  'nūjiņa': 'stick',
+  'nujina': 'stick',
+  'zariņš': 'stick',
+  'zarins': 'stick',
+  'чипсы': 'chips',
+  'čipsi': 'chips',
+  'cipsi': 'chips',
+  'вилка': 'fork',
+  'dakša': 'fork',
+  'daksa': 'fork',
+  'бутылка': 'bottle',
+  'бутылка воды': 'bottle',
+  'pudele': 'bottle',
+  'еда': 'food',
+  'ēdiens': 'food',
+  'ediens': 'food',
+  'овощ': 'vegetable',
+  'dārzenis': 'vegetable',
+  'darzenis': 'vegetable',
+  'малыш': 'baby',
+  'младенец': 'baby',
+  'zīdainis': 'baby',
+  'zidainis': 'baby',
+  // Positions +
+  'на': 'on',
+  'uz': 'on',
+  'под': 'under',
+  'zem': 'under',
+  'передняя сторона': 'front',
+  'спереди': 'front',
+  'priekšpuse': 'front',
+  'priekspuse': 'front',
+  'снаружи': 'out',
+  'наружу': 'out',
+  'ārā': 'out',
+  'ara': 'out',
+  'вон там': 'over there',
+  'tur': 'over there',
+  'следующий': 'next',
+  'дальше': 'next',
+  'nākamais': 'next',
+  'nakamais': 'next',
+  'до': 'before',
+  'pirms': 'before',
 };

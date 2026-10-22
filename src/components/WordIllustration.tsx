@@ -26,6 +26,10 @@ const KNOWN_SVG_EN_KEYS = new Set([
   'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty',
   'boat', 'kite', 'cats', 'balls', 'birds', 'pencils',
   'book on table', 'apple on table', 'cat under chair', 'ball under bed', 'pencil in pencil case', 'ruler in bag', 'green eyes', 'red car', 'car', 'pictures',
+  'floor', 'fur', 'roof', 'fridge', 'claws', 'shelf', 'friend', 'hug', 'shapes',
+  'christmas', 'costume', 'dress up', 'clothes', 'pocket', 'button', 'garage', 'balcony',
+  'light', 'messy', 'flat', 'room', 'fast', 'important', 'stick', 'chips', 'fork',
+  'bottle', 'food', 'vegetable', 'baby', 'on', 'under', 'front', 'out', 'over there', 'next', 'before',
 ]);
 
 const KNOWN_SVG_RU_KEYS = new Set([
@@ -48,6 +52,11 @@ const KNOWN_SVG_RU_KEYS = new Set([
   'мяч под кроватью', 'карандаш в пенале', 'линейка в рюкзаке',
   'зеленые глаза', 'зелёные глаза', 'красная машина', 'красная машинка', 'машина', 'машинка',
   'картины', 'картинки', 'attēli',
+  'пол', 'шерсть', 'крыша', 'холодильник', 'когти', 'полка', 'друг', 'обнимать', 'объятия', 'фигуры',
+  'рождество', 'костюм', 'наряжаться', 'одежда', 'карман', 'пуговица', 'гараж', 'балкон',
+  'свет', 'неубранный', 'квартира', 'комната', 'быстрый', 'важный', 'палочка', 'чипсы',
+  'вилка', 'бутылка', 'еда', 'овощ', 'малыш', 'младенец',
+  'на', 'под', 'спереди', 'снаружи', 'вон там', 'следующий', 'до',
 ]);
 
 export function loadWordSvgs(): Promise<void> {

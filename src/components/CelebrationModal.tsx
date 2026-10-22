@@ -105,9 +105,9 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
 
         {/* Topic Title Badge */}
         {topicTitle && (
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-50 border border-indigo-200 rounded-full text-xs sm:text-sm font-bold text-indigo-700 mb-3 shadow-xs">
-            {topicEmoji && <span>{topicEmoji}</span>}
-            <span className="truncate max-w-[240px]">{topicTitle}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-amber-100 via-amber-50 to-orange-100 border-2 border-amber-300 rounded-2xl text-sm sm:text-base font-black text-amber-950 mb-3 shadow-sm">
+            {topicEmoji && <span className="text-lg">{topicEmoji}</span>}
+            <span className="truncate max-w-[260px] tracking-tight">{topicTitle}</span>
           </div>
         )}
 

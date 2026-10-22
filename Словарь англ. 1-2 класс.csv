@@ -143,7 +143,6 @@ kitten,kaķēns,котёнок,1
 parrot,papagailis,попугай,1
 goldfish,zelta zivtiņa,золотая рыбка,1
 frog,varde,лягушка,1
-little,mazs,маленький,1
 horse,zirgs,лошадь,1
 ,,,
 Farm animals,Lauku sētas dzīvnieki,Фермерские животные,
@@ -569,6 +568,7 @@ favourite,mīļākais,любимый,1
 different,atšķirīgs,разный,1
 good,labs,хороший,1
 excellent,lielisks,отличный,1
+little,mazs,маленький,1
 ,,,
 Wild animals,Savvaļas dzīvnieki,Дикие животные,
 giraffe,žirafe,жираф,4

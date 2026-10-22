@@ -436,7 +436,12 @@ export const App: React.FC = () => {
 
   const handleHomeClick = () => {
     setActiveGrammarTopic(null);
-    setCatalogTab('main');
+    if (selectedTopic && selectedTopic.topic_id !== MISTAKES_TOPIC_ID) {
+      const isExtra = isTopicExtra(selectedTopic.topic_id, selectedGrades);
+      setCatalogTab(isExtra ? 'extra' : 'main');
+    } else {
+      setCatalogTab('main');
+    }
     if (navigateToHome(language)) {
       setCelebration(null);
     }

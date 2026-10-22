@@ -11,6 +11,17 @@ import {
 import { WordIllustration } from '../WordIllustration';
 import { Volume2, ArrowLeft, ChevronLeft, ChevronRight, LayoutGrid, X, Gamepad2 } from 'lucide-react';
 
+const WORD_NOTES: Record<string, { ru: string; lv: string }> = {
+  many: {
+    ru: '💡 Только для того, что считаем (яблоки, книги, друзья)',
+    lv: '💡 Tikai tam, ko var saskaitīt (āboli, grāmatas, draugi)',
+  },
+  lots: {
+    ru: '💡 Универсально: и для того, что считаем (яблоки), и для того, что нет (вода, время)',
+    lv: '💡 Universāli: der gan saskaitāmam (āboli), gan nesaskaitāmam (ūdens, laiks)',
+  },
+};
+
 interface FlashcardsGameProps {
   topic: Topic;
   language: Language;
@@ -212,6 +223,13 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
               {translation}
             </h3>
           </div>
+
+          {/* Educational Note / Hint (if any) */}
+          {currentWord && WORD_NOTES[currentWord.en.toLowerCase()] && (
+            <div className="mt-3 px-4 py-2 bg-amber-50 border-2 border-amber-300/80 rounded-2xl text-amber-900 text-xs sm:text-sm font-bold max-w-sm text-center shadow-xs">
+              {WORD_NOTES[currentWord.en.toLowerCase()][language] || WORD_NOTES[currentWord.en.toLowerCase()].ru}
+            </div>
+          )}
         </div>
       </div>
 

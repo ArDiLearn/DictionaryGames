@@ -412,9 +412,9 @@ then,"tad, pēc tam","затем, потом",1
 Order and quantity,Secība un daudzums,Порядок и количество,
 first,pirmais,первый,2
 second,otrais,второй,2
-many,daudzi,много,2
+many,daudzi,"много (для того, что считаем)",2
 all,"visi, viss","все, всё",2
-lots,daudz,много,1
+lots,daudz,"много (куча, много всего)",1
 only,tikai,только,1
 other,cits,другой,1
 another,"cits, vēl viens","другой, ещё один",1

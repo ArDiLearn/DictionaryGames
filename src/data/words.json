@@ -7165,9 +7165,9 @@
       "lv": "Svētki +",
       "en": "Celebrations +"
     },
-    "icon": "BookOpen",
-    "color": "sky",
-    "emoji": "📚",
+    "icon": "Gift",
+    "color": "pink",
+    "emoji": "🎉",
     "words": [
       {
         "id": "691",
@@ -7232,9 +7232,9 @@
       "lv": "Emocijas +",
       "en": "Emotions +"
     },
-    "icon": "BookOpen",
-    "color": "sky",
-    "emoji": "📚",
+    "icon": "Smile",
+    "color": "amber",
+    "emoji": "🤩",
     "words": [
       {
         "id": "697",
@@ -7299,9 +7299,9 @@
       "lv": "Profesijas +",
       "en": "Jobs +"
     },
-    "icon": "BookOpen",
-    "color": "sky",
-    "emoji": "📚",
+    "icon": "Briefcase",
+    "color": "indigo",
+    "emoji": "👨‍🚒",
     "words": [
       {
         "id": "703",
@@ -7366,9 +7366,9 @@
       "lv": "Sports +",
       "en": "Sports +"
     },
-    "icon": "BookOpen",
-    "color": "sky",
-    "emoji": "📚",
+    "icon": "Trophy",
+    "color": "green",
+    "emoji": "🏅",
     "words": [
       {
         "id": "709",

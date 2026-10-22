@@ -249,6 +249,17 @@ const TOPIC_METADATA = {
   'Animal traits +': { icon: 'Cat', color: 'emerald', emoji: '🐾' },
   'Dzīvnieku īpašības +': { icon: 'Cat', color: 'emerald', emoji: '🐾' },
   'Свойства животных +': { icon: 'Cat', color: 'emerald', emoji: '🐾' },
+  'Celebrations +': { icon: 'Gift', color: 'pink', emoji: '🎉' },
+  'Svētki +': { icon: 'Gift', color: 'pink', emoji: '🎉' },
+  'Праздники +': { icon: 'Gift', color: 'pink', emoji: '🎉' },
+  'Emotions +': { icon: 'Smile', color: 'amber', emoji: '🤩' },
+  'Emocijas +': { icon: 'Smile', color: 'amber', emoji: '🤩' },
+  'Эмоции +': { icon: 'Smile', color: 'amber', emoji: '🤩' },
+  'Jobs +': { icon: 'Briefcase', color: 'indigo', emoji: '👨‍🚒' },
+  'Profesijas +': { icon: 'Briefcase', color: 'indigo', emoji: '👨‍🚒' },
+  'Профессии +': { icon: 'Briefcase', color: 'indigo', emoji: '👨‍🚒' },
+  'Sports +': { icon: 'Trophy', color: 'green', emoji: '🏅' },
+  'Спорт +': { icon: 'Trophy', color: 'green', emoji: '🏅' },
 };
 
 /**

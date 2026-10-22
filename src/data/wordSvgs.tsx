@@ -3494,6 +3494,127 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       <path d="M 50 20 C 47 16, 42 17, 42 21 C 42 25, 50 29, 50 31 C 50 29, 58 25, 58 21 C 58 17, 53 16, 50 20 Z" fill="#ec4899" />
     </svg>
   ),
+  'floor': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Wall at the top */}
+      <rect x="10" y="10" width="80" height="25" fill="#f8fafc" />
+      {/* Baseboard / skirting board */}
+      <rect x="10" y="33" width="80" height="6" fill="#e2e8f0" stroke="#cbd5e1" strokeWidth="1" />
+      <rect x="10" y="37" width="80" height="2" fill="#94a3b8" />
+      {/* Wooden parquet floor with planks in perspective */}
+      <rect x="10" y="39" width="80" height="51" fill="#d97706" rx="2" />
+      {/* Floor planks with rich warm wood tones */}
+      {/* Row 1 */}
+      <rect x="10" y="39" width="28" height="12" fill="#b45309" stroke="#78350f" strokeWidth="0.8" />
+      <rect x="38" y="39" width="34" height="12" fill="#d97706" stroke="#78350f" strokeWidth="0.8" />
+      <rect x="72" y="39" width="18" height="12" fill="#92400e" stroke="#78350f" strokeWidth="0.8" />
+      {/* Row 2 */}
+      <rect x="10" y="51" width="46" height="13" fill="#f59e0b" stroke="#78350f" strokeWidth="0.8" />
+      <rect x="56" y="51" width="34" height="13" fill="#b45309" stroke="#78350f" strokeWidth="0.8" />
+      {/* Row 3 */}
+      <rect x="10" y="64" width="22" height="13" fill="#92400e" stroke="#78350f" strokeWidth="0.8" />
+      <rect x="32" y="64" width="42" height="13" fill="#d97706" stroke="#78350f" strokeWidth="0.8" />
+      <rect x="74" y="64" width="16" height="13" fill="#f59e0b" stroke="#78350f" strokeWidth="0.8" />
+      {/* Row 4 */}
+      <rect x="10" y="77" width="50" height="13" fill="#b45309" stroke="#78350f" strokeWidth="0.8" />
+      <rect x="60" y="77" width="30" height="13" fill="#d97706" stroke="#78350f" strokeWidth="0.8" />
+      {/* Wood grain highlights */}
+      <line x1="14" y1="45" x2="32" y2="45" stroke="#fef3c7" strokeWidth="0.6" opacity="0.4" />
+      <line x1="42" y1="57" x2="80" y2="57" stroke="#fef3c7" strokeWidth="0.6" opacity="0.4" />
+      <line x1="16" y1="70" x2="48" y2="70" stroke="#fef3c7" strokeWidth="0.6" opacity="0.4" />
+    </svg>
+  ),
+  'fur': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Soft circular warm fur badge */}
+      <circle cx="50" cy="50" r="38" fill="#d97706" />
+      <circle cx="50" cy="50" r="35" fill="#f59e0b" />
+      {/* Inner fluffy soft fur texture */}
+      <circle cx="50" cy="50" r="28" fill="#fbbf24" />
+      {/* Fur tufts / hair strands */}
+      <path d="M 50 16 Q 48 24 50 30 Q 52 24 50 16 Z" fill="#92400e" />
+      <path d="M 32 24 Q 35 32 40 36 Q 36 29 32 24 Z" fill="#92400e" />
+      <path d="M 68 24 Q 65 32 60 36 Q 64 29 68 24 Z" fill="#92400e" />
+      <path d="M 20 42 Q 28 44 34 42 Q 27 40 20 42 Z" fill="#92400e" />
+      <path d="M 80 42 Q 72 44 66 42 Q 73 40 80 42 Z" fill="#92400e" />
+      <path d="M 24 64 Q 32 62 38 56 Q 30 58 24 64 Z" fill="#92400e" />
+      <path d="M 76 64 Q 68 62 62 56 Q 70 58 76 64 Z" fill="#92400e" />
+      <path d="M 50 84 Q 48 76 50 70 Q 52 76 50 84 Z" fill="#92400e" />
+      <path d="M 36 78 Q 40 70 42 66 Q 38 72 36 78 Z" fill="#92400e" />
+      <path d="M 64 78 Q 60 70 58 66 Q 62 72 64 78 Z" fill="#92400e" />
+      {/* Fluffy center tuft */}
+      <path d="M 46 44 C 44 36, 56 36, 54 44 C 58 48, 52 56, 50 56 C 48 56, 42 48, 46 44 Z" fill="#fef3c7" />
+    </svg>
+  ),
+  'roof': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Chimney on the roof */}
+      <rect x="66" y="22" width="10" height="24" fill="#b91c1c" />
+      <rect x="64" y="20" width="14" height="4" rx="1" fill="#7f1d1d" />
+      <circle cx="71" cy="14" r="3" fill="#94a3b8" opacity="0.6" />
+      <circle cx="75" cy="8" r="4" fill="#cbd5e1" opacity="0.4" />
+      {/* Triangular tiled roof */}
+      <polygon points="50,18 92,66 8,66" fill="#dc2626" stroke="#991b1b" strokeWidth="2.5" />
+      {/* Roof tile layers */}
+      <path d="M 24 50 Q 50 48 76 50" stroke="#b91c1c" strokeWidth="2.5" fill="none" />
+      <path d="M 16 60 Q 50 58 84 60" stroke="#b91c1c" strokeWidth="2.5" fill="none" />
+      <path d="M 32 40 Q 50 38 68 40" stroke="#b91c1c" strokeWidth="2.5" fill="none" />
+      {/* Ridge cap at peak */}
+      <polygon points="50,14 56,22 44,22" fill="#7f1d1d" />
+      {/* Under roof attic wall & window */}
+      <rect x="18" y="66" width="64" height="24" fill="#fef08a" stroke="#ca8a04" strokeWidth="1.5" />
+      {/* Attic round window */}
+      <circle cx="50" cy="78" r="9" fill="#38bdf8" stroke="#0284c7" strokeWidth="1.5" />
+      <line x1="50" y1="69" x2="50" y2="87" stroke="#0284c7" strokeWidth="1.2" />
+      <line x1="41" y1="78" x2="59" y2="78" stroke="#0284c7" strokeWidth="1.2" />
+    </svg>
+  ),
+  'fridge': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Refrigerator outer body */}
+      <rect x="24" y="10" width="52" height="80" rx="6" fill="#e0f2fe" stroke="#0284c7" strokeWidth="2.5" />
+      {/* Top freezer door */}
+      <rect x="27" y="13" width="46" height="26" rx="3" fill="#f0f9ff" stroke="#bae6fd" strokeWidth="1" />
+      {/* Top handle */}
+      <rect x="31" y="24" width="3" height="12" rx="1.5" fill="#0369a1" />
+      {/* Fridge magnet on freezer */}
+      <circle cx="58" cy="22" r="3.5" fill="#ef4444" />
+      <polygon points="46,20 48,25 43,22" fill="#eab308" />
+      {/* Divider line between freezer and main fridge */}
+      <line x1="25" y1="41" x2="75" y2="41" stroke="#0284c7" strokeWidth="2" />
+      {/* Bottom main compartment door */}
+      <rect x="27" y="43" width="46" height="44" rx="3" fill="#ffffff" stroke="#bae6fd" strokeWidth="1" />
+      {/* Bottom handle */}
+      <rect x="31" y="47" width="3" height="22" rx="1.5" fill="#0369a1" />
+      {/* Colorful cute magnets on door */}
+      <rect x="52" y="52" width="8" height="10" rx="1" fill="#8b5cf6" />
+      <circle cx="66" cy="62" r="4" fill="#10b981" />
+      {/* Fridge feet */}
+      <rect x="28" y="90" width="8" height="4" rx="1" fill="#64748b" />
+      <rect x="64" y="90" width="8" height="4" rx="1" fill="#64748b" />
+    </svg>
+  ),
+  'claws': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      {/* Paw pad base */}
+      <path d="M 32 54 C 24 54, 20 66, 26 76 C 32 86, 68 86, 74 76 C 80 66, 76 54, 68 54 C 60 54, 56 60, 50 60 C 44 60, 40 54, 32 54 Z" fill="#fb923c" stroke="#ea580c" strokeWidth="2" />
+      {/* Center main pad */}
+      <ellipse cx="50" cy="72" rx="15" ry="10" fill="#fed7aa" />
+      {/* 4 Toe pads with extended sharp claws */}
+      {/* Toe 1 (Left) */}
+      <ellipse cx="26" cy="46" rx="7" ry="8" fill="#fb923c" stroke="#ea580c" strokeWidth="1.5" />
+      <path d="M 23 40 Q 20 24 16 18 Q 25 24 28 38 Z" fill="#ffffff" stroke="#475569" strokeWidth="1.5" />
+      {/* Toe 2 (Center Left) */}
+      <ellipse cx="42" cy="38" rx="7" ry="9" fill="#fb923c" stroke="#ea580c" strokeWidth="1.5" />
+      <path d="M 39 30 Q 38 12 34 8 Q 44 14 45 28 Z" fill="#ffffff" stroke="#475569" strokeWidth="1.5" />
+      {/* Toe 3 (Center Right) */}
+      <ellipse cx="58" cy="38" rx="7" ry="9" fill="#fb923c" stroke="#ea580c" strokeWidth="1.5" />
+      <path d="M 61 30 Q 62 12 66 8 Q 56 14 55 28 Z" fill="#ffffff" stroke="#475569" strokeWidth="1.5" />
+      {/* Toe 4 (Right) */}
+      <ellipse cx="74" cy="46" rx="7" ry="8" fill="#fb923c" stroke="#ea580c" strokeWidth="1.5" />
+      <path d="M 77 40 Q 80 24 84 18 Q 75 24 72 38 Z" fill="#ffffff" stroke="#475569" strokeWidth="1.5" />
+    </svg>
+  ),
 };
 
 export const RU_ALIASES: Record<string, string> = {

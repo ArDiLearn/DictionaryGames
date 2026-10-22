@@ -801,5 +801,44 @@ export const TRANSCRIPTIONS = {
   "help": "[ help ]",
   "smile": "[ smaɪl ]",
   "hug": "[ hʌɡ ]",
+
+  // Grade 2 Additions - Food and drink +
+  "plate": "[ pleɪt ]",
+  "fork": "[ fɔːk ]",
+  "spoon": "[ spuːn ]",
+  "bottle": "[ ˈbɒtl ]",
+  "bowl": "[ bəʊl ]",
+  "fridge": "[ frɪdʒ ]",
+  "sweet": "[ swiːt ]",
+  "salty": "[ ˈsɔːlti ]",
+  "delicious": "[ dɪˈlɪʃəs ]",
+
+  // Grade 2 Additions - Clothes +
+  "boots": "[ buːts ]",
+  "sandals": "[ ˈsændlz ]",
+  "scarf": "[ skɑːf ]",
+  "raincoat": "[ ˈreɪnkəʊt ]",
+  "pocket": "[ ˈpɒkɪt ]",
+  "button": "[ ˈbʌtn ]",
+  "sunglasses": "[ ˈsʌnɡlɑːsɪz ]",
+
+  // Grade 2 Additions - At home +
+  "floor": "[ flɔː ]",
+  "roof": "[ ruːf ]",
+  "stairs": "[ steəz ]",
+  "garage": "[ ˈɡærɑːʒ ]",
+  "balcony": "[ ˈbælkəni ]",
+  "lamp": "[ læmp ]",
+  "messy": "[ ˈmesi ]",
+
+  // Grade 2 Additions - Animal traits +
+  "fur": "[ fɜː ]",
+  "teeth": "[ tiːθ ]",
+  "claws": "[ klɔːz ]",
+  "feathers": "[ ˈfeðəz ]",
+  "fast": "[ fɑːst ]",
+  "slow": "[ sləʊ ]",
+  "friendly": "[ ˈfrendli ]",
+  "dangerous": "[ ˈdeɪndʒərəs ]",
 };
 

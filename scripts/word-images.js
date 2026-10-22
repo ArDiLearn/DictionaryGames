@@ -724,4 +724,44 @@ export const WORD_IMAGES = {
   "help": "🤲",
   "smile": "😊",
   "hug": "🤗",
+
+  // Grade 2 Additions - Food and drink +
+  "plate": "🍽️",
+  "fork": "🍴",
+  "spoon": "🥄",
+  "bottle": "🍼",
+  "bowl": "🥣",
+  "fridge": "🧊",
+  "sweet": "🍬",
+  "salty": "🧂",
+  "delicious": "😋",
+
+  // Grade 2 Additions - Clothes +
+  "clothes": "👕",
+  "boots": "👢",
+  "sandals": "👡",
+  "scarf": "🧣",
+  "raincoat": "🧥",
+  "pocket": "👝",
+  "button": "🔘",
+  "sunglasses": "🕶️",
+
+  // Grade 2 Additions - At home +
+  "floor": "🪵",
+  "roof": "🏠",
+  "stairs": "🪜",
+  "garage": "🚗",
+  "balcony": "🏢",
+  "lamp": "💡",
+  "messy": "📦",
+
+  // Grade 2 Additions - Animal traits +
+  "fur": "🐱",
+  "teeth": "🦷",
+  "claws": "🐾",
+  "feathers": "🪶",
+  "fast": "⚡",
+  "slow": "🐢",
+  "friendly": "🐶",
+  "dangerous": "⚠️",
 };

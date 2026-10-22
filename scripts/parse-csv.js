@@ -243,6 +243,12 @@ const TOPIC_METADATA = {
   'Pets +': { icon: 'Dog', color: 'amber', emoji: '🐶' },
   'Mājas mīluļi +': { icon: 'Dog', color: 'amber', emoji: '🐶' },
   'Питомцы +': { icon: 'Dog', color: 'amber', emoji: '🐶' },
+  'Clothes +': { icon: 'Shirt', color: 'pink', emoji: '🧥' },
+  'Apģērbs +': { icon: 'Shirt', color: 'pink', emoji: '🧥' },
+  'Одежда +': { icon: 'Shirt', color: 'pink', emoji: '🧥' },
+  'Animal traits +': { icon: 'Cat', color: 'emerald', emoji: '🐾' },
+  'Dzīvnieku īpašības +': { icon: 'Cat', color: 'emerald', emoji: '🐾' },
+  'Свойства животных +': { icon: 'Cat', color: 'emerald', emoji: '🐾' },
 };
 
 /**

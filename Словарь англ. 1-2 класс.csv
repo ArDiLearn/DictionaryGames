@@ -487,6 +487,17 @@ sausages,desiņas,сосиски,2
 ice cream,saldējums,мороженое,2
 chocolate,šokolāde,шоколад,2
 water,ūdens,вода,2
+plate,šķīvis,тарелка,2
+fork,dakša,вилка,2
+spoon,karote,ложка,2
+bottle,pudele,бутылка,2
+bowl,bļoda,миска,2
+fridge,ledusskapis,холодильник,2
+sweet,salds,сладкий,2
+salty,sāļš,солёный,2
+delicious,"gardi, gards",очень вкусный,2
+cup,krūzīte,чашка,2
+food,ēdiens,еда,2
 ,,,
 Fruit and vegetables +,Augļi un dārzeņi +,Фрукты и овощи +,
 vegetable,dārzenis,овощ,2
@@ -580,6 +591,16 @@ hedgehog,ezis,ёж,2
 hare,zaķis,заяц,2
 footprints,pēdu nospiedumi,следы лап,2
 ,,,
+Animal traits +,Dzīvnieku īpašības +,Свойства животных +,
+fur,"kažoks, spalva","шерсть, мех",2
+teeth,zobi,зубы,2
+claws,nagi,когти,2
+feathers,spalvas,перья,2
+fast,ātrs,быстрый,2
+slow,lēns,медленный,2
+friendly,draudzīgs,дружелюбный,2
+dangerous,bīstams,опасный,2
+,,,
 Nature,Daba,Природа,
 land,zeme,"суша, земля",1
 sun,saule,солнце,1
@@ -618,8 +639,6 @@ language,valoda,"язык, речь",2
 country,valsts,страна,1
 wheel,ritenis,колесо,1
 ruby,rubīns,рубин,1
-food,ēdiens,еда,1
-cup,krūzīte,чашка,1
 noise,troksnis,шум,2
 sound,skaņa,звук,2
 ,,,
@@ -742,6 +761,16 @@ dress up,pārģērbties,наряжаться,2
 wear,valkāt,носить (одежду),2
 costume,tērps,костюм,2
 ,,,
+Clothes +,Apģērbs +,Одежда +,
+clothes,"drēbes, apģērbs",одежда,2
+boots,zābaki,сапоги,2
+sandals,sandales,сандалии,2
+scarf,šalle,шарф,2
+raincoat,lietusmētelis,дождевик,2
+pocket,kabata,карман,2
+button,poga,пуговица,2
+sunglasses,saulesbrilles,солнцезащитные очки,2
+,,,
 Positions +,Novietojums +,Расположение +,
 under,zem,под,2
 on,uz,на,2
@@ -760,6 +789,13 @@ furniture,mēbeles,мебель,2
 interior,interjers,интерьер,2
 mirror,spogulis,зеркало,2
 light,gaisma,"свет, лампа",2
+floor,grīda,пол,2
+roof,jumts,крыша,2
+stairs,kāpnes,лестница,2
+garage,garāža,гараж,2
+balcony,balkons,балкон,2
+lamp,lampa,лампа,2
+messy,nekārtīgs,неубранный,2
 ,,,
 Town +,Pilsēta +,Город и мир,
 city,lielpilsēta,большой город,2

@@ -45,6 +45,16 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
     }
   }, [currentIndex, currentWord]);
 
+  useEffect(() => {
+    if (wordBtnRefs.current[currentIndex]) {
+      wordBtnRefs.current[currentIndex]?.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'nearest',
+      });
+    }
+  }, [currentIndex]);
+
   const handleSpeak = (wordToSpeak?: Word) => {
     const word = wordToSpeak || currentWord;
     if (!word) return;

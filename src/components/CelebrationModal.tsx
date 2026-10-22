@@ -7,6 +7,8 @@ import { Gamepad2, Home, Sparkles } from 'lucide-react';
 
 interface CelebrationModalProps {
   language: Language;
+  topicTitle?: string;
+  topicEmoji?: string;
   correctCount: number;
   totalCount: number;
   stars: number;
@@ -24,6 +26,8 @@ interface CelebrationModalProps {
 
 export const CelebrationModal: React.FC<CelebrationModalProps> = ({
   language,
+  topicTitle,
+  topicEmoji,
   correctCount,
   totalCount,
   stars,
@@ -95,9 +99,17 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
           <Sparkles className="w-5 h-5" />
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight mb-3 font-comic">
+        <h2 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight mb-2 font-comic">
           {isRewardDisabled ? t.flashcardsFinishedHeadline : headline}
         </h2>
+
+        {/* Topic Title Badge */}
+        {topicTitle && (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-50 border border-indigo-200 rounded-full text-xs sm:text-sm font-bold text-indigo-700 mb-3 shadow-xs">
+            {topicEmoji && <span>{topicEmoji}</span>}
+            <span className="truncate max-w-[240px]">{topicTitle}</span>
+          </div>
+        )}
 
         {/* Stars - only shown when reward is enabled and maxStars > 0 */}
         {!isNoReward && (

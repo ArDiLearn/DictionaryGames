@@ -653,6 +653,16 @@ export const App: React.FC = () => {
         {celebration && (
           <CelebrationModal
             language={language}
+            topicTitle={
+              currentTopic
+                ? course === 'lv'
+                  ? currentTopic.topic_name.lv || currentTopic.topic_name.ru
+                  : course === 'en-lv'
+                  ? currentTopic.topic_name.lv || currentTopic.topic_name.en
+                  : currentTopic.topic_name[language] || currentTopic.topic_name.ru || currentTopic.topic_name.en
+                : undefined
+            }
+            topicEmoji={currentTopic?.emoji}
             correctCount={celebration.correct}
             totalCount={celebration.total}
             stars={celebration.stars}

@@ -695,4 +695,33 @@ export const WORD_IMAGES = {
   "hedgehog": "🦔",
   "hare": "🐇",
   "parents": "👨‍👩‍👦",
+
+  // Grade 1 Additions - Pets +
+  "puppy": "🐶",
+  "kitten": "🐱",
+  "frog": "🐸",
+  "little": "🤏",
+  "noisy": "📢",
+  "quiet": "🤫",
+
+  // Grade 1 Additions - Toys +
+  "action figure": "🦸",
+  "doll's house": "🏰",
+  "video game": "🎮",
+  "win": "🏆",
+  "lose": "📉",
+
+  // Grade 1 Additions - School materials
+  "shelf": "🪵",
+  "folder": "📁",
+  "chalk": "🖍️",
+  "desk partner": "🧑‍🤝‍🧑",
+
+  // Grade 1 Additions - Family & friends
+  "man": "👨",
+  "woman": "👩",
+  "together": "🤝",
+  "help": "🤲",
+  "smile": "😊",
+  "hug": "🫂",
 };

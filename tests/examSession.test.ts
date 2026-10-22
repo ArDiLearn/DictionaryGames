@@ -118,7 +118,7 @@ describe('saveExamSession / loadExamSession', () => {
   });
 
   it('uses session key format: grade_course', () => {
-    expect(getExamSessionKey(3, 'lv')).toContain('3_lv');
+    expect(getExamSessionKey(3, 'lv')).toContain('3_final_lv');
   });
 });
 
@@ -183,7 +183,7 @@ describe('findFirstActiveExamGrade', () => {
       grade: 2,
       course: 'en',
     });
-    expect(findFirstActiveExamGrade('en')).toBe(2);
+    expect(findFirstActiveExamGrade('en')).toEqual({ grade: 2, part: 'final' });
   });
 
   it('returns the lowest grade when multiple sessions exist', () => {
@@ -201,7 +201,7 @@ describe('findFirstActiveExamGrade', () => {
       grade: 1,
       course: 'en',
     });
-    expect(findFirstActiveExamGrade('en')).toBe(1);
+    expect(findFirstActiveExamGrade('en')).toEqual({ grade: 1, part: 'final' });
   });
 
   it('does not return session for different course', () => {

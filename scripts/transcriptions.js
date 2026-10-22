@@ -772,5 +772,34 @@ export const TRANSCRIPTIONS = {
   "hedgehog": "[ ˈhedʒhɒɡ ]",
   "hare": "[ heə ]",
   "parents": "[ ˈpeərənts ]",
+
+  // Grade 1 Additions - Pets +
+  "puppy": "[ ˈpʌpi ]",
+  "kitten": "[ ˈkɪtn ]",
+  "frog": "[ frɒɡ ]",
+  "little": "[ ˈlɪtl ]",
+  "noisy": "[ ˈnɔɪzi ]",
+  "quiet": "[ ˈkwaɪət ]",
+
+  // Grade 1 Additions - Toys +
+  "action figure": "[ ˈækʃn ˈfɪɡə ]",
+  "doll's house": "[ dɒlz haʊs ]",
+  "video game": "[ ˈvɪdiəʊ ɡeɪm ]",
+  "win": "[ wɪn ]",
+  "lose": "[ luːz ]",
+
+  // Grade 1 Additions - School materials
+  "shelf": "[ ʃelf ]",
+  "folder": "[ ˈfəʊldə ]",
+  "chalk": "[ tʃɔːk ]",
+  "desk partner": "[ desk ˈpɑːtnə ]",
+
+  // Grade 1 Additions - Family & friends
+  "man": "[ mæn ]",
+  "woman": "[ ˈwʊmən ]",
+  "together": "[ təˈɡeðə ]",
+  "help": "[ help ]",
+  "smile": "[ smaɪl ]",
+  "hug": "[ hʌɡ ]",
 };
 

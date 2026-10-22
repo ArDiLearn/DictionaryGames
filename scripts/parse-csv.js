@@ -240,6 +240,9 @@ const TOPIC_METADATA = {
   'Qualities +': { icon: 'Sparkles', color: 'emerald', emoji: '✨' },
   'Īpašības +': { icon: 'Sparkles', color: 'emerald', emoji: '✨' },
   'Качества и оценка +': { icon: 'Sparkles', color: 'emerald', emoji: '✨' },
+  'Pets +': { icon: 'Dog', color: 'amber', emoji: '🐶' },
+  'Mājas mīluļi +': { icon: 'Dog', color: 'amber', emoji: '🐶' },
+  'Питомцы +': { icon: 'Dog', color: 'amber', emoji: '🐶' },
 };
 
 /**

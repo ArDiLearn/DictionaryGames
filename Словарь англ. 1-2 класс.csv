@@ -137,6 +137,14 @@ mouse,pele,мышь,1
 hamster,kāmis,хомяк,1
 bird,putns,птица,1
 ,,,
+Pets +,Mājas mīluļi +,Питомцы +,
+puppy,kucēns,щенок,1
+kitten,kaķēns,котёнок,1
+frog,varde,лягушка,1
+little,mazs,маленький,1
+noisy,trokšņains,шумный,1
+quiet,kluss,тихий,1
+,,,
 Farm animals,Lauku sētas dzīvnieki,Фермерские животные,
 cow,govs,корова,1
 chicken,vista,курица,1
@@ -144,6 +152,7 @@ donkey,ēzelis,осёл,1
 duck,pīle,утка,1
 goat,kaza,коза,1
 sheep,aita,овца,1
+horse,zirgs,лошадь,1
 ,,,
 Food and drink,Ēdiens un dzērieni,Еда и напитки,
 juice,sula,сок,2
@@ -272,6 +281,11 @@ puppet,lelle,кукла-марионетка,1
 rubber duck,gumijas pīlīte,резиновая уточка,1
 playhouse,rotaļu mājiņa,игровой домик,1
 tea set,tējas servīze,чайный сервиз,1
+action figure,varoņa figūra,фигурка героя,1
+doll's house,leļļu māja,кукольный домик,1
+video game,videospēle,видеоигра,1
+win,uzvarēt,выигрывать,1
+lose,zaudēt,проигрывать,1
 ,,,
 Games and music,Spēles un mūzika,Игры и музыка,
 drum,bungas,барабан,1
@@ -427,6 +441,10 @@ sheet,darba lapa,рабочий лист,1
 photo,foto,фотография,1
 things,lietas,"вещи, предметы",1
 scissors,šķēres,ножницы,1
+shelf,plaukts,полка,1
+folder,mape,папка,1
+chalk,krīts,мел,1
+desk partner,sola biedrs,сосед по парте,1
 ,,,
 School and lessons,Skola un stundas,Школа и уроки,
 teacher,skolotājs,учитель,1
@@ -496,6 +514,12 @@ girl,meitene,девочка,1
 children,bērni,дети,1
 friend,draugs,друг,1
 dear,"dārgais, mīļais","дорогой, милый",1
+man,vīrietis,мужчина,1
+woman,sieviete,женщина,1
+together,kopā,вместе,1
+help,palīdzēt,помогать,1
+smile,smaidīt,улыбаться,1
+hug,apskaut,обнимать,1
 ,,,
 Art and games +,Māksla un spēles +,Творчество и игры +,
 start,sākums,"старт, начало",1
@@ -594,8 +618,6 @@ language,valoda,"язык, речь",2
 country,valsts,страна,1
 wheel,ritenis,колесо,1
 ruby,rubīns,рубин,1
-toys,rotaļlietas,игрушки,1
-horse,zirgs,лошадь,1
 food,ēdiens,еда,1
 cup,krūzīte,чашка,1
 noise,troksnis,шум,2

@@ -4108,25 +4108,174 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
   ),
   'baby': (
     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
-      <line x1="6" y1="86" x2="94" y2="86" stroke="#fbcfe8" strokeWidth="2.5" strokeDasharray="3 3" />
-      <ellipse cx="26" cy="80" rx="7" ry="5" fill="#fed7aa" />
-      <path d="M 26 80 Q 22 70 30 64" stroke="#fed7aa" strokeWidth="6" strokeLinecap="round" fill="none" />
-      <path d="M 28 62 C 24 50, 48 50, 48 62 C 48 72, 28 72, 28 62 Z" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.5" />
-      <path d="M 40 50 C 40 44, 60 44, 60 54 L 46 62 Z" fill="#2dd4bf" stroke="#0d9488" strokeWidth="1.2" />
-      <path d="M 36 68 Q 42 76 46 80" stroke="#fed7aa" strokeWidth="6" strokeLinecap="round" fill="none" />
-      <ellipse cx="46" cy="81" rx="4" ry="3" fill="#fed7aa" />
-      <path d="M 58 54 L 64 74 L 66 84" stroke="#fed7aa" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      <circle cx="66" cy="84" r="3.5" fill="#fed7aa" />
-      <path d="M 54 54 L 56 70 L 52 82" stroke="#fed7aa" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.85" />
-      <circle cx="68" cy="40" r="13" fill="#fed7aa" />
-      <circle cx="63" cy="44" r="3" fill="#fca5a5" opacity="0.7" />
-      <circle cx="75" cy="44" r="3" fill="#fca5a5" opacity="0.7" />
-      <circle cx="66" cy="38" r="2" fill="#0f172a" />
-      <circle cx="65.2" cy="37.2" r="0.7" fill="#ffffff" />
-      <circle cx="74" cy="38" r="2" fill="#0f172a" />
-      <circle cx="73.2" cy="37.2" r="0.7" fill="#ffffff" />
-      <path d="M 68 45 Q 70 48 72 45" stroke="#c2410c" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-      <path d="M 68 27 Q 66 22 71 22 Q 73 24 70 27" stroke="#b45309" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+      {/* Soft floor shadow under baby hands, knees, and feet */}
+      <ellipse cx="27" cy="91" rx="8" ry="2.5" fill="#0f172a" opacity="0.12" />
+      <ellipse cx="46" cy="91" rx="8" ry="2.5" fill="#0f172a" opacity="0.12" />
+      <ellipse cx="68" cy="91" rx="14" ry="3" fill="#0f172a" opacity="0.12" />
+      <ellipse cx="88" cy="89" rx="8" ry="2.5" fill="#0f172a" opacity="0.12" />
+
+      {/* Far bent knee and leg (behind) */}
+      <path
+        d="M 52 74 C 52 82, 54 88, 60 88 C 65 88, 68 85, 68 80"
+        fill="#fed7aa"
+        stroke="#ea580c"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      {/* Far arm (left in image, baby's right arm) */}
+      <path
+        d="M 27 58 L 22 84 C 21 87, 16 88, 17 90 C 19 92, 28 92, 29 88 L 32 60 Z"
+        fill="#fed7aa"
+        stroke="#ea580c"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      {/* Far hand chubby fingers on ground */}
+      <path
+        d="M 17 90 C 16 88, 20 86, 24 87 C 27 87, 29 89, 29 90"
+        stroke="#ea580c"
+        strokeWidth="1"
+        strokeLinecap="round"
+        fill="none"
+      />
+
+      {/* Baby Torso & Back */}
+      <path
+        d="M 44 48 C 52 52, 60 52, 64 54 C 68 56, 70 60, 66 70 C 60 74, 50 72, 42 66 C 36 60, 36 54, 44 48 Z"
+        fill="#ffedd5"
+      />
+      {/* Back curve line */}
+      <path
+        d="M 46 48 C 54 52, 62 52, 68 56"
+        stroke="#ea580c"
+        strokeWidth="1.2"
+        fill="none"
+        strokeLinecap="round"
+      />
+
+      {/* Puffy White Diaper */}
+      <path
+        d="M 58 55 C 64 53, 76 54, 80 62 C 84 70, 78 80, 68 80 C 60 80, 56 75, 54 68 C 53 62, 54 57, 58 55 Z"
+        fill="#ffffff"
+        stroke="#cbd5e1"
+        strokeWidth="1.2"
+      />
+      {/* Diaper folds & waistband tabs */}
+      <path d="M 68 54 C 74 54, 78 57, 80 62" stroke="#94a3b8" strokeWidth="1" fill="none" />
+      <path d="M 56 68 C 60 74, 68 76, 74 74" stroke="#e2e8f0" strokeWidth="1.5" fill="none" />
+      {/* Cute ruffled diaper gathering tab at back */}
+      <path
+        d="M 76 58 C 78 54, 82 54, 82 57 C 82 54, 86 55, 84 59"
+        stroke="#94a3b8"
+        strokeWidth="1.2"
+        fill="none"
+        strokeLinecap="round"
+      />
+
+      {/* Near bent knee and leg (supporting body on floor, foot behind) */}
+      <path
+        d="M 66 66 C 74 65, 80 72, 78 80 C 76 86, 70 89, 66 89 C 62 89, 62 84, 66 78 C 68 74, 64 68, 66 66 Z"
+        fill="#ffedd5"
+      />
+      <path
+        d="M 72 74 C 78 76, 82 82, 86 82 C 90 82, 94 80, 93 84 C 92 88, 86 90, 80 89 C 74 88, 68 89, 66 89 C 62 89, 62 83, 66 78 C 70 72, 76 70, 78 78"
+        fill="#ffedd5"
+        stroke="#ea580c"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      {/* Foot sole & cute baby toes */}
+      <path
+        d="M 88 82 C 92 80, 95 82, 94 85 C 93 88, 89 89, 86 88"
+        stroke="#ea580c"
+        strokeWidth="1"
+        fill="none"
+      />
+      <circle cx="93" cy="85" r="1.2" fill="#fed7aa" stroke="#ea580c" strokeWidth="0.6" />
+      <circle cx="90.5" cy="86.5" r="1.1" fill="#fed7aa" stroke="#ea580c" strokeWidth="0.6" />
+      <circle cx="88" cy="87.5" r="1" fill="#fed7aa" stroke="#ea580c" strokeWidth="0.6" />
+      <path d="M 64 85 Q 67 86 70 84" stroke="#ea580c" strokeWidth="1" strokeLinecap="round" fill="none" />
+
+      {/* Near Arm (supporting torso on floor) */}
+      <path
+        d="M 38 52 C 40 60, 42 70, 42 80 C 42 86, 38 88, 40 90 C 42 92, 48 92, 49 88 C 50 82, 49 70, 48 58 Z"
+        fill="#ffedd5"
+        stroke="#ea580c"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M 39 88 C 39 90, 43 91, 46 91 C 48 91, 49 89, 49 87"
+        stroke="#ea580c"
+        strokeWidth="1"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <line x1="42" y1="88" x2="42" y2="90.5" stroke="#ea580c" strokeWidth="0.8" strokeLinecap="round" />
+      <line x1="45" y1="88" x2="45" y2="90.5" stroke="#ea580c" strokeWidth="0.8" strokeLinecap="round" />
+      <circle cx="48" cy="72" r="1" fill="#fca5a5" />
+
+      {/* Cute Big Baby Head */}
+      <path
+        d="M 28 14 C 42 12, 54 22, 53 38 C 52 46, 48 52, 42 54 C 36 56, 30 56, 24 52 C 16 48, 14 38, 16 28 C 18 18, 22 14, 28 14 Z"
+        fill="#ffedd5"
+        stroke="#ea580c"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M 15 36 C 13 40, 14 46, 18 49 C 22 52, 26 53, 30 54"
+        fill="#ffedd5"
+        stroke="#ea580c"
+        strokeWidth="1.2"
+      />
+
+      {/* Cute C-shaped Ear on the right */}
+      <path
+        d="M 47 36 C 53 36, 54 44, 49 46 C 46 47, 45 44, 46 40"
+        fill="#ffedd5"
+        stroke="#ea580c"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      <path d="M 48 39 Q 50 42 47 43" stroke="#ea580c" strokeWidth="0.9" fill="none" />
+
+      {/* Big joyful eyes */}
+      <ellipse cx="22" cy="38" rx="3.5" ry="4.5" fill="#451a03" />
+      <circle cx="21" cy="36.5" r="1.5" fill="#ffffff" />
+      <circle cx="23.2" cy="39.5" r="0.8" fill="#ffffff" />
+      <ellipse cx="34" cy="37" rx="3.5" ry="4.5" fill="#451a03" />
+      <circle cx="33" cy="35.5" r="1.5" fill="#ffffff" />
+      <circle cx="35.2" cy="38.5" r="0.8" fill="#ffffff" />
+      <path d="M 18 36 Q 22 32 26 36" stroke="#451a03" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      <path d="M 30 35 Q 34 31 38 35" stroke="#451a03" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+      <path d="M 18 31 Q 22 28 26 30" stroke="#b45309" strokeWidth="1" strokeLinecap="round" fill="none" />
+      <path d="M 31 30 Q 35 27 39 29" stroke="#b45309" strokeWidth="1" strokeLinecap="round" fill="none" />
+
+      {/* Button nose */}
+      <path d="M 26 42 Q 28 43 29 41" stroke="#ea580c" strokeWidth="1" strokeLinecap="round" fill="none" />
+
+      {/* Wide happy open-mouth smile with tongue */}
+      <path
+        d="M 23 44 Q 28 44 33 43 C 33 48, 30 52, 27 52 C 24 52, 23 48, 23 44 Z"
+        fill="#881337"
+        stroke="#ea580c"
+        strokeWidth="1.1"
+      />
+      <path d="M 25 49 Q 27 47 29 49 C 29 51, 26 52, 25 49 Z" fill="#f43f5e" />
+
+      {/* Rosy blushing cheeks */}
+      <circle cx="17" cy="43" r="3.5" fill="#fb7185" opacity="0.5" />
+      <circle cx="38" cy="41" r="3.5" fill="#fb7185" opacity="0.4" />
+
+      {/* Wispy curl / hair tuft on top */}
+      <path
+        d="M 28 14 C 27 8, 32 6, 33 10 C 34 7, 37 9, 35 14"
+        stroke="#92400e"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        fill="none"
+      />
     </svg>
   ),
   'on': (

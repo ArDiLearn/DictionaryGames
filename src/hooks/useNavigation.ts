@@ -227,17 +227,19 @@ export function useNavigation(
   const goBack = useCallback(
     (lang: Language = language): boolean => {
       skipNextHashConfirmRef.current = true;
-      // If inside an active game mode of a topic, always cleanly exit back to topic games list
+      // 1. If inside an active game mode of a topic, cleanly exit back to topic games list
       if (gameMode && selectedTopic) {
         selectMode(null);
         return true;
       }
-      if (window.history.length > 1 && window.location.hash) {
-        window.history.back();
-        return true;
-      }
+      // 2. If in topic mode selector, cleanly exit back to topics catalog list
       if (selectedTopic) {
         selectTopic(null);
+        return true;
+      }
+      // 3. Fallback to browser history or home
+      if (window.history.length > 1 && window.location.hash) {
+        window.history.back();
         return true;
       }
       return navigateToHome(lang);

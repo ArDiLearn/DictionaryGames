@@ -764,4 +764,43 @@ export const WORD_IMAGES = {
   "slow": "🐢",
   "friendly": "🐶",
   "dangerous": "⚠️",
+  // Grade 3 Extra - Town +
+  "street": "🛣️",
+  "bridge": "🌉",
+  "traffic lights": "🚦",
+  "hotel": "🏨",
+  "bank": "🏦",
+  "supermarket": "🛒",
+
+  // Grade 3 Extra - Celebrations +
+  "candle": "🕯️",
+  "invitation": "💌",
+  "celebrate": "🎉",
+  "gift": "🎁",
+  "wish": "🌠",
+  "weather": "⛅",
+
+  // Grade 3 Extra - Emotions +
+  "scared": "😨",
+  "bored": "🥱",
+  "excited": "🤩",
+  "worried": "😟",
+  "surprised": "😲",
+  "proud": "🦁",
+
+  // Grade 3 Extra - Jobs +
+  "firefighter": "👨‍🚒",
+  "nurse": "👩‍⚕️",
+  "pilot": "👨‍✈️",
+  "driver": "🚗",
+  "artist": "🧑‍🎨",
+  "uniform": "👔",
+
+  // Grade 3 Extra - Sports +
+  "team": "👥",
+  "race": "🏁",
+  "score": "🔢",
+  "winner": "🥇",
+  "medal": "🏅",
+  "trophy": "🏆",
 };

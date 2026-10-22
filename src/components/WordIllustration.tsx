@@ -29,7 +29,7 @@ const KNOWN_SVG_EN_KEYS = new Set([
   'floor', 'fur', 'roof', 'fridge', 'claws', 'shelf', 'friend', 'hug', 'shapes',
   'christmas', 'costume', 'dress up', 'clothes', 'pocket', 'button', 'garage', 'balcony',
   'light', 'messy', 'flat', 'room', 'fast', 'important', 'stick', 'chips', 'fork',
-  'bottle', 'food', 'vegetable', 'toddler', 'on', 'under', 'front', 'out', 'over there', 'next', 'before',
+  'bottle', 'food', 'vegetable', 'toddler', 'on', 'under', 'front', 'out', 'over there', 'next', 'before', 'traffic lights', 'invitation', 'uniform', 'bridge', 'medal', 'trophy',
 ]);
 
 const KNOWN_SVG_RU_KEYS = new Set([
@@ -56,7 +56,7 @@ const KNOWN_SVG_RU_KEYS = new Set([
   'рождество', 'костюм', 'наряжаться', 'одежда', 'карман', 'пуговица', 'гараж', 'балкон',
   'свет', 'неубранный', 'квартира', 'комната', 'быстрый', 'важный', 'палочка', 'чипсы',
   'вилка', 'бутылка', 'еда', 'овощ', 'малыш',
-  'на', 'под', 'спереди', 'снаружи', 'вон там', 'следующий', 'до',
+  'на', 'под', 'спереди', 'снаружи', 'вон там', 'следующий', 'до', 'светофор', 'приглашение', 'форма', 'мост', 'медаль', 'кубок',
 ]);
 
 export function loadWordSvgs(): Promise<void> {

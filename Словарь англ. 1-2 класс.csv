@@ -807,6 +807,12 @@ international,starptautisks,международный,2
 pet shop,zooveikals,зоомагазин,3
 toy shop,rotaļlietu veikals,магазин игрушек,3
 bookshop,grāmatnīca,книжный магазин,3
+street,iela,улица,3
+bridge,tilts,мост,3
+traffic lights,luksofors,светофор,3
+hotel,viesnīca,гостиница,3
+bank,banka,банк,3
+supermarket,lielveikals,супермаркет,3
 ,,,
 Friendship,Draudzība,Дружба и общение,
 friendship,draudzība,дружба,2
@@ -827,6 +833,38 @@ cycle,cikls,"цикл, круговорот",2
 live,dzīvot,жить,2
 year,gads,год,2
 every,katrs,каждый,2
+,,,
+Celebrations +,Svētki +,Праздники +,
+candle,svece,свеча,3
+invitation,ielūgums,приглашение,3
+celebrate,svinēt,праздновать,3
+gift,dāvana,подарок,3
+wish,vēlēšanās,желание,3
+weather,laikapstākļi,погода,3
+,,,
+Emotions +,Emocijas +,Эмоции +,
+scared,nobijies,испуганный,3
+bored,garlaikots,скучающий,3
+excited,sajūsmināts,"взволнованный, радостный",3
+worried,satraukts,обеспокоенный,3
+surprised,pārsteigts,удивлённый,3
+proud,lepns,гордый,3
+,,,
+Jobs +,Profesijas +,Профессии +,
+firefighter,ugunsdzēsējs,пожарный,3
+nurse,medmāsa,медсестра,3
+pilot,pilots,пилот,3
+driver,vadītājs,водитель,3
+artist,mākslinieks,художник,3
+uniform,formas tērps,форма,3
+,,,
+Sports +,Sports +,Спорт +,
+team,komanda,команда,3
+race,sacīkstes,"гонка, забег",3
+score,rezultāts,счёт,3
+winner,uzvarētājs,победитель,3
+medal,medaļa,медаль,3
+trophy,kauss,"кубок, приз",3
 ,,,
 School subjects,Mācību priekšmeti,Школьные предметы,
 art,vizuālā māksla,"изо, рисование",4

@@ -4458,6 +4458,108 @@ export const WORD_SVGS: Record<string, React.ReactNode> = {
       <path d="M 40 32 L 34 35 L 36 28" stroke="#ea580c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
     </svg>
   ),
+  'traffic lights': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="92" rx="14" ry="3" fill="#0f172a" opacity="0.14" />
+      <rect x="47" y="78" width="6" height="14" fill="#334155" />
+      <rect x="36" y="10" width="28" height="70" rx="8" fill="#1e293b" stroke="#0f172a" strokeWidth="2" />
+      <path d="M 38 24 C 38 18, 62 18, 62 24" stroke="#0f172a" strokeWidth="2.5" fill="none" />
+      <circle cx="50" cy="24" r="8" fill="#ef4444" stroke="#b91c1c" strokeWidth="1.2" />
+      <circle cx="47" cy="22" r="2.2" fill="#fca5a5" opacity="0.8" />
+      <path d="M 38 45 C 38 39, 62 39, 62 45" stroke="#0f172a" strokeWidth="2.5" fill="none" />
+      <circle cx="50" cy="45" r="8" fill="#eab308" stroke="#ca8a04" strokeWidth="1.2" />
+      <circle cx="47" cy="43" r="2.2" fill="#fef08a" opacity="0.8" />
+      <path d="M 38 66 C 38 60, 62 60, 62 66" stroke="#0f172a" strokeWidth="2.5" fill="none" />
+      <circle cx="50" cy="66" r="8" fill="#22c55e" stroke="#15803d" strokeWidth="1.2" />
+      <circle cx="47" cy="64" r="2.2" fill="#86efac" opacity="0.8" />
+    </svg>
+  ),
+  'invitation': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <ellipse cx="50" cy="84" rx="36" ry="6" fill="#0f172a" opacity="0.12" />
+      <path d="M 16 34 L 50 12 L 84 34 L 84 76 L 16 76 Z" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1.5" />
+      <rect x="22" y="20" width="56" height="46" rx="3" fill="#fef08a" stroke="#eab308" strokeWidth="1.5" />
+      <rect x="25" y="23" width="50" height="40" rx="2" fill="#ffffff" />
+      <polygon points="50,28 52,32 57,33 53,36 54,41 50,38 46,41 47,36 43,33 48,32" fill="#facc15" stroke="#ca8a04" strokeWidth="0.8" />
+      <line x1="32" y1="46" x2="68" y2="46" stroke="#f43f5e" strokeWidth="2" strokeLinecap="round" />
+      <line x1="36" y1="52" x2="64" y2="52" stroke="#94a3b8" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="40" y1="57" x2="60" y2="57" stroke="#94a3b8" strokeWidth="1.2" strokeLinecap="round" />
+      <polygon points="16,38 50,58 84,38 84,76 16,76" fill="#f1f5f9" stroke="#cbd5e1" strokeWidth="1.5" />
+      <circle cx="50" cy="58" r="4.5" fill="#f59e0b" stroke="#d97706" strokeWidth="1" />
+      <path d="M 46 58 C 36 50, 36 66, 46 58 Z" fill="#fbbf24" stroke="#d97706" strokeWidth="1" />
+      <path d="M 54 58 C 64 50, 64 66, 54 58 Z" fill="#fbbf24" stroke="#d97706" strokeWidth="1" />
+      <polygon points="78,16 79,19 82,20 79,21 78,24 77,21 74,20 77,19" fill="#facc15" />
+      <polygon points="20,18 21,20 23,21 21,22 20,24 19,22 17,21 19,20" fill="#facc15" />
+    </svg>
+  ),
+  'uniform': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <path d="M 50 14 C 50 10, 56 10, 56 14 C 56 17, 50 18, 50 22" stroke="#d97706" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+      <path d="M 22 30 L 50 22 L 78 30" stroke="#b45309" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M 26 30 L 74 30 L 78 82 L 22 82 Z" fill="#1e3a8a" stroke="#172554" strokeWidth="1.8" />
+      <polygon points="44,30 50,42 38,30" fill="#ffffff" />
+      <polygon points="56,30 50,42 62,30" fill="#ffffff" />
+      <polygon points="48,36 52,36 54,64 50,68 46,64" fill="#dc2626" stroke="#991b1b" strokeWidth="0.8" />
+      <rect x="20" y="30" width="14" height="6" rx="1.5" fill="#facc15" stroke="#ca8a04" strokeWidth="1" />
+      <rect x="66" y="30" width="14" height="6" rx="1.5" fill="#facc15" stroke="#ca8a04" strokeWidth="1" />
+      <circle cx="50" cy="48" r="2.2" fill="#facc15" stroke="#ca8a04" strokeWidth="0.8" />
+      <circle cx="50" cy="56" r="2.2" fill="#facc15" stroke="#ca8a04" strokeWidth="0.8" />
+      <circle cx="50" cy="64" r="2.2" fill="#facc15" stroke="#ca8a04" strokeWidth="0.8" />
+      <circle cx="50" cy="72" r="2.2" fill="#facc15" stroke="#ca8a04" strokeWidth="0.8" />
+      <rect x="28" y="46" width="12" height="14" rx="1.5" fill="#1e40af" stroke="#1d4ed8" strokeWidth="1" />
+      <polygon points="34,48 35,50 38,51 35,52 34,54 33,52 30,51 33,50" fill="#facc15" />
+    </svg>
+  ),
+  'bridge': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <rect x="8" y="66" width="84" height="24" rx="2" fill="#38bdf8" />
+      <path d="M 8 76 Q 28 72 50 76 Q 72 80 92 76" stroke="#0284c7" strokeWidth="1.5" fill="none" opacity="0.6" />
+      <path d="M 8 84 Q 30 80 50 84 Q 70 88 92 84" stroke="#0284c7" strokeWidth="1.5" fill="none" opacity="0.6" />
+      <rect x="26" y="38" width="10" height="34" fill="#64748b" stroke="#334155" strokeWidth="1.2" />
+      <rect x="64" y="38" width="10" height="34" fill="#64748b" stroke="#334155" strokeWidth="1.2" />
+      <rect x="8" y="48" width="84" height="8" rx="1.5" fill="#475569" stroke="#1e293b" strokeWidth="1.5" />
+      <line x1="8" y1="52" x2="92" y2="52" stroke="#facc15" strokeWidth="1.2" strokeDasharray="4 3" />
+      <line x1="8" y1="44" x2="92" y2="44" stroke="#cbd5e1" strokeWidth="1.5" />
+      <line x1="16" y1="44" x2="16" y2="48" stroke="#cbd5e1" strokeWidth="1" />
+      <line x1="36" y1="44" x2="36" y2="48" stroke="#cbd5e1" strokeWidth="1" />
+      <line x1="50" y1="44" x2="50" y2="48" stroke="#cbd5e1" strokeWidth="1" />
+      <line x1="64" y1="44" x2="64" y2="48" stroke="#cbd5e1" strokeWidth="1" />
+      <line x1="84" y1="44" x2="84" y2="48" stroke="#cbd5e1" strokeWidth="1" />
+      <path d="M 8 36 Q 31 48 50 48 Q 69 48 92 36" stroke="#e2e8f0" strokeWidth="1.8" fill="none" />
+      <polygon points="26,38 31,28 36,38" fill="#e2e8f0" stroke="#475569" strokeWidth="1" />
+      <polygon points="64,38 69,28 74,38" fill="#e2e8f0" stroke="#475569" strokeWidth="1" />
+    </svg>
+  ),
+  'medal': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <polygon points="34,10 50,38 40,38 24,10" fill="#ef4444" stroke="#b91c1c" strokeWidth="1" />
+      <polygon points="66,10 50,38 60,38 76,10" fill="#2563eb" stroke="#1d4ed8" strokeWidth="1" />
+      <polygon points="46,10 50,38 54,10" fill="#ffffff" />
+      <circle cx="50" cy="58" r="26" fill="#eab308" stroke="#ca8a04" strokeWidth="2.5" />
+      <circle cx="50" cy="58" r="22" fill="#facc15" />
+      <circle cx="50" cy="58" r="18" fill="#fde047" stroke="#ca8a04" strokeWidth="1.5" />
+      <text x="50" y="65" textAnchor="middle" fontSize="18" fontWeight="black" fill="#854d0e" fontFamily="sans-serif">1</text>
+      <polygon points="50,42 51,44 54,45 52,47 52,50 50,48 48,50 48,47 46,45 49,44" fill="#ca8a04" />
+      <path d="M 34 46 C 42 36, 58 36, 66 46" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" opacity="0.7" fill="none" />
+    </svg>
+  ),
+  'trophy': (
+    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" fill="none">
+      <rect x="36" y="80" width="28" height="12" rx="2" fill="#1e293b" stroke="#0f172a" strokeWidth="1.5" />
+      <rect x="40" y="83" width="20" height="6" rx="1" fill="#facc15" />
+      <rect x="46" y="68" width="8" height="12" fill="#ca8a04" />
+      <path d="M 32 30 C 16 30, 16 52, 34 56" stroke="#ca8a04" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+      <path d="M 32 30 C 18 30, 18 52, 34 56" stroke="#facc15" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M 68 30 C 84 30, 84 52, 66 56" stroke="#ca8a04" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+      <path d="M 68 30 C 82 30, 82 52, 66 56" stroke="#facc15" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M 28 20 L 72 20 C 72 44, 62 68, 50 68 C 38 68, 28 44, 28 20 Z" fill="#eab308" stroke="#ca8a04" strokeWidth="2" />
+      <path d="M 32 22 L 68 22 C 68 42, 60 64, 50 64 C 40 64, 32 42, 32 22 Z" fill="#facc15" />
+      <ellipse cx="50" cy="20" rx="22" ry="5" fill="#fde047" stroke="#ca8a04" strokeWidth="1.8" />
+      <polygon points="50,34 52,38 57,39 53,42 54,47 50,44 46,47 47,42 43,39 48,38" fill="#ca8a04" />
+      <polygon points="26,14 27,17 30,18 27,19 26,22 25,19 22,18 25,17" fill="#fde047" />
+      <polygon points="74,14 75,16 78,17 75,18 74,20 73,18 70,17 73,16" fill="#fde047" />
+    </svg>
+  ),
 };
 
 export const RU_ALIASES: Record<string, string> = {
@@ -4673,4 +4775,19 @@ export const RU_ALIASES: Record<string, string> = {
   'nakamais': 'next',
   'до': 'before',
   'pirms': 'before',
+  'светофор': 'traffic lights',
+  'luksofors': 'traffic lights',
+  'приглашение': 'invitation',
+  'ielūgums': 'invitation',
+  'ielugums': 'invitation',
+  'форма': 'uniform',
+  'formas tērps': 'uniform',
+  'formas terps': 'uniform',
+  'мост': 'bridge',
+  'tilts': 'bridge',
+  'медаль': 'medal',
+  'medaļa': 'medal',
+  'medala': 'medal',
+  'кубок': 'trophy',
+  'kauss': 'trophy',
 };

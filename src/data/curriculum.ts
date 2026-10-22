@@ -26,6 +26,10 @@ export const EXTRA_TOPICS: string[] = [
   'positions_plus',
   'at_home_plus',
   'animal_traits_plus',
+  'celebrations_plus',
+  'emotions_plus',
+  'jobs_plus',
+  'sports_plus',
   'town_plus',
   'friendship',
   'routine_and_time',
@@ -163,6 +167,12 @@ export const GRADE_2_TOPIC_ORDER: string[] = [
 
 export const GRADE_3_TOPIC_ORDER: string[] = [
   ...GRADE_3_MAIN_TOPICS,
+  // Extra topics with new Grade 3 words placed first
+  'town_plus',
+  'celebrations_plus',
+  'emotions_plus',
+  'jobs_plus',
+  'sports_plus',
   ...EXTRA_TOPICS,
 ];
 

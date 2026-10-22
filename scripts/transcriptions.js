@@ -840,5 +840,43 @@ export const TRANSCRIPTIONS = {
   "slow": "[ sləʊ ]",
   "friendly": "[ ˈfrendli ]",
   "dangerous": "[ ˈdeɪndʒərəs ]",
-};
+  // Grade 3 Extra - Town +
+  "street": "[ striːt ]",
+  "bridge": "[ brɪdʒ ]",
+  "traffic lights": "[ ˈtræfɪk laɪts ]",
+  "hotel": "[ həʊˈtel ]",
+  "bank": "[ bæŋk ]",
+  "supermarket": "[ ˈsuːpəmɑːkɪt ]",
 
+  // Grade 3 Extra - Celebrations +
+  "candle": "[ ˈkændl ]",
+  "invitation": "[ ˌɪnvɪˈteɪʃn ]",
+  "celebrate": "[ ˈselɪbreɪt ]",
+  "gift": "[ ɡɪft ]",
+  "wish": "[ wɪʃ ]",
+  "weather": "[ ˈweðə ]",
+
+  // Grade 3 Extra - Emotions +
+  "scared": "[ skeəd ]",
+  "bored": "[ bɔːd ]",
+  "excited": "[ ɪkˈsaɪtɪd ]",
+  "worried": "[ ˈwʌrid ]",
+  "surprised": "[ səˈpraɪzd ]",
+  "proud": "[ praʊd ]",
+
+  // Grade 3 Extra - Jobs +
+  "firefighter": "[ ˈfaɪəfaɪtə ]",
+  "nurse": "[ nɜːs ]",
+  "pilot": "[ ˈpaɪlət ]",
+  "driver": "[ ˈdraɪvə ]",
+  "artist": "[ ˈɑːtɪst ]",
+  "uniform": "[ ˈjuːnɪfɔːm ]",
+
+  // Grade 3 Extra - Sports +
+  "team": "[ tiːm ]",
+  "race": "[ reɪs ]",
+  "score": "[ skɔː ]",
+  "winner": "[ ˈwɪnə ]",
+  "medal": "[ ˈmedl ]",
+  "trophy": "[ ˈtrəʊfi ]",
+};

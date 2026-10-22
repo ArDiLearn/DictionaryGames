@@ -9,7 +9,7 @@ import {
   getTranslationWordText,
 } from '../../utils/i18n';
 import { WordIllustration } from '../WordIllustration';
-import { Volume2, RotateCw, ArrowLeft, ChevronLeft, ChevronRight, LayoutGrid, X, Gamepad2 } from 'lucide-react';
+import { Volume2, ArrowLeft, ChevronLeft, ChevronRight, LayoutGrid, X, Gamepad2 } from 'lucide-react';
 
 interface FlashcardsGameProps {
   topic: Topic;
@@ -30,11 +30,9 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
 }) => {
   const t = translations[language];
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isFlipped, setIsFlipped] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [correctCount, setCorrectCount] = useState(0);
   const [isWordGridOpen, setIsWordGridOpen] = useState(false);
-  const [knownWordIds, setKnownWordIds] = useState<Set<string>>(new Set());
+  const [viewedWordIds, setViewedWordIds] = useState<Set<string>>(new Set());
   const ribbonRef = useRef<HTMLDivElement>(null);
   const wordBtnRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -42,9 +40,10 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
 
   useEffect(() => {
     if (currentWord) {
-      setIsFlipped(false);
+      setViewedWordIds((prev) => new Set([...prev, currentWord.id]));
+      onRecordResult(currentWord.id, true);
     }
-  }, [currentIndex]);
+  }, [currentIndex, currentWord]);
 
   const handleSpeak = (wordToSpeak?: Word) => {
     const word = wordToSpeak || currentWord;
@@ -60,38 +59,20 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
     );
   };
 
-  const handleFlip = () => {
+  const handleNextWord = () => {
     sounds.playClick();
-    setIsFlipped(!isFlipped);
-  };
-
-  useEffect(() => {
-    if (wordBtnRefs.current[currentIndex]) {
-      wordBtnRefs.current[currentIndex]?.scrollIntoView({
-        behavior: 'smooth',
-        inline: 'center',
-        block: 'nearest',
-      });
-    }
-  }, [currentIndex]);
-
-  const handleNext = (known: boolean) => {
-    if (!currentWord) return;
-
-    if (known) {
-      sounds.playCorrect();
-      setCorrectCount((prev) => prev + 1);
-      setKnownWordIds((prev) => new Set([...prev, currentWord.id]));
-    } else {
-      sounds.playWrong();
-    }
-
-    onRecordResult(currentWord.id, known);
-
     if (currentIndex + 1 < topic.words.length) {
       setCurrentIndex((prev) => prev + 1);
     } else {
-      onComplete(correctCount + (known ? 1 : 0), topic.words.length);
+      sounds.playVictoryTheme();
+      onComplete(topic.words.length, topic.words.length);
+    }
+  };
+
+  const handlePrevWord = () => {
+    if (currentIndex > 0) {
+      sounds.playClick();
+      setCurrentIndex((prev) => prev - 1);
     }
   };
 
@@ -105,7 +86,6 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
     }
     sounds.playClick();
     setCurrentIndex(index);
-    setIsFlipped(false);
     if (shouldSpeak) {
       handleSpeak(topic.words[index]);
     }
@@ -160,89 +140,58 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
         />
       </div>
 
-      {/* Flip Card */}
+      {/* Study Card (English + Translation shown together) */}
       <div
-        onClick={handleFlip}
-        className="w-full min-h-[320px] sm:min-h-[360px] bg-white rounded-3xl border-4 border-indigo-300 shadow-2xl p-6 flex flex-col items-center justify-between cursor-pointer transform transition-all duration-300 hover:scale-[1.02] active:scale-[0.99] relative overflow-hidden group"
+        onClick={() => handleSpeak()}
+        className="w-full min-h-[320px] sm:min-h-[360px] bg-white rounded-3xl border-4 border-indigo-300 shadow-2xl p-6 flex flex-col items-center justify-between cursor-pointer transform transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] relative overflow-hidden group select-none"
       >
         <div className="w-full flex justify-between items-center text-slate-400">
           <span className="text-xs font-bold uppercase tracking-wider">
-            {isFlipped
-              ? course === 'lv'
-                ? '🇷🇺 Русский'
-                : course === 'en-lv' || language === 'lv'
-                ? '🇱🇻 Latviešu'
-                : '🇷🇺 Русский'
-              : isLatvianCourse
-              ? '🇱🇻 Latviešu'
-              : '🇬🇧 English'}
+            {isLatvianCourse ? '🇱🇻 Latviešu' : '🇬🇧 English'} → {language === 'lv' ? '🇱🇻 Latviešu' : '🇷🇺 Русский'}
           </span>
-          <RotateCw className="w-5 h-5 text-indigo-400 group-hover:rotate-180 transition-transform duration-500" />
+          <span className="text-xs font-bold text-indigo-400 flex items-center gap-1">
+            <Volume2 className="w-4 h-4" />
+            <span>{language === 'ru' ? 'Нажми для озвучки' : 'Pieskaries, lai noklausītos'}</span>
+          </span>
         </div>
 
         {/* Word Display */}
-        <div className="text-center my-auto py-4">
-          {!isFlipped ? (
-            <div className="flex flex-col items-center">
-              {/* Word Picture */}
-              <div
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleSpeak();
-                }}
-                className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-indigo-50 border-3 border-indigo-200 flex items-center justify-center p-2 shadow-inner mb-4 group-hover:scale-110 transition-transform select-none cursor-pointer"
-                title={language === 'ru' ? 'Нажми, чтобы послушать' : 'Pieskaries, lai noklausītos'}
-              >
-                <WordIllustration word={currentWord} fallbackEmoji={topic.emoji} />
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-black text-indigo-600 tracking-tight font-comic">
-                {targetText}
-              </h2>
-              {!isLatvianCourse && currentWord.transcription && (
-                <div className="mt-3 px-4 py-1.5 bg-indigo-50 border-2 border-indigo-200 rounded-2xl text-indigo-700 font-mono text-xl sm:text-2xl font-bold tracking-wider shadow-sm">
-                  {currentWord.transcription}
-                </div>
-              )}
-              <p className="text-xs sm:text-sm font-semibold text-slate-400 mt-3">
-                {t.tapToFlip}
-              </p>
-            </div>
-          ) : (
-            <div className="flex flex-col items-center">
-              {/* Word Picture */}
-              <div
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleSpeak();
-                }}
-                className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-pink-50 border-3 border-pink-200 flex items-center justify-center p-2 shadow-inner mb-4 select-none cursor-pointer"
-                title={language === 'ru' ? 'Нажми, чтобы послушать' : 'Pieskaries, lai noklausītos'}
-              >
-                <WordIllustration word={currentWord} fallbackEmoji={topic.emoji} />
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-black text-pink-600 tracking-tight leading-snug">
-                {translation}
-              </h2>
-              <div className="mt-3 flex items-center justify-center gap-2 flex-wrap">
-                <span className="text-base font-bold text-slate-600">{targetText}</span>
-                {!isLatvianCourse && currentWord.transcription && (
-                  <span className="px-2.5 py-0.5 bg-slate-100 border border-slate-200 rounded-xl text-indigo-600 font-mono text-sm sm:text-base font-bold">
-                    {currentWord.transcription}
-                  </span>
-                )}
-              </div>
+        <div className="text-center my-auto py-3 flex flex-col items-center">
+          {/* Word Picture */}
+          <div
+            className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-indigo-50 border-3 border-indigo-200 flex items-center justify-center p-2 shadow-inner mb-3 group-hover:scale-105 transition-transform"
+          >
+            <WordIllustration word={currentWord} fallbackEmoji={topic.emoji} />
+          </div>
+
+          {/* Target Word (English or Latvian) */}
+          <h2 className="text-4xl sm:text-5xl font-black text-indigo-600 tracking-tight font-comic">
+            {targetText}
+          </h2>
+
+          {/* Phonetic Transcription */}
+          {!isLatvianCourse && currentWord.transcription && (
+            <div className="mt-2.5 px-4 py-1 bg-indigo-50 border-2 border-indigo-200 rounded-2xl text-indigo-700 font-mono text-lg sm:text-xl font-bold tracking-wider shadow-xs">
+              {currentWord.transcription}
             </div>
           )}
+
+          {/* Translation (Shown immediately) */}
+          <div className="mt-4 px-5 py-2 rounded-2xl bg-gradient-to-r from-pink-50 to-rose-50 border-2 border-pink-200/80 shadow-xs">
+            <h3 className="text-2xl sm:text-3xl font-black text-pink-600 tracking-tight leading-snug">
+              {translation}
+            </h3>
+          </div>
         </div>
 
         {/* Audio Button */}
-        <div className="w-full flex justify-center pb-2">
+        <div className="w-full flex justify-center pb-1">
           <button
             onClick={(e) => {
               e.stopPropagation();
               handleSpeak();
             }}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-indigo-50 border-2 border-indigo-200 text-indigo-700 font-black shadow-sm transition-all hover:scale-105 active:scale-95 ${
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-indigo-50 border-2 border-indigo-200 text-indigo-700 font-black shadow-sm transition-all hover:scale-105 active:scale-95 cursor-pointer ${
               isSpeaking ? 'ring-4 ring-indigo-300 animate-pulse' : ''
             }`}
           >
@@ -289,7 +238,6 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
           >
             {topic.words.map((word, index) => {
               const isCurrent = index === currentIndex;
-              const isLearned = knownWordIds.has(word.id);
               const ribbonTarget = getTargetWordText(word, course);
               const ribbonTranslation = getTranslationWordText(word, course, language);
 
@@ -329,8 +277,8 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
                     {ribbonTarget}
                   </span>
 
-                  {/* Known checkmark badge */}
-                  {isLearned && (
+                  {/* Viewed checkmark badge */}
+                  {viewedWordIds.has(word.id) && (
                     <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] font-black border-2 border-white shadow-xs">
                       ✓
                     </span>
@@ -352,24 +300,34 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
         </div>
       </div>
 
-      {/* Action Buttons */}
-      <div className="w-full grid grid-cols-2 gap-4 mt-5">
+      {/* Action Buttons: Prev / Next Word Navigation */}
+      <div className="w-full grid grid-cols-3 gap-3 mt-5">
+        <button
+          onClick={handlePrevWord}
+          disabled={currentIndex === 0}
+          className="btn-3d py-3.5 px-3 rounded-3xl bg-white hover:bg-slate-50 border-4 border-slate-200 text-slate-700 font-black text-sm sm:text-base shadow-md disabled:opacity-40 disabled:pointer-events-none flex items-center justify-center gap-1.5 cursor-pointer"
+        >
+          <ChevronLeft className="w-5 h-5" />
+          <span>{language === 'ru' ? 'Назад' : 'Atpakaļ'}</span>
+        </button>
+
         <button
           onClick={() => {
             sounds.playClick();
             onBack();
           }}
-          className="btn-3d py-4 px-3 sm:px-4 rounded-3xl bg-indigo-50 hover:bg-indigo-100 border-4 border-indigo-200 text-indigo-700 font-black text-base sm:text-lg shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+          className="btn-3d py-3.5 px-2 rounded-3xl bg-indigo-50 hover:bg-indigo-100 border-4 border-indigo-200 text-indigo-700 font-black text-xs sm:text-sm shadow-md flex items-center justify-center gap-1 cursor-pointer truncate"
         >
-          <Gamepad2 className="w-5 h-5 flex-shrink-0" />
+          <Gamepad2 className="w-4 h-4 flex-shrink-0" />
           <span className="truncate">{t.backToTopicGames}</span>
         </button>
 
         <button
-          onClick={() => handleNext(true)}
-          className="btn-3d py-4 px-3 sm:px-4 rounded-3xl bg-emerald-400 hover:bg-emerald-500 border-4 border-emerald-600 text-white font-black text-base sm:text-lg shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+          onClick={handleNextWord}
+          className="btn-3d py-3.5 px-3 rounded-3xl bg-emerald-500 hover:bg-emerald-600 border-4 border-emerald-600 text-white font-black text-sm sm:text-base shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
         >
-          <span>{t.iKnow}</span>
+          <span>{currentIndex + 1 >= topic.words.length ? (language === 'ru' ? 'Готово!' : 'Gatavs!') : (language === 'ru' ? 'Дальше' : 'Tālāk')}</span>
+          <ChevronRight className="w-5 h-5" />
         </button>
       </div>
       {/* Modal: All Words Grid Selection */}
@@ -407,7 +365,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
             <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-2.5 overflow-y-auto pr-1 py-1 no-scrollbar">
               {topic.words.map((word, index) => {
                 const isCurrent = index === currentIndex;
-                const isLearned = knownWordIds.has(word.id);
+                const isViewed = viewedWordIds.has(word.id);
                 const gridTarget = getTargetWordText(word, course);
                 const gridTranslation = getTranslationWordText(word, course, language);
 
@@ -437,7 +395,7 @@ export const FlashcardsGame: React.FC<FlashcardsGameProps> = ({
                     <span className="text-xs font-semibold text-slate-400 truncate w-full mt-0.5">
                       {gridTranslation}
                     </span>
-                    {isLearned && (
+                    {isViewed && (
                       <span className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] font-black shadow-xs">
                         ✓
                       </span>

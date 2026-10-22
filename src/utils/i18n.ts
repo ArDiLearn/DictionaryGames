@@ -346,7 +346,7 @@ export const translations: Record<Language, Translations> = {
     soundOn: 'Звук включен',
     soundOff: 'Звук выключен',
     modes: {
-      flashcards: 'Карточки',
+      flashcards: 'Слова темы',
       builder: 'Собери слово',
       match: 'Найди пару',
       truefalse: 'Правда или ложь?',
@@ -633,7 +633,7 @@ export const translations: Record<Language, Translations> = {
     soundOn: 'Skaņa ieslēgta',
     soundOff: 'Skaņa izslēgta',
     modes: {
-      flashcards: 'Kartītes',
+      flashcards: 'Tēmas vārdi',
       builder: 'Saliec vārdu',
       match: 'Atrodi pāri',
       truefalse: 'Patiesība vai meli?',
